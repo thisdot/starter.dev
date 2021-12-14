@@ -1,0 +1,49 @@
+{
+  "name": "create-starter",
+  "version": "1.0.0",
+  "description": "A CLI script for generating starter.dev kits",
+  "exports": {
+    ".": "./create-starter.mjs"
+  },
+  "bin": {
+    "create-starter": "./create-starter.mjs"
+  },
+  "scripts": {
+    "build": "yarn clean && esbuild ./src/index.ts --bundle --platform=node --outfile=./dist/index.js",
+    "dev": "yarn clean && esbuild ./src/index.ts --watch --bundle --platform=node --outfile=./dist/index.js",
+    "clean": "rimraf ./dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "dist",
+    "create-starter.mjs"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thisdot/starter.dev.git",
+    "directory": "packages/create-starter"
+  },
+  "author": "This Dot Labs",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thisdot/starter.dev/issues"
+  },
+  "homepage": "https://github.com/thisdot/starter.dev#readme",
+  "devDependencies": {
+    "@tsconfig/node14": "^1.0.1",
+    "@types/degit": "^2.8.3",
+    "@types/node": "^16.11.12",
+    "@types/prompts": "^2.0.14",
+    "esbuild": "^0.14.3",
+    "rimraf": "^3.0.2"
+  },
+  "engines": {
+    "node": "^14.18.2 || >=16.0.0"
+  },
+  "dependencies": {
+    "degit": "^2.8.4",
+    "kleur": "^4.1.4",
+    "prompts": "^2.4.2",
+    "yargs-parser": "^21.0.0"
+  }
+}
