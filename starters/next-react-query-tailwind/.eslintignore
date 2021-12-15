@@ -1,0 +1,11 @@
+node_modules/
+__mocks__/
+public/
+.vscode/
+.storybook/
+.next/
+next.config.js
+jest.config.js
+jest.setup.js
+tailwind.config.js
+postcss.config.js

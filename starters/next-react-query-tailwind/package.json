@@ -1,22 +1,56 @@
 {
   "name": "next-react-query-tailwind",
   "private": true,
+  "version": "0.1.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest",
+    "format": "prettier --write ./src",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "next": "12.0.7",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-query": "^3.34.3"
   },
   "devDependencies": {
+    "@babel/core": "^7.16.5",
+    "@storybook/addon-actions": "^6.4.9",
+    "@storybook/addon-essentials": "^6.4.9",
+    "@storybook/addon-links": "^6.4.9",
+    "@storybook/addon-postcss": "^2.0.0",
+    "@storybook/react": "^6.4.9",
+    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.0.3",
     "@types/node": "16.11.12",
     "@types/react": "17.0.37",
+    "autoprefixer": "^10.4.0",
+    "babel-loader": "^8.2.3",
     "eslint": "8.4.1",
     "eslint-config-next": "12.0.7",
+    "eslint-plugin-storybook": "^0.5.3",
+    "eslint-plugin-testing-library": "^5.0.1",
+    "identity-obj-proxy": "^3.0.0",
+    "isomorphic-unfetch": "^3.1.0",
+    "jest": "^27.4.5",
+    "jest-mock": "^27.4.2",
+    "msw": "^0.36.3",
+    "msw-storybook-addon": "^1.5.0",
+    "postcss": "^8.4.5",
+    "prettier": "^2.5.1",
+    "storybook-addon-next-router": "^3.1.0",
+    "storybook-css-modules-preset": "^1.1.1",
+    "tailwindcss": "^3.0.5",
     "typescript": "4.5.3"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }
