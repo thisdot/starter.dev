@@ -1,0 +1,10 @@
+export { GitHubIcon } from './GithubIcon';
+export { DiscordIcon } from './DiscordIcon';
+export { NextIcon } from './NextIcon';
+export { ReactIcon } from './ReactIcon';
+export { ReactQueryIcon } from './ReactQueryIcon';
+export { TailwindIcon } from './TailwindIcon';
+export { VanillaExtractIcon } from './VanillaExtractIcon';
+export { RemixIcon } from './RemixIcon';
+export { ApolloIcon } from './ApolloIcon';
+export { ViteLogo } from './ViteLogo';

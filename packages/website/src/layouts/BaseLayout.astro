@@ -1,0 +1,23 @@
+---
+import BaseHead from './BaseHead.astro';
+import { NavBar } from '../components/NavBar.tsx';
+import Footer from '../components/Footer.astro';
+const { title, description } = Astro.props;
+const path = Astro.site.pathname;
+---
+
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <BaseHead />
+  </head>
+  <body class="bg-white dark:bg-slate-800 transition-colors min-h-screen">
+    <header>
+      <NavBar currentPath={path} client:load />
+    </header>
+    <slot />
+    <Footer />
+  </body>
+</html>

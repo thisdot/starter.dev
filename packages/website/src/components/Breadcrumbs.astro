@@ -1,0 +1,28 @@
+---
+import cn from 'clsx';
+import { ChevronRightIcon } from '@heroicons/react/outline';
+const { crumbs } = Astro.props;
+---
+
+<nav class="flex" aria-label="Breadcrumb">
+  <ol role="list" class="flex items-center space-x-2">
+    {crumbs.map(({ href, title }, i) => (
+      <li>
+        <div class="flex items-center">
+          {i > 0 && <ChevronRightIcon className="w-3.5 h-3.5 text-gray-500" />}
+          <a
+            href={href}
+            class={cn(
+              crumbs.length - 1 === i
+                ? 'text-gray-500'
+                : 'text-gray-800 hover:underline',
+              'ml-2 text-sm'
+            )}
+          >
+            {title}
+          </a>
+        </div>
+      </li>
+    ))}
+  </ol>
+</nav>

@@ -1,0 +1,30 @@
+{
+  "name": "website",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "format": "yarn prettier -w .",
+    "kitgen": "node ./scripts/kitgen",
+    "predev": "yarn kitgen",
+    "prebuild": "yarn kitgen"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.0",
+    "astro": "^0.22.9",
+    "postcss": "^8.4.5",
+    "prettier-plugin-astro": "^0.0.11",
+    "rimraf": "^3.0.2",
+    "tailwindcss": "^3.0.12"
+  },
+  "dependencies": {
+    "@headlessui/react": "^1.4.2",
+    "@heroicons/react": "^1.0.5",
+    "autoprefixer": "^10.4.2",
+    "clsx": "^1.1.1",
+    "just-pick": "^4.0.1"
+  }
+}

@@ -1,5 +1,11 @@
 {
   "name": "next-react-query-tailwind",
+  "description": "A starter kit featuring NextJS, React Query, and TailwindCSS",
+  "keywords": [
+    "next",
+    "react-query",
+    "tailwind"
+  ],
   "private": true,
   "version": "0.1.0",
   "scripts": {
