@@ -27,7 +27,7 @@ export function TableOfContents({ headers }: Props) {
   }, []);
 
   return (
-    <nav className="sticky top-0 p-8 border-r min-h-screen overflow-y-auto">
+    <nav className="p-4 border-r min-h-screen overflow-y-auto">
       <ul>
         {headers
           ?.filter(({ depth }) => depth > 1 && depth < 4)

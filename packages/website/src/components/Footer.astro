@@ -1,5 +1,5 @@
 ---
-import { footerNavItems } from '../config';
+import { FOOTER_NAV_ITEMS } from '../config.tsx';
 const year = new Date().getFullYear();
 ---
 
@@ -8,7 +8,7 @@ const year = new Date().getFullYear();
     class="flex flex-wrap items-center justify-between max-w-screen-2xl mx-auto"
   >
     <nav class="space-x-10">
-      {footerNavItems.map(({ href, title, isExternal }) => (
+      {FOOTER_NAV_ITEMS.map(({ href, title, isExternal }) => (
         <a
           href={href}
           target={isExternal ? '_blank' : '_self'}

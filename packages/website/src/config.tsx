@@ -18,7 +18,12 @@ export interface NavItem {
   isExternal?: boolean;
 }
 
-export const headerNavItems: NavItem[] = [
+export const REPO_URL = 'https://github.com/thisdot/starter.dev';
+
+export const SHOWCASE_REPO_URL =
+  'https://github.com/thisdot/starter.dev-showcases';
+
+export const HEADER_NAV_ITEMS: NavItem[] = [
   {
     title: 'Frameworks',
     href: '/frameworks',
@@ -41,11 +46,11 @@ export const headerNavItems: NavItem[] = [
   },
 ];
 
-export const footerNavItems = headerNavItems.filter(
+export const FOOTER_NAV_ITEMS = HEADER_NAV_ITEMS.filter(
   (x) => x.title !== 'Frameworks'
 );
 
-export const technologies = [
+export const TECHNOLOGIES = [
   {
     key: 'angular',
     name: 'Angular',
