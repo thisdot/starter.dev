@@ -7,7 +7,7 @@ export function parseKits(kits: any[]) {
 
 export function parseKit(kit) {
   const keywords = kit.keywords.split(',');
-  const tech = TECHNOLOGIES.filter((tech) => {
+  const technologies = TECHNOLOGIES.filter((tech) => {
     return keywords.includes(tech.key);
   });
   return {
@@ -18,6 +18,6 @@ export function parseKit(kit) {
       'readmePath',
       'starterPath',
     ]),
-    tech,
+    technologies,
   };
 }

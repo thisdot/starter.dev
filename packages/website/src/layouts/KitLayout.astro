@@ -8,7 +8,7 @@ import Footer from '../components/Footer.astro';
 import { parseKit } from '../lib/parseKits';
 const { content } = Astro.props;
 const path = Astro.site.pathname;
-const headers = content.astro.headers;
+const headers = content?.astro?.headers;
 const kit = parseKit(content);
 ---
 

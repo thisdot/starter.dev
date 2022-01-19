@@ -17,7 +17,9 @@ export async function getStaticPaths() {
       },
       props: {
         tech,
-        kits: kits.filter((kit) => kit.tech.some((t) => t.key === tech.key)),
+        kits: kits.filter((kit) =>
+          kit.technologies.some((t) => t.key === tech.key)
+        ),
       },
     };
   });
