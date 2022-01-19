@@ -1,6 +1,6 @@
 export interface Props {
-  size?: number | string;
   className?: string;
+  size?: string | number;
 }
 
 export function VanillaExtractIcon({ size = 48, className }: Props) {

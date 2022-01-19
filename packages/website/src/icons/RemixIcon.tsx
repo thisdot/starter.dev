@@ -1,6 +1,6 @@
 export interface Props {
-  size?: number | string;
   className?: string;
+  size?: string | number;
 }
 
 export function RemixIcon({ size = 48, className }: Props) {
