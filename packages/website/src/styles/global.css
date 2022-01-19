@@ -27,9 +27,12 @@
     @apply text-gray-900;
   }
   .dark-t {
-    @apply text-white;
+    @apply text-gray-400;
   }
   .dark-t-light {
+    @apply text-white;
+  }
+  .dark-t-dark {
     @apply text-gray-600;
   }
   .heading-1 {
