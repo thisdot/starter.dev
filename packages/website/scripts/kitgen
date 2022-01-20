@@ -31,14 +31,9 @@ async function getKitDirs() {
 }
 
 function convertToFrontmatter(obj) {
-  const entries = Object.entries(obj);
-  return entries.reduce((acc, [key, value], index) => {
-    let item = `${key}: ${obj[key]}`;
-    if (index !== entries.length - 1) {
-      item += '\n';
-    }
-    return acc + item;
-  }, '');
+  return Object.entries(obj)
+    .map(([key, value]) => `${key}: ${obj[key]}`)
+    .join('\n');
 }
 
 function formatMarkdownFile(markdown, frontmatter) {
