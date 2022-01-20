@@ -6,25 +6,25 @@ const { kit } = Astro.props;
 ---
 
 <div
-  class="border bg-white dark:bg-slate-700 border-gray-200 dark:border-gray-700 rounded-lg group hover:bg-green-600 hover:dark:bg-green-600 transition-colors overflow-hidden"
+  class="bg dark:dark-bg border border-gray-400 dark:border-gray-800 rounded-lg group hover:bg-blue-500 hover:dark:bg-gray-800 transition-colors overflow-hidden"
 >
   <div class="px-4 py-6 space-y-4">
     {kit.tech.map(({ name, Icon, tags }) => (
       <div class="flex items-center space-x-4">
         { Icon && <TechIcon {Icon} />}
         <div>
-          <div class="text-lg text-gray-800 group-hover:text-gray-100 dark:text-gray-100 font-semibold">{name}</div>
-          <div class="text-sm text-gray-500 group-hover:text-gray-200 dark:text-gray-400">{tags.join(', ')}</div>
+          <div class="text-xl t-dark dark:dark-t font-medium group-hover:text-white">{name}</div>
+          <div class="t-light dark:dark-t-light group-hover:text-gray-100">{tags.join(', ')}</div>
         </div>
       </div>
     ))}
   </div>
   <div
-    class="px-4 py-2.5 flex items-center justify-between border-t border-gray-100 dark:border-gray-700 dark:bg-slate-800 dark:bg-opacity-25 group-hover:bg-green-700 group-hover:bg-opacity-25 group-hover:border-green-600"
+    class="px-4 py-2.5 flex items-center justify-between border-t border-gray-200 dark:border-gray-800 dark:bg-gray-800 group-hover:bg-brand-600 group-hover:border-brand-600"
   >
     <a
       href={`/kit/${kit.name}`}
-      class="inline-flex items-center justify-center text-gray-700 dark:text-gray-50 group-hover:text-gray-50 font-medium text-lg"
+      class="inline-flex items-center justify-center t-light dark:dark-t group-hover:text-white font-medium text-lg"
     >
       See Kit Details <ArrowRightIcon className="inline w-4 h-4 ml-2" />
     </a>
@@ -32,10 +32,10 @@ const { kit } = Astro.props;
       href={`https://github.com/thisdot/starter.dev/tree/main/starters/${kit.name}`}
       target="_blank"
       rel="noopener noreferrer"
-      class="inline-flex items-center justify-center py-2.5 px-4 rounded-lg border border-gray-200 dark:border-gray-600 group-hover:border-green-500 group-hover:bg-green-600"
+      class="inline-flex items-center justify-center py-2.5 px-4 rounded-lg border border-gray-400 dark:border-gray-600 group-hover:border-white group-hover:bg-brand-500"
       ><GitHubIcon
         size={22}
-        className="text-gray-700 dark:text-gray-100 group-hover:text-white"
+        className="t-light dark:text-gray-100 group-hover:text-white"
       /></a
     >
   </div>

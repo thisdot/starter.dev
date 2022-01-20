@@ -3,7 +3,56 @@
 @tailwind utilities;
 
 @layer components {
+  /* Base */
+  .link {
+    @apply text-brand-500 font-medium hover:text-brand-600 underline;
+  }
+
+  /* Background colors */
+  .bg {
+    @apply bg-white;
+  }
+  .dark-bg {
+    @apply bg-gray-900;
+  }
+
+  /* Typography */
+  .t {
+    @apply text-gray-700;
+  }
+  .t-light {
+    @apply text-gray-600;
+  }
+  .t-dark {
+    @apply text-gray-900;
+  }
+  .dark-t {
+    @apply text-white;
+  }
+  .dark-t-light {
+    @apply text-gray-600;
+  }
+  .heading-1 {
+    @apply text-5xl lg:text-6xl font-semibold;
+  }
+  .heading-2 {
+    @apply text-5xl font-medium;
+  }
+  .heading-3 {
+    @apply text-4xl font-medium;
+  }
+  .heading-4 {
+    @apply text-2xl font-medium;
+  }
+
+  /* Buttons */
   .btn {
     @apply inline-flex items-center px-4 py-2 border border-transparent font-medium rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500;
+  }
+  .btn-primary {
+    @apply bg-brand-600 text-white hover:bg-brand-500;
+  }
+  .btn-secondary {
+    @apply border-brand-600 text-blue-600 bg-white hover:border-brand-500 hover:text-brand-500;
   }
 }
