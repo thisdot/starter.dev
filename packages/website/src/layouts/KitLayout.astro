@@ -1,0 +1,42 @@
+---
+import BaseHead from './BaseHead.astro';
+import KitHero from '../components/KitHero.astro';
+import { NavBar } from '../components/NavBar.tsx';
+import { TableOfContents } from '../components/TableOfContents.tsx';
+import Footer from '../components/Footer.astro';
+import { parseKit } from '../lib/parseKits';
+const { content } = Astro.props;
+const path = Astro.site.pathname;
+const headers = content.astro.headers;
+const kit = parseKit(content);
+---
+
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>{kit.name} - {kit.description}</title>
+    <meta name="description" content={kit.description} />
+    <BaseHead />
+  </head>
+  <body>
+    <header>
+      <NavBar currentPath={path} client:load />
+      <KitHero {...kit} />
+    </header>
+    <main>
+      <div class="grid grid-cols-12 gap-x-8 max-w-screen-2xl mx-auto">
+        <aside class="hidden lg:block col-span-3">
+          <TableOfContents {headers} client:load />
+        </aside>
+        <article
+          class="col-span-12 lg:col-span-9 p-4 my-12 max-w-screen-2xl mx-auto prose prose-lg"
+        >
+          <slot />
+        </article>
+      </div>
+    </main>
+    <footer>
+      <Footer />
+    </footer>
+  </body>
+</html>

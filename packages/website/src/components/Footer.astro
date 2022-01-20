@@ -1,0 +1,24 @@
+---
+import { footerNavItems } from '../config';
+const year = new Date().getFullYear();
+---
+
+<footer class="h-20 w-full px-4">
+  <div
+    class="flex flex-wrap items-center justify-between max-w-screen-2xl mx-auto"
+  >
+    <nav class="space-x-10">
+      {footerNavItems.map(({ href, title, isExternal }) => (
+        <a
+          href={href}
+          target={isExternal ? '_blank' : '_self'}
+          class="text-gray-600 hover:text-gray-900 dark:text-gray-400 hover:dark:text-gray-50"
+        >
+          {title}
+        </a>
+      ))}
+    </nav>
+    <span class="text-gray-600 dark:text-gray-400">© {year}. This Dot Labs</span
+    >
+  </div>
+</footer>
