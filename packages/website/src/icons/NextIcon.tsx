@@ -2,6 +2,7 @@ export interface Props {
   className?: string;
   size?: string | number;
 }
+
 export function NextIcon({ className, size = 48 }: Props) {
   return (
     <svg
