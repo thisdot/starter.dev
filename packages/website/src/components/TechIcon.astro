@@ -1,9 +1,26 @@
 ---
-const { Icon } = Astro.props;
+import cn from 'clsx';
+const { Icon, variant = 'base' } = Astro.props;
+
+const sizeMap = {
+  base: {
+    size: 48,
+    container: 'w-20 h-20 bg-white dark:bg-gray-900',
+  },
+  lg: {
+    size: 64,
+    container: 'w-28 h-28 bg-white dark:bg-gray-800',
+  },
+};
+
+const size = sizeMap[variant];
 ---
 
 <span
-  class="inline-flex items-center justify-center bg-white dark:bg-gray-800 w-20 h-20 rounded-xl border border-gray-200 dark:border-gray-800 dark:group-hover:bg-white"
+  class={cn(
+    'inline-flex items-center justify-center rounded-xl border border-gray-200 dark:border-gray-800 group-hover:border-white dark:group-hover:bg-white',
+    size.container
+  )}
 >
-  <Icon />
+  {Icon && <Icon size={size.size} />}
 </span>

@@ -1,0 +1,12 @@
+---
+import KitItem from './KitItem.astro';
+const { kits } = Astro.props;
+---
+
+<div class="px-4 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
+  {kits.map((kit) => (
+    <div class="col-span-1">
+      <KitItem kit={kit} />
+    </div>
+  ))}
+</div>

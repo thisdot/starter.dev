@@ -27,22 +27,27 @@ export function TableOfContents({ headers }: Props) {
   }, []);
 
   return (
-    <nav className="sticky top-0 p-8 border-r min-h-screen overflow-y-auto">
+    <nav>
       <ul>
         {headers
           ?.filter(({ depth }) => depth > 1 && depth < 4)
           .map((header) => (
-            <li
-              style={{
-                marginLeft: `${header.depth - 2}rem`,
-              }}
-              className={cn('header-link my-2', {
-                'text-blue-500': activeId === header.slug,
-                'text-2xl': header.depth === 1,
-                'text-xl': header.depth === 2,
-              })}
-            >
-              <a href={`#${header.slug}`}>{header.text}</a>
+            <li>
+              <a
+                href={`#${header.slug}`}
+                className={cn(
+                  'block header-link py-2 px-4 hover:text-blue-500 dark:hover:text-blue-500',
+                  {
+                    'text-blue-500': activeId === header.slug,
+                    'text-2xl font-medium t-dark dark:dark-t-light my-4':
+                      header.depth === 2,
+                    'text-xl text-gray-800 dark:dark-t my-3':
+                      header.depth === 3,
+                  }
+                )}
+              >
+                {header.text}
+              </a>
             </li>
           ))}
       </ul>

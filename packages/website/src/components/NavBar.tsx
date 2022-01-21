@@ -2,7 +2,7 @@ import { Disclosure } from '@headlessui/react';
 import { XIcon, MenuIcon } from '@heroicons/react/outline';
 import cn from 'clsx';
 import { DarkModeToggle } from './DarkModeToggle';
-import { headerNavItems } from '../config';
+import { HEADER_NAV_ITEMS } from '../config';
 import { GitHubIcon } from '../icons';
 
 export interface Props {
@@ -27,7 +27,7 @@ export function NavBar({ currentPath }: Props) {
                 </a>
               </div>
               <div className="hidden lg:ml-6 lg:flex lg:space-x-8">
-                {headerNavItems.map(({ title, href, Icon, isExternal }) => (
+                {HEADER_NAV_ITEMS.map(({ title, href, Icon, isExternal }) => (
                   <a
                     key={href}
                     href={href}
@@ -78,7 +78,7 @@ export function NavBar({ currentPath }: Props) {
 
           <Disclosure.Panel className="lg:hidden py-4 bg dark:dark-bg border-t border-gray-400 dark:border-gray-700 shadow">
             <div className="py-2 space-y-3">
-              {headerNavItems.map(({ title, href, Icon, isExternal }) => (
+              {HEADER_NAV_ITEMS.map(({ title, href, Icon, isExternal }) => (
                 <Disclosure.Button
                   key={href}
                   as="a" // @ts-ignore

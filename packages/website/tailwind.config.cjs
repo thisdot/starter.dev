@@ -14,6 +14,9 @@ module.exports = {
           500: '#4C89FF',
           600: '#2972FF',
         },
+        secondary: {
+          400: '#29DDFF',
+        },
         gray: {
           100: '#FAFBFF',
           200: '#F5F7FF',

@@ -1,12 +1,12 @@
 export interface Props {
   className?: string;
+  size?: string | number;
 }
 
-export function TailwindIcon({ className }: Props) {
+export function TailwindIcon({ className, size = 48 }: Props) {
   return (
     <svg
-      width="49"
-      height="48"
+      height={size}
       viewBox="0 0 49 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

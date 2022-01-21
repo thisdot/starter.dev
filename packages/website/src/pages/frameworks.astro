@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TechItem from '../components/TechItem.astro';
+import { TECHNOLOGIES } from '../config';
+
+const sections = TECHNOLOGIES.reduce((acc, tech) => {
+  tech.tags.forEach((tag) => {
+    if (!acc[tag]) {
+      acc[tag] = [];
+    }
+    acc[tag].push(tech);
+  });
+  return acc;
+}, {} as Record<string, any[]>);
+---
+
+<BaseLayout
+  title="Frameworks - starter.dev"
+  description="Lists technologies used through the starter.dev kit collection"
+>
+  <div class="max-w-screen-2xl mx-auto">
+    {Object.entries(sections).map(([name, technologies]) => (
+      <div class="my-12">
+        <h2 class="heading-4 t-dark dark:dark-t-light my-6">{name}</h2>
+        <div class="flex flex-wrap items-center justify-start space-x-4">
+          {technologies.map((tech) => (
+            <a href={`/framework/${tech.key}`} class="group inline-block my-2">
+              <TechItem {...tech} />
+            </a>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</BaseLayout>

@@ -18,7 +18,12 @@ export interface NavItem {
   isExternal?: boolean;
 }
 
-export const headerNavItems: NavItem[] = [
+export const REPO_URL = 'https://github.com/thisdot/starter.dev';
+
+export const SHOWCASE_REPO_URL =
+  'https://github.com/thisdot/starter.dev-showcases';
+
+export const HEADER_NAV_ITEMS: NavItem[] = [
   {
     title: 'Frameworks',
     href: '/frameworks',
@@ -41,11 +46,11 @@ export const headerNavItems: NavItem[] = [
   },
 ];
 
-export const footerNavItems = headerNavItems.filter(
+export const FOOTER_NAV_ITEMS = HEADER_NAV_ITEMS.filter(
   (x) => x.title !== 'Frameworks'
 );
 
-export const technologies = [
+export const TECHNOLOGIES = [
   {
     key: 'angular',
     name: 'Angular',
@@ -55,31 +60,31 @@ export const technologies = [
     key: 'react',
     name: 'React',
     tags: ['UI'],
-    Icon: ReactIcon,
+    Icon: (props) => <ReactIcon {...props} />,
   },
   {
     key: 'next',
     name: 'NextJS',
     tags: ['Framework'],
-    Icon: NextIcon,
+    Icon: (props) => <NextIcon {...props} />,
   },
   {
     key: 'remix',
     name: 'Remix',
     tags: ['Framework'],
-    Icon: RemixIcon,
+    Icon: (props) => <RemixIcon {...props} />,
   },
   {
     key: 'tailwind',
     name: 'Tailwind',
     tags: ['CSS'],
-    Icon: TailwindIcon,
+    Icon: (props) => <TailwindIcon {...props} />,
   },
   {
     key: 'vanilla-extract',
     name: 'Vanilla Extract',
     tags: ['CSS'],
-    Icon: VanillaExtractIcon,
+    Icon: (props) => <VanillaExtractIcon {...props} />,
   },
   {
     key: 'emotion',
@@ -95,7 +100,7 @@ export const technologies = [
     key: 'react-query',
     name: 'React Query',
     tags: ['Data'],
-    Icon: ReactQueryIcon,
+    Icon: (props) => <ReactQueryIcon {...props} />,
   },
   {
     key: 'relay',
@@ -106,12 +111,12 @@ export const technologies = [
     key: 'apollo',
     name: 'Apollo',
     tags: ['Data'],
-    Icon: ApolloIcon,
+    Icon: (props) => <ApolloIcon {...props} />,
   },
   {
     key: 'vite',
     name: 'Vite',
     tags: ['Tooling'],
-    Icon: ViteLogo,
+    Icon: (props) => <ViteLogo {...props} />,
   },
 ];

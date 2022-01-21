@@ -1,16 +1,11 @@
 export interface Props {
   className?: string;
+  size?: string | number;
 }
 
-export function ReactQueryIcon({ className }: Props) {
+export function ReactQueryIcon({ className, size = 48 }: Props) {
   return (
-    <svg
-      width="40px"
-      height="40px"
-      viewBox="0 0 190 190"
-      version="1.1"
-      className={className}
-    >
+    <svg width={size} height={size} viewBox="0 0 190 190" className={className}>
       <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g transform="translate(-33.000000, 0.000000)">
           <path

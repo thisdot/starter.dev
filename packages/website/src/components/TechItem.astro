@@ -1,0 +1,20 @@
+---
+import TechIcon from './TechIcon.astro';
+const { Icon, tags, name } = Astro.props;
+---
+
+<div
+  class="p-1.5 border dark:bg-gray-800 group-hover:bg-blue-500 border-gray-200 dark:border-gray-700 rounded-xl flex items-center justify-start min-w-[250px]"
+>
+  <TechIcon {Icon} />
+  <div class="mx-4">
+    <h5
+      class="text-lg t-dark dark:dark-t-light group-hover:text-white font-semibold leading-snug"
+    >
+      {name}
+    </h5>
+    <p class="text-sm text-gray-500 dark:dark-t group-hover:dark-t">
+      {tags.join(', ')}
+    </p>
+  </div>
+</div>

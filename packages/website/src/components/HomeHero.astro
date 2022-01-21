@@ -18,14 +18,32 @@ import DownloadStackIcon from '../icons/DownloadStackIcon.astro';
     </h2>
   </div>
   <div
-    class="mt-16 border-t border-b border-slate-200 dark:border-slate-700 py-8 px-4"
+    class="mt-20 border-t border-b border-gray-400 dark:border-gray-700 py-8 px-4"
   >
-    <div class="grid grid-cols-3 max-w-screen-2xl mx-auto">
-      <div class="col-span-1">
+    <div
+      class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-screen-2xl mx-auto text-xl font-medium"
+    >
+      <div class="col-span-1 flex items-center justify-center">
         <SelectTechIcon />
+        <div class="ml-2">
+          <div class="t-dark dark:dark-t">Select tech stack</div>
+          <div class="t-light dark:text-gray-400">you're looking for</div>
+        </div>
       </div>
-      <div class="col-span-1"><ReadDocIcon /></div>
-      <div class="col-span-1"><DownloadStackIcon /></div>
+      <div class="col-span-1 flex items-center justify-center">
+        <ReadDocIcon />
+        <div class="ml-2">
+          <div class="t-dark dark:dark-t">See documentation</div>
+          <div class="t-light dark:text-gray-400">about how it works</div>
+        </div>
+      </div>
+      <div class="col-span-1 flex items-center justify-center">
+        <DownloadStackIcon />
+        <div class="ml-2">
+          <div class="t-dark dark:dark-t">Download stack &</div>
+          <div class="t-light dark:text-gray-400">build application</div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

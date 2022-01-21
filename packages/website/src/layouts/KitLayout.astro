@@ -3,11 +3,12 @@ import BaseHead from './BaseHead.astro';
 import KitHero from '../components/KitHero.astro';
 import { NavBar } from '../components/NavBar.tsx';
 import { TableOfContents } from '../components/TableOfContents.tsx';
+import KitActionLinks from '../components/KitActionLinks.astro';
 import Footer from '../components/Footer.astro';
 import { parseKit } from '../lib/parseKits';
 const { content } = Astro.props;
 const path = Astro.site.pathname;
-const headers = content.astro.headers;
+const headers = content?.astro?.headers;
 const kit = parseKit(content);
 ---
 
@@ -18,7 +19,7 @@ const kit = parseKit(content);
     <meta name="description" content={kit.description} />
     <BaseHead />
   </head>
-  <body>
+  <body class="bg dark:dark-bg transition-colors min-h-screen">
     <header>
       <NavBar currentPath={path} client:load />
       <KitHero {...kit} />
@@ -26,13 +27,22 @@ const kit = parseKit(content);
     <main>
       <div class="grid grid-cols-12 gap-x-8 max-w-screen-2xl mx-auto">
         <aside class="hidden lg:block col-span-3">
-          <TableOfContents {headers} client:load />
+          <div
+            class="pt-8 sticky top-0 border-r border-gray-400 dark:border-gray-700 min-h-[calc(100vh-120px)] overflow-y-auto"
+          >
+            <TableOfContents {headers} client:load />
+          </div>
         </aside>
         <article
-          class="col-span-12 lg:col-span-9 p-4 my-12 max-w-screen-2xl mx-auto prose prose-lg"
+          class="col-span-12 lg:col-span-7 p-4 my-10 max-w-screen-2xl mx-auto prose prose-p:t dark:prose-p:dark-t prose-li:t dark:prose-li:dark-t prose-a:link prose-headings:t-dark dark:prose-headings:dark-t-light prose prose-h1:font-medium prose-h1:border-b prose-h1:pb-4 prose-h1:border-gray-200 dark:prose-h1:border-gray-800 prose-h1:text-3xl prose-h2:heading-3 prose-h2:font-semibold prose-h2:mt-12 prose-h3:heading-4 prose-pre:dark-bg prose-pre:text-white dark:prose-pre:bg-gray-800 dark:prose-code:text-white"
         >
           <slot />
         </article>
+        <aside class="hidden lg:block lg:col-span-2">
+          <div class="mt-10 sticky top-0">
+            <KitActionLinks {...kit} />
+          </div>
+        </aside>
       </div>
     </main>
     <footer>
