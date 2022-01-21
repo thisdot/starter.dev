@@ -1,4 +1,5 @@
-export { GitHubIcon } from './GithubIcon';
+import { GitHubIcon } from './GithubIcon';
+export { GitHubIcon };
 export { DiscordIcon } from './DiscordIcon';
 export { NextIcon } from './NextIcon';
 export { ReactIcon } from './ReactIcon';
