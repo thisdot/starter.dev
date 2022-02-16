@@ -13,7 +13,7 @@ const path = Astro.site.pathname;
     <meta name="description" content={description} />
     <BaseHead />
   </head>
-  <body class="bg dark:dark-bg transition-colors min-h-screen">
+  <body class="bg dark:dark-bg min-h-screen text-base">
     <header>
       <NavBar currentPath={path} client:load />
     </header>

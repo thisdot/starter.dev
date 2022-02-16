@@ -16,7 +16,7 @@
     @apply bg-gray-900;
   }
 
-  /* Typography */
+  /* Text colors */
   .t {
     @apply text-gray-700;
   }
@@ -35,17 +35,25 @@
   .dark-t-dark {
     @apply text-gray-600;
   }
+
+  /* Headings */
   .heading-1 {
-    @apply text-5xl lg:text-6xl font-semibold;
+    @apply text-[64px] lg:text-[32px] leading-[1.12] font-semibold;
   }
   .heading-2 {
-    @apply text-5xl font-medium;
+    @apply text-[28px] lg:text-[52px] leading-[1.2] lg:leading-[1.23] font-semibold;
   }
   .heading-3 {
-    @apply text-4xl font-medium;
+    @apply text-[24px] lg:text-[44px] leading-[1.28] font-semibold;
   }
   .heading-4 {
-    @apply text-2xl font-medium;
+    @apply text-[22px] lg:text-[36px] leading-[1.33] font-semibold;
+  }
+  .heading-5 {
+    @apply text-[20px] lg:text-[28px] leading-[1.32] lg:leading-[1.425] font-semibold;
+  }
+  .heading-6 {
+    @apply text-[18px] lg:text-[22px] leading-[1.4] lg:leading-[1.453] font-semibold;
   }
 
   /* Buttons */
