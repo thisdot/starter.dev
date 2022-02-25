@@ -38,27 +38,27 @@
 
   /* Headings */
   .heading-1 {
-    @apply text-[64px] lg:text-[32px] leading-[1.12] font-semibold;
+    @apply text-[32px] md:text-[64px] leading-[1.12] font-semibold;
   }
   .heading-2 {
-    @apply text-[28px] lg:text-[52px] leading-[1.2] lg:leading-[1.23] font-semibold;
+    @apply text-[28px] md:text-[52px] leading-[1.2] md:leading-[1.23] font-semibold;
   }
   .heading-3 {
-    @apply text-[24px] lg:text-[44px] leading-[1.28] font-semibold;
+    @apply text-[24px] md:text-[44px] leading-[1.28] font-semibold;
   }
   .heading-4 {
-    @apply text-[22px] lg:text-[36px] leading-[1.33] font-semibold;
+    @apply text-[22px] md:text-[36px] leading-[1.33] font-semibold;
   }
   .heading-5 {
-    @apply text-[20px] lg:text-[28px] leading-[1.32] lg:leading-[1.425] font-semibold;
+    @apply text-[20px] md:text-[28px] leading-[1.32] md:leading-[1.425] font-semibold;
   }
   .heading-6 {
-    @apply text-[18px] lg:text-[22px] leading-[1.4] lg:leading-[1.453] font-semibold;
+    @apply text-[18px] md:text-[22px] leading-[1.4] md:leading-[1.453] font-semibold;
   }
 
   /* Buttons */
   .btn {
-    @apply text-brand-500 text-[15px] leading-[16px] inline-flex items-center px-4 py-2 border border-transparent font-semibold rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors disabled:text-gray-500;
+    @apply text-brand-500 text-[15px] leading-[16px] inline-flex items-center px-4 py-2 border border-transparent font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors disabled:text-gray-500;
   }
   .btn-lg {
     @apply px-5 py-2.5;

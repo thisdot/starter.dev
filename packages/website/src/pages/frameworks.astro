@@ -21,7 +21,7 @@ const sections = TECHNOLOGIES.reduce((acc, tech) => {
   <div class="max-w-screen-2xl mx-auto">
     {Object.entries(sections).map(([name, technologies]) => (
       <div class="my-12">
-        <h2 class="heading-4 t-dark dark:dark-t-light my-6">{name}</h2>
+        <h2 class="heading-6 t-dark dark:dark-t-light my-6">{name}</h2>
         <div class="flex flex-wrap items-center justify-start space-x-4">
           {technologies.map((tech) => (
             <a href={`/framework/${tech.key}`} class="group inline-block my-2">
