@@ -14,3 +14,7 @@ For proper integration with the starter-dev CLI and website there are also some 
 
 - `description` - This field is used as a short description highlighting the technologies of each particular starter kit. It is shown as a selection in the starter-dev CLI. Example: `NextJS, React Query, and TailwindCSS`
 - `keywords` - This field is an array of strings used to map to the technology list on the starter.dev website. This categorizes/tags each starter kit on the website. For a reference of the keys that should be used here take a look at the `package/website/src/config.tsx` file. If a particular technology you're needing is missing from the `TECHNOLOGIES` list, please open a PR to add it including an icon if possible. Example: `["next", "react-query", "tailwind"]`
+
+### Starter kit README files
+
+We are still working on defining a general structure and format for starter kit readme files. These are particularly important because the starter kit page on the website is based on the readme files. See: [next-react-query-tailwind readme content #17](https://github.com/thisdot/starter.dev/pull/17)
