@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 export const Header = styled.header`
   color: #fff;
   padding: 1rem;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 600;
   border: none;
   margin: 20px auto;
@@ -15,6 +15,7 @@ export const Header = styled.header`
 `;
 
 export const ButtonExampleLink = styled(Link)`
+  color: rgb(59 130 246);
   &:hover {
     text-decoration: underline;
   }

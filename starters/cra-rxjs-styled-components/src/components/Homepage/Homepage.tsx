@@ -3,7 +3,9 @@ export function Homepage() {
   return (
     <>
       <Header>Create React App, RxJS and styled-components Starter kit</Header>
-      {/* <ButtonExampleLink>See Button example component</ButtonExampleLink> */}
+      <ButtonExampleLink to="/button-example">
+        See Button example component
+      </ButtonExampleLink>
     </>
   );
 }
