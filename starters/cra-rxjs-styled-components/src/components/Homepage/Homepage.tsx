@@ -1,6 +1,9 @@
-import { Header } from './Homepage.styles';
+import { Header, ButtonExampleLink } from './Homepage.styles';
 export function Homepage() {
   return (
-    <Header>Create React App, RxJS and styled-components Starter kit</Header>
+    <>
+      <Header>Create React App, RxJS and styled-components Starter kit</Header>
+      {/* <ButtonExampleLink>See Button example component</ButtonExampleLink> */}
+    </>
   );
 }
