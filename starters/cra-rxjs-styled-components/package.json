@@ -1,6 +1,6 @@
 {
   "name": "cra-rxjs-styled-components",
-  "description": "A starter kit using Create React App, RxJS and styled-components",
+  "description": "Create React App, RxJS and styled-components",
   "keywords": [
     "react",
     "rxjs",
