@@ -45,8 +45,9 @@ export const HomeLinkDiv = styled.div`
 
 export const ReturnHomeLink = styled(Link)`
   font-size: 1.2rem;
-  color: rgb(59 130 246);
+  color: rgb(37 99 235);
   &:hover {
+    color: rgb(30 64 175);
     text-decoration: underline;
   }
 `;
