@@ -5,6 +5,8 @@ import {
   CounterContainer,
   CounterButtonContainer,
   CurrentCountText,
+  ReturnHomeLink,
+  HomeLinkDiv,
 } from './Counter.styles';
 
 export function Counter() {
@@ -24,6 +26,9 @@ export function Counter() {
         </CounterButton>
         <CounterButton onClick={() => setCount(0)}>Reset</CounterButton>
       </CounterButtonContainer>
+      <HomeLinkDiv>
+        <ReturnHomeLink to="/">Return Home</ReturnHomeLink>
+      </HomeLinkDiv>
     </CounterContainer>
   );
 }

@@ -15,6 +15,7 @@ export const Header = styled.header`
 `;
 
 export const ButtonExampleLink = styled(Link)`
+  text-align: center;
   color: rgb(59 130 246);
   &:hover {
     text-decoration: underline;

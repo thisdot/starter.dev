@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const CounterContainer = styled.div`
   width: 60%;
@@ -35,4 +36,17 @@ export const CounterButton = styled.button`
 
 export const CurrentCountText = styled.h2`
   font-size: 1.5rem;
+`;
+
+export const HomeLinkDiv = styled.div`
+  text-align: center;
+  margin: 10px 0;
+`;
+
+export const ReturnHomeLink = styled(Link)`
+  font-size: 1.2rem;
+  color: rgb(59 130 246);
+  &:hover {
+    text-decoration: underline;
+  }
 `;
