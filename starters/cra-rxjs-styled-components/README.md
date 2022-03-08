@@ -24,12 +24,12 @@ This starter kit features Create React App, RxJS and styled-components.
 
 ### Included Tooling
 
-- Jest - Test runner
-- Typescript - Type checking
-- React Router - Creating routes
-- Storybook - Component library
-- ESLint - Code linting
-- Prettier - Code formatting
+- [Jest](https://jestjs.io/) - Test runner
+- [TypeScript](https://www.typescriptlang.org/) - Type checking
+- [React Router v6](https://reactrouter.com/) - Creating routes
+- [Storybook](https://storybook.js.org/) - Component library
+- [ESLint](https://eslint.org/) - Code linting
+- [Prettier](https://prettier.io/) - Code formatting
 
 ### Example Components
 
