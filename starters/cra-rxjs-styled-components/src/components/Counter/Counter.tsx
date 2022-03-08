@@ -14,7 +14,7 @@ export function Counter() {
 
   return (
     <CounterContainer>
-      <Header>Increment, Decrement and Reset Button Example</Header>
+      <Header>Increment, Decrement and Reset Button Examples</Header>
 
       <CounterButtonContainer>
         <CurrentCountText>Count:{count}</CurrentCountText>
