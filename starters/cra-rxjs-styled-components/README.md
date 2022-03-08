@@ -1,46 +1,90 @@
-# Getting Started with Create React App
+# cra-rxjs-styled-components starter kit
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This starter kit features Create React App, RxJS and styled-components.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Overview](#overview)
+  - [Tech Stack](#tech-stack)
+  - [Included Tooling](#included-tooling)
+  - [Example Components](#example-components)
+- [Installation](#installation)
+  - [CLI](#cli)
+  - [Manual](#manual)
+- [Commands](#commands)
+- [Demo Implementation](#demo-implementation)
 
-### `npm start`
+## Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Tech Stack
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- [React v17.x](https://reactjs.org)
+- [RxJS](https://rxjs.dev/)
+- [styled-components](https://styled-components.com/)
 
-### `npm test`
+### Included Tooling
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Jest - Test runner
+- Typescript - Type checking
+- React Router - Creating routes
+- Storybook - Component library
+- ESLint - Code linting
+- Prettier - Code formatting
 
-### `npm run build`
+### Example Components
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+In this `starters/cra-rxjs-styled-components/src` directory you will find the `Counter` and `Homepage` directories.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The `Counter` contains the following files:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Counter.stories.tsx
+- Counter.styles.tsx
+- Counter.test.tsx
+- Counter.tsx
+- index.ts
 
-### `npm run eject`
+The `Homepage` contains the following files:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Homepage.stories.tsx
+- Homepage.styles.tsx
+- Homepage.test.tsx
+- Homepage.tsx
+- index.ts
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Installation
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### CLI (Recommended)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```bash
+npm init starter-dev
+```
 
-## Learn More
+- Follow the prompts to select the `cra-rxjs-styled-components` starter kit and name your new project.
+- `cd` into your project directory and run `npm install`.
+- Run `npm run dev` to start the development server.
+- Open your browser to `http://localhost:3000` to see the included example code running.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Manual
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+git clone https://github.com/thisdot/starter.dev.git
+```
+
+- Copy and rename the `starters/cra-rxjs-styled-components` directory to the name of your new project.
+- `cd` into your project directory and run `npm install`.
+- Run `npm run dev` to start the development server.
+- Open your browser to `http://localhost:3000` to see the included example code running.
+
+## Commands
+
+- `npm run dev` - Starts the development server.
+- `npm run test` - Runs the unit tests.
+- `npm run storybook` - Starts the Storybook UI.
+- `npm run lint` - Runs ESLint on the project.
+- `npm run prettier` - Formats code for the entire project
+
+## Demo Implementation
+
+[Repository](https://github.com/thisdot/starter.dev-showcases/tree/main/cra-rxjs-styled-components)
+
+The demo application re-implements some of GitHub's pages and functionality. It uses the OAuth credentials in GitHub to authenticate users with their GitHub accounts and uses RxJS to fetch data from the GitHub API. Check out the link above to learn more or check out the demo!
