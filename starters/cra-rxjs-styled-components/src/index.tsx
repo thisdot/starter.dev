@@ -2,18 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Homepage } from './components/Homepage';
-import { Counter } from './components/Counter';
+import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/button-example" element={<Counter />} />
-      </Routes>
-    </BrowserRouter>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
