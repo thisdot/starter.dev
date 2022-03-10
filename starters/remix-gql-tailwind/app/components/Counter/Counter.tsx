@@ -18,7 +18,7 @@ export const Counter = () => {
     <div className={styles.container}>
       <div>
         <div className={styles.textContainer}>
-          <h3 className={styles.h3Text}>Count:</h3>
+          <p className={styles.h3Text}>Count:</p>
           <h1 className={styles.h1Text}>{count}</h1>
         </div>
         <div>
