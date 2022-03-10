@@ -1,53 +1,85 @@
-# Welcome to Remix!
+# remix-gql-tailwind starter kit
 
-- [Remix Docs](https://remix.run/docs)
+This starter kit features **Remix**, **GraphQL**, and **Tailwind CSS*.
 
-## Development
+## Table of Contents
 
-From your terminal:
+- [Overview](#overview)
+  - [Tech Stack](#tech-stack)
+  - [Included Tooling](#included-tooling)
+  - [Example Components](#example-components)
+- [Installation](#installation)
+  - [CLI](#cli)
+  - [Manual](#manual)
+- [Commands](#commands)
+- [Demo Implementation](#demo-implementation)
 
-```sh
-npm run dev
+## Overview
+
+### Tech Stack
+
+- [Remix v1.x](https://remix.run/)
+- [GraphQL](https://graphql.org/)
+- [Tailwind CSS v3.x](https://tailwindcss.com/)
+
+### Included Tooling
+
+- [Jest](https://jestjs.io/) - Test runner
+- [TypeScript](https://www.typescriptlang.org/) - Type checking
+- [Storybook](https://storybook.js.org/) - Component library
+- [ESLint](https://eslint.org/) - Code linting
+- [Prettier](https://prettier.io/) - Code formatting
+- [Vite](https://vitejs.dev/) - Storybook builder
+
+### Example Components
+
+In this `remix-gql-tailwind/app` directory you will find the `Counter` directory.
+
+The `Counter` directory contains the following files:
+
+- Counter.stories.tsx
+- Counter.classNames.ts
+- Counter.test.tsx
+- Button.tsx
+- Counter.tsx
+- index.ts
+
+## Installation
+
+### CLI (Recommended)
+
+```bash
+npx starter-dev
 ```
 
-This starts your app in development mode, rebuilding assets on file changes.
+- Follow the prompts to select the `remix-gql-tailwind` starter kit and name your new project.
+- `cd` into your project directory and run `yarn`.
+- Run `yarn dev` to start the development server.
+- Open your browser to `http://localhost:3000` to see the included example code running.
 
-## Deployment
+### Manual
 
-First, build your app for production:
+Note: The command below clones the entire repository, including other starter kits.
 
-```sh
-npm run build
+```bash
+git clone https://github.com/thisdot/starter.dev.git
 ```
 
-Then run the app in production mode:
+- Copy and rename the `starters/remix-gql-tailwind` directory to the name of your new project.
+- `cd` into your project directory and run `yarn`.
+- Run `yarn dev` to start the development server.
+- Open your browser to `http://localhost:3000` to see the included example code running.
 
-```sh
-npm start
-```
+## Commands
 
-Now you'll need to pick a host to deploy it to.
+- `yarn dev` - Starts the development server.
+- `yarn test` - Runs the unit tests.
+- `yarn storybook` - Starts the Storybook UI.
+- `yarn lint` - Runs ESLint on the project.
+- `yarn prettier` - Formats code for the entire project
 
-### DIY
+## Demo Implementation
 
-If you're familiar with deploying node applications, the built-in Remix app server is production-ready.
+[Repository](https://github.com/thisdot/starter.dev-showcases/tree/main/remix)
 
-Make sure to deploy the output of `remix build`
-
-- `build/`
-- `public/build/`
-
-### Using a Template
-
-When you ran `npx create-remix@latest` there were a few choices for hosting. You can run that again to create a new project, then copy over your `app/` folder to the new project that's pre-configured for your target server.
-
-```sh
-cd ..
-# create a new project, and pick a pre-configured host
-npx create-remix@latest
-cd my-new-remix-app
-# remove the new project's app (not the old one!)
-rm -rf app
-# copy your app over
-cp -R ../my-old-remix-app/app app
-```
+The demo application tries to implement some of GitHub's pages and functionality. It uses the OAuth credentials in GitHub to authenticate users with their GitHub accounts and uses graphql-request to fetch data from the GitHub Graphql API. Check out the link above to learn more or check out the demo!
