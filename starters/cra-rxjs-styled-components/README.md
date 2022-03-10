@@ -19,6 +19,7 @@ This starter kit features Create React App, RxJS and styled-components.
 ### Tech Stack
 
 - [React v17.x](https://reactjs.org)
+- [React Router](https://reactrouter.com/)
 - [RxJS](https://rxjs.dev/)
 - [styled-components](https://styled-components.com/)
 
