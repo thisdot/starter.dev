@@ -5,7 +5,7 @@ export interface Props {
 
 export function SCIcon({ className, size = 48 }: Props) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width={48} height={48}>
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size}>
       <path
         style="fill:#fefafe; stroke:none;"
         d="M0 0L0 318L318 318L318 0L0 0z"
