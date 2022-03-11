@@ -33,7 +33,7 @@ This starter kit features Create React App, RxJS and styled-components.
 
 ### Example Components
 
-In this `starters/cra-rxjs-styled-components/src` directory you will find the `Counter` and `Homepage` directories.
+In this `starters/cra-rxjs-styled-components/src` directory you will find the `Counter`, `RxJS-Example`, and `Homepage` directories.
 
 The `Counter` directory contains the following files:
 
@@ -41,6 +41,14 @@ The `Counter` directory contains the following files:
 - Counter.styles.tsx
 - Counter.test.tsx
 - Counter.tsx
+- index.ts
+
+The `RxJS-Example` directory contains the following files:
+
+- RxJS-Example.stories.tsx
+- RxJS-Example.styles.tsx
+- RxJS-Example.test.tsx
+- RxJS-Example.tsx
 - index.ts
 
 The `Homepage` directory contains the following files:
