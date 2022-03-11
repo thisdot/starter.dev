@@ -1,3 +1,5 @@
+import * as styles from './Greeting.classNames';
+
 interface GreetingProps {
   message: string;
 }
@@ -5,7 +7,7 @@ interface GreetingProps {
 export function Greeting({ message }: GreetingProps) {
   return (
     <h1
-      className="flex flex-row justify-center mt-20 text-3xl"
+      className={styles.h1Text}
     >
       {message}
     </h1>

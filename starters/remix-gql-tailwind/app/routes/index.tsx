@@ -10,11 +10,10 @@ type LoaderData = {
   };
 };
 
-export const loader: LoaderFunction = async ({ request }) => {
+export const loader: LoaderFunction = async () => {
   const data = await gqlClient.request(GREETING_QUERY, {
     greeting: 'from This Dot Labs!',
   });
-  console.log(data)
   return json<LoaderData>({ data });
 };
 

@@ -1,0 +1,1 @@
+export const h1Text = "flex flex-row justify-center mt-20 text-3xl";

@@ -33,7 +33,7 @@ This starter kit features **Remix**, **GraphQL**, and **Tailwind CSS*.
 
 ### Example Components
 
-In this `remix-gql-tailwind/app` directory you will find the `Counter` directory.
+In this `remix-gql-tailwind/app/components` directory you will find the `Counter` and `Greeting` directory.
 
 The `Counter` directory contains the following files:
 
@@ -42,6 +42,14 @@ The `Counter` directory contains the following files:
 - Counter.test.tsx
 - Button.tsx
 - Counter.tsx
+- index.ts
+
+The `Greeting` directory contains the following files:
+
+- Greeting.stories.tsx
+- Greeting.classNames.ts
+- Greeting.test.tsx
+- Greeting.tsx
 - index.ts
 
 ## Installation
