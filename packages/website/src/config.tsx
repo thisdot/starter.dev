@@ -1,5 +1,4 @@
 import type { ComponentType } from 'react';
-import React = require('react');
 import {
   DiscordIcon,
   NextIcon,
@@ -10,6 +9,7 @@ import {
   RemixIcon,
   ApolloIcon,
   ViteLogo,
+  RxJSIcon,
 } from './icons';
 
 export interface NavItem {
@@ -56,7 +56,7 @@ export const TECHNOLOGIES = [
     key: 'rxjs',
     name: 'RxJS',
     tags: ['framework'],
-    //Icon: (props) => <RxJSIcon {...props} />,
+    Icon: (props) => <RxJSIcon {...props} />,
   },
   {
     key: 'styled-components',
