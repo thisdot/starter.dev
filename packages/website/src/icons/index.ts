@@ -9,3 +9,4 @@ export { RemixIcon } from './RemixIcon';
 export { ApolloIcon } from './ApolloIcon';
 export { ViteLogo } from './ViteLogo';
 export { RxJSIcon } from './RxJSIcon';
+export { SCIcon } from './SCIcon';
