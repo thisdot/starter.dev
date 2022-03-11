@@ -8,3 +8,4 @@ export { VanillaExtractIcon } from './VanillaExtractIcon';
 export { RemixIcon } from './RemixIcon';
 export { ApolloIcon } from './ApolloIcon';
 export { ViteLogo } from './ViteLogo';
+export {GraphqlIcon} from './GraphQLIcon';

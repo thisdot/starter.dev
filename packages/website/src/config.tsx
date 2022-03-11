@@ -9,6 +9,7 @@ import {
   RemixIcon,
   ApolloIcon,
   ViteLogo,
+  GraphqlIcon,
 } from './icons';
 
 export interface NavItem {
@@ -118,5 +119,11 @@ export const TECHNOLOGIES = [
     name: 'Vite',
     tags: ['Tooling'],
     Icon: (props) => <ViteLogo {...props} />,
+  },
+  {
+    key: 'graphQL',
+    name: 'GraphQL',
+    tags: ['Data'],
+    Icon: (props) => <GraphqlIcon {...props} />,
   },
 ];
