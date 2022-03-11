@@ -75,7 +75,9 @@ git clone https://github.com/thisdot/starter.dev.git
 - `yarn dev` - Starts the development server.
 - `yarn test` - Runs the unit tests.
 - `yarn storybook` - Starts the Storybook UI.
-- `yarn format` - Formats code with prettier for the entire project
+- `yarn format` - Formats code with prettier for the entire project.
+- `yarn build` - Builds the project for production.
+- `yarn start` - Starts the production server.
 
 ## Demo Implementation
 
