@@ -50,6 +50,8 @@
     "eslint": "^8.9.0",
     "eslint-plugin-storybook": "^0.5.7",
     "jest": "^27.5.1",
+    "msw": "^0.39.1",
+    "msw-storybook-addon": "^1.6.1",
     "postcss": "^8.4.8",
     "postcss-cli": "^9.1.0",
     "prettier": "^2.5.1",
@@ -61,5 +63,8 @@
   },
   "engines": {
     "node": ">=14"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }

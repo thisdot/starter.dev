@@ -465,8 +465,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-left: 2rem;
   margin-right: 2rem;
 }
-.mt-40 {
-  margin-top: 10rem;
+.mt-20 {
+  margin-top: 5rem;
 }
 .mb-8 {
   margin-bottom: 2rem;
@@ -482,9 +482,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .mt-8 {
   margin-top: 2rem;
-}
-.mt-20 {
-  margin-top: 5rem;
 }
 .flex {
   display: flex;
@@ -517,26 +514,9 @@ Ensure the default browser behavior of the `hidden` attribute.
   font-size: 4.5rem;
   line-height: 1;
 }
-.text-4xl {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
-}
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
-}
-.font-extrabold {
-  font-weight: 800;
-}
-.uppercase {
-  text-transform: uppercase;
-}
-.tracking-tight {
-  letter-spacing: -0.025em;
-}
-.text-gray-100 {
-  --tw-text-opacity: 1;
-  color: rgb(243 244 246 / var(--tw-text-opacity));
 }
 .shadow-lg {
   --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
@@ -545,18 +525,4 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .focus\:outline-0:focus {
   outline-width: 0px;
-}
-@media (min-width: 640px) {
-
-  .sm\:text-5xl {
-    font-size: 3rem;
-    line-height: 1;
-  }
-}
-@media (min-width: 768px) {
-
-  .md\:text-6xl {
-    font-size: 3.75rem;
-    line-height: 1;
-  }
 }
