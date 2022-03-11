@@ -1,10 +1,8 @@
 /** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
 const { compilerOptions } = require('./tsconfig');
 module.exports = {
+  preset: 'ts-jest',
   testEnvironment: 'jsdom',
-  transform: {
-    '^.+\\.(tsx|ts|jsx|js)$': 'babel-jest',
-  },
   collectCoverageFrom: [
     '**/*.{js,jsx,ts,tsx}',
     '!**/*.d.ts',
@@ -14,11 +12,11 @@ module.exports = {
   moduleNameMapper: {
     'remix/link': '<rootDir>/__mockRemix__/Link',
   },
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   testPathIgnorePatterns: [
     '<rootDir>/node_modules/',
     '<rootDir>/build/',
     '<rootDir>/public/build/',
-    '<rootDir>/.cache/'
+    '<rootDir>/.cache/',
   ],
 };
