@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import {
+  CounterContainer,
   CounterButton,
   Header,
-  CounterContainer,
   CounterButtonContainer,
   CurrentCountText,
   ReturnHomeLink,

@@ -1,21 +1,20 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export const HeaderContainer = styled.div`
+export const HeaderContainer = styled.header`
   margin: 20px auto;
   width: 60%;
 `;
 
-export const Header = styled.header`
+export const Header = styled.h1`
   color: #fff;
   padding: 1rem;
   font-size: 1.5rem;
   font-weight: 600;
   border: none;
   text-align: center;
-
   border-radius: 0.25rem;
-  background-color: rgb(59 130 246);
+  background-color: rgb(37 99 235);
 `;
 
 export const ButtonLinkDiv = styled.div`

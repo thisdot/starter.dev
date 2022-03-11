@@ -1,7 +1,10 @@
 import {
   RxJSExampleContainer,
+  HeaderContainer,
+  Header,
   HomeLinkDiv,
   ReturnHomeLink,
+  Message,
 } from './RxJS-Example.styles';
 import { useState, useEffect } from 'react';
 import { fromFetch } from 'rxjs/fetch';
@@ -20,8 +23,10 @@ export const RxJSExample = () => {
 
   return (
     <RxJSExampleContainer>
-      <h1>RxJS Fetch Data from API</h1>
-      <p>Message: {loading ? '...Loading message' : message} </p>
+      <HeaderContainer>
+        <Header>RxJS Fetch Data from API</Header>
+      </HeaderContainer>
+      <Message>Message: {loading ? '...Loading message' : message}</Message>
       <HomeLinkDiv>
         <ReturnHomeLink to="/">Return Home</ReturnHomeLink>
       </HomeLinkDiv>
