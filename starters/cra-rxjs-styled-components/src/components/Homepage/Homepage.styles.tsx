@@ -23,7 +23,9 @@ export const ButtonLinkDiv = styled.div`
   margin: 10px 0;
 `;
 
-export const ButtonExampleLink = styled(Link)`
+export const ExampleLink = styled(Link)`
+  display: block;
+  margin: 10px 0;
   font-size: 1.2rem;
   color: rgb(37 99 235);
   &:hover {

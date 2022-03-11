@@ -1,7 +1,7 @@
 import {
   HeaderContainer,
   Header,
-  ButtonExampleLink,
+  ExampleLink,
   ButtonLinkDiv,
 } from './Homepage.styles';
 export function Homepage() {
@@ -9,9 +9,10 @@ export function Homepage() {
     <HeaderContainer>
       <Header>Create React App, RxJS and styled-components Starter kit</Header>
       <ButtonLinkDiv>
-        <ButtonExampleLink to="/button-example">
+        <ExampleLink to="/button-example">
           See Button example component
-        </ButtonExampleLink>
+        </ExampleLink>
+        <ExampleLink to="/rxjs-example">See RxJS example component</ExampleLink>
       </ButtonLinkDiv>
     </HeaderContainer>
   );
