@@ -1,4 +1,5 @@
 import type { ComponentType } from 'react';
+import React = require('react');
 import {
   DiscordIcon,
   NextIcon,
@@ -51,6 +52,18 @@ export const FOOTER_NAV_ITEMS = HEADER_NAV_ITEMS.filter(
 );
 
 export const TECHNOLOGIES = [
+  {
+    key: 'rxjs',
+    name: 'RxJS',
+    tags: ['framework'],
+    //Icon: (props) => <RxJSIcon {...props} />,
+  },
+  {
+    key: 'styled-components',
+    name: 'styled-components',
+    tags: ['CSS'],
+    //Icon: (props) => <SCIcon {...props} />,
+  },
   {
     key: 'angular',
     name: 'Angular',
