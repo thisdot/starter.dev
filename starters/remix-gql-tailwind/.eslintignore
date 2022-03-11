@@ -1,7 +1,7 @@
 node_modules/
-public/
 .vscode/
 tailwind.config.js
-dist
-dist-ssr
+/.cache
+/build
+/public/build
 *.local

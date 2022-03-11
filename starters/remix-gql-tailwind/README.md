@@ -49,7 +49,7 @@ The `Counter` directory contains the following files:
 ### CLI (Recommended)
 
 ```bash
-npx starter-dev
+npx create-starter-dev
 ```
 
 - Follow the prompts to select the `remix-gql-tailwind` starter kit and name your new project.
