@@ -9,8 +9,7 @@ module.exports = {
         baseUrl: './',
         aliases: {
           '@file': './src/file.js',
-          '@dir': './src/some/dir',
-          '@material-ui': './node_modules/@material-ui-ie10',
+          '@components': ['./src/components/*'],
         },
       },
     },
