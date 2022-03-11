@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 export const RxJSExampleContainer = styled.div`
-  margin: auto;
+  text-align: center;
 `;
 export const HomeLinkDiv = styled.div`
-  text-align: center;
   margin: 10px 0;
 `;
 
