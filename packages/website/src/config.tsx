@@ -62,7 +62,6 @@ export const TECHNOLOGIES = [
     key: 'styled-components',
     name: 'styled-components',
     tags: ['CSS'],
-    //Icon: (props) => <SCIcon {...props} />,
   },
   {
     key: 'angular',
