@@ -1,6 +1,6 @@
 # next-react-query-tailwind starter kit
 
-This starter kit features Next.js, React Query, and Tailwind CSS.
+This starter kit features **Next.js**, **React Query**, and **Tailwind CSS**.
 
 ## Overview
 
@@ -13,12 +13,12 @@ This starter kit features Next.js, React Query, and Tailwind CSS.
 
 ### Included Tooling
 
-- Jest - Test runner
-- Typescript - Type checking
-- Storybook - Component library
-- Mock Service Worker - Mock REST / GraphQL API
-- ESLint - Code linting
-- Prettier - Code formatting
+- [Jest](https://jestjs.io/) - Test runner
+- [Typescript](https://www.typescriptlang.org/) - Type checking
+- [Storybook](https://storybook.js.org/) - Component library
+- [Mock Service Worker](https://mswjs.io/) - Mock REST / GraphQL API
+- [ESLint](https://eslint.org/) - Code linting
+- [Prettier](https://prettier.io/) - Code formatting
 
 ### Example Code
 
@@ -32,7 +32,7 @@ This starter kit features Next.js, React Query, and Tailwind CSS.
 ### CLI (Recommended)
 
 ```bash
-npm init starter-dev
+npx create-starter-dev
 ```
 
 - Follow the prompts to select the `next-react-query-tailwind` starter kit and name your new project.
@@ -41,6 +41,8 @@ npm init starter-dev
 - Open your browser to `http://localhost:3000` to see the included example code running.
 
 ### Manual
+
+This requires a download of the entire starter.dev repository and extraction of the `next-react-query-tailwind` kit from the starters directory.
 
 ```bash
 git clone https://github.com/thisdot/starter.dev.git
