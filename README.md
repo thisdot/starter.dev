@@ -1,5 +1,42 @@
 # starter.dev
 
+This is a monorepo for the starter.dev project.
+
+- `/packages` - Includes the starter.dev website and CLI
+- `/starters` - Directory of all starter kit projects
+
+starter.dev is a collection of starter kit projects and related tools to help get you up and running on your next project without spending days adding all the pieces and configuration to supporting whatever libraries or frameworks that you choose. Choose a kit with the set of tools you are looking for and use our CLI to generate your new project. The starter kits come with all the essentials included and configured: TypeScript, testing, linting, storybook, and more.
+
+## Starter kit essentials
+
+Starter kits should include a set of frameworks, libraries, and essential tooling. Each starter kit should include a couple of core examples that utilize the tech included in the kit.
+
+### Frameworks and libraries
+
+Starter kits should includ some core libraries and technologies that any new project will need. These pieces should come configured according to best practices and ready to use togther as a unit.
+
+- Framework?: (Next, Nuxt, SvelteKit, Remix, etc)
+- UI: (react, vue, angular, etc)
+- Data Fetching and/or State Management: (redux, react-query, apollo)
+- Styling: (tailwind, styled-components, css modules, etc)
+
+### Tooling
+
+Starter kits should include some core tooling pre configured and ready to use.
+
+- TypeScript
+- Linting
+- Unit Testing (jest, react-testing-library, etc)
+- Storybook
+- Prettier
+
+### Included example code
+
+Each starter kit should include a couple base examples that demonstrate the important pieces of tech included in the kit and the tooling used to test them. Each one includes tests and stories.
+
+- Counter component (showcase the UI framework and hot to write tests for it)
+- Hello world component (showcase the data fetching and rendering)
+
 ## Adding a starter kit
 
 Starter kits live at `starters/:name` in this repository.
