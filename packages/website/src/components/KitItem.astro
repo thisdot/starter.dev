@@ -6,15 +6,15 @@ const { kit } = Astro.props;
 ---
 
 <div
-  class="bg dark:dark-bg border border-gray-400 dark:border-gray-800 rounded-lg group hover:bg-blue-500 hover:dark:bg-gray-800 transition-colors overflow-hidden"
+  class="bg dark:bg-gray-800 border border-gray-400 dark:border-gray-700 rounded-lg group hover:bg-brand-500 hover:dark:bg-brand-500 transition-colors overflow-hidden"
 >
   <div class="px-4 py-6 space-y-4">
     {kit.technologies.map(({ name, Icon, tags }) => (
-      <div class="flex items-center space-x-4">
+      <div class="flex items-center space-x-6">
         { Icon && <TechIcon {Icon} />}
         <div>
-          <div class="text-xl t-dark dark:dark-t font-medium group-hover:text-white">{name}</div>
-          <div class="t-light dark:dark-t-light group-hover:text-gray-100">{tags.join(', ')}</div>
+          <div class="heading-6 t-dark dark:dark-t-light group-hover:text-white">{name}</div>
+          <div class="t-light dark:dark-t text-sm group-hover:text-gray-100">{tags.join(', ')}</div>
         </div>
       </div>
     ))}
@@ -24,7 +24,7 @@ const { kit } = Astro.props;
   >
     <a
       href={`/kit/${kit.name}`}
-      class="inline-flex items-center justify-center t-light dark:dark-t group-hover:text-white font-medium text-lg"
+      class="inline-flex items-center justify-center t-light dark:dark-t group-hover:text-white font-medium"
     >
       See Kit Details <ArrowRightIcon className="inline w-4 h-4 ml-2" />
     </a>
