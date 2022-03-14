@@ -1,34 +1,68 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# next-react-query-tailwind starter kit
 
-## Getting Started
+This starter kit features **Next.js**, **React Query**, and **Tailwind CSS**.
 
-First, run the development server:
+## Overview
+
+### Tech Stack
+
+- [Next.js v12.x](https://nextjs.org)
+- [React v17.x](https://reactjs.org)
+- [React Query v3.x](https://react-query.tanstack.com/)
+- [Tailwind CSS v3.x](https://tailwindcss.com/)
+
+### Included Tooling
+
+- [Jest](https://jestjs.io/) - Test runner
+- [Typescript](https://www.typescriptlang.org/) - Type checking
+- [Storybook](https://storybook.js.org/) - Component library
+- [Mock Service Worker](https://mswjs.io/) - Mock REST / GraphQL API
+- [ESLint](https://eslint.org/) - Code linting
+- [Prettier](https://prettier.io/) - Code formatting
+
+### Example Code
+
+- Next.js 'hello world' API endpoint `pages/api/hello.ts` with corresponding mock located in `msw/handlers/helloMock.ts`.
+- Greeting component `components/Greeting.tsx` that uses React Query to fetch data from the example hello endpoint.
+- An example Counter component `components/Counter.tsx`
+- Both example components are have co-located tests and stories.
+
+## Installation
+
+### CLI (Recommended)
 
 ```bash
-npm run dev
-# or
-yarn dev
+npx create-starter-dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Follow the prompts to select the `next-react-query-tailwind` starter kit and name your new project.
+- `cd` into your project directory and run `npm install`.
+- Run `npm run dev` to start the development server.
+- Open your browser to `http://localhost:3000` to see the included example code running.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### Manual
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+This requires a download of the entire starter.dev repository and extraction of the `next-react-query-tailwind` kit from the starters directory.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```bash
+git clone https://github.com/thisdot/starter.dev.git
+```
 
-## Learn More
+- Copy and rename the `starters/next-react-query-tailwind` directory to the name of your new project.
+- `cd` into your project directory and run `npm install`.
+- Run `npm run dev` to start the development server.
+- Open your browser to `http://localhost:3000` to see the included example code running.
 
-To learn more about Next.js, take a look at the following resources:
+## Commands
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `npm run dev` - Starts the development server.
+- `npm run test` - Runs the unit tests.
+- `npm run storybook` - Starts the Storybook UI.
+- `npm run lint` - Runs ESLint on the project.
+- `npm run prettier` - Formats code for the entire project
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Demo Implementation
 
-## Deploy on Vercel
+[Repository](https://github.com/thisdot/starter.dev-showcases/tree/main/next-react-query-tailwind)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+The demo for this starter kit is a partial implementation of some GitHub functionality. It uses the NextAuth library to authenticate users with their GitHub accounts and uses the GitHub GraphQL API with codegen and React Query to fetch data from the GitHub API. Check out the link above to learn more or check out the demo!
