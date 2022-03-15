@@ -22,7 +22,7 @@ export function NavBar({ currentPath }: Props) {
               <div className="flex-shrink-0 flex items-center">
                 <a href="/">
                   <span className="text-[24px] font-bold text-black dark:text-white">
-                    starter.dev
+                    <img src='../../public/starter-dev-logo.svg' alt='logo' />
                   </span>
                 </a>
               </div>
