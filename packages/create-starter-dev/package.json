@@ -9,7 +9,8 @@
     "create-starter": "./create-starter.mjs"
   },
   "scripts": {
-    "build": "yarn clean && esbuild ./src/index.ts --bundle --platform=node --outfile=./dist/index.js",
+    "kitgen": "node ./scripts/generate-kit-data.js",
+    "build": "yarn clean && esbuild ./src/index.ts --bundle --platform=node --outfile=./dist/index.js && yarn kitgen",
     "dev": "yarn clean && esbuild ./src/index.ts --watch --bundle --platform=node --outfile=./dist/index.js",
     "clean": "rimraf ./dist",
     "test": "echo \"Error: no test specified\" && exit 1"

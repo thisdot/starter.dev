@@ -3,10 +3,11 @@ import fs from 'fs/promises';
 import { bold, gray, green, red, cyan } from 'kleur/colors';
 import prompts from 'prompts';
 import degit from 'tiged';
-import starters from './starters';
 
 export async function main() {
   console.log(`\n${bold('Welcome to starter.dev!')} ${gray('(create-starter)')}`);
+
+  const starters = JSON.parse(await fs.readFile(path.join(__dirname, 'starters.json'), { encoding: 'utf-8' }));
 
   const options = await prompts([
     {
