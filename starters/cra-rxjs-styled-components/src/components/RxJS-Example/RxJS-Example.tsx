@@ -10,8 +10,8 @@ import { useState, useEffect } from 'react';
 import { fromFetch } from 'rxjs/fetch';
 
 export const RxJSExample = () => {
-  const [message, setMessage] = useState('');
-  const [loading, setLoading] = useState(true);
+  const [message, setMessage] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const subscription = fromFetch(
