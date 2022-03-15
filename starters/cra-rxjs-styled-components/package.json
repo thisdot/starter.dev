@@ -16,7 +16,8 @@
     "prettier": "2.5.1",
     "react-scripts": "5.0.0",
     "rxjs": "^7.5.4",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "styled-components": "^5.3.3"
   },
   "scripts": {
     "start": "craco start",
@@ -26,8 +27,7 @@
     "format:check": "prettier --check .",
     "format:write": "prettier --write .",
     "storybook": "start-storybook -p 6006 ",
-    "build-storybook": "build-storybook ",
-    "styled-components": "^5.3.3"
+    "build-storybook": "build-storybook "
   },
   "eslintConfig": {
     "extends": [
