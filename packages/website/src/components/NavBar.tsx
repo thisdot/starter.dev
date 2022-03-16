@@ -4,6 +4,7 @@ import cn from 'clsx';
 import { DarkModeToggle } from './DarkModeToggle';
 import { HEADER_NAV_ITEMS } from '../config';
 import { GitHubIcon } from '../icons';
+import { Logo } from './Logo';
 
 export interface Props {
   currentPath: string;
@@ -21,9 +22,7 @@ export function NavBar({ currentPath }: Props) {
             <div className="flex justify-between h-20">
               <div className="flex-shrink-0 flex items-center">
                 <a href="/">
-                  <span className="text-[24px] font-bold text-black dark:text-white">
-                    starter.dev
-                  </span>
+                  <Logo />
                 </a>
               </div>
               <div className="hidden lg:ml-6 lg:flex lg:space-x-8">
