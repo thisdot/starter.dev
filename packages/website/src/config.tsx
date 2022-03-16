@@ -9,6 +9,29 @@ import {
   RemixIcon,
   ApolloIcon,
   ViteLogo,
+  SvelteIcon,
+  VueIcon,
+  AngularIcon,
+  ElementUIIcon,
+  SaaSIcon,
+  GraphQLIcon,
+  RelayIcon,
+  NuxtIcon,
+  NgRxIcon,
+  RxJsIcon,
+  SCIcon,
+  QuasarIcon,
+  EleventyIcon,
+  RestIcon,
+  WebpackIcon,
+  BlitzIcon,
+  MaterialUIIcon,
+  AstroIcon,
+  BootstrapIcon,
+  ReduxIcon,
+  GatsbyIcon,
+  CSSModuleIcon,
+  RedwoodIcon
 } from './icons';
 
 export interface NavItem {
@@ -55,6 +78,7 @@ export const TECHNOLOGIES = [
     key: 'angular',
     name: 'Angular',
     tags: ['UI'],
+    Icon: (props) => <AngularIcon {...props} />,
   },
   {
     key: 'react',
@@ -63,10 +87,28 @@ export const TECHNOLOGIES = [
     Icon: (props) => <ReactIcon {...props} />,
   },
   {
+    key: 'svelte',
+    name: 'Svelte',
+    tags: ['UI'],
+    Icon: (props) => <SvelteIcon {...props} />,
+  },
+  {
+    key: 'vue',
+    name: 'Vue',
+    tags: ['UI'],
+    Icon: (props) => <VueIcon {...props} />,
+  },
+  {
     key: 'next',
     name: 'NextJS',
     tags: ['Framework'],
     Icon: (props) => <NextIcon {...props} />,
+  },
+  {
+    key: 'nuxt',
+    name: 'NuxtJS',
+    tags: ['Framework'],
+    Icon: (props) => <NuxtIcon {...props} />,
   },
   {
     key: 'remix',
@@ -75,10 +117,40 @@ export const TECHNOLOGIES = [
     Icon: (props) => <RemixIcon {...props} />,
   },
   {
+    key: 'quasar',
+    name: 'Quasar',
+    tags: ['Framework'],
+    Icon: (props) => <QuasarIcon {...props} />,
+  },
+  {
+    key: 'blitz',
+    name: 'Blitz.js',
+    tags: ['Framework'],
+    Icon: (props) => <BlitzIcon {...props} />,
+  },
+  {
+    key: 'gatsby',
+    name: 'Gatsby',
+    tags: ['Framework'],
+    Icon: (props) => <GatsbyIcon {...props} />,
+  },
+  {
+    key: 'redwood',
+    name: 'RedwoodJS',
+    tags: ['Framework'],
+    Icon: (props) => <RedwoodIcon {...props} />,
+  },
+  {
     key: 'tailwind',
     name: 'Tailwind',
     tags: ['CSS'],
     Icon: (props) => <TailwindIcon {...props} />,
+  },
+  {
+    key: 'material-ui',
+    name: 'Material-UI',
+    tags: ['CSS'],
+    Icon: (props) => <MaterialUIIcon {...props} />,
   },
   {
     key: 'vanilla-extract',
@@ -87,14 +159,46 @@ export const TECHNOLOGIES = [
     Icon: (props) => <VanillaExtractIcon {...props} />,
   },
   {
-    key: 'emotion',
-    name: 'Emotion',
+    key: 'css module',
+    name: 'CSS Module',
     tags: ['CSS'],
+    Icon: (props) => <CSSModuleIcon {...props} />,
   },
   {
-    key: 'sass',
-    name: 'Sass',
+    key: 'styled-components',
+    name: 'Styled Components',
     tags: ['CSS'],
+    Icon: (props) => <SCIcon {...props} />,
+  },
+  {
+    key: 'saas',
+    name: 'SASS',
+    tags: ['CSS'],
+    Icon: (props) => <SaaSIcon {...props} />,
+  },
+  {
+    key: 'element-ui',
+    name: 'Element-UI',
+    tags: ['CSS'],
+    Icon: (props) => <ElementUIIcon {...props} />,
+  },
+  {
+    key: 'bootstrap',
+    name: 'Bootstrap',
+    tags: ['CSS'],
+    Icon: (props) => <BootstrapIcon {...props} />
+  },
+  {
+    key: 'astro',
+    name: 'Astro',
+    tags: ['Static Site Builder'],
+    Icon: (props) => <AstroIcon {...props} />,
+  },
+  {
+    key: '11ty',
+    name: '11ty',
+    tags: ['Static Site Builder'],
+    Icon: (props) => <EleventyIcon {...props} />,
   },
   {
     key: 'react-query',
@@ -103,9 +207,40 @@ export const TECHNOLOGIES = [
     Icon: (props) => <ReactQueryIcon {...props} />,
   },
   {
+    key: 'redux',
+    name: 'Redux',
+    tags: ['Data'],
+    Icon: (props) => <ReduxIcon {...props} />,
+  },
+  {
+    key: 'ngrx',
+    name: 'NgRx',
+    tags: ['Data'],
+    Icon: (props) => <NgRxIcon {...props} />,
+  },
+  {
+    key: 'rxjs',
+    name: 'RxJS',
+    tags: ['Data'],
+    Icon: (props) => <RxJsIcon {...props} />,
+  },
+  {
+    key: 'graphql',
+    name: 'GraphQL',
+    tags: ['Data'],
+    Icon: (props) => <GraphQLIcon {...props} />,
+  },
+  {
+    key: 'rest api',
+    name: 'REST API',
+    tags: ['Data'],
+    Icon: (props) => <RestIcon {...props} />
+  },
+  {
     key: 'relay',
     name: 'Relay',
     tags: ['Data'],
+    Icon: (props) => <RelayIcon {...props} />
   },
   {
     key: 'apollo',
@@ -118,5 +253,11 @@ export const TECHNOLOGIES = [
     name: 'Vite',
     tags: ['Tooling'],
     Icon: (props) => <ViteLogo {...props} />,
+  },
+  {
+    key: 'webpack',
+    name: 'Webpack',
+    tags: ['Tooling'],
+    Icon: (props) => <WebpackIcon {...props} />,
   },
 ];

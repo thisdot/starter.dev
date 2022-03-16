@@ -1,7 +1,4 @@
-export interface Props {
-  size?: number | string;
-  className?: string;
-}
+import { Props } from "./types";
 
 export function ApolloIcon({ size = 48, className }: Props) {
   return (

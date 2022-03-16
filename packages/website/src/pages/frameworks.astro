@@ -3,7 +3,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import TechItem from '../components/TechItem.astro';
 import { TECHNOLOGIES } from '../config';
 
-const sections = TECHNOLOGIES.reduce((acc, tech) => {
+const items = Astro.fetchContent('./kit/*.md');
+
+const keywords = items.map(item => item.keywords.split(',')).flat(Infinity);
+
+const technologies = TECHNOLOGIES.filter((tech) => {
+  return keywords.includes(tech.key);
+});
+
+const sections = technologies.reduce((acc, tech) => {
   tech.tags.forEach((tag) => {
     if (!acc[tag]) {
       acc[tag] = [];
