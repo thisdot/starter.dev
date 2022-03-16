@@ -15,7 +15,11 @@ import {
   ElementUIIcon,
   SaaSIcon,
   GraphQLIcon,
-  RelayIcon
+  RelayIcon,
+  NuxtIcon,
+  NgRxIcon,
+  RxJsIcon,
+  SCIcon
 } from './icons';
 
 export interface NavItem {
@@ -89,6 +93,12 @@ export const TECHNOLOGIES = [
     Icon: (props) => <NextIcon {...props} />,
   },
   {
+    key: 'nuxt',
+    name: 'NuxtJS',
+    tags: ['Framework'],
+    Icon: (props) => <NuxtIcon {...props} />,
+  },
+  {
     key: 'remix',
     name: 'Remix',
     tags: ['Framework'],
@@ -105,6 +115,12 @@ export const TECHNOLOGIES = [
     name: 'Vanilla Extract',
     tags: ['CSS'],
     Icon: (props) => <VanillaExtractIcon {...props} />,
+  },
+  {
+    key: 'styled-components',
+    name: 'Styled Components',
+    tags: ['CSS'],
+    Icon: (props) => <SCIcon {...props} />,
   },
   {
     key: 'saas',
@@ -128,6 +144,18 @@ export const TECHNOLOGIES = [
     name: 'React Query',
     tags: ['Data'],
     Icon: (props) => <ReactQueryIcon {...props} />,
+  },
+  {
+    key: 'ngrx',
+    name: 'NgRx',
+    tags: ['Data'],
+    Icon: (props) => <NgRxIcon {...props} />,
+  },
+  {
+    key: 'rxjs',
+    name: 'RxJs',
+    tags: ['Data'],
+    Icon: (props) => <RxJsIcon {...props} />,
   },
   {
     key: 'graphql',

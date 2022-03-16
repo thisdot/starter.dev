@@ -15,3 +15,7 @@ export { ElementUIIcon } from './ElementUI-Icon';
 export { SaaSIcon } from './SaaSIcon';
 export { GraphQLIcon } from './GraphQLIcon';
 export { RelayIcon } from './RelayIcon';
+export  { NuxtIcon } from './NuxtIcon';
+export { NgRxIcon } from './NgRxIcon';
+export { RxJsIcon } from './RxJsIcon';
+export { SCIcon } from './SCIcon';
