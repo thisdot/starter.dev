@@ -13,3 +13,5 @@ export { VueIcon } from './VueIcon';
 export { AngularIcon } from './AngularIcon';
 export { ElementUIIcon } from './ElementUI-Icon';
 export { SaaSIcon } from './SaaSIcon';
+export { GraphQLIcon } from './GraphQLIcon';
+export { RelayIcon } from './RelayIcon';

@@ -14,6 +14,8 @@ import {
   AngularIcon,
   ElementUIIcon,
   SaaSIcon,
+  GraphQLIcon,
+  RelayIcon
 } from './icons';
 
 export interface NavItem {
@@ -128,9 +130,16 @@ export const TECHNOLOGIES = [
     Icon: (props) => <ReactQueryIcon {...props} />,
   },
   {
+    key: 'graphql',
+    name: 'GraphQL',
+    tags: ['Data'],
+    Icon: (props) => <GraphQLIcon {...props} />,
+  },
+  {
     key: 'relay',
     name: 'Relay',
     tags: ['Data'],
+    Icon: (props) => <RelayIcon {...props} />
   },
   {
     key: 'apollo',
