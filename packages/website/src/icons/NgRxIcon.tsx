@@ -12,7 +12,7 @@ export function NgRxIcon({ size = 48, className }) {
       viewBox="44 11 911.963 978.148"
       className={className}
     >
-      <g fill="none" fill-rule="evenodd">
+      <g fill="none" fillRule="evenodd">
         <path
           d="M500.963 11L44 169.62l65.419 606.244 391.544 213.284z"
           fill="#412846"

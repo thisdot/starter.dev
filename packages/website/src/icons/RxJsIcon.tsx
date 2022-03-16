@@ -20,10 +20,10 @@ export function RxJsIcon({ size = 48, className }) {
         y1="247.701"
         y2="115.323"
       >
-        <stop offset="0" stop-color="#e01d84" />
-        <stop offset=".401" stop-color="#df1d85" />
-        <stop offset=".77" stop-color="#932c87" />
-        <stop offset="1" stop-color="#5d2f88" />
+        <stop offset="0" stopColor="#e01d84" />
+        <stop offset=".401" stopColor="#df1d85" />
+        <stop offset=".77" stopColor="#932c87" />
+        <stop offset="1" stopColor="#5d2f88" />
       </linearGradient>
       <radialGradient
         id="b"
@@ -33,14 +33,14 @@ export function RxJsIcon({ size = 48, className }) {
         gradientUnits="userSpaceOnUse"
         r="121.582"
       >
-        <stop offset="0" stop-color="#e01d84" />
-        <stop offset=".139" stop-color="#de1e85" />
-        <stop offset=".285" stop-color="#d62085" />
-        <stop offset=".434" stop-color="#c92386" />
-        <stop offset=".586" stop-color="#b72786" />
-        <stop offset=".739" stop-color="#9d2b87" />
-        <stop offset=".891" stop-color="#7c2e88" />
-        <stop offset="1" stop-color="#5d2f88" />
+        <stop offset="0" stopColor="#e01d84" />
+        <stop offset=".139" stopColor="#de1e85" />
+        <stop offset=".285" stopColor="#d62085" />
+        <stop offset=".434" stopColor="#c92386" />
+        <stop offset=".586" stopColor="#b72786" />
+        <stop offset=".739" stopColor="#9d2b87" />
+        <stop offset=".891" stopColor="#7c2e88" />
+        <stop offset="1" stopColor="#5d2f88" />
       </radialGradient>
       <linearGradient
         id="c"
@@ -50,10 +50,10 @@ export function RxJsIcon({ size = 48, className }) {
         y1="62.336"
         y2="62.336"
       >
-        <stop offset="0" stop-color="#e01d84" />
-        <stop offset=".238" stop-color="#da1e85" />
-        <stop offset=".658" stop-color="#c72085" />
-        <stop offset=".999" stop-color="#b52284" />
+        <stop offset="0" stopColor="#e01d84" />
+        <stop offset=".238" stopColor="#da1e85" />
+        <stop offset=".658" stopColor="#c72085" />
+        <stop offset=".999" stopColor="#b52284" />
       </linearGradient>
       <path
         d="M29.6 175.3c-5.2-16.2-6.7-33.3-3.7-50.9 1.3-7.3 3.3-14.3 5.5-21.4 0 0 13.8-45.3 60.5-66 0 0 16.1-8.5 40.3-9.1 0 0-3.3-3.2-5.4-4.6-11.4-7.6-28.4-10.1-38.7.6-3.1 3.2-5.7 6.7-8.6 9.9-3.3 3.6-7.3 6.6-11.9 8.3-4 1.5-8 1.2-12.1 1.9-4.2.7-8.5 2.2-11.9 4.9-3.7 3-5.2 7-5.6 11.6-.4 3.6-.3 7.3-.5 10.9C37 82 33.6 85 26 90.9c-3.2 2.4-5.9 5.6-7.9 9-6 10.6 3.6 21.6 4.1 32.3.1 2.2-.1 4.4-.9 6.5-.8 2.3-2.4 3.8-3.7 5.7-1.8 2.5-3 5.5-2.5 8.6s2.1 6 3.6 8.7c2.9 4.8 6.5 9.1 10.3 13.2.2 0 .4.2.6.4"

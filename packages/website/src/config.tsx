@@ -23,7 +23,15 @@ import {
   QuasarIcon,
   EleventyIcon,
   RestIcon,
-  WebpackIcon
+  WebpackIcon,
+  BlitzIcon,
+  MaterialUIIcon,
+  AstroIcon,
+  BootstrapIcon,
+  ReduxIcon,
+  GatsbyIcon,
+  CSSModuleIcon,
+  RedwoodIcon
 } from './icons';
 
 export interface NavItem {
@@ -115,16 +123,46 @@ export const TECHNOLOGIES = [
     Icon: (props) => <QuasarIcon {...props} />,
   },
   {
+    key: 'blitz',
+    name: 'Blitz',
+    tags: ['Framework'],
+    Icon: (props) => <BlitzIcon {...props} />,
+  },
+  {
+    key: 'gatsby',
+    name: 'Gatsby',
+    tags: ['Framework'],
+    Icon: (props) => <GatsbyIcon {...props} />,
+  },
+  {
+    key: 'redwood',
+    name: 'Redwood',
+    tags: ['Framework'],
+    Icon: (props) => <RedwoodIcon {...props} />,
+  },
+  {
     key: 'tailwind',
     name: 'Tailwind',
     tags: ['CSS'],
     Icon: (props) => <TailwindIcon {...props} />,
   },
   {
+    key: 'material-ui',
+    name: 'Material-UI',
+    tags: ['CSS'],
+    Icon: (props) => <MaterialUIIcon {...props} />,
+  },
+  {
     key: 'vanilla-extract',
     name: 'Vanilla Extract',
     tags: ['CSS'],
     Icon: (props) => <VanillaExtractIcon {...props} />,
+  },
+  {
+    key: 'css module',
+    name: 'CSS Module',
+    tags: ['CSS'],
+    Icon: (props) => <CSSModuleIcon {...props} />,
   },
   {
     key: 'styled-components',
@@ -145,9 +183,16 @@ export const TECHNOLOGIES = [
     Icon: (props) => <ElementUIIcon {...props} />,
   },
   {
-    key: 'emotion',
-    name: 'Emotion',
+    key: 'bootstrap',
+    name: 'Bootstrap',
     tags: ['CSS'],
+    Icon: (props) => <BootstrapIcon {...props} />
+  },
+  {
+    key: 'astro',
+    name: 'Astro',
+    tags: ['Static Site Builder'],
+    Icon: (props) => <AstroIcon {...props} />,
   },
   {
     key: '11ty',
@@ -160,6 +205,12 @@ export const TECHNOLOGIES = [
     name: 'React Query',
     tags: ['Data'],
     Icon: (props) => <ReactQueryIcon {...props} />,
+  },
+  {
+    key: 'redux',
+    name: 'Redux',
+    tags: ['Data'],
+    Icon: (props) => <ReduxIcon {...props} />,
   },
   {
     key: 'ngrx',

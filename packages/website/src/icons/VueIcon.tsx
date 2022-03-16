@@ -13,7 +13,7 @@ export function VueIcon({ size = 48, className }: Props) {
       xmlns="http://www.w3.org/2000/svg"
       className={className}
     >
-      <g opacity="0.9" clip-path="url(#clip0_457_1045)">
+      <g opacity="0.9" clipPath="url(#clip0_457_1045)">
         <path
           d="M36.6421 3.10529H45.7369L23 42.3263L0.263184 3.10529H17.6569L23 12.2L28.2295 3.10529H36.6421Z"
           fill="#41B883"
