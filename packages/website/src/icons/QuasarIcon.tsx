@@ -3,7 +3,7 @@ export interface Props {
   size?: string | number;
 }
 
-export function QuasarIcon({ size = 48, className }) {
+export function QuasarIcon({ size = 48, className }: Props) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

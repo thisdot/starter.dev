@@ -21,7 +21,9 @@ import {
   RxJsIcon,
   SCIcon,
   QuasarIcon,
-  EleventyIcon
+  EleventyIcon,
+  RestIcon,
+  WebpackIcon
 } from './icons';
 
 export interface NavItem {
@@ -178,6 +180,12 @@ export const TECHNOLOGIES = [
     Icon: (props) => <GraphQLIcon {...props} />,
   },
   {
+    key: 'rest api',
+    name: 'Rest API',
+    tags: ['Data'],
+    Icon: (props) => <RestIcon {...props} />
+  },
+  {
     key: 'relay',
     name: 'Relay',
     tags: ['Data'],
@@ -194,5 +202,11 @@ export const TECHNOLOGIES = [
     name: 'Vite',
     tags: ['Tooling'],
     Icon: (props) => <ViteLogo {...props} />,
+  },
+  {
+    key: 'webpack',
+    name: 'Webpack',
+    tags: ['Tooling'],
+    Icon: (props) => <WebpackIcon {...props} />,
   },
 ];

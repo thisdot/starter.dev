@@ -21,3 +21,5 @@ export { RxJsIcon } from './RxJsIcon';
 export { SCIcon } from './SCIcon';
 export { QuasarIcon } from './QuasarIcon';
 export { EleventyIcon } from './11tyIcon';
+export { RestIcon } from './RestIcon';
+export { WebpackIcon } from './WebpackIcon';

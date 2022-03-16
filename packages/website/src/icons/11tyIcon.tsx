@@ -1,4 +1,9 @@
-export function EleventyIcon({ size = 48, className}) {
+export interface Props {
+  className?: string;
+  size?: string | number;
+}
+
+export function EleventyIcon({ size = 48, className}: Props) {
   return (
     <svg
       version="1.1"
