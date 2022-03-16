@@ -232,7 +232,7 @@ export const TECHNOLOGIES = [
   },
   {
     key: 'rest api',
-    name: 'Rest API',
+    name: 'REST API',
     tags: ['Data'],
     Icon: (props) => <RestIcon {...props} />
   },
