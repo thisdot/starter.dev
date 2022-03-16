@@ -124,7 +124,7 @@ export const TECHNOLOGIES = [
   },
   {
     key: 'blitz',
-    name: 'Blitz',
+    name: 'Blitz.js',
     tags: ['Framework'],
     Icon: (props) => <BlitzIcon {...props} />,
   },
