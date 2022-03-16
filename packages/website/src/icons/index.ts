@@ -8,3 +8,8 @@ export { VanillaExtractIcon } from './VanillaExtractIcon';
 export { RemixIcon } from './RemixIcon';
 export { ApolloIcon } from './ApolloIcon';
 export { ViteLogo } from './ViteLogo';
+export  { SvelteIcon } from './SvelteIcon';
+export { VueIcon } from './VueIcon';
+export { AngularIcon } from './AngularIcon';
+export { ElementUIIcon } from './ElementUI-Icon';
+export { SaaSIcon } from './SaaSIcon';

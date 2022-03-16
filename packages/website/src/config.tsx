@@ -9,6 +9,11 @@ import {
   RemixIcon,
   ApolloIcon,
   ViteLogo,
+  SvelteIcon,
+  VueIcon,
+  AngularIcon,
+  ElementUIIcon,
+  SaaSIcon,
 } from './icons';
 
 export interface NavItem {
@@ -55,12 +60,25 @@ export const TECHNOLOGIES = [
     key: 'angular',
     name: 'Angular',
     tags: ['UI'],
+    Icon: (props) => <AngularIcon {...props} />,
   },
   {
     key: 'react',
     name: 'React',
     tags: ['UI'],
     Icon: (props) => <ReactIcon {...props} />,
+  },
+  {
+    key: 'svelte',
+    name: 'Svelte',
+    tags: ['UI'],
+    Icon: (props) => <SvelteIcon {...props} />,
+  },
+  {
+    key: 'vue',
+    name: 'Vue',
+    tags: ['UI'],
+    Icon: (props) => <VueIcon {...props} />,
   },
   {
     key: 'next',
@@ -87,13 +105,20 @@ export const TECHNOLOGIES = [
     Icon: (props) => <VanillaExtractIcon {...props} />,
   },
   {
-    key: 'emotion',
-    name: 'Emotion',
+    key: 'saas',
+    name: 'SaaS',
     tags: ['CSS'],
+    Icon: (props) => <SaaSIcon {...props} />,
   },
   {
-    key: 'sass',
-    name: 'Sass',
+    key: 'element-ui',
+    name: 'Element-UI',
+    tags: ['CSS'],
+    Icon: (props) => <ElementUIIcon {...props} />,
+  },
+  {
+    key: 'emotion',
+    name: 'Emotion',
     tags: ['CSS'],
   },
   {
