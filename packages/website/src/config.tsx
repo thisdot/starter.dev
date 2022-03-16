@@ -136,7 +136,7 @@ export const TECHNOLOGIES = [
   },
   {
     key: 'redwood',
-    name: 'Redwood',
+    name: 'RedwoodJS',
     tags: ['Framework'],
     Icon: (props) => <RedwoodIcon {...props} />,
   },
