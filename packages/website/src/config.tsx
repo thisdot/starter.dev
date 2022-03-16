@@ -172,7 +172,7 @@ export const TECHNOLOGIES = [
   },
   {
     key: 'saas',
-    name: 'SaaS',
+    name: 'SASS',
     tags: ['CSS'],
     Icon: (props) => <SaaSIcon {...props} />,
   },
