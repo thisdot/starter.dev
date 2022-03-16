@@ -15,7 +15,7 @@ export function Logo() {
         rx="3"
         fill="white"
         stroke="#2C6FF2"
-        stroke-width="2"
+        strokeWidth="2"
       />
       <path d="M93.2576 0H148V40H83.4872L93.2576 0Z" fill="#2C6FF2" />
       <path

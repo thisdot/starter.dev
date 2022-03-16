@@ -1,9 +1,6 @@
-export interface Props {
-  className?: string;
-  size?: string | number;
-}
+import { Props } from "./types";
 
-export function NgRxIcon({ size = 48, className }) {
+export function NgRxIcon({ size = 48, className }: Props) {
   return (
     <svg
       height={size}
