@@ -109,6 +109,12 @@ export const TECHNOLOGIES = [
     Icon: (props) => <RemixIcon {...props} />,
   },
   {
+    key: 'quasar',
+    name: 'Quasar',
+    tags: ['Framework'],
+    Icon: (props) => <QuasarIcon {...props} />,
+  },
+  {
     key: 'tailwind',
     name: 'Tailwind',
     tags: ['CSS'],
@@ -144,22 +150,16 @@ export const TECHNOLOGIES = [
     tags: ['CSS'],
   },
   {
+    key: '11ty',
+    name: '11ty',
+    tags: ['Static Site Builder'],
+    Icon: (props) => <EleventyIcon {...props} />,
+  },
+  {
     key: 'react-query',
     name: 'React Query',
     tags: ['Data'],
     Icon: (props) => <ReactQueryIcon {...props} />,
-  },
-  {
-    key: 'quasar',
-    name: 'Quasar',
-    tags: ['Data'],
-    Icon: (props) => <QuasarIcon {...props} />,
-  },
-  {
-    key: '11ty',
-    name: '11ty',
-    tags: ['Data'],
-    Icon: (props) => <EleventyIcon {...props} />,
   },
   {
     key: 'ngrx',
