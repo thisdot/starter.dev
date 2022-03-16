@@ -19,7 +19,9 @@ import {
   NuxtIcon,
   NgRxIcon,
   RxJsIcon,
-  SCIcon
+  SCIcon,
+  QuasarIcon,
+  EleventyIcon
 } from './icons';
 
 export interface NavItem {
@@ -144,6 +146,18 @@ export const TECHNOLOGIES = [
     name: 'React Query',
     tags: ['Data'],
     Icon: (props) => <ReactQueryIcon {...props} />,
+  },
+  {
+    key: 'quasar',
+    name: 'Quasar',
+    tags: ['Data'],
+    Icon: (props) => <QuasarIcon {...props} />,
+  },
+  {
+    key: '11ty',
+    name: '11ty',
+    tags: ['Data'],
+    Icon: (props) => <EleventyIcon {...props} />,
   },
   {
     key: 'ngrx',

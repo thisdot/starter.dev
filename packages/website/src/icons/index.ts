@@ -19,3 +19,5 @@ export  { NuxtIcon } from './NuxtIcon';
 export { NgRxIcon } from './NgRxIcon';
 export { RxJsIcon } from './RxJsIcon';
 export { SCIcon } from './SCIcon';
+export { QuasarIcon } from './QuasarIcon';
+export { EleventyIcon } from './11tyIcon';

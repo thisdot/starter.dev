@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "jsx": "react",
+    // "jsx": "react",
     "baseUrl": ".",
     "moduleResolution": "node"
   }
