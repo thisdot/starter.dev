@@ -220,7 +220,7 @@ export const TECHNOLOGIES = [
   },
   {
     key: 'rxjs',
-    name: 'RxJs',
+    name: 'RxJS',
     tags: ['Data'],
     Icon: (props) => <RxJsIcon {...props} />,
   },
