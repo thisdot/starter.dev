@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { XIcon, MenuIcon } from '@heroicons/react/outline';
+import { FrameworkNavigation } from './FrameworkNavigation';
 
 interface Props {
   sections: string[];
@@ -9,8 +10,8 @@ export default function MobileNavigation({ sections }: Props) {
   const [open, setOpen] = useState(false);
 
   const toggleNavigation = () => {
-    const frameworksDiv = document.querySelector('.toggleDiv');
-    frameworksDiv.classList.toggle('show');
+    const toggleDiv = document.querySelector('.toggleDiv');
+    toggleDiv.classList.toggle('show');
     setOpen(!open);
   };
 
@@ -32,24 +33,8 @@ export default function MobileNavigation({ sections }: Props) {
         )}
       </div>
       {open ? (
-        <div className=" w-full h-screen overflow-visible">
-          <nav>
-            <ul>
-              {sections.map((name) => (
-                <li>
-                  <a
-                    href={`#${name.split(' ').join('').toLowerCase()}`}
-                    className="t-dark dark:dark-t-light block py-2 px-8 hover:text-blue-500 
-                      dark:hover:text-blue-500 text-md font-sm my-4 border-l-2 border-transparent hover:border-brand-500 
-                      focus:text-blue-500 focus:dark:text-blue-500 focus:border-brand-500"
-                    onClick={toggleNavigation}
-                  >
-                    {name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
+        <div className=" w-full h-screen">
+          <FrameworkNavigation sections={sections} toggleNavigation={toggleNavigation} />
         </div>
       ) : null}
     </>
