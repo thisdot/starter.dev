@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import TechItem from '../components/TechItem.astro';
+import MobileNavigation from '../components/MobileNavigation.tsx';
 import { TECHNOLOGIES } from '../config';
 
 const items = Astro.fetchContent('./kit/*.md');
@@ -26,8 +27,9 @@ const sections = technologies.reduce((acc, tech) => {
   title="Frameworks - starter.dev"
   description="Lists technologies used through the starter.dev kit collection"
 >
+  <MobileNavigation sections={Object.keys(sections)} client:load />
   <div
-    class="grid grid-cols-12 gap-x-8 max-w-screen-2xl mx-auto bg dark:dark-bg"
+    class="toggleDiv grid grid-cols-12 gap-x-8 max-w-screen-2xl mx-auto bg dark:dark-bg"
   >
     <aside class="hidden lg:block col-span-3">
       <div

@@ -16,6 +16,10 @@
     @apply bg-gray-900;
   }
 
+  .show {
+    display: none !important
+  }
+
   /* Text colors */
   .t {
     @apply text-gray-700;
