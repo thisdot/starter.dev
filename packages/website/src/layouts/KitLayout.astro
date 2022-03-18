@@ -3,6 +3,7 @@ import BaseHead from './BaseHead.astro';
 import KitHero from '../components/KitHero.astro';
 import { NavBar } from '../components/NavBar.tsx';
 import { TableOfContents } from '../components/TableOfContents.tsx';
+import MobileNavigation from '../components/MobileNavigation.tsx';
 import KitActionLinks from '../components/KitActionLinks.astro';
 import Footer from '../components/Footer.astro';
 import { parseKit } from '../lib/parseKits';
@@ -22,10 +23,13 @@ const kit = parseKit(content);
   <body class="bg dark:dark-bg min-h-screen text-base">
     <header>
       <NavBar currentPath={path} client:load />
-      <KitHero {...kit} />
+      <div class="toggleDiv">
+        <KitHero {...kit} />
+      </div>
     </header>
     <main>
-      <div class="grid grid-cols-12 gap-x-8 max-w-screen-2xl mx-auto">
+    <MobileNavigation headers={headers} client:load />
+      <div class="toggleDiv grid grid-cols-12 gap-x-8 max-w-screen-2xl mx-auto">
         <aside class="hidden lg:block col-span-3">
           <div
             class="pt-8 sticky top-0 border-r border-gray-400 dark:border-gray-700 min-h-[calc(100vh-120px)] overflow-y-auto"

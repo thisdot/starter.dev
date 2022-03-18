@@ -1,17 +1,19 @@
 import { useState } from 'react';
 import { XIcon, MenuIcon } from '@heroicons/react/outline';
 import { FrameworkNavigation } from './FrameworkNavigation';
+import { KitNavigation } from './KitNavigation';
 
 interface Props {
-  sections: string[];
+  sections?: string[];
+  headers?: any;
 }
 
-export default function MobileNavigation({ sections }: Props) {
+export default function MobileNavigation({ sections, headers }: Props) {
   const [open, setOpen] = useState(false);
 
   const toggleNavigation = () => {
-    const toggleDiv = document.querySelector('.toggleDiv');
-    toggleDiv.classList.toggle('show');
+    const toggleDivList = document.querySelectorAll('.toggleDiv');
+    toggleDivList.forEach((item) => item.classList.toggle('show'));
     setOpen(!open);
   };
 
@@ -24,7 +26,8 @@ export default function MobileNavigation({ sections }: Props) {
       >
         {!open ? (
           <>
-            <MenuIcon className="w-5 h-5 mr-2" aria-hidden="true" /> Categories
+            <MenuIcon className="w-5 h-5 mr-2" aria-hidden="true" />{' '}
+            {(sections && `Categories`) || (headers && `Overview`)}
           </>
         ) : (
           <>
@@ -34,7 +37,18 @@ export default function MobileNavigation({ sections }: Props) {
       </div>
       {open ? (
         <div className=" w-full h-screen">
-          <FrameworkNavigation sections={sections} toggleNavigation={toggleNavigation} />
+          {(sections && (
+            <FrameworkNavigation
+              sections={sections}
+              toggleNavigation={toggleNavigation}
+            />
+          )) ||
+            (headers && (
+              <KitNavigation
+                headers={headers}
+                toggleNavigation={toggleNavigation}
+              />
+            ))}
         </div>
       ) : null}
     </>
