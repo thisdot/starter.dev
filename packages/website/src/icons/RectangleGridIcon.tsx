@@ -1,6 +1,4 @@
-import { Props } from './types';
-
-export function RectangleGridIcon({ size }: Props) {
+export function RectangleGridIcon() {
   return (
     <svg
       width="576"
