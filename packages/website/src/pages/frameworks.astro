@@ -37,7 +37,7 @@ const sections = technologies.reduce((acc, tech) => {
       >
         <nav>
           <ul>
-            {Object.entries(sections).map(([name]) => (
+            {Object.keys(sections).map((name) => (
               <li>
                 <a
                   href={`#${name.split(' ').join('').toLowerCase()}`}
