@@ -53,19 +53,19 @@ const crumbs = [
         class="my-5 bg dark:dark-bg border border-gray-400 rounded-lg dark:border-gray-700"
       >
         <div class="flex">
-        <div class="p-4 items-center">
-          <TechIcon {...tech} variant="lg" />
-          <div class="ml-6">
-            <h1 class="heading-2 my-2 t-dark dark:dark-t-light">{tech.name}</h1>
-            <div class="text-xl t-light dark:dark-t">
-              {tech.tags.join(', ')}
+          <div class="p-4 items-center">
+            <TechIcon {...tech} variant="lg" />
+            <div class="ml-6">
+              <h1 class="heading-2 my-2 t-dark dark:dark-t-light">
+                {tech.name}
+              </h1>
+              <div class="text-xl t-light dark:dark-t">
+                {tech.tags.join(', ')}
+              </div>
             </div>
           </div>
-          </div>
           <div class="ml-auto p-0 m-0">
-            <RectangleGridIcon 
-              {}
-             />
+            <RectangleGridIcon />
           </div>
         </div>
       </div>
