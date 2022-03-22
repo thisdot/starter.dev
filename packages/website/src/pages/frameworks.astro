@@ -2,10 +2,11 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import TechItem from '../components/TechItem.astro';
 import { TECHNOLOGIES } from '../config';
+import Contributors from '../components/Contributors.astro';
 
 const items = Astro.fetchContent('./kit/*.md');
 
-const keywords = items.map(item => item.keywords.split(',')).flat(Infinity);
+const keywords = items.map((item) => item.keywords.split(',')).flat(Infinity);
 
 const technologies = TECHNOLOGIES.filter((tech) => {
   return keywords.includes(tech.key);
@@ -40,4 +41,5 @@ const sections = technologies.reduce((acc, tech) => {
       </div>
     ))}
   </div>
+  <Contributors />
 </BaseLayout>
