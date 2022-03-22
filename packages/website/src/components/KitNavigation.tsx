@@ -5,7 +5,7 @@ interface Props {
   toggleNavigation: () => void;
 }
 
-export function KitNavigation({ headers, toggleNavigation }) {
+export function KitNavigation({ headers, toggleNavigation }: Props) {
   return (
     <nav>
       <ul>
