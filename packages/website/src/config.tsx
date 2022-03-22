@@ -53,7 +53,7 @@ export const HEADER_NAV_ITEMS: NavItem[] = [
   },
   {
     title: 'Community',
-    href: 'https://discord.com',
+    href: 'https://discord.gg/u7gqGcpR56',
     Icon: (props) => (
       <DiscordIcon {...props} className="text-[#5766F2] dark:text-white" />
     ),
@@ -61,11 +61,8 @@ export const HEADER_NAV_ITEMS: NavItem[] = [
   },
   {
     title: 'Contribute',
-    href: '/contribute',
-  },
-  {
-    title: 'Become a Sponsor',
-    href: '/sponsor',
+    href: `${REPO_URL}/blob/main/CONTRIBUTING.md`, //This page is not available yet on the repo
+    isExternal: true,
   },
 ];
 

@@ -1,4 +1,5 @@
 ---
+  import { REPO_URL } from '../config';
 ---
 
 <div
@@ -10,7 +11,7 @@
       Create a PR if you see mistakes, room for imoprovements, or new
       opportunities to help dev team.
     </p>
-    <a class="btn btn-lg btn-primary" href="#">Contribute</a>
+    <a class="btn btn-lg btn-primary" target="_blank" href={`${REPO_URL}/blob/main/CONTRIBUTING.md`}>Contribute</a>
   </div>
   <div class="hidden col-span-3 lg:block">
   <img class="bg-cover w-full" src="../../public/TechList.png" alt="technology list" />
