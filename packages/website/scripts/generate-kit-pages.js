@@ -34,9 +34,12 @@ function formatMarkdownFile(markdown, frontmatter) {
 # edit KIT_PAGE_RELATIVE_LAYOUT_PATH in scripts/kitgen to change layout
 layout: ${KIT_PAGE_RELATIVE_LAYOUT_PATH}
 ${frontmatter}
+setup: |
+  import Contributors from '../../components/Contributors.astro'
 ---
 
 ${markdown}`;
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////

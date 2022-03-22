@@ -14,7 +14,7 @@ export function NavBar({ currentPath }: Props) {
   return (
     <Disclosure
       as="nav"
-      className="border-b border-gray-400 dark:border-gray-700"
+      className="border-b border-gray-400 dark:border-gray-700 sticky top-0 z-20 bg dark:dark-bg"
     >
       {({ open }) => (
         <>
