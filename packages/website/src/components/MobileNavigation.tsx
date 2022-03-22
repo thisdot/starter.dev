@@ -44,7 +44,8 @@ export default function MobileNavigation({ sections, headers }: Props) {
     <>
       <div
         onClick={toggleNavigation}
-        className="flex fixed right-6 bottom-8 border-solid border bg-slate-50 border-gray-800 p-2 
+        className="flex fixed right-6 bottom-8 border-solid border bg-slate-50
+         border-gray-800 p-2 
         rounded-md lg:hidden cursor-pointer"
       >
         {!open ? <Open /> : <Close />}
