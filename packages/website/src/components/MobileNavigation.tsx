@@ -3,9 +3,15 @@ import { XIcon, MenuIcon } from '@heroicons/react/outline';
 import { FrameworkNavigation } from './FrameworkNavigation';
 import { KitNavigation } from './KitNavigation';
 
+export type Header = {
+  depth: number;
+  slug: string;
+  text: string;
+};
+
 interface Props {
   sections?: string[];
-  headers?: any;
+  headers?: Header[];
 }
 
 export default function MobileNavigation({ sections, headers }: Props) {
@@ -17,6 +23,23 @@ export default function MobileNavigation({ sections, headers }: Props) {
     setOpen(!open);
   };
 
+  const Open = () => {
+    return (
+      <>
+        <MenuIcon className="w-5 h-5 mr-2" aria-hidden="true" />{' '}
+        {(sections && `Categories`) || (headers && `Overview`)}
+      </>
+    );
+  };
+
+  const Close = () => {
+    return (
+      <>
+        <XIcon className="w-5 h-5" aria-hidden="true" /> Close
+      </>
+    );
+  };
+
   return (
     <>
       <div
@@ -24,18 +47,9 @@ export default function MobileNavigation({ sections, headers }: Props) {
         className="flex fixed right-6 bottom-8 border-solid border bg-slate-50 border-gray-800 p-2 
         rounded-md lg:hidden cursor-pointer"
       >
-        {!open ? (
-          <>
-            <MenuIcon className="w-5 h-5 mr-2" aria-hidden="true" />{' '}
-            {(sections && `Categories`) || (headers && `Overview`)}
-          </>
-        ) : (
-          <>
-            <XIcon className="w-5 h-5" aria-hidden="true" /> Close
-          </>
-        )}
+        {!open ? <Open /> : <Close />}
       </div>
-      {open ? (
+      {open && (
         <div className=" w-full h-screen">
           {(sections && (
             <FrameworkNavigation
@@ -50,7 +64,7 @@ export default function MobileNavigation({ sections, headers }: Props) {
               />
             ))}
         </div>
-      ) : null}
+      )}
     </>
   );
 }

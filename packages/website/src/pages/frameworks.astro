@@ -4,10 +4,11 @@ import TechItem from '../components/TechItem.astro';
 import MobileNavigation from '../components/MobileNavigation.tsx';
 import { TECHNOLOGIES } from '../config';
 import Contributors from '../components/Contributors.astro';
+import { formatPath } from "../lib/formatPath.ts";
 
 const items = Astro.fetchContent('./kit/*.md');
 
-const keywords = items.map((item) => item.keywords.split(',')).flat(Infinity);
+const keywords = items.map((item) => item.keywords.split(',')).flat(10);
 
 const technologies = TECHNOLOGIES.filter((tech) => {
   return keywords.includes(tech.key);
@@ -29,8 +30,9 @@ const sections = technologies.reduce((acc, tech) => {
   description="Lists technologies used through the starter.dev kit collection"
 >
   <MobileNavigation sections={Object.keys(sections)} client:load />
+  <div class="toggleDiv">
   <div
-    class="toggleDiv grid grid-cols-12 gap-x-8 max-w-screen-2xl mx-auto bg dark:dark-bg"
+    class="grid grid-cols-12 gap-x-8 max-w-screen-2xl mx-auto bg dark:dark-bg"
   >
     <aside class="hidden lg:block col-span-3">
       <div
@@ -41,7 +43,7 @@ const sections = technologies.reduce((acc, tech) => {
             {Object.keys(sections).map((name) => (
               <li>
                 <a
-                  href={`#${name.split(' ').join('').toLowerCase()}`}
+                  href={`#${formatPath(name)}`}
                   class="t-dark dark:dark-t-light block py-2 px-4 hover:text-blue-500 dark:hover:text-blue-500 text-md font-sm my-4 border-r-2 border-transparent hover:border-brand-500 focus:text-blue-500 focus:dark:text-blue-500 focus:border-brand-500"
                 >
                   {name}
@@ -56,7 +58,7 @@ const sections = technologies.reduce((acc, tech) => {
       {Object.entries(sections).map(([name, technologies]) => (
         <div class="my-12">
           <h2
-            id={`${name.split(' ').join('').toLowerCase()}`}
+            id={`${formatPath(name)}`}
             class="heading-6 t-dark dark:dark-t-light my-6 "
           >
             {name}
@@ -76,4 +78,5 @@ const sections = technologies.reduce((acc, tech) => {
     </div>
   </div>
   <Contributors />
+  </div>
 </BaseLayout>
