@@ -23,16 +23,15 @@ export default function MobileNavigation({ sections, headers }: Props) {
     setOpen(!open);
   };
 
-  const Open = () => {
-    return (
-      <>
-        <MenuIcon className="w-5 h-5 mr-2" aria-hidden="true" />{' '}
-        {(sections && `Categories`) || (headers && `Overview`)}
-      </>
-    );
-  };
-
-  const Close = () => {
+  const getLabel = () => {
+    if (!open) {
+      return (
+        <>
+          <MenuIcon className="w-5 h-5 mr-2" aria-hidden="true" />{' '}
+          {(sections && `Categories`) || (headers && `Overview`)}
+        </>
+      );
+    }
     return (
       <>
         <XIcon className="w-5 h-5" aria-hidden="true" /> Close
@@ -48,7 +47,7 @@ export default function MobileNavigation({ sections, headers }: Props) {
          border-gray-800 p-2 
         rounded-md lg:hidden cursor-pointer"
       >
-        {!open ? <Open /> : <Close />}
+        {getLabel()}
       </div>
       {open && (
         <div className=" w-full h-screen">
