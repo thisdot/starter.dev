@@ -5,7 +5,7 @@ interface Props {
   toggleNavigation: () => void;
 }
 
-export function FrameworkNavigation({ sections, toggleNavigation }) {
+export function FrameworkNavigation({ sections, toggleNavigation }: Props) {
   return (
     <nav>
       <ul>
