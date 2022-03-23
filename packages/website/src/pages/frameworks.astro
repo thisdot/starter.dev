@@ -14,7 +14,7 @@ const technologies = TECHNOLOGIES.filter((tech) => {
   return keywords.includes(tech.key);
 });
 
-const sections = TECHNOLOGIES.reduce((acc, tech) => {
+const sections = technologies.reduce((acc, tech) => {
   tech.tags.forEach((tag) => {
     if (!acc[tag]) {
       acc[tag] = [];
