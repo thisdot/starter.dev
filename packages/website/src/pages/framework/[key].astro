@@ -6,6 +6,7 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { RectangleGridIcon } from '../../icons/RectangleGridIcon.tsx';
 import KitList from '../../components/KitList.astro';
 import TechIcon from '../../components/TechIcon.astro';
+import Contributors from '../../components/Contributors.astro';
 
 export async function getStaticPaths() {
   const items = Astro.fetchContent('../kit/*.md');
@@ -75,4 +76,5 @@ const crumbs = [
   <div class="p-4 my-20 max-w-screen-2xl mx-auto">
     <KitList {kits} />
   </div>
+  <Contributors />
 </BaseLayout>
