@@ -38,15 +38,10 @@ const kit = parseKit(content);
           </div>
         </aside>
         <article
-          class="col-span-12 lg:col-span-7 p-4 my-10 max-w-screen-2xl mx-auto prose prose-p:t dark:prose-p:dark-t prose-li:t dark:prose-li:dark-t prose-a:link prose-headings:t-dark dark:prose-headings:dark-t-light prose prose-h1:font-medium prose-h1:border-b prose-h1:pb-4 prose-h1:border-gray-200 dark:prose-h1:border-gray-800 prose-h1:text-3xl prose-h2:heading-3 prose-h2:font-semibold prose-h2:mt-12 prose-h3:heading-4 prose-pre:dark-bg prose-pre:text-white dark:prose-pre:bg-gray-800 dark:prose-code:text-white"
+          class="col-span-12 lg:col-span-9 p-4 my-10 max-w-screen-2xl mx-auto prose prose-p:t dark:prose-p:dark-t prose-li:t dark:prose-li:dark-t prose-a:link prose-headings:t-dark dark:prose-headings:dark-t-light prose prose-h1:font-medium prose-h1:border-b prose-h1:pb-4 prose-h1:border-gray-200 dark:prose-h1:border-gray-800 prose-h1:text-3xl prose-h2:heading-3 prose-h2:font-semibold prose-h2:mt-12 prose-h3:heading-4 prose-pre:dark-bg prose-pre:text-white dark:prose-pre:bg-gray-800 dark:prose-code:text-white"
         >
           <slot />
         </article>
-        <aside class="hidden lg:block lg:col-span-2">
-          <div class="mt-10 sticky top-0">
-            <KitActionLinks {...kit} />
-          </div>
-        </aside>
       </div>
     </main>
     <footer>
@@ -54,12 +49,12 @@ const kit = parseKit(content);
     </footer>
 
     <script>
-      let CTA = document.getElementById('callTOAction');
+      let CTA = document.getElementById('callToAction');
       document.addEventListener('scroll', () => {
         if (window.scrollY >= 278) {
-          CTA.classList.remove('invisible');
+          CTA.classList.remove('lg:invisible');
         } else {
-          CTA.classList.add('invisible');
+          CTA.classList.add('lg:invisible');
         }
       });
     </script>
