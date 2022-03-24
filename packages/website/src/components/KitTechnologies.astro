@@ -1,0 +1,15 @@
+---
+import TechItem from './TechItem.astro';
+const { technologies } = Astro.props;
+---
+
+<div class="py-24 max-w-screen-2xl">
+  <h1 class="heading-1 font-medium mb-8">Kits with these technologies</h1>
+  <div class="flex flex-col md:flex-row md:place-content-around flex-wrap">
+    {technologies.map((tech) => (
+      <div class="basis-[31%] grow m-2">
+        <TechItem {...tech} />
+      </div>
+    ))}
+  </div>
+</div>
