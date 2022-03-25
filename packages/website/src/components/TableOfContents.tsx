@@ -19,11 +19,13 @@ export function TableOfContents({ headers }: Props) {
     };
 
     document.addEventListener('scroll', () => {
+      let current = ''
       itemOffsets.current.forEach(item => {
-        if (window.scrollY + 147 >= item.topOffset) {
-          setActiveId(item.id)
+        if (scrollY >= item.topOffset - 160) {
+          current = item.id;
         }
       })
+      setActiveId(current);
     })
 
     getItemOffsets();
