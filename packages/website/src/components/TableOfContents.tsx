@@ -14,9 +14,17 @@ export function TableOfContents({ headers }: Props) {
       const titles = document.querySelectorAll('article :is(h1, h2, h3, h4)');
       itemOffsets.current = Array.from(titles).map((title) => ({
         id: title.id,
-        topOffset: title.getBoundingClientRect().top + window.scrollY,
+        topOffset: title.getBoundingClientRect().top,
       }));
     };
+
+    document.addEventListener('scroll', () => {
+      itemOffsets.current.forEach(item => {
+        if (window.scrollY + 147 >= item.topOffset) {
+          setActiveId(item.id)
+        }
+      })
+    })
 
     getItemOffsets();
     window.addEventListener('resize', getItemOffsets);
@@ -36,9 +44,9 @@ export function TableOfContents({ headers }: Props) {
               <a
                 href={`#${header.slug}`}
                 className={cn(
-                  'block header-link py-2 px-4 hover:text-blue-500 dark:hover:text-blue-500',
+                  'block header-link py-2 px-4 hover:text-blue-500 dark:hover:text-blue-500 border-r-2 border-transparent hover:border-brand-500',
                   {
-                    'text-blue-500': activeId === header.slug,
+                    'text-blue-500 border-brand-500': activeId === header.slug,
                     'text-2xl font-medium t-dark dark:dark-t-light my-4':
                       header.depth === 2,
                     'text-xl text-gray-800 dark:dark-t my-3':
