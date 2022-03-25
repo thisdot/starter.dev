@@ -1,7 +1,8 @@
 ---
 import cn from 'clsx';
-import { ShareIcon, ExternalLinkIcon } from '@heroicons/react/outline';
+import { BriefcaseIcon } from '@heroicons/react/outline';
 import { GitHubIcon } from '../icons/GitHubIcon.tsx';
+import { ShareIcon } from '../icons/ShareIcon.tsx';
 import { REPO_URL, SHOWCASE_REPO_URL } from '../config.tsx';
 const { name, inline } = Astro.props;
 ---
@@ -17,11 +18,11 @@ const { name, inline } = Astro.props;
     >Download Kit <GitHubIcon className="h-3.5 w-3.5 inline ml-2.5 mb-px" /></a
   >
   <a class="link text-sm" href={`${SHOWCASE_REPO_URL}/tree/main/${name}`}
-    >View Showcase <ExternalLinkIcon
+    ><BriefcaseIcon
       className="h-3.5 w-3.5 inline ml-0.5 mb-[2px]"
-    />
+    /> View Showcase
   </a>
   <a class="link text-sm" href="#"
-    >Share Kit <ShareIcon className="h-3.5 w-3.5 inline ml-1 mb-[2px]" /></a
+    ><ShareIcon className="h-3.5 w-3.5 inline ml-1 mb-[2px]" /> Share Kit</a
   >
 </div>
