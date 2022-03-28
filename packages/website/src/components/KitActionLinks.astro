@@ -17,12 +17,14 @@ const { name, inline } = Astro.props;
     href={`${REPO_URL}/tree/main/starters/${name}`}
     >Download Kit <GitHubIcon className="h-3.5 w-3.5 inline ml-2.5 mb-px" /></a
   >
-  <a class="link text-sm" href={`${SHOWCASE_REPO_URL}/tree/main/${name}`}
-    ><BriefcaseIcon
-      className="h-3.5 w-3.5 inline ml-0.5 mb-[2px]"
-    /> View Showcase
+  <a
+    class="link dark:text-[#95DFFF] text-sm"
+    href={`${SHOWCASE_REPO_URL}/tree/main/${name}`}
+    ><BriefcaseIcon className="h-3.5 w-3.5 inline ml-0.5 mb-[2px]" />
+    <span class="underline">View Showcase</span>
   </a>
-  <a class="link text-sm" href="#"
-    ><ShareIcon className="h-3.5 w-3.5 inline ml-1 mb-[2px]" /> Share Kit</a
+  <a class="link dark:text-[#95DFFF] text-sm" href="#"
+    ><ShareIcon className="h-3.5 w-3.5 inline ml-1 mb-[2px]" />
+    <span class="underline">Share Kit</span></a
   >
 </div>

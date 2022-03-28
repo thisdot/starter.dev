@@ -48,7 +48,7 @@ export function TableOfContents({ headers }: Props) {
                 className={cn(
                   'block header-link py-2 px-4 hover:text-blue-500 dark:hover:text-blue-500 border-r-2 border-transparent hover:border-brand-500',
                   {
-                    'text-blue-500 border-brand-500': activeId === header.slug,
+                    'dark:text-[#95DFFF] dark:border-[#95DFFF] text-blue-500 border-brand-500': activeId === header.slug,
                     'text-2xl font-medium t-dark dark:dark-t-light my-4':
                       header.depth === 2,
                     'text-xl text-gray-800 dark:dark-t my-3':
