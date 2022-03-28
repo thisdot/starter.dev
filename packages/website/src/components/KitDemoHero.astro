@@ -7,9 +7,9 @@ console.log(name)
 
 <div class="not-prose t-dark dark:dark-t-light pt-4">
   <div
-    class="flex flex-row items-center dark:bg-gray-800 dark:border-gray-700 mx-auto max-w-screen-2xl my-10 border border-solid border-brand-500 rounded-lg "
+    class="grid grid-cols-5 items-center dark:bg-gray-800 dark:border-gray-700 mx-auto max-w-screen-2xl my-10 border border-solid border-brand-500 rounded-lg "
   >
-    <div class="p-4 lg:px-8 lg:text-left flex-auto text-center">
+    <div class="p-4 lg:px-8 col-span-5 lg:col-span-2 lg:text-left text-center">
       <h1 class="heading-5 mb-6">See how kit works on examples</h1>
       <a
         class="btn btn-primary text-sm t-dark"
@@ -19,9 +19,9 @@ console.log(name)
         /></a
       >
     </div>
-    <div class="hidden lg:flex h-full ml-auto">
+    <div class="hidden h-full col-span-3 lg:block">
       <img
-        class="bg-cover h-full rounded-lg"
+        class="object-cover object-left rounded-lg w-full h-full"
         src="../../public/TechList.png"
         alt="technology list"
       />
