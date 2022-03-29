@@ -8,7 +8,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "format": "yarn prettier -w .",
-    "kitgen": "node ./scripts/kitgen",
+    "kitgen": "node ./scripts/generate-kit-pages.js",
     "predev": "yarn kitgen",
     "prebuild": "yarn kitgen"
   },

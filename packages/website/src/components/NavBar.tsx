@@ -4,6 +4,7 @@ import cn from 'clsx';
 import { DarkModeToggle } from './DarkModeToggle';
 import { HEADER_NAV_ITEMS } from '../config';
 import { GitHubIcon } from '../icons';
+import { Logo } from './Logo';
 
 export interface Props {
   currentPath: string;
@@ -21,9 +22,7 @@ export function NavBar({ currentPath }: Props) {
             <div className="flex justify-between h-20">
               <div className="flex-shrink-0 flex items-center">
                 <a href="/">
-                  <span className="text-[24px] font-bold text-black dark:text-white">
-                    starter.dev
-                  </span>
+                  <Logo />
                 </a>
               </div>
               <div className="hidden lg:ml-6 lg:flex lg:space-x-8">
@@ -33,7 +32,7 @@ export function NavBar({ currentPath }: Props) {
                     href={href}
                     target={isExternal ? '_blank' : '_self'}
                     className={cn(
-                      't-dark dark:dark-t inline-flex items-center px-1 pt-2 border-b-2 border-transparent hover:border-brand-500',
+                      't-dark dark:dark-t-light inline-flex items-center px-1 pt-2 border-b-2 border-transparent hover:border-brand-500',
                       {
                         'brand-b': currentPath === href,
                       }
@@ -53,9 +52,9 @@ export function NavBar({ currentPath }: Props) {
                 <div className="hidden lg:ml-4 lg:flex-shrink-0 lg:flex lg:items-center">
                   <div className="flex-shrink-0">
                     <a
-                      href="https://github.com"
+                      href="https://github.com/thisdot/starter.dev"
                       target="_blank"
-                      className="btn btn-primary text-sm"
+                      className="btn btn-tertiary btn-lg border-gray-600 text-gray-900 hover:bg-gray-100 dark:text-white dark:border-white dark:bg-transparent"
                     >
                       GitHub Kits Library
                       <GitHubIcon className="ml-2 text-lg" />
@@ -85,9 +84,9 @@ export function NavBar({ currentPath }: Props) {
                   href={href} // @ts-ignore
                   target={isExternal ? '_blank' : '_self'}
                   className={cn(
-                    'flex items-center justify-start bg dark:dark-bg t-dark dark:dark-t pl-6 pr-4 py-2 border-l-4 border-gray-400 dark:border-gray-700 outline-none focus:ring-2 focus:ring-inset ring-blue-500',
+                    'flex items-center justify-center bg dark:dark-bg t-dark dark:dark-t pl-6 pr-4 py-2 border-l-4 outline-none focus:ring-2 focus:ring-inset ring-blue-500',
                     {
-                      'brand-b': currentPath === href,
+                      'border-brand-500': currentPath === href,
                     }
                   )}
                 >
@@ -100,12 +99,12 @@ export function NavBar({ currentPath }: Props) {
                 </Disclosure.Button>
               ))}
             </div>
-            <div className="space-y-4 mx-6 my-4">
+            <div className="space-y-4 mx-6 my-4 text-center">
               <Disclosure.Button
                 as="a" // @ts-ignore
-                href="https://github.com" // @ts-ignore
+                href="https://github.com/thisdot/starter.dev" // @ts-ignore
                 target="_blank"
-                className="btn btn-primary w-full justify-center items-center"
+                className="btn btn-tertiary btn-lg border-gray-600 text-gray-900 hover:bg-gray-100 dark:text-white dark:border-white dark:bg-transparent"
               >
                 GitHub Kits Library
                 <GitHubIcon className="ml-2 text-lg" />

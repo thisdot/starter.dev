@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 const path = require('path');
 const fs = require('fs/promises');
 const pick = require('just-pick');
@@ -8,13 +6,7 @@ const rimraf = require('rimraf');
 const KIT_PAGE_RELATIVE_LAYOUT_PATH = '../../layouts/KitLayout.astro';
 
 function getRepoRootPath() {
-  const cwd = process.cwd();
-  const parts = cwd.split('/');
-  let relativePath = './';
-  if (parts[parts.length - 1] === 'website') {
-    relativePath = '../../';
-  }
-  return path.resolve(cwd, relativePath);
+  return path.resolve(__dirname, '../../../');
 }
 
 async function getKitDirs() {
@@ -77,25 +69,37 @@ ${markdown}`;
   for (const dir of kitDirs) {
     const kitPath = path.join(repoPath, 'starters', dir);
 
-    const readme = await fs.readFile(path.join(kitPath, 'README.md'), 'utf-8');
-    const json = await fs.readFile(path.join(kitPath, 'package.json'), 'utf-8');
-    const data = JSON.parse(json);
+    try {
+      const readme = await fs.readFile(
+        path.join(kitPath, 'README.md'),
+        'utf-8'
+      );
+      const json = await fs.readFile(
+        path.join(kitPath, 'package.json'),
+        'utf-8'
+      );
+      const data = JSON.parse(json);
 
-    const kitData = {
-      ...pick(data, ['name', 'version', 'description', 'keywords']),
-      readmePath: path.join(kitPath, 'README.md'),
-      starterPath: `/starters/${dir}`,
-    };
+      const kitData = {
+        ...pick(data, ['name', 'version', 'description', 'keywords']),
+        readmePath: path.join(kitPath, 'README.md'),
+        starterPath: `/starters/${dir}`,
+      };
 
-    const frontmatter = convertToFrontmatter(kitData);
-    const formattedMarkdown = formatMarkdownFile(readme, frontmatter);
+      const frontmatter = convertToFrontmatter(kitData);
+      const formattedMarkdown = formatMarkdownFile(readme, frontmatter);
 
-    const kitPagePath = path.join(
-      repoPath,
-      'packages/website/src/pages/kit',
-      `${data.name}.md`
-    );
+      const kitPagePath = path.join(
+        repoPath,
+        'packages/website/src/pages/kit',
+        `${data.name}.md`
+      );
 
-    await fs.writeFile(kitPagePath, formattedMarkdown, 'utf-8');
+      await fs.writeFile(kitPagePath, formattedMarkdown, 'utf-8');
+    } catch (err) {
+      console.error(
+        `KITGEN: failed to write kit page for ${dir}: ${err.message}`
+      );
+    }
   }
 })();
