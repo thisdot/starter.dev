@@ -1,7 +1,7 @@
 ---
 import BaseHead from './BaseHead.astro';
 import KitHero from '../components/KitHero.astro';
-import CallToAction from '../components/CallToAction.astro';
+import StickyHero from '../components/StickyHero.astro';
 import { NavBar } from '../components/NavBar.tsx';
 import { TableOfContents } from '../components/TableOfContents.tsx';
 import MobileNavigation from '../components/MobileNavigation.tsx';
@@ -24,10 +24,8 @@ const kit = parseKit(content);
   </head>
   <body class="bg dark:dark-bg min-h-screen text-base">
     <NavBar currentPath={path} client:load />
-    <div class="toggleDiv">
       <KitHero {...kit} />
-    </div>
-    <CallToAction {...kit} />
+    <StickyHero {...kit} />
     <main>
       <MobileNavigation {headers} client:load />
       <div class="toggleDiv grid grid-cols-12 gap-x-8 max-w-screen-2xl mx-auto">

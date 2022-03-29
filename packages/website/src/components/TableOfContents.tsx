@@ -18,7 +18,7 @@ export function TableOfContents({ headers }: Props) {
       }));
     };
 
-    document.addEventListener('scroll', () => {
+    const handleNavScroll = () => {
       let current = ''
       itemOffsets.current.forEach(item => {
         if (scrollY >= item.topOffset - 160) {
@@ -26,13 +26,16 @@ export function TableOfContents({ headers }: Props) {
         }
       })
       setActiveId(current);
-    })
+    }
+
+    document.addEventListener('scroll', handleNavScroll);
 
     getItemOffsets();
     window.addEventListener('resize', getItemOffsets);
 
     return () => {
       window.removeEventListener('resize', getItemOffsets);
+      document.addEventListener('scroll', handleNavScroll)
     };
   }, []);
 
