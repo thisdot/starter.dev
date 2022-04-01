@@ -56,10 +56,10 @@ const sections = technologies.reduce((acc, tech) => {
       </aside>
       <div class="col-span-12 lg:col-span-9 p-2 my-b-10 max-w-screen-2xl">
         {Object.entries(sections).map(([name, technologies]) => (
-          <div class="my-12 p-8">
+          <div class="my-2 p-4">
             <h2
               id={`${generateHeaderAnchor(name)}`}
-              class="heading-6 t-dark dark:dark-t-light my-6 "
+              class="heading-6 t-dark dark:dark-t-light my-6"
             >
               {name}
             </h2>
