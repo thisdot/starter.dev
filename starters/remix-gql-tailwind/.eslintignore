@@ -1,0 +1,7 @@
+node_modules/
+.vscode/
+tailwind.config.js
+/.cache
+/build
+/public/build
+*.local
