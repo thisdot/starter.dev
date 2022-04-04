@@ -1,0 +1,17 @@
+---
+import { SPONSORS_ICON } from '../config.tsx';
+import TechIcon from './TechIcon.astro';
+---
+
+<div
+  class="t-dark dark:dark-t-light flex-col lg:flex-row flex items-center mx-auto max-w-screen-2xl p-4 my-6 space-y-10 lg:space-x-32"
+>
+  <div class="heading-5 lg:mr-8 text-center">Sponsored by</div>
+  <div class="flex lg:justify-between grow lg:flex-row flex-col">
+    {SPONSORS_ICON.map(({ Icon }) => (
+      <div class="-mt-6">
+        <TechIcon Icon={Icon} />
+      </div>
+    ))}
+  </div>
+</div>

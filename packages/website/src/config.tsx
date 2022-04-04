@@ -258,3 +258,10 @@ export const TECHNOLOGIES = [
     Icon: (props) => <WebpackIcon {...props} />,
   },
 ];
+
+export const SPONSORS_ICON = [
+  {
+    name: 'angular',
+    Icon: (props) => <AngularIcon {...props} />
+  }
+]

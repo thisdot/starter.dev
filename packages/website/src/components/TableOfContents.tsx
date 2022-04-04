@@ -19,14 +19,16 @@ export function TableOfContents({ headers }: Props) {
     };
 
     const handleNavScroll = () => {
-      let current = ''
-      itemOffsets.current.forEach(item => {
+      let current = '';
+      itemOffsets.current.forEach((item) => {
         if (scrollY >= item.topOffset - 160) {
           current = item.id;
         }
-      })
+      });
       setActiveId(current);
-    }
+    };
+
+    getItemOffsets();
 
     document.addEventListener('scroll', handleNavScroll);
 
@@ -35,9 +37,17 @@ export function TableOfContents({ headers }: Props) {
 
     return () => {
       window.removeEventListener('resize', getItemOffsets);
-      document.addEventListener('scroll', handleNavScroll)
+      document.addEventListener('scroll', handleNavScroll);
     };
   }, []);
+
+  const handleClick = (id: string) => {
+    itemOffsets.current.forEach((item) => {
+      if (item.id === id) {
+        window.scrollTo(0, item.topOffset - 145);
+      }
+    });
+  };
 
   return (
     <nav>
@@ -47,11 +57,13 @@ export function TableOfContents({ headers }: Props) {
           .map((header) => (
             <li>
               <a
-                href={`#${header.slug}`}
+                onClick={() => handleClick(header.slug)}
+                // href={`#${header.slug}`} the onClick function only works well if this is commented out. Any better Idea?
                 className={cn(
-                  'block header-link py-2 px-4 hover:text-blue-500 dark:hover:text-blue-500 border-r-2 border-transparent hover:border-brand-500',
+                  'block header-link py-2 px-4 cursor-pointer hover:text-blue-500 dark:hover:text-blue-500 border-r-2 border-transparent hover:border-brand-500',
                   {
-                    'dark:text-[#95DFFF] dark:border-[#95DFFF] text-blue-500 border-brand-500': activeId === header.slug,
+                    'dark:text-[#95DFFF] dark:border-[#95DFFF] text-blue-500 border-brand-500':
+                      activeId === header.slug,
                     'text-[22px] leading-8 font-semibold t-dark dark:dark-t-light my-4':
                       header.depth === 2,
                     'text-[18px] leading-6 text-gray-800 dark:dark-t my-3':
