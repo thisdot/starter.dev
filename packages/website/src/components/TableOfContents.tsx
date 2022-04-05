@@ -58,7 +58,6 @@ export function TableOfContents({ headers }: Props) {
             <li>
               <a
                 onClick={() => handleClick(header.slug)}
-                // href={`#${header.slug}`} the onClick function only works well if this is commented out. Any better Idea?
                 className={cn(
                   'block header-link py-2 px-4 cursor-pointer hover:text-blue-500 dark:hover:text-blue-500 border-r-2 border-transparent hover:border-brand-500',
                   {
