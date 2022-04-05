@@ -1,6 +1,6 @@
 import { Props } from './types';
 
-export function ShareIcon({ className }) {
+export function ShareIcon({ className }: Props) {
   return (
     <svg
       viewBox="0 0 14 14"

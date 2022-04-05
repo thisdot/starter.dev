@@ -1,7 +1,4 @@
-export interface Props {
-  size?: number | string;
-  className?: string;
-}
+import { Props } from './types';
 
 export function VueIcon({ size = 48, className }: Props) {
   return (
