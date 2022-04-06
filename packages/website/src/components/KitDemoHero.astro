@@ -21,7 +21,7 @@ const { name } = Astro.props;
     <div class="hidden h-full col-span-3 lg:block">
       <img
         class="object-cover object-left rounded-lg w-full h-full"
-        src="../../public/TechList.png"
+        src={Astro.resolve("../../public/TechList.png")}
         alt="technology list"
       />
     </div>
