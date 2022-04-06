@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HomeHero from '../components/HomeHero.astro';
 import TechStacksSection from '../components/TechStacksSection.astro';
+import SponsoredBy from '../components/SponsoredBy.astro';
 import Contributors from '../components/Contributors.astro';
 ---
 
@@ -12,6 +13,9 @@ import Contributors from '../components/Contributors.astro';
   <main>
     <HomeHero />
     <TechStacksSection />
+    <SponsoredBy />
+    <div class="t-dark dark:dark-t-light p-4">
     <Contributors />
+  </div>
   </main>
 </BaseLayout>

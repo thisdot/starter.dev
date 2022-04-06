@@ -20,7 +20,7 @@ const { kit } = Astro.props;
     ))}
   </div>
   <div
-    class="px-4 py-2.5 flex items-center justify-between border-t border-gray-200 dark:border-gray-800 dark:bg-gray-800 group-hover:bg-brand-600 group-hover:border-brand-600"
+    class="px-4 py-2.5 flex items-center border-t dark:border-gray-700 border-gray-200 dark:bg-gray-800 group-hover:bg-brand-600 group-hover:border-brand-600"
   >
     <a
       href={`/kit/${kit.name}`}
@@ -32,7 +32,7 @@ const { kit } = Astro.props;
       href={`https://github.com/thisdot/starter.dev/tree/main/starters/${kit.name}`}
       target="_blank"
       rel="noopener noreferrer"
-      class="inline-flex items-center justify-center py-2.5 px-4 rounded-lg border border-gray-400 dark:border-gray-600 group-hover:border-white group-hover:bg-brand-500"
+      class="inline-flex items-center ml-auto justify-center py-2.5 px-4 rounded-lg border border-gray-400 dark:border-white group-hover:border-white group-hover:bg-brand-500"
       ><GitHubIcon
         size={22}
         className="t-light dark:text-gray-100 group-hover:text-white"

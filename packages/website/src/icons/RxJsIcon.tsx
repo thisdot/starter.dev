@@ -1,9 +1,6 @@
-export interface Props {
-  className?: string;
-  size?: string | number;
-}
+import { Props } from './types';
 
-export function RxJsIcon({ size = 48, className }) {
+export function RxJsIcon({ size = 48, className }: Props) {
   return (
     <svg
       viewBox="12.100000000000001 8.4 262.79999999999995 272.2"

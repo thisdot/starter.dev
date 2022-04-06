@@ -1,7 +1,4 @@
-export interface Props {
-  className?: string;
-  size?: string | number;
-}
+import { Props } from './types';
 
 export function TailwindIcon({ className, size = 48 }: Props) {
   return (

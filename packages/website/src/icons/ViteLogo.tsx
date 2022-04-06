@@ -1,7 +1,4 @@
-export interface Props {
-  className?: string;
-  size?: string | number;
-}
+import { Props } from './types';
 
 export function ViteLogo({ size = 48, className }: Props) {
   return (

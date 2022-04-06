@@ -14,7 +14,7 @@ export function NavBar({ currentPath }: Props) {
   return (
     <Disclosure
       as="nav"
-      className="border-b border-gray-400 dark:border-gray-700"
+      className="border-b border-gray-400 dark:border-gray-700 lg:sticky lg:top-0 z-20 bg dark:dark-bg drop-shadow-sm"
     >
       {({ open }) => (
         <>
@@ -32,7 +32,7 @@ export function NavBar({ currentPath }: Props) {
                     href={href}
                     target={isExternal ? '_blank' : '_self'}
                     className={cn(
-                      't-dark dark:dark-t-light inline-flex items-center px-1 pt-2 border-b-2 border-transparent hover:border-brand-500',
+                      't-dark dark:dark-t-light inline-flex items-center px-1 pt-2 border-b-2 border-transparent dark:hover:border-[#95DFFF] hover:border-brand-500',
                       {
                         'brand-b': currentPath === href,
                       }
@@ -84,7 +84,7 @@ export function NavBar({ currentPath }: Props) {
                   href={href} // @ts-ignore
                   target={isExternal ? '_blank' : '_self'}
                   className={cn(
-                    'flex items-center justify-center bg dark:dark-bg t-dark dark:dark-t pl-6 pr-4 py-2 border-l-4 outline-none focus:ring-2 focus:ring-inset ring-blue-500',
+                    'flex items-center justify-center bg dark:dark-bg t-dark dark:dark-t pl-6 pr-4 py-2 border-l-4 border-transparent outline-none focus:ring-2 focus:ring-inset ring-blue-500',
                     {
                       'border-brand-500': currentPath === href,
                     }

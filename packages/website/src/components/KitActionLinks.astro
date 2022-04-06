@@ -1,30 +1,30 @@
 ---
 import cn from 'clsx';
-import { ShareIcon, ExternalLinkIcon } from '@heroicons/react/outline';
+import { BriefcaseIcon } from '@heroicons/react/outline';
 import { GitHubIcon } from '../icons/GitHubIcon.tsx';
+import { ShareIcon } from '../icons/ShareIcon.tsx';
 import { REPO_URL, SHOWCASE_REPO_URL } from '../config.tsx';
 const { name, inline } = Astro.props;
 ---
 
 <div
   class={cn(
-    'flex',
-    inline
-      ? 'flex-row space-x-6 items-center'
-      : 'flex-col-reverse space-y-3 items-start'
+    'flex lg:flex-row lg:space-x-6 lg:items-center flex-col-reverse space-y-3 items-start'
   )}
 >
   <a
-    class={cn('btn btn-primary text-sm', !inline && 'mt-3.5')}
+    class={cn('btn btn-primary text-sm mt-3', !inline && 'mt-3.5')}
     href={`${REPO_URL}/tree/main/starters/${name}`}
     >Download Kit <GitHubIcon className="h-3.5 w-3.5 inline ml-2.5 mb-px" /></a
   >
-  <a class="link text-sm" href={`${SHOWCASE_REPO_URL}/tree/main/${name}`}
-    >View Showcase <ExternalLinkIcon
-      className="h-3.5 w-3.5 inline ml-0.5 mb-[2px]"
-    />
+  <a
+    class="link dark:text-[#95DFFF] text-sm"
+    href={`${SHOWCASE_REPO_URL}/tree/main/${name}`}
+    ><BriefcaseIcon className="h-3.5 w-3.5 inline ml-0.5 mb-[2px]" />
+    <span class="underline ml-2">View Showcase</span>
   </a>
-  <a class="link text-sm" href="#"
-    >Share Kit <ShareIcon className="h-3.5 w-3.5 inline ml-1 mb-[2px]" /></a
+  <a class="link dark:text-[#95DFFF] text-sm" href="#"
+    ><ShareIcon className="h-3.5 w-3.5 inline ml-1 mb-[2px]" />
+    <span class="underline ml-2">Share Kit</span></a
   >
 </div>

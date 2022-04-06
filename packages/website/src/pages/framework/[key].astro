@@ -3,8 +3,10 @@ import { TECHNOLOGIES } from '../../config';
 import { parseKits } from '../../lib/parseKits';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { RectangleGridIcon } from '../../icons/RectangleGridIcon.tsx';
 import KitList from '../../components/KitList.astro';
 import TechIcon from '../../components/TechIcon.astro';
+import Contributors from '../../components/Contributors.astro';
 
 export async function getStaticPaths() {
   const items = Astro.fetchContent('../kit/*.md');
@@ -49,15 +51,22 @@ const crumbs = [
     <div class="max-w-screen-2xl mx-auto p-8">
       <Breadcrumbs {crumbs} />
       <div
-        class="my-5 p-4 bg dark:dark-bg border border-gray-400 rounded-lg dark:border-gray-700"
+        class="my-5 bg dark:dark-bg border border-gray-400 rounded-lg dark:border-gray-700"
       >
-        <div class="flex items-center">
-          <TechIcon {...tech} variant="lg" />
-          <div class="ml-6">
-            <h1 class="heading-2 my-2 t-dark dark:dark-t-light">{tech.name}</h1>
-            <div class="text-xl t-light dark:dark-t">
-              {tech.tags.join(', ')}
+        <div class="flex">
+          <div class="p-8 flex flex-row items-center">
+            <TechIcon {...tech} variant="lg" />
+            <div class="ml-6">
+              <h1 class="heading-2 my-2 t-dark dark:dark-t-light">
+                {tech.name}
+              </h1>
+              <div class="text-xl t-light dark:dark-t">
+                {tech.tags.join(', ')}
+              </div>
             </div>
+          </div>
+          <div class="hidden lg:block ml-auto p-0 m-0">
+            <RectangleGridIcon />
           </div>
         </div>
       </div>
@@ -66,5 +75,8 @@ const crumbs = [
 
   <div class="p-4 my-20 max-w-screen-2xl mx-auto">
     <KitList {kits} />
+  </div>
+  <div class="t-dark dark:dark-t-light p-4">
+    <Contributors />
   </div>
 </BaseLayout>

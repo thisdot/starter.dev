@@ -5,9 +5,9 @@ const year = new Date().getFullYear();
 
 <footer class="w-full px-4 py-12">
   <div
-    class="flex flex-wrap items-center justify-between max-w-screen-2xl mx-auto"
+    class="flex flex-col gap-4 md:flex-row items-center justify-between max-w-screen-2xl mx-auto"
   >
-    <nav class="space-x-10">
+    <nav class="flex md:flex-row flex-col gap-4 md:space-x-10">
       {FOOTER_NAV_ITEMS.map(({ href, title, isExternal }) => (
         <a
           href={href}
@@ -18,6 +18,6 @@ const year = new Date().getFullYear();
         </a>
       ))}
     </nav>
-    <span class="t dark:dark-t-light">© {year}. This Dot Labs</span>
+    <span class="t dark:text-gray-300">© {year}. This Dot Labs</span>
   </div>
 </footer>

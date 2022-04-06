@@ -1,0 +1,41 @@
+---
+import { BriefcaseIcon } from '@heroicons/react/outline';
+import { ShareIcon } from '../icons/ShareIcon.tsx';
+import { GitHubIcon } from '../icons/GitHubIcon.tsx';
+import { REPO_URL, SHOWCASE_REPO_URL } from '../config.tsx';
+const { name } = Astro.props;
+---
+
+<div
+  id="callToAction"
+  class="hidden lg:block lg:invisible -mt-8 z-20 sticky top-20 p-4 bg-gray-200 dark:bg-gray-800"
+>
+  <div class="flex flex-row items-center max-w-screen-2xl mx-auto">
+    <div class="space-x-4">
+      <a class="link text-sm dark:text-[#95DFFF]" href="#"
+        ><ShareIcon className="h-3.5 w-3.5 inline ml-1 mb-[2px]" /><span
+          class="underline ml-2">Share Kit</span
+        ></a
+      >
+      <a class="link text-sm dark:text-[#95DFFF] underline" href="#"
+        >Have a question?</a
+      >
+    </div>
+    <div class="ml-auto space-x-4">
+      <a
+        class="link text-sm dark:text-[#95DFFF]"
+        href={`${SHOWCASE_REPO_URL}/tree/main/${name}`}
+      >
+        <BriefcaseIcon className="h-3.5 w-3.5 inline ml-0.5 mb-[2px]" /><span
+          class="underline ml-2">View Showcase</span
+        >
+      </a>
+      <a
+        class="btn btn-primary text-sm"
+        href={`${REPO_URL}/tree/main/starters/${name}`}
+        >Download Kit <GitHubIcon className="h-3.5 w-3.5 inline ml-2.5 mb-px"
+        /></a
+      >
+    </div>
+  </div>
+</div>
