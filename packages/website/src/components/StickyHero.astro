@@ -12,12 +12,12 @@ const { name } = Astro.props;
 >
   <div class="flex flex-row items-center max-w-screen-2xl mx-auto">
     <div class="space-x-4">
-      <a class="link text-sm dark:text-[#95DFFF]" href="#"
+      <a class="link text-sm dark:text-[#95DFFF] hidden" href="#"
         ><ShareIcon className="h-3.5 w-3.5 inline ml-1 mb-[2px]" /><span
           class="underline ml-2">Share Kit</span
         ></a
       >
-      <a class="link text-sm dark:text-[#95DFFF] underline" href="#"
+      <a class="link text-sm dark:text-[#95DFFF] underline" target="_blank" href={`${REPO_URL}/discussions`}
         >Have a question?</a
       >
     </div>
