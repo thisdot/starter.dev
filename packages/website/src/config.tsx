@@ -44,7 +44,7 @@ export interface NavItem {
 export const REPO_URL = 'https://github.com/thisdot/starter.dev';
 
 export const SHOWCASE_REPO_URL =
-  'https://github.com/thisdot/starter.dev-showcases';
+  'https://github.com/thisdot/starter.dev-github-showcases';
 
 export const HEADER_NAV_ITEMS: NavItem[] = [
   {
