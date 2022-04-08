@@ -6,7 +6,20 @@
 />
 <link rel="icon" type="image/x-icon" href="/favicon-96.png" />
 <link rel="stylesheet" href={Astro.resolve('../styles/global.css')} />
+{
+  // @ts-ignore
+import.meta.env.PROD && (
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DJRQC2FR73"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
 
+    gtag('config', 'G-DJRQC2FR73');
+  </script>
+)}
 <script>
   if (
     localStorage.theme === 'dark' ||
