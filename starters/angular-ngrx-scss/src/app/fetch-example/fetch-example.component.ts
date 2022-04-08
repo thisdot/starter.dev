@@ -1,15 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-fetch-example',
   templateUrl: './fetch-example.component.html',
-  styleUrls: ['./fetch-example.component.scss']
+  styleUrls: ['./fetch-example.component.scss'],
 })
-export class FetchExampleComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
+export class FetchExampleComponent {}
