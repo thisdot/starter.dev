@@ -1,8 +1,13 @@
 {
-  "name": "vue3-starterkit",
-  "version": "0.0.1",
-  "description": "A Quasar Project",
+  "name": "vue3-apollo-quasar",
+  "version": "0.1.0",
+  "description": "Vue3, Apollo, Quasar",
   "productName": "Vue3-Apollo starter kit",
+  "keywords": [
+    "vue3",
+    "apollo",
+    "quasar"
+  ],
   "author": "Jerry Hogan <jerry.hogan@thisdot.co>",
   "private": true,
   "scripts": {

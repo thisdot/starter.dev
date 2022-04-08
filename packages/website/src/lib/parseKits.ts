@@ -6,7 +6,7 @@ export function parseKits(kits: any[]) {
 }
 
 export function parseKit(kit) {
-  const keywords = kit.keywords.split(',');
+  const keywords = kit.keywords?.split(',') || [];
   const technologies = TECHNOLOGIES.filter((tech) => {
     return keywords.includes(tech.key);
   });

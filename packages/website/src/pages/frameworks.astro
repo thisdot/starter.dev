@@ -8,7 +8,7 @@ import { generateHeaderAnchor } from '../lib/generateHeaderAnchor';
 
 const items = Astro.fetchContent('./kit/*.md');
 
-const keywords = items.map((item) => item.keywords.split(',')).flat(10);
+const keywords = items.map((item) => item.keywords?.split(',') || []).flat(10);
 
 const technologies = TECHNOLOGIES.filter((tech) => {
   return keywords.includes(tech.key);
