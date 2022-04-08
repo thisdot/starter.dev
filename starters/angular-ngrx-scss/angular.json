@@ -3,6 +3,7 @@
   "version": 1,
   "cli": {
     "analytics": false,
+    "defaultCollection": "@ngrx/schematics",
     "packageManager": "yarn"
   },
   "newProjectRoot": "projects",
