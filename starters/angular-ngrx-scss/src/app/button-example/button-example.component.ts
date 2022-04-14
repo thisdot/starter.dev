@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { decrementCount, incrementCount, resetCount } from '../state/count/count.actions';
@@ -9,12 +9,12 @@ import { getCount } from '../state/count/count.selectors';
   templateUrl: './button-example.component.html',
   styleUrls: ['./button-example.component.scss'],
 })
-export class ButtonExampleComponent implements OnDestroy {
+export class ButtonExampleComponent implements OnInit {
   count$: Observable<number> = this.store.select(getCount);
 
   constructor(private readonly store: Store) {}
 
-  ngOnDestroy(): void {
+  ngOnInit(): void {
     this.reset();
   }
 
