@@ -79,4 +79,9 @@
   .btn-tertiary {
     @apply border-brand-500 bg-white hover:bg-brand-100 active:bg-brand-500 disabled:border-gray-100;
   }
+
+  /* Links */
+  .dark-link {
+    @apply text-[#95DFFF];
+  }
 }
