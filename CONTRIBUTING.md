@@ -17,38 +17,39 @@ Before you submit your Pull Request (PR), consider the following guidelines:
 - search [the repositiory](https://github.com/thisdot/starter.dev/pulls) for an open or closed PR that relates to your submission. Help us reduce redundancies.
 - If your PR is a new feature, for example a kit, We request you create a [feature request](https://github.com/thisdot/starter.dev/discussions/new?category=ideas) to first discuss this new Idea.
 
-- Make your changes in your forked repository as a new git branch:
-  ```shell
-  git checkout -b my-fix-branch main
-  ```
-- If you are adding a kit, take a look at the [kit essentials](https://github.com/thisdot/starter.dev#starter-kit-essentials) to get information and structural pattern of a kit.
-- Create your patch, following [code guidelines](#coding-guidelines).
-- Commit your changes using a descriptive commit message
+- To submit a fix/change:
+  - Make your changes in your forked repository as a new git branch:
+    ```shell
+    git checkout -b my-fix-branch main
+    ```
+  - If you are adding a kit, take a look at the [kit essentials](https://github.com/thisdot/starter.dev#starter-kit-essentials) to get information and structural pattern of a kit.
+  - Create your patch, following [code guidelines](#coding-guidelines).
+  - Commit your changes using a descriptive commit message
 
-  ```shell
-  git commit -a
-  ```
+    ```shell
+    git commit -a
+    ```
 
-  Note: the optional commit `-a` command line option will automatically "add" and "rm" edited files.
+    Note: the optional commit `-a` command line option will automatically "add" and "rm" edited files.
 
-- Push your branch to GitHub:
+  - Push your branch to GitHub:
 
-  ```shell
-  git push origin my-fix-branch
-  ```
+    ```shell
+    git push origin my-fix-branch
+    ```
 
-- In GitHub, send a pull request to `this-dot/starter.dev:main`.
-- If we suggest changes then:
+  - In GitHub, send a pull request to `this-dot/starter.dev:main`.
+  - If we suggest changes then:
 
-  - Make the required updates.
-  - Rebase your branch and force push to your GitHub repository (this will update your Pull Request):
+    - Make the required updates.
+    - Rebase your branch and force push to your GitHub repository (this will update your Pull Request):
 
     ```shell
     git rebase main -i
     git push -f
     ```
 
-  - When updating your feature branch with the requested changes, please do not overwrite the commit history, but rather contain the changes in new commits. This is for the sake of a clearer and easier review process.
+    - When updating your feature branch with the requested changes, please do not overwrite the commit history, but rather contain the changes in new commits. This is for the sake of a clearer and easier review process.
 
 ## Coding Guidelines
 
