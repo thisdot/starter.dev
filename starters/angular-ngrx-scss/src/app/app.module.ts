@@ -13,7 +13,12 @@ import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent, ButtonComponent, CounterExampleComponent, HomeComponent],
-  imports: [BrowserModule, AppRoutingModule, StoreModule.forRoot(reducers, { metaReducers }), !environment.production ? StoreDevtoolsModule.instrument() : []],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
