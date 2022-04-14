@@ -17,7 +17,7 @@ Before you submit your Pull Request (PR), consider the following guidelines:
 - search [the repositiory](https://github.com/thisdot/starter.dev/pulls) for an open or closed PR that relates to your submission. Help us reduce redundancies.
 - If your PR is a new feature, such as a new starter kit, we request you create a [feature request](https://github.com/thisdot/starter.dev/discussions/new?category=ideas) to first discuss this new idea.
 
-- To submit a fix/change:
+- To submit a bug fix or a new feature:
   - Make your changes in your forked repository as a new git branch:
     ```shell
     git checkout -b my-fix-branch main
