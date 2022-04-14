@@ -1,21 +1,22 @@
-import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { EffectsModule } from '@ngrx/effects';
-import { StoreModule } from '@ngrx/store';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment';
-import { AppRoutingModule } from './app-routing.module';
+import { StoreModule } from '@ngrx/store';
+
 import { AppComponent } from './app.component';
-import ButtonComponent from './counter-example/counter-button/button.component';
+import { AppRoutingModule } from './app-routing.module';
 import { CounterExampleComponent } from './counter-example/counter-example.component';
 import { FetchExampleComponent } from './fetch-example/fetch-example.component';
-import { HomeComponent } from './home/home.component';
 import { GreetingEffects } from './state/greeting/greeting.effects';
+import { HomeComponent } from './home/home.component';
+import { StarterButtonComponent } from './counter-example/starter-button/starter-button.component';
+import { environment } from '../environments/environment';
 import { metaReducers, reducers } from './state/reducers';
 
 @NgModule({
-  declarations: [AppComponent, ButtonComponent, CounterExampleComponent, FetchExampleComponent, HomeComponent],
+  declarations: [AppComponent, StarterButtonComponent, CounterExampleComponent, FetchExampleComponent, HomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

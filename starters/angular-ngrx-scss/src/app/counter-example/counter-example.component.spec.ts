@@ -1,12 +1,12 @@
-import { DebugElement } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { DebugElement } from '@angular/core';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
-import { decrementCount, incrementCount, resetCount } from '../state/count/count.actions';
-import { State } from '../state/reducers';
-import ButtonComponent from './counter-button/button.component';
 
 import { CounterExampleComponent } from './counter-example.component';
+import { StarterButtonComponent } from './starter-button/starter-button.component';
+import { State } from '../state/reducers';
+import { decrementCount, incrementCount, resetCount } from '../state/count/count.actions';
 
 const initialState: State = {
   count: { count: 10 },
@@ -21,7 +21,7 @@ describe('CounterExampleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CounterExampleComponent, ButtonComponent],
+      declarations: [CounterExampleComponent, StarterButtonComponent],
       providers: [provideMockStore({ initialState })],
     }).compileComponents();
 
@@ -43,7 +43,7 @@ describe('CounterExampleComponent', () => {
 
   it('should dispatch an increment action when the increment button is tapped', async () => {
     const spy = spyOn(store, 'dispatch');
-    const button = debugElement.query(By.css('storybook-button[label="Increment"]'));
+    const button = debugElement.query(By.css('.counter-example__button[label="Increment"]'));
     button.triggerEventHandler('onClick', null);
 
     fixture.detectChanges();
@@ -54,7 +54,7 @@ describe('CounterExampleComponent', () => {
 
   it('should dispatch a decrement action when the decrement button is tapped', async () => {
     const spy = spyOn(store, 'dispatch');
-    const button = debugElement.query(By.css('storybook-button[label="Decrement"]'));
+    const button = debugElement.query(By.css('.counter-example__button[label="Decrement"]'));
     button.triggerEventHandler('onClick', null);
 
     fixture.detectChanges();
@@ -65,7 +65,7 @@ describe('CounterExampleComponent', () => {
 
   it('should dispatch a reset action when the reset button is tapped', async () => {
     const spy = spyOn(store, 'dispatch');
-    const button = debugElement.query(By.css('storybook-button[label="Reset"]'));
+    const button = debugElement.query(By.css('.counter-example__button[label="Reset"]'));
     button.triggerEventHandler('onClick', null);
 
     fixture.detectChanges();
