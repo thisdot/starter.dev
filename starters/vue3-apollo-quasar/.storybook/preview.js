@@ -8,12 +8,8 @@ import '@quasar/extras/animate/fadeOutRight.css';
 
 // Loads the quasar styles and registers quasar functionality with storybook
 import 'quasar/dist/quasar.css';
-import {
-  app
-} from '@storybook/vue3';
-import {
-  Quasar
-} from 'quasar';
+import { app } from '@storybook/vue3';
+import { Quasar } from 'quasar';
 
 // This is also where you would setup things such as pinia for storybook
 
@@ -21,7 +17,7 @@ app.use(Quasar, {});
 
 export const parameters = {
   actions: {
-    argTypesRegex: '^on[A-Z].*'
+    argTypesRegex: '^on[A-Z].*',
   },
   controls: {
     matchers: {
