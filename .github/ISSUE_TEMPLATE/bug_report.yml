@@ -1,0 +1,51 @@
+name: Bug report
+description: A template for registering issues, bugs or feature requests
+title: "[Bug]: "
+labels: New Issue, bug
+body:
+  - type: markdown
+    attributes:
+      value: Thank you for taking the time to file a bug report. We appreciate your feedback and contributions to this repository. However, before submitting, please make sure you can fill out all the details below in the template. If your issue is a "how to" or feature enhancement discussion, please go to the discussions tab and submit there instead.
+  - type: input
+    attributes:
+      label: What kit and version are you using?
+      description: 'For example: next-react-query-tailwind@0.1.0'
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: What browser are you using?
+      description: 'For example: Chrome, Safari'
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: What operating system are you using?
+      description: 'For example: OSX, Windows, Ubuntu'
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Actual Behavior
+      description: A clear and concise description of what the bug is.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Expected Behavior
+      description: A clear and concise description of what you expected to happen.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Reproduction
+      description: Steps to reproduce the behavior. Please provide a StackBlitz that always reproduces the issue. Screenshots can be provided in the issue body below.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Additional Information
+      description: Any additional information you think might be helpful to resolve your issue.
+  - type: markdown
+    attributes:
+      value: Before posting the issue go through the steps you've written down to make sure the steps provided are detailed and clear. Contributors should be able to follow the steps provided in order to reproduce the bug. These steps are used to add integration tests to ensure the same issue does not happen again. Thanks in advance!
