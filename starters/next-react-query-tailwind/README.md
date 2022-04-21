@@ -61,6 +61,22 @@ git clone https://github.com/thisdot/starter.dev.git
 - `npm run lint` - Runs ESLint on the project.
 - `npm run prettier` - Formats code for the entire project
 
+## Kit Organization / Architecture
+
+The demo components included in the starter.kit are co-located with the tests and stories. If you want to follow this pattern, take a look at our GitHub demo implementation below. The demo implementation is done with the same structure but includes things like mocks, styles, and data fetching components that are modeled after an MVC type architecture. Using this structure makes it easy to find all the code and functionality related to a specific component.
+
+### Example directory
+
+```
+- UserRepos.test.tsx - Unit tests for the UserRepos component
+- UserRepos.stories.tsx - Storybook UI for the UserRepos component
+- UserRepos.mocks.tsx - Mock response for the UserRepos query
+- UserRepos.query.tsx - GraphQL query for the UserRepos component
+- UserRepos.data.tsx - Data fetching component for the UserRepos component
+- UserRepos.view.tsx - View component for the UserRepos component
+- UserRepos.module.css - CSS module for UserRepos component
+```
+
 ## Demo Implementation
 
 [Repository](https://github.com/thisdot/starter.dev-showcases/tree/main/next-react-query-tailwind)
