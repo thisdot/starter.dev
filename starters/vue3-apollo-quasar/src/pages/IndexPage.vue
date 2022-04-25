@@ -1,9 +1,18 @@
 <template>
   <q-page class="row items-center justify-evenly">
     <p v-if="loading">fetching user from github...</p>
-    <p v-else>
-      {{ data.name }}
-    </p>
+
+    <div v-else>
+      <q-card class="my-card">
+        <q-img :src="data.avatarUrl">
+          <div class="absolute-bottom text-subtitle2 text-center">
+            <p>
+              {{ data.name }}
+            </p>
+          </div>
+        </q-img>
+      </q-card>
+    </div>
   </q-page>
 </template>
 
@@ -45,3 +54,9 @@ export default defineComponent({
   },
 });
 </script>
+
+<style lang="scss" scoped>
+.my-card {
+  width: 250px;
+}
+</style>
