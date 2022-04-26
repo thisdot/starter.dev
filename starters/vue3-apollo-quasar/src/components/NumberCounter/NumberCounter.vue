@@ -1,16 +1,20 @@
 <template>
-  <section class="row q-col-gutter-lg">
-    <div class="col-12 col-sm-3">
-      <h6 class="text-weight-bold q-my-none">Count: {{ count }}</h6>
+  <section class="row q-col-gutter-lg q-px-md">
+    <div class="col-3">
+      <h6 class="text-weight-bold q-my-none">Count: {{ counter.count }}</h6>
     </div>
-    <div class="col-12 col-sm-3">
-      <q-btn color="primary" unelevated @click="increment">Increment</q-btn>
+    <div class="col-3">
+      <q-btn color="primary" unelevated @click="counter.increment"
+        >Increment</q-btn
+      >
     </div>
-    <div class="col-12 col-sm-3">
-      <q-btn color="primary" unelevated @click="decrement">Decrement</q-btn>
+    <div class="col-3">
+      <q-btn color="primary" unelevated @click="counter.decrement"
+        >Decrement</q-btn
+      >
     </div>
-    <div class="col-12 col-sm-3">
-      <q-btn color="primary" unelevated @click="reset">Reset</q-btn>
+    <div class="col-3">
+      <q-btn color="primary" unelevated @click="counter.reset">Reset</q-btn>
     </div>
 
     <div class="col-12 text-center">
@@ -20,7 +24,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'NumberCounter',
@@ -28,9 +32,7 @@ export default defineComponent({
 </script>
 
 <script lang="ts" setup>
-const count = ref(0);
+import { useCounterStore } from 'src/stores';
 
-const increment = () => count.value++;
-const decrement = () => count.value--;
-const reset = () => (count.value = 0);
+const counter = useCounterStore();
 </script>
