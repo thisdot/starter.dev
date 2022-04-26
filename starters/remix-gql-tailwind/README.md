@@ -1,12 +1,13 @@
-# remix-gql-tailwind starter kit
+# remix-gql-tailwind Starter Kit
 
-This starter kit features **Remix**, **GraphQL**, and **Tailwind CSS*.
+This starter kit features **Remix**, **GraphQL**, and **Tailwind CSS**.
 
 ## Table of Contents
 
 - [Overview](#overview)
   - [Tech Stack](#tech-stack)
   - [Included Tooling](#included-tooling)
+  - [Kit Organization / Architecture](#kit-organization-architecture)
   - [Example Components](#example-components)
 - [Installation](#installation)
   - [CLI](#cli)
@@ -19,6 +20,7 @@ This starter kit features **Remix**, **GraphQL**, and **Tailwind CSS*.
 ### Tech Stack
 
 - [Remix v1.x](https://remix.run/)
+- [React v17.x](https://reactjs.org)
 - [GraphQL](https://graphql.org/)
 - [Tailwind CSS v3.x](https://tailwindcss.com/)
 
@@ -30,6 +32,22 @@ This starter kit features **Remix**, **GraphQL**, and **Tailwind CSS*.
 - [ESLint](https://eslint.org/) - Code linting
 - [Prettier](https://prettier.io/) - Code formatting
 - [Vite](https://vitejs.dev/) - Storybook builder
+
+### Kit Organization / Architecture
+
+The demo components included in the starter kit are co-located with the tests and stories.
+
+- #### Storybook
+
+  Storybook was introduced because it is really a great tool for testing components in isolation and good for documentation.
+  As at [Remix v1.x](https://remix.run/), storybook isn't supported and doesn't work well with Remix, so [Vite](https://vitejs.dev/) was used in building storybook to work properly. This might change in the future.
+
+- #### Styling
+
+  This kit is bootstrapped with Tailwind for styling and this decision is majorly due to the fact that currently Tailwind is the preferred styling option for Remix as it still doesn't support some CSS libraries. see [here](https://remix.run/docs/en/v1/guides/styling).
+  The styles are exported from a `<componentName>.classNames.ts` as named exports, this is majorly to avoid [surface styling](https://remix.run/docs/en/v1/guides/styling#surfacing-styles) which can be a bit complex. Also, you could write the tailwind classes inline but this method is used to keep the file clean and ensure resuablitiy of styles.
+
+If you want to follow this pattern, take a look at our GitHub demo implementation below. Using this structure makes it easy to find all the code and functionality related to a specific component.
 
 ### Example Components
 
@@ -89,6 +107,6 @@ git clone https://github.com/thisdot/starter.dev.git
 
 ## Demo Implementation
 
-[Repository](https://github.com/thisdot/starter.dev-showcases/tree/main/remix)
+[Repository](https://github.com/thisdot/starter.dev-github-showcases/tree/main/remix)
 
 The demo application tries to implement some of GitHub's pages and functionality. It uses the OAuth credentials in GitHub to authenticate users with their GitHub accounts and uses graphql-request to fetch data from the GitHub Graphql API. Check out the link above to learn more or check out the demo!
