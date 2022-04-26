@@ -1,8 +1,10 @@
 <template>
-<div>
-  <button type="button" :class="classes" @click="onClick" :style="style">{{ label }}</button>
-  <q-btn color="primary">Something</q-btn>
-</div>
+  <div>
+    <button type="button" :class="classes" @click="onClick" :style="style">
+      {{ label }}
+    </button>
+    <q-btn color="primary">Something</q-btn>
+  </div>
 </template>
 
 <script>
@@ -48,8 +50,8 @@ export default {
       })),
       onClick() {
         emit('click');
-      }
-    }
+      },
+    };
   },
 };
 </script>
