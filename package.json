@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "workspaces": [
-    "starters/*",
-    "packages/*"
+    "starters/angular-ngrx-scss",
+    "starters/next-react-query-tailwind",
+    "packages/create-starter-dev",
+    "packages/website"
   ]
 }
