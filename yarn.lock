@@ -2531,6 +2531,25 @@
   resolved "https://registry.yarnpkg.com/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-12.0.7.tgz#8d75d3b6a872ab97ab73e3b4173d56dbb2991917"
   integrity sha512-frEWtbf+q8Oz4e2UqKJrNssk6DZ6/NLCQXn5/ORWE9dPAfe9XS6aK5FRZ6DuEPmmKd5gOoRkKJFFz5nYd+TeyQ==
 
+"@ngrx/effects@^13.0.2":
+  version "13.1.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-13.1.0.tgz#06d3fb04e7a37a3176f05054682ba353e8e6dce6"
+  integrity sha512-b0kaC1yly1WawtQils3Bxy2FhE9OwlQD/bptVd3s+bskdZ+iw9VlAMH9Spk2mfX+MyOEOk2FyrWlrOePtkw+7Q==
+  dependencies:
+    tslib "^2.0.0"
+
+"@ngrx/schematics@^13.0.2":
+  version "13.1.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/schematics/-/schematics-13.1.0.tgz#28ca9ceaa3271d3c019f93194ac488bac9d768c3"
+  integrity sha512-u832wAllTSF5Nivs/XoYL+nhKd6RKT8JY+CUiUXjfe+lX9EyRRfHXmolXG60g6a681HQs/2YT0fs4cVtE94HdA==
+
+"@ngrx/store@^13.0.2":
+  version "13.1.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/store/-/store-13.1.0.tgz#40665a09f673d64e9b6df3aed224ce51219151d3"
+  integrity sha512-2Phsd/CC5FcoS2VgC+Fo5VgfAUK3m7bjWTc8d6+h3UcoQpS3xyPnybGYifa/JYN1CFYmqypVDRWSMAgML2NU/A==
+  dependencies:
+    tslib "^2.0.0"
+
 "@ngtools/webpack@13.1.4":
   version "13.1.4"
   resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-13.1.4.tgz#359c9078af281413cf9cabd0af06b3fca4ddbf7e"
@@ -10330,7 +10349,7 @@ eslint@8.4.1:
     text-table "^0.2.0"
     v8-compile-cache "^2.0.3"
 
-eslint@^8.10.0, eslint@^8.3.0, eslint@^8.9.0:
+eslint@^8.10.0, eslint@^8.11.0, eslint@^8.3.0, eslint@^8.9.0:
   version "8.14.0"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-8.14.0.tgz#62741f159d9eb4a79695b28ec4989fcdec623239"
   integrity sha512-3/CE4aJX7LNEiE3i6FeodHmI/38GZtWCsAtsymScmzYapx8q1nVVb+eLcLSzATmCPXw5pT4TqVs1E0OmxAd9tw==
