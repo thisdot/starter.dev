@@ -31,3 +31,4 @@ export { ReduxIcon } from './ReduxIcon';
 export { GatsbyIcon } from './GatsbyIcon';
 export { CSSModuleIcon } from './CssModuleIcon';
 export { RedwoodIcon } from './RedwoodIcon';
+export { PiniaIcon } from './PiniaIcon';

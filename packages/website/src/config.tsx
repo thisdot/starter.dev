@@ -31,7 +31,8 @@ import {
   ReduxIcon,
   GatsbyIcon,
   CSSModuleIcon,
-  RedwoodIcon
+  RedwoodIcon,
+  PiniaIcon,
 } from './icons';
 
 export interface NavItem {
@@ -256,6 +257,12 @@ export const TECHNOLOGIES = [
     name: 'Webpack',
     tags: ['Tooling'],
     Icon: (props) => <WebpackIcon {...props} />,
+  },
+  {
+    key: 'pinia',
+    name: 'Pinia',
+    tags: ['Data'],
+    Icon: (props) => <PiniaIcon {...props} />,
   },
 ];
 
