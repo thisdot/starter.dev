@@ -103,9 +103,21 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
-  "defaultProject": "angular-apollo-tailwind"
+  "defaultProject": "angular-apollo-tailwind",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }
