@@ -19,42 +19,57 @@ This starter kit features Angular 13, NgRx and SCSS.
 
 ### Tech Stack
 
-- List of technologies used with links to relevant doc pages
+- [Angular](https://angular.io/docs) - JavaScript framework
+- [NgRx](https://ngrx.io/docs) - State management library
+- [Sass](https://sass-lang.com/) - Styling language
 
 ### Included Tooling
 
-- List of tooling used, e.g. jest, Storybook, ESLint, Prettier, etc., with their relevant doc pages linked
 - [Karma](https://karma-runner.github.io/latest/index.html) - Test runner
 - [Jasmine](https://jasmine.github.io/) - Test framework
 - [TypeScript](https://www.typescriptlang.org/) - Type checking
-- [Sass](https://sass-lang.com/) - CSS extension language
 - [Storybook](https://storybook.js.org/) - Component library
 - [ESLint](https://eslint.org/) - Code linting
 - [Prettier](https://prettier.io/) - Code formatting
 
 ### Architectural Decisions
 
-Components are split up into re-usable "dumb" components and page components. State management is done primarily using NgRx. Network request handling and all changes to application state are done through NgRx actions. This is done so that we can have a unidirectional data flow that's easy to reason about and reduces the cognitive overhead encountered when working in the project. NgRx when paired with the Redux devtools makes for an easier debugging experience overall as well.
+For this kit, we really wanted to showcase how powerful NgRx can be for managing the state of your application. NgRx helps us write actions to trigger state changes, reducers to handle those changes, selectors to grab pieces of state, and effects to communicate with external resources. By doing this, our Angular components can focus on presenting our data instead of needing to understand the logic of how that data is fetched and updated. You can also use the Redux devtools in your browser to help you visualize what your state looks like and how it updates.
 
 ### Example Components
 
-In this `starters/angular-ngrx-scss/src` directory you will find the `home`, `starter-button`, `button-example`, `fetch-example` and `state` directories.
+In this `starters/angular-ngrx-scss/src/app` directory you will find the `button-example`, `fetch-example`, `home`, and `state` directories.
 
-`home`, `button-example` and `fetch-example` are all "page" components and are referenced in `app-routing.module.ts` for routing different URLs to different components. The `starter-button` component is a re-usable component used by the `button-example` page, and is nested under its directory. The `state` directory is not for a component, but instead contains everything we need to manage the state of the application. It has all of our NgRx actions, reducers, selectors and effects.
+The `button-example`, `fetch-example`, and `home` components are "page" components. The `button-example` folder also includes a `starter-button` component, which is a re-usable button component tied to that page.
 
-Components are split up into an `.html` files, `.scss` files, `.ts` files and `.spec.ts` files:
+Angular components are split up into multiple files:
 
-- `.html` files contain our markup for the components.
-- `.scss` files contain styles for our component that will only affect our components thanks to view encapsulation.
-- `.ts` files contain TypeScript logic for the components. Not all components actually need logic, but this file is still required as it's where the HTML template and SCSS styles are linked to the component.
-- `.spec.ts` are optional files that contain automated tests for the component. These tests are written to work with Karma and Jasmine.
+- `.html` files contain markup for the component.
+- `.scss` files contain scoped styles that will only affect this component thanks to view encapsulation.
+- `.ts` files contain TypeScript logic for the component. Not all components actually need logic, but this file is still required as it's where the HTML template and SCSS styles are linked to the component.
+- `.spec.ts` files are optional files that contain automated tests for the component. These tests are written to work with Karma and Jasmine.
+- `.stories.ts` files are optional files containing stories for the component. These files help us visualize the different states the component can have in Storybook.
+
+The `state` directory is where all of our NgRx logic lives. You'll find a folder for `count` and `greeting`, which relates to the `button-example` and `fetch-example` components respectively. Each folder contains a file for:
+
+- actions
+- reducers
+- selectors
+- effects
+- unit tests for reducers or effects
 
 ## Installation
 
 ### CLI (Recommended)
 
 ```bash
-npx create-starter-dev
+npx @this-dot/create-starter
+```
+
+or
+
+```bash
+yarn create @this-dot/starter
 ```
 
 - Follow the prompts to select the `angular-ngrx-scss` starter kit and name your new project.
@@ -70,15 +85,20 @@ git clone https://github.com/thisdot/starter.dev.git
 
 - Copy and rename the `starters/angular-ngrx-scss` directory to the name of your new project.
 - `cd` into your project directory and run `yarn`.
-- Run `npm run dev` to start the development server.
+- Run `yarn dev` to start the development server.
 - Open your browser to `http://localhost:3000` to see the included example code running.
 
 ## Commands
 
-- List of helpful package.json scripts and their purpose
+- `yarn start` or `yarn dev` - Starts the development server.
+- `yarn build` - Builds a compiled version of your app.
+- `yarn test` - Runs the unit tests.
+- `yarn storybook` - Starts the Storybook UI.
+- `yarn lint` - Runs ESLint on the project.
+- `yarn prettier` - Formats code for the entire project.
 
 ## Demo Implementation
 
 [Repository](https://github.com/thisdot/starter.dev-showcases/tree/main/angular-ngrx-scss)
 
-The demo application re-implements some of GitHub's pages and functionality. It uses the OAuth credentials in GitHub to authenticate users with their GitHub accounts and uses RxJS to fetch data from the GitHub API. Check out the link above to learn more or check out the demo!
+The demo application re-implements some of GitHub's pages and functionality. It uses the OAuth credentials in GitHub to authenticate users with their GitHub accounts and uses Angular services and NgRx to fetch data from the GitHub API. Check out the link above to learn more or check out the demo!
