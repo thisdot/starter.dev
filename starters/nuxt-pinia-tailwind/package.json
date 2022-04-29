@@ -19,7 +19,8 @@
     "lint": "yarn lint:js && yarn lint:style && yarn lint:prettier",
     "lintfix": "prettier --write --list-different . && yarn lint:js --fix && yarn lint:style --fix",
     "prepare": "husky install",
-    "test": "jest"
+    "test": "jest",
+    "stories": "nuxt storybook"
   },
   "lint-staged": {
     "*.{js,ts,vue}": "eslint --cache",
@@ -43,6 +44,7 @@
     "@nuxt/typescript-build": "^2.1.0",
     "@nuxtjs/eslint-config-typescript": "^8.0.0",
     "@nuxtjs/eslint-module": "^3.0.2",
+    "@nuxtjs/storybook": "^4.3.1",
     "@nuxtjs/stylelint-module": "^4.1.0",
     "@nuxtjs/tailwindcss": "^4.2.1",
     "@vue/test-utils": "^1.3.0",
