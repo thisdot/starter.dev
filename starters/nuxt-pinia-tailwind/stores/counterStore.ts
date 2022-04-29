@@ -1,7 +1,7 @@
-import { defineStore } from 'pinia';
+import { defineStore } from 'pinia'
 
 export const useCounterStore = defineStore('counterStore', {
   state: () => ({
-    counter: 0
-  })
+    counter: 0,
+  }),
 })
