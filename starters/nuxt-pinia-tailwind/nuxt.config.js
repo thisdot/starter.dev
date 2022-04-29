@@ -53,6 +53,11 @@ export default {
     baseURL: '/',
   },
 
+  // Storybook module configuration: https://storybook.nuxtjs.org/api/options
+  storybook: {
+    // Options
+  },
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   }
