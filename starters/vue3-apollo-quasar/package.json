@@ -7,7 +7,6 @@
   "scripts": {
     "dev": "quasar dev",
     "build": "quasar build",
-    "test:unit": "vue-cli-service test:unit",
     "lint": "eslint --ext .js,.ts,.vue ./",
     "build-storybook": "build-storybook",
     "format": "prettier --write \"**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
