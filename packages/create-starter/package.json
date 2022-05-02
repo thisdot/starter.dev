@@ -1,6 +1,6 @@
 {
-  "name": "create-starter",
-  "version": "1.0.0",
+  "name": "@this-dot/create-starter",
+  "version": "0.1.0",
   "description": "A CLI script for generating starter.dev kits",
   "exports": {
     ".": "./create-starter.mjs"
@@ -10,10 +10,12 @@
   },
   "scripts": {
     "kitgen": "node ./scripts/generate-kit-data.js",
-    "build": "yarn clean && esbuild ./src/index.ts --bundle --platform=node --outfile=./dist/index.js && yarn kitgen",
-    "dev": "yarn clean && esbuild ./src/index.ts --watch --bundle --platform=node --outfile=./dist/index.js",
+    "prebuild": "yarn clean",
+    "build": "esbuild ./src/index.ts --bundle --platform=node --outfile=./dist/index.js",
+    "postbuild": "yarn kitgen",
+    "dev": "esbuild ./src/index.ts --watch --bundle --platform=node --outfile=./dist/index.js",
     "clean": "rimraf ./dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./create-starter.mjs"
   },
   "files": [
     "dist",

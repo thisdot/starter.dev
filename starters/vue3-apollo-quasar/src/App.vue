@@ -4,8 +4,12 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { setupGraphQL } from './init';
 
 export default defineComponent({
   name: 'App',
+  setup() {
+    setupGraphQL();
+  },
 });
 </script>

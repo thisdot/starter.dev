@@ -1,49 +1,62 @@
 <template>
   <q-page class="row items-center justify-evenly">
-    <example-component
-      title="Example component"
-      active
-      :todos="todos"
-      :meta="meta"
-    ></example-component>
+    <p v-if="loading">fetching user from github...</p>
+
+    <div v-else>
+      <q-card class="my-card">
+        <q-img :src="data.avatarUrl">
+          <div class="absolute-bottom text-subtitle2 text-center">
+            <p>
+              {{ data.name }}
+            </p>
+          </div>
+        </q-img>
+      </q-card>
+    </div>
   </q-page>
 </template>
 
 <script lang="ts">
-import { Todo, Meta } from 'components/models';
-import ExampleComponent from 'components/ExampleComponent.vue';
-import { defineComponent, ref } from 'vue';
+import { defineComponent } from 'vue';
+
+import { useQuery, useResult } from '@vue/apollo-composable';
+import gql from 'graphql-tag';
 
 export default defineComponent({
   name: 'IndexPage',
-  components: { ExampleComponent },
   setup() {
-    const todos = ref<Todo[]>([
-      {
-        id: 1,
-        content: 'ct1',
-      },
-      {
-        id: 2,
-        content: 'ct2',
-      },
-      {
-        id: 3,
-        content: 'ct3',
-      },
-      {
-        id: 4,
-        content: 'ct4',
-      },
-      {
-        id: 5,
-        content: 'ct5',
-      },
-    ]);
-    const meta = ref<Meta>({
-      totalCount: 1200,
+    const USER_PROFILE_QUERY = gql`
+      query ($username: String!) {
+        user(login: $username) {
+          status {
+            emojiHTML
+            message
+            __typename
+          }
+          name
+          login
+          bio
+          company
+          avatarUrl
+        }
+      }
+    `;
+
+    const { result, loading } = useQuery(USER_PROFILE_QUERY, {
+      username: 'hdjerry',
     });
-    return { todos, meta };
+
+    const data = useResult(result, [], ({ user }) => ({
+      ...user,
+    }));
+
+    return { data, loading };
   },
 });
 </script>
+
+<style lang="scss" scoped>
+.my-card {
+  width: 250px;
+}
+</style>

@@ -62,7 +62,9 @@ module.exports = configure(function (/* ctx */) {
 
       // publicPath: '/',
       // analyze: true,
-      // env: {},
+      env: {
+        VUE_APP_GRAPHQL_URL: 'https://api.github.com/graphql',
+      },
       // rawDefine: {}
       // ignorePublicFolder: true,
       // minify: false,
