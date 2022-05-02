@@ -5,6 +5,7 @@
   "description": "Vue3, Apollo, Quasar",
   "author": "Jerry Hogan <jerry.hogan@thisdot.co>",
   "scripts": {
+    "test:unit": "vue-cli-service test:unit",
     "lint": "eslint --ext .js,.ts,.vue ./",
     "build-storybook": "build-storybook",
     "format": "prettier --write \"**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
