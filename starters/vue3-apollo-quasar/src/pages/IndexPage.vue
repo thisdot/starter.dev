@@ -1,6 +1,6 @@
 <template>
   <q-page class="row items-center justify-evenly">
-    <p v-if="loading">fetching user from github...</p>
+    <!-- <p v-if="loading">fetching user from github...</p>
 
     <div v-else>
       <q-card class="my-card">
@@ -12,19 +12,23 @@
           </div>
         </q-img>
       </q-card>
-    </div>
+    </div> -->
+    <FetchMessage :message="message" />
   </q-page>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
+import FetchMessage from 'components/FetchMessage';
 
 import { useQuery, useResult } from '@vue/apollo-composable';
 import gql from 'graphql-tag';
 
 export default defineComponent({
   name: 'IndexPage',
+  components: { FetchMessage },
   setup() {
+    const message = ref('vue3-apollo-quasar starter.dev!');
     const USER_PROFILE_QUERY = gql`
       query ($username: String!) {
         user(login: $username) {
@@ -50,7 +54,7 @@ export default defineComponent({
       ...user,
     }));
 
-    return { data, loading };
+    return { data, loading, message };
   },
 });
 </script>
