@@ -1,20 +1,32 @@
 <template>
   <section class="row q-col-gutter-lg q-px-md">
     <div class="col-3">
-      <h6 class="text-weight-bold q-my-none">Count: {{ counter.count }}</h6>
+      <h6 class="text-weight-bold q-my-none">
+        Count: <span name="text-count">{{ counter.count }}</span>
+      </h6>
     </div>
     <div class="col-3">
-      <q-btn color="primary" unelevated @click="counter.increment"
+      <q-btn
+        name="btn-increment"
+        color="primary"
+        unelevated
+        @click="counter.increment"
         >Increment</q-btn
       >
     </div>
     <div class="col-3">
-      <q-btn color="primary" unelevated @click="counter.decrement"
+      <q-btn
+        name="btn-decrement"
+        color="primary"
+        unelevated
+        @click="counter.decrement"
         >Decrement</q-btn
       >
     </div>
     <div class="col-3">
-      <q-btn color="primary" unelevated @click="counter.reset">Reset</q-btn>
+      <q-btn name="btn-reset" color="primary" unelevated @click="counter.reset"
+        >Reset</q-btn
+      >
     </div>
 
     <div class="col-12 text-center">
