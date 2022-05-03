@@ -14,160 +14,7 @@
             "methods": []
         }
     ],
-    "injectables": [
-        {
-            "name": "HelloService",
-            "id": "injectable-HelloService-0ae0292226f40b31ab79da3e055c5a6b4046b645a8211cc35215a038ecbedd2fb1c3fb9d11f8d877bf9d677410d63af7f19a947539bdf0c44907a6aaa4f0be0e",
-            "file": "src/app/fetch-example/hello.service.ts",
-            "properties": [],
-            "methods": [
-                {
-                    "name": "getHelloMessage",
-                    "args": [
-                        {
-                            "name": "message",
-                            "type": "string",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "Observable<any>",
-                    "typeParameters": [],
-                    "line": 23,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "message",
-                            "type": "string",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "handleError",
-                    "args": [
-                        {
-                            "name": "operation",
-                            "type": "string",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "defaultValue": "'operation'"
-                        },
-                        {
-                            "name": "result",
-                            "type": "T",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "optional": true
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "(error: any) => Observable<T>",
-                    "typeParameters": [
-                        "T"
-                    ],
-                    "line": 37,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\nHandle Http operation that failed.\nLet the app continue.\n\n",
-                    "description": "<p>Handle Http operation that failed.\nLet the app continue.</p>\n",
-                    "modifierKind": [
-                        121
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": {
-                                "pos": 822,
-                                "end": 831,
-                                "flags": 4227072,
-                                "modifierFlagsCache": 0,
-                                "transformFlags": 0,
-                                "kind": 79,
-                                "escapedText": "operation"
-                            },
-                            "type": "string",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "defaultValue": "'operation'",
-                            "tagName": {
-                                "pos": 816,
-                                "end": 821,
-                                "flags": 4227072,
-                                "modifierFlagsCache": 0,
-                                "transformFlags": 0,
-                                "kind": 79,
-                                "escapedText": "param"
-                            },
-                            "comment": "<ul>\n<li>name of the operation that failed</li>\n</ul>\n"
-                        },
-                        {
-                            "name": {
-                                "pos": 880,
-                                "end": 886,
-                                "flags": 4227072,
-                                "modifierFlagsCache": 0,
-                                "transformFlags": 0,
-                                "kind": 79,
-                                "escapedText": "result"
-                            },
-                            "type": "T",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "optional": true,
-                            "tagName": {
-                                "pos": 874,
-                                "end": 879,
-                                "flags": 4227072,
-                                "modifierFlagsCache": 0,
-                                "transformFlags": 0,
-                                "kind": 79,
-                                "escapedText": "param"
-                            },
-                            "comment": "<ul>\n<li>optional value to return as the observable result</li>\n</ul>\n"
-                        }
-                    ]
-                }
-            ],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "description": "",
-            "rawdescription": "\n",
-            "sourceCode": "import { Injectable } from '@angular/core';\nimport { HttpClient, HttpHeaders } from '@angular/common/http';\nimport { Observable, of } from 'rxjs';\nimport { catchError, map } from 'rxjs/operators';\n\nconst helloURL = 'https://api.starter.dev/hello'\n\nconst httpOptions = {\n  headers: new HttpHeaders({\n    'Access-Control-Allow-Origin':'*' // for dev environment\n  }),\n};\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class HelloService {\n\n  constructor(\n    private http: HttpClient\n  ) { }\n\n  getHelloMessage(message: string): Observable<any> {\n    return this.http.get(`${helloURL}?greeting=${message}`, { ...httpOptions, responseType: 'text' })\n    .pipe(\n      catchError(this.handleError<any>('getHelloMessage', ''))\n    );\n  }\n\n  /**\n   * Handle Http operation that failed.\n   * Let the app continue.\n   *\n   * @param operation - name of the operation that failed\n   * @param result - optional value to return as the observable result\n   */\n  private handleError<T>(operation = 'operation', result?: T) {\n    return (error: any): Observable<T> => {\n\n      // send the error to remote logging infrastructure\n      console.error(error); // log to console instead\n\n      // Let the app keep running by returning an empty result.\n      return of(result as T);\n    };\n  }\n\n}\n\n",
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "args": [
-                    {
-                        "name": "http",
-                        "type": "HttpClient",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    }
-                ],
-                "line": 17,
-                "jsdoctags": [
-                    {
-                        "name": "http",
-                        "type": "HttpClient",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    }
-                ]
-            },
-            "type": "injectable"
-        }
-    ],
+    "injectables": [],
     "guards": [],
     "interceptors": [],
     "classes": [],
@@ -350,7 +197,7 @@
         },
         {
             "name": "FetchExampleComponent",
-            "id": "component-FetchExampleComponent-ea61e79c2798c895dfdcf2df7a47d543b55dde4f28333ca02ef9488b4de8a69f753ba3f2275108f712202384b63497e7e8f3364d558528ef4d6b3969eb86d5e3",
+            "id": "component-FetchExampleComponent-efd54505a7c6762e9ae6b4d8a9a1a3490715305f1776c1a82ed417b54a4f891e359cbb430f84a61c8b4902546ffa6c5849e3e55b8f314aa445c0b9f4683252ee",
             "file": "src/app/fetch-example/fetch-example.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -370,23 +217,23 @@
             "outputsClass": [],
             "propertiesClass": [
                 {
-                    "name": "helloMessage$",
+                    "name": "greetingMessage$",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Observable<any>",
                     "optional": false,
                     "description": "",
-                    "line": 13
+                    "line": 20
                 },
                 {
                     "name": "message",
-                    "defaultValue": "'angular-apollo-tailwind starter.dev!'",
+                    "defaultValue": "'Angular + Apollo + Tailwind starter.dev'",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 12,
+                    "line": 19,
                     "modifierKind": [
                         121
                     ]
@@ -394,12 +241,92 @@
             ],
             "methodsClass": [
                 {
+                    "name": "getGreetingMessage",
+                    "args": [
+                        {
+                            "name": "message",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Observable<any>",
+                    "typeParameters": [],
+                    "line": 30,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "message",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "handleError",
+                    "args": [
+                        {
+                            "name": "operation",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "defaultValue": "'operation'"
+                        },
+                        {
+                            "name": "result",
+                            "type": "T",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "(error: any) => Observable<T>",
+                    "typeParameters": [
+                        "T"
+                    ],
+                    "line": 44,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        121
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "operation",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "defaultValue": "'operation'",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "result",
+                            "type": "T",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "ngOnInit",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 19,
+                    "line": 26,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -411,7 +338,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { Observable } from 'rxjs';\nimport { HelloService } from './hello.service';\n\n@Component({\n  selector: 'app-fetch-example',\n  templateUrl: './fetch-example.component.html',\n  styleUrls: ['./fetch-example.component.scss']\n})\nexport class FetchExampleComponent implements OnInit {\n\n  private message: string = 'angular-apollo-tailwind starter.dev!'\n  helloMessage$!: Observable<any>;\n\n  constructor(\n    private helloService: HelloService\n  ) { }\n\n  ngOnInit(): void {\n    this.helloMessage$ = this.helloService.getHelloMessage(this.message)\n  }\n\n}\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { Observable, of } from 'rxjs';\nimport { catchError, map } from 'rxjs/operators';\nimport { Apollo, gql } from 'apollo-angular';\n\nexport const GET_GREETING = gql`\n  query HelloQuery($greeting: String!) {\n    hello(greeting: $greeting)\n  }\n`;\n\n@Component({\n  selector: 'app-fetch-example',\n  templateUrl: './fetch-example.component.html',\n  styleUrls: ['./fetch-example.component.scss']\n})\nexport class FetchExampleComponent implements OnInit {\n\n  private message: string = 'Angular + Apollo + Tailwind starter.dev'\n  greetingMessage$!: Observable<any>;\n\n  constructor(\n    private apollo: Apollo\n  ) { }\n\n  ngOnInit(): void {\n    this.greetingMessage$ = this.getGreetingMessage(this.message)\n  }\n\n  getGreetingMessage(message: string): Observable<any> {\n    return this.apollo.watchQuery<any>({\n      query: GET_GREETING,\n      variables: {\n        greeting: message\n      }\n    })\n    .valueChanges\n    .pipe(\n      map(({data}) => data.hello),\n      catchError(this.handleError<string>('getGreetingMessage', ''))\n    );\n  }\n\n  private handleError<T>(operation = 'operation', result?: T) {\n    return (error: any): Observable<T> => {\n\n      console.log('operation:', operation);\n\n      // send the error to remote logging infrastructure\n      console.error(error); // log to console instead\n\n      // Let the app keep running by returning an empty result.\n      return of(result as T);\n    };\n  }\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -427,17 +354,17 @@
                 "deprecationMessage": "",
                 "args": [
                     {
-                        "name": "helloService",
-                        "type": "HelloService",
+                        "name": "apollo",
+                        "type": "Apollo",
                         "deprecated": false,
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 13,
+                "line": 20,
                 "jsdoctags": [
                     {
-                        "name": "helloService",
-                        "type": "HelloService",
+                        "name": "apollo",
+                        "type": "Apollo",
                         "deprecated": false,
                         "deprecationMessage": "",
                         "tagName": {
@@ -449,7 +376,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<div class=\"text-center\">\n    <div class=\"mx-10 mt-10 border-b-4 border-blue-700\">\n        <h1 class=\"text-3xl py-6\">Apollo Fetch Data From API</h1>\n    </div>\n    <div class=\"flex flex-col mt-4 gap-2\">\n        <p>Message: {{ helloMessage$ | async }}</p>\n        <a href=\"/\" class=\"underline text-blue-700\"> Return Home </a>\n    </div>\n</div>\n"
+            "templateData": "<div class=\"text-center\">\n    <div class=\"mx-10 mt-10 border-b-4 border-blue-700\">\n        <h1 class=\"text-3xl py-6\">Apollo Fetch Data From API</h1>\n    </div>\n    <div class=\"flex flex-col mt-4 gap-2\">\n        <p>Message: {{ greetingMessage$ | async }}</p>\n        <a href=\"/\" class=\"underline text-blue-700\"> Return Home </a>\n    </div>\n</div>\n"
         },
         {
             "name": "HeaderComponent",
@@ -659,13 +586,13 @@
         },
         {
             "name": "GraphQLModule",
-            "id": "module-GraphQLModule-6cc9433235993891e971b2091029eb1333ee9158689358f2b4116132a839babd9b4e9e7113be67797e5cf1ca8272b97d19ba0babc16e0f204c74818e14d780fe",
+            "id": "module-GraphQLModule-0ee87af19697e16f96a0e60f3247dea24f05de4d5b2e5123e723e8728eeffe9f3213ecb112dad21071e702877fb56f3413a6d20e811cb4c57f43928e2c16cf71",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/graphql.module.ts",
             "methods": [],
-            "sourceCode": "import {NgModule} from '@angular/core';\nimport {ApolloModule, APOLLO_OPTIONS} from 'apollo-angular';\nimport {ApolloClientOptions, InMemoryCache} from '@apollo/client/core';\nimport {HttpLink} from 'apollo-angular/http';\n\nconst uri = ''; // <-- add the URL of the GraphQL server here\nexport function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {\n  return {\n    link: httpLink.create({uri}),\n    cache: new InMemoryCache(),\n  };\n}\n\n@NgModule({\n  exports: [ApolloModule],\n  providers: [\n    {\n      provide: APOLLO_OPTIONS,\n      useFactory: createApollo,\n      deps: [HttpLink],\n    },\n  ],\n})\nexport class GraphQLModule {}\n",
+            "sourceCode": "import {NgModule} from '@angular/core';\nimport {ApolloModule, APOLLO_OPTIONS} from 'apollo-angular';\nimport {ApolloClientOptions, InMemoryCache} from '@apollo/client/core';\nimport {HttpLink} from 'apollo-angular/http';\n\nconst uri = 'https://api.starter.dev/graphql'; // <-- add the URL of the GraphQL server here\nexport function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {\n  return {\n    link: httpLink.create({uri}),\n    cache: new InMemoryCache(),\n  };\n}\n\n@NgModule({\n  exports: [ApolloModule],\n  providers: [\n    {\n      provide: APOLLO_OPTIONS,\n      useFactory: createApollo,\n      deps: [HttpLink],\n    },\n  ],\n})\nexport class GraphQLModule {}\n",
             "children": [
                 {
                     "type": "providers",
@@ -727,24 +654,24 @@
                 "defaultValue": "{\n    production: false,\n}"
             },
             {
-                "name": "helloURL",
+                "name": "FetchExample",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/fetch-example/hello.service.ts",
+                "file": "src/app/fetch-example/fetch-example.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "'https://api.starter.dev/hello'"
+                "type": "",
+                "defaultValue": "Template.bind({})"
             },
             {
-                "name": "httpOptions",
+                "name": "GET_GREETING",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/fetch-example/hello.service.ts",
+                "file": "src/app/fetch-example/fetch-example.component.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "object",
-                "defaultValue": "{\n  headers: new HttpHeaders({\n    'Access-Control-Allow-Origin':'*' // for dev environment\n  }),\n}"
+                "type": "",
+                "defaultValue": "gql`\n  query HelloQuery($greeting: String!) {\n    hello(greeting: $greeting)\n  }\n`"
             },
             {
                 "name": "Large",
@@ -866,6 +793,16 @@
                 "defaultValue": "(args: Page) => ({\n  props: args,\n})"
             },
             {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/fetch-example/fetch-example.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<FetchExampleComponent>",
+                "defaultValue": "(args: FetchExampleComponent) => ({\n  props: args,\n})"
+            },
+            {
                 "name": "uri",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -873,7 +810,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "string",
-                "defaultValue": "''"
+                "defaultValue": "'https://api.starter.dev/graphql'"
             }
         ],
         "functions": [
@@ -955,26 +892,38 @@
                     "defaultValue": "{\n    production: false,\n}"
                 }
             ],
-            "src/app/fetch-example/hello.service.ts": [
+            "src/app/fetch-example/fetch-example.stories.ts": [
                 {
-                    "name": "helloURL",
+                    "name": "FetchExample",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/app/fetch-example/hello.service.ts",
+                    "file": "src/app/fetch-example/fetch-example.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "'https://api.starter.dev/hello'"
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
                 },
                 {
-                    "name": "httpOptions",
+                    "name": "Template",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/app/fetch-example/hello.service.ts",
+                    "file": "src/app/fetch-example/fetch-example.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "object",
-                    "defaultValue": "{\n  headers: new HttpHeaders({\n    'Access-Control-Allow-Origin':'*' // for dev environment\n  }),\n}"
+                    "type": "Story<FetchExampleComponent>",
+                    "defaultValue": "(args: FetchExampleComponent) => ({\n  props: args,\n})"
+                }
+            ],
+            "src/app/fetch-example/fetch-example.component.ts": [
+                {
+                    "name": "GET_GREETING",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/fetch-example/fetch-example.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "gql`\n  query HelloQuery($greeting: String!) {\n    hello(greeting: $greeting)\n  }\n`"
                 }
             ],
             "src/stories/Button.stories.ts": [
@@ -1102,7 +1051,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
-                    "defaultValue": "''"
+                    "defaultValue": "'https://api.starter.dev/graphql'"
                 }
             ]
         },
@@ -1144,7 +1093,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 4,
+        "count": 3,
         "status": "low",
         "files": [
             {
@@ -1162,34 +1111,35 @@
                 "linktype": "component",
                 "name": "FetchExampleComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/5",
+                "coverageCount": "0/7",
                 "status": "low"
             },
             {
-                "filePath": "src/app/fetch-example/hello.service.ts",
-                "type": "injectable",
-                "linktype": "injectable",
-                "name": "HelloService",
-                "coveragePercent": 25,
-                "coverageCount": "1/4",
-                "status": "low"
-            },
-            {
-                "filePath": "src/app/fetch-example/hello.service.ts",
+                "filePath": "src/app/fetch-example/fetch-example.component.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "helloURL",
+                "name": "GET_GREETING",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
             },
             {
-                "filePath": "src/app/fetch-example/hello.service.ts",
+                "filePath": "src/app/fetch-example/fetch-example.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "httpOptions",
+                "name": "FetchExample",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/fetch-example/fetch-example.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
