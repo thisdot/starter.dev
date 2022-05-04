@@ -7,16 +7,9 @@ import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    FetchExampleComponent
-  ],
-  imports: [
-    BrowserModule,
-    GraphQLModule,
-    HttpClientModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [AppComponent, FetchExampleComponent],
+    imports: [BrowserModule, GraphQLModule, HttpClientModule],
+    providers: [],
+    bootstrap: [AppComponent],
 })
 export class AppModule {}
