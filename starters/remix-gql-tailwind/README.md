@@ -1,6 +1,6 @@
 # remix-gql-tailwind starter kit
 
-This starter kit features **Remix**, **GraphQL**, and \*_Tailwind CSS_.
+This starter kit features **Remix**, **GraphQL**, and **Tailwind CSS**.
 
 ## Table of Contents
 
