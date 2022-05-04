@@ -3,16 +3,21 @@ import { getGreeting, getGreetingFailure, getGreetingSuccess } from './greeting.
 
 export const greetingFeatureKey = 'greeting';
 
-export interface State {
-  message?: string | null;
-  error?: string | null;
+export interface GreetingState {
+  message: string;
+  error: string;
+  isLoading: boolean;
 }
 
-export const initialState: State = {};
+export const initialState: GreetingState = {
+  message: '',
+  error: '',
+  isLoading: false,
+};
 
-export const reducer = createReducer(
+export const greetingReducer = createReducer(
   initialState,
-  on(getGreeting, (state) => ({ ...state, message: null, error: null })),
-  on(getGreetingSuccess, (state, { message }) => ({ ...state, message })),
-  on(getGreetingFailure, (state, { error }) => ({ ...state, error }))
+  on(getGreeting, (state) => ({ ...state, isLoading: true })),
+  on(getGreetingSuccess, (state, { message }) => ({ ...state, message, isLoading: false })),
+  on(getGreetingFailure, (state, { error }) => ({ ...state, error, isLoading: false }))
 );
