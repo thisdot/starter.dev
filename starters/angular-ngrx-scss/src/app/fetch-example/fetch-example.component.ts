@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { getGreeting } from '../state/greeting/greeting.selectors';
-import * as GreetingActions from '../state/greeting/greeting.actions';
+import { getGreeting } from '../state/greeting/greeting.actions';
+import { greetingMessage, loadingStatus, errorMessage } from '../state/greeting/greeting.selectors';
 
 @Component({
   selector: 'app-fetch-example',
@@ -10,11 +9,13 @@ import * as GreetingActions from '../state/greeting/greeting.actions';
   styleUrls: ['./fetch-example.component.scss'],
 })
 export class FetchExampleComponent implements OnInit {
-  greeting$ = this.store.select(getGreeting);
+  greeting$ = this.store.select(greetingMessage);
+  error$ = this.store.select(errorMessage);
+  isLoading$ = this.store.select(loadingStatus);
 
   constructor(private readonly store: Store) {}
 
   ngOnInit(): void {
-    this.store.dispatch(GreetingActions.getGreeting({ greeting: 'from This Dot Labs!' }));
+    this.store.dispatch(getGreeting({ greeting: 'angular-ngrx-scss starter.dev!' }));
   }
 }
