@@ -6,19 +6,24 @@
     </div>
     <div class="flex flex-col mt-4 gap-2">
         <div class="flex flex-row gap-2 justify-center">
-            <div class="py-2">Count: 0</div>
+            <p class="py-2">
+                Count: <span class="counter"> {{ counter }} </span>
+            </p>
             <button
                 class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded-lg"
+                (click)="increaseCounter()"
             >
                 Increment
             </button>
             <button
                 class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded-lg"
+                (click)="decreaseCounter()"
             >
                 Decrement
             </button>
             <button
                 class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded-lg"
+                (click)="resetCounter()"
             >
                 Reset
             </button>

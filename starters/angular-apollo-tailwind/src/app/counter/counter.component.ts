@@ -1,12 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { counterVar } from './cache';
 
 @Component({
     selector: 'app-counter',
     templateUrl: './counter.component.html',
     styleUrls: ['./counter.component.scss'],
 })
-export class CounterComponent implements OnInit {
-    constructor() {}
+export class CounterComponent {
+    get counter() {
+        return counterVar();
+    }
 
-    ngOnInit(): void {}
+    increaseCounter() {
+        counterVar(counterVar() + 1);
+    }
+
+    decreaseCounter() {
+        counterVar(counterVar() - 1);
+    }
+
+    resetCounter() {
+        counterVar(0);
+    }
 }
