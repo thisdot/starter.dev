@@ -1,27 +1,104 @@
-# AngularNgrxScss
+# angular-ngrx-scss starter kit
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
+This starter kit features Angular 13, NgRx and SCSS.
 
-## Development server
+## Table of Contents
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- [Overview](#overview)
+  - [Tech Stack](#tech-stack)
+  - [Included Tooling](#included-tooling)
+  - [Architectural Decisions](#architectural-decisions)
+  - [Example Components](#example-components)
+- [Installation](#installation)
+  - [CLI](#cli-recommended)
+  - [Manual](#manual)
+- [Commands](#commands)
+- [Demo Implementation](#demo-implementation)
 
-## Code scaffolding
+## Overview
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Tech Stack
 
-## Build
+- [Angular](https://angular.io/docs) - JavaScript framework
+- [NgRx](https://ngrx.io/docs) - State management library
+- [Sass](https://sass-lang.com/) - Styling language
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Included Tooling
 
-## Running unit tests
+- [Karma](https://karma-runner.github.io/latest/index.html) - Test runner
+- [Jasmine](https://jasmine.github.io/) - Test framework
+- [TypeScript](https://www.typescriptlang.org/) - Type checking
+- [Storybook](https://storybook.js.org/) - Component library
+- [ESLint](https://eslint.org/) - Code linting
+- [Prettier](https://prettier.io/) - Code formatting
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Architectural Decisions
 
-## Running end-to-end tests
+For this kit, we really wanted to showcase how powerful NgRx can be for managing the state of your application. NgRx helps us write actions to trigger state changes, reducers to handle those changes, selectors to grab pieces of state, and effects to communicate with external resources. By doing this, our Angular components can focus on presenting our data instead of needing to understand the logic of how that data is fetched and updated. You can also use the Redux devtools in your browser to help you visualize what your state looks like and how it updates.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Example Components
 
-## Further help
+In this `starters/angular-ngrx-scss/src/app` directory you will find the `button-example`, `fetch-example`, `home`, and `state` directories.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+The `button-example`, `fetch-example`, and `home` components are "page" components. The `button-example` folder also includes a `starter-button` component, which is a re-usable button component tied to that page.
+
+Angular components are split up into multiple files:
+
+- `.html` files contain markup for the component.
+- `.scss` files contain scoped styles that will only affect this component thanks to view encapsulation.
+- `.ts` files contain TypeScript logic for the component. Not all components actually need logic, but this file is still required as it's where the HTML template and SCSS styles are linked to the component.
+- `.spec.ts` files are optional files that contain automated tests for the component. These tests are written to work with Karma and Jasmine.
+- `.stories.ts` files are optional files containing stories for the component. These files help us visualize the different states the component can have in Storybook.
+
+The `state` directory is where all of our NgRx logic lives. You'll find a folder for `count` and `greeting`, which relates to the `button-example` and `fetch-example` components respectively. Each folder contains a file for:
+
+- actions
+- reducers
+- selectors
+- effects
+- unit tests for reducers or effects
+
+## Installation
+
+### CLI (Recommended)
+
+```bash
+npx @this-dot/create-starter
+```
+
+or
+
+```bash
+yarn create @this-dot/starter
+```
+
+- Follow the prompts to select the `angular-ngrx-scss` starter kit and name your new project.
+- `cd` into your project directory and run `yarn`.
+- Run `yarn dev` to start the development server.
+- Open your browser to `http://localhost:3000` to see the included example code running.
+
+### Manual
+
+```bash
+git clone https://github.com/thisdot/starter.dev.git
+```
+
+- Copy and rename the `starters/angular-ngrx-scss` directory to the name of your new project.
+- `cd` into your project directory and run `yarn`.
+- Run `yarn dev` to start the development server.
+- Open your browser to `http://localhost:3000` to see the included example code running.
+
+## Commands
+
+- `yarn start` or `yarn dev` - Starts the development server.
+- `yarn build` - Builds a compiled version of your app.
+- `yarn test` - Runs the unit tests.
+- `yarn storybook` - Starts the Storybook UI.
+- `yarn lint` - Runs ESLint on the project.
+- `yarn prettier` - Formats code for the entire project.
+
+## Demo Implementation
+
+[Repository](https://github.com/thisdot/starter.dev-showcases/tree/main/angular-ngrx-scss)
+
+The demo application re-implements some of GitHub's pages and functionality. It uses the OAuth credentials in GitHub to authenticate users with their GitHub accounts and uses Angular services and NgRx to fetch data from the GitHub API. Check out the link above to learn more or check out the demo!
