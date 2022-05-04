@@ -1,6 +1,18 @@
 # angular-apollo-tailwind starter kit
 
-This starter kit features **Angular**, **Apollo**, and **Tailwind CSS**.
+This starter kit features **Angular 13**, **Apollo** and **Tailwind CSS**.
+
+## Table of Contents
+
+- [Overview](#overview)
+  - [Tech Stack](#tech-stack)
+  - [Included Tooling](#included-tooling)
+  - [Example Components](#example-components)
+- [Installation](#installation)
+  - [CLI](#cli-recommended)
+  - [Manual](#manual)
+- [Commands](#commands)
+- [Demo Implementation](#demo-implementation)
 
 ## Overview
 
@@ -19,29 +31,45 @@ This starter kit features **Angular**, **Apollo**, and **Tailwind CSS**.
 - [ESLint](https://eslint.org/) - Code linting
 - [Prettier](https://prettier.io/) - Code formatting
 
-### Example Code
+### Example Components
 
 - Angular 'hello world' API endpoint `xx` with corresponding mock located in `xx`.
 - Greeting component `xx` that uses Angular Apollo to fetch data from the example hello endpoint.
 - An example Counter component `xx`
 - Both example components are have co-located tests and stories.
 
+In this `starters/angular-apollo-tailwind/src/app` directory you will find the `button-example`, `fetch-example`, and `home` directories.
+
+The `button-example`, `fetch-example`, and `home` components are "page" components. The `button-example` folder also includes a `starter-button` component, which is a re-usable button component tied to that page.
+
+Angular components are split up into multiple files:
+
+- `.html` files contain markup for the component.
+- `.scss` files contain scoped styles that will only affect this component thanks to view encapsulation.
+- `.ts` files contain TypeScript logic for the component. Not all components actually need logic, but this file is still required as it's where the HTML template and SCSS styles are linked to the component.
+- `.spec.ts` files are optional files that contain automated tests for the component. These tests are written to work with Karma and Jasmine.
+- `.stories.ts` files are optional files containing stories for the component. These files help us visualize the different states the component can have in Storybook.
+
 ## Installation
 
 ### CLI (Recommended)
 
 ```bash
-npx create-starter-dev
+npx @this-dot/create-starter
+```
+
+or
+
+```bash
+yarn create @this-dot/starter
 ```
 
 - Follow the prompts to select the `angular-apollo-tailwind` starter kit and name your new project.
 - `cd` into your project directory and run `yarn`.
-- Run `ng serve` to start the development server.
+- Run `yarn dev` to start the development server.
 - Open your browser to `http://localhost:4200` to see the included example code running.
 
 ### Manual
-
-This requires a download of the entire starter.dev repository and extraction of the `angular-apollo-tailwind` kit from the starters directory.
 
 ```bash
 git clone https://github.com/thisdot/starter.dev.git
@@ -49,14 +77,14 @@ git clone https://github.com/thisdot/starter.dev.git
 
 - Copy and rename the `starters/angular-apollo-tailwind` directory to the name of your new project.
 - `cd` into your project directory and run `yarn`.
-- Run `ng serve` to start the development server.
+- Run `yarn dev` to start the development server.
 - Open your browser to `http://localhost:4200` to see the included example code running.
 
 ## Commands
 
-- `ng serve` - Starts the development server.
-- `ng test` - Runs the unit tests.
-- `ng e2e` - Runs end-to-end tests.
+- `yarn serve` - Starts the development server.
+- `yarn build` - Builds a compiled version of your app.
+- `yarn test` - Runs the unit tests.
 - `yarn storybook` - Starts the Storybook UI.
 - `yarn lint` - Runs ESLint on the project.
 - `yarn prettier` - Formats code for the entire project
