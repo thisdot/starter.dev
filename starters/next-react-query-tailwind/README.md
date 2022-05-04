@@ -61,8 +61,28 @@ git clone https://github.com/thisdot/starter.dev.git
 - `npm run lint` - Runs ESLint on the project.
 - `npm run prettier` - Formats code for the entire project
 
+## Kit Organization / Architecture
+
+The demo components included in the starter.kit are co-located with the tests and stories. If you want to follow this pattern, take a look at our GitHub demo implementation below. The demo implementation is done with the same structure but includes things like mocks, styles, and data fetching components that are modeled after an MVC type architecture. Using this structure makes it easy to find all the code and functionality related to a specific component. This pattern follows the single responsibility principle since each file has one purpose. For example the `.data.tsx` Components handle data all the functionality related to data fetching for your component like network requests, pending states, and marshalling into a consumable format for your `.view.tsx` file that is responsible for just the UI representation of that data.
+
+### Example directory
+
+```
+- UserRepos.test.tsx - Unit tests for the UserRepos component
+- UserRepos.stories.tsx - Storybook UI for the UserRepos component
+- UserRepos.mocks.tsx - Mock response for the UserRepos query
+- UserRepos.query.tsx - GraphQL query for the UserRepos component
+- UserRepos.data.tsx - Data fetching component for the UserRepos component
+- UserRepos.view.tsx - View component for the UserRepos component
+- UserRepos.module.css - CSS module for UserRepos component
+```
+
+### Mock Service Worker (MSW)
+
+Mock Service Worker makes it easy to write tests or stories for Components or files that depend on network requests. It allows you to mock responses for any requests that you test depends on and when your tests are running it will intercept network requests and return the mock data you provided. We use the `.mock.ts` files to define our mock responses in our GitHub demo implementation. It can also be used to develop your app offline.
+
 ## Demo Implementation
 
-[Repository](https://github.com/thisdot/starter.dev-showcases/tree/main/next-react-query-tailwind)
+[Repository](https://github.com/thisdot/starter.dev-github-showcases/tree/main/next-react-query-tailwind)
 
 The demo for this starter kit is a partial implementation of some GitHub functionality. It uses the NextAuth library to authenticate users with their GitHub accounts and uses the GitHub GraphQL API with codegen and React Query to fetch data from the GitHub API. Check out the link above to learn more or check out the demo!
