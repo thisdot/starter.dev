@@ -1,4 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+    ApolloTestingController,
+    ApolloTestingModule,
+} from 'apollo-angular/testing';
 
 import { CounterComponent } from './counter.component';
 
@@ -20,5 +24,39 @@ describe('CounterComponent', () => {
         fixture = TestBed.createComponent(CounterComponent);
         const app = fixture.componentInstance;
         expect(app).toBeTruthy();
+    });
+
+    // it('should display the counter value', () => {
+    //     fixture = TestBed.createComponent(CounterComponent);
+    //     const app = fixture.componentInstance;
+    //     const expectedCounterValue = `Count: ${app.counter}`;
+    //     const compiled = fixture.nativeElement as HTMLElement;
+
+    //     console.log('compiled', compiled.querySelector('span'));
+    //     expect(compiled.querySelector('span')?.textContent).toContain(expectedCounterValue);
+    // });
+
+    it('should increase the counter value', () => {
+        fixture = TestBed.createComponent(CounterComponent);
+        const app = fixture.componentInstance;
+        const expectedCounterValue = app.counter + 1;
+        app.increaseCounter();
+        expect(app.counter).toBe(expectedCounterValue);
+    });
+
+    it('should decrease the counter value', () => {
+        fixture = TestBed.createComponent(CounterComponent);
+        const app = fixture.componentInstance;
+        const expectedCounterValue = app.counter - 1;
+        app.decreaseCounter();
+        expect(app.counter).toBe(expectedCounterValue);
+    });
+
+    it('should reset the counter value', () => {
+        fixture = TestBed.createComponent(CounterComponent);
+        const app = fixture.componentInstance;
+        const expectedCounterValue = 0;
+        app.resetCounter();
+        expect(app.counter).toBe(expectedCounterValue);
     });
 });

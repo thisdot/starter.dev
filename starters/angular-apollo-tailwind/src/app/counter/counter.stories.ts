@@ -14,9 +14,7 @@ export default {
     ],
 } as Meta;
 
-const Template: Story<CounterComponent> = (
-    args: CounterComponent
-) => ({
+const Template: Story<CounterComponent> = (args: CounterComponent) => ({
     props: args,
 });
 
