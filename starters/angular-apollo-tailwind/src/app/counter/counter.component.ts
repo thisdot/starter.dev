@@ -23,3 +23,4 @@ export class CounterComponent {
         counterVar(0);
     }
 }
+s;
