@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-"use strict";
+'use strict';
 
 const currentVersion = process.versions.node;
-const requiredMajorVersion = parseInt(currentVersion.split(".")[0], 10);
+const requiredMajorVersion = parseInt(currentVersion.split('.')[0], 10);
 const minimumMajorVersion = 14;
 
 if (requiredMajorVersion < minimumMajorVersion) {
@@ -11,4 +11,4 @@ if (requiredMajorVersion < minimumMajorVersion) {
   process.exit(1);
 }
 
-import("./dist/index.js").then(({ main }) => main());
+import('./dist/index.js').then(({ main }) => main());
