@@ -18,8 +18,8 @@ This starter kit features **Angular 13**, **Apollo** and **Tailwind CSS**.
 
 ### Tech Stack
 
-- [Angular v13.x](https://nextjs.org)
-- [Apollo v3.x](https://reactjs.org)
+- [Angular v13.x](https://angular.io/docs)
+- [Apollo v3.x](https://apollo-angular.com)
 - [Tailwind CSS v3.x](https://tailwindcss.com/)
 
 ### Included Tooling
@@ -33,14 +33,10 @@ This starter kit features **Angular 13**, **Apollo** and **Tailwind CSS**.
 
 ### Example Components
 
-- Angular 'hello world' API endpoint `xx` with corresponding mock located in `xx`.
-- Greeting component `xx` that uses Angular Apollo to fetch data from the example hello endpoint.
-- An example Counter component `xx`
-- Both example components are have co-located tests and stories.
-
-In this `starters/angular-apollo-tailwind/src/app` directory you will find the `button-example`, `fetch-example`, and `home` directories.
-
-The `button-example`, `fetch-example`, and `home` components are "page" components. The `button-example` folder also includes a `starter-button` component, which is a re-usable button component tied to that page.
+- Angular 'hello world' API endpoint `https://api.starter.dev/graphql` with corresponding mock located in `fetch-example.component.spec.ts`.
+- Greeting component `app-fetch-example` that uses Angular Apollo to fetch data from the example hello endpoint.
+- An example Counter component `app-counter`
+- Both example components have co-located tests and stories.
 
 Angular components are split up into multiple files:
 
@@ -66,7 +62,7 @@ yarn create @this-dot/starter
 
 - Follow the prompts to select the `angular-apollo-tailwind` starter kit and name your new project.
 - `cd` into your project directory and run `yarn`.
-- Run `yarn dev` to start the development server.
+- Run `yarn start` to start the development server.
 - Open your browser to `http://localhost:4200` to see the included example code running.
 
 ### Manual
@@ -77,12 +73,12 @@ git clone https://github.com/thisdot/starter.dev.git
 
 - Copy and rename the `starters/angular-apollo-tailwind` directory to the name of your new project.
 - `cd` into your project directory and run `yarn`.
-- Run `yarn dev` to start the development server.
+- Run `yarn start` to start the development server.
 - Open your browser to `http://localhost:4200` to see the included example code running.
 
 ## Commands
 
-- `yarn serve` - Starts the development server.
+- `yarn start` - Starts the development server.
 - `yarn build` - Builds a compiled version of your app.
 - `yarn test` - Runs the unit tests.
 - `yarn storybook` - Starts the Storybook UI.
@@ -93,4 +89,4 @@ git clone https://github.com/thisdot/starter.dev.git
 
 [Repository](https://github.com/thisdot/starter.dev-showcases/tree/main/angular-apollo-tailwind)
 
-The demo for this starter kit is a partial implementation of some GitHub functionality. It uses the xxx library to authenticate users with their GitHub accounts and uses the GitHub GraphQL API with Apollo to fetch data from the GitHub API. Check out the link above to learn more or check out the demo!
+The demo for this starter kit is a partial implementation of some GitHub functionality. It uses the OAuth credentials in GitHub to authenticate users with their GitHub accounts and uses the GitHub GraphQL API with Apollo to fetch data from the GitHub API. Check out the link above to learn more or check out the demo!
