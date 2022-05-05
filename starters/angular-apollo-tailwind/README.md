@@ -35,7 +35,7 @@ This starter kit features **Angular 13**, **Apollo** and **Tailwind CSS**.
 
 - Angular 'hello world' API endpoint `https://api.starter.dev/graphql` with corresponding mock located in `fetch-example.component.spec.ts`.
 - Greeting component `app-fetch-example` that uses Angular Apollo to fetch data from the example hello endpoint.
-- An example Counter component `app-counter`
+- An example Counter component `app-counter-example`
 - Both example components have co-located tests and stories.
 
 Angular components are split up into multiple files:
@@ -87,6 +87,6 @@ git clone https://github.com/thisdot/starter.dev.git
 
 ## Demo Implementation
 
-[Repository](https://github.com/thisdot/starter.dev-showcases/tree/main/angular-apollo-tailwind)
+[Repository](https://github.com/thisdot/starter.dev-github-showcases/tree/main/angular-apollo-tailwind)
 
 The demo for this starter kit is a partial implementation of some GitHub functionality. It uses the OAuth credentials in GitHub to authenticate users with their GitHub accounts and uses the GitHub GraphQL API with Apollo to fetch data from the GitHub API. Check out the link above to learn more or check out the demo!
