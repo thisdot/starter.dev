@@ -4,16 +4,16 @@ import {
     ApolloTestingModule,
 } from 'apollo-angular/testing';
 
-import { CounterComponent } from './counter.component';
+import { CounterExampleComponent } from './counter-example.component';
 
-describe('CounterComponent', () => {
-    let component: CounterComponent;
-    let fixture: ComponentFixture<CounterComponent>;
+describe('CounterExampleComponent', () => {
+    let component: CounterExampleComponent;
+    let fixture: ComponentFixture<CounterExampleComponent>;
     let controller: ApolloTestingController;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            declarations: [CounterComponent],
+            declarations: [CounterExampleComponent],
             imports: [ApolloTestingModule],
         });
 
@@ -21,23 +21,13 @@ describe('CounterComponent', () => {
     });
 
     it('should create the counter component', () => {
-        fixture = TestBed.createComponent(CounterComponent);
+        fixture = TestBed.createComponent(CounterExampleComponent);
         const app = fixture.componentInstance;
         expect(app).toBeTruthy();
     });
-
-    // it('should display the counter value', () => {
-    //     fixture = TestBed.createComponent(CounterComponent);
-    //     const app = fixture.componentInstance;
-    //     const expectedCounterValue = `Count: ${app.counter}`;
-    //     const compiled = fixture.nativeElement as HTMLElement;
-
-    //     console.log('compiled', compiled.querySelector('span'));
-    //     expect(compiled.querySelector('span')?.textContent).toContain(expectedCounterValue);
-    // });
-
+    
     it('should increase the counter value', () => {
-        fixture = TestBed.createComponent(CounterComponent);
+        fixture = TestBed.createComponent(CounterExampleComponent);
         const app = fixture.componentInstance;
         const expectedCounterValue = app.counter + 1;
         app.increaseCounter();
@@ -45,7 +35,7 @@ describe('CounterComponent', () => {
     });
 
     it('should decrease the counter value', () => {
-        fixture = TestBed.createComponent(CounterComponent);
+        fixture = TestBed.createComponent(CounterExampleComponent);
         const app = fixture.componentInstance;
         const expectedCounterValue = app.counter - 1;
         app.decreaseCounter();
@@ -53,7 +43,7 @@ describe('CounterComponent', () => {
     });
 
     it('should reset the counter value', () => {
-        fixture = TestBed.createComponent(CounterComponent);
+        fixture = TestBed.createComponent(CounterExampleComponent);
         const app = fixture.componentInstance;
         const expectedCounterValue = 0;
         app.resetCounter();

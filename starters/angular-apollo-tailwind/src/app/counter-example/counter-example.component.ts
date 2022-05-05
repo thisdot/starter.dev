@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { counterVar } from './cache';
 
 @Component({
-    selector: 'app-counter',
-    templateUrl: './counter.component.html',
-    styleUrls: ['./counter.component.scss'],
+    selector: 'app-counter-example',
+    templateUrl: './counter-example.component.html',
+    styleUrls: ['./counter-example.component.scss'],
 })
-export class CounterComponent {
+export class CounterExampleComponent {
     get counter() {
         return counterVar();
     }
