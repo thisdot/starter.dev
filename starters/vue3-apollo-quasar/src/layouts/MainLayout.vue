@@ -2,6 +2,7 @@
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
+        <q-btn icon="home" flat to="/"></q-btn>
         <q-toolbar-title class="text-center"
           >{{ PRODUCT_NAME }}
         </q-toolbar-title>
