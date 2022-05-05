@@ -1,6 +1,11 @@
 {
   "name": "angular-apollo-tailwind",
   "description": "Angular, Apollo, and TailwindCSS",
+  "keywords": [
+    "angular",
+    "apollo",
+    "tailwind"
+  ],
   "version": "0.0.1",
   "scripts": {
     "ng": "ng",
