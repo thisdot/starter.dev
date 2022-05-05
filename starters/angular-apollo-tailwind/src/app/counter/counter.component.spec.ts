@@ -26,16 +26,6 @@ describe('CounterComponent', () => {
         expect(app).toBeTruthy();
     });
 
-    // it('should display the counter value', () => {
-    //     fixture = TestBed.createComponent(CounterComponent);
-    //     const app = fixture.componentInstance;
-    //     const expectedCounterValue = `Count: ${app.counter}`;
-    //     const compiled = fixture.nativeElement as HTMLElement;
-
-    //     console.log('compiled', compiled.querySelector('span'));
-    //     expect(compiled.querySelector('span')?.textContent).toContain(expectedCounterValue);
-    // });
-
     it('should increase the counter value', () => {
         fixture = TestBed.createComponent(CounterComponent);
         const app = fixture.componentInstance;
