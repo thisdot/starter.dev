@@ -3,13 +3,13 @@ import { decrementCount, incrementCount, resetCount } from './count.actions';
 
 export const countFeatureKey = 'count';
 
-export interface State {
+export interface CounterState {
   count: number;
 }
 
-export const initialState: State = { count: 0 };
+export const initialState: CounterState = { count: 0 };
 
-export const reducer = createReducer(
+export const counterReducer = createReducer(
   initialState,
   on(incrementCount, (state) => ({
     ...state,

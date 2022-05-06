@@ -15,6 +15,21 @@
       "request": "launch",
       "preLaunchTask": "npm: test",
       "url": "http://localhost:9876/debug.html"
-    }
+    },
+    {
+      "type": "pwa-chrome",
+      "request": "attach",
+      "name": "Attach to Karma",
+      "address": "localhost",
+      "restart": true,
+      "port": 9222,
+      "timeout": 600000,
+      "sourceMaps": true,
+      "webRoot": "${workspaceFolder}",
+      "pathMapping": {
+        "/_karma_webpack_": "${workspaceFolder}"
+      }
+    },
+
   ]
 }
