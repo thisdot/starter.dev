@@ -91,7 +91,7 @@ ${markdown}`;
 
       const kitPagePath = path.join(
         repoPath,
-        'packages/website/src/pages/kit',
+        'packages/website/src/pages/kits',
         `${data.name}.md`
       );
 

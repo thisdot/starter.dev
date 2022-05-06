@@ -5,7 +5,7 @@ export interface Props {
   headers: any[];
 }
 
-export function TableOfContents({ headers }: Props) {
+export function TableOfContents({ headers = [] }: Props = { headers: [] }) {
   const itemOffsets = useRef([]);
   const [activeId, setActiveId] = useState<string>(undefined);
 
@@ -53,7 +53,7 @@ export function TableOfContents({ headers }: Props) {
     <nav>
       <ul>
         {headers
-          ?.filter(({ depth }) => depth > 1 && depth < 4)
+          .filter(({ depth }) => depth > 1 && depth < 4)
           .map((header) => (
             <li>
               <a

@@ -6,12 +6,15 @@ export function parseKits(kits: any[]) {
 }
 
 export function parseKit(kit) {
-  const keywords = kit.keywords?.split(',') || [];
+  // different shape depending on whether it came from Astro.glob or the content prop
+  // TODO: improve this
+  const kitData = 'astro' in kit ? kit : kit.frontmatter;
+  const keywords = kitData.keywords?.split(',') || [];
   const technologies = TECHNOLOGIES.filter((tech) => {
     return keywords.includes(tech.key);
   });
   return {
-    ...pick(kit, [
+    ...pick(kitData, [
       'name',
       'version',
       'description',

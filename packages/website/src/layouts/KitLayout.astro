@@ -9,6 +9,7 @@ import KitDemoHero from '../components/KitDemoHero.astro';
 import KitTechnologies from '../components/KitTechnologies.astro';
 import Footer from '../components/Footer.astro';
 import { parseKit } from '../lib/parseKits';
+import '../styles/global.css';
 const { content } = Astro.props;
 const path = Astro.site.pathname;
 const headers = content?.astro?.headers;
