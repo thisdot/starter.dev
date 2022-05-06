@@ -1,15 +1,15 @@
 <template>
-<div>
-  hello
-  <!-- <p v-if="fetching">Fetching...</p>
+  <div>
+    hello
+    <!-- <p v-if="fetching">Fetching...</p>
   <p v-else>Message: {{ msg }}</p> -->
-</div>
+  </div>
 </template>
 
-
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
-
+import { defineComponent } from 'vue';
+import { useQuery, useResult } from '@vue/apollo-composable';
+import gql from 'graphql-tag';
 
 export default defineComponent({
   name: 'FetchMessage',
@@ -17,26 +17,22 @@ export default defineComponent({
     message: {
       type: String,
       require: true,
-    }
+    },
   },
-  async setup(props) {
-    const fetching = ref(true);
+  setup(props) {
+    const VUE_APOLLO_QUASAR_GREETING = gql`
+      query ($greeting: String!) {
+        hello(greeting: $greeting)
+      }
+    `;
 
-    const getMessage = async() => {
-      const response  = await (await fetch(`https://api.starter.dev/hello?greeting=${props.message}`)).text();
+    const { result, loading } = useQuery(VUE_APOLLO_QUASAR_GREETING, {
+      greeting: props.message,
+    });
 
-      return response;
-    }
-
-    let msg = await getMessage();
-    if(!msg) {
-      msg = 'Failed to Fetch data'
-    }
-    fetching.value = false;
-
-    return {msg, fetching}
-
+    const data = useResult(result, [], ({ user }) => ({
+      ...user,
+    }));
   },
-})
+});
 </script>
-

@@ -7,10 +7,10 @@ import { DefaultApolloClient } from '@vue/apollo-composable';
 import { setContext } from '@apollo/client/link/context';
 import { provide } from 'vue';
 
-const GITHUB_ENCODED_TOKEN =
-  'YmVmZWZmM2Q3YjZlZWEwYjgxODQ2ZjMzNjdjMGExYzdhNGY0NWIzOQ==';
+// const GITHUB_ENCODED_TOKEN =
+//   'YmVmZWZmM2Q3YjZlZWEwYjgxODQ2ZjMzNjdjMGExYzdhNGY0NWIzOQ==';
 
-const GITHUB_DECODED_TOKEN = atob(GITHUB_ENCODED_TOKEN);
+// const GITHUB_DECODED_TOKEN = atob(GITHUB_ENCODED_TOKEN);
 
 // HTTP connection to the API
 const httpLink = createHttpLink({
@@ -19,7 +19,7 @@ const httpLink = createHttpLink({
 });
 
 const authLink = setContext((_, { headers }) => {
-  const authToken = GITHUB_DECODED_TOKEN;
+  const authToken = '';
 
   return authToken
     ? { headers: { ...headers, authorization: `token ${authToken}` } }
