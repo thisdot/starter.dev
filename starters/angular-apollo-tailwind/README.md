@@ -89,4 +89,4 @@ git clone https://github.com/thisdot/starter.dev.git
 
 [Repository](https://github.com/thisdot/starter.dev-github-showcases/tree/main/angular-apollo-tailwind)
 
-The demo for this starter kit is a partial implementation of some GitHub functionality. It uses the OAuth credentials in GitHub to authenticate users with their GitHub accounts and uses the GitHub GraphQL API with Apollo to fetch data from the GitHub API. Check out the link above to learn more or check out the demo!
+[Live Application](http://angular-apollo-tailwind.starter.dev/)
