@@ -1,7 +1,15 @@
 <template>
-  <q-page class="row items-center justify-evenly">
-    <FetchMessage :message="message" />
-    <NumberCounter />
+  <q-page class="row items-center justify-evenly column">
+    <div>
+      <h4>Vue3 Apollo Quasar Fetch Data from API</h4>
+      <q-separator color="primary" size="4px" />
+      <FetchMessage :message="message" />
+    </div>
+    <div>
+      <h4 class="text-center">Increment, Decrement and Reset Button Example</h4>
+      <q-separator color="primary" size="4px" />
+      <NumberCounter />
+    </div>
   </q-page>
 </template>
 

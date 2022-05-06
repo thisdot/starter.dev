@@ -1,13 +1,12 @@
 <template>
-  <div>
-    hello
+  <div class="text-center q-mt-md">
     <p v-if="loading">Fetching...</p>
-    <p v-else>Message: {{ msg }}</p>
+    <p v-else class="message text-body1">Message: {{ msg }}</p>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent } from 'vue';
 import { useQuery, useResult } from '@vue/apollo-composable';
 import gql from 'graphql-tag';
 
@@ -20,8 +19,6 @@ export default defineComponent({
     },
   },
   setup(props) {
-    let msg = ref();
-
     const VUE_APOLLO_QUASAR_GREETING = gql`
       query ($greeting: String!) {
         hello(greeting: $greeting)
@@ -32,14 +29,7 @@ export default defineComponent({
       greeting: props.message,
     });
 
-    // console.log('====================================');
-    // console.log(result);
-    // console.log('====================================');
-
-    const dataMsg = useResult(result, {}, (value) => value);
-    console.log(dataMsg.value);
-
-    // msg.value = dataMsg.value?.hello || 'Nothing';
+    const msg = useResult(result, null, ({ hello }) => hello);
 
     return { loading, msg };
   },

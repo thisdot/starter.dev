@@ -1,5 +1,5 @@
 <template>
-  <section class="row q-col-gutter-lg q-px-md">
+  <section class="row q-col-gutter-lg q-px-md q-mt-md">
     <div class="col-3">
       <h6 class="text-weight-bold q-my-none">
         Count: <span name="text-count">{{ counter.count }}</span>
