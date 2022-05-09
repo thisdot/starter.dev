@@ -1,6 +1,6 @@
 # remix-gql-tailwind starter kit
 
-This starter kit features **Remix**, **GraphQL**, and **Tailwind CSS*.
+This starter kit features **Remix**, **GraphQL**, and **Tailwind CSS**.
 
 ## Table of Contents
 
@@ -57,7 +57,13 @@ The `Greeting` directory contains the following files:
 ### CLI (Recommended)
 
 ```bash
-npx create-starter-dev
+npx @this-dot/create-starter
+```
+
+or
+
+```bash
+yarn create @this-dot/starter
 ```
 
 - Follow the prompts to select the `remix-gql-tailwind` starter kit and name your new project.
