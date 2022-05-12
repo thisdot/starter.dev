@@ -40,7 +40,7 @@ For this kit, we maintained the [Remix convention](https://remix.run/docs/en/v1/
 - #### Storybook
 
   Storybook was introduced because it is really a great tool for testing components in isolation and good for documentation.
-  As at [Remix v1.x](https://remix.run/), storybook isn't supported and doesn't work well with Remix, so [Vite](https://vitejs.dev/) was used in building storybook to work properly. This might change in the future.
+  As of [Remix v1.x](https://remix.run/), Storybook isn't supported and doesn't work well with Remix, so [Vite](https://vitejs.dev/) was used in building Storybook to work properly. This might change in the future.
 
 - #### Styling
 
