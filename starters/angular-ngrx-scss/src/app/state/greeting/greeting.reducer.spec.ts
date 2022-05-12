@@ -3,7 +3,7 @@ import { getGreeting, getGreetingFailure, getGreetingSuccess } from './greeting.
 
 describe('Greeting Reducer', () => {
   describe('getGreeting action', () => {
-    it('should update the isLoading value to true', () => {
+    it('should set isLoading to true when the action is triggered', () => {
       const action = getGreeting({});
       const newState = {
         message: '',
@@ -35,13 +35,13 @@ describe('Greeting Reducer', () => {
   });
 
   describe('getGreetingFailure action', () => {
-    it('should show an error upon an unsuccessful call', () => {
+    it('should show an error upon an error', () => {
       const action = getGreetingFailure({
-        error: 'Sorry, did not work!',
+        error: 'Sorry, something went wrong. Please try again.',
       });
       const newState = {
         message: '',
-        error: 'Sorry, did not work!',
+        error: 'Sorry, something went wrong. Please try again.',
         isLoading: false,
       };
       const result = greetingReducer(initialState, action);
