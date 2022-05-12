@@ -35,7 +35,7 @@ This starter kit features **Remix**, **GraphQL**, and **Tailwind CSS**.
 
 ### Kit Organization / Architecture
 
-For this kit, we maintained the [Remix convention](https://remix.run/docs/en/v1/api/conventions) and we do recommend it. However, for the `app/components` folder, each demo component included are co-located with the tests and stories. Using this structure makes it easy to find all the code and functionality related to a specific component. The components are basically just views, with test and stories as Remix prefers data fetching from the route page.
+For this kit, we maintained the [Remix convention](https://remix.run/docs/en/v1/api/conventions) and we do recommend it. For the `app/components` folder, each component is co-located with its tests and stories. This structure makes it easy to find all the code and functionality related to a specific component. Due to Remix's preference for data fetching from the route page, the components are primarily simple view components.
 
 - #### Storybook
 
