@@ -45,7 +45,7 @@ For this kit, we maintained the [Remix convention](https://remix.run/docs/en/v1/
 - #### Styling
 
 This kit utilizes Tailwind for styling based on Remix's preference and due to the fact that other CSS libraries such as Styled Components and CSS Modules aren't supported currently. See https://remix.run/docs/en/v1/guides/styling for more information.
-  The styles are exported from a `<componentName>.classNames.ts` as named exports, this is majorly to avoid [surface styling](https://remix.run/docs/en/v1/guides/styling#surfacing-styles) which can be a bit complex. Also, you could write the tailwind classes inline but this method is used to keep the file clean and ensure resuablitiy of styles.
+  The styles are exported from a `<componentName>.classNames.ts` as named exports, this is majorly to avoid [surface styling](https://remix.run/docs/en/v1/guides/styling#surfacing-styles) which can be a bit complex. Also, you could write the Tailwind classes inline but this method is used to keep the file clean and ensure reusability of styles.
 
 If you want to follow this pattern, take a look at our GitHub demo implementation below. Using this structure makes it easy to find all the code and functionality related to a specific component.
 
