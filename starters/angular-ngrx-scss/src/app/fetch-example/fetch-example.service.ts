@@ -15,7 +15,7 @@ export class FetchExampleService {
         map((message) => message),
         catchError((error) => {
           console.error(error);
-          return 'error';
+          return 'Sorry, something went wrong. Please try again.';
         })
       );
   }
