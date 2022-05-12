@@ -36,6 +36,8 @@ This starter kit features Angular 13, NgRx and SCSS.
 
 For this kit, we really wanted to showcase how powerful NgRx can be for managing the state of your application. NgRx helps us write actions to trigger state changes, reducers to handle those changes, selectors to grab pieces of state, and effects to communicate with external resources. By doing this, our Angular components can focus on presenting our data instead of needing to understand the logic of how that data is fetched and updated. You can also use the Redux devtools in your browser to help you visualize what your state looks like and how it updates.
 
+One particular decision we made with the fetch example was to put the API call into its own service. We want this kit to be an example of current best practices. As such, it is recommended to keep your http logic separated into its own service that is then called in your effects files. This makes the API logic more straight forward to test and debug, and keeps the effect logic more concise.
+
 ### Example Components
 
 In this `starters/angular-ngrx-scss/src/app` directory you will find the `counter-example`, `fetch-example`, `home`, and `state` directories.
