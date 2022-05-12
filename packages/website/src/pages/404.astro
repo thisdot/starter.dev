@@ -1,0 +1,34 @@
+---
+import BaseHead from '../layouts/BaseHead.astro';
+import { NavBar } from '../components/NavBar.tsx';
+import Footer from '../components/Footer.astro';
+const { title, description } = Astro.props;
+const path = Astro.site.pathname;
+---
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <BaseHead />
+  </head>
+  <body class="bg dark:dark-bg min-h-screen text-base">
+    <header>
+      <NavBar currentPath={path} client:load />
+    </header>
+    <div class="p-4 lg:h-[calc(100vh-300px)] mt-20 flex lg:flex-row flex-col-reverse items-center mx-auto max-w-screen-2xl gap-x-24 gap-y-10">
+      <div class="lg:p-20 lg:text-left text-center">
+        <h1 class="heading-3 t-dark dark:text-white">Page not found…</h1>
+        <p class="t-dark dark:text-white my-3">Sorry, we can`t find the page you are looking for.</p>
+        <a class="btn btn-primary text-sm my-5" href="/">Take me home</a>
+      </div>
+      <div class="lg:-mt-8">
+        <img src="/404.png" alt="404" />
+      </div>
+    </div>
+    <div class="hidden lg:block">
+      <Footer />
+    </div>
+  </body>
+</html>
