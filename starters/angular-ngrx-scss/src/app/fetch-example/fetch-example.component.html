@@ -5,7 +5,7 @@
     <p *ngIf="(error$ | async) !== ''">Message: {{ error$ | async }}</p>
   </ng-container>
   <ng-template #loadingTemplate>
-    <p>...Loading message...</p>
+    <p>Loading message...</p>
   </ng-template>
   <a routerLink="/">Return Home</a>
 </main>
