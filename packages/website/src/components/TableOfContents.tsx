@@ -1,5 +1,5 @@
+import React, { useState, useRef, useEffect } from 'react';
 import cn from 'clsx';
-import { useState, useEffect, useRef } from 'react';
 
 export interface Props {
   headers: any[];
@@ -19,30 +19,26 @@ export function TableOfContents({ headers = [] }: Props = { headers: [] }) {
     };
 
     const handleNavScroll = () => {
-      let current = '';
-      itemOffsets.current.forEach((item) => {
+      itemOffsets.current?.forEach((item) => {
         if (scrollY >= item.topOffset - 160) {
-          current = item.id;
+          setActiveId(item.id);
         }
       });
-      setActiveId(current);
     };
 
     getItemOffsets();
 
     document.addEventListener('scroll', handleNavScroll);
-
-    getItemOffsets();
-    window.addEventListener('resize', getItemOffsets);
+    document.addEventListener('resize', getItemOffsets);
 
     return () => {
-      window.removeEventListener('resize', getItemOffsets);
-      document.addEventListener('scroll', handleNavScroll);
+      document.removeEventListener('scroll', handleNavScroll);
+      document.removeEventListener('resize', getItemOffsets);
     };
-  }, []);
+  }, [itemOffsets]);
 
   const handleClick = (id: string) => {
-    itemOffsets.current.forEach((item) => {
+    itemOffsets.current?.forEach((item) => {
       if (item.id === id) {
         window.scrollTo(0, item.topOffset - 145);
       }
