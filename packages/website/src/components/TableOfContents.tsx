@@ -51,7 +51,7 @@ export function TableOfContents({ headers = [] }: Props = { headers: [] }) {
         {headers
           .filter(({ depth }) => depth > 1 && depth < 4)
           .map((header) => (
-            <li>
+            <li key={header.slug}>
               <a
                 onClick={() => handleClick(header.slug)}
                 className={cn(

@@ -1,4 +1,5 @@
 ---
+import '../styles/global.css';
 import BaseHead from './BaseHead.astro';
 import KitHero from '../components/KitHero.astro';
 import StickyHero from '../components/StickyHero.astro';
@@ -9,7 +10,6 @@ import KitDemoHero from '../components/KitDemoHero.astro';
 import KitTechnologies from '../components/KitTechnologies.astro';
 import Footer from '../components/Footer.astro';
 import { parseKit } from '../lib/parseKits';
-import '../styles/global.css';
 const { content } = Astro.props;
 const path = Astro.site.pathname;
 const headers = content?.astro?.headers;
@@ -35,7 +35,7 @@ const kit = parseKit(content);
           <div
             class="pt-8 sticky top-32 border-r border-gray-400 dark:border-gray-700 min-h-[calc(100vh-120px)] overflow-y-auto"
           >
-            <TableOfContents {headers} client:visible />
+            <TableOfContents {headers} client:only />
           </div>
         </aside>
         <article
