@@ -5,7 +5,7 @@ export interface Props {
   headers: any[];
 }
 
-export function TableOfContents({ headers = [] }: Props = { headers: [] }) {
+export function TableOfContents({ headers }: Props) {
   const itemOffsets = useRef([]);
   const [activeId, setActiveId] = useState<string>(undefined);
 
@@ -19,11 +19,13 @@ export function TableOfContents({ headers = [] }: Props = { headers: [] }) {
     };
 
     const handleNavScroll = () => {
+      let activeId: string | undefined = undefined;
       itemOffsets.current?.forEach((item) => {
         if (scrollY >= item.topOffset - 160) {
-          setActiveId(item.id);
+          activeId = item.id;
         }
       });
+      setActiveId(activeId);
     };
 
     getItemOffsets();
