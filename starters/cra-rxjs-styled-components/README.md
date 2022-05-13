@@ -64,7 +64,13 @@ The `Homepage` directory contains the following files:
 ### CLI (Recommended)
 
 ```bash
-npx create-starter-dev
+npx @this-dot/create-starter
+```
+
+or
+
+```bash
+yarn create @this-dot/starter
 ```
 
 - Follow the prompts to select the `cra-rxjs-styled-components` starter kit and name your new project.
