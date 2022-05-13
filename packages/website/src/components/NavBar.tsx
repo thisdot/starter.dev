@@ -1,5 +1,5 @@
 import { Disclosure } from '@headlessui/react';
-import { XIcon, MenuIcon } from '@heroicons/react/outline';
+import { XIcon, MenuIcon } from '@heroicons/react/outline/esm/index.js';
 import cn from 'clsx';
 import { DarkModeToggle } from './DarkModeToggle';
 import { HEADER_NAV_ITEMS } from '../config';
