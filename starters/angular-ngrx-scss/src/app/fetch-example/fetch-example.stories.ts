@@ -4,7 +4,7 @@ import { of } from 'rxjs';
 import { greetingReducer } from '../state/greeting/greeting.reducer';
 import { FetchExampleComponent } from './fetch-example.component';
 export default {
-  title: 'Fetch Example',
+  title: 'Example/Fetch Example',
   component: FetchExampleComponent,
   decorators: [
     moduleMetadata({
