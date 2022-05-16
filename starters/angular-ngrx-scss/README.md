@@ -38,9 +38,9 @@ For this kit, we really wanted to showcase how powerful NgRx can be for managing
 
 ### Example Components
 
-In this `starters/angular-ngrx-scss/src/app` directory you will find the `button-example`, `fetch-example`, `home`, and `state` directories.
+In this `starters/angular-ngrx-scss/src/app` directory you will find the `counter-example`, `fetch-example`, `home`, and `state` directories.
 
-The `button-example`, `fetch-example`, and `home` components are "page" components. The `button-example` folder also includes a `starter-button` component, which is a re-usable button component tied to that page.
+The `counter-example`, `fetch-example`, and `home` components are "page" components. The `counter-example` folder also includes a `starter-button` component, which is a re-usable button component tied to that page.
 
 Angular components are split up into multiple files:
 
@@ -50,7 +50,7 @@ Angular components are split up into multiple files:
 - `.spec.ts` files are optional files that contain automated tests for the component. These tests are written to work with Karma and Jasmine.
 - `.stories.ts` files are optional files containing stories for the component. These files help us visualize the different states the component can have in Storybook.
 
-The `state` directory is where all of our NgRx logic lives. You'll find a folder for `count` and `greeting`, which relates to the `button-example` and `fetch-example` components respectively. Each folder contains a file for:
+The `state` directory is where all of our NgRx logic lives. You'll find a folder for `count` and `greeting`, which relates to the `counter-example` and `fetch-example` components respectively. Each folder contains a file for:
 
 - actions
 - reducers

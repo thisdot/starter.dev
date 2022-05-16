@@ -3,6 +3,7 @@
   "version": 1,
   "cli": {
     "analytics": false,
+    "defaultCollection": "@ngrx/schematics",
     "packageManager": "yarn"
   },
   "newProjectRoot": "projects",
@@ -88,6 +89,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
+            "codeCoverage": true,
             "main": "src/test.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
