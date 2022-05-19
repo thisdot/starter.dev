@@ -3,13 +3,15 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { decrementCount, incrementCount, resetCount } from '../state/count/count.actions';
-import { CounterState } from '../state/count/count.reducer';
 import { State } from '../state/reducers';
 import ButtonComponent from './counter-button/button.component';
 
 import { CounterExampleComponent } from './counter-example.component';
 
-const initialState: State = { count: { count: 10 } };
+const initialState: State = {
+  count: { count: 10 },
+  greeting: { message: '', error: '', isLoading: false },
+};
 
 describe('CounterExampleComponent', () => {
   let component: CounterExampleComponent;
