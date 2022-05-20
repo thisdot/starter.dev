@@ -1,8 +1,9 @@
+import type { MarkdownHeader } from 'src/types';
 import React, { useState, useRef, useEffect } from 'react';
 import cn from 'clsx';
 
 export interface Props {
-  headers: any[];
+  headers: MarkdownHeader[];
 }
 
 export function TableOfContents({ headers }: Props) {
