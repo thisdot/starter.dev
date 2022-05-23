@@ -2,6 +2,11 @@
   "name": "starter.dev",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "build:website": "yarn workspace website build",
+    "start:website": "yarn workspace website preview",
+    "dev:website": "yarn workspace website dev"
+  },
   "workspaces": [
     "packages/*"
   ]
