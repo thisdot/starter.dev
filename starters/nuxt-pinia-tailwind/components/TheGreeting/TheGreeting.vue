@@ -14,15 +14,16 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, useAsync } from '@nuxtjs/composition-api'
-import axios from 'axios'
+import { defineComponent, useAsync, useContext } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   name: 'TheGreeting',
   setup() {
+    const { $axios } = useContext();
+
     const message = useAsync(async () => {
       try {
-        const response = await axios.get<string>(
+        const response = await $axios.get<string>(
           'https://api.starter.dev/hello?greeting=from This Dot Labs!'
         )
         return response.data

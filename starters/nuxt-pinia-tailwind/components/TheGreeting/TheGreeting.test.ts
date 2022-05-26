@@ -1,4 +1,5 @@
 import { rest } from 'msw'
+import axios from 'axios'
 import TheGreeting from './TheGreeting.vue'
 import { render, screen, waitFor } from '@/test/utils'
 import { mswServer } from '~/test/__mocks__/mswServer'
@@ -11,6 +12,13 @@ describe('<TheGreeting />', () => {
   it('Should display correct message', async () => {
     // Arrange
     render(TheGreeting, {
+      mocks: { 
+        $nuxt: {
+          context: {
+            $axios: axios
+          },
+        },
+      }, 
       stubs: {
         NuxtLink: true,
       },
@@ -33,6 +41,13 @@ describe('<TheGreeting />', () => {
 
     // Arrange
     render(TheGreeting, {
+      mocks: { 
+        $nuxt: {
+          context: {
+            $axios: axios
+          },
+        },
+      }, 
       stubs: {
         NuxtLink: true,
       },
