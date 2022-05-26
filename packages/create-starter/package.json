@@ -9,11 +9,9 @@
     "create-starter": "./create-starter.mjs"
   },
   "scripts": {
-    "kitgen": "node ./scripts/generate-kit-data.js",
     "prebuild": "yarn clean",
     "build": "esbuild ./src/index.ts --bundle --platform=node --outfile=./dist/index.js",
-    "postbuild": "yarn kitgen",
-    "dev": "esbuild ./src/index.ts --watch --bundle --platform=node --outfile=./dist/index.js",
+    "watch": "esbuild ./src/index.ts --watch --bundle --platform=node --outfile=./dist/index.js",
     "clean": "rimraf ./dist",
     "start": "node ./create-starter.mjs"
   },
