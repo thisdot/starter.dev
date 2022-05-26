@@ -1,5 +1,5 @@
 <template>
-  <TheCounter />
+  <TheGreeting />
 </template>
 
 <script lang="ts">

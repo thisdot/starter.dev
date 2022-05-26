@@ -1,15 +1,13 @@
-import Vue from 'vue';
-import { render, screen, fireEvent } from '@testing-library/vue'
+import Vue from 'vue'
 import { createTestingPinia } from '@pinia/testing'
 import { PiniaVuePlugin } from 'pinia'
 import TheCounter from './TheCounter.vue'
-
-
+import { fireEvent, render, screen } from '@/test/utils'
 
 describe('<TheCounter />', () => {
   beforeEach(() => {
-    Vue.use(PiniaVuePlugin);
-  });
+    Vue.use(PiniaVuePlugin)
+  })
 
   it('Should increase by 1 the count when clicking increase button', async () => {
     // Arrange
@@ -45,7 +43,7 @@ describe('<TheCounter />', () => {
       }),
       stubs: {
         NuxtLink: true,
-      }
+      },
     })
     const button = screen.getByTestId('decrease-button')
     const countValue = screen.getByTestId('count-value')
@@ -72,7 +70,7 @@ describe('<TheCounter />', () => {
       }),
       stubs: {
         NuxtLink: true,
-      }
+      },
     })
     const button = screen.getByTestId('reset-button')
     const countValue = screen.getByTestId('count-value')
@@ -84,5 +82,3 @@ describe('<TheCounter />', () => {
     expect(countValue).toHaveTextContent('0')
   })
 })
-
-
