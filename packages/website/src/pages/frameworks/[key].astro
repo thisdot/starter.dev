@@ -9,7 +9,7 @@ import TechIcon from '../../components/TechIcon.astro';
 import Contributors from '../../components/Contributors.astro';
 
 export async function getStaticPaths() {
-  const items = Astro.fetchContent('../kit/*.md');
+  const items = await Astro.glob('../kits/*.md');
   const kits = parseKits(items);
 
   return TECHNOLOGIES.map((tech) => {

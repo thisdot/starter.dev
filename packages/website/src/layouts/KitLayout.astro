@@ -34,7 +34,7 @@ const kit = parseKit(content);
           <div
             class="pt-8 sticky top-32 border-r border-gray-400 dark:border-gray-700 min-h-[calc(100vh-120px)] overflow-y-auto"
           >
-            <TableOfContents {headers} client:load />
+            <TableOfContents {headers} client:only />
           </div>
         </aside>
         <article

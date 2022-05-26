@@ -13,8 +13,9 @@
     "prebuild": "yarn kitgen"
   },
   "devDependencies": {
+    "@astrojs/react": "^0.1.2",
     "@tailwindcss/typography": "^0.5.0",
-    "astro": "^0.22.9",
+    "astro": "^1.0.0-beta.35",
     "postcss": "^8.4.5",
     "prettier-plugin-astro": "^0.0.11",
     "rimraf": "^3.0.2",
@@ -25,6 +26,8 @@
     "@heroicons/react": "^1.0.5",
     "autoprefixer": "^10.4.2",
     "clsx": "^1.1.1",
-    "just-pick": "^4.0.1"
+    "just-pick": "^4.0.1",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
   }
 }
