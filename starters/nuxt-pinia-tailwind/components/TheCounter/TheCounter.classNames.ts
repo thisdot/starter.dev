@@ -1,0 +1,1 @@
+export const counterButton = 'text-white text-lg bg-blue-500 font-bold hover:bg-blue-700 rounded py-1 px-3';

@@ -12,7 +12,7 @@
       </p>
 
       <button
-        class="text-white text-lg bg-blue-500 font-bold hover:bg-blue-700 rounded py-1 px-3"
+        :class="styles.counterButton"
         data-testid="increase-button"
         @click="increaseCount"
       >
@@ -20,7 +20,7 @@
       </button>
 
       <button
-        class="text-white text-lg bg-blue-500 font-bold hover:bg-blue-700 rounded py-1 px-3"
+        :class="styles.counterButton"
         data-testid="decrease-button"
         @click="decreaseCount"
       >
@@ -28,7 +28,7 @@
       </button>
 
       <button
-        class="text-white text-lg bg-blue-500 font-bold hover:bg-blue-700 rounded py-1 px-3"
+        :class="styles.counterButton"
         data-testid="reset-button"
         @click="resetCount"
       >
@@ -43,6 +43,7 @@
 
 <script lang="ts">
 import { defineComponent } from '@nuxtjs/composition-api'
+import * as styles from './TheCounter.classNames'
 import { useCounterStore } from '~/stores/counterStore'
 
 export default defineComponent({
@@ -60,7 +61,7 @@ export default defineComponent({
     const resetCount = () => {
       counterState.$reset()
     }
-    return { counterState, increaseCount, decreaseCount, resetCount }
+    return { counterState, styles, increaseCount, decreaseCount, resetCount }
   },
 })
 </script>
