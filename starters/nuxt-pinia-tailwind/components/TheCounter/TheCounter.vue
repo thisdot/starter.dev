@@ -1,13 +1,13 @@
 <template>
-  <div class="flex flex-col justify-center items-center gap-5 mt-10">
-    <header class="border-b-4 border-blue-600 w-3/5 pb-4 text-center">
-      <h1 class="text-4xl font-bold">
+  <div :class="styles.container">
+    <header :class="styles.header">
+      <h1 :class="styles.h1Header">
         Increment, Decrement and Reset Button Examples
       </h1>
     </header>
 
-    <div class="flex gap-20 justify-center items-center">
-      <p class="text-2xl font-bold" data-testid="count-value">
+    <div :class="styles.controlsContainer">
+      <p :class="styles.paragraph" data-testid="count-value">
         Count:{{ counterState.counter }}
       </p>
 
@@ -35,7 +35,7 @@
         Reset
       </button>
     </div>
-    <NuxtLink to="/" class="text-lg text-blue-600 underline">
+    <NuxtLink to="/" :class="styles.link">
       Return Home
     </NuxtLink>
   </div>
