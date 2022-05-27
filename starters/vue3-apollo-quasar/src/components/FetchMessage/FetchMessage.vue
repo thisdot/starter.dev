@@ -7,31 +7,33 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { useQuery, useResult } from '@vue/apollo-composable';
-import gql from 'graphql-tag';
 
 export default defineComponent({
   name: 'FetchMessage',
-  props: {
-    message: {
-      type: String,
-      require: true,
-    },
-  },
-  setup(props) {
-    const VUE_APOLLO_QUASAR_GREETING = gql`
-      query ($greeting: String!) {
-        hello(greeting: $greeting)
-      }
-    `;
+});
+</script>
 
-    const { result, loading } = useQuery(VUE_APOLLO_QUASAR_GREETING, {
-      greeting: props.message,
-    });
+<script lang="ts" setup>
+import { computed } from 'vue';
+import { useQuery } from '@vue/apollo-composable';
+import gql from 'graphql-tag';
 
-    const msg = useResult(result, null, ({ hello }) => hello);
-
-    return { loading, msg };
+const props = defineProps({
+  message: {
+    type: String,
+    require: true,
   },
 });
+
+const VUE_APOLLO_QUASAR_GREETING = gql`
+  query ($greeting: String!) {
+    hello(greeting: $greeting)
+  }
+`;
+
+const { result, loading } = useQuery(VUE_APOLLO_QUASAR_GREETING, {
+  greeting: props.message,
+});
+
+const msg = computed(() => result.value?.hello ?? 'can not find greeting');
 </script>

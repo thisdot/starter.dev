@@ -5,6 +5,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { setupGraphQL } from './init';
+// setupGraphQL();
 
 export default defineComponent({
   name: 'App',
