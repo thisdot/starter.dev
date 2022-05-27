@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-col justify-center items-center mt-10">
-    <header class="bg-blue-400 w-3/5 p-2 text-center rounded mb-5">
-      <h1 class="text-4xl font-bold text-white">
+  <div class="flex flex-col justify-center items-center mt-5">
+    <header class="bg-blue-600 w-3/5 p-4 text-center rounded mb-5">
+      <h1 class="text-2xl font-bold text-white">
         Nuxt, Pinia and TailwindCSS Starter kit
       </h1>
     </header>
