@@ -11,4 +11,4 @@ export const paragraph = 'text-2xl font-bold'
 
 export const controlsContainer = 'flex gap-20 justify-center items-center'
 
-export const link = 'text-lg text-blue-600 underline'
+export const link = 'text-lg text-blue-600 underline hover:text-blue-400'

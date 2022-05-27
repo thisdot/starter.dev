@@ -6,11 +6,11 @@
       </h1>
     </header>
 
-    <NuxtLink to="/counter" class="text-lg text-blue-600 underline">
+    <NuxtLink to="/counter" class="text-lg text-blue-600 underline hover:text-blue-400">
       See Counter example component
     </NuxtLink>
 
-    <NuxtLink to="/api-example" class="text-lg text-blue-600 underline">
+    <NuxtLink to="/api-example" class="text-lg text-blue-600 underline hover:text-blue-400">
       See Fetch API example component
     </NuxtLink>
   </div>
