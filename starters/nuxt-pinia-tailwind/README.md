@@ -3,8 +3,6 @@
 This starter kit features **Nuxt.js**, **Pinia**, and **Tailwind CSS**.
 ## Table of Contents
 
-- [nuxt-pinia-tailwind starter kit](#nuxt-pinia-tailwind-starter-kit)
-  - [Table of Contents](#table-of-contents)
   - [Overview](#overview)
     - [Tech Stack](#tech-stack)
     - [Included Tooling](#included-tooling)
