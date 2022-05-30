@@ -44,7 +44,7 @@ The `TheCounter` directory component uses `Pinia` to control the state of the co
 - TheCounter.test.ts
 - TheCounter.vue
 
-The `TheGreeting` directory component uses `@nuxtjs/axios` to fetch data from the example hello endopoint with corresponding mock located in `test/__mocks__/handlers/greeting.ts`. The directory contains the following files:
+The `TheGreeting` directory component uses `@nuxtjs/axios` to fetch data from the example hello endpoint with a corresponding mock located in `test/__mocks__/handlers/greeting.ts`. The directory contains the following files:
 
 - TheGreeting.stories.ts
 - TheGreeting.classNames.ts
