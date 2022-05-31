@@ -11,7 +11,6 @@ This starter kit features **Nuxt.js**, **Pinia**, and **Tailwind CSS**.
     - [CLI (Recommended)](#cli-recommended)
     - [Manual](#manual)
   - [Commands](#commands)
-  - [Demo Implementation](#demo-implementation)
 
 ## Overview
 
@@ -86,8 +85,3 @@ git clone https://github.com/thisdot/starter.dev.git
 - `yarn lint` - Runs ESLint on the project.
 - `yarn lintfix` - Formats code for the entire project using prettier and linter
 
-## Demo Implementation
-
-[Repository](https://github.com/thisdot/starter.dev-showcases/tree/main/nuxt-pinia-tailwind)
-
-The demo application tries to implement some of GitHub's pages and functionality. It uses the OAuth credentials in GitHub to authenticate users with their GitHub accounts and uses @nuxt/axios to fetch data from the GitHub REST API. Check out the link above to learn more or check out the demo!
