@@ -15,7 +15,16 @@
       "~/*": ["./*"],
       "@/*": ["./*"]
     },
-    "types": ["@nuxt/types", "@nuxtjs/axios", "@types/node"]
+    "types": [
+      "@nuxt/types",
+      "@nuxtjs/axios",
+      "@types/node",
+      "@pinia/nuxt",
+      "jest",
+      "@testing-library/jest-dom",
+      "@testing-library/vue"
+    ],
+    "jsx": "preserve"
   },
   "exclude": ["node_modules", ".nuxt", "dist"]
 }
