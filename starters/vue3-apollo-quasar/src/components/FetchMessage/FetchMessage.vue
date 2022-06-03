@@ -27,9 +27,6 @@ export default defineComponent({
 
     const { result, loading } = useQuery(VUE_APOLLO_QUASAR_GREETING, {
       greeting: props.message,
-    }, {
-      fetchPolicy: 'cache-and-network',
-      enabled: true,
     });
 
     const msg = computed(() => result.value ? result.value.hello : 'can not find greeting');
