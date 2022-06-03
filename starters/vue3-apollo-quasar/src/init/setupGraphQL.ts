@@ -41,6 +41,6 @@ export const apolloClient = new ApolloClient({
 });
 
 export const setupGraphQL = (): void => {
-  provideApolloClient(apolloClient);
-  // provide(DefaultApolloClient, apolloClient);
+  // provideApolloClient(apolloClient);
+  provide(DefaultApolloClient, apolloClient);
 };

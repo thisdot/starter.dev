@@ -1,40 +1,36 @@
 import { mount } from '@vue/test-utils';
+import { useQuery } from '@vue/apollo-composable';
+import gql from 'graphql-tag';
 import { computed } from 'vue';
 import FetchMessage from '../../src/components/FetchMessage';
 
-describe('FetchMessage', () => {
-  let wrapper: any;
-
-  beforeEach(() => {
-    process.env = Object.assign(process.env, {
-      VUE_APP_GITHUB_KEY: 'value',
-    });
-
-    wrapper = mount(FetchMessage, {
-      props: {
-        message: 'vue3-apollo-quasar starter.dev!',
-      },
-      setup() {
-        //
-      },
-    });
-  });
-
-  it('Should Mount', async () => {
-    expect(wrapper.vm.message).toBeTruthy();
-  });
-
-  it('should fect and display', async () => {
-    const finalMessage = 'Hello, vue3-apollo-quasar starter.dev!';
-    const gql = jest.fn().mockImplementation();
-    const useQuery = jest.fn().mockReturnValue({
-      result: {
+jest.mock('@vue/apollo-composable', () => {
+  const data = {
+    result: {
         value: {
-          hello: `Hello, ${wrapper.vm.message}`,
+          hello: 'Hello, vue3-apollo-quasar starter.dev!',
         },
       },
       loading: false,
+  }
+  return {
+    useQuery: jest.fn(() => data)
+  }
+});
+
+describe('FetchMessage', () => {
+  const wrapper = mount(FetchMessage, {
+      props: {
+        message: 'vue3-apollo-quasar starter.dev!',
+      },
     });
+
+  it('Should Mount', () => {
+    expect(wrapper.vm.message).toBeTruthy();
+  });
+
+  it('should fecth and display', () => {
+    const finalMessage = 'Hello, vue3-apollo-quasar starter.dev!';
 
     const VUE_APOLLO_QUASAR_GREETING = gql`
       query ($greeting: String!) {
@@ -47,9 +43,6 @@ describe('FetchMessage', () => {
     });
 
     const msg = computed(() => result.value?.hello ?? 'can not find greeting');
-
     expect(msg.value).toBe(finalMessage);
-
-    // console.log(wrapper);
   });
 });
