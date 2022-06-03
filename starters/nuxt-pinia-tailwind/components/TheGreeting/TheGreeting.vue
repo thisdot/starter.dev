@@ -7,7 +7,10 @@
     <div class="flex gap-20 justify-center items-center">
       <p class="text-2xl" data-testid="message-value">Message: {{ message }}</p>
     </div>
-    <NuxtLink to="/" class="text-lg text-blue-600 underline">
+    <NuxtLink
+      to="/"
+      class="text-lg text-blue-600 underline hover:text-blue-400"
+    >
       Return Home
     </NuxtLink>
   </div>
@@ -19,7 +22,7 @@ import { defineComponent, useAsync, useContext } from '@nuxtjs/composition-api'
 export default defineComponent({
   name: 'TheGreeting',
   setup() {
-    const { $axios } = useContext();
+    const { $axios } = useContext()
 
     const message = useAsync(async () => {
       try {

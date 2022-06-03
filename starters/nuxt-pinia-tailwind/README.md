@@ -1,95 +1,68 @@
-# nuxt-pinia-tailwind starter kit
+# nuxt-pinia-tailwind
 
-This starter kit features **Nuxt.js**, **Pinia**, and **Tailwind CSS**.
-## Table of Contents
-
-- [nuxt-pinia-tailwind starter kit](#nuxt-pinia-tailwind-starter-kit)
-  - [Table of Contents](#table-of-contents)
-  - [Overview](#overview)
-    - [Tech Stack](#tech-stack)
-    - [Included Tooling](#included-tooling)
-    - [Example Code](#example-code)
-  - [Installation](#installation)
-    - [CLI (Recommended)](#cli-recommended)
-    - [Manual](#manual)
-  - [Commands](#commands)
-  - [Demo Implementation](#demo-implementation)
-
-## Overview
-
-### Tech Stack
-
-- [Nuxt.js v2.x](https://nuxtjs.org/)
-- [Vue v2.x](https://v2.vuejs.org/)
-- [Pinia v2.x](https://pinia.vuejs.org/)
-- [Tailwind CSS v3.x](https://tailwindcss.com/)
-
-### Included Tooling
-
-- [Jest](https://jestjs.io/) - Test runner
-- [Typescript](https://www.typescriptlang.org/) - Type checking
-- [Storybook](https://storybook.js.org/) - Component library
-- [Mock Service Worker](https://mswjs.io/) - Mock REST / GraphQL API
-- [ESLint](https://eslint.org/) - Code linting
-- [Prettier](https://prettier.io/) - Code formatting
-
-### Example Code
-
-In this `starters/nuxt-pinia-tailwind` directory you will find the `TheCounter` and `TheGreeting` directories. 
-
-The `TheCounter` directory component uses `Pinia` to control the state of the component. The directory contains the following files:
-
-- TheCounter.stories.ts
-- TheCounter.classNames.ts
-- TheCounter.test.ts
-- TheCounter.vue
-
-The `TheGreeting` directory component uses `@nuxtjs/axios` to fetch data from the example hello endopoint with corresponding mock located in `test/__mocks__/handlers/greeting.ts`. The directory contains the following files:
-
-- TheGreeting.stories.ts
-- TheGreeting.classNames.ts
-- TheGreeting.test.ts
-- TheGreeting.vue
-
-## Installation
-
-### CLI (Recommended)
+## Build Setup
 
 ```bash
-npx create-starter-dev
+# install dependencies
+$ yarn install
+
+# serve with hot reload at localhost:3000
+$ yarn dev
+
+# build for production and launch server
+$ yarn build
+$ yarn start
+
+# generate static project
+$ yarn generate
 ```
 
-- Follow the prompts to select the `nuxt-pinia-tailwind` starter kit and name your new project.
-- `cd` into your project directory and run `yarn`.
-- Run `yarn dev` to start the development server.
-- Open your browser to `http://localhost:3000` to see the included example code running.
+For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
 
-### Manual
+## Special Directories
 
-This requires a download of the entire starter.dev repository and extraction of the `nuxt-pinia-tailwind` kit from the starters directory.
+You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
 
-```bash
-git clone https://github.com/thisdot/starter.dev.git
-```
+### `assets`
 
-- Copy and rename the `starters/nuxt-pinia-tailwind` directory to the name of your new project.
-- `cd` into your project directory and run `yarn`.
-- Run `yarn dev` to start the development server.
-- Open your browser to `http://localhost:3000` to see the included example code running.
+The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
 
-## Commands
+More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
 
-- `yarn dev` - Starts the development server.
-- `yarn build` - Build and optimize your application with webpack for production.
-- `yarn start` - Start the production server (after running nuxt build).
-- `yarn generate` - Build the application (if needed), generate every route as a HTML file and statically export to dist/ directory (used for static hosting).
-- `yarn test` - Runs the unit tests.
-- `yarn stories` - Starts the Storybook UI.
-- `yarn lint` - Runs ESLint on the project.
-- `yarn lintfix` - Formats code for the entire project using prettier and linter
+### `components`
 
-## Demo Implementation
+The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
 
-[Repository](https://github.com/thisdot/starter.dev-showcases/tree/main/nuxt-pinia-tailwind)
+More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
 
-The demo application tries to implement some of GitHub's pages and functionality. It uses the OAuth credentials in GitHub to authenticate users with their GitHub accounts and uses @nuxt/axios to fetch data from the GitHub REST API. Check out the link above to learn more or check out the demo!
+### `layouts`
+
+Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
+
+More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
+
+### `pages`
+
+This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
+
+More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
+
+### `plugins`
+
+The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
+
+More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
+
+### `static`
+
+This directory contains your static files. Each file inside this directory is mapped to `/`.
+
+Example: `/static/robots.txt` is mapped as `/robots.txt`.
+
+More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
+
+### `store`
+
+This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
+
+More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
