@@ -12,13 +12,13 @@ describe('<TheGreeting />', () => {
   it('Should display correct message', async () => {
     // Arrange
     render(TheGreeting, {
-      mocks: { 
+      mocks: {
         $nuxt: {
           context: {
-            $axios: axios
+            $axios: axios,
           },
         },
-      }, 
+      },
       stubs: {
         NuxtLink: true,
       },
@@ -41,13 +41,13 @@ describe('<TheGreeting />', () => {
 
     // Arrange
     render(TheGreeting, {
-      mocks: { 
+      mocks: {
         $nuxt: {
           context: {
-            $axios: axios
+            $axios: axios,
           },
         },
-      }, 
+      },
       stubs: {
         NuxtLink: true,
       },

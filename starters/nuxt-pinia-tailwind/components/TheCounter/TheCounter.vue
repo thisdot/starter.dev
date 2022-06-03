@@ -1,18 +1,18 @@
 <template>
-  <div :class="styles.container">
-    <header :class="styles.header">
-      <h1 :class="styles.h1Header">
+  <div class="flex flex-col justify-center items-center gap-5 mt-10">
+    <header class="border-b-4 border-blue-600 w-3/5 pb-4 text-center">
+      <h1 class="text-4xl font-bold">
         Increment, Decrement and Reset Button Examples
       </h1>
     </header>
 
-    <div :class="styles.controlsContainer">
-      <p :class="styles.paragraph" data-testid="count-value">
+    <div class="flex gap-20 justify-center items-center">
+      <p class="text-2xl font-bold" data-testid="count-value">
         Count:{{ counterState.counter }}
       </p>
 
       <button
-        :class="styles.counterButton"
+        class="text-white text-lg bg-blue-500 font-bold hover:bg-blue-700 rounded py-1 px-3"
         data-testid="increase-button"
         @click="increaseCount"
       >
@@ -20,7 +20,7 @@
       </button>
 
       <button
-        :class="styles.counterButton"
+        class="text-white text-lg bg-blue-500 font-bold hover:bg-blue-700 rounded py-1 px-3"
         data-testid="decrease-button"
         @click="decreaseCount"
       >
@@ -28,14 +28,17 @@
       </button>
 
       <button
-        :class="styles.counterButton"
+        class="text-white text-lg bg-blue-500 font-bold hover:bg-blue-700 rounded py-1 px-3"
         data-testid="reset-button"
         @click="resetCount"
       >
         Reset
       </button>
     </div>
-    <NuxtLink to="/" :class="styles.link">
+    <NuxtLink
+      to="/"
+      class="text-lg text-blue-600 underline hover:text-blue-400"
+    >
       Return Home
     </NuxtLink>
   </div>
@@ -43,7 +46,6 @@
 
 <script lang="ts">
 import { defineComponent } from '@nuxtjs/composition-api'
-import * as styles from './TheCounter.classNames'
 import { useCounterStore } from '~/stores/counterStore'
 
 export default defineComponent({
@@ -61,7 +63,7 @@ export default defineComponent({
     const resetCount = () => {
       counterState.$reset()
     }
-    return { counterState, styles, increaseCount, decreaseCount, resetCount }
+    return { counterState, increaseCount, decreaseCount, resetCount }
   },
 })
 </script>

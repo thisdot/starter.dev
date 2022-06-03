@@ -21,9 +21,7 @@ export default {
   plugins: [],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
-  components: [
-    { path: '~/components', extensions: ['vue'] },  
-  ],
+  components: [{ path: '~/components', extensions: ['vue'] }],
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
@@ -57,7 +55,7 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-  },
-  
+  build: {},
+
+  devServerHandlers: [],
 }

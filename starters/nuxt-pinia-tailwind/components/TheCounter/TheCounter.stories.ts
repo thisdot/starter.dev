@@ -1,5 +1,5 @@
 export default {
-    title: 'Components'
-  }
-  
-  export const TheCounter = () => '<TheCounter />'
+  title: 'Components',
+}
+
+export const TheCounter = () => '<TheCounter />'

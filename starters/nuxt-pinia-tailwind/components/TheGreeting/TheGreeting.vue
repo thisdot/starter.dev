@@ -1,13 +1,16 @@
 <template>
-  <div :class="styles.container">
-    <header :class="styles.header">
-      <h1 :class="styles.h1Header">Fetch Data from API</h1>
+  <div class="flex flex-col justify-center items-center gap-5 mt-10">
+    <header class="border-b-4 border-blue-600 w-3/5 pb-4 text-center">
+      <h1 class="text-4xl font-bold">Fetch Data from API</h1>
     </header>
 
-    <div :class="styles.messageContainer">
-      <p :class="styles.paragraph" data-testid="message-value">Message: {{ message }}</p>
+    <div class="flex gap-20 justify-center items-center">
+      <p class="text-2xl" data-testid="message-value">Message: {{ message }}</p>
     </div>
-    <NuxtLink to="/" :class="styles.link">
+    <NuxtLink
+      to="/"
+      class="text-lg text-blue-600 underline hover:text-blue-400"
+    >
       Return Home
     </NuxtLink>
   </div>
@@ -15,12 +18,11 @@
 
 <script lang="ts">
 import { defineComponent, useAsync, useContext } from '@nuxtjs/composition-api'
-import * as styles from './TheGreeting.classNames';
 
 export default defineComponent({
   name: 'TheGreeting',
   setup() {
-    const { $axios } = useContext();
+    const { $axios } = useContext()
 
     const message = useAsync(async () => {
       try {
@@ -33,7 +35,7 @@ export default defineComponent({
       }
     }, 'get message')
 
-    return { message, styles }
+    return { message }
   },
 })
 </script>
