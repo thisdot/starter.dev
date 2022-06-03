@@ -53,7 +53,7 @@ npx create-starter-dev
 
 - Follow the prompts to select the _vue3-apollo-quasar_ kit and name your new project.
 - `cd` into your project directory and run `yarn` or `npm install`.
-- Run `quasar dev` to start the development server.
+- Run `yarn dev` to start the development server.
 - Open your browser to `http://localhost:8080` to see the included example code running.
 
 ### Manual
@@ -64,7 +64,7 @@ git clone https://github.com/thisdot/starter.dev.git
 
 - Copy and rename the `starters/vue3-apollo-quasar` directory to the name of your new project.
 - `cd` into your project directory and run `yarn` or `npm install`.
-- Run `quasar dev` to start the development server.
+- Run `yarn dev` to start the development server.
 - Open your browser to `http://localhost:8080` to see the included example code running.
 
 ## Commands
