@@ -42,7 +42,7 @@ describe('FetchMessage', () => {
       greeting: wrapper.vm.message,
     });
 
-    const msg = computed(() => result.value?.hello ?? 'can not find greeting');
+    const msg = computed(() => result.value ? result.value.hello : 'can not find greeting');
     expect(msg.value).toBe(finalMessage);
   });
 });

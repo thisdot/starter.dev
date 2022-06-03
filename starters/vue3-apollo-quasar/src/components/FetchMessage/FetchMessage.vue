@@ -32,7 +32,7 @@ export default defineComponent({
       enabled: true,
     });
 
-    const msg = computed(() => result.value?.hello ?? 'can not find greeting');
+    const msg = computed(() => result.value ? result.value.hello : 'can not find greeting');
 
     return {
       msg,
