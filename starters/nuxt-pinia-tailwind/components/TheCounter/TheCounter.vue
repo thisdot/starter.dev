@@ -35,7 +35,10 @@
         Reset
       </button>
     </div>
-    <NuxtLink to="/" class="text-lg text-blue-600 underline">
+    <NuxtLink
+      to="/"
+      class="text-lg text-blue-600 underline hover:text-blue-400"
+    >
       Return Home
     </NuxtLink>
   </div>

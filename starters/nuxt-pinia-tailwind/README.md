@@ -3,8 +3,6 @@
 This starter kit features **Nuxt.js**, **Pinia**, and **Tailwind CSS**.
 ## Table of Contents
 
-- [nuxt-pinia-tailwind starter kit](#nuxt-pinia-tailwind-starter-kit)
-  - [Table of Contents](#table-of-contents)
   - [Overview](#overview)
     - [Tech Stack](#tech-stack)
     - [Included Tooling](#included-tooling)
@@ -13,7 +11,6 @@ This starter kit features **Nuxt.js**, **Pinia**, and **Tailwind CSS**.
     - [CLI (Recommended)](#cli-recommended)
     - [Manual](#manual)
   - [Commands](#commands)
-  - [Demo Implementation](#demo-implementation)
 
 ## Overview
 
@@ -44,7 +41,7 @@ The `TheCounter` directory component uses `Pinia` to control the state of the co
 - TheCounter.test.ts
 - TheCounter.vue
 
-The `TheGreeting` directory component uses `@nuxtjs/axios` to fetch data from the example hello endopoint with corresponding mock located in `test/__mocks__/handlers/greeting.ts`. The directory contains the following files:
+The `TheGreeting` directory component uses `@nuxtjs/axios` to fetch data from the example hello endpoint with a corresponding mock located in `test/__mocks__/handlers/greeting.ts`. The directory contains the following files:
 
 - TheGreeting.stories.ts
 - TheGreeting.classNames.ts
@@ -88,8 +85,3 @@ git clone https://github.com/thisdot/starter.dev.git
 - `yarn lint` - Runs ESLint on the project.
 - `yarn lintfix` - Formats code for the entire project using prettier and linter
 
-## Demo Implementation
-
-[Repository](https://github.com/thisdot/starter.dev-showcases/tree/main/nuxt-pinia-tailwind)
-
-The demo application tries to implement some of GitHub's pages and functionality. It uses the OAuth credentials in GitHub to authenticate users with their GitHub accounts and uses @nuxt/axios to fetch data from the GitHub REST API. Check out the link above to learn more or check out the demo!
