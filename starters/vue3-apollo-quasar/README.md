@@ -21,11 +21,9 @@ This starter kit features Vue 3, Quasar and Apollo.
 - [Vue 3](https://vuejs.org/)
 - [Quasar](https://quasar.dev)
 - [Apollo (Vue Apollo)](https://apollo.vuejs.org/)
-- [Pinia](https://pinia.vuejs.org/)
 
 ### Included Tooling
 
-- List of tooling used, e.g. jest, Storybook, ESLint, Prettier, etc., with their relevant doc pages linked
 - [Jest](https://jestjs.io/) - Test runner
 - [TypeScript](https://www.typescriptlang.org/) - Type checking
 - [Storybook](https://storybook.js.org/) - Component library
@@ -34,16 +32,35 @@ This starter kit features Vue 3, Quasar and Apollo.
 
 ### Example Components
 
-- Vue 'hello world' API endpoint `https://api.starter.dev/graphql`.
-- Greeting component `FetchMessage` located in `src/components/FetchMessage/FetchMessage.vue` that uses Vue Apollo to fetch data from the example hello endpoint.
-- An example Counter component `NumberCounter` located in `src/components/NumberCounter/NumberCounter.vue`
-- Both example components have co-located tests and stories.
+#### File structure
 
-Vue components are split up into multiple files:
+We use multiple files to implement this:
 
-- `.ts` files contain TypeScript logic for the component. Not all components actually need logic, but this file is still required as it's where the HTML template and SCSS styles are linked to the component.
+- `.vue` files contain the Vue component (along with its custom CSS whenever applicable and scripts)
 - `.spec.ts` files are optional files that contain automated tests for the component. These tests are written to work with Karma and Jasmine.
 - `.stories.js|ts` files are optional files containing stories for the component. These files help us visualize the different states the component can have in Storybook.
+
+---
+
+This kit inclludes 2 components to demonstate how you can best utilize this kit and its technologies:
+
+- Greeting component `FetchMessage` located in `src/components/FetchMessage/FetchMessage.vue` that uses Vue Apollo to fetch data from the example hello endpoint.
+
+  - Utilizes Vue Apollo to retrieve data from the GraphQL endpoint located at `https://api.starter.dev/graphql`
+  - The unit test for the `FetchMessage` component can be found in `tests/unit/FetchMessage.spec.ts`. The tests check that the component:
+    - Mounts to the DOM
+    - Fetches data from the given GraphQL endpoint
+    - Displays the data fetched from the GraphQL endpoint
+
+- Counter component `NumberCounter` located in `src/components/NumberCounter/NumberCounter.vue`
+  - The unit test for the `NumberCounter` component can be found in `tests/unit/NumberCounter.spec.ts`. The test checks that the component:
+    - Has an increment button
+    - Has a decrement button
+    - Has a reset button
+    - Displays a counter value that starts at 0
+    - Increments the counter value by 1 when the increment button is clicked
+    - Decrements the counter value by 1 when the increment button is clicked
+    - Resets the value of the counter to 0 when the reset button is clicked
 
 ### CLI (Recommended)
 
@@ -51,7 +68,7 @@ Vue components are split up into multiple files:
 npx create-starter-dev
 ```
 
-- Follow the prompts to select the _vue3-apollo-quasar_ kit and name your new project.
+- Follow the prompts to select the **vue3-apollo-quasar** kit and name your new project.
 - `cd` into your project directory and run `yarn` or `npm install`.
 - Run `yarn dev` to start the development server.
 - Open your browser to `http://localhost:8080` to see the included example code running.
