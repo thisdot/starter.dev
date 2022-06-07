@@ -1,2 +1,1 @@
-import FetchMessage from './FetchMessage.vue';
-export default FetchMessage;
+export { default as FetchMessage } from './FetchMessage.vue';
