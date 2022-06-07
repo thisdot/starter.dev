@@ -42,7 +42,7 @@ We use multiple files to implement this:
 
 ---
 
-This kit inclludes 2 components to demonstate how you can best utilize this kit and its technologies:
+This kit includes 2 components to demonstrate how you can best utilize this kit and its technologies:
 
 - Greeting component `FetchMessage` located in `src/components/FetchMessage/FetchMessage.vue` that uses Vue Apollo to fetch data from the example hello endpoint.
 
