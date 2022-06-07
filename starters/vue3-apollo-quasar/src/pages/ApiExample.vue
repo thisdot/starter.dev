@@ -8,6 +8,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { useMeta } from 'quasar';
 
 export default defineComponent({
   name: 'ApiExample',
@@ -15,8 +16,13 @@ export default defineComponent({
 </script>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { inject, ref } from 'vue';
 import { FetchMessage } from 'src/components';
 
 const message = ref('vue3-apollo-quasar starter.dev!');
+
+const PRODUCT_NAME = inject('PRODUCT_NAME') as string;
+useMeta({
+  title: `Api Component - ${PRODUCT_NAME}`,
+});
 </script>

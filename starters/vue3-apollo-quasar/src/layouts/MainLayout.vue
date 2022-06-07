@@ -26,9 +26,13 @@ export default defineComponent({
 </script>
 
 <script lang="ts" setup>
+import { useMeta } from 'quasar';
 import { inject } from 'vue';
 
-const PRODUCT_NAME = inject('PRODUCT_NAME');
+const PRODUCT_NAME = inject('PRODUCT_NAME') as string;
+useMeta({
+  title: PRODUCT_NAME,
+});
 </script>
 
 <style lang="scss">

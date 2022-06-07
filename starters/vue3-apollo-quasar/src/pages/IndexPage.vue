@@ -12,8 +12,6 @@
   </q-page>
 </template>
 
-<script lang="ts" setup></script>
-
 <script lang="ts">
 import { defineComponent } from 'vue';
 

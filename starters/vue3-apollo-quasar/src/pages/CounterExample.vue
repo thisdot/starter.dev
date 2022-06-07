@@ -16,5 +16,12 @@ export default defineComponent({
 </script>
 
 <script lang="ts" setup>
+import { inject } from 'vue';
+import { useMeta } from 'quasar';
 import { NumberCounter } from 'src/components';
+
+const PRODUCT_NAME = inject('PRODUCT_NAME') as string;
+useMeta({
+  title: `Counter Component - ${PRODUCT_NAME}`,
+});
 </script>
