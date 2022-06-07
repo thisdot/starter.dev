@@ -46,7 +46,7 @@
 
 <script lang="ts">
 import { defineComponent } from '@nuxtjs/composition-api'
-import { useCounterStore } from '~/stores/counterStore'
+import { useCounterStore } from '~/store/counterStore'
 
 export default defineComponent({
   name: 'TheCounter',

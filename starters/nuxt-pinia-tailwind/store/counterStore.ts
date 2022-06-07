@@ -1,7 +1,11 @@
 import { defineStore } from 'pinia'
 
+export interface ICounterRootState {
+  counter: number
+}
+
 export const useCounterStore = defineStore('counterStore', {
-  state: () => ({
+  state: (): ICounterRootState => ({
     counter: 0,
   }),
 })
