@@ -11,14 +11,14 @@
       </q-toolbar>
     </q-header>
 
-    <q-page-container>
+    <q-page-container class="page-container">
       <router-view />
     </q-page-container>
   </q-layout>
 </template>
 
 <script lang="ts">
-import { defineComponent, inject } from 'vue';
+import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'MainLayout',
@@ -26,5 +26,16 @@ export default defineComponent({
 </script>
 
 <script lang="ts" setup>
+import { inject } from 'vue';
+
 const PRODUCT_NAME = inject('PRODUCT_NAME');
 </script>
+
+<style lang="scss">
+.page-container {
+  height: 100%;
+  padding: 2rem;
+  max-width: 50rem;
+  margin: auto;
+}
+</style>
