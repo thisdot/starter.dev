@@ -11,7 +11,7 @@ import { defineComponent } from 'vue';
 import { useMeta } from 'quasar';
 
 export default defineComponent({
-  name: 'ApiExample',
+  name: 'PageApiExample',
 });
 </script>
 

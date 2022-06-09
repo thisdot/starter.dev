@@ -45,14 +45,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<!-- <script lang="ts" setup>
-const props = defineProps({
-  message: {
-    type: String,
-    require: true,
-  },
-});
-
-
-</script> -->
