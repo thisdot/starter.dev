@@ -1,15 +1,10 @@
-import { createPinia } from 'pinia';
 import { mount } from '@vue/test-utils';
 import { NumberCounter } from '../../src/components';
 
 jest.useFakeTimers();
 
 describe('NumberCounter.vue', () => {
-  const counterWrapper = mount(NumberCounter, {
-    global: {
-      plugins: [createPinia()],
-    },
-  });
+  const counterWrapper = mount(NumberCounter);
 
   const btnIncrement = counterWrapper.find('[name="btn-increment"]');
   const btnDecrement = counterWrapper.find('[name="btn-decrement"]');
