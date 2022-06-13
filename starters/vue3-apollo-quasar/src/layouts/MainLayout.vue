@@ -1,8 +1,11 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+    <q-header>
       <q-toolbar>
-        <q-toolbar-title> vue3-apollo-quasar starter kit </q-toolbar-title>
+        <q-btn icon="home" flat to="/"></q-btn>
+        <q-toolbar-title class="text-center"
+          >{{ PRODUCT_NAME }}
+        </q-toolbar-title>
 
         <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
@@ -15,9 +18,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, inject } from 'vue';
 
 export default defineComponent({
   name: 'MainLayout',
 });
+</script>
+
+<script lang="ts" setup>
+const PRODUCT_NAME = inject('PRODUCT_NAME');
 </script>

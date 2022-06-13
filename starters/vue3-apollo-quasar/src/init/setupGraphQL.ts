@@ -4,17 +4,12 @@ import {
   InMemoryCache,
 } from '@apollo/client/core';
 import {
-  provideApolloClient,
   DefaultApolloClient,
 } from '@vue/apollo-composable';
 import { setContext } from '@apollo/client/link/context';
 import { provide } from 'vue';
 
 import fetch from 'cross-fetch';
-// const GITHUB_ENCODED_TOKEN =
-//   'YmVmZWZmM2Q3YjZlZWEwYjgxODQ2ZjMzNjdjMGExYzdhNGY0NWIzOQ==';
-
-// const GITHUB_DECODED_TOKEN = atob(GITHUB_ENCODED_TOKEN);
 
 // HTTP connection to the API
 const httpLink = createHttpLink({
@@ -41,6 +36,5 @@ export const apolloClient = new ApolloClient({
 });
 
 export const setupGraphQL = (): void => {
-  provideApolloClient(apolloClient);
-  // provide(DefaultApolloClient, apolloClient);
+  provide(DefaultApolloClient, apolloClient);
 };
