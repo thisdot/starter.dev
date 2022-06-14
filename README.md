@@ -49,7 +49,17 @@ The name of a starter kit should highlight the core technologies that it uses an
 For proper integration with the starter-dev CLI and website there are also some requirements and convention to follow in the starter kit's `package.json` file.
 
 - `description` - This field is used as a short description highlighting the technologies of each particular starter kit. It is shown as a selection in the starter-dev CLI. Example: `NextJS, React Query, and TailwindCSS`
-- `keywords` - This field is an array of strings used to map to the technology list on the starter.dev website. This categorizes/tags each starter kit on the website. For a reference of the keys that should be used here take a look at the `package/website/src/config.tsx` file. If a particular technology you're needing is missing from the `TECHNOLOGIES` list, please open a PR to add it including an icon if possible. Example: `["next", "react-query", "tailwind"]`
+- `keywords` - This field is an array of strings used to map to the technology list on the starter.dev website. Example: `["next", "react-query", "tailwind"]`
+
+### Adding starter kit to the website
+
+They `keyword` field in your starter kit's `package.json` categorizes/tags each starter kit on the website. For a reference of the keys that should be used here take a look at the `package/website/src/config.tsx` file. If a particular technology you're needing is missing from the `TECHNOLOGIES` list, please open a PR to add it including an icon _(if available)_.
+
+Once you've added your description, keywords, and made sure the keywords exist in the `TECHNOLOGIES` list in the websites `config.tsx` file, your starter kit will automatically be added to the website and deployed once you merge into the `main` branch.
+
+### Adding starter kit to the CLI
+
+Currently to add your starter kit to be an available option on the starter.dev CLI, you'll need to add an entry to the `starter-kits.json` file in the root of this repo. The key should be your starter kits package/directory name, and the value should be it's package.json `description` field. Look at current items as an example. Later down the line this process will be automated but it is currently a manual step.
 
 ### Starter kit README files
 
