@@ -5,8 +5,7 @@ import prompts, { Choice } from 'prompts';
 import degit from 'tiged';
 import fetch from 'node-fetch';
 
-// @todo: set the real URL once project is open sourced and this PR is in main
-const STARTER_KITS_JSON_URL = 'https://raw.githubusercontent.com/thisdot/starter.dev/cli-refactor/starter-kits.json?token=GHSAT0AAAAAABRR6ITOOY2W7XJYC4YEVRC4YULZ3VA';
+const STARTER_KITS_JSON_URL = 'https://raw.githubusercontent.com/thisdot/starter.dev/cli-refactor/starter-kits.json';
 
 export async function main() {
   console.log(`\n${bold('Welcome to starter.dev!')} ${gray('(create-starter)')}`);
@@ -56,7 +55,7 @@ export async function main() {
     cache: false,
     force: true,
     verbose: false,
-    mode: 'git', // @todo: change to 'tar' when repo is public
+    mode: 'tar',
   });
 
   try {
