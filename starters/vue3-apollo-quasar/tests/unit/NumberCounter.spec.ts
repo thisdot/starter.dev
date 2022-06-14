@@ -1,7 +1,24 @@
 import { mount } from '@vue/test-utils';
+import { reactive } from 'vue';
 import { NumberCounter } from '../../src/components';
+import { counts } from '../../src/variables/counts';
 
 jest.useFakeTimers();
+
+const data = reactive({
+  result: {
+    value: {
+      count: counts(),
+    },
+  },
+  loading: false,
+});
+
+jest.mock('@vue/apollo-composable', () => {
+  return {
+    useQuery: jest.fn(() => data),
+  };
+});
 
 describe('NumberCounter.vue', () => {
   const counterWrapper = mount(NumberCounter);
@@ -33,15 +50,12 @@ describe('NumberCounter.vue', () => {
     .fill(0)
     .map((_, i) => i + 1);
 
-  /** Get the counter number as an integer. Exists to keep code DRY */
-  const getCountNumber = () => parseInt(textCounter.text());
-
   it.each(testClickCycles)(
     'should increment the counter by 1 when the increment button is clicked',
     async () => {
-      const initialCount = getCountNumber();
+      const initialCount = counts();
       await btnIncrement.trigger('click');
-      const countAfterClick = getCountNumber();
+      const countAfterClick = counts();
 
       expect(countAfterClick).toEqual(initialCount + 1);
     }
@@ -49,9 +63,9 @@ describe('NumberCounter.vue', () => {
   it.each(testClickCycles)(
     'should decrement the counter by 1 when the decrement button is clicked',
     async () => {
-      const initialCount = getCountNumber();
+      const initialCount = counts();
       await btnDecrement.trigger('click');
-      const countAfterClick = getCountNumber();
+      const countAfterClick = counts();
 
       expect(countAfterClick).toEqual(initialCount - 1);
     }
@@ -59,7 +73,7 @@ describe('NumberCounter.vue', () => {
 
   it('should reset the value of the counter to 0 when the reset button is clicked', async () => {
     await btnReset.trigger('click');
-    const countAfterClick = getCountNumber();
+    const countAfterClick = counts();
 
     expect(countAfterClick).toEqual(0);
   });

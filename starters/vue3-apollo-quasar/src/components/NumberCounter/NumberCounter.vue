@@ -2,7 +2,7 @@
   <section class="row q-col-gutter-lg q-px-md q-mt-md">
     <div class="col-3">
       <h6 class="text-weight-bold q-my-none">
-        Count: <span name="text-count">{{ count }}</span>
+        Count: <span name="text-count" v-if="!loading">{{ count }}</span>
       </h6>
     </div>
     <div class="col-3">
@@ -10,7 +10,7 @@
         name="btn-increment"
         color="primary"
         unelevated
-        @click="increment"
+        @click="updateCount(1)"
         >Increment</q-btn
       >
     </div>
@@ -19,12 +19,12 @@
         name="btn-decrement"
         color="primary"
         unelevated
-        @click="decrement"
+        @click="updateCount(-1)"
         >Decrement</q-btn
       >
     </div>
     <div class="col-3">
-      <q-btn name="btn-reset" color="primary" unelevated @click="reset"
+      <q-btn name="btn-reset" color="primary" unelevated @click="updateCount(0)"
         >Reset</q-btn
       >
     </div>
@@ -36,7 +36,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { computed, defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'NumberCounter',
@@ -44,51 +44,34 @@ export default defineComponent({
 </script>
 
 <script lang="ts" setup>
+import { counts } from 'src/variables/counts';
+import { useQuery } from '@vue/apollo-composable';
 import gql from 'graphql-tag';
-import { apolloClient, cache } from 'src/init/setupGraphQL';
 
-const count = ref(0);
-
-const query = gql`
+const COUNTERS_QUERY = gql`
   query Counter {
-    count
+    count @client
   }
 `;
 
-const updateCount = async (value = 0) => {
-  await apolloClient.writeQuery({
-    query,
-    data: {
-      count: value
-    }
-  })
+const { result, loading } = useQuery(COUNTERS_QUERY);
 
-  console.log(value);
+const count = computed(() => (result.value ? result.value.count : 0));
 
+const updateCount = (countValue: number) => {
+  let cnts = counts();
+  switch (countValue) {
+    case 1:
+      cnts++;
+      break;
+    case -1:
+      cnts--;
+      break;
 
-}
-
-updateCount();
-
-const data = apolloClient.readQuery({ query });
-
-
-
-const increment = () => {
-
-count.value++;
-
-}
-
-const decrement = () => {
-
-count.value--;
-
-}
-const reset = () => {
-
-count.value = 0;
-
-}
-
+    default:
+      cnts = 0;
+      break;
+  }
+  counts(cnts);
+};
 </script>
