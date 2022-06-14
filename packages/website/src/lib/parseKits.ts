@@ -1,4 +1,4 @@
-import type { MarkdownContent } from 'src/types';
+import type { MarkdownContent } from '../types';
 import pick from 'just-pick';
 import { TECHNOLOGIES } from '../config';
 

@@ -3,9 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "lint": "yarn workspace website lint && yarn workspace @this-dot/create-starter lint",
+    "build:cli": "yarn workspace @this-dot/create-starter build",
     "build:website": "yarn workspace website build",
+    "start:cli": "yarn workspace @this-dot/create-starter start",
     "start:website": "yarn workspace website preview",
-    "dev:website": "yarn workspace website dev"
+    "dev:website": "yarn workspace website dev",
+    "watch:cli": "yarn workspace @this-dot/create-starter watch"
   },
   "workspaces": [
     "packages/*"
