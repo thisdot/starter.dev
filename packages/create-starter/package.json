@@ -1,6 +1,6 @@
 {
   "name": "@this-dot/create-starter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A CLI script for generating starter.dev kits",
   "exports": {
     ".": "./create-starter.mjs"
@@ -9,11 +9,9 @@
     "create-starter": "./create-starter.mjs"
   },
   "scripts": {
-    "kitgen": "node ./scripts/generate-kit-data.js",
     "prebuild": "yarn clean",
     "build": "esbuild ./src/index.ts --bundle --platform=node --outfile=./dist/index.js",
-    "postbuild": "yarn kitgen",
-    "dev": "esbuild ./src/index.ts --watch --bundle --platform=node --outfile=./dist/index.js",
+    "watch": "esbuild ./src/index.ts --watch --bundle --platform=node --outfile=./dist/index.js",
     "clean": "rimraf ./dist",
     "start": "node ./create-starter.mjs"
   },
@@ -44,6 +42,7 @@
   },
   "dependencies": {
     "kleur": "^4.1.4",
+    "node-fetch": "^3.2.4",
     "prompts": "^2.4.2",
     "tiged": "^2.12.0",
     "yargs-parser": "^21.0.0"

@@ -1,13 +1,34 @@
 import path from 'path';
 import fs from 'fs/promises';
 import { bold, gray, green, red, cyan } from 'kleur/colors';
-import prompts from 'prompts';
+import prompts, { Choice } from 'prompts';
 import degit from 'tiged';
+import fetch from 'node-fetch';
+
+const STARTER_KITS_JSON_URL = 'https://raw.githubusercontent.com/thisdot/starter.dev/cli-refactor/starter-kits.json';
 
 export async function main() {
   console.log(`\n${bold('Welcome to starter.dev!')} ${gray('(create-starter)')}`);
 
-  const starters = JSON.parse(await fs.readFile(path.join(__dirname, 'starters.json'), { encoding: 'utf-8' }));
+  let starters: Choice[] = [];
+
+  try {
+    const res = await fetch(STARTER_KITS_JSON_URL);
+    if (res.ok) {
+      const starterKitsJSON = await res.json();
+      if (typeof starterKitsJSON === 'object' && starterKitsJSON !== null) {
+        starters = Object.entries(starterKitsJSON).map(([name, description]) => ({
+          value: name as string,
+          title: description as string,
+        }));
+      }
+    } else {
+      throw new Error();
+    }
+  } catch (err) {
+    console.error(bold(red('Failed to fetch list of available starter kits')));
+    process.exit(1);
+  }
 
   const options = await prompts([
     {
@@ -34,7 +55,7 @@ export async function main() {
     cache: false,
     force: true,
     verbose: false,
-    mode: 'git', // @todo: change to 'tar' when repo is public
+    mode: 'tar',
   });
 
   try {
