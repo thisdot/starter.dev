@@ -61,8 +61,8 @@ export async function main() {
   try {
     console.log(`${green(`>`)} ${gray(`Downloading starter kit...`)}`);
     await emitter.clone(destPath);
-  } catch (err: any) {
-    console.error(red(err.message));
+  } catch (err: unknown) {
+    console.error(red(err instanceof Error ? err.message : 'Failed to download starter kit'));
     process.exit(1);
   }
 

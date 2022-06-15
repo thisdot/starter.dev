@@ -13,7 +13,8 @@
     "build": "esbuild ./src/index.ts --bundle --platform=node --outfile=./dist/index.js",
     "watch": "esbuild ./src/index.ts --watch --bundle --platform=node --outfile=./dist/index.js",
     "clean": "rimraf ./dist",
-    "start": "node ./create-starter.mjs"
+    "start": "node ./create-starter.mjs",
+    "lint": "eslint ./src"
   },
   "files": [
     "dist",
@@ -31,10 +32,13 @@
   },
   "homepage": "https://github.com/thisdot/starter.dev#readme",
   "devDependencies": {
-    "@tsconfig/node14": "^1.0.1",
+    "@tsconfig/node14": "^1.0.2",
     "@types/node": "^16.11.12",
     "@types/prompts": "^2.0.14",
+    "@typescript-eslint/eslint-plugin": "^5.28.0",
+    "@typescript-eslint/parser": "^5.28.0",
     "esbuild": "^0.14.3",
+    "eslint": "^8.17.0",
     "rimraf": "^3.0.2"
   },
   "engines": {
