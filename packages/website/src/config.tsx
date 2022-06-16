@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { ComponentType } from 'react';
 import {
   DiscordIcon,
@@ -31,7 +32,8 @@ import {
   ReduxIcon,
   GatsbyIcon,
   CSSModuleIcon,
-  RedwoodIcon
+  RedwoodIcon,
+  PiniaIcon,
 } from './icons';
 
 export interface NavItem {
@@ -183,7 +185,7 @@ export const TECHNOLOGIES = [
     key: 'bootstrap',
     name: 'Bootstrap',
     tags: ['CSS'],
-    Icon: (props) => <BootstrapIcon {...props} />
+    Icon: (props) => <BootstrapIcon {...props} />,
   },
   {
     key: 'astro',
@@ -231,13 +233,13 @@ export const TECHNOLOGIES = [
     key: 'rest api',
     name: 'REST API',
     tags: ['Data'],
-    Icon: (props) => <RestIcon {...props} />
+    Icon: (props) => <RestIcon {...props} />,
   },
   {
     key: 'relay',
     name: 'Relay',
     tags: ['Data'],
-    Icon: (props) => <RelayIcon {...props} />
+    Icon: (props) => <RelayIcon {...props} />,
   },
   {
     key: 'apollo',
@@ -257,11 +259,17 @@ export const TECHNOLOGIES = [
     tags: ['Tooling'],
     Icon: (props) => <WebpackIcon {...props} />,
   },
+  {
+    key: 'pinia',
+    name: 'Pinia',
+    tags: ['Data'],
+    Icon: (props) => <PiniaIcon {...props} />,
+  },
 ];
 
 export const SPONSORS_ICON = [
   {
     name: 'angular',
-    Icon: (props) => <AngularIcon {...props} />
-  }
-]
+    Icon: (props) => <AngularIcon {...props} />,
+  },
+];

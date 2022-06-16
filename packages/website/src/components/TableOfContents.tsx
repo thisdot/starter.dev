@@ -1,8 +1,9 @@
+import type { MarkdownHeader } from '../types';
+import { useState, useRef, useEffect } from 'react';
 import cn from 'clsx';
-import { useState, useEffect, useRef } from 'react';
 
 export interface Props {
-  headers: any[];
+  headers: MarkdownHeader[];
 }
 
 export function TableOfContents({ headers }: Props) {
@@ -19,30 +20,28 @@ export function TableOfContents({ headers }: Props) {
     };
 
     const handleNavScroll = () => {
-      let current = '';
-      itemOffsets.current.forEach((item) => {
+      let activeId: string | undefined = undefined;
+      itemOffsets.current?.forEach((item) => {
         if (scrollY >= item.topOffset - 160) {
-          current = item.id;
+          activeId = item.id;
         }
       });
-      setActiveId(current);
+      setActiveId(activeId);
     };
 
     getItemOffsets();
 
     document.addEventListener('scroll', handleNavScroll);
-
-    getItemOffsets();
-    window.addEventListener('resize', getItemOffsets);
+    document.addEventListener('resize', getItemOffsets);
 
     return () => {
-      window.removeEventListener('resize', getItemOffsets);
-      document.addEventListener('scroll', handleNavScroll);
+      document.removeEventListener('scroll', handleNavScroll);
+      document.removeEventListener('resize', getItemOffsets);
     };
-  }, []);
+  }, [itemOffsets]);
 
   const handleClick = (id: string) => {
-    itemOffsets.current.forEach((item) => {
+    itemOffsets.current?.forEach((item) => {
       if (item.id === id) {
         window.scrollTo(0, item.topOffset - 145);
       }
@@ -53,9 +52,9 @@ export function TableOfContents({ headers }: Props) {
     <nav>
       <ul>
         {headers
-          ?.filter(({ depth }) => depth > 1 && depth < 4)
+          .filter(({ depth }) => depth > 1 && depth < 4)
           .map((header) => (
-            <li>
+            <li key={header.slug}>
               <a
                 onClick={() => handleClick(header.slug)}
                 className={cn(

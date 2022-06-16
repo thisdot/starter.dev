@@ -4,15 +4,19 @@ This starter kit features Create React App, RxJS and styled-components.
 
 ## Table of Contents
 
-- [Overview](#overview)
-  - [Tech Stack](#tech-stack)
-  - [Included Tooling](#included-tooling)
-  - [Example Components](#example-components)
-- [Installation](#installation)
-  - [CLI](#cli)
-  - [Manual](#manual)
-- [Commands](#commands)
-- [Demo Implementation](#demo-implementation)
+- [cra-rxjs-styled-components starter kit](#cra-rxjs-styled-components-starter-kit)
+  - [Table of Contents](#table-of-contents)
+  - [Overview](#overview)
+    - [Tech Stack](#tech-stack)
+    - [Included Tooling](#included-tooling)
+    - [Example Components](#example-components)
+  - [Installation](#installation)
+    - [CLI (Recommended)](#cli-recommended)
+    - [Manual](#manual)
+  - [Commands](#commands)
+  - [Kit Organization / Architecture](#kit-organization--architecture)
+    - [Example directory](#example-directory)
+  - [Demo Implementation](#demo-implementation)
 
 ## Overview
 
@@ -32,6 +36,11 @@ This starter kit features Create React App, RxJS and styled-components.
 - [Prettier](https://prettier.io/) - Code formatting
 
 ### Example Components
+
+- React 'hello world' API endpoint `https://api.starter.dev/hello` with corresponding mock located in `src/components/RXJS-Example/RXJS-Example.test.tsx`.
+- Greeting component `src/components/RXJS-Example/RXJS-Example.test.tsx` that uses `rxjs/fetch` to fetch data from the example hello endpoint.
+- An example Counter component `src/components/Counter/Counter.tsx`
+- Both example components have co-located tests and stories.
 
 In this `starters/cra-rxjs-styled-components/src` directory you will find the `Counter`, `RxJS-Example`, and `Homepage` directories.
 
@@ -64,7 +73,13 @@ The `Homepage` directory contains the following files:
 ### CLI (Recommended)
 
 ```bash
-npx create-starter-dev
+npx @this-dot/create-starter
+```
+
+or
+
+```bash
+yarn create @this-dot/starter
 ```
 
 - Follow the prompts to select the `cra-rxjs-styled-components` starter kit and name your new project.
@@ -90,6 +105,20 @@ git clone https://github.com/thisdot/starter.dev.git
 - `npm run storybook` - Starts the Storybook UI.
 - `npm run lint` - Runs ESLint on the project.
 - `npm run prettier` - Formats code for the entire project
+
+
+## Kit Organization / Architecture
+
+The demo components included in the starter.kit are co-located with the tests and stories. If you want to follow this pattern, take a look at our GitHub demo implementation below. The demo implementation is done with the same structure but includes things like tests, styles, and view components that are modeled after an MVC type architecture. Using this structure makes it easy to find all the code and functionality related to a specific component.
+
+### Example directory
+
+```
+- UserRepos.test.tsx - Unit tests for the UserRepos component
+- UserRepos.stories.tsx - Storybook UI for the UserRepos component
+- UserRepos.styles.tsx - Styled Component for UserRepos component styling
+- UserRepos.tsx - View component for the UserRepos component
+```
 
 ## Demo Implementation
 
