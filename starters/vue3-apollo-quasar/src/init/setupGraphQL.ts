@@ -4,7 +4,6 @@ import {
   InMemoryCache,
 } from '@apollo/client/core';
 import {
-  DefaultApolloClient,
   provideApolloClient,
 } from '@vue/apollo-composable';
 import { setContext } from '@apollo/client/link/context';
@@ -52,5 +51,4 @@ export const apolloClient = new ApolloClient({
 
 export const setupGraphQL = (): void => {
   provideApolloClient(apolloClient);
-  // provide(DefaultApolloClient, apolloClient);
 };
