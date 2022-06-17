@@ -12,6 +12,13 @@
     "watch:cli": "yarn workspace @this-dot/create-starter watch"
   },
   "workspaces": [
-    "packages/*"
+    "packages/create-starter-dev",
+    "packages/website",
+    "starters/angular-apollo-tailwind",
+    "starters/angular-ngrx-scss",
+    "starters/cra-rxjs-styled-components",
+    "starters/next-react-query-tailwind",
+    "starters/remix-gql-tailwind",
+    "starters/vue3-apollo-quasar"
   ]
 }

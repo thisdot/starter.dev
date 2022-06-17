@@ -1,0 +1,41 @@
+.starter-button {
+  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  display: inline-block;
+  line-height: 1;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.starter-button--primary {
+  color: white;
+  background-color: rgb(59 130 246);
+
+  &:hover, &:active, &:focus {
+    background-color: rgb(29 78 216);
+  }
+}
+
+.starter-button--secondary {
+  color: #333;
+  background-color: transparent;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
+}
+
+.starter-button--small {
+  font-size: 12px;
+  padding: 10px 16px;
+}
+
+.starter-button--medium {
+  font-size: 14px;
+  padding: 11px 20px;
+}
+
+.starter-button--large {
+  font-size: 16px;
+  padding: 12px 24px;
+}
