@@ -7,7 +7,6 @@ import {
   provideApolloClient,
 } from '@vue/apollo-composable';
 import { setContext } from '@apollo/client/link/context';
-import { provide } from 'vue';
 
 import fetch from 'cross-fetch';
 
