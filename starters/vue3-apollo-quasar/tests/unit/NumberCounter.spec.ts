@@ -1,14 +1,14 @@
 import { mount } from '@vue/test-utils';
 import { reactive } from 'vue';
 import { NumberCounter } from '../../src/components';
-import { counts } from '../../src/globals/counts';
+import { counter } from '../../src/globals/counter';
 
 jest.useFakeTimers();
 
 const data = reactive({
   result: {
     value: {
-      count: counts(),
+      count: counter(),
     },
   },
   loading: false,
@@ -53,9 +53,9 @@ describe('NumberCounter.vue', () => {
   it.each(testClickCycles)(
     'should increment the counter by 1 when the increment button is clicked',
     async () => {
-      const initialCount = counts();
+      const initialCount = counter();
       await btnIncrement.trigger('click');
-      const countAfterClick = counts();
+      const countAfterClick = counter();
 
       expect(countAfterClick).toEqual(initialCount + 1);
     }
@@ -63,9 +63,9 @@ describe('NumberCounter.vue', () => {
   it.each(testClickCycles)(
     'should decrement the counter by 1 when the decrement button is clicked',
     async () => {
-      const initialCount = counts();
+      const initialCount = counter();
       await btnDecrement.trigger('click');
-      const countAfterClick = counts();
+      const countAfterClick = counter();
 
       expect(countAfterClick).toEqual(initialCount - 1);
     }
@@ -73,7 +73,7 @@ describe('NumberCounter.vue', () => {
 
   it('should reset the value of the counter to 0 when the reset button is clicked', async () => {
     await btnReset.trigger('click');
-    const countAfterClick = counts();
+    const countAfterClick = counter();
 
     expect(countAfterClick).toEqual(0);
   });

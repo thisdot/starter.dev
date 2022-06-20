@@ -44,7 +44,7 @@ export default defineComponent({
 </script>
 
 <script lang="ts" setup>
-import { increment, decrement, reset } from 'src/globals/counts';
+import { increment, decrement, reset } from 'src/globals/counter';
 import { useQuery } from '@vue/apollo-composable';
 import gql from 'graphql-tag';
 

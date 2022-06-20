@@ -10,7 +10,7 @@ import { setContext } from '@apollo/client/link/context';
 
 import fetch from 'cross-fetch';
 
-import { counts } from '../globals/counts';
+import { counter } from '../globals/counter';
 
 // HTTP connection to the API
 const httpLink = createHttpLink({
@@ -34,7 +34,7 @@ export const cache = new InMemoryCache({
       fields: {
         count: {
           read() {
-            return counts();
+            return counter();
           },
         },
       },
