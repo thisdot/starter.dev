@@ -24,7 +24,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 main {
   min-height: unset!important;
-  margin-top: 2rem;
+  margin-top: 3rem;
   .examples {
     margin: 0 0 .5rem;
   }
