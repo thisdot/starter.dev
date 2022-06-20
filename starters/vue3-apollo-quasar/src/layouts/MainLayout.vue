@@ -1,13 +1,10 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header>
+    <q-header class="page-header">
       <q-toolbar>
-        <q-btn icon="home" flat to="/"></q-btn>
         <q-toolbar-title class="text-center"
           >{{ PRODUCT_NAME }}
         </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
     </q-header>
 
@@ -36,8 +33,15 @@ useMeta({
 </script>
 
 <style lang="scss">
+.page-header {
+  width: 100%;
+  margin: 20px auto;
+  @media (min-width: 1024px) {
+    width: calc(100% - 420px);
+  }
+}
+
 .page-container {
-  height: 100%;
   padding: 2rem;
   max-width: 50rem;
   margin: auto;
