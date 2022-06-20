@@ -10,7 +10,7 @@ import { setContext } from '@apollo/client/link/context';
 
 import fetch from 'cross-fetch';
 
-import { counts } from '../variables/counts';
+import { counts } from '../globalvariables/counts';
 
 // HTTP connection to the API
 const httpLink = createHttpLink({

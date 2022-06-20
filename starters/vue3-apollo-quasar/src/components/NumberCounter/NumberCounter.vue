@@ -10,7 +10,7 @@
         name="btn-increment"
         color="primary"
         unelevated
-        @click="updateCount(1)"
+        @click="increment"
         >Increment</q-btn
       >
     </div>
@@ -19,12 +19,12 @@
         name="btn-decrement"
         color="primary"
         unelevated
-        @click="updateCount(-1)"
+        @click="decrement"
         >Decrement</q-btn
       >
     </div>
     <div class="col-3">
-      <q-btn name="btn-reset" color="primary" unelevated @click="updateCount(0)"
+      <q-btn name="btn-reset" color="primary" unelevated @click="reset"
         >Reset</q-btn
       >
     </div>
@@ -44,7 +44,7 @@ export default defineComponent({
 </script>
 
 <script lang="ts" setup>
-import { counts } from 'src/variables/counts';
+import { increment, decrement, reset } from 'src/variables/counts';
 import { useQuery } from '@vue/apollo-composable';
 import gql from 'graphql-tag';
 
@@ -58,20 +58,4 @@ const { result, loading } = useQuery(COUNTERS_QUERY);
 
 const count = computed(() => (result.value ? result.value.count : 0));
 
-const updateCount = (countValue: number) => {
-  let cnts = counts();
-  switch (countValue) {
-    case 1:
-      cnts++;
-      break;
-    case -1:
-      cnts--;
-      break;
-
-    default:
-      cnts = 0;
-      break;
-  }
-  counts(cnts);
-};
 </script>
