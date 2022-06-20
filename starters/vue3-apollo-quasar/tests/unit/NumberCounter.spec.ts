@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils';
 import { reactive } from 'vue';
 import { NumberCounter } from '../../src/components';
-import { counts } from '../../src/globalvariables/counts';
+import { counts } from '../../src/globals/counts';
 
 jest.useFakeTimers();
 
