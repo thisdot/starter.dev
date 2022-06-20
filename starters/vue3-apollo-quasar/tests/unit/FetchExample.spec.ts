@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import FetchMessage from '../../src/components/FetchMessage';
+import {FetchExample} from '../../src/components';
 
 jest.mock('@vue/apollo-composable', () => {
   const data = {
@@ -16,7 +16,7 @@ jest.mock('@vue/apollo-composable', () => {
 });
 
 describe('FetchMessage', () => {
-  const wrapper = mount(FetchMessage, {
+  const wrapper = mount(FetchExample, {
       props: {
         message: 'vue3-apollo-quasar starter.dev!',
       },
@@ -36,5 +36,5 @@ describe('FetchMessage', () => {
   it('should display message', () => {
     expect(wrapper.text()).toBe(`Message: ${finalMessage}`);
    });
-  
+
   });
