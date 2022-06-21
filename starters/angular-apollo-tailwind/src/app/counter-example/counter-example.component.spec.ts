@@ -25,7 +25,7 @@ describe('CounterExampleComponent', () => {
         const app = fixture.componentInstance;
         expect(app).toBeTruthy();
     });
-    
+
     it('should increase the counter value', () => {
         fixture = TestBed.createComponent(CounterExampleComponent);
         const app = fixture.componentInstance;
