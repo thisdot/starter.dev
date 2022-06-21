@@ -5,6 +5,9 @@ node_modules
 .pnp
 .pnp.js
 
+starters/vue3-apollo-quasar/yarn.lock
+starters/vue3-apollo-quasar/package-lock.json
+
 # testing
 coverage
 
