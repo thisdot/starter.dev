@@ -9,7 +9,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
-    declarations: [AppComponent, FetchExampleComponent, CounterExampleComponent],
+    declarations: [
+        AppComponent,
+        FetchExampleComponent,
+        CounterExampleComponent,
+    ],
     imports: [BrowserModule, GraphQLModule, HttpClientModule, AppRoutingModule],
     providers: [],
     bootstrap: [AppComponent],
