@@ -1,4 +1,4 @@
-import { generateHeaderAnchor } from "../lib/generateHeaderAnchor";
+import { generateHeaderAnchor } from '../lib/generateHeaderAnchor';
 
 interface Props {
   sections: string[];
@@ -9,8 +9,8 @@ export function FrameworkNavigation({ sections, toggleNavigation }: Props) {
   return (
     <nav>
       <ul>
-        {sections.map(name => (
-          <li>
+        {sections.map((name, i) => (
+          <li key={`${name}-${i}`}>
             <a
               href={`#${generateHeaderAnchor(name)}`}
               className="t-dark dark:dark-t-light block py-2 px-8 hover:text-blue-500
