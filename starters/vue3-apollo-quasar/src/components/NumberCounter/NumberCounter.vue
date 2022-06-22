@@ -2,29 +2,21 @@
   <section class="row q-col-gutter-lg q-px-md q-mt-md">
     <div class="col-3">
       <h6 class="text-weight-bold q-my-none">
-        Count: <span name="text-count">{{ counter.count }}</span>
+        Count: <span name="text-count" v-if="!loading">{{ count }}</span>
       </h6>
     </div>
     <div class="col-3">
-      <q-btn
-        name="btn-increment"
-        color="primary"
-        unelevated
-        @click="counter.increment"
+      <q-btn name="btn-increment" color="primary" unelevated @click="increment"
         >Increment</q-btn
       >
     </div>
     <div class="col-3">
-      <q-btn
-        name="btn-decrement"
-        color="primary"
-        unelevated
-        @click="counter.decrement"
+      <q-btn name="btn-decrement" color="primary" unelevated @click="decrement"
         >Decrement</q-btn
       >
     </div>
     <div class="col-3">
-      <q-btn name="btn-reset" color="primary" unelevated @click="counter.reset"
+      <q-btn name="btn-reset" color="primary" unelevated @click="reset"
         >Reset</q-btn
       >
     </div>
@@ -36,7 +28,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { computed, defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'NumberCounter',
@@ -44,7 +36,17 @@ export default defineComponent({
 </script>
 
 <script lang="ts" setup>
-import { useCounterStore } from 'src/stores';
+import { increment, decrement, reset } from 'src/globals/counter';
+import { useQuery } from '@vue/apollo-composable';
+import gql from 'graphql-tag';
 
-const counter = useCounterStore();
+const COUNTER_QUERY = gql`
+  query Counter {
+    count @client
+  }
+`;
+
+const { result, loading } = useQuery(COUNTER_QUERY);
+
+const count = computed(() => (result.value ? result.value.count : 0));
 </script>

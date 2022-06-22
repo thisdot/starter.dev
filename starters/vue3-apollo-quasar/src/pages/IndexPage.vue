@@ -1,13 +1,11 @@
 <template>
-  <q-page class="row items-center justify-center column">
-    <p>
+  <q-page class="row items-center justify-start column">
+    <p class="examples">
       <router-link to="/counter">See Counter example component</router-link>
     </p>
 
-    <p>
-      <router-link to="/api-example"
-        >See Apollo GraphQL example component</router-link
-      >
+    <p class="examples">
+      <router-link to="/api-example">See Apollo GraphQL example component</router-link>
     </p>
   </q-page>
 </template>
