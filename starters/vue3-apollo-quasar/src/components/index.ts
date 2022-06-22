@@ -1,2 +1,2 @@
 export * from './NumberCounter';
-export * from './FetchMessage';
+export * from './FetchExample';

@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 import { reactive } from 'vue';
-import { FetchMessage } from '../../src/components/FetchMessage';
+import { FetchExample } from '../../src/components/FetchExample';
 
 const data = reactive({
   result: {
@@ -18,7 +18,7 @@ jest.mock('@vue/apollo-composable', () => {
 });
 
 describe('FetchMessage', () => {
-  const wrapper = mount(FetchMessage, {
+  const wrapper = mount(FetchExample, {
     props: {
       message: 'vue3-apollo-quasar starter.dev!',
     },
