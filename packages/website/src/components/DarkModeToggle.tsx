@@ -1,7 +1,7 @@
 import cn from 'clsx';
 import { useState, useEffect } from 'react';
 import { Switch } from '@headlessui/react';
-import { SunIcon, MoonIcon } from '@heroicons/react/solid';
+import { SunIcon, MoonIcon } from '../icons/heroicons';
 
 export function DarkModeToggle() {
   const [enabled, setEnabled] = useState(false);

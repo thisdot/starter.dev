@@ -1,14 +1,15 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import TechItem from '../components/TechItem.astro';
-import MobileNavigation from '../components/MobileNavigation.tsx';
-import { TECHNOLOGIES } from '../config';
-import Contributors from '../components/Contributors.astro';
-import { generateHeaderAnchor } from '../lib/generateHeaderAnchor';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TechItem from '../../components/TechItem.astro';
+import MobileNavigation from '../../components/MobileNavigation';
+import { TECHNOLOGIES } from '../../config';
+import Contributors from '../../components/Contributors.astro';
+import { generateHeaderAnchor } from '../../lib/generateHeaderAnchor';
 
-const items = Astro.fetchContent('./kit/*.md');
-
-const keywords = items.map((item) => item.keywords?.split(',') || []).flat(10);
+const items = await Astro.glob('../kits/*.md');
+const keywords = items
+  .map((item) => item.frontmatter.keywords?.split(',') || [])
+  .flat(10);
 
 const technologies = TECHNOLOGIES.filter((tech) => {
   return keywords.includes(tech.key);
@@ -66,7 +67,7 @@ const sections = technologies.reduce((acc, tech) => {
             <div class="flex flex-wrap items-center justify-start gap-x-4">
               {technologies.map((tech) => (
                 <a
-                  href={`/framework/${tech.key}`}
+                  href={`/frameworks/${tech.key}`}
                   class="group inline-block my-2"
                 >
                   <TechItem {...tech} />
