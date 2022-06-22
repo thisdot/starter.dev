@@ -4,12 +4,13 @@ import {
   InMemoryCache,
 } from '@apollo/client/core';
 import {
-  DefaultApolloClient,
+  provideApolloClient,
 } from '@vue/apollo-composable';
 import { setContext } from '@apollo/client/link/context';
-import { provide } from 'vue';
 
 import fetch from 'cross-fetch';
+
+import { counter } from '../globals/counter';
 
 // HTTP connection to the API
 const httpLink = createHttpLink({
@@ -27,7 +28,19 @@ const authLink = setContext((_, { headers }) => {
 });
 
 // Cache implementation
-const cache = new InMemoryCache();
+export const cache = new InMemoryCache({
+  typePolicies: {
+    Query: {
+      fields: {
+        count: {
+          read() {
+            return counter();
+          },
+        },
+      },
+    },
+  },
+});
 
 // Create the apollo client
 export const apolloClient = new ApolloClient({
@@ -36,5 +49,5 @@ export const apolloClient = new ApolloClient({
 });
 
 export const setupGraphQL = (): void => {
-  provide(DefaultApolloClient, apolloClient);
+  provideApolloClient(apolloClient);
 };
