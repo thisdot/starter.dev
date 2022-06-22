@@ -1,9 +1,8 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout class="row items-center justify-start column" view="lHh Lpr lFf">
     <q-header class="page-header">
       <q-toolbar>
-        <q-toolbar-title class="text-center"
-          >{{ PRODUCT_NAME }}
+        <q-toolbar-title class="text-center">{{ PRODUCT_NAME }}
         </q-toolbar-title>
       </q-toolbar>
     </q-header>
@@ -32,18 +31,13 @@ useMeta({
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .page-header {
+  position: relative;
   width: 100%;
   margin: 20px auto;
   @media (min-width: 1024px) {
     width: calc(100% - 420px);
   }
-}
-
-.page-container {
-  padding: 2rem;
-  max-width: 50rem;
-  margin: auto;
 }
 </style>
