@@ -12,7 +12,6 @@ export const GET_GREETING = gql`
 @Component({
     selector: 'app-fetch-example',
     templateUrl: './fetch-example.component.html',
-    styleUrls: ['./fetch-example.component.scss'],
 })
 export class FetchExampleComponent implements OnInit {
     private message: string = 'Angular + Apollo + Tailwind starter.dev';
