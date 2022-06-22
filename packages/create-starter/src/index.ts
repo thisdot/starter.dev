@@ -5,7 +5,7 @@ import prompts, { Choice } from 'prompts';
 import degit from 'tiged';
 import fetch from 'node-fetch';
 
-const STARTER_KITS_JSON_URL = 'https://raw.githubusercontent.com/thisdot/starter.dev/cli-refactor/starter-kits.json';
+const STARTER_KITS_JSON_URL = 'https://raw.githubusercontent.com/thisdot/starter.dev/main/starter-kits.json';
 
 export async function main() {
   console.log(`\n${bold('Welcome to starter.dev!')} ${gray('(create-starter)')}`);
