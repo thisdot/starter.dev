@@ -9,25 +9,14 @@
             <p class="py-2">
                 Count: <span class="counter"> {{ counter }} </span>
             </p>
-            <button
-                class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded-lg"
-                (click)="increaseCounter()"
-            >
+            <button class="button" (click)="increaseCounter()">
                 Increment
             </button>
-            <button
-                class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded-lg"
-                (click)="decreaseCounter()"
-            >
+            <button class="button" (click)="decreaseCounter()">
                 Decrement
             </button>
-            <button
-                class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded-lg"
-                (click)="resetCounter()"
-            >
-                Reset
-            </button>
+            <button class="button" (click)="resetCounter()">Reset</button>
         </div>
-        <a href="/" class="underline text-blue-700"> Return Home </a>
+        <a href="/" class="anchor">Return Home</a>
     </div>
 </div>

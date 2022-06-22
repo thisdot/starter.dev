@@ -1,0 +1,5 @@
+@layer components {
+  .button {
+    @apply font-bold bg-blue-700 hover:bg-blue-800 text-white rounded-lg py-2 px-4;
+  }
+}
