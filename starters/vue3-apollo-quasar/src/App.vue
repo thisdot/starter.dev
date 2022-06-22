@@ -16,3 +16,10 @@ setupGraphQL();
 
 provide('PRODUCT_NAME', 'Vue 3, Quasar & Apollo Starter kit');
 </script>
+
+<style lang="scss">
+.q-page {
+  min-height: unset!important;
+}
+</style>
+
