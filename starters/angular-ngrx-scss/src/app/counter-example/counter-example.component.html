@@ -1,0 +1,16 @@
+<main class="counter-example container">
+  <h1 class="counter-example__header">Increment, Decrement and Reset Button Examples</h1>
+    <h2 class="counter-example__count">Count: {{ count$ | async }}</h2>
+
+  <div class="counter-example__buttons">
+    <starter-button class="counter-example__button" [primary]="true" size="large" label="Increment" (onClick)="increment()"></starter-button>
+    <starter-button class="counter-example__button" [primary]="true" size="large" label="Decrement" (onClick)="decrement()"></starter-button>
+    <starter-button class="counter-example__button" [primary]="true" size="large" label="Reset" (onClick)="reset()"></starter-button>
+  </div>
+
+  <nav>
+    <ul class="counter-example__links">
+      <li><a routerLink="/">Return Home</a></li>
+    </ul>
+  </nav>
+</main>

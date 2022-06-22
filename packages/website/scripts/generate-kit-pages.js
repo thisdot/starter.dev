@@ -45,7 +45,7 @@ ${markdown}`;
 
 (async () => {
   const repoPath = getRepoRootPath();
-  const kitPagesPath = path.join(repoPath, 'packages/website/src/pages/kit');
+  const kitPagesPath = path.join(repoPath, 'packages/website/src/pages/kits');
 
   try {
     const handle = await fs.opendir(kitPagesPath);
@@ -91,7 +91,7 @@ ${markdown}`;
 
       const kitPagePath = path.join(
         repoPath,
-        'packages/website/src/pages/kit',
+        'packages/website/src/pages/kits',
         `${data.name}.md`
       );
 

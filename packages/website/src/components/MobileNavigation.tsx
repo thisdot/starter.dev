@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { XIcon, MenuIcon } from '@heroicons/react/outline';
+import { XIcon, MenuIcon } from '../icons/heroicons';
 import { FrameworkNavigation } from './FrameworkNavigation';
 import { KitNavigation } from './KitNavigation';
 

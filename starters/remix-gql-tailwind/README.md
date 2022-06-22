@@ -1,12 +1,13 @@
-# remix-gql-tailwind starter kit
+# remix-gql-tailwind Starter Kit
 
-This starter kit features **Remix**, **GraphQL**, and **Tailwind CSS*.
+This starter kit features **Remix**, **GraphQL**, and **Tailwind CSS**.
 
 ## Table of Contents
 
 - [Overview](#overview)
   - [Tech Stack](#tech-stack)
   - [Included Tooling](#included-tooling)
+  - [Kit Organization / Architecture](#kit-organization-architecture)
   - [Example Components](#example-components)
 - [Installation](#installation)
   - [CLI](#cli)
@@ -19,6 +20,7 @@ This starter kit features **Remix**, **GraphQL**, and **Tailwind CSS*.
 ### Tech Stack
 
 - [Remix v1.x](https://remix.run/)
+- [React v17.x](https://reactjs.org)
 - [GraphQL](https://graphql.org/)
 - [Tailwind CSS v3.x](https://tailwindcss.com/)
 
@@ -30,6 +32,22 @@ This starter kit features **Remix**, **GraphQL**, and **Tailwind CSS*.
 - [ESLint](https://eslint.org/) - Code linting
 - [Prettier](https://prettier.io/) - Code formatting
 - [Vite](https://vitejs.dev/) - Storybook builder
+
+### Kit Organization / Architecture
+
+For this kit, we maintained the [Remix convention](https://remix.run/docs/en/v1/api/conventions) and we do recommend it. For the `app/components` folder, each component is co-located with its tests and stories. This structure makes it easy to find all the code and functionality related to a specific component. Due to Remix's preference for data fetching from the route page, the components are primarily simple view components.
+
+- #### Storybook
+
+  Storybook was introduced because it is really a great tool for testing components in isolation and good for documentation.
+  As of [Remix v1.x](https://remix.run/), Storybook isn't supported and doesn't work well with Remix, so [Vite](https://vitejs.dev/) was used in building Storybook to work properly. This might change in the future.
+
+- #### Styling
+
+This kit utilizes Tailwind for styling based on Remix's preference and due to the fact that other CSS libraries such as Styled Components and CSS Modules aren't supported currently. See https://remix.run/docs/en/v1/guides/styling for more information.
+  The styles are exported from a `<componentName>.classNames.ts` as named exports, this is majorly to avoid [surface styling](https://remix.run/docs/en/v1/guides/styling#surfacing-styles) which can be a bit complex. Also, you could write the Tailwind classes inline but this method is used to keep the file clean and ensure reusability of styles.
+
+If you want to follow this pattern, take a look at our GitHub demo implementation below. Using this structure makes it easy to find all the code and functionality related to a specific component.
 
 ### Example Components
 
@@ -57,7 +75,13 @@ The `Greeting` directory contains the following files:
 ### CLI (Recommended)
 
 ```bash
-npx create-starter-dev
+npx @this-dot/create-starter
+```
+
+or
+
+```bash
+yarn create @this-dot/starter
 ```
 
 - Follow the prompts to select the `remix-gql-tailwind` starter kit and name your new project.
@@ -89,6 +113,6 @@ git clone https://github.com/thisdot/starter.dev.git
 
 ## Demo Implementation
 
-[Repository](https://github.com/thisdot/starter.dev-showcases/tree/main/remix)
+[Repository](https://github.com/thisdot/starter.dev-github-showcases/tree/main/remix)
 
 The demo application tries to implement some of GitHub's pages and functionality. It uses the OAuth credentials in GitHub to authenticate users with their GitHub accounts and uses graphql-request to fetch data from the GitHub Graphql API. Check out the link above to learn more or check out the demo!
