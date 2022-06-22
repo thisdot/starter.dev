@@ -1,5 +1,5 @@
 import { Disclosure } from '@headlessui/react';
-import { XIcon, MenuIcon } from '@heroicons/react/outline';
+import { XIcon, MenuIcon } from '../icons/heroicons';
 import cn from 'clsx';
 import { DarkModeToggle } from './DarkModeToggle';
 import { HEADER_NAV_ITEMS } from '../config';
@@ -26,26 +26,31 @@ export function NavBar({ currentPath }: Props) {
                 </a>
               </div>
               <div className="hidden lg:ml-6 lg:flex lg:space-x-8">
-                {HEADER_NAV_ITEMS.map(({ title, href, Icon, isExternal }) => (
-                  <a
-                    key={href}
-                    href={href}
-                    target={isExternal ? '_blank' : '_self'}
-                    className={cn(
-                      't-dark dark:dark-t-light inline-flex items-center px-1 pt-2 border-b-2 border-transparent dark:hover:border-[#95DFFF] hover:border-brand-500',
-                      {
-                        'brand-b': currentPath === href,
-                      }
-                    )}
-                  >
-                    {title}
-                    {Icon && (
-                      <span className="ml-1.5">
-                        <Icon />
-                      </span>
-                    )}
-                  </a>
-                ))}
+                {HEADER_NAV_ITEMS.map(({ title, href, Icon, isExternal }) => {
+                  const target = isExternal ? '_blank' : undefined;
+                  const rel = isExternal ? 'noopener noreferrer' : undefined;
+                  return (
+                    <a
+                      key={href}
+                      href={href}
+                      target={target}
+                      rel={rel}
+                      className={cn(
+                        't-dark dark:dark-t-light inline-flex items-center px-1 pt-2 border-b-2 border-transparent dark:hover:border-[#95DFFF] hover:border-brand-500',
+                        {
+                          'brand-b': currentPath === href,
+                        }
+                      )}
+                    >
+                      {title}
+                      {Icon && (
+                        <span className="ml-1.5">
+                          <Icon />
+                        </span>
+                      )}
+                    </a>
+                  );
+                })}
               </div>
               <div className="flex items-center">
                 <DarkModeToggle />
@@ -54,6 +59,7 @@ export function NavBar({ currentPath }: Props) {
                     <a
                       href="https://github.com/thisdot/starter.dev"
                       target="_blank"
+                      rel="noopener noreferrer"
                       className="btn btn-tertiary btn-lg border-gray-600 text-gray-900 hover:bg-gray-100 dark:text-white dark:border-white dark:bg-transparent"
                     >
                       GitHub Kits Library

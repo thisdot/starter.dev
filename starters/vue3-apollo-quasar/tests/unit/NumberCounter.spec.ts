@@ -1,15 +1,27 @@
-import { createPinia } from 'pinia';
 import { mount } from '@vue/test-utils';
+import { reactive } from 'vue';
 import { NumberCounter } from '../../src/components';
+import { counter } from '../../src/globals/counter';
 
 jest.useFakeTimers();
 
-describe('NumberCounter.vue', () => {
-  const counterWrapper = mount(NumberCounter, {
-    global: {
-      plugins: [createPinia()],
+const data = reactive({
+  result: {
+    value: {
+      count: counter(),
     },
-  });
+  },
+  loading: false,
+});
+
+jest.mock('@vue/apollo-composable', () => {
+  return {
+    useQuery: jest.fn(() => data),
+  };
+});
+
+describe('NumberCounter.vue', () => {
+  const counterWrapper = mount(NumberCounter);
 
   const btnIncrement = counterWrapper.find('[name="btn-increment"]');
   const btnDecrement = counterWrapper.find('[name="btn-decrement"]');
@@ -38,15 +50,12 @@ describe('NumberCounter.vue', () => {
     .fill(0)
     .map((_, i) => i + 1);
 
-  /** Get the counter number as an integer. Exists to keep code DRY */
-  const getCountNumber = () => parseInt(textCounter.text());
-
   it.each(testClickCycles)(
     'should increment the counter by 1 when the increment button is clicked',
     async () => {
-      const initialCount = getCountNumber();
+      const initialCount = counter();
       await btnIncrement.trigger('click');
-      const countAfterClick = getCountNumber();
+      const countAfterClick = counter();
 
       expect(countAfterClick).toEqual(initialCount + 1);
     }
@@ -54,9 +63,9 @@ describe('NumberCounter.vue', () => {
   it.each(testClickCycles)(
     'should decrement the counter by 1 when the decrement button is clicked',
     async () => {
-      const initialCount = getCountNumber();
+      const initialCount = counter();
       await btnDecrement.trigger('click');
-      const countAfterClick = getCountNumber();
+      const countAfterClick = counter();
 
       expect(countAfterClick).toEqual(initialCount - 1);
     }
@@ -64,7 +73,7 @@ describe('NumberCounter.vue', () => {
 
   it('should reset the value of the counter to 0 when the reset button is clicked', async () => {
     await btnReset.trigger('click');
-    const countAfterClick = getCountNumber();
+    const countAfterClick = counter();
 
     expect(countAfterClick).toEqual(0);
   });
