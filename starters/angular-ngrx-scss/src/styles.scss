@@ -1,0 +1,37 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+  margin: 0;
+  font-family: -apple-system, 'system-ui', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
+}
+
+h1 {
+  padding: 16px;
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+  border-bottom: 5px solid rgb(29 78 216);
+}
+
+a {
+  color: rgb(37 99 235);
+
+  &:hover,
+  &:active {
+    color: rgb(30 64 175);
+  }
+
+  &:visited {
+    color: rgb(73, 37, 235);
+  }
+}
+
+p {
+  font-size: 1.2rem;
+}
+
+.container {
+  max-width: 1024px;
+  margin: 0 auto;
+}

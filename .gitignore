@@ -13,9 +13,13 @@ coverage
 out/
 build
 
+# storybook
+documentation.json
+
 # misc
 .DS_Store
 *.pem
+.vscode
 
 # debug
 npm-debug.log*
