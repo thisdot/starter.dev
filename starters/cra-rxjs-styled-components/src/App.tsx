@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { Homepage } from '@/components/Homepage';
 import { Counter } from '@/components/Counter';
-import { FetchExample } from '@/components/Fetch-Example';
+import { FetchExample } from '@/components/FetchExample';
 
 export default function App() {
   return (

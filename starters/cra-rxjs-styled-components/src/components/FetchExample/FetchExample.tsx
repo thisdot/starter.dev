@@ -5,7 +5,7 @@ import {
   HomeLinkDiv,
   ReturnHomeLink,
   Message,
-} from './Fetch-Example.styles';
+} from './FetchExample.styles';
 import { useState, useEffect } from 'react';
 import { fromFetch } from 'rxjs/fetch';
 
