@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export const RxJSExampleContainer = styled.div`
+export const FetchExampleContainer = styled.div`
   text-align: center;
 `;
 
