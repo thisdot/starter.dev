@@ -18,7 +18,7 @@ export class FetchExampleComponent implements OnInit {
     greetingMessage$!: Observable<any>;
     greetingMessageLoading!: boolean;
 
-    constructor(private apollo: Apollo) { }
+    constructor(private apollo: Apollo) {}
 
     ngOnInit(): void {
         this.greetingMessage$ = this.getGreetingMessage(this.message);
