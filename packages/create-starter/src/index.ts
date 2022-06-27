@@ -4,6 +4,7 @@ import { bold, gray, green, red, cyan } from 'kleur/colors';
 import prompts, { Choice } from 'prompts';
 import degit from 'tiged';
 import fetch from 'node-fetch';
+import { initGitRepo } from './utils';
 
 const STARTER_KITS_JSON_URL = 'https://raw.githubusercontent.com/thisdot/starter.dev/main/starter-kits.json';
 
@@ -70,6 +71,12 @@ export async function main() {
   packageJSON.name = options.name;
   packageJSON.version = '0.1.0';
   await fs.writeFile(path.join(destPath, 'package.json'), JSON.stringify(packageJSON, null, 2));
+
+  try {
+    await initGitRepo(destPath);
+  } catch (_) {
+    // ignore
+  }
 
   console.log(bold(green('✔') + ' Done!'));
   console.log('\nNext steps:');
