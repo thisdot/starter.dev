@@ -1,6 +1,6 @@
 import { Menu, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
-import { ShareIcon } from '../icons/ShareIcon.tsx';
+import { ShareIcon, FacebookIcon, TwitterIcon } from '../icons';
 
 type ShareOption = 'facebook' | 'twitter';
 
@@ -29,21 +29,23 @@ export function ShareDropdown() {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute left-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items className="absolute left-0 mt-2 w-48 origin-top-right divide-y divide-gray-100 dark:divide-gray-500 rounded-md bg-white dark:dark-bg shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="px-1 py-1 ">
             <Menu.Item>
               <button
                 onClick={() => share('facebook')}
-                className="group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-gray-200"
+                className="group flex w-full items-center rounded-md px-2 py-2 text-sm font-light hover:bg-gray-200 dark:dark-t hover:dark:bg-gray-700"
               >
+                <FacebookIcon className="text-[#4267B2] dark:dark-t inline w-5 h-5 mr-1.5 mb-0.5" />
                 Facebook
               </button>
             </Menu.Item>
             <Menu.Item>
               <button
                 onClick={() => share('twitter')}
-                className="group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-gray-200"
+                className="group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-gray-200 dark:dark-t hover:dark:bg-gray-700"
               >
+                <TwitterIcon className="text-[#00acee] h-5 w-5 inline mr-1.5 mb-0.5" />
                 Twitter
               </button>
             </Menu.Item>
