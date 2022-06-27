@@ -1,3 +1,8 @@
-a {
-  @apply underline hover:text-blue-700;
+
+li {
+  @apply my-2.5 ;
+  a {
+    @apply underline text-blue-600 hover:text-blue-800 text-xl;
+  }
 }
+
