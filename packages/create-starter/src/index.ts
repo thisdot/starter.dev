@@ -49,7 +49,23 @@ export async function main() {
   }
 
   const repoPath = `thisdot/starter.dev/starters/${options.kit}`;
-  const destPath = path.join(process.cwd(), options.name);
+  let parentDir = process.env.INIT_CWD || process.cwd();
+
+  const localStarterDevPackageJsonPath = path.join(parentDir, 'package.json');
+  const PACKAGE_NAME_STARTER_DEV = 'starter.dev';
+  let isLocalStarterDev = false;
+  try {
+    const localStarterDevPackageJson = JSON.parse(await fs.readFile(localStarterDevPackageJsonPath, 'utf8'));
+    if(localStarterDevPackageJson.name === PACKAGE_NAME_STARTER_DEV) {
+      console.log(`${PACKAGE_NAME_STARTER_DEV} package detected.`);
+      isLocalStarterDev = true;
+      parentDir = path.resolve(parentDir, '..');
+    }   
+  } catch {
+    isLocalStarterDev = false;
+  }
+
+  const destPath = path.join(parentDir, options.name);
 
   const emitter = degit(repoPath, {
     cache: false,
@@ -73,6 +89,6 @@ export async function main() {
 
   console.log(bold(green('✔') + ' Done!'));
   console.log('\nNext steps:');
-  console.log(` ${bold(cyan(`cd ${options.name}`))}`);
+  console.log(` ${bold(cyan(`cd ${isLocalStarterDev ? '../' : ''}${options.name}`))}`);
   console.log(` ${bold(cyan('npm install'))} (or pnpm install, yarn, etc)`);
 }
