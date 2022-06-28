@@ -16,7 +16,6 @@
     "lint": "npx eslint \"src/**/*.{js,jsx,ts,tsx,html}\" --quiet --fix",
     "lint:styles": "npx stylelint \"src/**/*.{css,less,sass,scss,sss}\"",
     "format": "npx prettier \"src/**/*.{js,jsx,ts,tsx,html,css,scss}\" --write",
-    "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
     "storybook": "yarn docs:json && start-storybook -p 6006",
     "build-storybook": "yarn docs:json && build-storybook"
   },
@@ -47,7 +46,6 @@
     "@angular/cli": "~13.3.3",
     "@angular/compiler-cli": "~13.3.0",
     "@babel/core": "^7.17.10",
-    "@compodoc/compodoc": "^1.1.19",
     "@storybook/addon-actions": "^6.4.22",
     "@storybook/addon-essentials": "^6.4.22",
     "@storybook/addon-interactions": "^6.4.22",
