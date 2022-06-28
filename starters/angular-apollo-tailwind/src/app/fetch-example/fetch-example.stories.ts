@@ -4,7 +4,7 @@ import { ApolloModule } from 'apollo-angular';
 import { FetchExampleComponent } from './fetch-example.component';
 
 export default {
-    title: 'Example/Fetch API Example',
+    title: 'Example/Fetch Example',
     component: FetchExampleComponent,
     decorators: [
         moduleMetadata({
