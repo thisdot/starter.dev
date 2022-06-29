@@ -14,7 +14,6 @@
     "build:css": "postcss ./styles/**/*.css styles --dir ./app/styles",
     "dev": "concurrently -n css,remix -c magenta,cyan \"npm run dev:css\" \"remix dev\"",
     "dev:css": "npm run build:css -- --w",
-    "postinstall": "remix setup node",
     "format": "prettier --write ./app",
     "start": "remix-serve build",
     "test": "jest",
@@ -22,18 +21,18 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "@remix-run/react": "^1.2.3",
-    "@remix-run/serve": "^1.2.3",
+    "@remix-run/node": "^1.6.1",
+    "@remix-run/react": "^1.6.1",
+    "@remix-run/serve": "^1.6.1",
     "cross-env": "^7.0.3",
     "graphql-request": "^4.0.0",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "remix": "^1.2.3"
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
     "@mdx-js/preact": "^2.0.0",
-    "@remix-run/dev": "^1.2.3",
-    "@remix-run/eslint-config": "^1.2.3",
+    "@remix-run/dev": "^1.6.1",
+    "@remix-run/eslint-config": "^1.6.1",
     "@storybook/addon-actions": "^6.4.19",
     "@storybook/addon-essentials": "^6.4.19",
     "@storybook/addon-links": "^6.4.19",
