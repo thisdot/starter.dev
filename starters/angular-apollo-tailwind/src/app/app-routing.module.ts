@@ -14,7 +14,7 @@ const routes: Routes = [
         component: CounterExampleComponent,
     },
     {
-        path: 'api-example',
+        path: 'fetch-example',
         component: FetchExampleComponent,
     },
 ];
