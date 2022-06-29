@@ -73,6 +73,7 @@ export async function main() {
 
   removeLockFileIfExists('package-lock.json', destPath);
   removeLockFileIfExists('yarn.lock', destPath);
+  removeLockFileIfExists('pnpm-lock.yaml', destPath);
 
   console.log(bold(green('✔') + ' Done!'));
   console.log('\nNext steps:');
