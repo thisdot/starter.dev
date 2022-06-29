@@ -2,25 +2,22 @@
     <h1 class="text-[2rem] font-bold border-b-4 border-blue-600 py-4 my-5">
         Apollo Fetch Data From API
     </h1>
-    <p class="text-xl">Message: {{ greetingMessage$ | async }}</p>
+    <div class="flex w-full text-xl justify-center">
+        <div class="mr-[1em]">Message:</div>
+        <div
+            class="text-left"
+            [ngClass]="{
+                'grow animate-pulse bg-gray-200 rounded-md':
+                    greetingMessageLoading,
+                'grow-0': !greetingMessageLoading
+            }"
+        >
+            {{ greetingMessage$ | async }}
+        </div>
+    </div>
     <div class="my-2.5">
         <a href="/" class="underline text-blue-600 hover:text-blue-800 text-xl">
             Return Home
         </a>
-    </div>
-    <div class="flex flex-col items-center mt-4 gap-2">
-        <div class="flex w-[30em] max-w-full">
-            <div class="mr-[1em]">Message:</div>
-            <div
-                class="grow text-left"
-                [ngClass]="{
-                    'animate-pulse bg-gray-200 rounded-md':
-                        greetingMessageLoading
-                }"
-            >
-                {{ greetingMessage$ | async }}
-            </div>
-        </div>
-        <a href="/" class="underline text-blue-700">Return Home</a>
     </div>
 </div>
