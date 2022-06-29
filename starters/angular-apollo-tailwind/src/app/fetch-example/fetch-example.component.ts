@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, finalize, take } from 'rxjs/operators';
 import { Apollo, gql } from 'apollo-angular';
 
 export const GET_GREETING = gql`
@@ -16,6 +16,7 @@ export const GET_GREETING = gql`
 export class FetchExampleComponent implements OnInit {
     private message: string = 'Angular + Apollo + Tailwind starter.dev';
     greetingMessage$!: Observable<any>;
+    greetingMessageLoading!: boolean;
 
     constructor(private apollo: Apollo) {}
 
@@ -24,6 +25,7 @@ export class FetchExampleComponent implements OnInit {
     }
 
     getGreetingMessage(message: string): Observable<any> {
+        this.greetingMessageLoading = true;
         return this.apollo
             .watchQuery<any>({
                 query: GET_GREETING,
@@ -32,8 +34,10 @@ export class FetchExampleComponent implements OnInit {
                 },
             })
             .valueChanges.pipe(
+                take(1),
                 map(({ data }) => data.hello),
-                catchError(this.handleError<string>('getGreetingMessage', ''))
+                catchError(this.handleError<string>('getGreetingMessage', '')),
+                finalize(() => (this.greetingMessageLoading = false))
             );
     }
 
