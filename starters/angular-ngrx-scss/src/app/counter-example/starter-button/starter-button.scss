@@ -13,9 +13,12 @@
   color: white;
   background-color: rgb(59 130 246);
 
-  &:hover,
-  &:active,
   &:focus {
+    outline: solid 2px rgb(29 78 216);
+  }
+
+  &:hover,
+  &:active {
     background-color: rgb(29 78 216);
   }
 }
