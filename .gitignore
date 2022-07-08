@@ -8,6 +8,9 @@ starters/*/yarn.lock
 starters/*/package-lock.json
 starters/*/pnpm-lock.yaml
 
+starters/vue3-apollo-quasar/yarn.lock
+starters/vue3-apollo-quasar/package-lock.json
+
 # testing
 coverage
 
