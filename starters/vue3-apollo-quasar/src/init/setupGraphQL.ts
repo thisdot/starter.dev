@@ -3,23 +3,24 @@ import {
   createHttpLink,
   InMemoryCache,
 } from '@apollo/client/core';
-import { DefaultApolloClient } from '@vue/apollo-composable';
+import {
+  provideApolloClient,
+} from '@vue/apollo-composable';
 import { setContext } from '@apollo/client/link/context';
-import { provide } from 'vue';
 
-const GITHUB_ENCODED_TOKEN =
-  'YmVmZWZmM2Q3YjZlZWEwYjgxODQ2ZjMzNjdjMGExYzdhNGY0NWIzOQ==';
+import fetch from 'cross-fetch';
 
-const GITHUB_DECODED_TOKEN = atob(GITHUB_ENCODED_TOKEN);
+import { counter } from '../globals/counter';
 
 // HTTP connection to the API
 const httpLink = createHttpLink({
   // You should use an absolute URL here
   uri: process.env.VUE_APP_GRAPHQL_URL,
+  fetch,
 });
 
 const authLink = setContext((_, { headers }) => {
-  const authToken = GITHUB_DECODED_TOKEN;
+  const authToken = '';
 
   return authToken
     ? { headers: { ...headers, authorization: `token ${authToken}` } }
@@ -27,14 +28,26 @@ const authLink = setContext((_, { headers }) => {
 });
 
 // Cache implementation
-const cache = new InMemoryCache();
+export const cache = new InMemoryCache({
+  typePolicies: {
+    Query: {
+      fields: {
+        count: {
+          read() {
+            return counter();
+          },
+        },
+      },
+    },
+  },
+});
 
 // Create the apollo client
-const apolloClient = new ApolloClient({
+export const apolloClient = new ApolloClient({
   link: authLink.concat(httpLink),
   cache,
 });
 
 export const setupGraphQL = (): void => {
-  provide(DefaultApolloClient, apolloClient);
+  provideApolloClient(apolloClient);
 };
