@@ -1,4 +1,5 @@
-import { json, LoaderFunction, useLoaderData } from 'remix';
+import { json, LoaderFunction } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
 import { Counter } from '~/components/Counter';
 import { Greeting } from '~/components/Greeting';
 import gqlClient from '~/lib/graphql-client';

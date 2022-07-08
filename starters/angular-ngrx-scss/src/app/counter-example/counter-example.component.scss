@@ -3,7 +3,9 @@
 }
 
 .counter-example__buttons {
-  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
   margin: 0 auto;
 
   :first-child {
@@ -15,13 +17,10 @@
   }
 }
 
-.counter-example__button {
-  margin: 0 4px;
-}
-
 .counter-example__links {
   padding: 0;
   list-style: none;
+  margin: unset;
 
   li {
     margin: 10px 0;

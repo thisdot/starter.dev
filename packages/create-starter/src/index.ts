@@ -5,7 +5,7 @@ import prompts, { Choice } from 'prompts';
 import degit from 'tiged';
 import fetch from 'node-fetch';
 
-const STARTER_KITS_JSON_URL = 'https://raw.githubusercontent.com/thisdot/starter.dev/cli-refactor/starter-kits.json';
+const STARTER_KITS_JSON_URL = 'https://raw.githubusercontent.com/thisdot/starter.dev/main/starter-kits.json';
 
 export async function main() {
   console.log(`\n${bold('Welcome to starter.dev!')} ${gray('(create-starter)')}`);
@@ -71,8 +71,23 @@ export async function main() {
   packageJSON.version = '0.1.0';
   await fs.writeFile(path.join(destPath, 'package.json'), JSON.stringify(packageJSON, null, 2));
 
+  removeLockFileIfExists('package-lock.json', destPath);
+  removeLockFileIfExists('yarn.lock', destPath);
+  removeLockFileIfExists('pnpm-lock.yaml', destPath);
+
   console.log(bold(green('✔') + ' Done!'));
   console.log('\nNext steps:');
   console.log(` ${bold(cyan(`cd ${options.name}`))}`);
   console.log(` ${bold(cyan('npm install'))} (or pnpm install, yarn, etc)`);
+}
+
+async function removeLockFileIfExists(fileName: string, directoryPath: string): Promise<boolean> {
+  let removed: boolean;
+  try {
+    await fs.unlink(path.join(directoryPath, fileName));
+    removed = true;
+  } catch(err) {
+    removed = false;
+  }
+  return removed;
 }
