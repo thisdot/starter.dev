@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "public": true,
   "description": "Vue3, Apollo, Quasar",
-  "author": "Jerry Hogan, Allan Jeremy, William Hut",
+  "author": "Jerry Hogan, Allan Jeremy, William Hutt",
   "scripts": {
     "dev": "quasar dev",
     "build": "quasar build",
