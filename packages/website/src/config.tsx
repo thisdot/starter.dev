@@ -202,49 +202,49 @@ export const TECHNOLOGIES = [
   {
     key: 'react-query',
     name: 'React Query',
-    tags: ['Data'],
+    tags: ['Data Management'],
     Icon: (props) => <ReactQueryIcon {...props} />,
   },
   {
     key: 'redux',
     name: 'Redux',
-    tags: ['Data'],
+    tags: ['Data Management'],
     Icon: (props) => <ReduxIcon {...props} />,
   },
   {
     key: 'ngrx',
     name: 'NgRx',
-    tags: ['Data'],
+    tags: ['Data Management'],
     Icon: (props) => <NgRxIcon {...props} />,
   },
   {
     key: 'rxjs',
     name: 'RxJS',
-    tags: ['Data'],
+    tags: ['Data Management'],
     Icon: (props) => <RxJsIcon {...props} />,
   },
   {
     key: 'graphql',
     name: 'GraphQL',
-    tags: ['Data'],
+    tags: ['Data Management'],
     Icon: (props) => <GraphQLIcon {...props} />,
   },
   {
     key: 'rest api',
     name: 'REST API',
-    tags: ['Data'],
+    tags: ['Data Management'],
     Icon: (props) => <RestIcon {...props} />,
   },
   {
     key: 'relay',
     name: 'Relay',
-    tags: ['Data'],
+    tags: ['Data Management'],
     Icon: (props) => <RelayIcon {...props} />,
   },
   {
     key: 'apollo',
     name: 'Apollo',
-    tags: ['Data'],
+    tags: ['Data Management'],
     Icon: (props) => <ApolloIcon {...props} />,
   },
   {
@@ -262,7 +262,7 @@ export const TECHNOLOGIES = [
   {
     key: 'pinia',
     name: 'Pinia',
-    tags: ['Data'],
+    tags: ['Data Management'],
     Icon: (props) => <PiniaIcon {...props} />,
   },
 ];
