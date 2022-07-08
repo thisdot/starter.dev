@@ -2,7 +2,7 @@ import type { ComponentMeta, Story } from '@storybook/react';
 import React from 'react';
 import { createQueryProvider } from '../../utils/mockQueryClient';
 import { helloMock } from '../../msw/handlers/helloMock';
-import { Greeting } from './Greeting.data';
+import { Greeting } from './Greeting';
 
 export default {
   title: 'Example/Greeting',

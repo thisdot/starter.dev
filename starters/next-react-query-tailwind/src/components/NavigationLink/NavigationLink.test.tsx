@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react';
-import { ReturnHome } from './ReturnHome';
+import { NavigationLink } from './NavigationLink';
 
-describe('ReturnHome', () => {
+describe('NavigationLink', () => {
   it('should have valid label', () => {
-    render(<ReturnHome />);
+    render(<NavigationLink to="/" label="Return Home" />);
 
     const link = screen.getByRole('link');
     expect(link).toHaveTextContent('Return Home');   

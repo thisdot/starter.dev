@@ -1,1 +1,1 @@
-export { Greeting } from './Greeting.data';
+export { Greeting } from './Greeting';
