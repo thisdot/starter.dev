@@ -4,7 +4,7 @@ import styles from './Counter.module.css';
 const DEFAUT_COUNT = 0;
 
 export function Counter() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(DEFAUT_COUNT);
 
   return (
     <div className="flex justify-evenly whitespace-nowrap">
