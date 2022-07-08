@@ -1,4 +1,4 @@
-# Vue 3 Quasar Apollo starter kit
+# Vue 3 + Apollo + Quasar starter kit
 
 This starter kit features Vue 3, Quasar and Apollo.
 

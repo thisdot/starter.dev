@@ -1,9 +1,9 @@
 {
   "name": "vue3-apollo-quasar",
   "version": "0.1.0",
-  "private": true,
+  "public": true,
   "description": "Vue3, Apollo, Quasar",
-  "author": "Jerry Hogan <jerry.hogan@thisdot.co>",
+  "author": "Jerry Hogan, Allan Jeremy, William Hut",
   "scripts": {
     "dev": "quasar dev",
     "build": "quasar build",
