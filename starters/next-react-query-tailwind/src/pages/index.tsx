@@ -24,7 +24,7 @@ const Home: NextPage = () => {
           </li>
         </ul>
       </header>
-    </Fragment>    
+    </Fragment>
   );
 };
 

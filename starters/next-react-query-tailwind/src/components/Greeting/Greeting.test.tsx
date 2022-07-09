@@ -1,17 +1,42 @@
 import { render, screen } from '@testing-library/react';
-import { setupMswServer } from '../../msw/mswServer';
-import { createQueryProvider } from '../../utils/mockQueryClient';
-import { Greeting } from './Greeting.data';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { Greeting } from './Greeting';
+import { setupServer } from 'msw/node';
+import { rest } from 'msw';
 
-setupMswServer();
+const MOCK_HELLO_MESSAGE = 'Test Message';
+
+const server = setupServer(
+  rest.get('https://api.starter.dev/hello', (req, res, ctx) => {
+    return res(ctx.text(MOCK_HELLO_MESSAGE))
+  }),
+)
 
 describe('Greeting', () => {
-  it('fetches greeting from /api/hello and renders it in a heading', async () => {
-    render(<Greeting />, {
-      wrapper: createQueryProvider(),
-    });
+  beforeAll(() => server.listen())
+  afterEach(() => server.resetHandlers())
+  afterAll(() => server.close())
 
-    expect(screen.getByTestId('loading')).toBeInTheDocument();
-    expect(await screen.findByText('Hello World!')).toBeVisible();
+  it('should show loading state before fetched the data from api', async () => {
+    render(
+      <QueryClientProvider client={new QueryClient()}>
+        <Greeting />
+      </QueryClientProvider>
+    );
+
+    const displayMessage = screen.getByRole('display-message')
+    expect(displayMessage).toHaveClass('grow animate-pulse bg-gray-200 rounded-md');
+  });
+
+  it('should display loaded data', async () => {
+    render(
+      <QueryClientProvider client={new QueryClient()}>
+        <Greeting />
+      </QueryClientProvider>
+    );
+
+    expect(await screen.findByText(MOCK_HELLO_MESSAGE)).toBeVisible();
+    const displayMessage = screen.getByRole('display-message')
+    expect(displayMessage).toHaveClass('grow-0');
   });
 });

@@ -10,12 +10,11 @@ export function Greeting() {
       res.text()
     );
   });
-  console.log(message);
 
   return (
     <div className="flex w-full text-xl justify-center">
       <div className="mr-[1em]">Message:</div>
-      <div className={`text-left ${isLoading ? 'grow animate-pulse bg-gray-200 rounded-md' : 'grow-0'}`}>
+      <div className={`text-left ${isLoading ? 'grow animate-pulse bg-gray-200 rounded-md' : 'grow-0'}`} role="display-message">
         { message }
       </div>
     </div>
