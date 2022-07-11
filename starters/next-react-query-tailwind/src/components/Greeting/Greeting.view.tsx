@@ -1,5 +1,3 @@
-import { useQuery } from "react-query";
-
 type GreetingView = {
   message?: string | null;
   loading?: boolean;
