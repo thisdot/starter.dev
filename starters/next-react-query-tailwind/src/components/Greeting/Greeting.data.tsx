@@ -7,9 +7,8 @@ export function Greeting() {
     isLoading,
     error,
   } = useQuery<string>('hello', async () => {
-    return await fetch('https://api.starter.dev/hello?greeting=from This Dot Labs!').then((res) =>
-      res.text()
-    );
+    const response = await fetch('https://api.starter.dev/hello?greeting=from This Dot Labs!');
+    return await response.text();
   });
 
   const displayMessage = error ? null : message;
