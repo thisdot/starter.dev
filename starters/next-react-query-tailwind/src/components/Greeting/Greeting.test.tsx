@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { Greeting } from './Greeting';
+import { Greeting } from './Greeting.data';
 import { setupServer } from 'msw/node';
 import { rest } from 'msw';
 
