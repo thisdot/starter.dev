@@ -8,6 +8,7 @@ import {
 } from './FetchExample.styles';
 import { useState, useEffect } from 'react';
 import { fromFetch } from 'rxjs/fetch';
+import { Loader } from './../Loader';
 
 export const FetchExample = () => {
   const [message, setMessage] = useState<string>('');
@@ -26,7 +27,7 @@ export const FetchExample = () => {
       <HeaderContainer>
         <Header>RxJS Fetch Data from API</Header>
       </HeaderContainer>
-      <Message>Message: {loading ? '...Loading message' : message}</Message>
+      <Message>Message: {loading ? <Loader /> : message}</Message>
       <HomeLinkDiv>
         <ReturnHomeLink to="/">Return Home</ReturnHomeLink>
       </HomeLinkDiv>

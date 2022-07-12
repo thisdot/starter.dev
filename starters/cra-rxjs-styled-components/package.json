@@ -9,12 +9,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "autoprefixer": "^10.4.7",
+    "postcss": "^8.4.14",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-router-dom": "6.2.2",
     "react-scripts": "5.0.0",
     "rxjs": "7.5.4",
     "styled-components": "5.3.3",
+    "tailwindcss": "^3.1.6",
     "web-vitals": "2.1.4"
   },
   "scripts": {
@@ -29,7 +32,6 @@
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
       "react-app/jest",
       "plugin:react-hooks/recommended"
     ],
@@ -69,6 +71,7 @@
     "@storybook/addon-interactions": "6.4.19",
     "@storybook/addon-links": "6.4.19",
     "@storybook/builder-webpack5": "6.4.19",
+    "@storybook/cli": "^6.5.9",
     "@storybook/manager-webpack5": "6.4.19",
     "@storybook/node-logger": "6.4.19",
     "@storybook/preset-create-react-app": "4.0.1",
