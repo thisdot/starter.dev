@@ -5,9 +5,18 @@ export function Greeting() {
   const {
     data: message,
     isLoading,
+    isError,
     error,
   } = useQuery<string, Error>('hello', async () => {
-    const response = await fetch('https://dasaasdasdasdasdsadsadassdd.com/hello1?greeting=from This Dot Labs!');
+    const response = await fetch('https://api.starter.dev/hello?greeting=from This Dot Labs!');
+    if (!response.ok) {
+      const bodyText = await response.text();
+      const bodyJson = bodyText ? (JSON.parse(bodyText)) : null;
+      const errorData = (bodyJson?.message) 
+        ? bodyJson 
+        : { message: `Request error: ${response.statusText}` };
+      return await Promise.reject(errorData);
+    }
     return await response.text();
   }, { retry: false });
 

@@ -22,7 +22,7 @@ export function GreetingView({ message, loading, errorMessage }: GreetingView) {
             <div className="mr-4">Message:</div>
             <div className={cn('text-left', {
                 'grow animate-pulse bg-gray-200 rounded-md' : loading,
-                'grow-0': ! loading
+                'grow-0': !loading
               })} role="display-message">
               { message }
             </div>
