@@ -1,7 +1,6 @@
 .starter-button {
-  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: Arial;
   display: inline-block;
-  line-height: 1;
   color: #fff;
   padding: 0.5rem 1rem;
   font-weight: 600;
@@ -14,7 +13,12 @@
   color: white;
   background-color: rgb(59 130 246);
 
-  &:hover, &:active, &:focus {
+  &:focus {
+    outline: solid 2px rgb(29 78 216);
+  }
+
+  &:hover,
+  &:active {
     background-color: rgb(29 78 216);
   }
 }
@@ -26,16 +30,13 @@
 }
 
 .starter-button--small {
-  font-size: 12px;
-  padding: 10px 16px;
+  font-size: 0.8rem;
 }
 
 .starter-button--medium {
-  font-size: 14px;
-  padding: 11px 20px;
+  font-size: 1rem;
 }
 
 .starter-button--large {
-  font-size: 16px;
-  padding: 12px 24px;
+  font-size: 1.2rem;
 }

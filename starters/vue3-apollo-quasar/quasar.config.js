@@ -63,7 +63,7 @@ module.exports = configure(function (/* ctx */) {
       // publicPath: '/',
       // analyze: true,
       env: {
-        VUE_APP_GRAPHQL_URL: 'https://api.github.com/graphql',
+        VUE_APP_GRAPHQL_URL: 'https://api.starter.dev/graphql',
       },
       // rawDefine: {}
       // ignorePublicFolder: true,
@@ -101,7 +101,7 @@ module.exports = configure(function (/* ctx */) {
       // directives: [],
 
       // Quasar plugins
-      plugins: [],
+      plugins: ['Meta'],
     },
 
     // animations: 'all', // --- includes all animations

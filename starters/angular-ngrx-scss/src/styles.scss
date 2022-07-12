@@ -4,12 +4,14 @@ body {
   margin: 0;
   font-family: -apple-system, 'system-ui', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans',
     'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1 {
-  padding: 16px;
+  padding: 15px;
   font-size: 2rem;
-  font-weight: 600;
+  font-weight: 700;
   text-align: center;
   border-bottom: 5px solid rgb(29 78 216);
 }
@@ -17,13 +19,14 @@ h1 {
 a {
   color: rgb(37 99 235);
 
-  &:hover,
-  &:active {
-    color: rgb(30 64 175);
-  }
-
   &:visited {
     color: rgb(73, 37, 235);
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: rgb(30 64 175);
   }
 }
 
@@ -32,6 +35,6 @@ p {
 }
 
 .container {
-  max-width: 1024px;
-  margin: 0 auto;
+  max-width: 60%;
+  margin: 20px auto;
 }

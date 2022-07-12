@@ -77,9 +77,23 @@ export async function main() {
   } catch (_) {
     // ignore
   }
+  removeLockFileIfExists('package-lock.json', destPath);
+  removeLockFileIfExists('yarn.lock', destPath);
+  removeLockFileIfExists('pnpm-lock.yaml', destPath);
 
   console.log(bold(green('✔') + ' Done!'));
   console.log('\nNext steps:');
   console.log(` ${bold(cyan(`cd ${options.name}`))}`);
   console.log(` ${bold(cyan('npm install'))} (or pnpm install, yarn, etc)`);
+}
+
+async function removeLockFileIfExists(fileName: string, directoryPath: string): Promise<boolean> {
+  let removed: boolean;
+  try {
+    await fs.unlink(path.join(directoryPath, fileName));
+    removed = true;
+  } catch (err) {
+    removed = false;
+  }
+  return removed;
 }
