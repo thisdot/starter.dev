@@ -72,6 +72,8 @@ export async function main() {
   packageJSON.version = '0.1.0';
   await fs.writeFile(path.join(destPath, 'package.json'), JSON.stringify(packageJSON, null, 2));
 
+  await overrideAngularJsonIfExists(destPath, options.kit, options.name);
+  
   try {
     await initGitRepo(destPath);
   } catch (_) {
@@ -96,4 +98,18 @@ async function removeLockFileIfExists(fileName: string, directoryPath: string): 
     removed = false;
   }
   return removed;
+}
+
+async function overrideAngularJsonIfExists(directoryPath: string, kitName: string, newProjectName: string): Promise<boolean> {
+  let done: boolean;
+  const angularJsonPath = path.join(directoryPath, 'angular.json')
+  try {    
+    const content = await fs.readFile(angularJsonPath, 'utf8');
+    const newContent = content.replace(new RegExp(kitName, 'g'), newProjectName);
+    await fs.writeFile(angularJsonPath, newContent);
+    done = true;
+  } catch (err) {
+    done = false;
+  }
+  return done;
 }
