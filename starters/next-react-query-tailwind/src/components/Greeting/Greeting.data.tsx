@@ -6,14 +6,12 @@ export function Greeting() {
     data: message,
     isLoading,
     error,
-  } = useQuery<string>('hello', async () => {
-    const response = await fetch('https://api.starter.dev/hello?greeting=from This Dot Labs!');
+  } = useQuery<string, Error>('hello', async () => {
+    const response = await fetch('https://dasaasdasdasdasdsadsadassdd.com/hello1?greeting=from This Dot Labs!');
     return await response.text();
-  });
-
-  const displayMessage = error ? null : message;
+  }, { retry: false });
 
   return (
-    <GreetingView message={displayMessage} loading={isLoading} />
+    <GreetingView message={message} loading={isLoading} errorMessage={error?.message} />
   );
 }
