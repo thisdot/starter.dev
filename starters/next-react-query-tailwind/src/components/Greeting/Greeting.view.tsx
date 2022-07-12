@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+var cn = require('classnames');
 
 type GreetingView = {
   message?: string | null;
@@ -18,13 +19,15 @@ export function GreetingView({ message, loading, errorMessage }: GreetingView) {
             </div>
           </Fragment>
         : <Fragment>
-            <div className="mr-[1em]">Message:</div>
-            <div className={`text-left ${loading ? 'grow animate-pulse bg-gray-200 rounded-md' : 'grow-0'}`} role="display-message">
+            <div className="mr-4">Message:</div>
+            <div className={cn('text-left', {
+                'grow animate-pulse bg-gray-200 rounded-md' : loading,
+                'grow-0': ! loading
+              })} role="display-message">
               { message }
             </div>
           </Fragment>
-      }
-      
+      }      
     </div>
   );  
 }
