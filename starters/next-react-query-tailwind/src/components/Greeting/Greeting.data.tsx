@@ -3,34 +3,24 @@ import { GreetingView } from './Greeting.view';
 
 export function Greeting() {
   const {
-    data: greeting,
+    data: message,
     isLoading,
-    refetch,
+    isError,
     error,
-  } = useQuery<{ message: string }>('hello', async () => {
-    return await fetch('http://localhost:3000/api/hello').then((res) =>
-      res.json()
-    );
-  });
-
-  const handleGreetingClick = () => {
-    refetch();
-  };
-
-  if (isLoading) {
-    return (
-      <div
-        data-testid="loading"
-        className="absolute top-0 left-0 w-full h-full bg-white bg-opacity-25 animate-pulse"
-      />
-    );
-  }
-
-  if (error || !greeting) {
-    return null;
-  }
+  } = useQuery<string, Error>('hello', async () => {
+    const response = await fetch('https://api.starter.dev/hello?greeting=from This Dot Labs!');
+    if (!response.ok) {
+      const bodyText = await response.text();
+      const bodyJson = bodyText ? (JSON.parse(bodyText)) : null;
+      const errorData = (bodyJson?.message) 
+        ? bodyJson 
+        : { message: `Request error: ${response.statusText}` };
+      return await Promise.reject(errorData);
+    }
+    return await response.text();
+  }, { retry: false });
 
   return (
-    <GreetingView message={greeting.message} onClick={handleGreetingClick} />
+    <GreetingView message={message} loading={isLoading} errorMessage={error?.message} />
   );
 }
