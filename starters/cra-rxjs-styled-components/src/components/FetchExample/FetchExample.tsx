@@ -27,7 +27,7 @@ export const FetchExample = () => {
       <HeaderContainer>
         <Header>RxJS Fetch Data from API</Header>
       </HeaderContainer>
-      <Message>Message: {!loading ? <Loader /> : message}</Message>
+      <Message>Message: {loading ? <Loader /> : message}</Message>
       <HomeLinkDiv>
         <ReturnHomeLink to="/">Return Home</ReturnHomeLink>
       </HomeLinkDiv>
