@@ -18,7 +18,7 @@ import {
   HomeLinkDiv,
   ReturnHomeLink,
   Message,
-  LoaderContainer,
+  Loader,
 } from './FetchExample.styles';
 import { fromFetch } from 'rxjs/fetch';
 
@@ -43,22 +43,7 @@ export const FetchExample = () => {
           </FetchExampleContainer>
         )),
         catchError(() => of(<div className="err">ERROR</div>)),
-        startWith(
-          <LoaderContainer>
-            <span
-              style={{
-                display: 'block',
-                background: 'lightgray',
-                width: '20em',
-                height: '2em',
-                textAlign: 'center',
-                margin: 'auto',
-                borderRadius: '10px',
-                justifyContent: 'center',
-              }}
-            ></span>
-          </LoaderContainer>
-        )
+        startWith(<Loader />)
       ),
     []
   );
