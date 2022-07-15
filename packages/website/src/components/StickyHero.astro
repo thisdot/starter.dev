@@ -3,6 +3,7 @@ import { BriefcaseIcon } from '../icons/heroicons';
 import { ShareIcon } from '../icons/ShareIcon.tsx';
 import { GitHubIcon } from '../icons/GitHubIcon.tsx';
 import { REPO_URL, SHOWCASE_REPO_URL } from '../config.tsx';
+import { ShareDropdown} from './ShareDropdown'
 const { name } = Astro.props;
 ---
 
@@ -12,11 +13,7 @@ const { name } = Astro.props;
 >
   <div class="flex flex-row items-center max-w-screen-2xl mx-auto">
     <div class="space-x-4">
-      <a class="link text-sm dark:dark-link hidden" href="#"
-        ><ShareIcon className="h-3.5 w-3.5 inline ml-1 mb-[2px]" /><span
-          class="underline ml-2">Share Kit</span
-        ></a
-      >
+      <ShareDropdown client:only />
       <a
         class="link text-sm dark:dark-link underline"
         target="_blank"
