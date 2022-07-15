@@ -1,7 +1,6 @@
 import { ComponentMeta, Story } from '@storybook/react';
 import { rest } from 'msw';
 import { FetchExample } from './FetchExample';
-import { Loader } from './../Loader';
 
 export default {
   title: 'Example/Fetch Example',

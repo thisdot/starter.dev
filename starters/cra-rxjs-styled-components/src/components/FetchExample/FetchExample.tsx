@@ -18,9 +18,9 @@ import {
   HomeLinkDiv,
   ReturnHomeLink,
   Message,
+  LoaderContainer,
 } from './FetchExample.styles';
 import { fromFetch } from 'rxjs/fetch';
-import { Loader } from './../Loader';
 
 export const FetchExample = () => {
   const stream$ = useMemo(
@@ -43,7 +43,22 @@ export const FetchExample = () => {
           </FetchExampleContainer>
         )),
         catchError(() => of(<div className="err">ERROR</div>)),
-        startWith(<Loader />)
+        startWith(
+          <LoaderContainer>
+            <span
+              style={{
+                display: 'block',
+                background: 'lightgray',
+                width: '20em',
+                height: '2em',
+                textAlign: 'center',
+                margin: 'auto',
+                borderRadius: '10px',
+                justifyContent: 'center',
+              }}
+            ></span>
+          </LoaderContainer>
+        )
       ),
     []
   );
