@@ -21,27 +21,32 @@ jest.mock('@vue/apollo-composable', () => {
 });
 
 describe('NumberCounter.vue', () => {
-  const counterWrapper = mount(NumberCounter);
+  let counterWrapper;
 
-  const btnIncrement = counterWrapper.find('[name="btn-increment"]');
-  const btnDecrement = counterWrapper.find('[name="btn-decrement"]');
-  const btnReset = counterWrapper.find('[name="btn-reset"]');
-  const textCounter = counterWrapper.find('[name="text-count"]');
+  beforeEach(() => {
+    counterWrapper = mount(NumberCounter);
+  });
+
 
   it('should contain an increment button', () => {
+    const btnIncrement = counterWrapper.find('[name="btn-increment"]');
     expect(btnIncrement.exists()).toBe(true);
   });
   it('should contain an decrement button', () => {
+     const btnDecrement = counterWrapper.find('[name="btn-decrement"]');
     expect(btnDecrement.exists()).toBe(true);
   });
   it('should contain a reset button', () => {
+    const btnReset = counterWrapper.find('[name="btn-reset"]');
     expect(btnReset.exists()).toBe(true);
   });
 
   it('should display counter value', () => {
+    const textCounter = counterWrapper.find('[name="text-count"]');
     expect(textCounter.exists()).toBe(true);
   });
   it('should start the counter at 0', () => {
+    const textCounter = counterWrapper.find('[name="text-count"]');
     expect(textCounter.text()).toEqual('0');
   });
 
@@ -53,6 +58,7 @@ describe('NumberCounter.vue', () => {
   it.each(testClickCycles)(
     'should increment the counter by 1 when the increment button is clicked',
     async () => {
+      const btnIncrement = counterWrapper.find('[name="btn-increment"]');
       const initialCount = counter();
       await btnIncrement.trigger('click');
       const countAfterClick = counter();
@@ -63,6 +69,7 @@ describe('NumberCounter.vue', () => {
   it.each(testClickCycles)(
     'should decrement the counter by 1 when the decrement button is clicked',
     async () => {
+       const btnDecrement = counterWrapper.find('[name="btn-decrement"]');
       const initialCount = counter();
       await btnDecrement.trigger('click');
       const countAfterClick = counter();
@@ -72,6 +79,7 @@ describe('NumberCounter.vue', () => {
   );
 
   it('should reset the value of the counter to 0 when the reset button is clicked', async () => {
+    const btnReset = counterWrapper.find('[name="btn-reset"]');
     await btnReset.trigger('click');
     const countAfterClick = counter();
 
