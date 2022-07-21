@@ -18,10 +18,14 @@ jest.mock('@vue/apollo-composable', () => {
 });
 
 describe('FetchMessage', () => {
-  const wrapper = mount(FetchExample, {
-    props: {
-      message: 'vue3-apollo-quasar starter.dev!',
-    },
+  let wrapper;
+
+  beforeEach(() => {
+      wrapper = mount(FetchExample, {
+      props: {
+        message: 'vue3-apollo-quasar starter.dev!',
+      },
+    });
   });
 
   it('Should Mount', () => {
