@@ -1,15 +1,7 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { BehaviorSubject, of, merge, mergeMap } from 'rxjs';
+import React, { useMemo } from 'react';
+import { of, mergeMap } from 'rxjs';
 import { $ } from 'react-rxjs-elements';
-import {
-  debounceTime,
-  map,
-  distinctUntilChanged,
-  filter,
-  switchMap,
-  catchError,
-  startWith,
-} from 'rxjs/operators';
+import { map, catchError, startWith } from 'rxjs/operators';
 
 import {
   FetchExampleContainer,
