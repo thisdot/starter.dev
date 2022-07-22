@@ -1,3 +1,8 @@
+import React, { useMemo } from 'react';
+import { of, mergeMap } from 'rxjs';
+import { $ } from 'react-rxjs-elements';
+import { map, catchError, startWith } from 'rxjs/operators';
+
 import {
   FetchExampleContainer,
   HeaderContainer,
@@ -5,31 +10,35 @@ import {
   HomeLinkDiv,
   ReturnHomeLink,
   Message,
+  Loader,
 } from './FetchExample.styles';
-import { useState, useEffect } from 'react';
 import { fromFetch } from 'rxjs/fetch';
 
 export const FetchExample = () => {
-  const [message, setMessage] = useState<string>('');
-  const [loading, setLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    const subscription = fromFetch(
-      'https://api.starter.dev/hello?greeting=from This Dot Labs!'
-    ).subscribe((response) => response.text().then((data) => setMessage(data)));
-    setLoading(false);
-    return () => subscription.unsubscribe();
-  }, []);
-
-  return (
-    <FetchExampleContainer>
-      <HeaderContainer>
-        <Header>RxJS Fetch Data from API</Header>
-      </HeaderContainer>
-      <Message>Message: {loading ? '...Loading message' : message}</Message>
-      <HomeLinkDiv>
-        <ReturnHomeLink to="/">Return Home</ReturnHomeLink>
-      </HomeLinkDiv>
-    </FetchExampleContainer>
+  const stream$ = useMemo(
+    () =>
+      fromFetch(
+        'https://api.starter.dev/hello?greeting=from This Dot Labs!'
+      ).pipe(
+        mergeMap((response) => response.text()),
+        // now we'll map not only to text
+        // but to JSX
+        map((data) => (
+          <FetchExampleContainer>
+            <HeaderContainer>
+              <Header>RxJS Fetch Data from API</Header>
+            </HeaderContainer>
+            <Message>Message: {data}</Message>
+            <HomeLinkDiv>
+              <ReturnHomeLink to="/">Return Home</ReturnHomeLink>
+            </HomeLinkDiv>
+          </FetchExampleContainer>
+        )),
+        catchError(() => of(<div className="err">ERROR</div>)),
+        startWith(<Loader />)
+      ),
+    []
   );
+
+  return <$>{stream$}</$>;
 };
