@@ -20,7 +20,7 @@
     "dev": "yarn start",
     "lint": "eslint .",
     "prettier": "prettier -w .",
-    "format:check": "prettier --config ./.prettierrc --list-different \"src/{app,environments}/**/*{.ts,.html,.scss}\""
+    "test:ci": "ng test --browsers=ChromeHeadless --watch=false"
   },
   "dependencies": {
     "@angular/animations": "13.1.3",
