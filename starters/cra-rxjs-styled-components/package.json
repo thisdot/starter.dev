@@ -14,7 +14,7 @@
     "react-dom": "17.0.2",
     "react-router-dom": "6.2.2",
     "react-rxjs-elements": "^0.0.7",
-    "react-scripts": "5.0.0",
+    "react-scripts": "4.0.3",
     "rxjs": "7.5.4",
     "styled-components": "5.3.3",
     "web-vitals": "2.1.4"
@@ -27,7 +27,8 @@
     "format:check": "prettier --check .",
     "format:write": "prettier --write .",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook "
+    "build-storybook": "build-storybook ",
+    "prepare": "cd .. && cd .. && husky install starters/cra-rxjs-styled-components/.husky"
   },
   "eslintConfig": {
     "extends": [
@@ -85,10 +86,12 @@
     "@types/react-dom": "17.0.13",
     "@types/styled-components": "5.1.21",
     "eslint-plugin-react-hooks": "4.3.0",
+    "husky": "^8.0.1",
     "jest-fetch-mock": "3.0.3",
     "msw": "0.42.3",
     "msw-storybook-addon": "1.6.3",
     "prettier": "2.6.0",
+    "pretty-quick": "^3.1.3",
     "typescript": "4.6.2",
     "webpack": "5.70.0"
   },
