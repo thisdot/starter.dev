@@ -8,6 +8,7 @@ export default function App() {
     <Routes>
       <Route path="/" element={<Homepage />} />
       <Route path="/button-example" element={<Counter />} />
+
       <Route path="/rxjs-example" element={<FetchExample />} />
     </Routes>
   );
