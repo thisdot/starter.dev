@@ -19,7 +19,8 @@
     "build-storybook": "yarn docs:json && build-storybook",
     "dev": "yarn start",
     "lint": "eslint .",
-    "prettier": "prettier -w ."
+    "prettier": "prettier -w .",
+    "format:check": "prettier --config ./.prettierrc --list-different \"src/{app,environments}/**/*{.ts,.html,.scss}\""
   },
   "dependencies": {
     "@angular/animations": "13.1.3",
