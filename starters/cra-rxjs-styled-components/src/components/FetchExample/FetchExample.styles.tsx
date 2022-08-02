@@ -33,3 +33,16 @@ export const ReturnHomeLink = styled(Link)`
     text-decoration: underline;
   }
 `;
+
+export const Loader = styled.div`
+  margin: auto;
+  margin-top: 3%;
+  background-color: lightgray;
+  max-width: 700px;
+  min-height: 5px;
+  display: block;
+  width: 30em;
+  height: 1em;
+  border-radius: 10px;
+  justify-content: center;
+`;

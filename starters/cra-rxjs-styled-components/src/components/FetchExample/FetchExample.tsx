@@ -1,3 +1,8 @@
+import React, { useMemo } from 'react';
+import { of, mergeMap } from 'rxjs';
+import { $ } from 'react-rxjs-elements';
+import { map, catchError, startWith } from 'rxjs/operators';
+
 import {
   FetchExampleContainer,
   HeaderContainer,
@@ -5,10 +10,10 @@ import {
   HomeLinkDiv,
   ReturnHomeLink,
   Message,
+  Loader,
 } from './FetchExample.styles';
-import { useState, useEffect } from 'react';
 import { fromFetch } from 'rxjs/fetch';
-import { Loader } from './../Loader';
+
 
 export const FetchExample = () => {
   const [message, setMessage] = useState<string>('');
@@ -33,4 +38,6 @@ export const FetchExample = () => {
       </HomeLinkDiv>
     </FetchExampleContainer>
   );
+
+  return <$>{stream$}</$>;
 };
