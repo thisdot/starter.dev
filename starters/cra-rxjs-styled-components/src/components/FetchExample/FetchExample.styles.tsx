@@ -19,6 +19,9 @@ export const Header = styled.h1`
 
 export const Message = styled.p`
   font-size: 1.2rem;
+  display: flex;
+  justify-content:center;
+
 `;
 
 export const HomeLinkDiv = styled.div`
@@ -35,14 +38,9 @@ export const ReturnHomeLink = styled(Link)`
 `;
 
 export const Loader = styled.div`
-  margin: auto;
-  margin-top: 3%;
   background-color: lightgray;
-  max-width: 700px;
-  min-height: 5px;
-  display: block;
-  width: 30em;
-  height: 1em;
-  border-radius: 10px;
-  justify-content: center;
+  margin-left:1em;
+  width: 20em;
+  height: 1.5em;
+  border-radius: 6px;
 `;
