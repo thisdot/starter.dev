@@ -32,3 +32,6 @@ export { GatsbyIcon } from './GatsbyIcon';
 export { CSSModuleIcon } from './CssModuleIcon';
 export { RedwoodIcon } from './RedwoodIcon';
 export { PiniaIcon } from './PiniaIcon';
+export { FacebookIcon } from './FacebookIcon';
+export { TwitterIcon } from './TwitterIcon';
+export { ShareIcon } from './ShareIcon';
