@@ -1,12 +1,13 @@
 import { Menu, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
-import { ShareIcon, FacebookIcon, TwitterIcon } from '../icons';
+import { ShareIcon, FacebookIcon, TwitterIcon,LinkedinIcon } from '../icons';
 
-type ShareOption = 'facebook' | 'twitter';
+type ShareOption = 'facebook' | 'twitter' | 'linkedin';
 
 const shareUrlMap: Record<ShareOption, (any) => string> = {
   facebook: ({ u }) => `https://www.facebook.com/sharer/sharer.php?t=${u}`,
   twitter: ({ t }) => `https://twitter.com/intent/tweet?text=${t}`,
+  linkedin: ({ u }) => `https://linkedin.com/sharing/share-offsite/?url=${u}`,
 };
 interface Props {
   kitname: string;
@@ -54,6 +55,15 @@ export function ShareDropdown({ kitname }: Props) {
               >
                 <TwitterIcon className="text-[#00acee] h-5 w-5 inline mr-1.5 mb-0.5" />
                 Twitter
+              </button>
+            </Menu.Item>
+            <Menu.Item>
+              <button
+                onClick={() => share('linkedin')}
+                className="group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-gray-200 dark:dark-t hover:dark:bg-gray-700"
+              >
+                <LinkedinIcon className="h-5 w-5 inline mr-1.5 mb-0.5" />
+                Linkedin
               </button>
             </Menu.Item>
           </div>
