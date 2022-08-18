@@ -14,12 +14,10 @@ interface Props {
 
 export function ShareDropdown({ kitname }: Props) {
   const share_url = window.location.href;
-  const share_text = (name: string) =>
-    `I just used the ${name} kit by starter.dev to scaffold out my last project. It really allowed me to start building features immediately. Check out the kit: ${share_url}`;
+  const share_text = `I just used the ${kitname} kit by starter.dev to scaffold out my last project. It really allowed me to start building features immediately. Check out the kit: ${share_url}`;
 
   const share = (option: ShareOption) => {
-    const text = share_text(kitname);
-    const url = shareUrlMap[option]({ u: share_url, t: text });
+    const url = shareUrlMap[option]({ u: share_url, t: share_text });
     window.open(url, '_blank');
   };
 
