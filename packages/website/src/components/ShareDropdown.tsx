@@ -4,14 +4,23 @@ import { ShareIcon, FacebookIcon, TwitterIcon } from '../icons';
 
 type ShareOption = 'facebook' | 'twitter';
 
-const shareUrlMap: Record<ShareOption, string> = {
-  facebook: 'https://www.facebook.com/sharer/sharer.php?u=',
-  twitter: 'https://twitter.com/intent/tweet?url=',
+const shareUrlMap: Record<ShareOption, (any) => string> = {
+  facebook: ({ u }) => `https://www.facebook.com/sharer/sharer.php?t=${u}`,
+  twitter: ({ t }) => `https://twitter.com/intent/tweet?text=${t}`,
 };
+interface Props {
+  kitname: string;
+}
 
-export function ShareDropdown() {
+export function ShareDropdown({ kitname }: Props) {
+  const share_url = window.location.href;
+  const share_text = (name: string) =>
+    `I just used the ${name} kit by starter.dev to scaffold out my last project. It really allowed me to start building features immediately. Check out the kit: ${share_url}`;
+
   const share = (option: ShareOption) => {
-    window.open(`${shareUrlMap[option]}${window.location.href}`, '_blank');
+    const text = share_text(kitname);
+    const url = shareUrlMap[option]({ u: share_url, t: text });
+    window.open(url, '_blank');
   };
 
   return (
