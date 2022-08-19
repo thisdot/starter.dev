@@ -1,12 +1,17 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Counter } from './Counter';
+import { cleanUpMocks } from '../../../__mocks__/consoleMock';
+
+afterAll(() => {
+  cleanUpMocks();
+});
 
 describe('Counter', () => {
   it('should initially set 0', () => {
     render(<Counter />);
 
     const displayElement = screen.getByRole('display-element');
-    expect(displayElement).toHaveTextContent('Count: 0');   
+    expect(displayElement).toHaveTextContent('Count: 0');
   });
 
   it('should increase by 1 when clicking button', () => {
