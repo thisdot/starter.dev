@@ -67,5 +67,5 @@ jobs:
         working-directory: starters/cra-rxjs-styled-components
 
       - name: Test Project
-        run: npm test
+        run: npm run test:ci
         working-directory: starters/cra-rxjs-styled-components
