@@ -4,6 +4,11 @@
 node_modules
 .pnp
 .pnp.js
+starters/*/yarn.lock
+starters/*/package-lock.json
+starters/*/pnpm-lock.yaml
+storybook-static
+
 
 # testing
 coverage
@@ -13,9 +18,13 @@ coverage
 out/
 build
 
+# storybook
+documentation.json
+
 # misc
 .DS_Store
 *.pem
+.vscode
 
 # debug
 npm-debug.log*

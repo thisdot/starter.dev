@@ -1,0 +1,18 @@
+<main class="fetch-example container">
+  <h1 class="fetch-example__header">NgRx Fetch Data from API</h1>
+
+  <ng-container *ngIf="!(isLoading$ | async); else loadingTemplate">
+    <p class="fetch-example__greeting" *ngIf="(greeting$ | async) !== ''">Message: {{ greeting$ | async }}</p>
+    <p class="fetch-example__greeting" *ngIf="(error$ | async) !== ''">Message: {{ error$ | async }}</p>
+  </ng-container>
+
+  <ng-template #loadingTemplate>
+    <app-loader></app-loader>
+  </ng-template>
+
+  <nav>
+    <ul class="fetch-example__links">
+      <li><a routerLink="/">Return Home</a></li>
+    </ul>
+  </nav>
+</main>

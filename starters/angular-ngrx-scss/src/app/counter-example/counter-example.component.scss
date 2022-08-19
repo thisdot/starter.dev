@@ -1,0 +1,30 @@
+.counter-example__count {
+  text-align: center;
+}
+
+.counter-example__buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 0 auto;
+
+  :first-child {
+    margin-left: 0;
+  }
+
+  :last-child {
+    margin-right: 0;
+  }
+}
+
+.counter-example__links {
+  padding: 0;
+  list-style: none;
+  margin: unset;
+
+  li {
+    margin: 10px 0;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+}

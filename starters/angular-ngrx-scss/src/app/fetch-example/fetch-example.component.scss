@@ -1,0 +1,19 @@
+.fetch-example{
+  width: 40%;
+  &__greeting {
+    text-align: center;
+  }
+  &__links {
+    padding: 0;
+    list-style: none;
+    li {
+      margin: 10px 0;
+      font-size: 1.2rem;
+      text-align: center;
+    }
+  }
+  app-loader {
+    max-width: 260px;
+    margin: 0 auto;
+  }
+}

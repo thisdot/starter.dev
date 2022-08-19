@@ -1,0 +1,42 @@
+.starter-button {
+  font-family: Arial;
+  display: inline-block;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.starter-button--primary {
+  color: white;
+  background-color: rgb(59 130 246);
+
+  &:focus {
+    outline: solid 2px rgb(29 78 216);
+  }
+
+  &:hover,
+  &:active {
+    background-color: rgb(29 78 216);
+  }
+}
+
+.starter-button--secondary {
+  color: #333;
+  background-color: transparent;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
+}
+
+.starter-button--small {
+  font-size: 0.8rem;
+}
+
+.starter-button--medium {
+  font-size: 1rem;
+}
+
+.starter-button--large {
+  font-size: 1.2rem;
+}

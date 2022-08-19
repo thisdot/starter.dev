@@ -1,0 +1,40 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+  margin: 0;
+  font-family: -apple-system, 'system-ui', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+  padding: 15px;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  border-bottom: 5px solid rgb(29 78 216);
+}
+
+a {
+  color: rgb(37 99 235);
+
+  &:visited {
+    color: rgb(73, 37, 235);
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: rgb(30 64 175);
+  }
+}
+
+p {
+  font-size: 1.2rem;
+}
+
+.container {
+  max-width: 60%;
+  margin: 20px auto;
+}

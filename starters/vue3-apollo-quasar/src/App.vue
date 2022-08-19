@@ -3,13 +3,23 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import { setupGraphQL } from './init';
+import { defineComponent, provide } from 'vue';
 
 export default defineComponent({
   name: 'App',
-  setup() {
-    setupGraphQL();
-  },
 });
 </script>
+
+<script lang="ts" setup>
+import { setupGraphQL } from './init';
+setupGraphQL();
+
+provide('PRODUCT_NAME', 'Vue 3, Quasar & Apollo Starter kit');
+</script>
+
+<style lang="scss">
+.q-page {
+  min-height: unset!important;
+}
+</style>
+

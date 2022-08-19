@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { ComponentType } from 'react';
 import {
   DiscordIcon,
@@ -31,7 +32,8 @@ import {
   ReduxIcon,
   GatsbyIcon,
   CSSModuleIcon,
-  RedwoodIcon
+  RedwoodIcon,
+  PiniaIcon,
 } from './icons';
 
 export interface NavItem {
@@ -168,7 +170,7 @@ export const TECHNOLOGIES = [
     Icon: (props) => <SCIcon {...props} />,
   },
   {
-    key: 'saas',
+    key: 'sass',
     name: 'SASS',
     tags: ['CSS'],
     Icon: (props) => <SaaSIcon {...props} />,
@@ -183,7 +185,7 @@ export const TECHNOLOGIES = [
     key: 'bootstrap',
     name: 'Bootstrap',
     tags: ['CSS'],
-    Icon: (props) => <BootstrapIcon {...props} />
+    Icon: (props) => <BootstrapIcon {...props} />,
   },
   {
     key: 'astro',
@@ -200,49 +202,49 @@ export const TECHNOLOGIES = [
   {
     key: 'react-query',
     name: 'React Query',
-    tags: ['Data'],
+    tags: ['Data Management'],
     Icon: (props) => <ReactQueryIcon {...props} />,
   },
   {
     key: 'redux',
     name: 'Redux',
-    tags: ['Data'],
+    tags: ['Data Management'],
     Icon: (props) => <ReduxIcon {...props} />,
   },
   {
     key: 'ngrx',
     name: 'NgRx',
-    tags: ['Data'],
+    tags: ['Data Management'],
     Icon: (props) => <NgRxIcon {...props} />,
   },
   {
     key: 'rxjs',
     name: 'RxJS',
-    tags: ['Data'],
+    tags: ['Data Management'],
     Icon: (props) => <RxJsIcon {...props} />,
   },
   {
     key: 'graphql',
     name: 'GraphQL',
-    tags: ['Data'],
+    tags: ['Data Management'],
     Icon: (props) => <GraphQLIcon {...props} />,
   },
   {
     key: 'rest api',
     name: 'REST API',
-    tags: ['Data'],
-    Icon: (props) => <RestIcon {...props} />
+    tags: ['Data Management'],
+    Icon: (props) => <RestIcon {...props} />,
   },
   {
     key: 'relay',
     name: 'Relay',
-    tags: ['Data'],
-    Icon: (props) => <RelayIcon {...props} />
+    tags: ['Data Management'],
+    Icon: (props) => <RelayIcon {...props} />,
   },
   {
     key: 'apollo',
     name: 'Apollo',
-    tags: ['Data'],
+    tags: ['Data Management'],
     Icon: (props) => <ApolloIcon {...props} />,
   },
   {
@@ -257,11 +259,17 @@ export const TECHNOLOGIES = [
     tags: ['Tooling'],
     Icon: (props) => <WebpackIcon {...props} />,
   },
+  {
+    key: 'pinia',
+    name: 'Pinia',
+    tags: ['Data Management'],
+    Icon: (props) => <PiniaIcon {...props} />,
+  },
 ];
 
 export const SPONSORS_ICON = [
   {
     name: 'angular',
-    Icon: (props) => <AngularIcon {...props} />
-  }
-]
+    Icon: (props) => <AngularIcon {...props} />,
+  },
+];
