@@ -33,7 +33,7 @@ jobs:
           cache: ''
 
       - name: Install dependencies
-        run: npm ci
+        run: npm i
         working-directory: starters/angular-apollo-tailwind
 
       - name: Lint files
@@ -61,7 +61,7 @@ jobs:
           cache: ''
 
       - name: Install dependencies
-        run: npm ci
+        run: npm i
         working-directory: starters/angular-apollo-tailwind
 
       - name: Build Project
@@ -89,7 +89,7 @@ jobs:
           cache: ''
 
       - name: Install dependencies
-        run: npm ci
+        run: npm i
         working-directory: starters/angular-apollo-tailwind
 
       - name: Test Project

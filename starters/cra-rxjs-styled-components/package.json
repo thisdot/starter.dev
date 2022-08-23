@@ -23,7 +23,6 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "test:ci": "craco test --watchAll=false",
     "eject": "react-scripts eject",
     "format:check": "prettier --check .",
     "format:write": "prettier --write .",

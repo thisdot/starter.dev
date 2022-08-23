@@ -38,7 +38,7 @@ describe('CounterExampleComponent', () => {
   it('should create', () => {
     const count = debugElement.query(By.css('h2'));
     expect(component).toBeTruthy();
-    expect(count.nativeElement.textContent).toBe('Count:10');
+    expect(count.nativeElement.textContent).toBe('Count: 10');
   });
 
   it('should dispatch an increment action when the increment button is tapped', async () => {
