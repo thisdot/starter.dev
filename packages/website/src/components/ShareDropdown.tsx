@@ -1,13 +1,15 @@
 import { Menu, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
-import { ShareIcon, FacebookIcon, TwitterIcon,LinkedinIcon } from '../icons';
+import { ShareIcon, FacebookIcon, TwitterIcon, LinkedinIcon } from '../icons';
 
 type ShareOption = 'facebook' | 'twitter' | 'linkedin';
 
-const shareUrlMap: Record<ShareOption, (any) => string> = {
-  facebook: ({ u }) => `https://www.facebook.com/sharer/sharer.php?t=${u}`,
-  twitter: ({ t }) => `https://twitter.com/intent/tweet?text=${t}`,
-  linkedin: ({ u }) => `https://linkedin.com/sharing/share-offsite/?url=${u}`,
+type ShareParam = { url: string; text: string };
+const shareUrlMap: Record<ShareOption, (p: ShareParam) => string> = {
+  facebook: ({ url }) => `https://www.facebook.com/sharer/sharer.php?t=${url}`,
+  twitter: ({ text }) => `https://twitter.com/intent/tweet?text=${text}`,
+  linkedin: ({ url }) =>
+    `https://linkedin.com/sharing/share-offsite/?url=${url}`,
 };
 interface Props {
   kitname: string;
@@ -18,7 +20,7 @@ export function ShareDropdown({ kitname }: Props) {
   const share_text = `I just used the ${kitname} kit by starter.dev to scaffold out my last project. It really allowed me to start building features immediately. Check out the kit: ${share_url}`;
 
   const share = (option: ShareOption) => {
-    const url = shareUrlMap[option]({ u: share_url, t: share_text });
+    const url = shareUrlMap[option]({ url: share_url, text: share_text });
     window.open(url, '_blank');
   };
 
