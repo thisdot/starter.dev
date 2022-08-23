@@ -18,7 +18,7 @@
     "format": "prettier --write ./src",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook",
-    "prepare": "cd .. && cd .. && husky install starters/next-react-query-tailwind/.husky"
+    "prepare": "cd ../.. && husky install starters/next-react-query-tailwind/.husky"
   },
   "dependencies": {
     "classnames": "2.3.1",
@@ -56,7 +56,7 @@
     "msw-storybook-addon": "1.6.3",
     "postcss": "8.4.5",
     "prettier": "2.5.1",
-    "pretty-quick": "^3.1.3",
+    "pretty-quick": "3.1.3",
     "storybook-addon-next-router": "4.0.0",
     "storybook-css-modules-preset": "1.1.1",
     "tailwindcss": "3.0.5",

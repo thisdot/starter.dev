@@ -14,7 +14,7 @@
     "format": "prettier --write \"**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
     "storybook": "start-storybook -p 6006",
     "test": "jest",
-    "prepare": "cd .. && cd .. && husky install starters/vue3-apollo-quasar/.husky"
+    "prepare": "cd ../.. && husky install starters/vue3-apollo-quasar/.husky"
   },
   "dependencies": {
     "@apollo/client": "3.5.9",
@@ -54,7 +54,7 @@
     "husky": "8.0.1",
     "jest": "27.0.5",
     "prettier": "2.5.1",
-    "pretty-quick": "^3.1.3",
+    "pretty-quick": "3.1.3",
     "sass": "1.32.12",
     "sass-loader": "10.0.2",
     "style-loader": "1.3.0",
