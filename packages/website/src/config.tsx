@@ -76,25 +76,25 @@ export const TECHNOLOGIES = [
   {
     key: 'angular',
     name: 'Angular',
-    tags: ['Framework'],
+    tags: ['Core UI'],
     Icon: (props) => <AngularIcon {...props} />,
   },
   {
     key: 'react',
     name: 'React',
-    tags: ['Component Library'],
+    tags: ['Core UI'],
     Icon: (props) => <ReactIcon {...props} />,
   },
   {
     key: 'svelte',
     name: 'Svelte',
-    tags: ['Component Library'],
+    tags: ['Core UI'],
     Icon: (props) => <SvelteIcon {...props} />,
   },
   {
     key: 'vue',
     name: 'Vue',
-    tags: ['Framework'],
+    tags: ['Core UI'],
     Icon: (props) => <VueIcon {...props} />,
   },
   {

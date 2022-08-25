@@ -15,8 +15,8 @@ Starter kits should include a set of frameworks, libraries, and essential toolin
 
 Starter kits should include some core libraries and technologies that a new project will need. These pieces should come configured according to best practices and be ready to use togther as a unit.
 
-- Framework?: (Next, Nuxt, SvelteKit, Remix, Vue, Angular, etc)
-- UI: (react)
+- Framework?: (Next, Nuxt, SvelteKit, Remix, etc)
+- Core UI: (React, Vue, Angular, etc)
 - Data Fetching and/or State Management: (redux, ngrx, rxjs, react-query, apollo, etc)
 - Styling: (tailwind, styled-components, css modules, etc)
 
