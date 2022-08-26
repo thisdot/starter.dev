@@ -15,7 +15,7 @@ const { name } = Astro.props;
     <div class="space-x-4">
       <ShareDropdown client:only />
       <a
-        class="link text-sm dark:dark-link underline"
+        class="link text-sm dark:dark-link hover:underline"
         target="_blank"
         href={`${REPO_URL}/discussions`}>Have a question?</a
       >
@@ -28,7 +28,7 @@ const { name } = Astro.props;
         rel="noopener noreferrer"
       >
         <BriefcaseIcon className="h-3.5 w-3.5 inline ml-0.5 mb-[2px]" /><span
-          class="underline ml-2">View Showcase</span
+          class="hover:underline ml-2">View Showcase</span
         >
       </a>
       <a

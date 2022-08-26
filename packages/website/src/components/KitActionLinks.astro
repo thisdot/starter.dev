@@ -4,31 +4,37 @@ import { BriefcaseIcon } from '../icons/heroicons';
 import { GitHubIcon } from '../icons/GitHubIcon.tsx';
 import { ShareIcon } from '../icons/ShareIcon.tsx';
 import { REPO_URL, SHOWCASE_REPO_URL } from '../config.tsx';
+import { ShareDropdown } from './ShareDropdown';
 const { name, inline } = Astro.props;
 ---
 
-<div
-  class={cn(
-    'flex lg:flex-row lg:space-x-6 lg:items-center flex-col-reverse space-y-3 items-start'
-  )}
->
-  <a
-    class={cn('btn btn-primary text-sm mt-3', !inline && 'mt-3.5')}
-    href={`${REPO_URL}/tree/main/starters/${name}`}
-    target="_blank"
-    rel="noopener noreferrer"
-    >Download Kit <GitHubIcon className="h-3.5 w-3.5 inline ml-2.5 mb-px" /></a
-  >
-  <a
-    class="link dark:dark-link text-sm"
-    href={`${SHOWCASE_REPO_URL}/tree/main/${name}`}
-    target="_blank"
-    rel="noopener noreferrer"
-    ><BriefcaseIcon className="h-3.5 w-3.5 inline ml-0.5 mb-[2px]" />
-    <span class="underline ml-2">View Showcase</span>
-  </a>
-  <a class="link dark:text-[#95DFFF] hidden text-sm" href="#"
-    ><ShareIcon className="h-3.5 w-3.5 inline ml-1 mb-[2px]" />
-    <span class="underline ml-2">Share Kit</span></a
-  >
+<div class="flex flex-row items-center max-w-screen-2xl mx-auto">
+  <div class="space-x-4 invisible lg:visible">
+    <ShareDropdown client:only />
+    <a
+      class="link text-sm dark:dark-link hover:underline"
+      target="_blank"
+      href={`${REPO_URL}/discussions`}>Have a question?</a
+    >
+  </div>
+  <div class="ml-auto">
+    <a
+      class="link text-sm dark:dark-link"
+      href={`${SHOWCASE_REPO_URL}/tree/main/${name}`}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <BriefcaseIcon className="h-3.5 w-3.5 inline ml-0.5 mb-[2px]" /><span
+        class="hover:underline ml-2">View Showcase</span
+      >
+    </a>
+    <a
+      class={cn('btn btn-primary text-sm mt-3 ml-3', !inline && 'mt-3.5')}
+      href={`${REPO_URL}/tree/main/starters/${name}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      >Download Kit <GitHubIcon className="h-3.5 w-3.5 inline ml-2.5 mb-px"
+      /></a
+    >
+  </div>
 </div>
