@@ -13,7 +13,7 @@ const { name } = Astro.props;
 >
   <div class="flex flex-row items-center max-w-screen-2xl mx-auto">
     <div class="space-x-4">
-      <ShareDropdown client:only />
+      <ShareDropdown kitname={name} client:only />
       <a
         class="link text-sm dark:dark-link hover:underline"
         target="_blank"

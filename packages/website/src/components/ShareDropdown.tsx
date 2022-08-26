@@ -1,17 +1,27 @@
 import { Menu, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
-import { ShareIcon, FacebookIcon, TwitterIcon } from '../icons';
+import { ShareIcon, FacebookIcon, TwitterIcon, LinkedinIcon } from '../icons';
 
-type ShareOption = 'facebook' | 'twitter';
+type ShareOption = 'facebook' | 'twitter' | 'linkedin';
 
-const shareUrlMap: Record<ShareOption, string> = {
-  facebook: 'https://www.facebook.com/sharer/sharer.php?u=',
-  twitter: 'https://twitter.com/intent/tweet?url=',
+type ShareParam = { url: string; text: string };
+const shareUrlMap: Record<ShareOption, (p: ShareParam) => string> = {
+  facebook: ({ url }) => `https://www.facebook.com/sharer/sharer.php?t=${url}`,
+  twitter: ({ text }) => `https://twitter.com/intent/tweet?text=${text}`,
+  linkedin: ({ url }) =>
+    `https://linkedin.com/sharing/share-offsite/?url=${url}`,
 };
+interface Props {
+  kitname: string;
+}
 
-export function ShareDropdown() {
+export function ShareDropdown({ kitname }: Props) {
+  const share_url = window.location.href;
+  const share_text = `I just used the ${kitname} kit by starter.dev to scaffold out my last project. It really allowed me to start building features immediately. Check out the kit: ${share_url}`;
+
   const share = (option: ShareOption) => {
-    window.open(`${shareUrlMap[option]}${window.location.href}`, '_blank');
+    const url = shareUrlMap[option]({ url: share_url, text: share_text });
+    window.open(url, '_blank');
   };
 
   return (
@@ -47,6 +57,15 @@ export function ShareDropdown() {
               >
                 <TwitterIcon className="text-[#00acee] h-5 w-5 inline mr-1.5 mb-0.5" />
                 Twitter
+              </button>
+            </Menu.Item>
+            <Menu.Item>
+              <button
+                onClick={() => share('linkedin')}
+                className="group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-gray-200 dark:dark-t hover:dark:bg-gray-700"
+              >
+                <LinkedinIcon className="h-5 w-5 inline mr-1.5 mb-0.5" />
+                Linkedin
               </button>
             </Menu.Item>
           </div>
