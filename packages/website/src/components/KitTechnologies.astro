@@ -7,7 +7,7 @@ const { technologies } = Astro.props;
   <h1 class="heading-1 font-medium mb-8">Kits with these technologies</h1>
   <div class="not-prose flex flex-col md:flex-row flex-wrap gap-4">
     {technologies.map((tech) => (
-      <a href={`/frameworks/${tech.key}`} class="group inline-block my-2">
+      <a href={`/kits-by-tool/${tech.key}`} class="group inline-block my-2">
         <TechItem {...tech} />
       </a>
     ))}
