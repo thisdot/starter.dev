@@ -18,7 +18,6 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
-      fail-fast: false
       matrix:
         node-version: [16.x]
 
@@ -39,29 +38,6 @@ jobs:
 
       - name: Build Project
         run: npm run build
-        working-directory: starters/remix-gql-tailwind
-
-  test:
-    runs-on: ubuntu-latest
-
-    strategy:
-      fail-fast: false
-      matrix:
-        node-version: [16.x]
-
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-
-      - name: Use Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: ''
-
-      - name: Install dependencies
-        run: npm i
         working-directory: starters/remix-gql-tailwind
 
       - name: Test Project
