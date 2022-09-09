@@ -13,6 +13,7 @@
 import { defineComponent } from 'vue';
 import { computed } from 'vue';
 import { useQuery } from '@vue/apollo-composable';
+
 import gql from 'graphql-tag';
 
 export default defineComponent({
