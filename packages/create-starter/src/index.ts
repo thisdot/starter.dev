@@ -4,12 +4,17 @@ import { bold, gray, green, red, cyan } from 'kleur/colors';
 import prompts, { Choice } from 'prompts';
 import degit from 'tiged';
 import fetch from 'node-fetch';
-import { initGitRepo } from './utils';
+import yargs from 'yargs-parser';
+import { initGitRepo, removeLockFileIfExists, overrideAngularJsonIfExists } from './utils';
 
 const STARTER_KITS_JSON_URL = 'https://raw.githubusercontent.com/thisdot/starter.dev/main/starter-kits.json';
 
 export async function main() {
   console.log(`\n${bold('Welcome to starter.dev!')} ${gray('(create-starter)')}`);
+
+  const cleanArgv = process.argv.filter((arg) => arg !== '--');
+  const args = yargs(cleanArgv);
+  prompts.override(args);
 
   let starters: Choice[] = [];
 
@@ -67,18 +72,24 @@ export async function main() {
     process.exit(1);
   }
 
-  const packageJSON = JSON.parse(await fs.readFile(path.join(destPath, 'package.json'), 'utf8'));
-  packageJSON.name = options.name;
-  packageJSON.version = '0.1.0';
-  await fs.writeFile(path.join(destPath, 'package.json'), JSON.stringify(packageJSON, null, 2));
-
-  await overrideAngularJsonIfExists(destPath, options.kit, options.name);
-  
   try {
-    await initGitRepo(destPath);
-  } catch (_) {
-    // ignore
+    const packageJSON = JSON.parse(await fs.readFile(path.join(destPath, 'package.json'), 'utf8'));
+    packageJSON.name = options.name;
+    packageJSON.version = '0.1.0';
+
+    try {
+      await fs.writeFile(path.join(destPath, 'package.json'), JSON.stringify(packageJSON, null, 2));
+      await overrideAngularJsonIfExists(destPath, options.kit, options.name);
+
+      await initGitRepo(destPath);
+    } catch (_) {
+      console.info(gray(`> ${bold('Note:')} Failed to update package.json. You may need to do this manually.`));
+    }
+  } catch (err: unknown) {
+    console.error(red('Failed to read package.json. This probably means that you provided an invalid kit name.'));
+    process.exit(1);
   }
+
   removeLockFileIfExists('package-lock.json', destPath);
   removeLockFileIfExists('yarn.lock', destPath);
   removeLockFileIfExists('pnpm-lock.yaml', destPath);
@@ -87,29 +98,4 @@ export async function main() {
   console.log('\nNext steps:');
   console.log(` ${bold(cyan(`cd ${options.name}`))}`);
   console.log(` ${bold(cyan('npm install'))} (or pnpm install, yarn, etc)`);
-}
-
-async function removeLockFileIfExists(fileName: string, directoryPath: string): Promise<boolean> {
-  let removed: boolean;
-  try {
-    await fs.unlink(path.join(directoryPath, fileName));
-    removed = true;
-  } catch (err) {
-    removed = false;
-  }
-  return removed;
-}
-
-async function overrideAngularJsonIfExists(directoryPath: string, kitName: string, newProjectName: string): Promise<boolean> {
-  let done: boolean;
-  const angularJsonPath = path.join(directoryPath, 'angular.json')
-  try {    
-    const content = await fs.readFile(angularJsonPath, 'utf8');
-    const newContent = content.replace(new RegExp(kitName, 'g'), newProjectName);
-    await fs.writeFile(angularJsonPath, newContent);
-    done = true;
-  } catch (err) {
-    done = false;
-  }
-  return done;
 }

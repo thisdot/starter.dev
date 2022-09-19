@@ -73,13 +73,13 @@ The `Homepage` directory contains the following files:
 ### CLI (Recommended)
 
 ```bash
-npx @this-dot/create-starter
+npm create @this-dot/starter --kit cra-rxjs-styled-components
 ```
 
 or
 
 ```bash
-yarn create @this-dot/starter
+yarn create @this-dot/starter --kit cra-rxjs-styled-components
 ```
 
 - Follow the prompts to select the `cra-rxjs-styled-components` starter kit and name your new project.
@@ -105,7 +105,6 @@ git clone https://github.com/thisdot/starter.dev.git
 - `npm run storybook` - Starts the Storybook UI.
 - `npm run lint` - Runs ESLint on the project.
 - `npm run prettier` - Formats code for the entire project
-
 
 ## Kit Organization / Architecture
 
