@@ -21,7 +21,7 @@ body:
   - type: input
     attributes:
       label: What operating system are you using?
-      description: 'For example: OSX, Windows, Ubuntu'
+      description: 'For example: macOS, Windows, Ubuntu'
     validations:
       required: true
   - type: textarea
