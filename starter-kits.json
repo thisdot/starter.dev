@@ -3,5 +3,5 @@
   "cra-rxjs-styled-components": "Create React App, RxJS and Styled Components",
   "next-react-query-tailwind": "NextJS, React Query, and TailwindCSS",
   "remix-gql-tailwind": "Remix, GQL and TailwindCSS",
-  "vue-apollo-quasar": "Vue3, Apollo, Quasar"
+  "vue3-apollo-quasar": "Vue3, Apollo, and Quasar"
 }
