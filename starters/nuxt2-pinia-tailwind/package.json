@@ -1,10 +1,10 @@
 {
-  "name": "nuxt-pinia-tailwind",
+  "name": "nuxt2-pinia-tailwind",
   "version": "1.0.0",
   "private": true,
-  "description": "Nuxt, Pinia and TailwindCSS",
+  "description": "Nuxt 2, Pinia and TailwindCSS",
   "keywords": [
-    "nuxt",
+    "nuxt 2",
     "pinia",
     "tailwind"
   ],
