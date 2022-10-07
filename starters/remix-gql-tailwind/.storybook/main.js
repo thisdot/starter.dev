@@ -5,9 +5,12 @@ module.exports = {
     return {
       ...config,
       resolve: {
-        alias: {
-          remix: path.resolve(__dirname, '../__mockRemix__'),
-        },
+        alias: [
+          {
+            find: '@remix-run/react',
+            replacement: path.resolve(__dirname, '../__mockRemix__'),
+          },
+        ],
       },
     };
   },
