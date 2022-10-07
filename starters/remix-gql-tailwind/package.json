@@ -35,7 +35,8 @@
     "start": "remix-serve build",
     "test": "jest",
     "storybook": "concurrently -n css,storybook -c cyan,magenta \"npm run dev:css\" \"start-storybook -p 6006\"",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "prepare": "husky install"
   },
   "msw": {
     "workerDirectory": "public"
