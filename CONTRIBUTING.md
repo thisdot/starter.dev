@@ -14,7 +14,7 @@ Please [read our Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this r
 
 Before you submit your Pull Request (PR), consider the following guidelines:
 
-- search [the repositiory](https://github.com/thisdot/starter.dev/pulls) for an open or closed PR that relates to your submission. Help us reduce redundancies.
+- search [the repository](https://github.com/thisdot/starter.dev/pulls) for an open or closed PR that relates to your submission. Help us reduce redundancies.
 - If your PR is a new feature, such as a new starter kit, we request you create a [feature request](https://github.com/thisdot/starter.dev/discussions/new?category=ideas) to first discuss this new idea.
 
 ### To submit a bug fix or a new feature:
@@ -58,8 +58,8 @@ Consistency is important on an application such as this, where many developers w
 
 - **Formatting** - We don't want to waste time debating tabs vs spaces. All code should be formatted using Prettier set to use the settings in the `.prettierc` file.
 
-- **Minimal Pull Requests** - Do not commit changes to files where there was not a new feature added or an existing feature altered. Files altered only to remove unusued imports or change formatting should not be included in pull requests. Code authors are expected to review the files in each pull request and revert files that were only incidentally changed.
+- **Minimal Pull Requests** - Do not commit changes to files where there was not a new feature added or an existing feature altered. Files altered only to remove unused imports or change formatting should not be included in pull requests. Code authors are expected to review the files in each pull request and revert files that were only incidentally changed.
 
-- **Code Comments** - We're not following a strict code commenting pattern (like js-doc), but developers are encouraged to use comments liberally where it may aid understandability and readability of the code (esepecially for new contributors). Comments that merely explain what a line of code does are not necessary. Instead, comments should indicate the intent of th author. It could mention assumptions, constraints, intent, algorithm design, etc.
+- **Code Comments** - We're not following a strict code commenting pattern (like js-doc), but developers are encouraged to use comments liberally where it may aid understandability and readability of the code (especially for new contributors). Comments that merely explain what a line of code does are not necessary. Instead, comments should indicate the intent of th author. It could mention assumptions, constraints, intent, algorithm design, etc.
 
 - **Commit/Pull Request Comments** - Code authors are strongly recommended to communicate the reason for the code changes, the nature of the changes, and the intent of the changes in their Git commit messages (this information should also make it into PR descriptions as well). Additionally, while not strictly required, we recommend that code authors make comments in their pull requests where useful to help code reviewers understand the background/intent for some of the less obvious changes.

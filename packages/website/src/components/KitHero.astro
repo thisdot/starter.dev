@@ -28,7 +28,7 @@ const crumbs = [
       >
         {technologies.map((tech, i) => (
             <span class={cn('hidden text-3xl text-gray-300 font-light', i > 0 && 'lg:inline')}>/</span>
-            <a href={`/frameworks/${tech.key}`} class="group inline-block my-2">
+            <a href={`/kits-by-tool/${tech.key}`} class="group inline-block my-2">
               <TechItem {...tech} />
             </a>
           ))}

@@ -27,7 +27,7 @@ const sections = technologies.reduce((acc, tech) => {
 ---
 
 <BaseLayout
-  title="Frameworks - starter.dev"
+  title="Kits by Tool - starter.dev"
   description="Lists technologies used through the starter.dev kit collection"
 >
   <MobileNavigation sections={Object.keys(sections)} client:load />
@@ -67,7 +67,7 @@ const sections = technologies.reduce((acc, tech) => {
             <div class="flex flex-wrap items-center justify-start gap-x-4">
               {technologies.map((tech) => (
                 <a
-                  href={`/frameworks/${tech.key}`}
+                  href={`/kits-by-tool/${tech.key}`}
                   class="group inline-block my-2"
                 >
                   <TechItem {...tech} />

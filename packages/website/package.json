@@ -34,6 +34,7 @@
     "clsx": "^1.1.1",
     "just-pick": "^4.0.1",
     "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "react-dom": "^18.1.0",
+    "react-lottie-player": "^1.4.3"
   }
 }

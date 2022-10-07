@@ -62,8 +62,7 @@ export function NavBar({ currentPath }: Props) {
                       rel="noopener noreferrer"
                       className="btn btn-tertiary btn-lg border-gray-600 text-gray-900 hover:bg-gray-100 dark:text-white dark:border-white dark:bg-transparent"
                     >
-                      GitHub Kits Library
-                      <GitHubIcon className="ml-2 text-lg" />
+                      <GitHubIcon className="text-lg" />
                     </a>
                   </div>
                 </div>
@@ -112,8 +111,7 @@ export function NavBar({ currentPath }: Props) {
                 target="_blank"
                 className="btn btn-tertiary btn-lg border-gray-600 text-gray-900 hover:bg-gray-100 dark:text-white dark:border-white dark:bg-transparent"
               >
-                GitHub Kits Library
-                <GitHubIcon className="ml-2 text-lg" />
+                <GitHubIcon className="text-lg" />
               </Disclosure.Button>
             </div>
           </Disclosure.Panel>

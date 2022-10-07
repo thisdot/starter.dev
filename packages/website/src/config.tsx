@@ -50,8 +50,8 @@ export const SHOWCASE_REPO_URL =
 
 export const HEADER_NAV_ITEMS: NavItem[] = [
   {
-    title: 'Frameworks',
-    href: '/frameworks',
+    title: 'Kits by Tool',
+    href: '/kits-by-tool',
   },
   {
     title: 'Community',
@@ -69,32 +69,32 @@ export const HEADER_NAV_ITEMS: NavItem[] = [
 ];
 
 export const FOOTER_NAV_ITEMS = HEADER_NAV_ITEMS.filter(
-  (x) => x.title !== 'Frameworks'
+  (x) => x.title !== 'Kits by Tool'
 );
 
 export const TECHNOLOGIES = [
   {
     key: 'angular',
     name: 'Angular',
-    tags: ['UI'],
+    tags: ['Core UI'],
     Icon: (props) => <AngularIcon {...props} />,
   },
   {
     key: 'react',
     name: 'React',
-    tags: ['UI'],
+    tags: ['Core UI'],
     Icon: (props) => <ReactIcon {...props} />,
   },
   {
     key: 'svelte',
     name: 'Svelte',
-    tags: ['UI'],
+    tags: ['Core UI'],
     Icon: (props) => <SvelteIcon {...props} />,
   },
   {
     key: 'vue',
     name: 'Vue',
-    tags: ['UI'],
+    tags: ['Core UI'],
     Icon: (props) => <VueIcon {...props} />,
   },
   {
@@ -142,49 +142,49 @@ export const TECHNOLOGIES = [
   {
     key: 'tailwind',
     name: 'Tailwind',
-    tags: ['CSS'],
+    tags: ['Styling'],
     Icon: (props) => <TailwindIcon {...props} />,
   },
   {
     key: 'material-ui',
     name: 'Material-UI',
-    tags: ['CSS'],
+    tags: ['Styling'],
     Icon: (props) => <MaterialUIIcon {...props} />,
   },
   {
     key: 'vanilla-extract',
     name: 'Vanilla Extract',
-    tags: ['CSS'],
+    tags: ['Styling'],
     Icon: (props) => <VanillaExtractIcon {...props} />,
   },
   {
     key: 'css module',
     name: 'CSS Module',
-    tags: ['CSS'],
+    tags: ['Styling'],
     Icon: (props) => <CSSModuleIcon {...props} />,
   },
   {
     key: 'styled-components',
     name: 'Styled Components',
-    tags: ['CSS'],
+    tags: ['Styling'],
     Icon: (props) => <SCIcon {...props} />,
   },
   {
     key: 'sass',
     name: 'SASS',
-    tags: ['CSS'],
+    tags: ['Styling'],
     Icon: (props) => <SaaSIcon {...props} />,
   },
   {
     key: 'element-ui',
     name: 'Element-UI',
-    tags: ['CSS'],
+    tags: ['Styling'],
     Icon: (props) => <ElementUIIcon {...props} />,
   },
   {
     key: 'bootstrap',
     name: 'Bootstrap',
-    tags: ['CSS'],
+    tags: ['Styling'],
     Icon: (props) => <BootstrapIcon {...props} />,
   },
   {

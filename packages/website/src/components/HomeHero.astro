@@ -1,55 +1,37 @@
 ---
-import SelectTechIcon from '../icons/SelectTechIcon.astro';
-import ReadDocIcon from '../icons/ReadDocIcon.astro';
-import DownloadStackIcon from '../icons/DownloadStackIcon.astro';
-import { TerminalIcon } from '../icons/heroicons';
+import Lottie from 'react-lottie-player';
+import { Logo } from './Logo';
+import { EllipseBg } from '../icons/EllipseBg';
+import { HeroRectangleBg } from '../icons/HeroRectangleBg';
+import ZshAnimation from './ZshAnimation';
 ---
 
-<div class="text-center py-12">
-  <div class="my-8 max-w-4xl mx-auto">
-    <h2
-      class="t-dark dark:dark-t-light heading-1 leading-[1.3] [word-spacing:4px] dark:text-gray-50"
-    >
-      Save your time using
-      <span class="px-2 rounded-lg bg-blue-500 dark:text-white text-white"
-        >configured <TerminalIcon className="w-8 h-8 -ml-1.5 mb-0.5 inline"
-      /></span>
-      tech stacks
-    </h2>
-  </div>
-  <div
-    class="mt-20 border-t border-b border-gray-400 dark:border-gray-700 py-10 px-4"
-  >
-    <div
-      class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-screen-2xl mx-auto text-xl font-medium"
-    >
-      <div class="col-span-1 flex items-center md:justify-center">
-        <SelectTechIcon />
-        <div class="ml-2">
-          <div class="t-dark dark:dark-t heading-6">Select tech stack</div>
-          <div class="t-light dark:text-gray-400 heading-6">
-            you're looking for
-          </div>
-        </div>
-      </div>
-      <div class="col-span-1 flex items-center md:justify-center">
-        <ReadDocIcon />
-        <div class="ml-2">
-          <div class="t-dark dark:dark-t heading-6">See documentation</div>
-          <div class="t-light dark:text-gray-400 heading-6">
-            about how it works
-          </div>
-        </div>
-      </div>
-      <div class="col-span-1 flex items-center md:justify-center">
-        <DownloadStackIcon />
-        <div class="ml-2">
-          <div class="t-dark dark:dark-t heading-6">Download stack &</div>
-          <div class="t-light dark:text-gray-400 heading-6">
-            build application
-          </div>
-        </div>
-      </div>
+<div class="text-center pt-12 bg-[#F5F7FF] dark:bg-[#21315C]">
+  <div class="my-8 max-w-4xl mx-auto flex justify-center flex-col">
+    <div class="self-center">
+      <Logo />
     </div>
+    <h2
+      class="t-dark dark:dark-t-light heading-1 leading-[1.3] [word-spacing:4px] dark:text-gray-50 mt-3"
+    >
+      Bootstrap your projects with zero configuration
+    </h2>
+    <p
+      class="text-[#4C5C87] text-[18px] leading-[176%] w-[408px] mt-[4px] font-[500] self-center max-w-[98%] dark:text-gray-400"
+    >
+      Have all the industry standard tooling at your fingertips in a matter of
+      seconds!
+    </p>
+  </div>
+
+  <div
+    class="mt-[160px] sm:mb-0 mb-[135px] md:mt-[268px] mx-auto flex flex-col justify-center relative"
+  >
+    <div class="hidden sm:block">
+      <EllipseBg className="bottom-0 absolute w-[100%]" />
+      <HeroRectangleBg className="w-[100%]" />
+    </div>
+
+    <ZshAnimation client:only />
   </div>
 </div>

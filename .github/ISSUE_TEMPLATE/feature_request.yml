@@ -26,5 +26,5 @@ body:
       required: true
   - type: textarea
     attributes:
-      label: Addtional context
+      label: Additional context
       description: Add any other context or screenshots about the feature request here.

@@ -3,10 +3,14 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { Greeting } from './Greeting.data';
 import { setupServer, SetupServerApi } from 'msw/node';
 import { rest } from 'msw';
+import { cleanUpMocks } from '../../../__mocks__/consoleMock';
 
 const MOCK_MESSAGE_HELLO = 'Test Message Hello';
 const MOCK_MESSAGE_ERROR = 'Test Message Error';
 
+afterAll(() => {
+  cleanUpMocks();
+});
 describe('Greeting', () => {
   let server: SetupServerApi | null;
 
@@ -15,19 +19,18 @@ describe('Greeting', () => {
     server = null;
   };
 
-  afterEach(() => server?.resetHandlers())
+  afterEach(() => server?.resetHandlers());
   // afterAll(() => server?.close())
 
   describe('positive flow', () => {
-
     beforeAll(() => {
       server = setupServer(
         rest.get('https://api.starter.dev/hello', (req, res, ctx) => {
-          return res(ctx.text(MOCK_MESSAGE_HELLO))
-        }),
-      )
+          return res(ctx.text(MOCK_MESSAGE_HELLO));
+        })
+      );
       server.listen();
-    })
+    });
 
     afterAll(disposeServer);
 
@@ -38,8 +41,10 @@ describe('Greeting', () => {
         </QueryClientProvider>
       );
 
-      const displayMessage = screen.getByRole('display-message')
-      expect(displayMessage).toHaveClass('grow animate-pulse bg-gray-200 rounded-md');
+      const displayMessage = screen.getByRole('display-message');
+      expect(displayMessage).toHaveClass(
+        'grow animate-pulse bg-gray-200 rounded-md'
+      );
     });
 
     it('should see the data after the data loads', async () => {
@@ -50,22 +55,21 @@ describe('Greeting', () => {
       );
 
       expect(await screen.findByText(MOCK_MESSAGE_HELLO)).toBeVisible();
-      const displayMessage = screen.getByRole('display-message')
+      const displayMessage = screen.getByRole('display-message');
       expect(displayMessage).toHaveClass('grow-0');
       expect(displayMessage).toHaveTextContent(MOCK_MESSAGE_HELLO);
     });
   });
 
   describe('negative flow', () => {
-
     afterAll(disposeServer);
 
     it('should show an error message if the API call response contains a message in the body.', async () => {
       server = setupServer(
-        rest.get('https://api.starter.dev/hello',
-          (req, res, ctx) => res(ctx.status(400), ctx.json({ message: MOCK_MESSAGE_ERROR }))
-        ),
-      )
+        rest.get('https://api.starter.dev/hello', (req, res, ctx) =>
+          res(ctx.status(400), ctx.json({ message: MOCK_MESSAGE_ERROR }))
+        )
+      );
       server.listen();
 
       render(
@@ -75,16 +79,16 @@ describe('Greeting', () => {
       );
 
       expect(await screen.findByText(MOCK_MESSAGE_ERROR)).toBeVisible();
-      const errorMessage = screen.getByRole('error-message')
+      const errorMessage = screen.getByRole('error-message');
       expect(errorMessage).toHaveTextContent(MOCK_MESSAGE_ERROR);
     });
 
     it('should show an error message if the API call response does not contain a message in the body.', async () => {
       server = setupServer(
-        rest.get('https://api.starter.dev/hello',
-          (req, res, ctx) => res(ctx.status(404))
-        ),
-      )
+        rest.get('https://api.starter.dev/hello', (req, res, ctx) =>
+          res(ctx.status(404))
+        )
+      );
       server.listen();
 
       render(
@@ -95,7 +99,7 @@ describe('Greeting', () => {
       const MESSAGE_EXPECTED = 'Request error: Not Found';
 
       expect(await screen.findByText(MESSAGE_EXPECTED)).toBeVisible();
-      const errorMessage = screen.getByRole('error-message')
+      const errorMessage = screen.getByRole('error-message');
       expect(errorMessage).toHaveTextContent(MESSAGE_EXPECTED);
     });
   });
