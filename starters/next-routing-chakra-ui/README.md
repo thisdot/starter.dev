@@ -1,34 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# next-routing-chakra-ui starter kit
 
-## Getting Started
+This starter kit features Next.js and Chakra UI.
 
-First, run the development server:
+## Table of Contents
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+TODO: will be completed in [GitHub issue #327](https://github.com/thisdot/starter.dev/issues/327)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Overview
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### Tech Stack
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+- Next.js
+- Chakra UI
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### Included Tooling
 
-## Learn More
+- [Jest](https://jestjs.io/) - Test runner
+- [TypeScript](https://www.typescriptlang.org/) - Type checking
+- [Storybook](https://storybook.js.org/) - Component library
+- [ESLint](https://eslint.org/) - Code linting
+- [Prettier](https://prettier.io/) - Code formatting
 
-To learn more about Next.js, take a look at the following resources:
+### Example Components
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+TODO: will be completed in [GitHub issue #327](https://github.com/thisdot/starter.dev/issues/327)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Installation
 
-## Deploy on Vercel
+### CLI (Recommended)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+TODO: will be completed in [GitHub issue #327](https://github.com/thisdot/starter.dev/issues/327)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Manual
+
+TODO: will be completed in [GitHub issue #327](https://github.com/thisdot/starter.dev/issues/327)
+
+## Commands
+
+TODO: will be completed in [GitHub issue #327](https://github.com/thisdot/starter.dev/issues/327)
+
+## Kit Organization / Architecture
+
+TODO: will be completed in [GitHub issue #327](https://github.com/thisdot/starter.dev/issues/327)
+
+### Example directory
+
+TODO: will be completed in [GitHub issue #327](https://github.com/thisdot/starter.dev/issues/327)
