@@ -1,6 +1,6 @@
-# nuxt-pinia-tailwind starter kit
+# nuxt2-pinia-tailwind starter kit
 
-This starter kit features **Nuxt.js**, **Pinia**, and **Tailwind CSS**.
+This starter kit features **Nuxt.js 2**, **Pinia**, and **Tailwind CSS**.
 ## Table of Contents
 
   - [Overview](#overview)
@@ -32,7 +32,7 @@ This starter kit features **Nuxt.js**, **Pinia**, and **Tailwind CSS**.
 
 ### Example Code
 
-In this `starters/nuxt-pinia-tailwind` directory you will find the `TheCounter` and `TheGreeting` directories. 
+In this `starters/nuxt2-pinia-tailwind` directory you will find the `TheCounter` and `TheGreeting` directories. 
 
 The `TheCounter` directory component uses `Pinia` to control the state of the component. The directory contains the following files:
 
@@ -56,20 +56,20 @@ The `TheGreeting` directory component uses `@nuxtjs/axios` to fetch data from th
 npx create-starter-dev
 ```
 
-- Follow the prompts to select the `nuxt-pinia-tailwind` starter kit and name your new project.
+- Follow the prompts to select the `nuxt2-pinia-tailwind` starter kit and name your new project.
 - `cd` into your project directory and run `yarn`.
 - Run `yarn dev` to start the development server.
 - Open your browser to `http://localhost:3000` to see the included example code running.
 
 ### Manual
 
-This requires a download of the entire starter.dev repository and extraction of the `nuxt-pinia-tailwind` kit from the starters directory.
+This requires a download of the entire starter.dev repository and extraction of the `nuxt2-pinia-tailwind` kit from the starters directory.
 
 ```bash
 git clone https://github.com/thisdot/starter.dev.git
 ```
 
-- Copy and rename the `starters/nuxt-pinia-tailwind` directory to the name of your new project.
+- Copy and rename the `starters/nuxt2-pinia-tailwind` directory to the name of your new project.
 - `cd` into your project directory and run `yarn`.
 - Run `yarn dev` to start the development server.
 - Open your browser to `http://localhost:3000` to see the included example code running.
