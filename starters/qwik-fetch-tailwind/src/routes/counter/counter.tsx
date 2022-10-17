@@ -1,5 +1,4 @@
 import { component$, useStore } from '@builder.io/qwik';
-import { Link } from '@builder.io/qwik-city';
 
 export const Counter = component$(() => {
   const store = useStore({
@@ -13,7 +12,6 @@ export const Counter = component$(() => {
       <button onClick$={() => store.count++}>Increment</button>
       <button onClick$={() => store.count--}>Decrement</button>
       <button onClick$={() => (store.count = 0)}>Reset</button>
-      <Link href="/">Return Home</Link>
     </div>
   );
 });
