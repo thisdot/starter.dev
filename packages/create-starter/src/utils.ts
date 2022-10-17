@@ -1,3 +1,5 @@
+import path from 'path';
+import fs from 'fs/promises';
 import { exec } from 'child_process';
 
 export async function initGitRepo(path: string) {
@@ -10,4 +12,29 @@ export async function initGitRepo(path: string) {
       }
     });
   });
+}
+
+export async function removeLockFileIfExists(fileName: string, directoryPath: string): Promise<boolean> {
+  let removed: boolean;
+  try {
+    await fs.unlink(path.join(directoryPath, fileName));
+    removed = true;
+  } catch (err) {
+    removed = false;
+  }
+  return removed;
+}
+
+export async function overrideAngularJsonIfExists(directoryPath: string, kitName: string, newProjectName: string): Promise<boolean> {
+  let done: boolean;
+  const angularJsonPath = path.join(directoryPath, 'angular.json');
+  try {
+    const content = await fs.readFile(angularJsonPath, 'utf8');
+    const newContent = content.replace(new RegExp(kitName, 'g'), newProjectName);
+    await fs.writeFile(angularJsonPath, newContent);
+    done = true;
+  } catch (err) {
+    done = false;
+  }
+  return done;
 }

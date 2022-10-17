@@ -35,6 +35,7 @@
     "@tsconfig/node14": "^1.0.2",
     "@types/node": "^16.11.12",
     "@types/prompts": "^2.0.14",
+    "@types/yargs-parser": "^21.0.0",
     "@typescript-eslint/eslint-plugin": "^5.28.0",
     "@typescript-eslint/parser": "^5.28.0",
     "esbuild": "^0.14.3",
@@ -49,6 +50,6 @@
     "node-fetch": "^3.2.4",
     "prompts": "^2.4.2",
     "tiged": "^2.12.0",
-    "yargs-parser": "^21.0.0"
+    "yargs-parser": "^21.1.1"
   }
 }
