@@ -1,8 +1,10 @@
 {
-  "name": "my-qwik-basic-starter",
-  "description": "Qwik",
+  "name": "qwik-fetch-tailwind",
+  "description": "Qwik, fetch API, and TailwindCSS",
   "keywords": [
-    "qwik"
+    "qwik",
+    "fetch",
+    "tailwind"
   ],
   "engines": {
     "node": ">=15.0.0"
