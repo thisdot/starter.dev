@@ -54,7 +54,7 @@ export const actions: Actions = {
 		const game = new Game(cookies.get('sverdle'));
 
 		const data = await request.formData();
-		const guess = data.getAll('guess')  as string[];
+		const guess = data.getAll('guess') as string[];
 
 		if (!game.enter(guess)) {
 			return invalid(400, { badGuess: true });
@@ -87,7 +87,7 @@ class Game {
 		} else {
 			this.index = Math.floor(Math.random() * words.length);
 			this.guesses = ['', '', '', '', '', ''];
-			this.answers = [] ;
+			this.answers = [];
 		}
 
 		this.answer = words[this.index];
