@@ -18,10 +18,7 @@ export const RouterHead = component$(() => {
 
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Poppins&amp;display=swap"
-        rel="stylesheet"
-      />
+      <link href="https://fonts.googleapis.com/css2?family=Poppins&amp;display=swap" rel="stylesheet" />
 
       <meta property="og:site_name" content="Qwik" />
       <meta name="twitter:site" content="@QwikDev" />
