@@ -2,6 +2,7 @@
 import { JSXNode } from '@builder.io/qwik';
 import { QWIK_LOADER } from '@builder.io/qwik/loader/index';
 import { render } from '@builder.io/qwik';
+import '../src/global.css';
 eval(QWIK_LOADER);
 
 export const decorators = [
