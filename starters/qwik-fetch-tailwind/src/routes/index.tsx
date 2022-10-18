@@ -1,7 +1,7 @@
 import { component$ } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
 import { Link } from '@builder.io/qwik-city';
-import * as styles from './index.classNames';
+import * as styles from './homepage.classNames';
 
 export default component$(() => {
   return (
