@@ -1,9 +1,8 @@
 {
-	"name": "svelte-kit-fetch-scss",
-  "description": "Create Svelte Kit app, fetch API and SCSS",
+	"name": "svelte-kit-scss",
+  "description": "Create Svelte Kit app with SCSS",
   "keywords": [
     "svelte",
-    "fetch",
     "sass"
   ],
 	"private": true,
