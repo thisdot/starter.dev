@@ -1,21 +1,30 @@
-import { component$, useStore } from '@builder.io/qwik';
+import { component$, $, useStore } from '@builder.io/qwik';
+import { Button } from '../../components/button/button';
+import * as styles from './counter.classNames';
 
 export const Counter = component$(() => {
   const store = useStore({
     count: 0,
   });
 
+  const increment$ = $(() => store.count++);
+  const decrement$ = $(() => store.count--);
+  const reset$ = $(() => (store.count = 0));
+
   return (
-    <div>
-      <h1>Increment, Decrement and Reset Button Examples</h1>
+    <div className={styles.container}>
       <Display store={store} />
-      <button onClick$={() => store.count++}>Increment</button>
-      <button onClick$={() => store.count--}>Decrement</button>
-      <button onClick$={() => (store.count = 0)}>Reset</button>
+      <Button title="-" action$={decrement$} />
+      <Button title="+" action$={increment$} />
+      <Button title="&times;" action$={reset$} />
     </div>
   );
 });
 
 export const Display = component$((props: { store: { count: number } }) => {
-  return <div>Count: {props.store.count}</div>;
+  return (
+    <div className={styles.textContainer}>
+      <p className={styles.h3Text}>Count:</p> <h1 className={styles.h1Text}>{props.store.count}</h1>
+    </div>
+  );
 });
