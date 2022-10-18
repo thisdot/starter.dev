@@ -7,16 +7,32 @@ export const Counter = component$(() => {
     count: 0,
   });
 
-  const increment$ = $(() => store.count++);
-  const decrement$ = $(() => store.count--);
-  const reset$ = $(() => (store.count = 0));
+  const increment$ = $(() => {
+    store.count++;
+  });
+
+  const decrement$ = $(() => {
+    store.count--;
+  });
+
+  const reset$ = $(() => {
+    store.count = 0;
+  });
 
   return (
     <div className={styles.container}>
       <Display store={store} />
-      <Button title="-" action$={decrement$} />
-      <Button title="+" action$={increment$} />
-      <Button title="&times;" action$={reset$} />
+      <div className={styles.buttonsContainer}>
+        <div className={styles.button}>
+          <Button title="-" action$={decrement$} />
+        </div>
+        <div className={styles.button}>
+          <Button title="+" action$={increment$} />
+        </div>
+        <div className={styles.button}>
+          <Button title="&times;" action$={reset$} />
+        </div>
+      </div>
     </div>
   );
 });

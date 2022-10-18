@@ -1,12 +1,13 @@
 import { component$, Slot } from '@builder.io/qwik';
 import Header from '../components/header/header';
+import * as styles from './layout.classNames';
 
 export default component$(() => {
   return (
     <>
-      <main class="bg-blue-50 min-h-screen">
+      <main className={styles.main}>
         <Header />
-        <section>
+        <section className={styles.container}>
           <Slot />
         </section>
       </main>
