@@ -15,7 +15,13 @@ function Tester() {
   };
   const isChecked = (value) => todos().includes(value);
 
-  return <input type="checkbox" checked={isChecked('check1')} onchange={[toggleTodo, 'check1']} />;
+  return (
+    <input
+      type="checkbox"
+      checked={isChecked('check1')}
+      onchange={[toggleTodo, 'check1']}
+    />
+  );
 }
 
 export default Tester;
