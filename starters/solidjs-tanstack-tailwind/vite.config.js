@@ -8,5 +8,20 @@ export default defineConfig({
   },
   build: {
     target: 'esnext',
+    polyfillDynamicImport: false,
   },
+  test: {
+    globals: true,
+    environment: "jsdom",
+    transformMode: {
+      web: [/\.jsx?$/],
+    },
+    setupFiles: './setupVitest.js',
+    deps: {
+      inline: [/solid-js/, /solid-testing-library/],
+    },
+  },
+   resolve: {
+     conditions: ['development', 'browser'],
+   },
 });

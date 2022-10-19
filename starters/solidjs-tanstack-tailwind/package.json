@@ -8,21 +8,26 @@
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
+    "test": "vitest",
     "lint": "eslint --ext .js,.jsx ./src",
     "lint-fix": "pnpm lint --fix",
     "format": "prettier --write ./src --ignore-path .gitignore"
   },
   "license": "MIT",
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
     "autoprefixer": "^10.4.12",
     "postcss": "^8.4.18",
     "tailwindcss": "^3.1.8",
     "eslint": "^8.25.0",
     "eslint-plugin-solid": "^0.7.3",
     "eslint-plugin-unused-imports": "^2.0.0",
+    "jsdom": "^20.0.1",
     "prettier": "^2.7.1",
+    "solid-testing-library": "^0.3.0",
     "vite": "^3.0.9",
-    "vite-plugin-solid": "^2.3.0"
+    "vite-plugin-solid": "^2.3.0",
+    "vitest": "^0.24.3"
   },
   "dependencies": {
     "solid-js": "^1.5.1"
