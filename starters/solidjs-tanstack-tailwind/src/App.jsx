@@ -7,10 +7,11 @@ function App() {
       <header class={styles.header}>
         <img src={logo} class={styles.logo} alt="logo" />
         <p class="text-base">
-          Edit <code class="text-blue-300">src/App.jsx</code> and save to reload.
+          Edit <code class="text-blue-300">src/App.jsx</code> and save to
+          reload.
         </p>
         <a
-          classList={{[styles.link]: true, 'text-base': true}}
+          classList={{ [styles.link]: true, 'text-base': true }}
           href="https://github.com/solidjs/solid"
           target="_blank"
           rel="noopener noreferrer"
