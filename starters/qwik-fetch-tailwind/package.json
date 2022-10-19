@@ -23,23 +23,35 @@
     "preview": "qwik build preview && vite preview --open",
     "start": "vite --open http://localhost:5173 --mode ssr",
     "qwik": "qwik",
-    "format": "prettier --write \"**/*.+(ts|tsx)\""
+    "format": "prettier --write \"**/*.+(ts|tsx)\"",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "devDependencies": {
-    "@builder.io/qwik": "0.10.0",
-    "@builder.io/qwik-city": "0.0.111",
+    "@builder.io/qwik": "0.11.0",
+    "@builder.io/qwik-city": "0.0.112",
     "@types/eslint": "8.4.6",
     "@types/node": "latest",
     "@typescript-eslint/eslint-plugin": "5.37.0",
-    "@typescript-eslint/parser": "5.37.0",
+    "@typescript-eslint/parser": "5.37.0",    
     "eslint": "8.23.1",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-prettier": "4.2.1",
     "eslint-plugin-qwik": "0.10.0",
+    "eslint-plugin-storybook": "0.6.6",
     "node-fetch": "3.2.10",
     "prettier": "2.7.1",
-    "typescript": "4.8.3",
-    "vite": "3.1.1",
-    "vite-tsconfig-paths": "3.5.0"
+    "typescript": "4.8.4",
+    "vite": "3.1.7",
+    "vite-tsconfig-paths": "3.5.0",
+    "@babel/core": "^7.19.3",
+    "@storybook/addon-actions": "^6.5.12",
+    "@storybook/addon-essentials": "^6.5.12",
+    "@storybook/addon-interactions": "^6.5.12",
+    "@storybook/addon-links": "^6.5.12",
+    "@storybook/builder-vite": "^0.2.4",
+    "@storybook/html": "^6.5.12",
+    "@storybook/testing-library": "^0.0.13",
+    "babel-loader": "^8.2.5"
   }
 }
