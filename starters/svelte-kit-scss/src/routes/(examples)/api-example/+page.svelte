@@ -1,5 +1,8 @@
 <script lang="ts">
-
+    export let data: {
+        loading: boolean,
+        message: string
+    };
 </script>
 
 <div class="fetch-container">
@@ -7,7 +10,7 @@
         <h1>Svelte Fetch Data from API</h1>
     </header>
     <p>
-        Message: 
+        Message: { data.loading ? 'Loading' : data.message }
     </p>
 </div>
 
