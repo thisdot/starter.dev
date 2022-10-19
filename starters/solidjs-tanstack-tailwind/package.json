@@ -7,13 +7,20 @@
     "start": "vite",
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "lint": "eslint --ext .js,.jsx ./src",
+    "lint-fix": "pnpm lint --fix",
+    "format": "prettier --write ./src --ignore-path .gitignore"
   },
   "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^10.4.12",
     "postcss": "^8.4.18",
     "tailwindcss": "^3.1.8",
+    "eslint": "^8.25.0",
+    "eslint-plugin-solid": "^0.7.3",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "prettier": "^2.7.1",
     "vite": "^3.0.9",
     "vite-plugin-solid": "^2.3.0"
   },
