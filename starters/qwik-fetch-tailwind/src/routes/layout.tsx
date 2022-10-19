@@ -1,20 +1,16 @@
 import { component$, Slot } from '@builder.io/qwik';
 import Header from '../components/header/header';
+import * as styles from './layout.classNames';
 
 export default component$(() => {
   return (
     <>
-      <main>
+      <main className={styles.main}>
         <Header />
-        <section>
+        <section className={styles.container}>
           <Slot />
         </section>
       </main>
-      <footer>
-        <a href="https://www.builder.io/" target="_blank">
-          Made with ♡ by Builder.io
-        </a>
-      </footer>
     </>
   );
 });

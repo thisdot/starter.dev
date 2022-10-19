@@ -1,8 +1,9 @@
 import { component$, useStore, Resource, useResource$ } from '@builder.io/qwik';
+import * as styles from './data-fetching.classNames';
 
 export const DataFetching = component$(() => {
   const store = useStore({
-    greeting: 'Qwik starter kit',
+    greeting: '',
   });
 
   const greetingResource = useResource$<string>(({ track, cleanup }) => {
@@ -19,16 +20,21 @@ export const DataFetching = component$(() => {
 
   return (
     <div>
-      <span>
-        My message:
-        <input value={store.greeting} onInput$={(ev) => (store.greeting = (ev.target as HTMLInputElement).value)} />
-      </span>
-      <div>
+      <div className={styles.inputContainer}>
+        <input
+          type="text"
+          value={store.greeting}
+          placeholder="Who should the server greet?"
+          onInput$={(ev) => (store.greeting = (ev.target as HTMLInputElement).value)}
+          className={styles.input}
+        />
+      </div>
+      <div className={styles.textContainer}>
         <Resource
           value={greetingResource}
           onPending={() => <>Loading...</>}
           onRejected={(error) => <>Error: {error.message}</>}
-          onResolved={(message) => <strong>{message}</strong>}
+          onResolved={(message) => <strong>{message}.</strong>}
         />
       </div>
     </div>

@@ -1,35 +1,38 @@
-import { component$, useStylesScoped$ } from '@builder.io/qwik';
-import { Link } from '@builder.io/qwik-city';
-import { QwikLogo } from '../icons/qwik';
-import styles from './header.css?inline';
+import { component$ } from '@builder.io/qwik';
+import { useLocation } from '@builder.io/qwik-city';
+
+import * as styles from './header.classNames';
+
+export const counterPath = '/counter';
+export const dataFetchingPath = '/data-fetching';
 
 export default component$(() => {
-  useStylesScoped$(styles);
+  const { pathname } = useLocation();
 
   return (
-    <header>
-      <div class="logo">
-        <Link href="/" target="_blank">
-          <QwikLogo />
-        </Link>
-      </div>
-      <ul>
-        <li>
-          <a href="https://qwik.builder.io/docs/components/overview/" target="_blank">
-            Docs
+    <header className={styles.header}>
+      <nav className={styles.nav}>
+        <div className={styles.headerWrapper}>
+          <a href="/" className={styles.logo}>
+            ⚡️Qwik Starter
           </a>
-        </li>
-        <li>
-          <a href="https://qwik.builder.io/examples/introduction/hello-world/" target="_blank">
-            Examples
-          </a>
-        </li>
-        <li>
-          <a href="https://qwik.builder.io/tutorial/welcome/overview/" target="_blank">
-            Tutorials
-          </a>
-        </li>
-      </ul>
+
+          <div className={styles.navWrapper}>
+            <a
+              href="/"
+              className={pathname !== counterPath && pathname !== dataFetchingPath ? styles.linkActive : styles.link}
+            >
+              Home
+            </a>
+            <a href="/counter" className={pathname === counterPath ? styles.linkActive : styles.link}>
+              Counter Example
+            </a>
+            <a href="/data-fetching" className={pathname === dataFetchingPath ? styles.linkActive : styles.link}>
+              Data Fetching Example
+            </a>
+          </div>
+        </div>
+      </nav>
     </header>
   );
 });

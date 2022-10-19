@@ -3,10 +3,5 @@ import { Link } from '@builder.io/qwik-city';
 import { DataFetching } from './data-fetching';
 
 export default component$(() => {
-  return (
-    <div>
-      <DataFetching />
-      <Link href="/">Return Home</Link>
-    </div>
-  );
+  return <DataFetching />;
 });
