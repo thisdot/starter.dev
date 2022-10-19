@@ -30,6 +30,7 @@
 
 		.links {
 			margin: 0.625rem 0;
+			padding: 0;
 			list-style-type: none;
 
 			a {
