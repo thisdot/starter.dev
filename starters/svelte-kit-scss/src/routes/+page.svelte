@@ -1,5 +1,5 @@
 <div class="container">
-	<h1>Create Svelte Kit app with SCSS</h1>
+	<h1>SvelteKit with SCSS Starter Kit</h1>
 	<ul class="links">
 		<li>
 			<a href="/counter">See Counter example component</a>
