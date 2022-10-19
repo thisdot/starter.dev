@@ -1,11 +1,6 @@
-<script>
-	import Counter from '$lib/components/Counter.svelte';
-	import PageLayout from '$lib/components/PageLayout.svelte';
-</script>
-
-<PageLayout>
-	<span slot="heading">Fetch Data From API</span>
-	<div>
-		Fetch component works
-	</div>
-</PageLayout>
+<div>
+	<h1>
+		Fetch Data From API
+	</h1>
+	<div>Fetch component works</div>
+</div>
