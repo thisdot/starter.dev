@@ -1,24 +1,18 @@
-import logo from './logo.svg';
-import styles from './App.module.css';
+import { Routes, Route } from '@solidjs/router';
+import { Home, Counter, ApiExample } from './pages';
 
 function App() {
   return (
-    <div class={styles.App}>
-      <header class={styles.header}>
-        <img src={logo} class={styles.logo} alt="logo" />
-        <p class="text-base">
-          Edit <code class="text-blue-300">src/App.jsx</code> and save to
-          reload.
-        </p>
-        <a
-          classList={{ [styles.link]: true, 'text-base': true }}
-          href="https://github.com/solidjs/solid"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn Solid
-        </a>
+    <div class="text-center">
+      <header class="flex justify-center items-center text-white my-5 mx-auto bg-blue-500  w-full lg:w-[75%] p-4 text-lg ">
+        SolidJs, Tanstack and Tailwind Starter kit
       </header>
+
+      <Routes>
+        <Route component={Home}  path="/" />
+        <Route component={Counter} path="/counter" />
+        <Route component={ApiExample} path="/api-example" />
+      </Routes>
     </div>
   );
 }

@@ -28,6 +28,7 @@
     "@storybook/addon-measure": "6.5.12",
     "@storybook/addon-outline": "6.5.12",
     "@storybook/core-common": "6.5.0-alpha.61",
+    "@solidjs/router": "^0.5.0",
     "@testing-library/jest-dom": "^5.16.5",
     "autoprefixer": "^10.4.12",
     "eslint": "^8.25.0",
