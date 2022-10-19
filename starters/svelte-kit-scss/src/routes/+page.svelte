@@ -1,24 +1,23 @@
-<main>
-	<h1>
-		Create Svelte Kit app with SCSS
-	</h1>
+<div class="container">
+	<h1>Create Svelte Kit app with SCSS</h1>
 	<ul class="links">
 		<li>
 			<a href="/counter">See Counter example component</a>
 		</li>
-		<li >
+		<li>
 			<a href="/api-example">See Fetch example component</a>
 		</li>
 	</ul>
-</main>
+</div>
 
 <style lang="scss">
 	$color-primary: #2563eb;
 	$color-primary-shade: #1e40af;
-	main {
+	.container {
 		width: 60%;
 		margin: 1.25rem auto;
 		text-align: center;
+
 		h1 {
 			font-size: 1.5rem;
 			line-height: 2rem;
@@ -28,9 +27,11 @@
 			border-radius: 0.25rem;
 			background-color: $color-primary;
 		}
+
 		.links {
-			margin: 0.625rem 0;	
-			list-style-type: none;		
+			margin: 0.625rem 0;
+			list-style-type: none;
+
 			a {
 				text-decoration-line: underline;
 				color: $color-primary;
@@ -40,6 +41,6 @@
 					color: $color-primary-shade;
 				}
 			}
-		}		
+		}
 	}
 </style>
