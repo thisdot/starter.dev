@@ -1,7 +1,7 @@
 {
   "name": "solidjs-tanstack-tailwind",
   "version": "0.1.0",
-  "public": true,
+  "private": true,
   "description": "SolidJs, Tanstack and Tailwind",
   "scripts": {
     "start": "vite",
