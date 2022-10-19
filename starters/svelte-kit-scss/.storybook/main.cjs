@@ -16,7 +16,6 @@ module.exports = {
     "builder": "@storybook/builder-vite"
   },
   "svelteOptions": {
-    // "preprocess": import("../svelte.config.js").preprocess
     "preprocess": [preprocessTs()]
   },
   "features": {
