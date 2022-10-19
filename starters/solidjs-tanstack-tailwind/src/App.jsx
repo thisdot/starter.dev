@@ -6,7 +6,7 @@ function App() {
     <div class={styles.App}>
       <header class={styles.header}>
         <img src={logo} class={styles.logo} alt="logo" />
-        <p>
+        <p className="text-base">
           Edit <code>src/App.jsx</code> and save to reload.
         </p>
         <a
