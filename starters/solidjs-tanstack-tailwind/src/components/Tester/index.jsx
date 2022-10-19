@@ -4,14 +4,14 @@ function Tester() {
   const [todos, setTodos] = createSignal([]);
 
   const toggleTodo = (value) => {
+    let list = [];
     if (todos().includes(value)) {
-      const updateTodo = todos().filter((res) => res !== value);
-      setTodo([...updateTodo]);
-    } else if (todos().length > 0) {
-      setTodos([...todos(), value]);
+      const filteredTodo = todos().filter((res) => res !== value);
+      list = [...filteredTodo];
     } else {
-      setTodos([value]);
+      list = [...todos(), value];
     }
+    setTodos(list);
   };
   const isChecked = (value) => todos().includes(value);
 
