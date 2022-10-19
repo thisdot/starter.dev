@@ -18,7 +18,10 @@ export default component$(() => {
           </a>
 
           <div className={styles.navWrapper}>
-            <a href="/" className={pathname !== counterPath && pathname !== dataFetchingPath ? styles.linkActive : styles.link}>
+            <a
+              href="/"
+              className={pathname !== counterPath && pathname !== dataFetchingPath ? styles.linkActive : styles.link}
+            >
               Home
             </a>
             <a href="/counter" className={pathname === counterPath ? styles.linkActive : styles.link}>
