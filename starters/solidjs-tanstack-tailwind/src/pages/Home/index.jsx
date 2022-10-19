@@ -1,7 +1,10 @@
+import { NavLink } from 'solid-app-router';
+
 const Home = () => {
   return (
     <div>
-      <h2>Home</h2>
+      <NavLink href="/counter">Counter</NavLink>
+      <NavLink href="/">Home</NavLink>
     </div>
   );
 };
