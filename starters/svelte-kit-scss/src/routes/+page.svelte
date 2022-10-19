@@ -1,54 +1,47 @@
-<script>
-	import Counter from './Counter.svelte';
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcome_fallback from '$lib/images/svelte-welcome.png';
-</script>
-
-<section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcome_fallback} alt="Welcome" />
-			</picture>
-		</span>
-
-		to your new<br />SvelteKit app
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
-
-	<Counter />
-</section>
+<div class="container">
+	<h1>SvelteKit with SCSS Starter Kit</h1>
+	<ul class="links">
+		<li>
+			<a href="/counter">See Counter example component</a>
+		</li>
+		<li>
+			<a href="/api-example">See Fetch example component</a>
+		</li>
+	</ul>
+</div>
 
 <style lang="scss">
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 0.6;
-	}
+	$color-primary: #2563eb;
+	$color-primary-shade: #1e40af;
+	.container {
+		width: 60%;
+		margin: 1.25rem auto;
+		text-align: center;
 
-	h1 {
-		width: 100%;
-	}
+		h1 {
+			font-size: 1.5rem;
+			line-height: 2rem;
+			font-weight: 600;
+			color: #ffffff;
+			padding: 1rem;
+			border-radius: 0.25rem;
+			background-color: $color-primary;
+		}
 
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
+		.links {
+			margin: 0.625rem 0;
+			padding: 0;
+			list-style-type: none;
 
-		img {
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			top: 0;
-			display: block;
+			a {
+				text-decoration-line: underline;
+				color: $color-primary;
+				font-size: 1.25rem;
+				line-height: 1.75rem;
+				:hover {
+					color: $color-primary-shade;
+				}
+			}
 		}
 	}
 </style>
