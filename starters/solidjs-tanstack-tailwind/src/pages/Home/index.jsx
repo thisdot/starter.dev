@@ -1,14 +1,14 @@
-import { A, NavLink } from '@solidjs/router';
+import { NavLink } from '@solidjs/router';
 
 const Home = () => {
   return (
     <div class="flex flex-col gap-2 items-center text-blue-800 underline text-base">
-      <A
+      <NavLink
         href="/counter"
         class="hover:text-blue-500 transition-colors delay-100"
       >
         See Counter example component
-      </A>
+      </NavLink>
       <NavLink
         href="/api-example"
         class="hover:text-blue-500 transition-colors delay-100"

@@ -9,9 +9,9 @@ function App() {
       </header>
 
       <Routes>
-        <Route element={Home} path="/" />
-        <Route element={Counter} path="/counter" />
-        <Route element={ApiExample} path="/api-example" />
+        <Route component={Home}  path="/" />
+        <Route component={Counter} path="/counter" />
+        <Route component={ApiExample} path="/api-example" />
       </Routes>
     </div>
   );
