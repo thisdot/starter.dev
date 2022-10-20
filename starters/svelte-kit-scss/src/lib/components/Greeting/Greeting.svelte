@@ -23,7 +23,7 @@
 				padding: 15px 0;
 				font-size: 2rem;
 				text-align: center;
-				border-bottom: 5px solid rgb(29 78 216);
+				border-bottom: 5px solid #1d4ed8;
 			}
 		}
 

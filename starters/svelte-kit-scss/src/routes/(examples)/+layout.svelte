@@ -12,9 +12,9 @@
 		
 		a {
 			font-size: 1.2rem;
-			color: rgb(37 99 235);
+			color: #2563eb;
 			&:hover {
-				color: rgb(30 64 175);
+				color: #1e40af;
 				text-decoration: underline;
 			}
 		}
