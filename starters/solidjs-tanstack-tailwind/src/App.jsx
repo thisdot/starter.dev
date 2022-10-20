@@ -9,7 +9,7 @@ function App() {
       </header>
 
       <Routes>
-        <Route component={Home}  path="/" />
+        <Route component={Home} path="/" />
         <Route component={Counter} path="/counter" />
         <Route component={ApiExample} path="/api-example" />
       </Routes>
