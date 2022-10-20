@@ -34,6 +34,7 @@
 		"@storybook/addon-links": "^6.5.12",
 		"@storybook/addon-svelte-csf": "^2.0.8",
 		"@storybook/builder-vite": "^0.2.4",
+		"@storybook/preset-scss": "^1.0.3",
 		"@storybook/svelte": "^6.5.12",
 		"@storybook/testing-library": "^0.0.13",
 		"@sveltejs/adapter-auto": "next",
