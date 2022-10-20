@@ -1,17 +1,20 @@
 import Greeting from './Greeting.svelte';
 
 export default {
-	title: 'Example/Greeting',
-	component: Greeting,
-	parameters: {
-		// More on Story layout: https://storybook.js.org/docs/svelte/configure/story-layout
-		layout: 'fullscreen'
-	}
+  component: Greeting,
+  title: 'Example/Greeting',
+  excludeStories: /.*Data$/,
+  argTypes: {
+    message: 'from Storybook'
+  }
 };
 
-const Template = () => ({
-	Component: Greeting
+const Template = ({ ...args }) => ({
+  Component: Greeting,
+  props: args,
 });
 
-// More on args: https://storybook.js.org/docs/svelte/writing-stories/args
 export const Default = Template.bind({});
+Default.args = {
+  message : 'from Storybook'
+};
