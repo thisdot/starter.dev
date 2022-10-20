@@ -1,8 +1,8 @@
 <div>
-	<slot />
-	<div>
-		<a href="/">Return Home</a>
-	</div>
+  <slot />
+  <div>
+    <a href="/">Return Home</a>
+  </div>
 </div>
 
 <style lang="scss">

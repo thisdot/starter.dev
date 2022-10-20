@@ -3,8 +3,8 @@
 </script>
 
 <div>
-	<h1>Increment, Decrement and Reset Button Example</h1>
-	<div>
-		<Counter />
-	</div>
+  <h1>Increment, Decrement and Reset Button Example</h1>
+  <div>
+    <Counter />
+  </div>
 </div>
