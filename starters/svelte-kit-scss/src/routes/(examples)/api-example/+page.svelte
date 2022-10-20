@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Greeting from './Greeting.svelte';
+	import Greeting from '$lib/components/Greeting/Greeting.svelte';
 
 	export let data: {
 		message: string;
