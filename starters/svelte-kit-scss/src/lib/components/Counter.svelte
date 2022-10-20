@@ -1,101 +1,48 @@
 <script lang="ts">
-  import { spring } from 'svelte/motion';
+  import { countStore } from '$lib/stores';
 
-  let count = 0;
+  const reset = (): void => countStore.set(0);
+  const increment = (): void => countStore.update((x) => x + 1);
+  const decrement = (): void => countStore.update((x) => x - 1);
 
-  const displayed_count = spring();
-  $: displayed_count.set(count);
-  $: offset = modulo($displayed_count, 1);
+  let count: number;
 
-  function modulo(n: number, m: number) {
-    // handle negative numbers
-    return ((n % m) + m) % m;
-  }
+  countStore.subscribe((value) => {
+    count = value;
+  });
 </script>
 
-<div class="counter">
-  <button on:click={() => (count -= 1)} aria-label="Decrease the counter by one">
-    <svg aria-hidden="true" viewBox="0 0 1 1">
-      <path d="M0,0.5 L1,0.5" />
-    </svg>
-  </button>
-
-  <div class="counter-viewport">
-    <div class="counter-digits" style="transform: translate(0, {100 * offset}%)">
-      <strong class="hidden" aria-hidden="true">{Math.floor($displayed_count + 1)}</strong>
-      <strong>{Math.floor($displayed_count)}</strong>
-    </div>
-  </div>
-
-  <button on:click={() => (count += 1)} aria-label="Increase the counter by one">
-    <svg aria-hidden="true" viewBox="0 0 1 1">
-      <path d="M0,0.5 L1,0.5 M0.5,0 L0.5,1" />
-    </svg>
-  </button>
+<div class="container">
+  <span class="result">Count: {count}</span>
+  <button on:click={increment}>Increment</button>
+  <button on:click={decrement}>Decrement</button>
+  <button on:click={reset}>Reset</button>
 </div>
 
 <style lang="scss">
-  .counter {
+  .container {
     display: flex;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    margin: 1rem 0;
+    justify-content: space-evenly;
+    white-space: nowrap;
 
+    .result {
+      font-size: 1.5rem;
+      line-height: 2rem;
+      font-weight: 700;
+      vertical-align: middle;
+    }
     button {
-      width: 2em;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 0;
-      background-color: transparent;
-      touch-action: manipulation;
-      font-size: 2rem;
+      border: none;
+      border-radius: 0.25rem;
+      background-color: #3b82f6;
+      padding: 0.5rem 1rem;
+      vertical-align: middle;
+      font-family: inherit;
+      font-size: 1.25rem;
+      font-weight: 600;
+      line-height: 1;
+      color: #ffffff;
+      cursor: pointer;
     }
-
-    button:hover {
-      background-color: var(--color-bg-1);
-    }
-  }
-  svg {
-    width: 25%;
-    height: 25%;
-  }
-
-  path {
-    vector-effect: non-scaling-stroke;
-    stroke-width: 2px;
-    stroke: #444;
-  }
-
-  .counter-viewport {
-    width: 8em;
-    height: 4em;
-    overflow: hidden;
-    text-align: center;
-    position: relative;
-  }
-
-  .counter-viewport strong {
-    position: absolute;
-    display: flex;
-    width: 100%;
-    height: 100%;
-    font-weight: 400;
-    color: var(--color-theme-1);
-    font-size: 4rem;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .counter-digits {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-  }
-
-  .hidden {
-    top: -100%;
-    user-select: none;
   }
 </style>

@@ -11,8 +11,6 @@
 </div>
 
 <style lang="scss">
-  $color-primary: #2563eb;
-  $color-primary-shade: #1e40af;
   .container {
     width: 60%;
     margin: 1.25rem auto;
@@ -25,7 +23,7 @@
       color: #ffffff;
       padding: 1rem;
       border-radius: 0.25rem;
-      background-color: $color-primary;
+      background-color: #2563eb;
     }
 
     .links {
@@ -35,11 +33,11 @@
 
       a {
         text-decoration-line: underline;
-        color: $color-primary;
+        color: #2563eb;
         font-size: 1.25rem;
         line-height: 1.75rem;
         :hover {
-          color: $color-primary-shade;
+          color: #1e40af;
         }
       }
     }
