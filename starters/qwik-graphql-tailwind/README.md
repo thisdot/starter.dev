@@ -1,29 +1,39 @@
-# Qwik App ⚡️
+# qwik-graphql-tailwind kit
 
-- [Qwik Docs](https://qwik.builder.io/)
-- [Discord](https://qwik.builder.io/chat)
-- [Qwik GitHub](https://github.com/BuilderIO/qwik)
-- [@QwikDev](https://twitter.com/QwikDev)
-- [Vite](https://vitejs.dev/)
-- [Partytown](https://partytown.builder.io/)
-- [Mitosis](https://github.com/BuilderIO/mitosis)
-- [Builder.io](https://www.builder.io/)
+This starter kit features **Qwik**, **GraphQL** and **Tailwind CSS**.
 
----
+## Table of Contents
 
-## Project Structure
+-   [Overview](#overview)
+    -   [Tech Stack](#tech-stack)
+    -   [Included Tooling](#included-tooling)
+    -   [Example Components](#example-components)
+-   [Installation](#installation)
+    -   [CLI](#cli-recommended)
+    -   [Manual](#manual)
+-   [Commands](#commands)
+-   [Demo Implementation](#demo-implementation)
 
-Inside your project, you'll see the following directory structure:
+## Overview
 
-```
-├── public/
-│   └── ...
-└── src/
-    ├── components/
-    │   └── ...
-    └── routes/
-        └── ...
-```
+### Tech Stack
+
+- [Qwik](https://qwik.builder.io/)
+- [GraphQL](https://graphql.org/)
+- [Tailwind CSS v3.x](https://tailwindcss.com/)
+
+### Included Tooling
+
+-   [Jest](https://jestjs.io/) - Test runner
+-   [Typescript](https://www.typescriptlang.org/) - Type checking
+-   [Storybook](https://storybook.js.org/) - Component library
+-   [Mock Service Worker](https://mswjs.io/) - Mock REST / GraphQL API
+-   [ESLint](https://eslint.org/) - Code linting
+-   [Prettier](https://prettier.io/) - Code formatting
+
+### Example Components
+
+In this `starters/qwik-graphql-tailwind/src/routes` directory you will find the `home`, `counter` and `data-fetching` directories.
 
 - `src/routes`: Provides the directory based routing, which can include a hierarchy of `layout.tsx` layout files, and an `index.tsx` file as the page. Additionally, `index.ts` files are endpoints. Please see the [routing docs](https://qwik.builder.io/qwikcity/routing/overview/) for more info.
 
@@ -31,36 +41,46 @@ Inside your project, you'll see the following directory structure:
 
 - `public`: Any static assets, like images, can be placed in the public directory. Please see the [Vite public directory](https://vitejs.dev/guide/assets.html#the-public-directory) for more info.
 
-## Add Integrations
 
-Use the `npm run qwik add` command to add additional integrations. Some examples of integrations include: Cloudflare, Netlify or Vercel server, and the [Static Site Generator (SSG)](https://qwik.builder.io/qwikcity/static-site-generation/static-site-config/).
+## Installation
 
-```shell
-npm run qwik add # or `yarn qwik add`
+### CLI (Recommended)
+
+```bash
+npm create @this-dot/starter --kit qwik-graphql-tailwind
 ```
 
-## Development
+or
 
-Development mode uses [Vite's development server](https://vitejs.dev/). During development, the `dev` command will server-side render (SSR) the output.
-
-```shell
-npm run dev # or `yarn dev`
+```bash
+yarn create @this-dot/starter --kit qwik-graphql-tailwind
 ```
 
-> Note: during dev mode, Vite may request a significant number of `.js` files. This does not represent a Qwik production build.
+-   Follow the prompts to select the `qwik-graphql-tailwind` starter kit and name your new project.
+-   `cd` into your project directory and run `yarn`.
+-   Run `yarn start` to start the development server.
+-   Open your browser to `http://localhost:5173` to see the included example code running.
 
-## Preview
+### Manual
 
-The preview command will create a production build of the client modules, a production build of `src/entry.preview.tsx`, and run a local server. The preview server is only for convenience to locally preview a production build, and it should not be used as a production server.
-
-```shell
-npm run preview # or `yarn preview`
+```bash
+git clone https://github.com/thisdot/starter.dev.git
 ```
 
-## Production
+-   Copy and rename the `starters/qwik-graphql-tailwind` directory to the name of your new project.
+-   `cd` into your project directory and run `yarn`.
+-   Run `yarn start` to start the development server.
+-   Open your browser to `http://localhost:5173` to see the included example code running.
 
-The production build will generate client and server modules by running both client and server build commands. Additionally, the build command will use Typescript to run a type check on the source code.
+## Commands
 
-```shell
-npm run build # or `yarn build`
-```
+-   `yarn start` - Starts the development server.
+-   `yarn build` - Builds a compiled version of your app.
+-   `yarn test` - Runs the unit tests.
+-   `yarn storybook` - Starts the Storybook UI.
+-   `yarn lint` - Runs ESLint on the project.
+-   `yarn prettier` - Formats code for the entire project
+
+### Demo Implementation
+
+To Be completed

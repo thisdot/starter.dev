@@ -23,7 +23,7 @@
     "preview": "qwik build preview && vite preview --open",
     "start": "vite --open http://localhost:5173 --mode ssr",
     "qwik": "qwik",
-    "format": "prettier --write \"**/*.+(ts|tsx)\"",
+    "prettier": "prettier --write \"**/*.+(ts|tsx)\"",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
