@@ -1,7 +1,4 @@
-const { 
-	typescript: preprocessTs, 
-	scss: preprocessScss 
-  } = require('svelte-preprocess');
+const { typescript: preprocessTs, scss: preprocessScss } = require('svelte-preprocess');
 
 module.exports = {
 	stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx|svelte)'],
@@ -17,9 +14,9 @@ module.exports = {
 		builder: '@storybook/builder-vite'
 	},
 	svelteOptions: {
-		"preprocess": [
-		  preprocessTs(), // sveltekit-storybook typescript support
-		  preprocessScss() // sveltekit-storybook sass support
+		preprocess: [
+			preprocessTs(), // sveltekit-storybook typescript support
+			preprocessScss() // sveltekit-storybook sass support
 		]
 	},
 	features: {

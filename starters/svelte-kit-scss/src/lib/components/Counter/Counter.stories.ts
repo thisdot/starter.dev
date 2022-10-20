@@ -15,4 +15,3 @@ const Template = () => ({
 
 // More on args: https://storybook.js.org/docs/svelte/writing-stories/args
 export const Primary = Template.bind({});
-

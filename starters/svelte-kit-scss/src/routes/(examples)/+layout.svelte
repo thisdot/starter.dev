@@ -7,9 +7,9 @@
 
 <style lang="scss">
 	div {
-        text-align: center;
+		text-align: center;
 		margin: 10px 0;
-		
+
 		a {
 			font-size: 1.2rem;
 			color: #2563eb;
