@@ -6,9 +6,9 @@
   <header>
     <h1>SvelteKit Fetch Data from API</h1>
   </header>
-  <p>
+  <div>
     Message: {message}
-  </p>
+  </div>
 </div>
 
 <style lang="scss">
@@ -16,18 +16,18 @@
     text-align: center;
 
     header {
-      margin: 20px auto;
+      margin: 1.25rem auto;
       width: 40%;
 
       h1 {
-        padding: 15px 0;
+        padding: 0.9375rem 0;
         font-size: 2rem;
         text-align: center;
         border-bottom: 5px solid #1d4ed8;
       }
     }
 
-    p {
+    div {
       font-size: 1.2rem;
       display: flex;
       justify-content: center;

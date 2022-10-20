@@ -8,7 +8,7 @@
 <style lang="scss">
   div {
     text-align: center;
-    margin: 10px 0;
+    margin: 0.625rem 0;
 
     a {
       font-size: 1.2rem;
