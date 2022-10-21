@@ -10,7 +10,7 @@ describe('', () => {
 
   it('should mount and increment', async () => {
     await render(() => <CounterExample />);
-    const button = await screen.findByTestId('increment');
+    const button = await screen.getByText('Increment');
     expect(button).toBeVisible();
     fireEvent.click(button);
     const countText = await screen.getByText('Count: 1');
