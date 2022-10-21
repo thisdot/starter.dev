@@ -5,7 +5,7 @@ import { Config } from '@sveltejs/kit';
 const config: Config = {
   // Consult https://github.com/sveltejs/svelte-preprocess
   // for more information about preprocessors
-  preprocess: preprocess({ typescript: true, scss: true }),
+  preprocess: preprocess(),
 
   kit: {
     adapter: adapter(),
