@@ -1,15 +1,9 @@
 <script lang="ts">
-  import { countStore } from '../../stores';
+  import { count } from '../../stores';
 
-  const reset = (): void => countStore.set(0);
-  const increment = (): void => countStore.update((x) => x + 1);
-  const decrement = (): void => countStore.update((x) => x - 1);
-
-  let count: number;
-
-  countStore.subscribe((value) => {
-    count = value;
-  });
+  const reset = (): void => count.set(0);
+  const increment = (): void => count.update((x) => x + 1);
+  const decrement = (): void => count.update((x) => x - 1);
 </script>
 
 <div class="container">

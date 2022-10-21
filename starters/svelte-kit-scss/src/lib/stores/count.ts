@@ -1,3 +1,3 @@
 import { writable } from 'svelte/store';
 
-export const countStore = writable<number>(0);
+export const count = writable<number>(0);
