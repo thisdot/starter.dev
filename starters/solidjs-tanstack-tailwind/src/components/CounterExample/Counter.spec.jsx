@@ -8,7 +8,7 @@ describe('', () => {
     expect(wrapper).toBeTruthy();
   });
 
-  it('should mount', async () => {
+  it('should mount and increment', async () => {
     await render(() => <CounterExample />);
     const button = await screen.findByTestId('increment');
     expect(button).toBeVisible();
