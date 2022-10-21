@@ -1,8 +1,8 @@
 import CounterButton from './CounterButton';
 import CounterDisplay from './CounterDisplay';
-import { increase, decrease, reset } from './CounterStore';
+import { decrease, increase, reset } from './CounterStore';
 
-const CounterExample = () => {
+export const CounterExample = () => {
   return (
     <div class="flex flex-wrap lg:flex-nowrap justify-center gap-14 items-center">
       <CounterDisplay />
@@ -20,5 +20,3 @@ const CounterExample = () => {
     </div>
   );
 };
-
-export default CounterExample;

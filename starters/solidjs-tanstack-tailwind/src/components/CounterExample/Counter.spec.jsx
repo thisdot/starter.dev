@@ -1,8 +1,8 @@
-import { render, screen, fireEvent } from 'solid-testing-library';
-import { describe, it, expect } from 'vitest';
-import CounterExample from './index';
+import { fireEvent, render, screen } from 'solid-testing-library';
+import { describe, expect, it } from 'vitest';
+import { CounterExample } from '.';
 
-describe('', () => {
+describe('CounterExample', () => {
   it('should mount', async () => {
     const wrapper = await render(() => <CounterExample />);
     expect(wrapper).toBeTruthy();
