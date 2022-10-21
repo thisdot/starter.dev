@@ -1,13 +1,8 @@
-import { createSignal } from 'solid-js';
 import CounterButton from './CounterButton';
 import CounterDisplay from './CounterDisplay';
-const [count, setCount] = createSignal(0);
+import { increase, decrease, reset } from './CounterStore';
 
 const CounterExample = () => {
-  const increase = () => setCount(count() + 1);
-  const decrease = () => setCount(count() > 0 ? count() - 1 : 0);
-  const reset = () => setCount(0);
-
   return (
     <div class="flex flex-wrap lg:flex-nowrap justify-center gap-14 items-center">
       <CounterDisplay />
@@ -25,7 +20,5 @@ const CounterExample = () => {
     </div>
   );
 };
-
-export { count };
 
 export default CounterExample;
