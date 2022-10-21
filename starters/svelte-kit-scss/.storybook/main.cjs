@@ -1,5 +1,5 @@
 const sveltePreprocess = require('svelte-preprocess');
-const { mergeConfig } = require("vite");
+const { mergeConfig } = require('vite');
 const path = require('path');
 
 module.exports = {
@@ -24,9 +24,8 @@ module.exports = {
   async viteFinal(config) {
     return mergeConfig(config, {
       resolve: {
-        alias: { "$lib": path.resolve(__dirname, "../src/lib") },
-      }
+        alias: { $lib: path.resolve(__dirname, '../src/lib') },
+      },
     });
   },
 };
-
