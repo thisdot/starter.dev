@@ -6,7 +6,7 @@ import {
   template,
   createComponent
 } from "solid-js/web"
-import '../src/index';
+import '../src/index.css';
 
 export const decorators = [
   ((Story) => (
