@@ -1,4 +1,4 @@
-<div>
+<div class="example-container">
   <slot />
   <div>
     <a href="/">Return Home</a>
@@ -6,7 +6,7 @@
 </div>
 
 <style lang="scss">
-  div {
+  .example-container {
     text-align: center;
     margin: 0.625rem 0;
 
