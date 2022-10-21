@@ -7,7 +7,7 @@
 </script>
 
 <div class="container">
-  <span class="result">Count: {count}</span>
+  <span class="result">Count: {$count}</span>
   <button on:click={increment}>Increment</button>
   <button on:click={decrement}>Decrement</button>
   <button on:click={reset}>Reset</button>
