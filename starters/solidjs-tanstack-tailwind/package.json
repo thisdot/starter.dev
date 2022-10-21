@@ -52,5 +52,10 @@
     "solidjs",
     "tanstack",
     "tailwind"
-  ]
+  ],
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": ["react", "react-dom", "@babel/*"]
+    }
+  }
 }
