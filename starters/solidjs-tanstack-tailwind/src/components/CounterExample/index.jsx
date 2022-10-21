@@ -12,9 +12,15 @@ const CounterExample = () => {
     <div class="flex flex-wrap lg:flex-nowrap justify-center gap-14 items-center">
       <CounterDisplay />
       <div class="flex flex-wrap lg:flex-nowrap gap-14 justify-center">
-        <CounterButton onClick={increase}>Increment</CounterButton>
-        <CounterButton onClick={decrease}>Decrement</CounterButton>
-        <CounterButton onClick={reset}>Reset</CounterButton>
+        <CounterButton data-test-id="increment" onClick={increase}>
+          Increment
+        </CounterButton>
+        <CounterButton data-test-id="decrement" onClick={decrease}>
+          Decrement
+        </CounterButton>
+        <CounterButton data-test-id="reset" onClick={reset}>
+          Reset
+        </CounterButton>
       </div>
     </div>
   );

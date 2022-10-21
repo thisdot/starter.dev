@@ -1,5 +1,9 @@
 import { count } from './index';
 
-const CounterDisplay = () => <strong class="text-xl">Count: {count()}</strong>;
+const CounterDisplay = () => (
+  <strong role="display-count" class="text-xl">
+    Count: {count()}
+  </strong>
+);
 
 export default CounterDisplay;
