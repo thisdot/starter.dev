@@ -8,7 +8,6 @@
 <style lang="scss">
   .example-container {
     text-align: center;
-    width: 60%;
     margin: 1.25rem auto;
 
     .footer{
@@ -16,9 +15,9 @@
       a {
         font-size: 1.2rem;
         color: #2563eb;
+        text-decoration: underline;
         &:hover {
           color: #1e40af;
-          text-decoration: underline;
         }
       } 
     }
