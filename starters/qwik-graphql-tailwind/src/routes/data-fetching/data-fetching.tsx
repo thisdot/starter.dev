@@ -1,12 +1,25 @@
 import { component$, useStore, Resource, useResource$ } from '@builder.io/qwik';
+import { useQuery } from '../../utils/useQuery';
 import * as styles from './data-fetching.classNames';
+
+export const GET_GREETING = `
+  query HelloQuery($greeting: String!) {
+    hello(greeting: $greeting)
+  }
+`;
+
+interface HelloResponse {
+  data: {
+    hello: string;
+  };
+}
 
 export const DataFetching = component$(() => {
   const store = useStore({
     greeting: '',
   });
 
-  const greetingResource = useResource$<string>(({ track, cleanup }) => {
+  const greetingResource = useResource$<HelloResponse>(({ track, cleanup }) => {
     // Use `track` to trigger re-run of the the data fetching function.
     track(() => store.greeting);
 
@@ -34,16 +47,27 @@ export const DataFetching = component$(() => {
           value={greetingResource}
           onPending={() => <>Loading...</>}
           onRejected={(error) => <>Error: {error.message}</>}
-          onResolved={(message) => <strong>{message}.</strong>}
+          onResolved={({ data }) => <strong>{data.hello}.</strong>}
         />
       </div>
     </div>
   );
 });
 
-export async function fetchGreeting(greeting: string, abortController?: AbortController): Promise<string> {
-  const resp = await fetch(`https://api.starter.dev/hello?greeting=${greeting}`, {
+export async function fetchGreeting(greeting: string, abortController?: AbortController): Promise<HelloResponse> {
+  if (!greeting) {
+    greeting = 'there';
+  }
+
+  const { executeQuery$ } = useQuery(GET_GREETING);
+
+  const resp = await executeQuery$({
     signal: abortController?.signal,
+    url: 'https://api.starter.dev/graphql',
+    variables: {
+      greeting,
+    },
   });
-  return await resp.text();
+
+  return await resp.json();
 }
