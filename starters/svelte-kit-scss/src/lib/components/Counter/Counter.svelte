@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { countStore } from '$lib/stores';
+  import { countStore } from '../../stores';
 
   const reset = (): void => countStore.set(0);
   const increment = (): void => countStore.update((x) => x + 1);
