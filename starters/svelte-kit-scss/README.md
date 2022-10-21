@@ -9,8 +9,7 @@ This starter kit features **Svelte** and **SCSS**
   - [Overview](#overview)
     - [Tech Stack](#tech-stack)
     - [Included Tooling](#included-tooling)
-    - [Kit Organization / Architecture](#kit-organization--architecture)
-    - [Example Components](#example-components)
+    - [Architecture Decisions](#architecture-decisions)
   - [Installation](#installation)
     - [CLI (Recommended)](#cli-recommended)
     - [Manual](#manual)
@@ -34,7 +33,7 @@ This starter kit features **Svelte** and **SCSS**
 - [Vite](https://vitejs.dev/) - Bundler
 - [Vitest](https://vitest.dev/) - Unit Test Framework
 
-### Kit Organization / Architecture
+### Architecture Decisions
 
 For this kit, we maintained the [Sveltekit Project Strucuture](https://kit.svelte.dev/docs/project-structure) and we do recommend it. For the `src/lib/components` folder, each component is co-located with its tests and stories. This structure makes it easy to find all the code and functionality related to a specific component. Due to Sveltekit's preference for data fetching from the route page, the components are primarily simple view components.
 
@@ -46,21 +45,21 @@ For this kit, we maintained the [Sveltekit Project Strucuture](https://kit.svelt
 
   Svelte comes with sass support. Sass being one of the most mature, stable, and powerful professional grade CSS extension language, it quickly allows us to design robust components.
 
-### Example Components
+- #### Example Components
 
-In this `svelte-kit-scss/src/lib/components` directory you will find the `Counter` and `Greeting` directory.
+  In this `svelte-kit-scss/src/lib/components` directory you will find the `Counter` and `Greeting` directory.
 
-The `Counter` directory contains the following files:
+  The `Counter` directory contains the following files:
 
-- Counter.spec.ts
-- Counter.svelte
-- Counter.stories.ts
+  - Counter.spec.ts
+  - Counter.svelte
+  - Counter.stories.ts
 
-The `Greeting` directory contains the following files:
+  The `Greeting` directory contains the following files:
 
-- Greeting.spec.ts
-- Greeting.svelte
-- Greeting.stories.ts
+  - Greeting.spec.ts
+  - Greeting.svelte
+  - Greeting.stories.ts
 
 ## Installation
 
