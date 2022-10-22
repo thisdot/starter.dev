@@ -8,6 +8,7 @@
     "tailwind"
   ],
   "version": "0.1.0",
+  "hasShowcase": true,
   "sideEffects": false,
   "scripts": {
     "build": "npm run build:css && remix build",
