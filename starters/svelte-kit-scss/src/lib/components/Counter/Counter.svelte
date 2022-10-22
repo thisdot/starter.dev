@@ -1,16 +1,17 @@
 <script lang="ts">
-  import { count } from '../../stores';
+  import { onMount } from 'svelte';
+  import { count, incrementCount, decrementCount, resetCount } from '../../stores';
 
-  const reset = (): void => count.set(0);
-  const increment = (): void => count.update((x) => x + 1);
-  const decrement = (): void => count.update((x) => x - 1);
+  onMount(async () => {
+    resetCount();
+  });
 </script>
 
 <div class="container">
   <span class="result">Count: {$count}</span>
-  <button on:click={increment}>Increment</button>
-  <button on:click={decrement}>Decrement</button>
-  <button on:click={reset}>Reset</button>
+  <button on:click={incrementCount}>Increment</button>
+  <button on:click={decrementCount}>Decrement</button>
+  <button on:click={resetCount}>Reset</button>
 </div>
 
 <style lang="scss">
