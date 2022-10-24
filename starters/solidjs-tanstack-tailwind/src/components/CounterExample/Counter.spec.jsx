@@ -1,8 +1,8 @@
-import { render, screen, fireEvent } from 'solid-testing-library';
-import { describe, it, expect } from 'vitest';
-import CounterExample from './index';
+import { fireEvent, render, screen } from 'solid-testing-library';
+import { describe, expect, it } from 'vitest';
+import { CounterExample } from '.';
 
-describe('', () => {
+describe('CounterExample', () => {
   it('should mount', async () => {
     const wrapper = await render(() => <CounterExample />);
     expect(wrapper).toBeTruthy();
@@ -10,7 +10,7 @@ describe('', () => {
 
   it('should mount and increment', async () => {
     await render(() => <CounterExample />);
-    const button = await screen.findByTestId('increment');
+    const button = await screen.getByText('Increment');
     expect(button).toBeVisible();
     fireEvent.click(button);
     const countText = await screen.getByText('Count: 1');

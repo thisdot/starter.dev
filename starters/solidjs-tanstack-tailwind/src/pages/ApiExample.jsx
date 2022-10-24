@@ -1,8 +1,12 @@
+import { Greeting, PageFooter, PageHeader } from '../components';
+
 const ApiExample = () => {
   return (
-    <div>
-      <h2>Api Example</h2>
-    </div>
+    <>
+      <PageHeader>SolidJS Fetch Data from API</PageHeader>
+      <Greeting />
+      <PageFooter />
+    </>
   );
 };
 

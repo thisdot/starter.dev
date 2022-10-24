@@ -1,21 +1,12 @@
-import { NavLink } from '@solidjs/router';
-import CounterExample from '../components/CounterExample';
-import CounterHeading from '../components/CounterExample/CounterHeading';
+import { CounterExample, PageFooter, PageHeader } from '../components';
 
 const Counter = () => {
   return (
-    <div>
-      <CounterHeading />
+    <>
+      <PageHeader>Increment, Decrement and Reset Button Example</PageHeader>
       <CounterExample />
-      <div class="mt-8">
-        <NavLink
-          href="/"
-          class="transition-colors delay-100 underline text-blue-600 text-lg"
-        >
-          Return Home
-        </NavLink>
-      </div>
-    </div>
+      <PageFooter />
+    </>
   );
 };
 

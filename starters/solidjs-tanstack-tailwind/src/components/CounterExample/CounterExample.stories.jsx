@@ -1,4 +1,4 @@
-import CounterExample from '.';
+import { CounterExample } from '.';
 
 export default {
   title: 'Example/ Counter Example',
