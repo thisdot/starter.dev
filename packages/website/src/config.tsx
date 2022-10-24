@@ -34,6 +34,7 @@ import {
   CSSModuleIcon,
   RedwoodIcon,
   PiniaIcon,
+  QwikIcon,
 } from './icons';
 
 export interface NavItem {
@@ -138,6 +139,12 @@ export const TECHNOLOGIES = [
     name: 'RedwoodJS',
     tags: ['Framework'],
     Icon: (props) => <RedwoodIcon {...props} />,
+  },
+  {
+    key: 'qwik',
+    name: 'Qwik',
+    tags: ['Framework'],
+    Icon: (props) => <QwikIcon {...props} />,
   },
   {
     key: 'tailwind',
