@@ -1,9 +1,11 @@
 import { render, screen } from 'solid-testing-library';
 import { describe, expect, it } from 'vitest';
+
 import { Greeting } from '.';
+import greetingFetcher from './GreetingFetcher';
 
 vi.mock('./GreetingFetcher', () => ({
-  default: () => () => Promise.resolve('Hi tester!'),
+  default: vi.fn(() => () => Promise.resolve('Hi tester!')),
 }));
 
 describe('Greeting', () => {
@@ -15,6 +17,14 @@ describe('Greeting', () => {
   it('should show the mocked greeting', async () => {
     const wrapper = await render(() => <Greeting />);
     const text = await screen.getByText('Message: Hi tester!');
+    expect(text).toBeVisible();
+  });
+  it("should show an error when api doesn't respond", async () => {
+    greetingFetcher.mockImplementationOnce(() => () => Promise.reject());
+    const wrapper = await render(() => <Greeting />);
+    const text = await screen.getByText(
+      'There was an error loading your greeting :('
+    );
     expect(text).toBeVisible();
   });
 });
