@@ -81,7 +81,7 @@ ${markdown}`;
       const data = JSON.parse(json);
 
       const kitData = {
-        ...pick(data, ['name', 'version', 'description', 'keywords']),
+        ...pick(data, ['name', 'version', 'description', 'keywords', 'hasShowcase']),
         readmePath: path.join(kitPath, 'README.md'),
         starterPath: `/starters/${dir}`,
       };

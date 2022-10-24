@@ -51,7 +51,7 @@ export const SHOWCASE_REPO_URL =
 
 export const HEADER_NAV_ITEMS: NavItem[] = [
   {
-    title: 'Kits by Tool',
+    title: 'Explore Kits by Tech',
     href: '/kits-by-tool',
   },
   {
@@ -70,7 +70,7 @@ export const HEADER_NAV_ITEMS: NavItem[] = [
 ];
 
 export const FOOTER_NAV_ITEMS = HEADER_NAV_ITEMS.filter(
-  (x) => x.title !== 'Kits by Tool'
+  (x) => x.title !== 'Explore Kits by Tech'
 );
 
 export const TECHNOLOGIES = [
