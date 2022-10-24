@@ -14,9 +14,6 @@ export default defineConfig({
   test: {
     globals: true,
     environment: "jsdom",
-    transformMode: {
-      web: [/\.jsx?$/],
-    },
     setupFiles: './setupVitest.js',
     deps: {
       inline: [/solid-js/, /solid-testing-library/],
