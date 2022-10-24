@@ -35,6 +35,7 @@ import {
   RedwoodIcon,
   PiniaIcon,
   QwikIcon,
+  SolidJsIcon,
 } from './icons';
 
 export interface NavItem {
@@ -145,6 +146,12 @@ export const TECHNOLOGIES = [
     name: 'Qwik',
     tags: ['Framework'],
     Icon: (props) => <QwikIcon {...props} />,
+  },
+  {
+      key: 'solidjs',
+      name: 'SolidJs',
+      tags: ['Framework'],
+      Icon: (props) => <SolidJsIcon {...props} />,
   },
   {
     key: 'tailwind',
