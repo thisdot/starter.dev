@@ -1,5 +1,9 @@
+import { createResource } from 'solid-js';
+import greetingFetcher from './GreetingFetcher';
+
 const Greeting = () => {
-  return <p>Message: Hello, from This Dot</p>;
+  const [message] = createResource(greetingFetcher());
+  return <p>Message: {message}</p>;
 };
 
 export default Greeting;
