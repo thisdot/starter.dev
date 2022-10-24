@@ -99,6 +99,12 @@ export const TECHNOLOGIES = [
     tags: ['Core UI'],
     Icon: (props) => <VueIcon {...props} />,
   },
+   {
+    key: 'solidjs',
+    name: 'SolidJs',
+    tags: ['Core UI'],
+    Icon: (props) => <SolidJsIcon {...props} />,
+  },
   {
     key: 'next',
     name: 'NextJS',
@@ -146,12 +152,6 @@ export const TECHNOLOGIES = [
     name: 'Qwik',
     tags: ['Framework'],
     Icon: (props) => <QwikIcon {...props} />,
-  },
-  {
-      key: 'solidjs',
-      name: 'SolidJs',
-      tags: ['Framework'],
-      Icon: (props) => <SolidJsIcon {...props} />,
   },
   {
     key: 'tailwind',
