@@ -21,16 +21,7 @@ export async function main() {
   try {
     const res = await fetch(STARTER_KITS_JSON_URL);
     if (res.ok) {
-      const starterKitsJSON = {
-          "angular-apollo-tailwind": "Angular, Apollo, and TailwindCSS",
-          "cra-rxjs-styled-components": "Create React App, RxJS and Styled Components",
-          "next-react-query-tailwind": "NextJS, React Query, and TailwindCSS",
-          "remix-gql-tailwind": "Remix, GQL and TailwindCSS",
-          "vue3-apollo-quasar": "Vue3, Apollo, and Quasar",
-          "qwik-graphql-tailwind": "Qwik, GraphQL, and TailwindCSS",
-          "solidjs-tailwind": "SolidJs and TailwindCSS"
-        };
-      // const starterKitsJSON = await res.json();
+      const starterKitsJSON = await res.json();
       if (typeof starterKitsJSON === 'object' && starterKitsJSON !== null) {
         starters = Object.entries(starterKitsJSON).map(([name, description]) => ({
           value: name as string,
