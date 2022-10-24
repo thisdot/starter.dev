@@ -1,32 +1,29 @@
-const Solid = require("vite-plugin-solid")
+const Solid = require('vite-plugin-solid');
 
 module.exports = {
-
   core: {
-    builder: "@storybook/builder-vite"
+    builder: '@storybook/builder-vite',
   },
 
-  framework: "@storybook/html",
+  framework: '@storybook/html',
 
-  stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
+  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
 
   addons: [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/addon-docs"
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@storybook/addon-docs',
+    'storybook-addon-mock',
   ],
 
-  async viteFinal(config, {
-    configType
-  }) {
-    config.resolve.dedupe = ["@storybook/client-api"]
+  async viteFinal(config, { configType }) {
+    config.resolve.dedupe = ['@storybook/client-api'];
     config.plugins.unshift(
       Solid({
-        hot: false
-      }),
-    )
+        hot: false,
+      })
+    );
 
-    return config
+    return config;
   },
-
-}
+};
