@@ -1,8 +1,8 @@
 {
-  "name": "solidjs-tanstack-tailwind",
+  "name": "solidjs-tailwind",
   "version": "0.1.0",
   "private": true,
-  "description": "SolidJs, Tanstack and Tailwind",
+  "description": "SolidJs and TailwindCSS",
   "scripts": {
     "start": "vite",
     "dev": "vite",
@@ -51,7 +51,6 @@
   },
   "keywords": [
     "solidjs",
-    "tanstack",
     "tailwind"
   ],
   "pnpm": {
