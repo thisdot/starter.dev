@@ -1,4 +1,6 @@
-const { typescript: preprocessTs, scss: preprocessScss } = require('svelte-preprocess');
+const sveltePreprocess = require('svelte-preprocess');
+const { mergeConfig } = require('vite');
+const path = require('path');
 
 module.exports = {
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx|svelte)'],
@@ -14,13 +16,16 @@ module.exports = {
     builder: '@storybook/builder-vite',
   },
   svelteOptions: {
-    preprocess: [
-      preprocessTs(), // sveltekit-storybook typescript support
-      preprocessScss(), // sveltekit-storybook sass support
-    ],
+    preprocess: sveltePreprocess({ typescript: true, scss: true }),
   },
   features: {
     storyStoreV7: true,
   },
+  async viteFinal(config) {
+    return mergeConfig(config, {
+      resolve: {
+        alias: { $lib: path.resolve(__dirname, '../src/lib') },
+      },
+    });
+  },
 };
-

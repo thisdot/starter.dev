@@ -7,19 +7,20 @@
 
 <style lang="scss">
   .example-container {
-    text-align: center;
+    width: 60%;
     margin: 1.25rem auto;
-
-    .footer{
+    text-align: center;
+    .footer {
       margin: 0.625rem 0;
       a {
-        font-size: 1.2rem;
+        text-decoration-line: underline;
         color: #2563eb;
-        text-decoration: underline;
-        &:hover {
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+        :hover {
           color: #1e40af;
         }
-      } 
+      }
     }
   }
 </style>
