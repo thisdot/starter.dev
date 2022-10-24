@@ -181,6 +181,12 @@ export const TECHNOLOGIES = [
     name: 'SASS',
     tags: ['Styling'],
     Icon: (props) => <SaaSIcon {...props} />,
+  },  
+  {
+    key: 'svelte-kit',
+    name: 'SvelteKit',
+    tags: ['Framework & Data Management'],
+    Icon: (props) => <SvelteIcon {...props} />,
   },
   {
     key: 'element-ui',
