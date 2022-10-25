@@ -1,4 +1,4 @@
-# SolidJS starter kit
+# SolidJS and Tailwind starter kit
 
 This starter kit features SolidJS combined with Tailwind CSS.
 
