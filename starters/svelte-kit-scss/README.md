@@ -76,8 +76,8 @@ yarn create @this-dot/starter --kit svelte-kit-scss
 ```
 
 - Follow the prompts to select the `svelte-kit-scss` starter kit and name your new project.
-- `cd` into your project directory and run `yarn`.
-- Run `yarn dev` to start the development server.
+- `cd` into your project directory and run `npm`.
+- Run `npm run dev` to start the development server.
 - Open your browser to `http://localhost:5137` to see the included example code running.
 
 ### Manual
@@ -89,19 +89,19 @@ git clone https://github.com/thisdot/starter.dev.git
 ```
 
 - Copy and rename the `starters/svelte-kit-scss` directory to the name of your new project.
-- `cd` into your project directory and run `yarn`.
-- Run `yarn dev` to start the development server.
+- `cd` into your project directory and run `npm install`.
+- Run `npm run dev` to start the development server.
 - Open your browser to `http://localhost:5137` to see the included example code running.
 
 ## Commands
 
-- `yarn dev` - Starts the development server.
-- `yarn test` - Runs the unit tests.
-- `yarn test:e2e` - Runs the playwright e2e tests.
-- `yarn storybook` - Starts the Storybook UI.
-- `yarn format` - Formats code with prettier for the entire project.
-- `yarn build` - Builds the project for production.
-- `yarn start` - Starts the dev server new tab.
+- `npm run dev` - Starts the development server.
+- `npm run test` - Runs the unit tests.
+- `npm run test:e2e` - Runs the playwright e2e tests.
+- `npm run storybook` - Starts the Storybook UI.
+- `npm run format` - Formats code with prettier for the entire project.
+- `npm run build` - Builds the project for production.
+- `npm run start` - Starts the dev server new tab.
 
 ## Demo Implementation
 
