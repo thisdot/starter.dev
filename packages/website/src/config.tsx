@@ -181,7 +181,7 @@ export const TECHNOLOGIES = [
     name: 'SASS',
     tags: ['Styling'],
     Icon: (props) => <SaaSIcon {...props} />,
-  },  
+  },
   {
     key: 'element-ui',
     name: 'Element-UI',
