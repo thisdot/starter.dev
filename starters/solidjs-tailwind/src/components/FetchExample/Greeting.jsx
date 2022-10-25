@@ -6,9 +6,7 @@ const Greeting = () => {
   return (
     <Switch>
       <Match when={message.error}>
-        <p class="text-red-500">
-          There was an error loading your greeting :(
-        </p>
+        <p class="text-red-500">There was an error loading your greeting :(</p>
       </Match>
       <Match when={!message.loading}>
         <p>Message: {message()}</p>
