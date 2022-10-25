@@ -1,34 +1,98 @@
-## Usage
+# SolidJS and Tailwind starter kit
 
-Those templates dependencies are maintained via [pnpm](https://pnpm.io) via `pnpm up -Lri`.
+This starter kit features SolidJS combined with Tailwind CSS.
 
-This is the reason you see a `pnpm-lock.yaml`. That being said, any package manager will work. This file can be safely be removed once you clone a template.
+## Table of Contents
+
+- [Overview](#overview)
+    - [Tech Stack](#tech-stack)
+    - [Included Tooling](#included-tooling)
+    - [Example Components](#example-components)
+- [Installation](#installation)
+    - [CLI](#cli)
+    - [Manual](#manual)
+- [Commands](#commands)
+- [Demo Implementation](#demo-implementation)
+
+## Overview
+
+### Tech Stack
+
+- [SolidJS](https://www.solidjs.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
+
+### Included Tooling
+
+- [Vitest](https://vitest.dev/) - Test runner
+- [Storybook](https://storybook.js.org/) - Component library
+- [ESLint](https://eslint.org/) - Code linting
+- [Prettier](https://prettier.io/) - Code formatting
+
+### Architectural Decisions
+
+#### State management
+
+Managing state between components is a big part of creating modern web applications. Typically, this is done by using a third-party package. Sometimes it can be combined with fetching server data (e.g., Apollo or Tanstack Query).
+
+##### Considered Options
+
+- **Tanstack Query** - Used in other starter kits and offers a lean setup combining state and server communication
+- **createResource** - Built-in SolidJS and offers a similar experience to Tanstack Query
+
+##### Decision
+
+Use SolidJS' native `createResource` as it comes bundles and is the "solid way" of handling things.
+
+### Example Components
+
+#### Counter `src/components/CounterExample`
+
+A small counter example which showcases how to use state in SolidJS. You can view the example on the `src/pages/Counter`.
+
+Signals can live outside of components. Each relevant component subscribes to its value by using it.
+
+#### Fetch `src/components/FetchExample`
+
+Demonstrates how to retrieve data from a third-party API by using `createResource`.
+
+## Installation
+
+### CLI (Recommended)
 
 ```bash
-$ npm install # or pnpm install or yarn install
+npm i -g pnpm
+pnpm dlx create-starter-dev
 ```
 
-### Learn more on the [Solid Website](https://solidjs.com) and come chat with us on our [Discord](https://discord.com/invite/solidjs)
+- Follow the prompts to select the <kit name> starter kit and name your new project.
+- `cd` into your project directory and run `pnpm install`.
+- Run `pnpm run dev` to start the development server.
+- Open your browser to `http://localhost:3000` to see the included example code running.
 
-## Available Scripts
+### Manual
 
-In the project directory, you can run:
+```bash
+git clone https://github.com/thisdot/starter.dev.git
+```
 
-### `npm dev` or `npm start`
+- Copy and rename the `starters/solidjs-tailwind` directory to the name of your new project.
+- `cd` into your project directory and run `pnpm install`.
+- Run `pnpm run dev` to start the development server.
+- Open your browser to `http://localhost:3000` to see the included example code running.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Commands
 
-The page will reload if you make edits.<br>
+- `pnpm run dev` - Runs the development server on localhost port 3000 with HMR
+- `pnpm run test` - Runs the test suite
+- `pnpm run storbook` - To showcase the component library
+- `pnpm run build` - Builds a production version of the app to deploy
+- `pnpm run serve` - Serves a production build on localhost port 4173
+- `pnpm run lint` - Uses eslint to find potential issues in the codebase
+- `pnpm run lint:fix` - Tries to auto fix potential issues
+- `pnpm run format` - Fixes formatting issues in the codebase
 
-### `npm run build`
+## Demo Implementation
 
-Builds the app for production to the `dist` folder.<br>
-It correctly bundles Solid in production mode and optimizes the build for the best performance.
+[Repository](https://github.com/thisdot/starter.dev-showcases/tree/main/solidjs-tailwind)
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-## Deployment
-
-You can deploy the `dist` folder to any static host provider (netlify, surge, now, etc.)
+The demo application re-implements some of GitHub's pages and functionality. It uses the OAuth credentials in GitHub to authenticate users with their GitHub accounts and uses RxJS to fetch data from the GitHub API. Check out the link above to learn more or check out the demo!
