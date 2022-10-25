@@ -30,7 +30,18 @@ This starter kit features SolidJS combined with Tailwind CSS.
 
 ### Architectural Decisions
 
-List all important architectural decisions here and patterns users should be aware of.
+#### State management
+
+Managing state between components is a big part of creating modern web applications. Typically, this is done by using a third-party package. Sometimes it can be combined with fetching server data (e.g., Apollo or Tanstack Query).
+
+##### Considered Options
+
+- **Tanstack Query** - Used in other starter kits and offers a lean setup combining state and server communication
+- **createResource** - Built-in SolidJS and offers a similar experience to Tanstack Query
+
+##### Decision
+
+Use SolidJS' native `createResource` as it comes bundles and is the "solid way" of handling things.
 
 ### Example Components
 
