@@ -87,9 +87,9 @@ export const TECHNOLOGIES = [
     Icon: (props) => <ReactIcon {...props} />,
   },
   {
-    key: 'svelte',
-    name: 'Svelte',
-    tags: ['Core UI'],
+    key: 'svelte-kit',
+    name: 'SvelteKit',
+    tags: ['Framework'],
     Icon: (props) => <SvelteIcon {...props} />,
   },
   {
