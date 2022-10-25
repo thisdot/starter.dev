@@ -2,9 +2,7 @@
   import { onMount } from 'svelte';
   import { count, incrementCount, decrementCount, resetCount } from '../../stores';
 
-  onMount(async () => {
-    resetCount();
-  });
+  onMount(resetCount);
 </script>
 
 <div class="container">
