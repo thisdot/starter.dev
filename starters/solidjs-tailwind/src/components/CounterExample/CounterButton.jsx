@@ -1,4 +1,4 @@
-import { splitProps, children } from 'solid-js';
+import { children, splitProps } from 'solid-js';
 
 const CounterButton = (props) => {
   const [local, others] = splitProps(props, ['onClick']);
@@ -8,7 +8,7 @@ const CounterButton = (props) => {
     <button
       type="button"
       class="bg-blue-500 text-white text-base font-medium px-4 py-2 rounded-md outline-none"
-      onClick={local.onClick}
+      onClick={() => local.onClick()}
       {...others}
     >
       {c()}

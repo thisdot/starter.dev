@@ -89,7 +89,7 @@ git clone https://github.com/thisdot/starter.dev.git
 - `pnpm run build` - Builds a production version of the app to deploy
 - `pnpm run serve` - Serves a production build on localhost port 4173
 - `pnpm run lint` - Uses eslint to find potential issues in the codebase
-- `pnpm run lint:fix` - Tries to auto fix potential issues
+- `pnpm run lint-fix` - Tries to auto fix potential issues
 - `pnpm run format` - Fixes formatting issues in the codebase
 
 ## Demo Implementation
