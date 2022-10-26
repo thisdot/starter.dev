@@ -62,7 +62,7 @@ Demonstrates how to retrieve data from a third-party API by using `createResourc
 
 ```bash
 npm i -g pnpm
-pnpm dlx create-starter-dev
+pnpm create @this-dot/starter --kit solidjs-tailwind
 ```
 
 - Follow the prompts to select the <kit name> starter kit and name your new project.
