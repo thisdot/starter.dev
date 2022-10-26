@@ -9,11 +9,13 @@ const { name } = Astro.props;
     class="grid grid-cols-5 items-center dark:bg-gray-800 dark:border-gray-700 mx-auto max-w-screen-2xl my-10 border border-solid border-brand-500 rounded-lg "
   >
     <div class="p-4 lg:px-8 col-span-5 lg:col-span-2 lg:text-left text-center">
-      <h1 class="heading-5 mb-6">See how kit works on examples</h1>
+      <h1 class="heading-5 mb-6">See kits in action via our showcases</h1>
       <a
         class="btn btn-primary text-sm t-dark"
         href={`${REPO_URL}/tree/main/starters/${name}`}
-        >See live examples<GitHubIcon
+        target="_blank"
+        rel="noopener noreferrer"
+        >View Showcases<GitHubIcon
           className="h-3.5 w-3.5 inline ml-2.5 mb-px"
         /></a
       >

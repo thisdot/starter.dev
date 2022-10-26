@@ -5,7 +5,7 @@ import { GitHubIcon } from '../icons/GitHubIcon.tsx';
 import { ShareIcon } from '../icons/ShareIcon.tsx';
 import { REPO_URL, SHOWCASE_REPO_URL } from '../config.tsx';
 import { ShareDropdown } from './ShareDropdown';
-const { name, inline } = Astro.props;
+const { name, hasShowcase, inline } = Astro.props;
 ---
 
 <div class="flex flex-row items-center max-w-screen-2xl mx-auto">
@@ -18,7 +18,8 @@ const { name, inline } = Astro.props;
     >
   </div>
   <div class="ml-auto">
-    <a
+
+    { !hasShowcase && <a
       class="link text-sm dark:dark-link"
       href={`${SHOWCASE_REPO_URL}/tree/main/${name}`}
       target="_blank"
@@ -27,13 +28,13 @@ const { name, inline } = Astro.props;
       <BriefcaseIcon className="h-3.5 w-3.5 inline ml-0.5 mb-[2px]" /><span
         class="hover:underline ml-2">View Showcase</span
       >
-    </a>
+    </a>}
     <a
       class={cn('btn btn-primary text-sm mt-3 ml-3', !inline && 'mt-3.5')}
       href={`${REPO_URL}/tree/main/starters/${name}`}
       target="_blank"
       rel="noopener noreferrer"
-      >Save Kit <GitHubIcon className="h-3.5 w-3.5 inline ml-2.5 mb-px"
+      >View Source <GitHubIcon className="h-3.5 w-3.5 inline ml-2.5 mb-px"
       /></a
     >
   </div>

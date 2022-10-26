@@ -3,6 +3,7 @@ import { ArrowRightIcon } from '../icons/heroicons';
 import TechIcon from './TechIcon.astro';
 import { GitHubIcon } from '../icons/GitHubIcon.tsx';
 const { kit } = Astro.props;
+const technologyStubsCount = kit.technologies.length < 3 ? (3 - kit.technologies.length) : 0;
 ---
 
 <div
@@ -16,6 +17,11 @@ const { kit } = Astro.props;
           <div class="heading-6 t-dark dark:dark-t-light group-hover:text-white">{name}</div>
           <div class="t-light dark:dark-t text-sm group-hover:text-gray-100">{tags.join(', ')}</div>
         </div>
+      </div>
+    ))}
+    {Array(technologyStubsCount).fill().map(() => (
+      <div class="flex items-center space-x-6">
+        <div class="h-20"></div>
       </div>
     ))}
   </div>
