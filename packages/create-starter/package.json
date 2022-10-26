@@ -26,7 +26,7 @@
     "directory": "packages/create-starter"
   },
   "author": "This Dot Labs",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/thisdot/starter.dev/issues"
   },
