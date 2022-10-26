@@ -1,0 +1,67 @@
+{
+  "name": "solidjs-tailwind",
+  "version": "0.1.0",
+  "private": true,
+  "description": "SolidJs and TailwindCSS",
+  "scripts": {
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "test": "vitest",
+    "lint": "eslint --ext .js,.jsx ./src",
+    "lint-fix": "pnpm lint --fix",
+    "format": "prettier --write ./src --ignore-path .gitignore",
+    "storybook": "start-storybook"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@solidjs/router": "0.5.0",
+    "@storybook/addon-actions": "6.5.13",
+    "@storybook/addon-backgrounds": "6.5.13",
+    "@storybook/addon-docs": "6.5.13",
+    "@storybook/addon-essentials": "6.5.13",
+    "@storybook/addon-links": "6.5.13",
+    "@storybook/addon-measure": "6.5.13",
+    "@storybook/addon-outline": "6.5.13",
+    "@storybook/builder-vite": "0.2.4",
+    "@storybook/client-api": "6.5.13",
+    "@storybook/client-logger": "6.5.13",
+    "@storybook/core-common": "6.5.13",
+    "@storybook/html": "6.5.13",
+    "@testing-library/jest-dom": "5.16.5",
+    "@typescript-eslint/parser": "5.41.0",
+    "autoprefixer": "10.4.12",
+    "eslint": "8.26.0",
+    "eslint-plugin-solid": "0.7.4",
+    "eslint-plugin-unused-imports": "2.0.0",
+    "jsdom": "20.0.1",
+    "postcss": "8.4.18",
+    "prettier": "2.7.1",
+    "solid-testing-library": "0.3.0",
+    "storybook-addon-mock": "3.2.0",
+    "tailwindcss": "3.2.1",
+    "typescript": "4.8.4",
+    "vite": "3.1.8",
+    "vite-plugin-solid": "2.3.10",
+    "vitest": "0.24.3"
+  },
+  "dependencies": {
+    "solid-js": "1.6.0"
+  },
+  "keywords": [
+    "solidjs",
+    "tailwind"
+  ],
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "react",
+        "react-dom",
+        "@babel/*",
+        "webpack",
+        "@storybook/*"
+      ]
+    }
+  }
+}

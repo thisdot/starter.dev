@@ -5,5 +5,6 @@
   "remix-gql-tailwind": "Remix, GQL and TailwindCSS",
   "svelte-kit-scss": "SvelteKit and SCSS",
   "vue3-apollo-quasar": "Vue3, Apollo, and Quasar",
-  "qwik-graphql-tailwind": "Qwik, GraphQL, and TailwindCSS"
+  "qwik-graphql-tailwind": "Qwik, GraphQL, and TailwindCSS",
+  "solidjs-tailwind": "SolidJs and TailwindCSS"
 }
