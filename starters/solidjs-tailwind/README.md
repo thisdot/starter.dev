@@ -35,14 +35,12 @@ This starter kit features SolidJS combined with Tailwind CSS.
 
 Managing state between components is a big part of creating modern web applications. Typically, this is done by using a third-party package. Sometimes it can be combined with fetching server data (e.g., Apollo or Tanstack Query).
 
-##### Considered Options
+So, we investigated two options which are:
 
 - **Tanstack Query** - Used in other starter kits and offers a lean setup combining state and server communication
 - **createResource** - Built-in SolidJS and offers a similar experience to Tanstack Query
 
-##### Decision
-
-Use SolidJS' native `createResource` as it comes bundles and is the "solid way" of handling things.
+Having weighed out some pros and cons, we opted out for SolidJS' native `createResource` as it comes bundles and is the "solid way" of handling things.
 
 ### Example Components
 
@@ -94,6 +92,6 @@ git clone https://github.com/thisdot/starter.dev.git
 
 ## Demo Implementation
 
-[Repository](https://github.com/thisdot/starter.dev-showcases/tree/main/solidjs-tailwind)
+[Repository](https://github.com/thisdot/starter.dev-github-showcases/tree/main/solidjs-tailwind)
 
 The demo application re-implements some of GitHub's pages and functionality. It uses the OAuth credentials in GitHub to authenticate users with their GitHub accounts and uses RxJS to fetch data from the GitHub API. Check out the link above to learn more or check out the demo!
