@@ -1,11 +1,22 @@
 <template>
-  <div class="flex flex-col justify-center items-center gap-5 mt-10">
+  <div
+    class="flex flex-col justify-center items-center gap-5 mt-10 w-3/5 mx-auto"
+  >
     <header class="border-b-4 border-blue-600 w-3/5 pb-4 text-center">
       <h1 class="text-4xl font-bold">Fetch Data from API</h1>
     </header>
 
-    <div class="flex gap-20 justify-center items-center">
-      <p class="text-2xl" data-testid="message-value">Message: {{ message }}</p>
+    <div class="flex gap-4 justify-center items-center text-2xl">
+      <p>Message:</p>
+      <p
+        :class="{
+          'grow-0': message,
+          'grow animate-pulse bg-gray-200 rounded-md w-40 h-6': !message,
+        }"
+        :data-testid="message ? 'message-value' : 'message-skeleton'"
+      >
+        {{ message }}
+      </p>
     </div>
     <NuxtLink
       to="/"

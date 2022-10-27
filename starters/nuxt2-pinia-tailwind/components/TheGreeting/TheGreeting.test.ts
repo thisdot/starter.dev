@@ -24,10 +24,9 @@ describe('<TheGreeting />', () => {
       },
     });
 
-    const messageValue = screen.getByTestId('message-value');
-
     // Assertions
     await waitFor(() => {
+      const messageValue = screen.getByTestId('message-value');
       expect(messageValue).toHaveTextContent('Hello, from This Dot Labs!');
     });
   });
@@ -53,11 +52,31 @@ describe('<TheGreeting />', () => {
       },
     });
 
-    const messageValue = screen.getByTestId('message-value');
-
     // Assertions
     await waitFor(() => {
+      const messageValue = screen.getByTestId('message-value');
       expect(messageValue).toHaveTextContent('Error!');
     });
+  });
+
+  it('Should display loading skeleton', () => {
+    // Arrange
+    render(TheGreeting, {
+      mocks: {
+        $nuxt: {
+          context: {
+            $axios: axios,
+          },
+        },
+      },
+      stubs: {
+        NuxtLink: true,
+      },
+    });
+
+    const messageSkeleton = screen.getByTestId('message-skeleton');
+
+    // Assertions
+    expect(messageSkeleton).toBeVisible();
   });
 });
