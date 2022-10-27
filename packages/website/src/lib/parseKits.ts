@@ -21,6 +21,7 @@ export function parseKit(kit: MarkdownContent) {
       'description',
       'readmePath',
       'starterPath',
+      'hasShowcase'
     ]),
     technologies,
   };

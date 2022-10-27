@@ -65,7 +65,11 @@ This kit includes 2 components to demonstrate how you can best utilize this kit 
 ### CLI (Recommended)
 
 ```bash
-npx create-starter-dev
+npm create @this-dot/starter --kit vue3-apollo-quasar
+```
+
+```bash
+yarn create @this-dot/starter --kit vue3-apollo-quasar
 ```
 
 - Follow the prompts to select the **vue3-apollo-quasar** kit and name your new project.

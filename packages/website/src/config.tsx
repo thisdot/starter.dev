@@ -34,6 +34,8 @@ import {
   CSSModuleIcon,
   RedwoodIcon,
   PiniaIcon,
+  QwikIcon,
+  SolidJsIcon,
 } from './icons';
 
 export interface NavItem {
@@ -50,7 +52,7 @@ export const SHOWCASE_REPO_URL =
 
 export const HEADER_NAV_ITEMS: NavItem[] = [
   {
-    title: 'Kits by Tool',
+    title: 'Explore Kits by Tech',
     href: '/kits-by-tool',
   },
   {
@@ -69,7 +71,7 @@ export const HEADER_NAV_ITEMS: NavItem[] = [
 ];
 
 export const FOOTER_NAV_ITEMS = HEADER_NAV_ITEMS.filter(
-  (x) => x.title !== 'Kits by Tool'
+  (x) => x.title !== 'Explore Kits by Tech'
 );
 
 export const TECHNOLOGIES = [
@@ -86,9 +88,9 @@ export const TECHNOLOGIES = [
     Icon: (props) => <ReactIcon {...props} />,
   },
   {
-    key: 'svelte',
-    name: 'Svelte',
-    tags: ['Core UI'],
+    key: 'svelte-kit',
+    name: 'SvelteKit',
+    tags: ['Framework'],
     Icon: (props) => <SvelteIcon {...props} />,
   },
   {
@@ -96,6 +98,12 @@ export const TECHNOLOGIES = [
     name: 'Vue',
     tags: ['Core UI'],
     Icon: (props) => <VueIcon {...props} />,
+  },
+   {
+    key: 'solidjs',
+    name: 'SolidJs',
+    tags: ['Core UI'],
+    Icon: (props) => <SolidJsIcon {...props} />,
   },
   {
     key: 'next',
@@ -144,6 +152,12 @@ export const TECHNOLOGIES = [
     name: 'RedwoodJS',
     tags: ['Framework'],
     Icon: (props) => <RedwoodIcon {...props} />,
+  },
+  {
+    key: 'qwik',
+    name: 'Qwik',
+    tags: ['Framework'],
+    Icon: (props) => <QwikIcon {...props} />,
   },
   {
     key: 'tailwind',

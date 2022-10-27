@@ -36,3 +36,5 @@ export { FacebookIcon } from './FacebookIcon';
 export { TwitterIcon } from './TwitterIcon';
 export { ShareIcon } from './ShareIcon';
 export { LinkedinIcon } from './LinkedinIcon';
+export { QwikIcon } from './QwikIcon';
+export { SolidJsIcon } from './SolidJsIcon';
