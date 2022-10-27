@@ -1,5 +1,5 @@
 export default {
   title: 'Components',
-}
+};
 
-export const TheCounter = () => '<TheCounter />'
+export const TheCounter = () => '<TheCounter />';

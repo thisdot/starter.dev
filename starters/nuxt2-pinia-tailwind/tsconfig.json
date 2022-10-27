@@ -1,4 +1,7 @@
 {
+  "vueCompilerOptions": {
+    "target": 2,
+  },
   "compilerOptions": {
     "target": "ES2018",
     "module": "ESNext",

@@ -1,16 +1,17 @@
 # nuxt2-pinia-tailwind starter kit
 
 This starter kit features **Nuxt.js 2**, **Pinia**, and **Tailwind CSS**.
+
 ## Table of Contents
 
-  - [Overview](#overview)
-    - [Tech Stack](#tech-stack)
-    - [Included Tooling](#included-tooling)
-    - [Example Code](#example-code)
-  - [Installation](#installation)
-    - [CLI (Recommended)](#cli-recommended)
-    - [Manual](#manual)
-  - [Commands](#commands)
+- [Overview](#overview)
+  - [Tech Stack](#tech-stack)
+  - [Included Tooling](#included-tooling)
+  - [Example Code](#example-code)
+- [Installation](#installation)
+  - [CLI (Recommended)](#cli-recommended)
+  - [Manual](#manual)
+- [Commands](#commands)
 
 ## Overview
 
@@ -32,7 +33,7 @@ This starter kit features **Nuxt.js 2**, **Pinia**, and **Tailwind CSS**.
 
 ### Example Code
 
-In this `starters/nuxt2-pinia-tailwind` directory you will find the `TheCounter` and `TheGreeting` directories. 
+In this `starters/nuxt2-pinia-tailwind` directory you will find the `TheCounter` and `TheGreeting` directories.
 
 The `TheCounter` directory component uses `Pinia` to control the state of the component. The directory contains the following files:
 
@@ -84,4 +85,3 @@ git clone https://github.com/thisdot/starter.dev.git
 - `yarn stories` - Starts the Storybook UI.
 - `yarn lint` - Runs ESLint on the project.
 - `yarn lintfix` - Formats code for the entire project using prettier and linter
-

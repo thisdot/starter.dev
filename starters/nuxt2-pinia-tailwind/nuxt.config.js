@@ -58,4 +58,4 @@ export default {
   build: {},
 
   devServerHandlers: [],
-}
+};

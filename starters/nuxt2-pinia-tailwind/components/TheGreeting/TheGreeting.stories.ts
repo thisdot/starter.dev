@@ -1,5 +1,5 @@
 export default {
   title: 'Components',
-}
+};
 
-export const TheGreeting = () => '<TheGreeting />'
+export const TheGreeting = () => '<TheGreeting />';
