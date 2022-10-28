@@ -21,7 +21,7 @@ const { name, hasShowcase } = Astro.props;
       >
     </div>
     <div class="ml-auto space-x-4">
-      { hasShowcase && <a
+      { hasShowcase && (<a
         class="link text-sm dark:dark-link"
         href={`${SHOWCASE_REPO_URL}/tree/main/${name}`}
         target="_blank"
@@ -30,7 +30,7 @@ const { name, hasShowcase } = Astro.props;
         <BriefcaseIcon className="h-3.5 w-3.5 inline ml-0.5 mb-[2px]" /><span
           class="hover:underline ml-2">View Showcase</span
         >
-      </a>}
+      </a>)}
 
       <a
         class="btn btn-primary text-sm"

@@ -7,6 +7,7 @@
     "tailwind"
   ],
   "version": "0.0.1",
+  "hasShowcase": false,
   "engines": {
     "node": ">=15.0.0"
   },
