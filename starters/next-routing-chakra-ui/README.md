@@ -37,9 +37,9 @@ TODO: will be completed in [GitHub issue #327](https://github.com/thisdot/starte
 
 ## Commands
 
-### How format the entire project with Prettier
+### How to format the entire project with Prettier
 
-`yarn run format:fix` will run Prettier on all files in the project and fix all formatting issues. In the root directory, there is a `.prettierrc.json` file which sets the Prettier configurations.
+`yarn run format:fix` will run Prettier on all files in the project and fix any formatting issues. In the root directory, there is a `.prettierrc.json` file which sets the Prettier configurations.
 
 ## Kit Organization / Architecture
 
