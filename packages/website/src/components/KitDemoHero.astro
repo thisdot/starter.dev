@@ -1,7 +1,5 @@
 ---
 import { GitHubIcon } from '../icons/GitHubIcon.tsx';
-import { REPO_URL } from '../config.tsx';
-const { name } = Astro.props;
 ---
 
 <div class="not-prose t-dark dark:dark-t-light pt-4">
@@ -12,11 +10,10 @@ const { name } = Astro.props;
       <h1 class="heading-5 mb-6">See kits in action via our showcases</h1>
       <a
         class="btn btn-primary text-sm t-dark"
-        href={`${REPO_URL}/tree/main/starters/${name}`}
+        href="https://github.com/thisdot/starter.dev-github-showcases/"
         target="_blank"
         rel="noopener noreferrer"
-        >View Showcases<GitHubIcon
-          className="h-3.5 w-3.5 inline ml-2.5 mb-px"
+        >View Showcases<GitHubIcon className="h-3.5 w-3.5 inline ml-2.5 mb-px"
         /></a
       >
     </div>
