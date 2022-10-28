@@ -50,6 +50,7 @@ For proper integration with the starter-dev CLI and website there are also some 
 
 - `description` - This field is used as a short description highlighting the technologies of each particular starter kit. It is shown as a selection in the starter-dev CLI. Example: `NextJS, React Query, and TailwindCSS`
 - `keywords` - This field is an array of strings used to map to the technology list on the starter.dev website. Example: `["next", "react-query", "tailwind"]`
+- `hasShowcase` - This field is a boolean and is required when displaying the "View Showcase" link for kits that have showcases. If your kit has a showcase, set the value to `true`. If your kit does not have a showcase, set the value to `false`.
 
 ### Adding starter kit to the website
 
