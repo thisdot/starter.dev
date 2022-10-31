@@ -1,11 +1,16 @@
-import { View, Text, TouchableOpacity, Alert } from 'react-native';
 import React from 'react';
+import { TouchableOpacityStyled, TextStyled } from './Button.styles';
 
-const Button = () => {
+interface ButtonProps {
+  title: string;
+  onPress: () => void;
+}
+
+const Button = ({ title, onPress }: ButtonProps) => {
   return (
-    <TouchableOpacity>
-      <Button title="Press me" onPress={() => Alert.alert('Simple Button pressed')} />
-    </TouchableOpacity>
+    <TouchableOpacityStyled onPress={onPress}>
+      <TextStyled>{title}</TextStyled>
+    </TouchableOpacityStyled>
   );
 };
 
