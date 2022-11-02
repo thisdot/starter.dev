@@ -1,14 +1,6 @@
 /* eslint-disable react/display-name */
 import type { ReactElement } from 'react';
-import { QueryClient, QueryClientProvider, setLogger } from 'react-query';
-
-if (process.env.NODE_ENV === 'test') {
-  setLogger({
-    log: console.log,
-    warn: console.warn,
-    error: () => {},
-  });
-}
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const createQueryClient = () =>
   new QueryClient({

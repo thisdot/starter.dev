@@ -14,4 +14,8 @@ module.exports = {
     'storybook-css-modules-preset',
     'storybook-addon-next-router',
   ],
+  webpackFinal: (config) => {
+    config.node = { fs: 'empty' };
+    return config;
+  },
 };

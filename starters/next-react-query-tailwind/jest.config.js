@@ -1,22 +1,18 @@
 /** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
+const nextJest = require('next/jest');
 const { compilerOptions } = require('./tsconfig');
-module.exports = {
-  testEnvironment: 'jsdom',
-  transform: {
-    '^.+\\.(js|jsx|ts|tsx)$': [
-      '<rootDir>/node_modules/babel-jest',
-      {
-        presets: ['next/babel'],
-        plugins: [],
-      },
-    ],
-  },
+
+const createJestConfig = nextJest({
+  dir: './',
+});
+
+module.exports = createJestConfig({
+  testEnvironment: 'jest-environment-jsdom',
   collectCoverageFrom: [
     '**/*.{js,jsx,ts,tsx}',
     '!**/*.d.ts',
     '!**/node_modules/**',
   ],
-  modulePaths: [compilerOptions.baseUrl],
   moduleNameMapper: {
     '^.+\\.module\\.(css|sass|scss)$': 'identity-obj-proxy',
     '^.+\\.(css|sass|scss)$': '<rootDir>/__mocks__/styleMock.js',
@@ -30,4 +26,4 @@ module.exports = {
     '<rootDir>/.next/',
     '^.+\\.module\\.(css|sass|scss)$',
   ],
-};
+});

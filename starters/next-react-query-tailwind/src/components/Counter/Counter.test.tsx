@@ -1,10 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Counter } from './Counter';
-import { cleanUpMocks } from '../../../__mocks__/consoleMock';
-
-afterAll(() => {
-  cleanUpMocks();
-});
 
 describe('Counter', () => {
   it('should initially set 0', () => {

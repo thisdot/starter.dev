@@ -1,16 +1,12 @@
 import { render, screen } from '@testing-library/react';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Greeting } from './Greeting.data';
 import { setupServer, SetupServerApi } from 'msw/node';
 import { rest } from 'msw';
-import { cleanUpMocks } from '../../../__mocks__/consoleMock';
 
 const MOCK_MESSAGE_HELLO = 'Test Message Hello';
 const MOCK_MESSAGE_ERROR = 'Test Message Error';
 
-afterAll(() => {
-  cleanUpMocks();
-});
 describe('Greeting', () => {
   let server: SetupServerApi | null;
 
@@ -25,7 +21,7 @@ describe('Greeting', () => {
   describe('positive flow', () => {
     beforeAll(() => {
       server = setupServer(
-        rest.get('https://api.starter.dev/hello', (req, res, ctx) => {
+        rest.get('https://api.starter.dev/hello', (_, res, ctx) => {
           return res(ctx.text(MOCK_MESSAGE_HELLO));
         })
       );
@@ -66,7 +62,7 @@ describe('Greeting', () => {
 
     it('should show an error message if the API call response contains a message in the body.', async () => {
       server = setupServer(
-        rest.get('https://api.starter.dev/hello', (req, res, ctx) =>
+        rest.get('https://api.starter.dev/hello', (_, res, ctx) =>
           res(ctx.status(400), ctx.json({ message: MOCK_MESSAGE_ERROR }))
         )
       );
@@ -85,7 +81,7 @@ describe('Greeting', () => {
 
     it('should show an error message if the API call response does not contain a message in the body.', async () => {
       server = setupServer(
-        rest.get('https://api.starter.dev/hello', (req, res, ctx) =>
+        rest.get('https://api.starter.dev/hello', (_, res, ctx) =>
           res(ctx.status(404))
         )
       );
