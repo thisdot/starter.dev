@@ -1,0 +1,13 @@
+{
+	"root": true,
+	"extends": [
+		"eslint:recommended",
+		"plugin:vue/essential",
+		"plugin:vue/vue3-recommended",
+		"plugin:@typescript-eslint/recommended",
+		"@nuxtjs/eslint-config-typescript"
+	],
+	"rules": {
+		"vue/multi-word-component-names": "off"
+	}
+}
