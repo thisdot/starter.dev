@@ -42,7 +42,7 @@ Starter kits live at `starters/:name` in this repository.
 
 ### Starter kit naming convention
 
-The name of a starter kit should highlight the core technologies that it uses and that differentiate it from other starter kits. In example: `next-react-query-tailwind` - _framework: next, state management: react-query, styling: tailwind_.
+The name of a starter kit should highlight the core technologies that it uses and that differentiate it from other starter kits. In example: `next12-react-query-tailwind` - _framework: next, state management: react-query, styling: tailwind_.
 
 ### `package.json` requirements
 
@@ -64,4 +64,4 @@ Currently to add your starter kit to be an available option on the starter.dev C
 
 ### Starter kit README files
 
-We are still working on defining a general structure and format for starter kit readme files. These are particularly important because the starter kit page on the website is based on the readme files. See: [next-react-query-tailwind readme content #17](https://github.com/thisdot/starter.dev/pull/17)
+We are still working on defining a general structure and format for starter kit readme files. These are particularly important because the starter kit page on the website is based on the readme files. See: [next12-react-query-tailwind readme content #17](https://github.com/thisdot/starter.dev/pull/17)

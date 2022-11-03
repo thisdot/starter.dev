@@ -7,7 +7,7 @@ const Home: NextPage = () => {
   return (
     <Fragment>
       <Head>
-        <title>next-react-query-tailwind starter kit</title>
+        <title>next12-react-query-tailwind starter kit</title>
         <meta name="description" content="Generated using starter.dev" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -17,10 +17,16 @@ const Home: NextPage = () => {
         </h1>
         <ul>
           <li className="my-2.5">
-            <NavigationLink to="/counter-example" label="See Counter example component" />
+            <NavigationLink
+              to="/counter-example"
+              label="See Counter example component"
+            />
           </li>
           <li className="my-2.5">
-            <NavigationLink to="/fetch-example" label="See Fetch example component" />
+            <NavigationLink
+              to="/fetch-example"
+              label="See Fetch example component"
+            />
           </li>
         </ul>
       </header>

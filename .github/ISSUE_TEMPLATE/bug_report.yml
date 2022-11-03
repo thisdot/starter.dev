@@ -1,6 +1,6 @@
 name: Bug report
 description: A template for registering issues, bugs or feature requests
-title: "[Bug]: "
+title: '[Bug]: '
 labels: New Issue, bug
 body:
   - type: markdown
@@ -9,7 +9,7 @@ body:
   - type: input
     attributes:
       label: What kit and version are you using?
-      description: 'For example: next-react-query-tailwind@0.1.0'
+      description: 'For example: next12-react-query-tailwind@0.1.0'
     validations:
       required: true
   - type: input

@@ -1,4 +1,4 @@
-# next-react-query-tailwind starter kit
+# next12-react-query-tailwind starter kit
 
 This starter kit features **Next.js**, **React Query**, and **Tailwind CSS**.
 
@@ -32,29 +32,29 @@ This starter kit features **Next.js**, **React Query**, and **Tailwind CSS**.
 ### CLI (Recommended)
 
 ```bash
-npm create @this-dot/starter --kit next-react-query-tailwind
+npm create @this-dot/starter --kit next12-react-query-tailwind
 ```
 
 or
 
 ```bash
-yarn create @this-dot/starter --kit next-react-query-tailwind
+yarn create @this-dot/starter --kit next12-react-query-tailwind
 ```
 
-- Follow the prompts to select the `next-react-query-tailwind` starter kit and name your new project.
+- Follow the prompts to select the `next12-react-query-tailwind` starter kit and name your new project.
 - `cd` into your project directory and run `npm install`.
 - Run `npm run dev` to start the development server.
 - Open your browser to `http://localhost:3000` to see the included example code running.
 
 ### Manual
 
-This requires a download of the entire starter.dev repository and extraction of the `next-react-query-tailwind` kit from the starters directory.
+This requires a download of the entire starter.dev repository and extraction of the `next12-react-query-tailwind` kit from the starters directory.
 
 ```bash
 git clone https://github.com/thisdot/starter.dev.git
 ```
 
-- Copy and rename the `starters/next-react-query-tailwind` directory to the name of your new project.
+- Copy and rename the `starters/next12-react-query-tailwind` directory to the name of your new project.
 - `cd` into your project directory and run `npm install`.
 - Run `npm run dev` to start the development server.
 - Open your browser to `http://localhost:3000` to see the included example code running.
@@ -89,6 +89,6 @@ Mock Service Worker makes it easy to write tests or stories for Components or fi
 
 ## Demo Implementation
 
-[Repository](https://github.com/thisdot/starter.dev-github-showcases/tree/main/next-react-query-tailwind)
+[Repository](https://github.com/thisdot/starter.dev-github-showcases/tree/main/next12-react-query-tailwind)
 
 The demo for this starter kit is a partial implementation of some GitHub functionality. It uses the NextAuth library to authenticate users with their GitHub accounts and uses the GitHub GraphQL API with codegen and React Query to fetch data from the GitHub API. Check out the link above to learn more or check out the demo!

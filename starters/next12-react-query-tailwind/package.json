@@ -1,12 +1,12 @@
 {
-  "name": "next-react-query-tailwind",
+  "name": "next12-react-query-tailwind",
   "description": "NextJS, React Query, and TailwindCSS",
   "keywords": [
     "next",
     "react-query",
     "tailwind"
   ],
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "hasShowcase": true,
   "scripts": {
