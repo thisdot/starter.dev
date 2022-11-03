@@ -8,7 +8,7 @@
   ],
   "private": true,
   "version": "0.1.0",
-  "hasShowcase": true,
+  "hasShowcase": false,
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
