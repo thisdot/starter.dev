@@ -11,13 +11,15 @@ describe('<TheCounter />', () => {
 
   it('Should increase by 1 the count when clicking increase button', async () => {
     // Arrange
-    render(TheCounter, {
+    const componentOptions = {
       pinia: createTestingPinia(),
       stubs: {
         NuxtLink: true,
       },
-    });
+    }
 
+    // Act
+    render(TheCounter, componentOptions);
     const button = screen.getByTestId('increase-button');
     const countValue = screen.getByTestId('count-value');
 
@@ -33,7 +35,7 @@ describe('<TheCounter />', () => {
 
   it('Should decrease by 1 the count when clicking decrease button', async () => {
     // Arrange
-    render(TheCounter, {
+    const componentOptions = {
       pinia: createTestingPinia({
         initialState: {
           counterStore: {
@@ -44,7 +46,11 @@ describe('<TheCounter />', () => {
       stubs: {
         NuxtLink: true,
       },
-    });
+    }
+
+
+    // Act
+    render(TheCounter, componentOptions);
     const button = screen.getByTestId('decrease-button');
     const countValue = screen.getByTestId('count-value');
 

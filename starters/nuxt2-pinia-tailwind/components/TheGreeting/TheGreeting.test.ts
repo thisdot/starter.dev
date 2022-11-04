@@ -11,7 +11,7 @@ afterAll(() => mswServer.close());
 describe('<TheGreeting />', () => {
   it('Should display correct message', async () => {
     // Arrange
-    render(TheGreeting, {
+    const componentOptions = {
       mocks: {
         $nuxt: {
           context: {
@@ -22,7 +22,10 @@ describe('<TheGreeting />', () => {
       stubs: {
         NuxtLink: true,
       },
-    });
+    }
+
+    // Act
+    render(TheGreeting, componentOptions);
 
     // Assertions
     await waitFor(() => {
@@ -32,14 +35,14 @@ describe('<TheGreeting />', () => {
   });
 
   it('Should display error message', async () => {
+    // Arrange
     mswServer.use(
       rest.get('https://api.starter.dev/hello', (_, res, ctx) => {
         return res(ctx.status(500));
       })
     );
 
-    // Arrange
-    render(TheGreeting, {
+    const componentOptions = { 
       mocks: {
         $nuxt: {
           context: {
@@ -50,7 +53,10 @@ describe('<TheGreeting />', () => {
       stubs: {
         NuxtLink: true,
       },
-    });
+    }
+
+    // Act
+    render(TheGreeting, componentOptions);
 
     // Assertions
     await waitFor(() => {
@@ -61,7 +67,7 @@ describe('<TheGreeting />', () => {
 
   it('Should display loading skeleton', () => {
     // Arrange
-    render(TheGreeting, {
+    const componentOptions = {
       mocks: {
         $nuxt: {
           context: {
@@ -72,7 +78,10 @@ describe('<TheGreeting />', () => {
       stubs: {
         NuxtLink: true,
       },
-    });
+    }
+    
+    // Act
+    render(TheGreeting,componentOptions);
 
     const messageSkeleton = screen.getByTestId('message-skeleton');
 

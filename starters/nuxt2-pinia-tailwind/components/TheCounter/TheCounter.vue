@@ -52,17 +52,19 @@ export default defineComponent({
   name: 'TheCounter',
   setup() {
     const counterState = useCounterStore();
+
     const increaseCount = () => {
-      counterState.counter = counterState.counter + 1;
+      counterState.counter++;
     };
+
     const decreaseCount = () => {
       if (counterState.counter) {
-        counterState.counter = counterState.counter - 1;
+        counterState.counter--;
       }
     };
-    const resetCount = () => {
-      counterState.$reset();
-    };
+
+    const resetCount = counterState.$reset.bind(counterState);
+    
     return { counterState, increaseCount, decreaseCount, resetCount };
   },
 });
