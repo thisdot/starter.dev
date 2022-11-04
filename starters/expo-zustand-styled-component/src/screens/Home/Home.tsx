@@ -4,7 +4,7 @@ import { SafeAreaViewStyled, RawStyled, TitleStyled, CountStyled } from './Home.
 import Button from '../../components/Button';
 import { useCount } from './useCount';
 
-const Home = () => {
+const Home = ({ navigation }: { navigation: any }) => {
   const count = useCount((state) => state.count);
   const increment = useCount((state) => state.increment);
   const decrement = useCount((state) => state.decrement);
@@ -13,7 +13,7 @@ const Home = () => {
   return (
     <SafeAreaViewStyled>
       <RawStyled>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('about')}>
           <Image source={require('../../../assets/about-icon.png')} />
         </TouchableOpacity>
         <TouchableOpacity onPress={reset}>
