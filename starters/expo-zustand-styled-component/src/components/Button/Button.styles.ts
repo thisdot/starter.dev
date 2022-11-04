@@ -8,7 +8,6 @@ export const TouchableOpacityStyled = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  // padding: 0px;
 `;
 
 export const TextStyled = styled.Text`
