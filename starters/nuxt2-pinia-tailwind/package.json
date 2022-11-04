@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "description": "Nuxt 2, Pinia and TailwindCSS",
+  "hasShowcase": false,
   "keywords": [
     "nuxt 2",
     "pinia",
