@@ -66,7 +66,7 @@ describe('<CounterExample />', () => {
 
   it('Should reset the count when clicking the reset button', async () => {
     // Arrange
-    render(CounterExample, {
+    const componentOptions = {
       pinia: createTestingPinia({
         initialState: {
           counterStore: {
@@ -77,7 +77,10 @@ describe('<CounterExample />', () => {
       stubs: {
         NuxtLink: true,
       },
-    });
+    }
+    
+    // Act
+    render(CounterExample, componentOptions);
     const button = screen.getByTestId('reset-button');
     const countValue = screen.getByTestId('count-value');
 
