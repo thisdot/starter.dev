@@ -1,6 +1,6 @@
 import { rest } from 'msw';
 import axios from 'axios';
-import TheGreeting from './TheGreeting.vue';
+import FetchExample from './FetchExample.vue';
 import { render, screen, waitFor } from '@/test/utils';
 import { mswServer } from '~/test/__mocks__/mswServer';
 
@@ -8,7 +8,7 @@ beforeAll(() => mswServer.listen());
 afterEach(() => mswServer.resetHandlers());
 afterAll(() => mswServer.close());
 
-describe('<TheGreeting />', () => {
+describe('<FetchExample />', () => {
   it('Should display correct message', async () => {
     // Arrange
     const componentOptions = {
@@ -25,7 +25,7 @@ describe('<TheGreeting />', () => {
     }
 
     // Act
-    render(TheGreeting, componentOptions);
+    render(FetchExample, componentOptions);
 
     // Assertions
     await waitFor(() => {
@@ -56,7 +56,7 @@ describe('<TheGreeting />', () => {
     }
 
     // Act
-    render(TheGreeting, componentOptions);
+    render(FetchExample, componentOptions);
 
     // Assertions
     await waitFor(() => {
@@ -81,7 +81,7 @@ describe('<TheGreeting />', () => {
     }
     
     // Act
-    render(TheGreeting,componentOptions);
+    render(FetchExample,componentOptions);
 
     const messageSkeleton = screen.getByTestId('message-skeleton');
 

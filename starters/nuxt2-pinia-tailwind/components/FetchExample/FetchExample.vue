@@ -31,7 +31,7 @@
 import { defineComponent, useAsync, useContext } from '@nuxtjs/composition-api';
 
 export default defineComponent({
-  name: 'TheGreeting',
+  name: 'FetchExample',
   setup() {
     const { $axios } = useContext();
 

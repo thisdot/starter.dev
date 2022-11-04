@@ -49,7 +49,7 @@ import { defineComponent } from '@nuxtjs/composition-api';
 import { useCounterStore } from '~/store/counterStore';
 
 export default defineComponent({
-  name: 'TheCounter',
+  name: 'CounterExample',
   setup() {
     const counterState = useCounterStore();
 

@@ -1,10 +1,10 @@
 import Vue from 'vue';
 import { createTestingPinia } from '@pinia/testing';
 import { PiniaVuePlugin } from 'pinia';
-import TheCounter from './TheCounter.vue';
+import CounterExample from './CounterExample.vue';
 import { fireEvent, render, screen } from '@/test/utils';
 
-describe('<TheCounter />', () => {
+describe('<CounterExample />', () => {
   beforeEach(() => {
     Vue.use(PiniaVuePlugin);
   });
@@ -19,7 +19,7 @@ describe('<TheCounter />', () => {
     }
 
     // Act
-    render(TheCounter, componentOptions);
+    render(CounterExample, componentOptions);
     const button = screen.getByTestId('increase-button');
     const countValue = screen.getByTestId('count-value');
 
@@ -50,7 +50,7 @@ describe('<TheCounter />', () => {
 
 
     // Act
-    render(TheCounter, componentOptions);
+    render(CounterExample, componentOptions);
     const button = screen.getByTestId('decrease-button');
     const countValue = screen.getByTestId('count-value');
 
@@ -66,7 +66,7 @@ describe('<TheCounter />', () => {
 
   it('Should reset the count when clicking the reset button', async () => {
     // Arrange
-    render(TheCounter, {
+    render(CounterExample, {
       pinia: createTestingPinia({
         initialState: {
           counterStore: {
