@@ -112,6 +112,12 @@ export const TECHNOLOGIES = [
     Icon: (props) => <NextIcon {...props} />,
   },
   {
+    key: 'nuxt 2',
+    name: 'NuxtJS 2',
+    tags: ['Framework'],
+    Icon: (props) => <NuxtIcon {...props} />,
+  },
+  {
     key: 'nuxt',
     name: 'NuxtJS',
     tags: ['Framework'],
