@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Text, Center, Alert, AlertIcon, AlertTitle, AlertDescription, Skeleton } from '@chakra-ui/react';
 
 export const Greeting = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -18,20 +19,30 @@ export const Greeting = () => {
       .finally(() => setIsLoading(false));
   }, []);
 
-  // TODO: adding css for grey background while loading. Check with next example on loading text
   if (isLoading) {
-    return <p>Loading...</p>;
+    return (
+      <Center my={4}>
+        <Text display="block" fontSize="2xl">
+          Loading data...
+          <Skeleton startColor="blue.500" endColor="blue.700" height="20px" />
+        </Text>
+      </Center>
+    );
   }
 
-  // TODO: style something nice here
   if (error) {
-    return <p>Error!</p>;
+    return (
+      <Alert my={8} w="50%" mx="auto" status="error">
+        <AlertIcon />
+        <AlertTitle fontSize="xl">Error!</AlertTitle>
+        <AlertDescription fontSize="xl"> There was an issue with loading your data. Please refresh the page or try again later.</AlertDescription>
+      </Alert>
+    );
   }
 
   return (
-    <>
-      <p>Message:</p>
-      <p>{greeting}</p>
-    </>
+    <Center my={4}>
+      <Text fontSize="xl">Message: {greeting}</Text>
+    </Center>
   );
 };
