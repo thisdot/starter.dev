@@ -10,7 +10,7 @@ type Routes = {
 
 const Home: NextPage = () => {
   const routesArr: Routes[] = [
-    { text: 'See Counter example component', route: '/counter-example' },
+    { text: 'See Counter example component', route: 'counter-example' },
     { text: 'See Fetch example component', route: 'fetch-example' },
   ];
 
