@@ -13,7 +13,7 @@ const Home = () => {
   return (
     <SafeAreaViewStyled>
       <RawStyled>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('about')}>
           <Image source={require('../../../assets/about-icon.png')} />
         </TouchableOpacity>
         <TouchableOpacity onPress={reset}>
