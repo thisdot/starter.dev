@@ -12,7 +12,7 @@ const checkSlugType = (slug: string[] | string | undefined) => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { slug } = context.query;
-  console.log(context);
+
   const res = await fetch(`https://api.starter.dev/hello?greeting=from ${checkSlugType(slug)}!`);
   const userStr = await res.text();
 
