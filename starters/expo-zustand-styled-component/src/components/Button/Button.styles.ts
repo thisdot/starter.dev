@@ -19,4 +19,5 @@ export const TextStyled = styled.Text`
   text-align-vertical: top;
   margin-top: -5px;
   text-align: center;
+  color: #4a4a4a;
 `;

@@ -2,13 +2,13 @@ import { Image, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { SafeAreaViewStyled, RawStyled, TitleStyled, CountStyled } from './Home.styles';
 import Button from '../../components/Button';
-import { useCount } from './useCount';
+import { useCounter } from './useCounter';
 
-const Home = ({ navigation }: { navigation: any }) => {
-  const count = useCount((state) => state.count);
-  const increment = useCount((state) => state.increment);
-  const decrement = useCount((state) => state.decrement);
-  const reset = useCount((state) => state.reset);
+const Home = () => {
+  const count = useCounter((state) => state.count);
+  const increment = useCounter((state) => state.increment);
+  const decrement = useCounter((state) => state.decrement);
+  const reset = useCounter((state) => state.reset);
 
   return (
     <SafeAreaViewStyled>

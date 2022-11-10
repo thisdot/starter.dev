@@ -27,8 +27,10 @@ export const TitleStyled = styled.Text`
   font-size: 50px;
   font-weight: 300;
   text-align: center;
+  color: #4a4a4a;
 `;
 
 export const CountStyled = styled.Text`
   font-size: 150px;
+  color: #4a4a4a;
 `;
