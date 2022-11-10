@@ -1,5 +1,4 @@
 import { StatusBar } from 'expo-status-bar';
-import { View } from 'react-native';
 import Home from './src/screens/Home';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';

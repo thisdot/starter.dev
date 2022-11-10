@@ -4,7 +4,7 @@ import { SafeAreaViewStyled, RawStyled, TitleStyled, CountStyled } from './Home.
 import Button from '../../components/Button';
 import { useCounter } from './useCounter';
 
-const Home = () => {
+const Home = ({ navigation }: { navigation: any }) => {
   const count = useCounter((state) => state.count);
   const increment = useCounter((state) => state.increment);
   const decrement = useCounter((state) => state.decrement);
