@@ -1,13 +1,16 @@
-import type { NextPage } from 'next';
-import Head from 'next/head';
-import styles from '../styles/Home.module.css';
+import type { NextPage } from "next";
+import Head from "next/head";
+import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
         <title>NextJS and Chakra UI starter kit</title>
-        <meta name="description" content="This is a starter kit for NextJS and Chakra UI" />
+        <meta
+          name="description"
+          content="This is a starter kit for NextJS and Chakra UI"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
