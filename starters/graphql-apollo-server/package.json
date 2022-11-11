@@ -7,16 +7,20 @@
   "scripts": {
     "compile": "tsc",
     "start": "npm run compile && node ./dist/index.js",
-    "dev": "nodemon --exec ts-node ./index.ts",
+    "dev": "nodemon --exec ts-node-esm ./index.ts",
     "lint": "eslint src/**/*.ts",
     "format": "eslint src/**/*.ts --fix"
   },
   "dependencies": {
     "@apollo/server": "^4.1.1",
     "@types/node": "^18.11.9",
-    "graphql": "^16.6.0"
+    "graphql": "^16.6.0",
+    "serverless": "^3.24.1",
+    "serverless-esbuild": "^1.33.1",
+    "serverless-offline": "^11.3.0"
   },
   "devDependencies": {
+    "@types/serverless": "^3.12.8",
     "@typescript-eslint/eslint-plugin": "^5.42.1",
     "@typescript-eslint/parser": "^5.42.1",
     "eslint": "^8.27.0",
