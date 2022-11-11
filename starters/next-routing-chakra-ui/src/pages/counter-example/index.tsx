@@ -1,8 +1,20 @@
 import type { NextPage } from "next";
 import Link from "next/link";
-import { Center, Heading } from "@chakra-ui/react";
+import { Center, Heading, Button } from "@chakra-ui/react";
+import { SetStateAction, useState } from "react";
 
 const CounterExample: NextPage = () => {
+  const [count, setCount] = useState(0);
+
+  const counterButtons: {
+    text: string;
+    setCounterState: SetStateAction<number>;
+  }[] = [
+    { text: "Increment", setCounterState: count + 1 },
+    { text: "Decrement", setCounterState: count - 1 },
+    { text: "Reset", setCounterState: 0 },
+  ];
+
   return (
     <>
       <Center>
@@ -11,7 +23,21 @@ const CounterExample: NextPage = () => {
         </Heading>
       </Center>
 
-      <div className="">{/*counter goes here*/}</div>
+      <div className="flex justify-evenly whitespace-nowrap">
+        <h2 className="text-2xl font-bold" role="display-element">
+          Count: {count}
+        </h2>
+        {counterButtons.map((btn, idx) => (
+          <Button
+            key={`${idx}-${btn.text}`}
+            onClick={() => setCount(btn.setCounterState)}
+            colorScheme="blue"
+            role="button"
+          >
+            {btn.text}
+          </Button>
+        ))}
+      </div>
       <Center fontSize="xl" textDecoration="underline" color="#376fec">
         <Link href="/">Return Home</Link>
       </Center>
