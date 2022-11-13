@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Link from "next/link";
-import { Center, Heading, Button, Stack, Text, Flex } from "@chakra-ui/react";
+import { Center, Heading, Button, Text, Flex } from "@chakra-ui/react";
 import { SetStateAction, useState } from "react";
 
 const CounterExample: NextPage = () => {
