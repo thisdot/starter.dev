@@ -7,7 +7,7 @@
 
 ## Summary of change
 
-<!-- Please include a brief summary on the changes made in this PR. You should also include any screenshots or videos when applicable -->
+<!-- Please include a brief summary of the changes made in this PR. You should also include any screenshots or videos when applicable -->
 
 ## Checklist
 
