@@ -7,7 +7,7 @@
         "tailwind"
     ],
     "version": "0.0.1",
-  "hasShowcase": true,
+    "hasShowcase": true,
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
@@ -84,7 +84,7 @@
         "typescript": "4.6.2"
     },
     "lint-staged": {
-        "**/*.{ts,tsx, html}": [
+        "**/*.{ts,tsx,html}": [
             "npx prettier --write",
             "npx eslint --fix"
         ]

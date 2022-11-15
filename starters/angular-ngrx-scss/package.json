@@ -78,7 +78,7 @@
     "typescript": "4.5.5"
   },
   "lint-staged": {
-    "**/*.{ts,tsx, html}": [
+    "**/*.{ts,tsx,html}": [
       "npx prettier --write",
       "npx eslint --fix"
     ]

@@ -74,7 +74,7 @@
   ],
   "productName": "vue3-apollo-quasar starter kit",
   "lint-staged": {
-    "**/*.{vue,js,jsx,ts,tsx}": [
+    "**/*.{vue,js,ts}": [
       "npx prettier --write",
       "npx eslint --fix"
     ]
