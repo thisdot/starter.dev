@@ -1,14 +1,17 @@
 {
   "name": "nuxt2-pinia-tailwind",
   "version": "1.0.0",
-  "private": true,
   "description": "Nuxt 2, Pinia and TailwindCSS",
-  "hasShowcase": false,
   "keywords": [
     "nuxt 2",
     "pinia",
     "tailwind"
   ],
+  "hasShowcase": false,
+  "private": true,
+  "engines": {
+    "node": ">=16.0"
+  },
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
@@ -27,6 +30,9 @@
     "*.{js,ts,vue}": "eslint --cache",
     "*.{css,scss,sass,html,vue}": "stylelint",
     "*.**": "prettier --check --ignore-unknown"
+  },
+  "msw": {
+    "workerDirectory": "public"
   },
   "dependencies": {
     "@nuxtjs/axios": "5.13.6",
@@ -75,8 +81,5 @@
     "stylelint-config-standard": "24.0.0",
     "ts-jest": "27.1.1",
     "vue-jest": "3.0.4"
-  },
-  "msw": {
-    "workerDirectory": "public"
   }
 }

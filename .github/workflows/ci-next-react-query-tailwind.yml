@@ -14,14 +14,8 @@ on:
       - 'starters/next-react-query-tailwind/**'
 
 jobs:
-
   build:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [16.x]
-
     steps:
       - uses: actions/checkout@v2
         with:
@@ -30,7 +24,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version-file: 'starters/next-react-query-tailwind/package.json'
           cache: ''
 
       - name: Install dependencies
@@ -38,7 +32,7 @@ jobs:
         working-directory: starters/next-react-query-tailwind
 
       - name: Lint files
-        run: npm run lint
+        run: npm run lint && npm run format
         working-directory: starters/next-react-query-tailwind
 
       - name: Build Project
@@ -46,5 +40,5 @@ jobs:
         working-directory: starters/next-react-query-tailwind
 
       - name: Test Project
-        run: npm test
+        run: npm run test
         working-directory: starters/next-react-query-tailwind
