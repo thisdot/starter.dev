@@ -1,8 +1,8 @@
 {
-  "name": "first-serverless",
+  "name": "graphql-serverless-contentful-starter-kit",
   "version": "1.0.0",
-  "description": "",
-  "main": "handler.js",
+  "description": "GraphQL Apollo Server, AWS Serverless, and Contentful CMS Starter Kit",
+  "main": "src/handlers/graphql.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "offline": "serverless offline",
