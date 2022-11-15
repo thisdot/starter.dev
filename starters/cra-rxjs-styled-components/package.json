@@ -10,7 +10,7 @@
   "hasShowcase": true,
   "private": true,
   "engines": {
-    "node": ">=16.0"
+    "node": ">= 16.0"
   },
   "scripts": {
     "start": "craco start",
