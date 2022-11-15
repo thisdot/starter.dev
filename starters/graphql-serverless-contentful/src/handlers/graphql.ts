@@ -1,17 +1,8 @@
-"use strict";
+import { ApolloServer } from '@apollo/server';
+import { startServerAndCreateLambdaHandler } from '@as-integrations/aws-lambda';
+import { typeDefs, resolvers } from '../schema';
 
-module.exports.server = (event, context, callback) => {
-  const response = {
-    statusCode: 200,
-    headers: {
-      "Access-Control-Allow-Origin": "*", // Required for CORS support to work
-    },
-    body: JSON.stringify({
-      message:
-        "Go GraphQL Serverless v1.0! Your function executed successfully!",
-      input: event,
-    }),
-  };
+export const apolloServer = new ApolloServer({ typeDefs, resolvers });
 
-  callback(null, response);
-};
+export const server = startServerAndCreateLambdaHandler(apolloServer);
+

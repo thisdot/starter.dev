@@ -5,9 +5,9 @@
 # uses to deploy your code to your provider of choice
 
 # The `service` block is the name of the service
-service: first-serverless
+service: graphql-serverless-contentful
 
-frameworkVersion: "3"
+frameworkVersion: '3'
 
 # The `provider` block defines where your service will be deployed
 provider:
@@ -23,12 +23,8 @@ functions:
           path: graphql
           method: post
           cors: true
-  helloWorld:
-    handler: handler.helloWorld
-    # The `events` block defines how to trigger the handler.helloWorld code
-    events:
       - http:
-          path: hello-world
+          path: graphql
           method: get
           cors: true
 
