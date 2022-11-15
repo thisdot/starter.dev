@@ -32,7 +32,7 @@ jobs:
         working-directory: starters/angular-apollo-tailwind
 
       - name: Lint files
-        run: npm run lint && npm run lint:styles && npm run format
+        run: npm run lint && npm run format
         working-directory: starters/angular-apollo-tailwind
 
       - name: Build Project
