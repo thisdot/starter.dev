@@ -1,0 +1,29 @@
+{
+  "name": "graphql-serverless-contentful-starter-kit",
+  "version": "1.0.0",
+  "description": "GraphQL Apollo Server, AWS Serverless, and Contentful CMS Starter Kit",
+  "main": "src/handlers/graphql.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "offline": "serverless offline",
+    "lint": "eslint . --ext .ts",
+    "deploy": "serverless deploy",
+    "format": "prettier --write \"**/*.{ts,js,json,md}\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server-lambda": "^3.11.1",
+    "serverless": "^3.24.1",
+    "serverless-offline": "^11.3.0",
+    "serverless-plugin-typescript": "^2.1.4",
+    "typescript": "^4.8.4"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.42.1",
+    "@typescript-eslint/parser": "^5.42.1",
+    "eslint": "^8.27.0",
+    "prettier": "^2.7.1"
+  }
+}
