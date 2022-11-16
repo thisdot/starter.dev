@@ -4,6 +4,7 @@ jspm_packages
 
 .build
 coverage
+generated
 
 # Serverless directories
 .serverless

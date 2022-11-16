@@ -18,6 +18,8 @@ describe('hello query', () => {
         greeting,
       },
     });
+
+    console.log('subject', subject.data);
   });
 
   afterAll(() => {
@@ -25,7 +27,7 @@ describe('hello query', () => {
   });
 
   it('returns the salutation concatenated with the greeting', () => {
-    expect(subject?.data).toEqual({
+    expect(subject.body.singleResult.data).toEqual({
       hello: `Hello, ${greeting}`,
     });
   });

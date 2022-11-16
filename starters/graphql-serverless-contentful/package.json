@@ -4,7 +4,7 @@
   "description": "GraphQL Apollo Server, AWS Serverless, and Contentful CMS Starter Kit",
   "main": "src/handlers/graphql.ts",
   "scripts": {
-    "test": "jest",
+    "test": "npm run codegen && jest",
     "dev": "sls offline start",
     "lint": "eslint . --ext .ts",
     "deploy": "sls deploy",
