@@ -1,30 +1,29 @@
 {
-  "compileOnSave": false,
   "compilerOptions": {
-    "rootDir": ".",
-    "esModuleInterop": true,
-    "sourceMap": true,
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "importHelpers": true,
-    "target": "es2015",
     "module": "commonjs",
-    "skipLibCheck": true,
-    "skipDefaultLibCheck": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"]
-    },
-    "useDefineForClassFields": true,
-    "outDir": "./dist/out-tsc",
-    "types": ["node"]
+    "moduleResolution": "node",
+    "outDir": "dist",
+    "lib": ["esnext"],
+    "preserveConstEnums": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noEmitOnError": true,
+    "noFallthroughCasesInSwitch": true,
+    "strict": true,
+    "target": "es2019",
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true
   },
-  "exclude": [
-    "jest.config.ts",
-    "**/*.spec.ts",
-    "**/*.test.ts",
-    "./node_modules"
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "./tsconfig.spec.json"
+    }
   ],
-  "include": ["**/*.ts"]
+  "exclude": ["node_modules"]
 }

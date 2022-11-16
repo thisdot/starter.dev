@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 import { apolloServer } from '../../handlers/graphql';
 
 describe('hello query', () => {
-  let subject;
+  let subject: any;
   let greeting: string;
 
   beforeAll(async () => {
@@ -25,7 +25,7 @@ describe('hello query', () => {
   });
 
   it('returns the salutation concatenated with the greeting', () => {
-    expect(subject.data).toEqual({
+    expect(subject?.data).toEqual({
       hello: `Hello, ${greeting}`,
     });
   });
