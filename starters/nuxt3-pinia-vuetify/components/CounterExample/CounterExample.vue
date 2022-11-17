@@ -8,18 +8,18 @@
 
     <div class="d-flex flex-row justify-center align-center mt-5 mb-10">
       <p class="text-h5 mr-5">
-        count: <span class="font-weight-bold">{{ counterState.counter }}</span>
+        count: <span class="font-weight-bold" data-testid="count-value">{{ counterState.counter }}</span>
       </p>
       <div>
-        <v-btn class="ma-2 bg-primary" variant="tonal" @click="increaseCount">
+        <v-btn data-testid="increment-button" class="ma-2 bg-primary" variant="tonal" @click="increaseCount">
           increment
         </v-btn>
 
-        <v-btn class="ma-2 bg-primary" variant="tonal" @click="decreaseCount">
+        <v-btn data-testid="decrement-button" class="ma-2 bg-primary" variant="tonal" @click="decreaseCount">
           decrement
         </v-btn>
 
-        <v-btn class="ma-2 bg-primary" variant="tonal" @click="resetCount">
+        <v-btn data-testid="reset-button" class="ma-2 bg-primary" variant="tonal" @click="resetCount">
           reset
         </v-btn>
       </div>

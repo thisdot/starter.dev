@@ -8,7 +8,7 @@
 
     <div class="d-flex flex-row justify-center align-center mt-5 mb-10 text-h6">
       <p>Message:</p>
-      <p class="ml-5 font-weight-bold">
+      <p class="ml-5 font-weight-bold" data-testid="message-value">
         {{ message }}
       </p>
     </div>
