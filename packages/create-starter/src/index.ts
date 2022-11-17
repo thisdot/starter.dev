@@ -8,6 +8,7 @@ import yargs from 'yargs-parser';
 import { initGitRepo, removeLockFileIfExists, overrideAngularJsonIfExists } from './utils';
 
 const STARTER_KITS_JSON_URL = 'https://raw.githubusercontent.com/thisdot/starter.dev/main/starter-kits.json';
+const EXCLUDED_PACKAGE_JSON_FIELDS = ['hasShowcase'];
 
 export async function main() {
   console.log(`\n${bold('Welcome to starter.dev!')} ${gray('(create-starter)')}`);
@@ -76,6 +77,7 @@ export async function main() {
     const packageJSON = JSON.parse(await fs.readFile(path.join(destPath, 'package.json'), 'utf8'));
     packageJSON.name = options.name;
     packageJSON.version = '0.1.0';
+    EXCLUDED_PACKAGE_JSON_FIELDS.forEach((field) => delete packageJSON[field]);
 
     try {
       await fs.writeFile(path.join(destPath, 'package.json'), JSON.stringify(packageJSON, null, 2));
