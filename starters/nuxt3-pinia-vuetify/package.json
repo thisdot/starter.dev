@@ -7,15 +7,22 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint --ext .ts,.js,.vue .",
-    "lint-fix": "eslint --fix --ext .ts,.js,.vue ."
+    "lint-fix": "eslint --fix --ext .ts,.js,.vue .",
+    "test": "vitest --run --reporter verbose --globals",
+    "test:watch": "vitest --reporter verbose --globals"
   },
   "devDependencies": {
+    "@nuxt/test-utils-edge": "^3.0.1-rc.0-27810184.d991a55",
     "@nuxtjs/eslint-config-typescript": "^11.0.0",
     "@pinia/testing": "^0.0.14",
+    "@testing-library/vue": "^6.6.1",
     "@typescript-eslint/eslint-plugin": "^5.42.0",
+    "@vitejs/plugin-vue": "^3.2.0",
     "eslint": "^8.26.0",
+    "jsdom": "^20.0.2",
     "nuxt": "npm:nuxt3@latest",
-    "typescript": "^4.8.4"
+    "typescript": "^4.8.4",
+    "vitest": "^0.25.2"
   },
   "dependencies": {
     "@pinia/nuxt": "^0.4.3",
