@@ -13,6 +13,9 @@
       >
         See Fetch API example component
       </NuxtLink>
+      <v-btn variant="outlined">
+        Button
+      </v-btn>
     </div>
 </template>
   
