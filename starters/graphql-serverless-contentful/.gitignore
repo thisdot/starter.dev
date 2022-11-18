@@ -1,7 +1,10 @@
 # package directories
 node_modules
 jspm_packages
+
 .build
+coverage
+generated
 
 # Serverless directories
 .serverless
