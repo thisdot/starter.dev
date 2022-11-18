@@ -8,3 +8,4 @@ generated
 
 # Serverless directories
 .serverless
+.env
