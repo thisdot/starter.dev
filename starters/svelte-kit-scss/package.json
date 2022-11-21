@@ -7,6 +7,7 @@
   ],
   "private": true,
   "version": "0.1.0",
+  "hasShowcase": true,
   "scripts": {
     "start": "vite dev --open",
     "dev": "vite dev",
