@@ -95,13 +95,13 @@ git clone https://github.com/thisdot/starter.dev.git
 
 ## Commands
 
+- `npm start` - Starts the dev server new tab.
+- `npm test` - Runs the unit tests.
 - `npm run dev` - Starts the development server.
-- `npm run test` - Runs the unit tests.
 - `npm run test:e2e` - Runs the playwright e2e tests.
 - `npm run storybook` - Starts the Storybook UI.
 - `npm run format` - Formats code with prettier for the entire project.
 - `npm run build` - Builds the project for production.
-- `npm run start` - Starts the dev server new tab.
 
 ## Demo Implementation
 
