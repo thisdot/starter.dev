@@ -1,11 +1,19 @@
 import gql from 'graphql-tag';
 
 export const postTypeDefs = gql`
+  type Post {
+    id: ID!
+    content: String!
+  }
+
   type Query {
     "Simple hello world query that accepts a greeting"
-    posts(greeting: String!): {
-        title: String!
-    }
+    posts(id: ID): [Post]
+  }
+
+  type Mutation {
+    "Simple hello world mutation that accepts a greeting"
+    createPost(content: String!): Post
   }
 `;
 
