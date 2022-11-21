@@ -1,10 +1,10 @@
-# express-typescript starter kit
+# express-typescript-typeorm-postgres starter kit
 
 This starter kit features Express, Typescript API setup
 
 ## Table of Contents
 
-- [express-typescript starter kit](#express-typescript-starter-kit)
+- [express-typescript-typeorm-postgres starter kit](#express-typescript-typeorm-postgres-starter-kit)
   - [Table of Contents](#table-of-contents)
   - [Overview](#overview)
     - [Tech Stack](#tech-stack)
@@ -41,16 +41,16 @@ TODO: set up example controllers
 ### CLI (Recommended)
 
 ```bash
-npm create @this-dot/starter --kit express-typescript
+npm create @this-dot/starter --kit express-typescript-typeorm-postgres
 ```
 
 or
 
 ```bash
-yarn create @this-dot/starter --kit express-typescript
+yarn create @this-dot/starter --kit express-typescript-typeorm-postgres
 ```
 
-- Follow the prompts to select the `express-typescript` starter kit and name your new project.
+- Follow the prompts to select the `express-typescript-typeorm-postgres` starter kit and name your new project.
 - `cd` into your project directory and run `npm install`.
 - Run `npm run dev` to start the development server.
 - Open your browser to `http://localhost:3000` to see the included example code running.
@@ -61,7 +61,7 @@ yarn create @this-dot/starter --kit express-typescript
 git clone https://github.com/thisdot/starter.dev.git
 ```
 
-- Copy and rename the `starters/express-typescript` directory to the name of your new project.
+- Copy and rename the `starters/express-typescript-typeorm-postgres` directory to the name of your new project.
 - `cd` into your project directory and run `npm install`.
 - Run `npm run dev` to start the development server.
 - Open your browser to `http://localhost:3333` to see the included example code running.
@@ -87,6 +87,6 @@ TODO: example
 
 ## Demo Implementation
 
-[Repository](https://github.com/thisdot/starter.dev-showcases/tree/main/express-typescript)
+[Repository](https://github.com/thisdot/starter.dev-showcases/tree/main/express-typescript-typeorm-postgres)
 
 TODO: what does the the demo implementation do.

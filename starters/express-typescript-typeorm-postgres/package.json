@@ -1,5 +1,5 @@
 {
-  "name": "express-typescript",
+  "name": "express-typescript-typeorm-postgres",
   "version": "0.0.1",
   "description": "express, typescript, REST",
   "author": "This Dot Labs",
