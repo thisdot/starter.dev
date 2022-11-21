@@ -1,9 +1,9 @@
 import { bootstrapApp } from './bootstrap-app';
 
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 
 const app = bootstrapApp();
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+app.listen(PORT, () => {
+  console.log(`Example app listening on port ${PORT}`);
 });

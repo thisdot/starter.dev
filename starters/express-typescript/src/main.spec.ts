@@ -1,6 +1,5 @@
 describe(`Proof of jest testing works`, () => {
-
   it(`jest testing works`, () => {
-    expect(true).toBe(true)
-  })
+    expect(true).toBe(true);
+  });
 });
