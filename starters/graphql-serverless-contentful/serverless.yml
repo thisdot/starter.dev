@@ -27,6 +27,12 @@ functions:
           path: graphql
           method: get
           cors: true
+  healthcheck:
+    handler: src/handlers/healthcheck.handler
+    events:
+      - http:
+          path: healthcheck
+          method: get
 
 plugins:
   - serverless-offline
