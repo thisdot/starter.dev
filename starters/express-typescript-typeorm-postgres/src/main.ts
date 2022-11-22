@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 require('dotenv').config();
 import { bootstrapApp } from './bootstrap-app';
 import { dataSource } from './datasource';
