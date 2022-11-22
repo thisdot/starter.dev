@@ -1,3 +1,4 @@
+require('dotenv').config();
 import { bootstrapApp } from './bootstrap-app';
 import { dataSource } from './datasource';
 
