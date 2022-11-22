@@ -14,6 +14,8 @@ export const postTypeDefs = gql`
   type Mutation {
     "Simple hello world mutation that accepts a greeting"
     createPost(content: String!): Post
+    updatePost(id: ID!, content: String!): Post
+    deletePost(id: ID!): ID
   }
 `;
 

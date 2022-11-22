@@ -1,48 +1,43 @@
-import axios from 'axios';
 import { Resolvers } from '../../generated/graphql';
+import { PostModel } from '../../models/PostModel';
 
 export const postResolvers: Resolvers = {
   Query: {
     posts: async (_parent, { id }) => {
       if (id) {
-        const { data } = await axios.get(`?sys.id=${id}`);
-        return data.items.map((item: any) => ({
-          id: item.sys.id,
-          content: item.fields.content['en-US'],
-        }));
+        const post = await PostModel.get(id);
+        return [
+          {
+            id: post.sys.id,
+            content: post.fields.content['en-US'],
+          },
+        ];
       }
-      const response = await axios.get('/', {
-        params: {
-          'sys.contentType.sys.id': 'post',
-        },
-      });
 
-      return response.data.items.map((item: any) => ({
-        id: item.sys.id,
-        content: item.fields.content['en-US'],
+      const allPosts = await PostModel.getAll();
+
+      return allPosts.map((post) => ({
+        id: post.sys.id,
+        content: post.fields.content['en-US'],
       }));
     },
   },
   Mutation: {
     createPost: async (_parent, { content }) => {
-      const response = await axios.put('/', {
-        fields: {
-          content: {
-            'en-US': content,
-          },
-        },
-        contentType: {
-          sys: {
-            type: 'Link',
-            linkType: 'ContentType',
-            id: 'post',
-          },
-        },
-      });
+      const post = await PostModel.create(content);
 
       return {
-        id: response.data.sys.id,
-        content: response.data.fields.content['en-US'],
+        id: post.sys.id,
+        content: post.fields.content['en-US'],
+      };
+    },
+
+    updatePost: async (_parent, { id, content }) => {
+      const post = await PostModel.update(id, content);
+
+      return {
+        id: post.sys.id,
+        content: post.fields.content['en-US'],
       };
     },
   },
