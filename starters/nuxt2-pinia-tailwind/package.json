@@ -37,13 +37,13 @@
   "dependencies": {
     "@nuxtjs/axios": "5.13.6",
     "@nuxtjs/composition-api": "0.32.0",
-    "@pinia/nuxt": "0.1.8",
+    "@pinia/nuxt": "0.2.1",
     "core-js": "3.19.3",
     "nuxt": "2.15.8",
-    "pinia": "2.0.14",
-    "vue": "2.7.10",
-    "vue-server-renderer": "2.7.10",
-    "vue-template-compiler": "2.7.10",
+    "pinia": "2.0.16",
+    "vue": "2.6.14",
+    "vue-server-renderer": "2.6.14",
+    "vue-template-compiler": "2.6.14",
     "webpack": "4.46.0"
   },
   "devDependencies": {

@@ -28,7 +28,7 @@ jobs:
           cache: ''
 
       - name: Install dependencies
-        run: npm i --ignore-scripts
+        run: npm pkg delete scripts.prepare && npm i
         working-directory: starters/nuxt2-pinia-tailwind
 
       - name: Lint files
