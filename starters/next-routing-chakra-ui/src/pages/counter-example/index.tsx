@@ -35,7 +35,9 @@ const CounterExample: NextPage = () => {
 
       <Flex justifyContent="space-around" my={8} alignItems="center">
         <Flex alignItems="center">
-          <Heading as="h2">Count:</Heading>
+          <Heading mr={2} as="h2">
+            Count:
+          </Heading>
           <Text fontSize="4xl" color={setColorText()}>
             {count}
           </Text>
