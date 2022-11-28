@@ -29,7 +29,6 @@ This starter kit features Express, Typescript API setup
 ### Included Tooling
 
 - [Jest](https://jestjs.io/) - Test runner
-- [Supertest](https://www.npmjs.com/package/supertest) - API testing
 - [TypeScript](https://www.typescriptlang.org/) - Type checking
 - [ESLint](https://eslint.org/) - Code linting
 - [Prettier](https://prettier.io/) - Code formatting
@@ -80,7 +79,6 @@ git clone https://github.com/thisdot/starter.dev.git
 - `npm run build` - Builds the app.
 - `npm start` - Starts the built app. (Needs a running database first)
 - `npm test` - Runs the unit tests.
-- `npm run test:e2e` - Runs the supertest API tests.
 - `npm run lint` - Runs ESLint on the project.
 - `npm run format` - Formats code for the entire project
 
