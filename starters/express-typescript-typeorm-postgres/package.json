@@ -8,8 +8,14 @@
     "prebuild": "rimraf dist",
     "build": "tsc --project ./tsconfig.build.json",
     "build:watch": "tsc --watch --project ./tsconfig.build.json &",
+    "prestart": "npm run build",
     "start": "nodemon dist/main",
     "dev": "concurrently -n \"tsc,server\" -s \"last\" -c \"magenta,yellow\" \"npm run build:watch\" \"npm run start\"",
+    "db:init": "docker run -d -p 5432:5432 -v $PWD/tools/db:/docker-entrypoint-initdb.d -v $PWD/pg_data:/var/lib/postgresql/data --env-file=$PWD/postgres.db.env --name=data_storage postgres",
+    "db:init:windows": "docker run -d -p 5432:5432 -v %cd%/tools/db:/docker-entrypoint-initdb.d -v %cd%/pg_data:/var/lib/postgresql/data --env-file=%cd%/postgres.db.env --name=data_storage postgres",
+    "db:start": "docker start data_storage",
+    "db:stop": "docker stop data_storage",
+    "db:delete": "npx rimraf pg_data && docker rm data_storage -f",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "format:check": "prettier --check \"src/**/*.ts\" \"test/**/*.ts\"",
@@ -20,7 +26,11 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "express": "4.18.2"
+    "dotenv": "^16.0.3",
+    "express": "4.18.2",
+    "pg": "8.8.0",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "0.3.10"
   },
   "devDependencies": {
     "@types/express": "4.17.13",
@@ -41,7 +51,7 @@
     "supertest": "6.1.3",
     "ts-jest": "28.0.8",
     "ts-loader": "9.2.3",
-    "ts-node": "10.0.0",
+    "ts-node": "10.7.0",
     "tsconfig-paths": "4.1.0",
     "typescript": "4.7.4"
   },
