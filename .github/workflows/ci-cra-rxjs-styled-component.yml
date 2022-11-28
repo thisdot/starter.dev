@@ -1,0 +1,44 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Cra RxJS Styled-components CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'starters/cra-rxjs-styled-components/**'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'starters/cra-rxjs-styled-components/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: 'starters/cra-rxjs-styled-components/package.json'
+          cache: ''
+
+      - name: Install dependencies
+        run: npm i
+        working-directory: starters/cra-rxjs-styled-components
+
+      - name: Lint files
+        run: npm run lint && npm run format:write
+        working-directory: starters/cra-rxjs-styled-components
+
+      - name: Build Project
+        run: npm run build
+        working-directory: starters/cra-rxjs-styled-components
+
+      - name: Test Project
+        run: npm run test
+        working-directory: starters/cra-rxjs-styled-components
