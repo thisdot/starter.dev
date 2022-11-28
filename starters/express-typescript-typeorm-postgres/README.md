@@ -77,6 +77,8 @@ git clone https://github.com/thisdot/starter.dev.git
 - `npm run db:stop` - Stops the running database docker container.
 - `npm run db:delete` - Deletes everything database related and allows you to reinitialise your database.
 - `npm run dev` - Starts the development server. (Needs a running database first)
+- `npm run build` - Builds the app.
+- `npm run start` - Starts the built app. (Needs a running database first)
 - `npm run test` - Runs the unit tests.
 - `npm run test:e2e` - Runs the supertest API tests.
 - `npm run lint` - Runs ESLint on the project.

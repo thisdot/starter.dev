@@ -8,6 +8,7 @@
     "prebuild": "rimraf dist",
     "build": "tsc --project ./tsconfig.build.json",
     "build:watch": "tsc --watch --project ./tsconfig.build.json &",
+    "prestart": "npm run build",
     "start": "nodemon dist/main",
     "dev": "concurrently -n \"tsc,server\" -s \"last\" -c \"magenta,yellow\" \"npm run build:watch\" \"npm run start\"",
     "db:init": "docker run -d -p 5432:5432 -v $PWD/tools/db:/docker-entrypoint-initdb.d -v $PWD/pg_data:/var/lib/postgresql/data --env-file=$PWD/postgres.db.env --name=data_storage postgres",

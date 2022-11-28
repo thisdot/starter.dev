@@ -15,7 +15,6 @@ dataSource
     console.error(`Error during Data Source initialisation:`, err);
   });
 
-
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
