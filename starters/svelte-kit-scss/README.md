@@ -95,16 +95,18 @@ git clone https://github.com/thisdot/starter.dev.git
 
 ## Commands
 
+- `npm start` - Starts the dev server new tab.
+- `npm test` - Runs the unit tests.
 - `npm run dev` - Starts the development server.
-- `npm run test` - Runs the unit tests.
 - `npm run test:e2e` - Runs the playwright e2e tests.
 - `npm run storybook` - Starts the Storybook UI.
 - `npm run format` - Formats code with prettier for the entire project.
 - `npm run build` - Builds the project for production.
-- `npm run start` - Starts the dev server new tab.
 
 ## Demo Implementation
 
 [Repository](https://github.com/thisdot/starter.dev-github-showcases/tree/main/svelte-kit-scss)
+
+[Live Application](http://svelte-kit-scss.starter.dev/)
 
 The demo application tries to implement some of GitHub's pages and functionality. It uses the OAuth credentials in GitHub to authenticate users with their GitHub accounts and uses svelte's fetch api to fetch data from the GitHub API. Check out the link above to learn more or check out the demo!

@@ -1,10 +1,21 @@
 {
   "name": "vue3-apollo-quasar",
   "version": "0.1.0",
-  "private": true,
-  "hasShowcase": true,
   "description": "Vue3, Apollo, and Quasar",
+  "keywords": [
+    "vue",
+    "apollo",
+    "quasar"
+  ],
+  "hasShowcase": true,
+  "private": true,
+  "engines": {
+    "node": ">= 14.19",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
+  },
   "author": "Jerry Hogan, Allan Jeremy, William Hutt",
+  "productName": "vue3-apollo-quasar starter kit",
   "scripts": {
     "dev": "quasar dev",
     "build": "quasar build",
@@ -47,7 +58,7 @@
     "babel-jest": "27.0.6",
     "babel-loader": "8.2.4",
     "css-loader": "4.3.0",
-    "eslint": "8.10.0",
+    "eslint": "8.11.0",
     "eslint-config-prettier": "8.1.0",
     "eslint-plugin-vue": "8.5.0",
     "jest": "27.0.5",
@@ -58,16 +69,5 @@
     "ts-jest": "27.1.4",
     "typescript": "4.5.4",
     "vue-loader": "16.8.3"
-  },
-  "engines": {
-    "node": "^18 || ^16 || ^14.19",
-    "npm": ">= 6.13.4",
-    "yarn": ">= 1.21.1"
-  },
-  "keywords": [
-    "vue",
-    "apollo",
-    "quasar"
-  ],
-  "productName": "vue3-apollo-quasar starter kit"
+  }
 }
