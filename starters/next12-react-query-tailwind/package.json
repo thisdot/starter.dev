@@ -9,6 +9,9 @@
   "version": "0.1.1",
   "private": true,
   "hasShowcase": true,
+  "engines": {
+    "node": ">= 16.0 <18.0.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
