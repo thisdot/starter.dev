@@ -1,23 +1,39 @@
 import { Request, Response } from 'express';
 import { getReasonPhrase, StatusCodes } from 'http-status-codes';
 import { dataSource } from '../../../datasource';
-import { ping, PingResult } from '../../../utils/ping';
+import { ERROR_TYPE, SUCCESS_TYPE } from '../../../interfaces/constants';
+import { ErrorResult, SuccessResult } from '../../../interfaces/results';
 
 export async function getHealth(req: Request, res: Response): Promise<void> {
-  const { DATABASE_HOST, DATABASE_PORT } = process.env;
+  const databaseVersion = await pingDatabase();
 
-  const canReachDatabase = await ping(DATABASE_HOST, DATABASE_PORT);
-  if (canReachDatabase !== PingResult.PONG) {
+  if (databaseVersion.type === ERROR_TYPE) {
     res.status(StatusCodes.SERVICE_UNAVAILABLE).json({
-      isDbInitialised: dataSource.isInitialized,
-      canReachDatabase,
       error: getReasonPhrase(StatusCodes.SERVICE_UNAVAILABLE),
     });
     return;
   }
 
   res.json({
-    isDbInitialised: dataSource.isInitialized,
-    canReachDatabase,
+    database: databaseVersion.data,
   });
+}
+
+async function pingDatabase(): Promise<SuccessResult<{ version: string }> | ErrorResult> {
+  return dataSource
+    .query(`SELECT version()`)
+    .then(
+      (databaseVersion) =>
+        ({
+          type: SUCCESS_TYPE,
+          data: databaseVersion,
+        } as SuccessResult<{ version: string }>)
+    )
+    .catch((error) => {
+      console.error(error);
+      return {
+        type: ERROR_TYPE,
+        message: error.message,
+      };
+    });
 }
