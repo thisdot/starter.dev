@@ -1,5 +1,7 @@
 import net from 'net';
 
+const DEFAULT_PING_TIMEOUT = parseInt(process.env.PING_TIMEOUT) || 3000;
+
 export enum PingResult {
   PONG = 'PONG',
   TIMEOUT = 'TIMEOUT',
@@ -9,7 +11,7 @@ export enum PingResult {
 export async function ping(hostname, port): Promise<PingResult> {
   return new Promise((resolve) => {
     const socket = net.createConnection(port, hostname);
-    socket.setTimeout(3000);
+    socket.setTimeout(DEFAULT_PING_TIMEOUT);
     socket.on('connect', () => {
       socket.end();
       resolve(PingResult.PONG);
