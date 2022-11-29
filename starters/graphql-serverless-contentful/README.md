@@ -81,9 +81,3 @@ The demo components included in the starter.kit are co-located with the tests. I
 - posts.typedefs.ts - Type definitions for the Post entity
 - comments.typedefs.ts - Type definitions for the Comment entity
 ```
-
-## Demo Implementation
-
-[Repository](https://github.com/thisdot/starter.dev-github-showcases/tree/main/graphql-serverless-contentful)
-
-The demo for this starter kit is a partial implementation of some GitHub functionality. It uses the Serverless framework to run the service locally and offline for development. Check out the link above to learn more or check out the demo!
