@@ -1,5 +1,5 @@
 import express, { Express } from 'express';
-import { apiRouter } from './routes/api-routes';
+import { apiRouter } from './controllers/router';
 
 export function bootstrapApp(): Express {
   const app = express();
