@@ -1,20 +1,24 @@
 {
   "name": "angular-ngrx-scss",
+  "version": "0.1.0",
   "description": "Angular, NgRx, and SCSS",
   "keywords": [
     "angular",
     "ngrx",
     "sass"
   ],
-  "private": true,
-  "version": "0.1.0",
   "hasShowcase": false,
+  "private": true,
+  "engines": {
+    "node": ">= 16.0"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "test:ci": "ng test --browsers=ChromeHeadless --no-watch",
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
     "storybook": "yarn docs:json && start-storybook -p 6006",
     "build-storybook": "yarn docs:json && build-storybook",

@@ -1,28 +1,22 @@
 {
   "name": "cra-rxjs-styled-components",
+  "version": "0.1.0",
   "description": "Create React App, RxJS and styled-components",
   "keywords": [
     "react",
     "rxjs",
     "styled-components"
   ],
-  "version": "0.1.0",
   "hasShowcase": true,
   "private": true,
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.4.3",
-    "react-rxjs-elements": "^0.0.7",
-    "react-scripts": "5.0.1",
-    "rxjs": "^7.5.7",
-    "styled-components": "^5.3.6",
-    "web-vitals": "2.1.4"
+  "engines": {
+    "node": ">= 16.0 <18.0.0"
   },
   "scripts": {
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
+    "lint": "npx eslint \"src/**/*.{js,jsx,ts,tsx,html}\" --quiet --fix",
     "eject": "react-scripts eject",
     "format:check": "prettier --check .",
     "format:write": "prettier --write .",
@@ -62,6 +56,16 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.3",
+    "react-rxjs-elements": "^0.0.7",
+    "react-scripts": "5.0.1",
+    "rxjs": "^7.5.7",
+    "styled-components": "^5.3.6",
+    "web-vitals": "2.1.4"
   },
   "devDependencies": {
     "@craco/craco": "6.4.3",

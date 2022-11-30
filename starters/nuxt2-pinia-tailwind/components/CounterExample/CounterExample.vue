@@ -64,7 +64,7 @@ export default defineComponent({
     };
 
     const resetCount = counterState.$reset.bind(counterState);
-    
+
     return { counterState, increaseCount, decreaseCount, resetCount };
   },
 });

@@ -1,0 +1,44 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Angular NgRx SCSS CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'starters/angular-ngrx-scss/**'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'starters/angular-ngrx-scss/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: 'starters/angular-ngrx-scss/package.json'
+          cache: ''
+
+      - name: Install dependencies
+        run: npm i
+        working-directory: starters/angular-ngrx-scss
+
+      - name: Lint files
+        run: npm run lint && npm run prettier
+        working-directory: starters/angular-ngrx-scss
+
+      - name: Build Project
+        run: npm run build
+        working-directory: starters/angular-ngrx-scss
+
+      - name: Test Project
+        run: npm run test:ci
+        working-directory: starters/angular-ngrx-scss

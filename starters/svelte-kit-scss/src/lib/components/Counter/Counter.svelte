@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { count, incrementCount, decrementCount, resetCount } from '../../stores';
+  import { count, incrementCount, decrementCount, resetCount } from '$lib/stores';
 
   onMount(resetCount);
 </script>
