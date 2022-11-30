@@ -1,11 +1,11 @@
-import { ERROR_TYPE, SUCCESS_TYPE } from './constants';
+import { Result } from './constants';
 
 export interface SuccessResult<T> {
-  type: typeof SUCCESS_TYPE;
+  type: Result.SUCCESS;
   data: T;
 }
 
 export interface ErrorResult {
-  type: typeof ERROR_TYPE;
+  type: Result.ERROR;
   message: string;
 }
