@@ -66,8 +66,7 @@ git clone https://github.com/thisdot/starter.dev.git
 - `cd` into your project directory and run `npm install`.
 - Run `npm run dev` to start the server.
 
-[//]: # (- TODO: #534 this needs to be pointing towards the swagger documentation)
-- Open your browser to `http://localhost:3333/swagger` to see the included example code running.
+- Open your browser to `http://localhost:3333/api-docs` to see the included example code running.
 
 ## Commands
 
