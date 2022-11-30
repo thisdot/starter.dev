@@ -67,7 +67,7 @@ git clone https://github.com/thisdot/starter.dev.git
 
 ## Kit Organization / Architecture
 
-The demo components included in the starter.kit are co-located with the tests. If you want to follow this pattern, take a look at our GitHub demo implementation below. The demo implementation is done with the same structure but includes things like mocks, and data fetching queries that are modeled after an MVC type architecture. Using this structure makes it easy to find all the code and functionality related to a specific component. This pattern follows the single responsibility principle since each file has one purpose. For example the `.resolvers.ts` files handle data all resolvers with the functionality related to data fetching for your query. The `.test.ts` files handle all the unit tests for the resolvers. The `.typedefs.ts` files handle all the types for GraphQL.
+The demo components included in the starter.kit are co-located with the tests. This kit includes things like mocks, and data fetching queries that are modeled after an MVC type architecture. Using this structure makes it easy to find all the code and functionality related to a specific component. This pattern follows the single responsibility principle since each file has one purpose. For example the `.resolvers.ts` files handle data all resolvers with the functionality related to data fetching for your query. The `.test.ts` files handle all the unit tests for the resolvers. The `.typedefs.ts` files handle all the types for GraphQL.
 
 ### Example directory
 
