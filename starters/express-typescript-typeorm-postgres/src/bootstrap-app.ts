@@ -5,7 +5,6 @@ import { apiRouter } from './controllers/router';
 export function bootstrapApp(): Express {
   const app = express();
   expressOasGenerator.handleResponses(app, {
-    specOutputPath: './swagger.json',
     specOutputFileBehavior: SPEC_OUTPUT_FILE_BEHAVIOR.RECREATE,
     swaggerDocumentOptions: {},
   });
