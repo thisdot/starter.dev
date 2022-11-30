@@ -4,5 +4,4 @@ import { typeDefs, resolvers } from '../schema';
 
 export const apolloServer = new ApolloServer({ typeDefs, resolvers });
 
-export const server = startServerAndCreateLambdaHandler(apolloServer);
-
+export const server = startServerAndCreateLambdaHandler(apolloServer as any);

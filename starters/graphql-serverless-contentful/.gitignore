@@ -8,3 +8,6 @@ generated
 
 # Serverless directories
 .serverless
+.env
+
+graphql.schema.json
