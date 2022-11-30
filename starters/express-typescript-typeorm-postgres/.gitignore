@@ -1,6 +1,8 @@
 # compiled output
 /dist
 /node_modules
+swagger.json
+swagger_v3.json
 
 # database
 pg_data
