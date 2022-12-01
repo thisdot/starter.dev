@@ -268,6 +268,12 @@ export const TECHNOLOGIES = [
     Icon: (props) => <ApolloIcon {...props} />,
   },
   {
+    key: 'apollo-server',
+    name: 'Apollo Server',
+    tags: ['Middleware'],
+    Icon: (props) => <ApolloIcon {...props} />,
+  },
+  {
     key: 'vite',
     name: 'Vite',
     tags: ['Tooling'],
