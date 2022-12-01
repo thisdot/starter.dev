@@ -99,7 +99,7 @@ export const TECHNOLOGIES = [
     tags: ['Core UI'],
     Icon: (props) => <VueIcon {...props} />,
   },
-   {
+  {
     key: 'solidjs',
     name: 'SolidJs',
     tags: ['Core UI'],
@@ -263,8 +263,8 @@ export const TECHNOLOGIES = [
   },
   {
     key: 'apollo',
-    name: 'Apollo',
-    tags: ['Data Management'],
+    name: 'Apollo Client',
+    tags: ['API Specification'],
     Icon: (props) => <ApolloIcon {...props} />,
   },
   {
