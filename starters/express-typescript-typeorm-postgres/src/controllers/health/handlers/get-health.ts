@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { getReasonPhrase, StatusCodes } from 'http-status-codes';
 import { dataSource } from '../../../datasource';
-import { Result } from '../../../interfaces/constants';
+import { Result } from '../../../constants/result';
 import { ErrorResult, SuccessResult } from '../../../interfaces/results';
 
 export async function getHealth(req: Request, res: Response): Promise<void> {
