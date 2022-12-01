@@ -7,7 +7,7 @@ export function bootstrapApp(): Express {
   const app = express();
   expressOasGenerator.handleResponses(app, {
     specOutputFileBehavior: SPEC_OUTPUT_FILE_BEHAVIOR.RECREATE,
-    swaggerDocumentOptions: {}
+    swaggerDocumentOptions: {},
   });
   app.use(express.json());
   app.use('/api', apiRouter);
