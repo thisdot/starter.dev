@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import cors from 'cors';
 
 let middleware = cors();
