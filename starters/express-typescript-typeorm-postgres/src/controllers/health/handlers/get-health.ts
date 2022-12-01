@@ -3,6 +3,7 @@ import { getReasonPhrase, StatusCodes } from 'http-status-codes';
 import { dataSource } from '../../../datasource';
 import { Result } from '../../../constants/result';
 import { ErrorResult, SuccessResult } from '../../../interfaces/results';
+import { LogHelper } from '../../../utils/log-helper';
 
 export async function getHealth(req: Request, res: Response): Promise<void> {
   const databaseVersion = await checkConnection();
@@ -31,7 +32,7 @@ function checkConnection(): Promise<SuccessResult<{ version: string }> | ErrorRe
         } as SuccessResult<{ version: string }>)
     )
     .catch((error) => {
-      console.error(error);
+      LogHelper.error(error);
       return {
         type: Result.ERROR,
         message: error.message,
