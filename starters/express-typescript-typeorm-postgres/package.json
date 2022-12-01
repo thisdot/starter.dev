@@ -25,6 +25,7 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "4.18.2",
     "express-oas-generator": "1.0.45",
@@ -72,6 +73,9 @@
     "testEnvironment": "node"
   },
   "nodemonConfig": {
-    "ignore": ["**/swagger.json", "**/swagger_v3.json"]
+    "ignore": [
+      "**/swagger.json",
+      "**/swagger_v3.json"
+    ]
   }
 }
