@@ -9,11 +9,14 @@ This starter kit features Express, Typescript API setup
   - [Overview](#overview)
     - [Tech Stack](#tech-stack)
     - [Included Tooling](#included-tooling)
-    - [Example Components](#example-components)
+    - [Example Controllers](#example-controllers)
   - [Installation](#installation)
     - [CLI (Recommended)](#cli-recommended)
     - [Manual](#manual)
   - [Commands](#commands)
+  - [Database](#database)
+    - [Seeding](#seeding)
+    - [CORS Cross-Origin Resource Sharing](#cors-cross-origin-resource-sharing)
   - [Kit Organization / Architecture](#kit-organization--architecture)
     - [Example directory](#example-directory)
   - [Demo Implementation](#demo-implementation)
@@ -101,6 +104,13 @@ For local development, we also mount the `pg_data` folder with the `-v $PWD/pg_d
 
 Running `npm run db:delete` will delete everything and allows you to re-initialize your database from zero.
 
+### CORS Cross-Origin Resource Sharing
+
+The [Cross-Origin Resource Sharing](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) standard works by adding new HTTP headers that let servers describe which origins are permitted to read that information from a web browser. For Security reasons, browsers restrict cross-origin HTTP requests initiated from scripts. This means that you cannot request data from web application on 'https://domain-a.com' from 'https://domain-b.com/data.json'.
+
+This application accepts CORS from all origins by default. Some web applications may require you to add the HTTP header `'Access-Control-Allow-Origin': '*'` to allow access.
+
+In order to restrict origins urls that can access your api, you need to add an array of origin url strings in the `CORS_ALLOWED_ORIGINS` variable located in your `.env` file. For example `CORS_ALLOWED_ORIGINS=["https://start.dev"]`. In case you need to access the api in a development environment i.e. a sveltekit application, you will concatenate the local url `http://127.0.0.1` to the `CORS_ALLOWED_ORIGINS` variable like so `CORS_ALLOWED_ORIGINS=["https://start.dev", "http://127.0.0.1"]`
 
 ## Kit Organization / Architecture
 

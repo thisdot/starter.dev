@@ -1,6 +1,7 @@
 import express, { Express } from 'express';
 import expressOasGenerator, { SPEC_OUTPUT_FILE_BEHAVIOR } from 'express-oas-generator';
 import { apiRouter } from './controllers/router';
+import { corsMiddleware } from './middlewares/cors';
 
 export function bootstrapApp(): Express {
   const app = express();
@@ -9,6 +10,10 @@ export function bootstrapApp(): Express {
     swaggerDocumentOptions: {},
   });
   app.use(express.json());
+
+  app.options('*', corsMiddleware);
+  app.use(corsMiddleware);
+
   app.use('/api', apiRouter);
   expressOasGenerator.handleRequests();
   return app;
