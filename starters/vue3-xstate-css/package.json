@@ -15,8 +15,10 @@
     "format": "prettier --write ./src --ignore-path .gitignore"
   },
   "dependencies": {
+    "@xstate/vue": "2.0.0",
     "vue": "3.2.41",
-    "vue-router": "4.1.5"
+    "vue-router": "4.1.5",
+    "xstate": "4.34.0",
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "1.1.4",
