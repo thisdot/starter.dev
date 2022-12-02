@@ -1,5 +1,5 @@
 {
-  "name": "serverless-framework-apollo-contentful-starter-kit",
+  "name": "serverless-framework-apollo-contentful",
   "version": "1.0.0",
   "description": "AWS Serverless, GraphQL Apollo Server, and Contentful CMS Starter Kit",
   "main": "src/handlers/graphql.ts",

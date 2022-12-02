@@ -47,13 +47,13 @@ yarn create @this-dot/starter --kit serverless-framework-apollo-contentful
 
 ### Manual
 
-This requires a download of the entire starter.dev repository and extraction of the `graphql-serverless-contentful` kit from the starters directory.
+This requires a download of the entire starter.dev repository and extraction of the `serverless-framework-apollo-contentful` kit from the starters directory.
 
 ```bash
 git clone https://github.com/thisdot/starter.dev.git
 ```
 
-- Copy and rename the `starters/graphql-serverless-contentful` directory to the name of your new project.
+- Copy and rename the `starters/serverless-framework-apollo-contentful` directory to the name of your new project.
 - `cd` into your project directory and run `npm install`.
 - Run `npm run dev` to start the development server.
 - Open your browser to `http://localhost:3000` to see the included example code running.
