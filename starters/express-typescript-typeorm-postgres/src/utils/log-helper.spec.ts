@@ -90,7 +90,6 @@ describe(`LogHelper`, () => {
 
       LogHelper.debug('Test');
 
-      /** We expect the log method to be called two times, because it gets called in the constructor as well */
       expect(consoleSpy).toHaveBeenCalledTimes(1);
       expect(consoleSpy).lastCalledWith(`[DEBUG] Test`);
     });
@@ -119,7 +118,6 @@ describe(`LogHelper`, () => {
 
       LogHelper.warn('Test');
 
-      /** We expect the log method to be called two times, because it gets called in the constructor as well */
       expect(consoleSpy).toHaveBeenCalledTimes(1);
       expect(consoleSpy).lastCalledWith(`[WARN] Test`);
     });
@@ -148,7 +146,6 @@ describe(`LogHelper`, () => {
 
       LogHelper.error('Test');
 
-      /** We expect the log method to be called two times, because it gets called in the constructor as well */
       expect(consoleSpy).toHaveBeenCalledTimes(1);
       expect(consoleSpy).lastCalledWith(`[ERROR] Test`);
     });
