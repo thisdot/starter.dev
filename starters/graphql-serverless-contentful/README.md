@@ -1,6 +1,6 @@
-# graqhql-serverless-contentful starter kit
+# serverless-framework-apollo-contentful starter kit
 
-This starter kit features **GraphQL**, **Apollo Server**, **Serverless** and **Contentful**.
+This starter kit features **Serverless**, **GraphQL**, **Apollo Server**, and **Contentful**.
 
 ## Overview
 
@@ -14,7 +14,7 @@ This starter kit features **GraphQL**, **Apollo Server**, **Serverless** and **C
 ### Included Tooling
 
 - [Jest](https://jestjs.io/) - Test runner
-- [Typescript](https://www.typescriptlang.org/) - Type checking
+- [TypeScript](https://www.typescriptlang.org/) - Type checking
 - [ESLint](https://eslint.org/) - Code linting
 - [Prettier](https://prettier.io/) - Code formatting
 
@@ -29,7 +29,7 @@ This starter kit features **GraphQL**, **Apollo Server**, **Serverless** and **C
 ### CLI (Recommended)
 
 ```bash
-npm create @this-dot/starter --kit graphql-serverless-contentful
+npm create @this-dot/starter --kit serverless-framework-apollo-contentful
 ```
 
 ````
@@ -37,10 +37,10 @@ npm create @this-dot/starter --kit graphql-serverless-contentful
 or
 
 ```bash
-yarn create @this-dot/starter --kit graphql-serverless-contentful
+yarn create @this-dot/starter --kit serverless-framework-apollo-contentful
 ````
 
-- Follow the prompts to select the `graphql-serverless-contentful` starter kit and name your new project.
+- Follow the prompts to select the `serverless-framework-apollo-contentful` starter kit and name your new project.
 - `cd` into your project directory and run `npm install`.
 - Run `npm run dev` to start the development server.
 - Open your browser to `http://localhost:3000` to see the included example code running.
@@ -67,7 +67,7 @@ git clone https://github.com/thisdot/starter.dev.git
 
 ## Kit Organization / Architecture
 
-The demo components included in the starter.kit are co-located with the tests. This kit includes things like mocks, and data fetching queries that are modeled after an MVC type architecture. Using this structure makes it easy to find all the code and functionality related to a specific component. This pattern follows the single responsibility principle since each file has one purpose. For example the `.resolvers.ts` files handle data all resolvers with the functionality related to data fetching for your query. The `.test.ts` files handle all the unit tests for the resolvers. The `.typedefs.ts` files handle all the types for GraphQL.
+The demo components included in the starter kit are co-located with the tests. This kit includes things like mocks, and data fetching queries that are modeled after an MVC type architecture. Using this structure makes it easy to find all the code and functionality related to a specific component. This pattern follows the single responsibility principle since each file has one purpose. For example, the `.resolvers.ts` files handle data for all resolvers with the functionality related to data fetching for your query. The `.test.ts` files handle all the unit tests for the resolvers. The `.typedefs.ts` files handle all the types for GraphQL.
 
 ### Example directory
 
