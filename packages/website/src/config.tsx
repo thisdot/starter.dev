@@ -245,6 +245,18 @@ export const TECHNOLOGIES = [
     Icon: (props) => <RxJsIcon {...props} />,
   },
   {
+    key: 'serverless',
+    name: 'Serverless',
+    tags: ['Infrastructure'],
+    Icon: (props) => <ServerlessIcon {...props} />,
+  },
+  {
+    key: 'apollo-server',
+    name: 'Apollo Server',
+    tags: ['Middleware'],
+    Icon: (props) => <ApolloIcon {...props} />,
+  },
+  {
     key: 'graphql',
     name: 'GraphQL',
     tags: ['API Specification'],
@@ -269,12 +281,6 @@ export const TECHNOLOGIES = [
     Icon: (props) => <ApolloIcon {...props} />,
   },
   {
-    key: 'apollo-server',
-    name: 'Apollo Server',
-    tags: ['Middleware'],
-    Icon: (props) => <ApolloIcon {...props} />,
-  },
-  {
     key: 'vite',
     name: 'Vite',
     tags: ['Tooling'],
@@ -291,12 +297,6 @@ export const TECHNOLOGIES = [
     name: 'Pinia',
     tags: ['Data Management'],
     Icon: (props) => <PiniaIcon {...props} />,
-  },
-  {
-    key: 'serverless',
-    name: 'Serverless',
-    tags: ['Infrastructure'],
-    Icon: (props) => <ServerlessIcon {...props} />,
   },
 ];
 
