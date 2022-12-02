@@ -10,7 +10,8 @@
     "deploy": "sls deploy",
     "format": "prettier --write \"**/*.{ts,js,json,md}\"",
     "ts:check": "tsc --noEmit",
-    "codegen": "graphql-codegen --config codegen.ts"
+    "codegen": "graphql-codegen --config codegen.ts",
+    "seed": "ts-node ./scripts/seed.ts"
   },
   "keywords": [],
   "author": "",
@@ -33,6 +34,7 @@
     "@types/node": "^18.11.9",
     "@typescript-eslint/eslint-plugin": "^5.42.1",
     "@typescript-eslint/parser": "^5.42.1",
+    "dotenv": "^16.0.3",
     "eslint": "^8.27.0",
     "jest": "^29.2.3",
     "prettier": "^2.7.1",
