@@ -13,9 +13,9 @@
     "codegen": "graphql-codegen --config codegen.ts"
   },
   "keywords": [
-    "graphql",
     "serverless",
-    "apollo-server"
+    "apollo-server",
+    "graphql"
   ],
   "hasShowcase": false,
   "author": "This Dot Labs",
