@@ -1,7 +1,7 @@
 {
-  "name": "graphql-serverless-contentful-starter-kit",
+  "name": "serverless-framework-apollo-contentful-starter-kit",
   "version": "1.0.0",
-  "description": "GraphQL Apollo Server, AWS Serverless, and Contentful CMS Starter Kit",
+  "description": "AWS Serverless, GraphQL Apollo Server, and Contentful CMS Starter Kit",
   "main": "src/handlers/graphql.ts",
   "scripts": {
     "test": "npm run codegen && jest",
@@ -12,8 +12,12 @@
     "ts:check": "tsc --noEmit",
     "codegen": "graphql-codegen --config codegen.ts"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "graphql",
+    "serverless",
+    "apollo-server"
+  ],
+  "author": "This Dot Labs",
   "license": "ISC",
   "dependencies": {
     "@apollo/server": "4.1.1",
