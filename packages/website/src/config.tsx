@@ -247,7 +247,7 @@ export const TECHNOLOGIES = [
   {
     key: 'graphql',
     name: 'GraphQL',
-    tags: ['Data Management'],
+    tags: ['API Specification'],
     Icon: (props) => <GraphQLIcon {...props} />,
   },
   {
@@ -265,7 +265,7 @@ export const TECHNOLOGIES = [
   {
     key: 'apollo',
     name: 'Apollo Client',
-    tags: ['API Specification'],
+    tags: ['Data Management'],
     Icon: (props) => <ApolloIcon {...props} />,
   },
   {
