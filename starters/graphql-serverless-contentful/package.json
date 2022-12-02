@@ -17,6 +17,7 @@
     "serverless",
     "apollo-server"
   ],
+  "hasShowcase": false,
   "author": "This Dot Labs",
   "license": "ISC",
   "dependencies": {
