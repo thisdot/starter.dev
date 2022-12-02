@@ -295,7 +295,7 @@ export const TECHNOLOGIES = [
   {
     key: 'serverless',
     name: 'Serverless',
-    tags: ['Cloud Computing'],
+    tags: ['Infrastructure'],
     Icon: (props) => <ServerlessIcon {...props} />,
   },
 ];
