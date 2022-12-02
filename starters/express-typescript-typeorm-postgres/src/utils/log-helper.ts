@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 const allowedLogLevels = process.env.ALLOWED_LOG_LEVELS || '[]';
 
 type LogLevel = 'INFO' | 'DEBUG' | 'WARN' | 'ERROR';
@@ -23,35 +24,47 @@ class Logger {
     this.log(`Initialising logger with allowed levels: ${allowedLogLevels.join(', ')}`);
   }
 
-  log(...args) {
+  log(message?: any, ...optionalParams: any[]): void {
     if (this.enabledLevels.has('INFO')) {
-      const [message, ...rest] = args;
-      console.log(`[INFO] ${message}`, ...rest);
+      if (typeof message === 'string') {
+        console.log(`[INFO] ${message}`, ...optionalParams);
+      } else {
+        console.log(`[INFO]`, message, ...optionalParams);
+      }
     }
   }
 
-  info(...args) {
-    this.log(...args);
+  info(message?: any, ...optionalParams: any[]): void {
+    this.log(message, ...optionalParams);
   }
 
-  debug(...args) {
+  debug(message?: any, ...optionalParams: any[]): void {
     if (this.enabledLevels.has('DEBUG')) {
-      const [message, ...rest] = args;
-      console.debug(`[DEBUG] ${message}`, ...rest);
+      if (typeof message === 'string') {
+        console.debug(`[DEBUG] ${message}`, ...optionalParams);
+      } else {
+        console.debug(`[DEBUG]`, message, ...optionalParams);
+      }
     }
   }
 
-  warn(...args) {
+  warn(message?: any, ...optionalParams: any[]): void {
     if (this.enabledLevels.has('WARN')) {
-      const [message, ...rest] = args;
-      console.warn(`[WARN] ${message}`, ...rest);
+      if (typeof message === 'string') {
+        console.warn(`[WARN] ${message}`, ...optionalParams);
+      } else {
+        console.warn(`[WARN]`, message, ...optionalParams);
+      }
     }
   }
 
-  error(...args) {
+  error(message?: any, ...optionalParams: any[]): void {
     if (this.enabledLevels.has('ERROR')) {
-      const [message, ...rest] = args;
-      console.error(`[ERROR] ${message}`, ...rest);
+      if (typeof message === 'string') {
+        console.error(`[ERROR] ${message}`, ...optionalParams);
+      } else {
+        console.error(`[ERROR]`, message, ...optionalParams);
+      }
     }
   }
 }
