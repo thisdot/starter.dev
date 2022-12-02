@@ -36,6 +36,7 @@ import {
   PiniaIcon,
   QwikIcon,
   SolidJsIcon,
+  ServerlessIcon,
 } from './icons';
 
 export interface NavItem {
@@ -290,6 +291,12 @@ export const TECHNOLOGIES = [
     name: 'Pinia',
     tags: ['Data Management'],
     Icon: (props) => <PiniaIcon {...props} />,
+  },
+  {
+    key: 'serverless',
+    name: 'Serverless',
+    tags: ['Cloud Computing'],
+    Icon: (props) => <ServerlessIcon {...props} />,
   },
 ];
 
