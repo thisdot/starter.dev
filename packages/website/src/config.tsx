@@ -36,6 +36,7 @@ import {
   PiniaIcon,
   QwikIcon,
   SolidJsIcon,
+  ServerlessIcon,
 } from './icons';
 
 export interface NavItem {
@@ -99,7 +100,7 @@ export const TECHNOLOGIES = [
     tags: ['Core UI'],
     Icon: (props) => <VueIcon {...props} />,
   },
-   {
+  {
     key: 'solidjs',
     name: 'SolidJs',
     tags: ['Core UI'],
@@ -244,9 +245,21 @@ export const TECHNOLOGIES = [
     Icon: (props) => <RxJsIcon {...props} />,
   },
   {
+    key: 'serverless',
+    name: 'Serverless',
+    tags: ['Infrastructure'],
+    Icon: (props) => <ServerlessIcon {...props} />,
+  },
+  {
+    key: 'apollo-server',
+    name: 'Apollo Server',
+    tags: ['Middleware'],
+    Icon: (props) => <ApolloIcon {...props} />,
+  },
+  {
     key: 'graphql',
     name: 'GraphQL',
-    tags: ['Data Management'],
+    tags: ['API Specification'],
     Icon: (props) => <GraphQLIcon {...props} />,
   },
   {
@@ -263,7 +276,7 @@ export const TECHNOLOGIES = [
   },
   {
     key: 'apollo',
-    name: 'Apollo',
+    name: 'Apollo Client',
     tags: ['Data Management'],
     Icon: (props) => <ApolloIcon {...props} />,
   },
