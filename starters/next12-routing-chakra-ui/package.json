@@ -1,7 +1,9 @@
 {
   "name": "next-routing-chakra-ui",
+  "description": "NextJS 12, and Chakra UI",
   "version": "0.1.0",
   "private": true,
+  "hasShowcase": false,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
