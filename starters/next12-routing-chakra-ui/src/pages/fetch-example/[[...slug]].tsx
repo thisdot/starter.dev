@@ -27,8 +27,14 @@ const FetchExample: NextPage<{ userStr: string }> = ({ userStr }) => {
   return (
     <div>
       <Center>
-        <Heading as="h1" pb={4} borderBottom="4px solid #2464ec" mt={8}>
-          NextJS 12 Fetching Data From API
+        <Heading
+          role="heading"
+          as="h1"
+          pb={4}
+          borderBottom="4px solid #2464ec"
+          mt={8}
+        >
+          NextJS 12 fetching data example from a REST API
         </Heading>
       </Center>
 
