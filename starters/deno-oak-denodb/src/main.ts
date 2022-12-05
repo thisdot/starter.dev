@@ -1,11 +1,11 @@
-import { Application, Router, Context } from '../deps.ts';
+import { Application, Context, Router } from '../deps.ts';
 
 const app = new Application();
 const port = 3333;
 
 const router = new Router();
 router.get('/', ({ request, response }: Context) => {
-  response.body = `Hello world! from ${request.url}`;
+	response.body = `Hello world! from ${request.url}`;
 });
 
 app.use(router.routes());
