@@ -110,7 +110,7 @@ The [Cross-Origin Resource Sharing](https://developer.mozilla.org/en-US/docs/Web
 
 This application accepts CORS from all origins by default. Some web applications may require you to add the HTTP header `'Access-Control-Allow-Origin': '*'` to allow access.
 
-In order to restrict origins urls that can access your api, you need to add an array of origin url strings in the `CORS_ALLOWED_ORIGINS` variable located in your `.env` file. For example `CORS_ALLOWED_ORIGINS=["https://start.dev"]`. In case you need to access the api in a development environment i.e. a sveltekit application, you will concatenate the local url `http://127.0.0.1` to the `CORS_ALLOWED_ORIGINS` variable like so `CORS_ALLOWED_ORIGINS=["https://start.dev", "http://127.0.0.1"]`
+In order to restrict origins urls that can access your api, you need to add a list of comma separated origin urls in the `CORS_ALLOWED_ORIGINS` variable located in your `.env` file. For example `CORS_ALLOWED_ORIGINS="https://start.dev"`. In case you need to access the api in a development environment i.e. a sveltekit application, you can add the local url `http://127.0.0.1` to the `CORS_ALLOWED_ORIGINS` variable as `CORS_ALLOWED_ORIGINS=https://start.dev,http://127.0.0.1`
 
 ## Kit Organization / Architecture
 
