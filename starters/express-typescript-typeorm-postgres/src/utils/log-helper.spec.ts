@@ -1,3 +1,13 @@
+type LogMethods = 'log' | 'info' | 'debug' | 'warn' | 'error';
+type LogLevels = 'INFO' | 'DEBUG' | 'WARN' | 'ERROR';
+
+const ALL_LOG_LEVELS = `["INFO","DEBUG","WARN","ERROR"]`;
+const LOG_LEVELS_MAP = new Map<string, string>()
+  .set('INFO', '["ERROR"]')
+  .set('DEBUG', '["ERROR"]')
+  .set('WARN', '["ERROR"]')
+  .set('ERROR', '["WARN"]');
+
 describe(`LogHelper`, () => {
   let consoleSpy;
   beforeEach(() => {
@@ -8,146 +18,43 @@ describe(`LogHelper`, () => {
     jest.resetAllMocks();
   });
 
-  describe(`log method`, () => {
+  describe.each([
+    /** We expect the log method to be called two times, because it gets called in the constructor as well */
+    ['log', 'INFO', 2],
+    ['info', 'INFO', 2],
+    ['debug', 'DEBUG', 1],
+    ['warn', 'WARN', 1],
+    ['error', 'ERROR', 1],
+  ])(`%s function`, (method: LogMethods, level: LogLevels, expectedNrOfCalls: number) => {
     beforeEach(() => {
-      consoleSpy = jest.spyOn(console, 'log');
+      let consoleMethod = method;
+      if (consoleMethod === 'info') {
+        consoleMethod = 'log';
+      }
+      consoleSpy = jest.spyOn(console, consoleMethod);
     });
 
-    it(`does not call console.log`, () => {
-      process.env.ALLOWED_LOG_LEVELS = `["ERROR"]`;
+    it(`does not call 'console.${method}()' if the ${level} is not provided in the ENV variable`, () => {
+      process.env.ALLOWED_LOG_LEVELS = LOG_LEVELS_MAP.get(level);
+
       // eslint-disable-next-line @typescript-eslint/no-var-requires
       const { LogHelper } = require('./log-helper');
 
-      LogHelper.log('Test');
+      LogHelper[method]('Test');
 
       expect(consoleSpy).toHaveBeenCalledTimes(0);
     });
 
-    it(`does call console.log if there is no environment variable set for it`, () => {
-      process.env.ALLOWED_LOG_LEVELS = `["INFO","ERROR"]`;
+    it(`calls 'console.${method}()' ${expectedNrOfCalls} times, if the ${level} is provided in the ENV variable`, () => {
+      process.env.ALLOWED_LOG_LEVELS = ALL_LOG_LEVELS;
 
       // eslint-disable-next-line @typescript-eslint/no-var-requires
       const { LogHelper } = require('./log-helper');
 
-      LogHelper.log('Test');
+      LogHelper[method]('Test');
 
-      /** We expect the log method to be called two times, because it gets called in the constructor as well */
-      expect(consoleSpy).toHaveBeenCalledTimes(2);
-      expect(consoleSpy).lastCalledWith(`[INFO] Test`);
-    });
-  });
-
-  describe(`info method`, () => {
-    beforeEach(() => {
-      consoleSpy = jest.spyOn(console, 'log');
-    });
-
-    it(`does not call console.log`, () => {
-      process.env.ALLOWED_LOG_LEVELS = `["ERROR"]`;
-
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
-      const { LogHelper } = require('./log-helper');
-
-      LogHelper.info('Test');
-
-      expect(consoleSpy).toHaveBeenCalledTimes(0);
-    });
-
-    it(`does call console.log if there is no environment variable set for it`, () => {
-      process.env.ALLOWED_LOG_LEVELS = `["INFO","ERROR"]`;
-
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
-      const { LogHelper } = require('./log-helper');
-
-      LogHelper.info('Test');
-
-      /** We expect the log method to be called two times, because it gets called in the constructor as well */
-      expect(consoleSpy).toHaveBeenCalledTimes(2);
-      expect(consoleSpy).lastCalledWith(`[INFO] Test`);
-    });
-  });
-
-  describe(`debug method`, () => {
-    beforeEach(() => {
-      consoleSpy = jest.spyOn(console, 'debug');
-    });
-
-    it(`does not call console.debug`, () => {
-      process.env.ALLOWED_LOG_LEVELS = `["ERROR"]`;
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
-      const { LogHelper } = require('./log-helper');
-
-      LogHelper.debug('Test');
-
-      expect(consoleSpy).toHaveBeenCalledTimes(0);
-    });
-
-    it(`does call console.debug if there is no environment variable set for it`, () => {
-      process.env.ALLOWED_LOG_LEVELS = `["DEBUG","ERROR"]`;
-
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
-      const { LogHelper } = require('./log-helper');
-
-      LogHelper.debug('Test');
-
-      expect(consoleSpy).toHaveBeenCalledTimes(1);
-      expect(consoleSpy).lastCalledWith(`[DEBUG] Test`);
-    });
-  });
-
-  describe(`warn method`, () => {
-    beforeEach(() => {
-      consoleSpy = jest.spyOn(console, 'warn');
-    });
-
-    it(`does not call console.debug`, () => {
-      process.env.ALLOWED_LOG_LEVELS = `["ERROR"]`;
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
-      const { LogHelper } = require('./log-helper');
-
-      LogHelper.warn('Test');
-
-      expect(consoleSpy).toHaveBeenCalledTimes(0);
-    });
-
-    it(`does call console.debug if there is no environment variable set for it`, () => {
-      process.env.ALLOWED_LOG_LEVELS = `["WARN","ERROR"]`;
-
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
-      const { LogHelper } = require('./log-helper');
-
-      LogHelper.warn('Test');
-
-      expect(consoleSpy).toHaveBeenCalledTimes(1);
-      expect(consoleSpy).lastCalledWith(`[WARN] Test`);
-    });
-  });
-
-  describe(`error method`, () => {
-    beforeEach(() => {
-      consoleSpy = jest.spyOn(console, 'error');
-    });
-
-    it(`does not call console.debug`, () => {
-      process.env.ALLOWED_LOG_LEVELS = `["INFO"]`;
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
-      const { LogHelper } = require('./log-helper');
-
-      LogHelper.error('Test');
-
-      expect(consoleSpy).toHaveBeenCalledTimes(0);
-    });
-
-    it(`does call console.debug if there is no environment variable set for it`, () => {
-      process.env.ALLOWED_LOG_LEVELS = `["WARN","ERROR"]`;
-
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
-      const { LogHelper } = require('./log-helper');
-
-      LogHelper.error('Test');
-
-      expect(consoleSpy).toHaveBeenCalledTimes(1);
-      expect(consoleSpy).lastCalledWith(`[ERROR] Test`);
+      expect(consoleSpy).toHaveBeenCalledTimes(expectedNrOfCalls);
+      expect(consoleSpy).lastCalledWith(`[${level}] Test`);
     });
   });
 });
