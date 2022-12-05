@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { dataSource } from '../../../datasource';
+import { dataSource } from '../../../db/datasource';
 import { createTechnology } from './create-technology';
 
 const MOCK_REQUEST: any = {

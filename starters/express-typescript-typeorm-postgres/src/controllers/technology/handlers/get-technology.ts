@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { getReasonPhrase, StatusCodes } from 'http-status-codes';
 import { Result } from '../../../constants/result';
-import { dataSource } from '../../../datasource';
+import { dataSource } from '../../../db/datasource';
 import { Technology } from '../../../entities/technology.entity';
 import { ErrorResult, SuccessResult } from '../../../interfaces/results';
 

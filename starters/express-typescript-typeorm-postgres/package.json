@@ -16,6 +16,7 @@
     "db:start": "docker start data_storage",
     "db:stop": "docker stop data_storage",
     "db:delete": "npx rimraf pg_data && docker rm data_storage -f",
+    "db:seed": "ts-node src/db/run-seeders.ts",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "format": "prettier --write \"src/**/*.ts\"",
     "format:check": "prettier --check \"src/**/*.ts\"",
@@ -33,7 +34,8 @@
     "pg": "8.8.0",
     "reflect-metadata": "0.1.13",
     "swagger-ui-express": "4.6.0",
-    "typeorm": "0.3.10"
+    "typeorm": "0.3.10",
+    "typeorm-extension": "2.3.0"
   },
   "devDependencies": {
     "@types/express": "4.17.13",

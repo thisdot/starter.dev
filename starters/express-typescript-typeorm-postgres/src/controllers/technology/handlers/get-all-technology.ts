@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import { dataSource } from '../../../datasource';
+import { dataSource } from '../../../db/datasource';
 import { Technology } from '../../../entities/technology.entity';
 
 export async function getAllTechnology(
