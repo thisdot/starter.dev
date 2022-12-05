@@ -5,7 +5,7 @@ const port = 3333;
 
 const router = new Router();
 router.get('/', ({ request, response }: Context) => {
-	response.body = `Hello world! from ${request.url}`;
+  response.body = `Hello world! from ${request.url}`;
 });
 
 app.use(router.routes());
