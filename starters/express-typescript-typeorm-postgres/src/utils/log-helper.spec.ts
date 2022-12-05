@@ -1,12 +1,7 @@
+import { ALL_LOG_LEVELS } from './log-helper';
+
 type LogMethods = 'log' | 'info' | 'debug' | 'warn' | 'error';
 type LogLevels = 'INFO' | 'DEBUG' | 'WARN' | 'ERROR';
-
-const ALL_LOG_LEVELS = `["INFO","DEBUG","WARN","ERROR"]`;
-const LOG_LEVELS_MAP = new Map<string, string>()
-  .set('INFO', '["ERROR"]')
-  .set('DEBUG', '["ERROR"]')
-  .set('WARN', '["ERROR"]')
-  .set('ERROR', '["WARN"]');
 
 describe(`LogHelper`, () => {
   let consoleSpy;
@@ -19,23 +14,18 @@ describe(`LogHelper`, () => {
   });
 
   describe.each([
-    /** We expect the log method to be called two times, because it gets called in the constructor as well */
-    ['log', 'INFO', 2],
-    ['info', 'INFO', 2],
-    ['debug', 'DEBUG', 1],
-    ['warn', 'WARN', 1],
-    ['error', 'ERROR', 1],
-  ])(`%s function`, (method: LogMethods, level: LogLevels, expectedNrOfCalls: number) => {
+    ['log', 'INFO'],
+    ['info', 'INFO'],
+    ['debug', 'DEBUG'],
+    ['warn', 'WARN'],
+    ['error', 'ERROR'],
+  ])(`%s function`, (method: LogMethods, level: LogLevels) => {
     beforeEach(() => {
-      let consoleMethod = method;
-      if (consoleMethod === 'info') {
-        consoleMethod = 'log';
-      }
-      consoleSpy = jest.spyOn(console, consoleMethod);
+      consoleSpy = jest.spyOn(console, method);
     });
 
     it(`does not call 'console.${method}()' if the ${level} is not provided in the ENV variable`, () => {
-      process.env.ALLOWED_LOG_LEVELS = LOG_LEVELS_MAP.get(level);
+      process.env.ALLOWED_LOG_LEVELS = ALL_LOG_LEVELS.replace(level, '');
 
       // eslint-disable-next-line @typescript-eslint/no-var-requires
       const { LogHelper } = require('./log-helper');
@@ -45,7 +35,7 @@ describe(`LogHelper`, () => {
       expect(consoleSpy).toHaveBeenCalledTimes(0);
     });
 
-    it(`calls 'console.${method}()' ${expectedNrOfCalls} times, if the ${level} is provided in the ENV variable`, () => {
+    it(`calls 'console.${method}()', if the ${level} is provided in the ENV variable`, () => {
       process.env.ALLOWED_LOG_LEVELS = ALL_LOG_LEVELS;
 
       // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -53,7 +43,7 @@ describe(`LogHelper`, () => {
 
       LogHelper[method]('Test');
 
-      expect(consoleSpy).toHaveBeenCalledTimes(expectedNrOfCalls);
+      expect(consoleSpy).toHaveBeenCalledTimes(1);
       expect(consoleSpy).lastCalledWith(`[${level}] Test`);
     });
   });
