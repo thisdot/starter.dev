@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  db:
+    container_name: deno_db
+    image: postgres
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=dbpassword
+      - POSTGRES_DB=deno_db
+    volumes:
+      - 'deno_db_data:/var/lib/postgresql/data/'
+
+volumes:
+  deno_db_data:

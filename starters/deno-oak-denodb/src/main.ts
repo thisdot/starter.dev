@@ -4,7 +4,7 @@ const app = new Application();
 const port = 3333;
 
 const router = new Router();
-router.get('/', ({ request, response }: Context) => {
+router.get('/', async ({ request, response }: Context) => {
   response.body = `Hello world! from ${request.url}`;
 });
 
