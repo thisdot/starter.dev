@@ -1,0 +1,39 @@
+{
+  "lint": {
+    "files": {
+      "include": [
+        "./src"
+      ]
+    },
+    "rules": {
+      "tags": [
+        "recommended"
+      ],
+      "include": [
+        "no-external-import",
+        "no-const-assign",
+        "explicit-function-return-type",
+        "camelcase",
+        "explicit-module-boundary-types",
+        "default-param-last"
+      ],
+      "exclude": [
+        "no-explicit-any"
+      ]
+    }
+  },
+  "fmt": {
+    "files": {
+      "include": [
+        "./src"
+      ]
+    },
+    "options": {
+      "useTabs": false,
+      "lineWidth": 100,
+      "indentWidth": 2,
+      "singleQuote": true,
+      "proseWrap": "always"
+    }
+  }
+}

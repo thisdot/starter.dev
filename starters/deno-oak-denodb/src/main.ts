@@ -1,4 +1,4 @@
-import { Application, Router, Context } from '../deps.ts';
+import { Application, Context, Router } from '../deps.ts';
 
 const app = new Application();
 const port = 3333;
