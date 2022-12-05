@@ -7,7 +7,7 @@
     "cypress/support/component.*",
     "cypress/support/commands.ts"
   ],
-  "exclude": [],
+  "exclude": ["src/stories/**"],
   "compilerOptions": {
     "composite": true
   }
