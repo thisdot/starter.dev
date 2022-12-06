@@ -14,9 +14,10 @@
     "dev": "concurrently --raw -n \"docker,tsc,server\" -s \"last\" -c \"blue,magenta,yellow\" \"npm run infrastructure:start\" \"npm run build:watch\" \"npm run start\"",
     "infrastructure:start": "docker-compose up",
     "infrastructure:stop": "docker-compose stop",
+    "infrastructure:clear": "npm run prebuild && npm run db:delete && npm run cache:delete",
     "db:seed": "ts-node src/db/run-seeders.ts",
     "db:delete": "npx rimraf pg_data && docker rm data_storage -f",
-    "clear": "npm run db:delete && npm run prebuild",
+    "cache:delete": "npx rimraf cache_data && nxp rimraf cache_conf && docker rm cache -f",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "format": "prettier --write \"src/**/*.ts\"",
     "format:check": "prettier --check \"src/**/*.ts\"",
@@ -78,7 +79,8 @@
   "nodemonConfig": {
     "ignore": [
       "pg_data",
-      "redis_cache",
+      "cache_data",
+      "cache_conf",
       "**/swagger.json",
       "**/swagger_v3.json"
     ]

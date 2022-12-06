@@ -10,3 +10,14 @@ services:
     env_file:
       - ./postgres.db.env
 
+  redis_cache:
+    image: 'redis:alpine'
+    container_name: 'cache'
+    command: redis-server --requirepass sOmE_sEcUrE_pAsS
+    ports:
+      - '6379:6379'
+    volumes:
+      - ./cache_data:/var/lib/redis
+      - ./cache_conf:/usr/local/etc/redis/redis.conf
+    environment:
+      - REDIS_REPLICATION_MODE=master
