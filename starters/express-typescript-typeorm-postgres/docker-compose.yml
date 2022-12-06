@@ -13,7 +13,7 @@ services:
   redis_cache:
     image: 'redis:alpine'
     container_name: 'cache'
-    command: redis-server --requirepass sOmE_sEcUrE_pAsS
+    command: redis-server
     ports:
       - '6379:6379'
     volumes:

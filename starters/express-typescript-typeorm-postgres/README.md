@@ -28,6 +28,7 @@ This starter kit features Express, Typescript API setup
 - [Express v4](https://expressjs.com)
 - [TypeOrm](https://typeorm.io)
 - [PostgreSQL](https://www.postgresql.org)
+- [Redis](https://redis.io/)
 
 ### Included Tooling
 

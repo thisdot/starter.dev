@@ -1,6 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { dataSource } from '../../../db/datasource';
-import { getAllTechnology } from './get-all-technology';
+import { getAllTechnologies } from './get-all-technologies';
+
+jest.mock('../../../cache/cache', () => ({
+  useCache: (key, callback) => callback(),
+}));
 
 const MOCK_REQUEST: any = {};
 const MOCK_RESPONSE: any = {
@@ -13,7 +17,7 @@ const MOCK_REPOSITORY: any = {
   find: jest.fn(),
 };
 
-describe(getAllTechnology.name, () => {
+describe(getAllTechnologies.name, () => {
   beforeEach(() => {
     jest.spyOn(dataSource, 'getRepository').mockReturnValue(MOCK_REPOSITORY);
   });
@@ -25,7 +29,7 @@ describe(getAllTechnology.name, () => {
   it(`Calls the 'next()' function with the error, if the database request rejects`, async () => {
     MOCK_REPOSITORY.find.mockRejectedValue(new Error('Test'));
 
-    await getAllTechnology(MOCK_REQUEST, MOCK_RESPONSE, MOCK_NEXT_FN);
+    await getAllTechnologies(MOCK_REQUEST, MOCK_RESPONSE, MOCK_NEXT_FN);
 
     expect(MOCK_NEXT_FN).toHaveBeenCalledTimes(1);
     expect(MOCK_NEXT_FN).toHaveBeenCalledWith(new Error('Test'));
@@ -35,7 +39,7 @@ describe(getAllTechnology.name, () => {
     MOCK_REPOSITORY.find.mockResolvedValue([]);
     MOCK_RESPONSE.status.mockReturnValue(MOCK_RESPONSE);
 
-    await getAllTechnology(MOCK_REQUEST, MOCK_RESPONSE, MOCK_NEXT_FN);
+    await getAllTechnologies(MOCK_REQUEST, MOCK_RESPONSE, MOCK_NEXT_FN);
 
     expect(MOCK_RESPONSE.status).toHaveBeenCalledTimes(1);
     expect(MOCK_RESPONSE.status).toHaveBeenCalledWith(200);

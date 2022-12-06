@@ -17,7 +17,7 @@
     "infrastructure:clear": "npm run prebuild && npm run db:delete && npm run cache:delete",
     "db:seed": "ts-node src/db/run-seeders.ts",
     "db:delete": "npx rimraf pg_data && docker rm data_storage -f",
-    "cache:delete": "npx rimraf cache_data && nxp rimraf cache_conf && docker rm cache -f",
+    "cache:delete": "npx rimraf cache_data && npx rimraf cache_conf && docker rm cache -f",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "format": "prettier --write \"src/**/*.ts\"",
     "format:check": "prettier --check \"src/**/*.ts\"",
@@ -27,12 +27,14 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand"
   },
   "dependencies": {
+    "cachified": "3.0.0",
     "cors": "2.8.5",
     "dotenv": "^16.0.3",
     "express": "4.18.2",
     "express-oas-generator": "1.0.45",
     "http-status-codes": "2.2.0",
     "pg": "8.8.0",
+    "redis": "4.5.1",
     "reflect-metadata": "0.1.13",
     "swagger-ui-express": "4.6.0",
     "typeorm": "0.3.10",

@@ -24,18 +24,16 @@ export async function getHealth(req: Request, res: Response): Promise<void> {
 function checkConnection(): Promise<SuccessResult<{ version: string }> | ErrorResult> {
   return dataSource
     .query(`SELECT version()`)
-    .then(
-      (databaseVersion) =>
-        ({
-          type: Result.SUCCESS,
-          data: databaseVersion,
-        } as SuccessResult<{ version: string }>)
-    )
+    .then<SuccessResult<{ version: string }>>((databaseVersion) => ({
+      type: Result.SUCCESS,
+      data: databaseVersion[0],
+    }))
     .catch((error) => {
       LogHelper.error(error);
       return {
         type: Result.ERROR,
         message: error.message,
+        error,
       };
     });
 }

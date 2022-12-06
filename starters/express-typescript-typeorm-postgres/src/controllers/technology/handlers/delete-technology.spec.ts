@@ -2,6 +2,10 @@
 import { dataSource } from '../../../db/datasource';
 import { deleteTechnology } from './delete-technology';
 
+jest.mock('../../../cache/cache', () => ({
+  clearCacheEntry: (key) => void 0,
+}));
+
 const MOCK_REQUEST: any = {
   params: {
     technologyId: '1',
