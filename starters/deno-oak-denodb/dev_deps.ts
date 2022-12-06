@@ -1,5 +1,5 @@
 /**
- * Exports all project devDepencies from the file
+ * Exports all project devDependencies from the file
  */
 
 export {
