@@ -8,16 +8,15 @@
     "prebuild": "rimraf dist",
     "build": "tsc --project ./tsconfig.build.json",
     "postbuild": "node tools/generators/generate-prod-package-json.js",
-    "build:watch": "tsc --watch --project ./tsconfig.build.json &",
+    "build:watch": "tsc --watch --project ./tsconfig.build.json",
     "prestart": "npm run build",
     "start": "nodemon dist/main",
-    "dev": "concurrently -n \"tsc,server\" -s \"last\" -c \"magenta,yellow\" \"npm run build:watch\" \"npm run start\"",
-    "db:init": "docker run -d -p 5432:5432 -v $PWD/pg_data:/var/lib/postgresql/data --env-file=$PWD/postgres.db.env --name=data_storage postgres",
-    "db:init:windows": "docker run -d -p 5432:5432 -v %cd%/pg_data:/var/lib/postgresql/data --env-file=%cd%/postgres.db.env --name=data_storage postgres",
-    "db:start": "docker start data_storage",
-    "db:stop": "docker stop data_storage",
+    "dev": "concurrently --raw -n \"docker,tsc,server\" -s \"last\" -c \"blue,magenta,yellow\" \"npm run infrastructure:start\" \"npm run build:watch\" \"npm run start\"",
+    "infrastructure:start": "docker-compose up",
+    "infrastructure:stop": "docker-compose stop",
     "db:seed": "ts-node src/db/run-seeders.ts",
     "db:delete": "npx rimraf pg_data && docker rm data_storage -f",
+    "clear": "npm run db:delete && npm run prebuild",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "format": "prettier --write \"src/**/*.ts\"",
     "format:check": "prettier --check \"src/**/*.ts\"",
@@ -78,6 +77,8 @@
   },
   "nodemonConfig": {
     "ignore": [
+      "pg_data",
+      "redis_cache",
       "**/swagger.json",
       "**/swagger_v3.json"
     ]

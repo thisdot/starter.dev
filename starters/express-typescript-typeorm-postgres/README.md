@@ -98,9 +98,11 @@ The above steps will make sure your API connects to the database instance that g
 
 In the `src/db/run-seeders.ts` file, we provide a script to seed the database with intial values, using TypeOrm. Under the `src/db/seeding` folder, you can find the `TechnologySeeder` class, that seeds values into the database as an example.
 
-In order to be seed the database, first you must set up the docker image, by running `npm run db:init` or on windows `npm run db:init:windows`. After the database is initialised, you can start the container by running `npm run db:start`
+In order to be seed the database, first you must set up the infrastructure, by running `npm run infrastructure:init`.
 
-When the database is running, set up your `.env` file to provide the necessary environment variables for the database connection and run `npm run dev` to start up your API, that sets up the tables and schemas, then run your seeder by running the `npm run db:seed` command.
+After the database is initialised, set up your `.env` file to provide the necessary environment variables (use the `.env.example` file) for the database connection and run `npm run dev` to start up your API.
+
+The API will start up for the first time and will set up the tables and schemas, then run your seeder by running the `npm run db:seed` command.
 
 For local development, the db:init method also mounts the `pg_data` folder with the `-v $PWD/pg_data:/var/lib/postgresql/data` command, therefore, your data is kept locally for you.
 
