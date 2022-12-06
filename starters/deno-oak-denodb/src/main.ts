@@ -1,6 +1,6 @@
 import { Application, config, Context, oakCors, Router } from '../deps.ts';
 
-const { API_HOST_URL, CORS_ALLOWED_ORIGINS, PORT } = config({ safe: true });
+const { API_HOST, CORS_ALLOWED_ORIGINS, PORT } = config({ safe: true });
 const app = new Application();
 const port = +PORT || 3333;
 
@@ -19,6 +19,6 @@ app.use(
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-console.log(`🚀 Application is running on: ${API_HOST_URL}`);
+console.log(`🚀 Application is running on: ${API_HOST}:${PORT}`);
 
 await app.listen({ port });
