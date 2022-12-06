@@ -1,13 +1,13 @@
 import express, { Express, NextFunction, Request, Response } from 'express';
 import expressOasGenerator, { SPEC_OUTPUT_FILE_BEHAVIOR } from 'express-oas-generator';
 import { getReasonPhrase, StatusCodes } from 'http-status-codes';
-import { HealthController } from './controllers/health/health.controller';
 import { apiRouter } from './controllers/router';
 import { corsMiddleware } from './middlewares/cors';
 
 export function bootstrapApp(): Express {
   const app = express();
   expressOasGenerator.handleResponses(app, {
+    swaggerUiServePath: 'docs',
     specOutputFileBehavior: SPEC_OUTPUT_FILE_BEHAVIOR.RECREATE,
     swaggerDocumentOptions: {},
   });
@@ -16,8 +16,7 @@ export function bootstrapApp(): Express {
   app.options('*', corsMiddleware);
   app.use(corsMiddleware);
 
-  app.use('/health', HealthController.router);
-  app.use('/api', apiRouter);
+  app.use('/', apiRouter);
   expressOasGenerator.handleRequests();
   app.use(genericErrorHandler);
   return app;
