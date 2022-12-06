@@ -1,4 +1,5 @@
 import { config, Database, PostgresConnector } from '../../deps.ts';
+import { Technologies } from './model/technology.ts';
 
 const { DATABASE_HOST, DATABASE_NAME, DATABASE_USERNAME, DATABASE_PASSWORD } = config({
   safe: true,
@@ -13,4 +14,5 @@ const connection = new PostgresConnector({
 
 export const db = new Database(connection);
 
+db.link([Technologies]);
 await db.sync({ drop: true });
