@@ -2,6 +2,7 @@
 require('dotenv').config();
 import { bootstrapApp } from './bootstrap-app';
 import { dataSource } from './datasource';
+import { LogHelper } from './utils/log-helper';
 
 const PORT = process.env.PORT || 3333;
 
@@ -10,12 +11,12 @@ const app = bootstrapApp();
 dataSource
   .initialize()
   .then(() => {
-    console.log(`Data Source has been initialized!`);
+    LogHelper.info(`Data Source has been initialized!`);
   })
   .catch((err) => {
-    console.error(`Error during Data Source initialisation:`, err);
+    LogHelper.error(`Error during Data Source initialisation:`, err);
   });
 
 app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}`);
+  LogHelper.info(`Example app listening on port ${PORT}`);
 });

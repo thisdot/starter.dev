@@ -1,8 +1,8 @@
 import { DataSource } from 'typeorm';
 
-const IS_LOGGING_ENABLED = process.env.ENABLE_LOGGING
-  ? process.env.ENABLE_LOGGING === 'true'
-  : true;
+const IS_DATABASE_LOGGING_ENABLED = process.env.IS_DATABASE_LOGGING_ENABLED
+  ? process.env.IS_DATABASE_LOGGING_ENABLED === 'true'
+  : false;
 
 export const dataSource = new DataSource({
   type: 'postgres',
@@ -12,6 +12,6 @@ export const dataSource = new DataSource({
   password: process.env.DATABASE_PASSWORD,
   database: process.env.DATABASE_NAME,
   entities: ['**/*.entity.js'],
-  logging: IS_LOGGING_ENABLED,
+  logging: IS_DATABASE_LOGGING_ENABLED,
   synchronize: true,
 });

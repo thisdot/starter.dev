@@ -6,6 +6,7 @@ import { corsMiddleware } from './middlewares/cors';
 
 export function bootstrapApp(): Express {
   const app = express();
+
   expressOasGenerator.handleResponses(app, {
     specOutputFileBehavior: SPEC_OUTPUT_FILE_BEHAVIOR.RECREATE,
     swaggerDocumentOptions: {},
