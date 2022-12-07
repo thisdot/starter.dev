@@ -1,6 +1,6 @@
 import { Technologies } from '../model/technology.ts';
 
-interface Technology {
+export interface ITechnology {
   displayName: string;
   description: string;
   url: string;
@@ -18,8 +18,9 @@ export const technologyResolvers = {
     },
   },
   Mutation: {
-    createTechnology: async (_: unknown, { displayName, description, url }: Technology) => {
+    createTechnology: async (_: unknown, { technology: { displayName, description, url } }: any) => {
       const createdTechnology = await Technologies.create({
+        id: crypto.randomUUID(),
         displayName,
         description,
         url,
@@ -27,13 +28,18 @@ export const technologyResolvers = {
       return createdTechnology;
     },
     updateTechnology: async (_: unknown, { id, value }: { id: string; value: Record<string, string> }) => {
-      const updatedTechnology = await Technologies.where('id', id).update({
+      await Technologies.where('id', id).update({
         ...value,
       });
-      return updatedTechnology;
+      return {
+        done: true,
+      };
     },
     deleteTechnologyById: async (_: unknown, { id }: any) => {
       await Technologies.deleteById(id);
+      return {
+        done: true,
+      };
     },
   },
 };

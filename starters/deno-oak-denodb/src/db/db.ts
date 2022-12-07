@@ -12,7 +12,8 @@ const connection = new PostgresConnector({
   database: DATABASE_NAME,
 });
 
-export const db = new Database(connection);
+const db = new Database(connection);
 
 db.link([Technologies]);
-await db.sync({ drop: true });
+
+export { db };
