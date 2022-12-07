@@ -1,6 +1,6 @@
 import { Application, applyGraphQL, Context, oakCors, Router } from '../deps.ts';
 import { db } from './db/db.ts';
-import { technologyResolvers } from './db/resolvers/technology.ts';
+import { technologyResolvers } from './db/resolvers/resolvers.ts';
 import { technologyTypes } from './db/schema/technology.ts';
 import { corsAllowedOrigins } from './util/cors_allowed_origins.ts';
 import { API_HOST, DATABASE_HOST, PORT } from './config/environment.ts';
