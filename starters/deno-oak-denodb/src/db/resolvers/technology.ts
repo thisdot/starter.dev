@@ -32,7 +32,7 @@ export const technologyResolvers = {
 		},
 		updateTechnology: async (
 			_: unknown,
-			{ id, value }: { id: string; value: Record<string, string> },
+			{ id, value }: { id: string; value: ITechnology },
 		) => {
 			await Technologies.where('id', id).update({
 				...value,
