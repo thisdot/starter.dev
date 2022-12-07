@@ -2,6 +2,7 @@ import { cachified } from 'cachified';
 import { GetFreshValue } from 'cachified/dist/common';
 import * as process from 'process';
 import { createClient } from 'redis';
+import { LogHelper } from '../utils/log-helper';
 import { redisCacheAdapterTtl } from './redis-cache-adapter-ttl';
 
 const REDIS_CACHE_HOST = process.env.REDIS_CACHE_HOST || 'localhost';
@@ -20,11 +21,11 @@ export const cacheRedisClient = createClient({
 });
 
 cacheRedisClient.on('error', (err) => {
-  console.error('redis cache error', err);
+  LogHelper.error('An error occurred while connecting to Redis', err);
 });
 
 cacheRedisClient.on('connected', () => {
-  console.log(`redis cache connected`);
+  LogHelper.info(`Successfully connected to Redis instance`);
 });
 
 export const cachifiedCache = redisCacheAdapterTtl(cacheRedisClient);
