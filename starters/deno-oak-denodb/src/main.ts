@@ -1,6 +1,7 @@
-import { Application, config, Context, oakCors, Router } from '../deps.ts';
+import { Application, Context, oakCors, Router } from '../deps.ts';
+import { corsAllowedOrigins } from './util/cors_allowed_origins.ts';
+import { API_HOST, PORT } from './config/environment.ts';
 
-const { API_HOST, CORS_ALLOWED_ORIGINS, PORT } = config({ safe: true });
 const app = new Application();
 const port = +PORT || 3333;
 
@@ -12,7 +13,7 @@ router.get('/', ({ request, response }: Context) => {
 app.use(
   oakCors({
     allowedHeaders: ['Content-Type', 'Authorization'],
-    origin: CORS_ALLOWED_ORIGINS ? CORS_ALLOWED_ORIGINS.split(',') : '',
+    origin: corsAllowedOrigins(),
     optionsSuccessStatus: 200, // Some legacy browsers (IE11, various SmartTVs) choke on 204
   }),
 );
