@@ -20,6 +20,6 @@ app.use(
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-console.log(`🚀 Application is runnidng on: ${API_HOST}:${PORT}`);
+console.log(`🚀 Application is running on: ${API_HOST}:${PORT}`);
 
 await app.listen({ port });
