@@ -8,5 +8,8 @@ export class Technology {
   @Column({
     length: 256,
   })
-  name!: string;
+  displayName!: string;
+
+  @Column('text')
+  description!: string;
 }
