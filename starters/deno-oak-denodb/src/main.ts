@@ -3,7 +3,7 @@ import { db } from './db/db.ts';
 import { technologyResolvers } from './db/resolvers/technology.ts';
 import { technologyTypes } from './db/schema/technology.ts';
 
-const { API_HOST, CORS_ALLOWED_ORIGINS, PORT } = config({ safe: true });
+const { API_HOST, CORS_ALLOWED_ORIGINS, DATABASE_HOST, PORT } = config({ safe: true });
 const app = new Application();
 const port = +PORT || 3333;
 
@@ -32,7 +32,9 @@ app.use(router.allowedMethods());
 
 await db.sync({ drop: true });
 
-console.log(`Database connected!`);
+if (db.getConnector()._connected) {
+	console.log(`Database connected to: ${DATABASE_HOST}`);
+}
 console.log(`🚀 Application is running on: ${API_HOST}:${PORT}`);
 
 await app.listen({ port });
