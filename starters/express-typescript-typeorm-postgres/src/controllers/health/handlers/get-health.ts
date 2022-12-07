@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { getReasonPhrase, StatusCodes } from 'http-status-codes';
-import { cacheRedisClient } from '../../../cache/cache';
+import { cacheRedisClient, redisHealthCheck } from '../../../cache/cache';
 import { Result } from '../../../constants/result';
 import { dataSource } from '../../../db/datasource';
 import { ErrorResult, SuccessResult } from '../../../interfaces/results';
@@ -21,9 +21,14 @@ export async function getHealth(req: Request, res: Response): Promise<void> {
   }
 
   if (redisPingResult.type === Result.ERROR) {
-    res.status(StatusCodes.SERVICE_UNAVAILABLE).json({
-      error: getReasonPhrase(StatusCodes.SERVICE_UNAVAILABLE),
-      details: redisPingResult.message,
+    /**
+     *  We return 206 here, because if the cache server is down the application is still working,
+     *  but we can set up alerts on this status code
+     */
+    res.status(StatusCodes.PARTIAL_CONTENT).json({
+      database: databaseVersion.data,
+      redisConnection: 'CONNECTION ERROR',
+      error: redisPingResult.error,
     });
     return;
   }
@@ -51,10 +56,9 @@ function checkDatabaseConnection(): Promise<SuccessResult<{ version: string }> |
     });
 }
 
-function checkRedisCacheConnection(): Promise<SuccessResult<'PONG'> | ErrorResult> {
-  return cacheRedisClient
-    .ping()
-    .then<SuccessResult<'PONG'>>((answer: 'PONG') => ({
+function checkRedisCacheConnection(): Promise<SuccessResult<'CONNECTED'> | ErrorResult> {
+  return redisHealthCheck()
+    .then<SuccessResult<'CONNECTED'>>((answer: 'CONNECTED') => ({
       type: Result.SUCCESS,
       data: answer,
     }))

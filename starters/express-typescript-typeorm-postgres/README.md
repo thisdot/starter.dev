@@ -57,7 +57,9 @@ yarn create @this-dot/starter --kit express-typescript-typeorm-postgres
 
 - Follow the prompts to select the `express-typescript-typeorm-postgres` starter kit and name your new project.
 - `cd` into your project directory and run `npm install`.
-- Run `npm run dev` to start the development server.
+- Create a `.env` file and copy the contents of `.env.example` into it.
+- Run `npm run dev` to start the development server and infrastructure.
+- Make sure you have docker & docker-compose installed on your machine
 - Open your browser to `http://localhost:3000` to see the included example code running.
 
 ### Manual
@@ -68,24 +70,26 @@ git clone https://github.com/thisdot/starter.dev.git
 
 - Copy and rename the `starters/express-typescript-typeorm-postgres` directory to the name of your new project.
 - `cd` into your project directory and run `npm install`.
-- Run `npm run dev` to start the server.
+- Create a `.env` file and copy the contents of `.env.example` into it.
+- Make sure you have docker & docker-compose installed on your machine
+- Run `npm run dev` to start the server and infrastructure.
 
 - Open your browser to `http://localhost:3333/api-docs` to see the included example code running.
 
 ## Commands
 
-- `npm run db:init` - Builds the docker container image with database seeding.
-- `npm run db:start` - Starts the database using the previously built docker container.
-- `npm run db:stop` - Stops the running database docker container.
+- `npm run infrastructure:start` - Starts up a postgres database and a redis instance for caching
+- `npm run infrastructure:stop` - Stops the running database and redis docker containers.
 - `npm run db:delete` - Deletes everything database related and allows you to reinitialise your database.
-- `npm run dev` - Starts the development server. (Needs a running database first)
+- `npm run db:seed` - Allows you to seed the database (See the Seeding section)
+- `npm run dev` - Starts the development server and the infrastructure necessary to run it.
 - `npm run build` - Builds the app.
-- `npm start` - Starts the built app. (Needs a running database first)
+- `npm start` - Starts the built app. (Needs a running infrastructure first)
 - `npm test` - Runs the unit tests.
 - `npm run lint` - Runs ESLint on the project.
 - `npm run format` - Formats code for the entire project
 
-## Database
+## Database and Redis
 
 In order to start up your API in dev mode with an active database connection, please follow the following steps:
 
