@@ -1,9 +1,11 @@
-import { config, Database, PostgresConnector } from '../../deps.ts';
+import { Database, PostgresConnector } from '../../deps.ts';
 import { Technologies } from './model/technology.ts';
-
-const { DATABASE_HOST, DATABASE_NAME, DATABASE_USERNAME, DATABASE_PASSWORD } = config({
-	safe: true,
-});
+import {
+	DATABASE_HOST,
+	DATABASE_NAME,
+	DATABASE_PASSWORD,
+	DATABASE_USERNAME,
+} from '../config/environment.ts';
 
 const connection = new PostgresConnector({
 	host: DATABASE_HOST,
