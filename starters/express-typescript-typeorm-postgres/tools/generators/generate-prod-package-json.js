@@ -22,4 +22,4 @@ if (!isDistFolderExisting) {
 
 const productionPackageJsonString = JSON.stringify(productionPackageJson, null, 2);
 
-fs.writeFileSync(`${distFolderPath}/package.json`, productionPackageJsonString, { encoding: "utf-8" })
+fs.writeFileSync(path.join(distFolderPath, 'package.json'), productionPackageJsonString, { encoding: "utf-8" })
