@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import { dataSource } from '../../../datasource';
+import { dataSource } from '../../../db/datasource';
 import { Technology } from '../../../entities/technology.entity';
 
 export async function updateTechnology(
@@ -15,7 +15,8 @@ export async function updateTechnology(
         id: technologyId,
       },
       {
-        name: req.body.name,
+        displayName: req.body.name,
+        description: req.body.description,
       }
     );
     res.status(StatusCodes.OK).json({ id: updated.raw.id });

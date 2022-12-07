@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require('dotenv').config();
 import { bootstrapApp } from './bootstrap-app';
-import { dataSource } from './datasource';
+import { dataSource } from './db/datasource';
 import { LogHelper } from './utils/log-helper';
 
 const PORT = process.env.PORT || 3333;

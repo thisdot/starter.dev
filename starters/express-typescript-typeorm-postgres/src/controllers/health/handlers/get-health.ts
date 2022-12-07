@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { getReasonPhrase, StatusCodes } from 'http-status-codes';
-import { dataSource } from '../../../datasource';
+import { dataSource } from '../../../db/datasource';
 import { Result } from '../../../constants/result';
 import { ErrorResult, SuccessResult } from '../../../interfaces/results';
 import { LogHelper } from '../../../utils/log-helper';

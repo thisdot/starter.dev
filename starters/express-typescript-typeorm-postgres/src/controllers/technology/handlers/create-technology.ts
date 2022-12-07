@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import { dataSource } from '../../../datasource';
+import { dataSource } from '../../../db/datasource';
 import { Technology } from '../../../entities/technology.entity';
 
 export async function createTechnology(
@@ -10,7 +10,8 @@ export async function createTechnology(
 ): Promise<void> {
   try {
     const inserted = await dataSource.getRepository(Technology).insert({
-      name: req.body.name,
+      displayName: req.body.name,
+      description: req.body.description,
     });
     res.status(StatusCodes.ACCEPTED).json({ id: inserted.raw.id });
   } catch (e) {
