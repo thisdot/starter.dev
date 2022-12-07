@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
+import { Center } from '@chakra-ui/react';
 
 const Home: NextPage = () => {
   return (
@@ -15,7 +16,14 @@ const Home: NextPage = () => {
         <h1 className={styles.title}>NextJS and Chakra UI starter kit</h1>
       </main>
 
-      <footer className={styles.footer}></footer>
+      <footer className={styles.footer}>
+        <Center>
+          <a href="https://www.netlify.com">
+            {' '}
+            <img src="https://www.netlify.com/v3/img/components/netlify-light.svg" alt="Deploys by Netlify" />{' '}
+          </a>
+        </Center>
+      </footer>
     </div>
   );
 };

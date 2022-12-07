@@ -8,6 +8,14 @@
       <a href="/api-example">See Fetch example component</a>
     </li>
   </ul>
+  <div class="center">
+    <a href="https://www.netlify.com">
+      <img
+        src="https://www.netlify.com/v3/img/components/netlify-light.svg"
+        alt="Deploys by Netlify"
+      />
+    </a>
+  </div>
 </div>
 
 <style lang="scss">
@@ -40,6 +48,11 @@
           color: #1e40af;
         }
       }
+    }
+
+    .center {
+      display: flex;
+      justify-content: center;
     }
   }
 </style>

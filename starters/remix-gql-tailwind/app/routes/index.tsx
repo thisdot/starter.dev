@@ -1,5 +1,5 @@
-import { json, LoaderFunction } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+import { json, LoaderFunction } from '@remix-run/node';
+import { useLoaderData } from '@remix-run/react';
 import { Counter } from '~/components/Counter';
 import { Greeting } from '~/components/Greeting';
 import gqlClient from '~/lib/graphql-client';
@@ -24,6 +24,14 @@ export default function HomePage() {
     <>
       <Greeting message={data.hello} />
       <Counter />
+      <div className="flex justify-center">
+        <a href="https://www.netlify.com">
+          <img
+            src="https://www.netlify.com/v3/img/components/netlify-light.svg"
+            alt="Deploys by Netlify"
+          />
+        </a>
+      </div>
     </>
   );
 }

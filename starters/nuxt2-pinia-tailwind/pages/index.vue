@@ -19,6 +19,14 @@
     >
       See Fetch API example component
     </NuxtLink>
+    <div class="flex justify-center">
+      <a href="https://www.netlify.com">
+        <img
+          src="https://www.netlify.com/v3/img/components/netlify-light.svg"
+          alt="Deploys by Netlify"
+        />
+      </a>
+    </div>
   </div>
 </template>
 
