@@ -14,7 +14,7 @@ This starter kit features Express, Typescript API setup
     - [CLI (Recommended)](#cli-recommended)
     - [Manual](#manual)
   - [Commands](#commands)
-  - [Database](#database)
+  - [Database and Redis](#database-and-redis)
     - [Seeding](#seeding)
     - [CORS Cross-Origin Resource Sharing](#cors-cross-origin-resource-sharing)
   - [Kit Organization / Architecture](#kit-organization--architecture)
@@ -39,7 +39,9 @@ This starter kit features Express, Typescript API setup
 
 ### Example Controllers
 
-TODO: set up example controllers
+The starter contains an example CRUD implementation for technologies. You can find the controller and its handlers under the `/src/controllers/technology/` folder.
+
+The handlers have caching enabled using the [cachified](https://www.npmjs.com/package/cachified) package. It uses redis under the hood.
 
 ## Installation
 
@@ -80,8 +82,10 @@ git clone https://github.com/thisdot/starter.dev.git
 
 - `npm run infrastructure:start` - Starts up a postgres database and a redis instance for caching
 - `npm run infrastructure:stop` - Stops the running database and redis docker containers.
+- `npm run infrastructure:clear` - Clears the database and cache, removes dist folder, removes docker images.
 - `npm run db:delete` - Deletes everything database related and allows you to reinitialise your database.
 - `npm run db:seed` - Allows you to seed the database (See the Seeding section)
+- `npm run cache:delete` - Removes everything stored in the cache, and deletes the cache docker image
 - `npm run dev` - Starts the development server and the infrastructure necessary to run it.
 - `npm run build` - Builds the app.
 - `npm start` - Starts the built app. (Needs a running infrastructure first)
@@ -127,17 +131,4 @@ In order to restrict origins urls that can access your api, you need to add a li
 
 ## Kit Organization / Architecture
 
-The demo components included in the starter.kit are co-located with the tests and stories. If you want to follow this pattern, take a look at our GitHub demo implementation below. The demo implementation is done with the same structure but includes things like tests, routes, and controllers that are modeled after best practices. Using this structure makes it easy to find all the code and functionality that are related.
-
-### Example directory
-
-```
-
-TODO: example
-```
-
-## Demo Implementation
-
-[Repository](https://github.com/thisdot/starter.dev-showcases/tree/main/express-typescript-typeorm-postgres)
-
-TODO: what does the the demo implementation do.
+[//]: # (TODO: architecture)

@@ -23,7 +23,7 @@ export async function getHealth(req: Request, res: Response): Promise<void> {
   if (redisPingResult.type === Result.ERROR) {
     /**
      *  We return 206 here, because if the cache server is down the application is still working,
-     *  but we can set up alerts on this status code
+     *  but we can set up alerts on this status code with our preferred tool of choice.
      */
     res.status(StatusCodes.PARTIAL_CONTENT).json({
       database: databaseVersion.data,
