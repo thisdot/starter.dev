@@ -25,7 +25,7 @@ export async function getHealth(req: Request, res: Response): Promise<void> {
      *  We return 206 here, because if the cache server is down the application is still working,
      *  but we can set up alerts on this status code with our preferred tool of choice.
      */
-    res.status(StatusCodes.PARTIAL_CONTENT).json({
+    res.status(StatusCodes.MULTI_STATUS).json({
       database: databaseVersion.data,
       redisConnection: 'CONNECTION ERROR',
       error: redisPingResult.error,
