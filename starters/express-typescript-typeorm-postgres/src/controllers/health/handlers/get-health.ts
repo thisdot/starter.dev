@@ -4,12 +4,14 @@ import { redisHealthCheck } from '../../../cache/redis-cache-client';
 import { Result } from '../../../constants/result';
 import { dataSource } from '../../../db/datasource';
 import { ErrorResult, SuccessResult } from '../../../interfaces/results';
+import { defaultQueue } from '../../../queue/queue';
 import { LogHelper } from '../../../utils/log-helper';
 
 export async function getHealth(req: Request, res: Response): Promise<void> {
-  const [databaseVersion, redisPingResult] = await Promise.all([
+  const [databaseVersion, redisPingResult, jobCount] = await Promise.all([
     checkDatabaseConnection(),
     checkRedisCacheConnection(),
+    defaultQueue.count(),
   ]);
 
   if (databaseVersion.type === Result.ERROR) {
@@ -39,6 +41,7 @@ export async function getHealth(req: Request, res: Response): Promise<void> {
   res.json({
     database: databaseVersion.data,
     redisConnection: redisPingResult.data,
+    jobCount,
   });
 }
 

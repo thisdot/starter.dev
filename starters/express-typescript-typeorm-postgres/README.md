@@ -29,6 +29,7 @@ This starter kit features Express, Typescript API setup
 - [TypeOrm](https://typeorm.io)
 - [PostgreSQL](https://www.postgresql.org)
 - [Redis](https://redis.io/)
+- [BullMQ](https://docs.bullmq.io/)
 
 ### Included Tooling
 
@@ -86,6 +87,7 @@ git clone https://github.com/thisdot/starter.dev.git
 - `npm run db:delete` - Deletes everything database related and allows you to reinitialise your database.
 - `npm run db:seed` - Allows you to seed the database (See the Seeding section)
 - `npm run cache:delete` - Removes everything stored in the cache, and deletes the cache docker image
+- `npm run queue:delete` - Removes everything stored in the queue redis, and deletes the queue docker image
 - `npm run dev` - Starts the development server and the infrastructure necessary to run it.
 - `npm run build` - Builds the app.
 - `npm start` - Starts the built app. (Needs a running infrastructure first)

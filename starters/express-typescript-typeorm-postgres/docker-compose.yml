@@ -21,3 +21,15 @@ services:
       - ./cache_conf:/usr/local/etc/redis/redis.conf
     environment:
       - REDIS_REPLICATION_MODE=master
+
+  redis_queue:
+    image: 'redis:alpine'
+    container_name: 'queue'
+    command: redis-server
+    ports:
+      - '6479:6379'
+    volumes:
+      - ./queue_data:/var/lib/redis
+      - ./queue_conf:/usr/local/etc/redis/redis.conf
+    environment:
+      - REDIS_REPLICATION_MODE=master

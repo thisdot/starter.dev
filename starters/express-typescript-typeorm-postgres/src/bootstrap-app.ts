@@ -18,8 +18,8 @@ export function bootstrapApp(): Express {
   app.use(corsMiddleware);
 
   app.use('/', apiRouter);
-  expressOasGenerator.handleRequests();
   app.use(genericErrorHandler);
+  expressOasGenerator.handleRequests();
   return app;
 }
 
@@ -28,4 +28,5 @@ function genericErrorHandler(err, req: Request, res: Response, next: NextFunctio
   res
     .status(StatusCodes.INTERNAL_SERVER_ERROR)
     .send({ error: getReasonPhrase(StatusCodes.INTERNAL_SERVER_ERROR) });
+  next();
 }

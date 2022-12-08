@@ -8,6 +8,8 @@ swagger_v3.json
 pg_data
 cache_data
 cache_conf
+queue_data
+queue_conf
 
 # Logs
 logs
