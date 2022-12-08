@@ -101,7 +101,7 @@ export const TECHNOLOGIES = [
   },
    {
     key: 'solidjs',
-    name: 'SolidJs',
+    name: 'SolidJS',
     tags: ['Core UI'],
     Icon: (props) => <SolidJsIcon {...props} />,
   },
