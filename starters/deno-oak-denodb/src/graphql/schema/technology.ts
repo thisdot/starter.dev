@@ -27,7 +27,7 @@ export const technologyTypes = gql`
 
   type Mutation {
     createTechnology(technology: TechnologyInput): Technology
-    updateTechnology(id: String, value: TechnologyInput): ResolveType!
+    updateTechnology(id: String, input: TechnologyInput): ResolveType!
     deleteTechnologyById(id: String): ResolveType!
   }
 `;

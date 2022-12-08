@@ -1,7 +1,7 @@
 import { Application, applyGraphQL, Context, oakCors, Router } from '../deps.ts';
 import { db } from './db/db.ts';
-import { technologyResolvers } from './db/resolvers/resolvers.ts';
-import { technologyTypes } from './db/schema/technology.ts';
+import { technologyResolvers } from './graphql/resolvers/resolvers.ts';
+import { technologyTypes } from './graphql/schema/technology.ts';
 import { corsAllowedOrigins } from './util/cors_allowed_origins.ts';
 import { API_HOST, DATABASE_HOST, PORT } from './config/environment.ts';
 
@@ -32,8 +32,8 @@ app.use(router.routes());
 app.use(router.allowedMethods());
 
 if (db.getConnector()._connected) {
-	console.log(`Database connected to: ${DATABASE_HOST}`);
+	console.log(`%cDatabase connected to: ${DATABASE_HOST}`, 'color: green');
 }
-console.log(`🚀 Application is running on: ${API_HOST}:${PORT}`);
+console.log(`%c🚀 Application is running on: ${API_HOST}:${PORT}`, 'color: green');
 
 await app.listen({ port });

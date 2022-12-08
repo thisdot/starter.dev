@@ -1,31 +1,30 @@
-import { Technologies } from '../model/technology.ts';
+import { TechnologyInput } from "../interfaces/graphql_interfaces.ts";
+import { Technologies } from '../../db/model/technology.ts';
 
 export const createTechnology = async (
 	_: unknown,
-	{ technology: { displayName, description, url } }: any,
+	{ technology }: { technology: TechnologyInput },
 ) => {
 	const createdTechnology = await Technologies.create({
 		id: crypto.randomUUID(),
-		displayName,
-		description,
-		url,
+		...technology
 	});
 	return createdTechnology;
 };
 
 export const updateTechnology = async (
 	_: unknown,
-	{ id, value }: { id: string; value: any },
+	{ id, input }: { id: string; input: TechnologyInput },
 ) => {
 	await Technologies.where('id', id).update({
-		...value,
+		...input,
 	});
 	return {
 		done: true,
 	};
 };
 
-export const deleteTechnologyById = async (_: unknown, { id }: any) => {
+export const deleteTechnologyById = async (_: unknown, { id }: { id: string }) => {
 	await Technologies.deleteById(id);
 	return {
 		done: true,
