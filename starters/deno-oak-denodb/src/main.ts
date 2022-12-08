@@ -31,7 +31,6 @@ app.use(GraphQLService.routes(), GraphQLService.allowedMethods());
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-await db.sync({ drop: true });
 
 if (db.getConnector()._connected) {
 	console.log(`Database connected to: ${DATABASE_HOST}`);

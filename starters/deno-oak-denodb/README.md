@@ -6,14 +6,30 @@ This starter kit features a basic tech stack to build a Deno-based backend.
 
 To run the linting on the project:
 
-```
+```shell
 deno lint
 ```
 
 To format the files before pushing code:
 
-```
+```shell
 deno fmt
+```
+
+## Seeding
+
+In the `src/db/run_seeders.ts` file, we provide a script to seed the database with intial values, using Deno DB. Under the `src/db/seeding` folder, you can find the `technologySeedData`, which is an array of initial values to be seeded into the database as an example.
+
+In order to seed the database, the database docker container must be up and running:
+
+```shell
+docker compose up
+```
+
+When the database is running, set up your `.env` file to provide the necessary environment variables for the database connection, then run your seeder:
+
+```shell
+ deno run --allow-net --allow-env --allow-read ./src/db/run_seeder.ts
 ```
 
 ## Running application locally
@@ -55,4 +71,3 @@ deno doc src/docs/sources.ts
 ```
 
 The documentation is printed to standard out - it can be redirected to a file if necessary.
-
