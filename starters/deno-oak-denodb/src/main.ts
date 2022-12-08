@@ -4,6 +4,7 @@ import { technologyResolvers } from './graphql/resolvers/resolvers.ts';
 import { technologyTypes } from './graphql/schema/technology.ts';
 import { corsAllowedOrigins } from './util/cors_allowed_origins.ts';
 import { API_HOST, DATABASE_HOST, PORT } from './config/environment.ts';
+import { logger } from './util/logger.ts';
 
 const app = new Application();
 const port = +PORT || 3333;
@@ -32,8 +33,8 @@ app.use(router.routes());
 app.use(router.allowedMethods());
 
 if (db.getConnector()._connected) {
-  console.log(`%cDatabase connected to: ${DATABASE_HOST}`, 'color: green');
+  logger.debug(`%cDatabase connected to: ${DATABASE_HOST}`, 'color: green');
 }
-console.log(`%c🚀 Application is running on: ${API_HOST}:${PORT}`, 'color: green');
+logger.debug(`%c🚀 Application is running on: ${API_HOST}:${PORT}`, 'color: green');
 
 await app.listen({ port });
