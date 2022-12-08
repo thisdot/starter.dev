@@ -15,13 +15,13 @@ export const dataSource = new DataSource({
   synchronize: DATABASE_ENABLE_SYNC,
 });
 
-const DATABASE_RETRY_COUNT = process.env.DATABASE_RETRY_COUNT
-  ? parseInt(process.env.DATABASE_RETRY_COUNT)
-  : 25;
+const DATABASE_RETRY_COUNT = process.env.DATABASE_CONNECT_RETRY_COUNT
+  ? parseInt(process.env.DATABASE_CONNECT_RETRY_COUNT)
+  : 5;
 
-const DATABASE_RETRY_INTERVAL_MS = process.env.DATABASE_RETRY_INTERVAL_MS
-  ? parseInt(process.env.DATABASE_RETRY_INTERVAL_MS)
-  : 2000;
+const DATABASE_RETRY_INTERVAL_MS = process.env.DATABASE_CONNECT_RETRY_COUNT
+  ? parseInt(process.env.DATABASE_CONNECT_RETRY_INTERVAL_MS)
+  : 5000;
 
 export async function initialiseDataSource(retries = DATABASE_RETRY_COUNT): Promise<boolean> {
   return dataSource

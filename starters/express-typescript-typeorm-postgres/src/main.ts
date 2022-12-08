@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require('dotenv').config();
 import { bootstrapApp } from './bootstrap-app';
-import { cacheRedisClient } from './cache/cache';
+import { cacheRedisClient } from './cache/redis-cache-client';
 import { initialiseDataSource } from './db/datasource';
 import { LogHelper } from './utils/log-helper';
 

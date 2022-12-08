@@ -20,9 +20,11 @@ export const CACHE_HEALTH = {
 };
 
 cacheRedisClient.on('error', (err) => {
-  LogHelper.error('[CACHE] An error occurred while connecting to Redis', err);
-  CACHE_HEALTH.isConnected = false;
-  CACHE_HEALTH.error = err;
+  if (CACHE_HEALTH.isConnected) {
+    LogHelper.error('[CACHE] An error occurred while connecting to Redis', err);
+    CACHE_HEALTH.isConnected = false;
+    CACHE_HEALTH.error = err;
+  }
 });
 
 cacheRedisClient.on('reconnecting', () => {

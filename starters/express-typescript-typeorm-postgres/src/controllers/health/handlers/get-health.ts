@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { getReasonPhrase, StatusCodes } from 'http-status-codes';
-import { cacheRedisClient, redisHealthCheck } from '../../../cache/cache';
+import { redisHealthCheck } from '../../../cache/redis-cache-client';
 import { Result } from '../../../constants/result';
 import { dataSource } from '../../../db/datasource';
 import { ErrorResult, SuccessResult } from '../../../interfaces/results';
