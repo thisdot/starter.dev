@@ -1,9 +1,4 @@
 import { Technologies } from '../model/technology.ts';
-export interface ITechnology {
-	displayName: string;
-	description: string;
-	url: string;
-}
 
 export const createTechnology = async (
 	_: unknown,
@@ -20,7 +15,7 @@ export const createTechnology = async (
 
 export const updateTechnology = async (
 	_: unknown,
-	{ id, value }: { id: string; value: ITechnology },
+	{ id, value }: { id: string; value: any },
 ) => {
 	await Technologies.where('id', id).update({
 		...value,
