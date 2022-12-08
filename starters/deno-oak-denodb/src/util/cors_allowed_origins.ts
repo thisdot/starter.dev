@@ -5,5 +5,5 @@ import { CORS_ALLOWED_ORIGINS } from '../config/environment.ts';
  * @returns {string[]}
  */
 export function corsAllowedOrigins(): string[] {
-  return CORS_ALLOWED_ORIGINS ? CORS_ALLOWED_ORIGINS.split(',') : [];
+	return CORS_ALLOWED_ORIGINS ? CORS_ALLOWED_ORIGINS.split(',') : [];
 }
