@@ -1,4 +1,4 @@
-import { TechnologyInput } from "../interfaces/graphql_interfaces.ts";
+import { TechnologyInput } from '../interfaces/graphql_interfaces.ts';
 import { Technologies } from '../../db/model/technology.ts';
 
 export const createTechnology = async (
@@ -7,7 +7,7 @@ export const createTechnology = async (
 ) => {
 	const createdTechnology = await Technologies.create({
 		id: crypto.randomUUID(),
-		...technology
+		...technology,
 	});
 	return createdTechnology;
 };
