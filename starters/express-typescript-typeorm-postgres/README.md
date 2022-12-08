@@ -106,6 +106,10 @@ For local development, the db:init method also mounts the `pg_data` folder with 
 
 Running `npm run db:delete` will delete everything and allows you to re-initialize your database from zero.
 
+### Production build
+
+The `npm run build` command compiles the typescript code into the `/dist` folder and generates a `package.json` file. To use it in production, for example in a docker container, one would copy the contents of the `/dist` folder, and then run `npm install` to have all the dependencies.
+
 ### CORS Cross-Origin Resource Sharing
 
 The [Cross-Origin Resource Sharing](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) standard works by adding new HTTP headers that let servers describe which origins are permitted to read that information from a web browser. For Security reasons, browsers restrict cross-origin HTTP requests initiated from scripts. This means that you cannot request data from web application on 'https://domain-a.com' from 'https://domain-b.com/data.json'.
