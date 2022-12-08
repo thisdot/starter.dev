@@ -23,7 +23,7 @@ async function runSeeder() {
 	await db.sync({ drop: true });
 	await Technologies.create(technologySeedData);
 
-  console.log("%cDatabase Seeded", "color: green; font-weight: bold")
+	console.log('%cDatabase Seeded', 'color: green; font-weight: bold');
 	Deno.exit();
 }
 
