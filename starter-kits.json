@@ -1,7 +1,7 @@
 {
   "angular-apollo-tailwind": "Angular, Apollo, and TailwindCSS",
   "cra-rxjs-styled-components": "Create React App, RxJS and Styled Components",
-  "next-react-query-tailwind": "NextJS, React Query, and TailwindCSS",
+  "next12-react-query-tailwind": "NextJS 12, React Query, and TailwindCSS",
   "remix-gql-tailwind": "Remix, GQL and TailwindCSS",
   "nuxt2-pinia-tailwind": "Nuxt 2, Pinia and TailwindCSS",
   "svelte-kit-scss": "SvelteKit and SCSS",
