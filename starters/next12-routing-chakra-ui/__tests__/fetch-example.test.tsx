@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import FetchExample from "../src/pages/fetch-example/[[...slug]]";
 import "@testing-library/jest-dom";
 
-describe("Counter Example page", () => {
+describe("Fetch Example page", () => {
   it("renders a heading", () => {
     render(<FetchExample userStr="This Dot Labs" />);
 
