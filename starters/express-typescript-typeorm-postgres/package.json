@@ -5,19 +5,20 @@
   "author": "This Dot Labs",
   "license": "MIT",
   "scripts": {
+    "postinstall": "docker-compose pull",
     "prebuild": "rimraf dist",
     "build": "tsc --project ./tsconfig.build.json",
     "postbuild": "node tools/generators/generate-prod-package-json.js",
-    "build:watch": "tsc --watch --project ./tsconfig.build.json &",
+    "build:watch": "tsc --watch --project ./tsconfig.build.json",
     "prestart": "npm run build",
     "start": "nodemon dist/main",
-    "dev": "concurrently -n \"tsc,server\" -s \"last\" -c \"magenta,yellow\" \"npm run build:watch\" \"npm run start\"",
-    "db:init": "docker run -d -p 5432:5432 -v $PWD/pg_data:/var/lib/postgresql/data --env-file=$PWD/postgres.db.env --name=data_storage postgres",
-    "db:init:windows": "docker run -d -p 5432:5432 -v %cd%/pg_data:/var/lib/postgresql/data --env-file=%cd%/postgres.db.env --name=data_storage postgres",
-    "db:start": "docker start data_storage",
-    "db:stop": "docker stop data_storage",
+    "dev": "concurrently --raw -n \"docker,tsc,server\" -s \"last\" -c \"blue,magenta,yellow\" \"npm run infrastructure:start\" \"npm run build:watch\" \"npm run start\"",
+    "infrastructure:start": "docker-compose up",
+    "infrastructure:stop": "docker-compose stop",
+    "infrastructure:clear": "npm run prebuild && npm run db:delete && npm run cache:delete",
     "db:seed": "ts-node src/db/run-seeders.ts",
     "db:delete": "npx rimraf pg_data && docker rm data_storage -f",
+    "cache:delete": "npx rimraf cache_data && npx rimraf cache_conf && docker rm cache -f",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "format": "prettier --write \"src/**/*.ts\"",
     "format:check": "prettier --check \"src/**/*.ts\"",
@@ -27,12 +28,14 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand"
   },
   "dependencies": {
+    "cachified": "3.0.0",
     "cors": "2.8.5",
     "dotenv": "^16.0.3",
     "express": "4.18.2",
     "express-oas-generator": "1.0.45",
     "http-status-codes": "2.2.0",
     "pg": "8.8.0",
+    "redis": "4.5.1",
     "reflect-metadata": "0.1.13",
     "swagger-ui-express": "4.6.0",
     "typeorm": "0.3.10",
@@ -78,6 +81,9 @@
   },
   "nodemonConfig": {
     "ignore": [
+      "pg_data",
+      "cache_data",
+      "cache_conf",
       "**/swagger.json",
       "**/swagger_v3.json"
     ]

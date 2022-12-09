@@ -1,22 +1,28 @@
 import { NextFunction, Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import { dataSource } from '../../../db/datasource';
-import { Technology } from '../../../entities/technology.entity';
+import { clearCacheEntry } from '../../../cache/cache';
+import { Result } from '../../../constants/result';
+import { LogHelper } from '../../../utils/log-helper';
+import { deleteTechnologyEntry } from '../services/technology.service';
 
 export async function deleteTechnology(
   req: Request,
   res: Response,
   next: NextFunction
 ): Promise<void> {
-  try {
-    const technologyId: number = parseInt(req.params.technologyId);
-    await dataSource.getRepository(Technology).delete({
-      id: technologyId,
-    });
-    res.status(StatusCodes.OK).json({
-      id: technologyId,
-    });
-  } catch (e) {
-    next(e);
+  const technologyId: number = parseInt(req.params.technologyId);
+  const deleteResult = await deleteTechnologyEntry(technologyId);
+
+  if (deleteResult.type === Result.ERROR) {
+    LogHelper.error(deleteResult.message, deleteResult.error);
+    next(deleteResult.error);
+    return;
   }
+
+  clearCacheEntry(req.baseUrl);
+  clearCacheEntry(req.originalUrl);
+
+  res.status(StatusCodes.OK).json({
+    id: technologyId,
+  });
 }

@@ -2,6 +2,10 @@
 import { dataSource } from '../../../db/datasource';
 import { getTechnology } from './get-technology';
 
+jest.mock('../../../cache/cache', () => ({
+  useCache: (key, callback) => callback(),
+}));
+
 const MOCK_REQUEST: any = {
   params: {
     technologyId: '1',
