@@ -88,6 +88,7 @@
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.8",
     "@types/styled-components": "^5.1.26",
+    "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "jest-fetch-mock": "^3.0.3",
     "msw": "^0.48.0",
