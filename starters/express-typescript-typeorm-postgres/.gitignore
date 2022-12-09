@@ -5,11 +5,11 @@ swagger.json
 swagger_v3.json
 
 # database and caches
-pg_data
-cache_data
-cache_conf
-queue_data
-queue_conf
+misc/pg_data
+misc/cache_data
+misc/cache_conf
+misc/queue_data
+misc/queue_conf
 
 # Logs
 logs

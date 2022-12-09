@@ -1,7 +1,7 @@
 import { InsertResult, UpdateResult } from 'typeorm';
 import { Result } from '../../../constants/result';
 import { dataSource } from '../../../db/datasource';
-import { Technology } from '../../../entities/technology.entity';
+import { Technology } from '../../../db/entities/technology.entity';
 import { ErrorResult, NotFoundResult, SuccessResult } from '../../../interfaces/results';
 
 export type CreateOrUpdateTechnologyResult = SuccessResult<{ id: Technology['id'] }> | ErrorResult;
