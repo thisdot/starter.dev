@@ -10,7 +10,7 @@
   "private": true,
   "hasShowcase": true,
   "engines": {
-    "node": ">= 16.0 <18.0.0"
+    "node": ">=16.0 <18.0.0"
   },
   "scripts": {
     "dev": "next dev",
