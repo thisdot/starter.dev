@@ -4,8 +4,10 @@
 swagger.json
 swagger_v3.json
 
-# database
+# database and caches
 pg_data
+cache_data
+cache_conf
 
 # Logs
 logs

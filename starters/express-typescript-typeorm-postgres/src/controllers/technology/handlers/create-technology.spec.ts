@@ -2,6 +2,10 @@
 import { dataSource } from '../../../db/datasource';
 import { createTechnology } from './create-technology';
 
+jest.mock('../../../cache/cache', () => ({
+  clearCacheEntry: (key) => void 0,
+}));
+
 const MOCK_REQUEST: any = {
   body: {
     name: 'Jest',

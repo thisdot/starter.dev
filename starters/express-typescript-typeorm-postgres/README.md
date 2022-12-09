@@ -14,7 +14,7 @@ This starter kit features Express, Typescript API setup
     - [CLI (Recommended)](#cli-recommended)
     - [Manual](#manual)
   - [Commands](#commands)
-  - [Database](#database)
+  - [Database and Redis](#database-and-redis)
     - [Seeding](#seeding)
     - [CORS Cross-Origin Resource Sharing](#cors-cross-origin-resource-sharing)
   - [Kit Organization / Architecture](#kit-organization--architecture)
@@ -28,6 +28,7 @@ This starter kit features Express, Typescript API setup
 - [Express v4](https://expressjs.com)
 - [TypeOrm](https://typeorm.io)
 - [PostgreSQL](https://www.postgresql.org)
+- [Redis](https://redis.io/)
 
 ### Included Tooling
 
@@ -38,7 +39,9 @@ This starter kit features Express, Typescript API setup
 
 ### Example Controllers
 
-TODO: set up example controllers
+The starter contains an example CRUD implementation for technologies. You can find the controller and its handlers under the `/src/controllers/technology/` folder.
+
+The handlers have caching enabled using the [cachified](https://www.npmjs.com/package/cachified) package. It uses redis under the hood.
 
 ## Installation
 
@@ -56,7 +59,9 @@ yarn create @this-dot/starter --kit express-typescript-typeorm-postgres
 
 - Follow the prompts to select the `express-typescript-typeorm-postgres` starter kit and name your new project.
 - `cd` into your project directory and run `npm install`.
-- Run `npm run dev` to start the development server.
+- Make sure you have docker & docker-compose installed on your machine
+- Create a `.env` file and copy the contents of `.env.example` into it.
+- Run `npm run dev` to start the development server and infrastructure.
 - Open your browser to `http://localhost:3000` to see the included example code running.
 
 ### Manual
@@ -66,25 +71,29 @@ git clone https://github.com/thisdot/starter.dev.git
 ```
 
 - Copy and rename the `starters/express-typescript-typeorm-postgres` directory to the name of your new project.
+- Make sure you have docker & docker-compose installed on your machine
 - `cd` into your project directory and run `npm install`.
-- Run `npm run dev` to start the server.
+- Create a `.env` file and copy the contents of `.env.example` into it.
+- Run `npm run dev` to start the server and infrastructure.
 
 - Open your browser to `http://localhost:3333/api-docs` to see the included example code running.
 
 ## Commands
 
-- `npm run db:init` - Builds the docker container image with database seeding.
-- `npm run db:start` - Starts the database using the previously built docker container.
-- `npm run db:stop` - Stops the running database docker container.
+- `npm run infrastructure:start` - Starts up a postgres database and a redis instance for caching
+- `npm run infrastructure:stop` - Stops the running database and redis docker containers.
+- `npm run infrastructure:clear` - Clears the database and cache, removes dist folder, removes docker images.
 - `npm run db:delete` - Deletes everything database related and allows you to reinitialise your database.
-- `npm run dev` - Starts the development server. (Needs a running database first)
+- `npm run db:seed` - Allows you to seed the database (See the Seeding section)
+- `npm run cache:delete` - Removes everything stored in the cache, and deletes the cache docker image
+- `npm run dev` - Starts the development server and the infrastructure necessary to run it.
 - `npm run build` - Builds the app.
-- `npm start` - Starts the built app. (Needs a running database first)
+- `npm start` - Starts the built app. (Needs a running infrastructure first)
 - `npm test` - Runs the unit tests.
 - `npm run lint` - Runs ESLint on the project.
 - `npm run format` - Formats code for the entire project
 
-## Database
+## Database and Redis
 
 In order to start up your API in dev mode with an active database connection, please follow the following steps:
 
@@ -98,9 +107,11 @@ The above steps will make sure your API connects to the database instance that g
 
 In the `src/db/run-seeders.ts` file, we provide a script to seed the database with intial values, using TypeOrm. Under the `src/db/seeding` folder, you can find the `TechnologySeeder` class, that seeds values into the database as an example.
 
-In order to be seed the database, first you must set up the docker image, by running `npm run db:init` or on windows `npm run db:init:windows`. After the database is initialised, you can start the container by running `npm run db:start`
+In order to be seed the database, first you must set up the infrastructure, by running `npm run infrastructure:init`.
 
-When the database is running, set up your `.env` file to provide the necessary environment variables for the database connection and run `npm run dev` to start up your API, that sets up the tables and schemas, then run your seeder by running the `npm run db:seed` command.
+After the database is initialised, set up your `.env` file to provide the necessary environment variables (use the `.env.example` file) for the database connection and run `npm run dev` to start up your API.
+
+The API will start up for the first time and will set up the tables and schemas, then run your seeder by running the `npm run db:seed` command.
 
 For local development, the db:init method also mounts the `pg_data` folder with the `-v $PWD/pg_data:/var/lib/postgresql/data` command, therefore, your data is kept locally for you.
 
@@ -120,17 +131,4 @@ In order to restrict origins urls that can access your api, you need to add a li
 
 ## Kit Organization / Architecture
 
-The demo components included in the starter.kit are co-located with the tests and stories. If you want to follow this pattern, take a look at our GitHub demo implementation below. The demo implementation is done with the same structure but includes things like tests, routes, and controllers that are modeled after best practices. Using this structure makes it easy to find all the code and functionality that are related.
-
-### Example directory
-
-```
-
-TODO: example
-```
-
-## Demo Implementation
-
-[Repository](https://github.com/thisdot/starter.dev-showcases/tree/main/express-typescript-typeorm-postgres)
-
-TODO: what does the the demo implementation do.
+[//]: # (TODO: architecture)
