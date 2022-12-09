@@ -34,6 +34,7 @@ const Home: NextPage = () => {
       <Box>
         <Center>
           <Heading
+            role="heading"
             as="h1"
             color="white"
             borderRadius={4}

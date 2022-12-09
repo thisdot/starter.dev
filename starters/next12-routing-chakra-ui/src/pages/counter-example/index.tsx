@@ -28,14 +28,20 @@ const CounterExample: NextPage = () => {
   return (
     <>
       <Center>
-        <Heading as="h1" pb={4} borderBottom="4px solid #2464ec" mt={8}>
-          Increment, Decrement and Reset Button Example
+        <Heading
+          role="heading"
+          as="h1"
+          pb={4}
+          borderBottom="4px solid #2464ec"
+          mt={8}
+        >
+          Increment, Decrement and Reset Button Examples
         </Heading>
       </Center>
 
       <Flex justifyContent="space-around" my={8} alignItems="center">
         <Flex alignItems="center">
-          <Heading mr={2} as="h2">
+          <Heading role="heading" mr={2} as="h2">
             Count:
           </Heading>
           <Text fontSize="4xl" color={setColorText()}>
