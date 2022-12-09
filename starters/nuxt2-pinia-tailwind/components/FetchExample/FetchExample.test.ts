@@ -22,7 +22,7 @@ describe('<FetchExample />', () => {
       stubs: {
         NuxtLink: true,
       },
-    }
+    };
 
     // Act
     render(FetchExample, componentOptions);
@@ -42,7 +42,7 @@ describe('<FetchExample />', () => {
       })
     );
 
-    const componentOptions = { 
+    const componentOptions = {
       mocks: {
         $nuxt: {
           context: {
@@ -53,7 +53,7 @@ describe('<FetchExample />', () => {
       stubs: {
         NuxtLink: true,
       },
-    }
+    };
 
     // Act
     render(FetchExample, componentOptions);
@@ -78,10 +78,10 @@ describe('<FetchExample />', () => {
       stubs: {
         NuxtLink: true,
       },
-    }
-    
+    };
+
     // Act
-    render(FetchExample,componentOptions);
+    render(FetchExample, componentOptions);
 
     const messageSkeleton = screen.getByTestId('message-skeleton');
 

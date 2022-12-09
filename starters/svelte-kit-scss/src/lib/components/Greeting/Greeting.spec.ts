@@ -1,4 +1,4 @@
-import Greeting from './Greeting.svelte';
+import Greeting from '$lib/components/Greeting/Greeting.svelte';
 import { render } from '@testing-library/svelte';
 
 describe('Greeting Component', () => {
