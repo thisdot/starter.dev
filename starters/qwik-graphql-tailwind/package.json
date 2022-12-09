@@ -31,14 +31,14 @@
     "test.coverage": "vitest --coverage"
   },
   "devDependencies": {
-    "@builder.io/qwik": "0.11.1",
-    "@builder.io/qwik-city": "0.0.112",
-    "@storybook/addon-actions": "6.5.12",
-    "@storybook/addon-essentials": "6.5.12",
-    "@storybook/addon-interactions": "6.5.12",
-    "@storybook/addon-links": "6.5.12",
+    "@builder.io/qwik": "0.14.1",
+    "@builder.io/qwik-city": "0.0.127",
+    "@storybook/addon-actions": "6.5.13",
+    "@storybook/addon-essentials": "6.5.13",
+    "@storybook/addon-interactions": "6.5.13",
+    "@storybook/addon-links": "6.5.13",
     "@storybook/builder-vite": "0.2.4",
-    "@storybook/html": "6.5.12",
+    "@storybook/html": "6.5.13",
     "@storybook/testing-library": "0.0.13",
     "@types/eslint": "8.4.7",
     "@types/node": "18.11.3",
@@ -56,7 +56,7 @@
     "prettier": "2.7.1",
     "tailwindcss": "3.2.0",
     "typescript": "4.8.4",
-    "vite": "3.1.8",
+    "vite": "3.2.1",
     "vite-tsconfig-paths": "3.5.2",
     "vitest": "^0.24.3"
   }
