@@ -22,7 +22,7 @@ type ArgsType = {
 	redisClient: Redis;
 	usePlayground: boolean;
 	route: string;
-	defaultEx: number | undefined;
+	defaultEx?: number | undefined;
 };
 
 export class Cache {
@@ -52,12 +52,10 @@ export class Cache {
 	) {
 		const cacheValue = await this.redisClient.get(cacheKey);
 		if (cacheValue) {
-			console.log(JSON.parse(cacheValue));
 			return JSON.parse(cacheValue);
 		}
-		// cache miss: invoke provided callback to fetch results
+
 		const results = await callback();
-		console.log(results);
 		if (results === null || results === undefined) {
 			console.error(
 				'%cError: result of callback provided to DenoStore cache function cannot be undefined or null',
@@ -127,7 +125,7 @@ export class Cache {
 				response.body = playground;
 				return;
 			} catch (err) {
-				console.log(`%cError: ${err}`, 'font-weight: bold; color: white; background-color: red;');
+				console.error(`%cError: ${err}`, 'font-weight: bold; color: white; background-color: red;');
 				response.status = 500;
 				response.body = 'Problem rendering GraphQL Playground IDE';
 				throw err;
