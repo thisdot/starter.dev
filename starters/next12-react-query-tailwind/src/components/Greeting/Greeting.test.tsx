@@ -92,7 +92,7 @@ describe('Greeting', () => {
           <Greeting />
         </QueryClientProvider>
       );
-      const MESSAGE_EXPECTED = 'Request error: Not Found';
+      const MESSAGE_EXPECTED = 'Test Message Error';
 
       expect(await screen.findByText(MESSAGE_EXPECTED)).toBeVisible();
       const errorMessage = screen.getByRole('error-message');
