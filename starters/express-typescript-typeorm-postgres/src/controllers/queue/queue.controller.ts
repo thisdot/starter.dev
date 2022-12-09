@@ -3,7 +3,7 @@ import { addJob } from '../../queue/queue';
 
 const queueRouter = Router();
 
-queueRouter.post('/', async (req: Request<null, null, { info: string }>, res: Response) => {
+queueRouter.post('/', async (req: Request, res: Response) => {
   const job = await addJob(req.body);
   res.json({ jobId: job.id });
 });
