@@ -1,5 +1,5 @@
-import { createTechnology, deleteTechnologyById, updateTechnology } from './mutationHandler.ts';
-import { getTechnologies, getTechnology } from './queryHandler.ts';
+import { createTechnology, deleteTechnologyById, updateTechnology } from './mutation_handler.ts';
+import { getTechnologies, getTechnology } from './query_handler.ts';
 
 export const technologyResolvers = {
 	Query: {
