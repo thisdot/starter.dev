@@ -32,14 +32,14 @@ When the database is running, set up your `.env` file to provide the necessary e
 deno task seed
 ```
 
-You can then run `docker compose stop` to shut down the database. The database will be started automatically by `deno task start` (see next section).
+You can then run `docker compose stop` to shut down the database. The database will be started automatically by `deno task start-all` (see next section).
 
 ## Running application locally
 
 To run locally:
 
 ```shell
-deno task start
+deno task start-all
 ```
 
 ### Keeping integrity through lock file
