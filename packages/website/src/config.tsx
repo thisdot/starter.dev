@@ -36,6 +36,7 @@ import {
   PiniaIcon,
   QwikIcon,
   SolidJsIcon,
+  ChakraIcon,
 } from './icons';
 
 export interface NavItem {
@@ -99,7 +100,7 @@ export const TECHNOLOGIES = [
     tags: ['Core UI'],
     Icon: (props) => <VueIcon {...props} />,
   },
-   {
+  {
     key: 'solidjs',
     name: 'SolidJs',
     tags: ['Core UI'],
@@ -200,6 +201,12 @@ export const TECHNOLOGIES = [
     name: 'Bootstrap',
     tags: ['Styling'],
     Icon: (props) => <BootstrapIcon {...props} />,
+  },
+  {
+    key: 'chakra-ui',
+    name: 'Chakra UI',
+    tags: ['Styling'],
+    Icon: (props) => <ChakraIcon {...props} />,
   },
   {
     key: 'astro',
