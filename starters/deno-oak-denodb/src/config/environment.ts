@@ -9,6 +9,7 @@ export const {
 	PORT,
 	CORS_ALLOWED_ORIGINS,
 	LOG_LEVEL,
+	PRODUCTION,
 } = config({
 	safe: true,
 	allowEmptyValues: true,

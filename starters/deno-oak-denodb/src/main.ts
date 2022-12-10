@@ -3,7 +3,7 @@ import { db } from './db/db.ts';
 import { technologyResolvers } from './graphql/resolvers/resolvers.ts';
 import { technologyTypes } from './graphql/schema/technology.ts';
 import { corsAllowedOrigins } from './util/cors_allowed_origins.ts';
-import { API_HOST, DATABASE_HOST, PORT } from './config/environment.ts';
+import { API_HOST, DATABASE_HOST, PORT, PRODUCTION } from './config/environment.ts';
 import { logger } from './util/logger.ts';
 
 const app = new Application();
@@ -18,6 +18,7 @@ const GraphQLService = await applyGraphQL<Router>({
 	Router,
 	typeDefs: technologyTypes,
 	resolvers: technologyResolvers,
+	usePlayground: PRODUCTION !== 'true',
 });
 
 app.use(
