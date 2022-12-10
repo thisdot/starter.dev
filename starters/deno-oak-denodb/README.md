@@ -85,3 +85,8 @@ The GraphQL API playground is available at http://localhost:3333/graphql. You ca
 }
 ```
 
+## CORS configuration
+
+In order to restrict origin URLs that can access your API, you need to add a list of comma separated origin URLs in the `CORS_ALLOWED_ORIGINS` variable located in your `.env` file. For example `CORS_ALLOWED_ORIGINS=https://start.dev`. In case you need to access the API in a development environment, you can add the local url http://127.0.0.1 to the `CORS_ALLOWED_ORIGINS` variable as `CORS_ALLOWED_ORIGINS=https://start.dev,http://127.0.0.1`.
+
+
