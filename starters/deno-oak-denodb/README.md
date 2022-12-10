@@ -67,3 +67,21 @@ deno task show-docs
 ```
 
 The documentation is printed to standard out - it can be redirected to a file if necessary.
+
+## Using the GraphQL API
+
+The GraphQL API playground is available at http://localhost:3333/graphql. You can execute the following query to retrieve all technologies, assuming that they were seeded properly.
+
+```graphql
+{
+  getTechnologies {
+    id
+    displayName
+    description
+    url
+    createdAt
+    updatedAt
+  }
+}
+```
+
