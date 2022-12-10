@@ -18,7 +18,7 @@ deno fmt
 
 ## Seeding
 
-In the `src/db/run_seeders.ts` file, we provide a script to seed the database with intial values, using Deno DB. Under the `src/db/seeding` folder, you can find the `technologySeedData`, which is an array of initial values to be seeded into the database as an example.
+In the `src/db/run_seeders.ts` file, we provide a script to seed the database with initial values, using Deno DB. Under the `src/db/seeding` folder, you can find the `technologySeedData`, which is an array of initial values to be seeded into the database as an example.
 
 In order to seed the database, the database docker container must be up and running:
 
@@ -29,15 +29,17 @@ docker compose up
 When the database is running, set up your `.env` file to provide the necessary environment variables for the database connection, then run your seeder:
 
 ```shell
- deno run --allow-net --allow-env --allow-read ./src/db/run_seeder.ts
+deno task seed
 ```
+
+You can then run `docker compose stop` to shut down the database. The database will be started automatically by `deno task start` (see next section).
 
 ## Running application locally
 
 To run locally:
 
 ```shell
-deno run --watch --allow-net --allow-env --allow-read ./src/main.ts
+deno task start
 ```
 
 ### Keeping integrity through lock file
@@ -45,20 +47,14 @@ deno run --watch --allow-net --allow-env --allow-read ./src/main.ts
 The starter kit ships without a lock file, but the recommended way of keeping the integrity of dependencies is through a lock file. You can write a lock file through the following commands:
 
 ```shell
-deno cache --lock=lock.json --lock-write deps.ts
-deno cache --lock=lock.json --lock-write dev_deps.ts
+deno task write-lock-file
 ```
 
 Other collaborators can then use the lock file to download the dependencies before running the app:
 
 ```shell
-deno cache --reload --lock=lock.json deps.ts
-deno cache --reload --lock=lock.json dev_deps.ts
+deno task reload-cache
 ```
-
-### Run configurations
-
-If you use WebStorm, you can take advantage of the run configuration that is stored in the `.run` folder. That way, you can start the application using a preconfigured run command.
 
 ## Generating documentation
 
@@ -67,7 +63,7 @@ For generating documentation, we use Deno's built-in `deno doc` command. This co
 The documentation is generated using the command:
 
 ```shell
-deno doc src/docs/sources.ts
+deno task show-docs
 ```
 
 The documentation is printed to standard out - it can be redirected to a file if necessary.
