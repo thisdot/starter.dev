@@ -108,7 +108,7 @@ export const TECHNOLOGIES = [
   },
   {
     key: 'next',
-    name: 'NextJS',
+    name: 'NextJS 12',
     tags: ['Framework'],
     Icon: (props) => <NextIcon {...props} />,
   },
