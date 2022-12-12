@@ -1,5 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Run Oak" type="DenoConfigurationType" inputPath="$PROJECT_DIR$/src/main.ts" programParameters="run --watch --allow-net --allow-env --allow-read">
-    <method v="2" />
-  </configuration>
-</component>

@@ -1,19 +1,21 @@
 import { log } from '../../deps.ts';
 import { LOG_LEVEL } from '../config/environment.ts';
 
-await log.setup({
-  handlers: {
-    console: new log.handlers.ConsoleHandler(LOG_LEVEL, {
-      formatter: '{datetime} {levelName} {msg}',
-    }),
-  },
+const environmentLogLevel = LOG_LEVEL as log.LevelName;
 
-  loggers: {
-    default: {
-      level: LOG_LEVEL,
-      handlers: ['console'],
-    },
-  },
+await log.setup({
+	handlers: {
+		console: new log.handlers.ConsoleHandler(environmentLogLevel, {
+			formatter: '{datetime} {levelName} {msg}',
+		}),
+	},
+
+	loggers: {
+		default: {
+			level: environmentLogLevel,
+			handlers: ['console'],
+		},
+	},
 });
 
 export const logger = log.getLogger();
