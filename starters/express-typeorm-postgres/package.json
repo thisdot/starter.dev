@@ -1,11 +1,10 @@
 {
-  "name": "express-typescript-typeorm-postgres",
+  "name": "express-typeorm-postgres",
   "version": "0.0.1",
   "description": "express, typescript, REST",
   "author": "This Dot Labs",
   "license": "MIT",
   "scripts": {
-    "postinstall": "docker-compose pull",
     "prebuild": "rimraf dist",
     "build": "tsc --project ./tsconfig.build.json",
     "postbuild": "node tools/generators/generate-prod-package-json.js",
