@@ -16,14 +16,15 @@ router.get('/', ({ request, response }: Context) => {
 	response.body = `Hello from the starter.dev starter kit, running at ${request.url}`;
 });
 
-const ds = new Cache();
+const cache = new Cache();
+await cache.connectToRedis();
 const GraphQLService = await applyGraphQL<Router>({
 	Router,
 	typeDefs: technologyTypes,
 	resolvers: technologyResolvers,
 	usePlayground: PRODUCTION !== 'true',
-	context: (_ctx: unknown) => {
-		return { ds };
+	context: () => {
+		return { cache };
 	},
 });
 

@@ -2,20 +2,15 @@ import { connect, Redis, SetOpts } from '../../deps.ts';
 import { REDIS_CACHE_HOST, REDIS_CACHE_PORT } from '../config/environment.ts';
 import { logger } from '../util/logger.ts';
 
-type GetFreshValue<T> = {
-	(): Promise<T> | T;
-};
-
 const redisHostname = REDIS_CACHE_HOST || 'localhost';
 const redisPort = REDIS_CACHE_PORT ? parseInt(REDIS_CACHE_PORT) : 6379;
 
 export class Cache {
 	redisClient!: Redis;
 	constructor() {
-		this.connectToRedis();
 	}
 
-	private async connectToRedis(): Promise<void> {
+	async connectToRedis(): Promise<void> {
 		this.redisClient = await connect({
 			hostname: redisHostname,
 			port: redisPort,
@@ -23,7 +18,7 @@ export class Cache {
 		this.redisClient.isConnected && logger.info('Connected to Redis');
 	}
 
-	async readItem<T>({ cacheKey }: { cacheKey: string; ex?: number }): Promise<T | null> {
+	async readItem<T>(cacheKey: string): Promise<T | null> {
 		const cacheValue = await this.redisClient.get(cacheKey);
 		if (cacheValue) {
 			return JSON.parse(cacheValue);
@@ -32,25 +27,22 @@ export class Cache {
 	}
 
 	async writeItem<T>(
-		{ cacheKey, ex }: { cacheKey: string; ex?: number },
-		callback: GetFreshValue<T>,
+		cacheKey: string,
+		cacheValue: T,
+		ex?: number,
 	): Promise<T> {
-		const results = await callback();
-		let redisCachingOpts: SetOpts = { keepttl: true };
-		console.log('results', results);
+		let redisCachingOpts: SetOpts | undefined;
 
 		// Set the expiration time for the individual request if provided
-		if (ex) {
-			if (ex > 0) redisCachingOpts = { ...redisCachingOpts, ex };
-		}
+		if (!ex) redisCachingOpts = { keepttl: true, ex };
 
 		if (redisCachingOpts) {
-			await this.redisClient.set(cacheKey, JSON.stringify(results), redisCachingOpts);
+			await this.redisClient.set(cacheKey, JSON.stringify(cacheValue), redisCachingOpts);
 		} else {
-			await this.redisClient.set(cacheKey, JSON.stringify(results));
+			await this.redisClient.set(cacheKey, JSON.stringify(cacheValue));
 		}
 
-		return results;
+		return cacheValue;
 	}
 
 	async clearAllCache(): Promise<void> {
@@ -59,5 +51,9 @@ export class Cache {
 
 	async invalidateItem(cacheKey: string): Promise<void> {
 		await this.redisClient.del(cacheKey);
+	}
+
+	async pingRedis(): Promise<string> {
+		return await this.redisClient.ping();
 	}
 }

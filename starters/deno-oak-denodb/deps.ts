@@ -11,3 +11,4 @@ export { config } from 'https://deno.land/x/dotenv@v3.2.0/mod.ts';
 export { applyGraphQL, gql } from 'https://deno.land/x/oak_graphql@0.6.4/mod.ts';
 export { connect } from 'https://deno.land/x/redis@v0.27.4/mod.ts';
 export type { Redis, SetOpts } from 'https://deno.land/x/redis@v0.27.4/mod.ts';
+export type { GraphQLResolveInfo } from 'https://deno.land/x/graphql_deno@v15.0.0/mod.ts';
