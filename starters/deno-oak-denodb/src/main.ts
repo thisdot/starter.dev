@@ -7,6 +7,7 @@ import {
 	API_HOST,
 	DATABASE_HOST,
 	PORT,
+  PRODUCTION,
 	REDIS_CACHE_HOST,
 	REDIS_CACHE_PORT,
 } from './config/environment.ts';
@@ -28,7 +29,7 @@ const redisClient = await connect({
 const ds = new Cache({
 	route: '/graphql',
 	redisClient: redisClient,
-	usePlayground: true,
+	usePlayground: PRODUCTION !== 'true',
 	schema: {
 		typeDefs: technologyTypes,
 		resolvers: technologyResolvers,
@@ -36,7 +37,7 @@ const ds = new Cache({
 });
 
 router.get('/', ({ request, response }: Context) => {
-	response.body = `Hello world! from ${request.url}`;
+	response.body = `Hello from the starter.dev starter kit, running at ${request.url}`;
 });
 
 app.use(
@@ -52,9 +53,9 @@ app.use(router.routes());
 app.use(router.allowedMethods());
 
 if (db.getConnector()._connected) {
-	logger.debug(`%cDatabase connected to: ${DATABASE_HOST}`, 'color: green');
+	logger.info(`Database connected to: ${DATABASE_HOST}`);
 }
 redisClient.isConnected && logger.info('Connected to Redis');
-logger.debug(`%c🚀 Application is running on: ${API_HOST}:${PORT}`, 'color: green');
+logger.info(`Application is running on: ${API_HOST}:${PORT}`);
 
 await app.listen({ port });
