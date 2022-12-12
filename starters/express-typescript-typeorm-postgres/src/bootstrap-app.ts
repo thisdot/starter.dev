@@ -18,8 +18,8 @@ export function bootstrapApp(): Express {
   app.use(corsMiddleware);
 
   app.use('/', apiRouter);
-  expressOasGenerator.handleRequests();
   app.use(genericErrorHandler);
+  expressOasGenerator.handleRequests();
   return app;
 }
 
