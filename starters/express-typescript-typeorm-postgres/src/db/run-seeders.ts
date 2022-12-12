@@ -2,7 +2,7 @@
 require('dotenv').config();
 import { DataSource, DataSourceOptions } from 'typeorm';
 import { runSeeders, SeederOptions } from 'typeorm-extension';
-import { Technology } from '../entities/technology.entity';
+import { Technology } from './entities/technology.entity';
 import TechnologySeeder from './seeding/technology-seeder';
 
 const options: DataSourceOptions & SeederOptions = {
