@@ -23,7 +23,7 @@ In the `src/db/run_seeders.ts` file, we provide a script to seed the database wi
 In order to seed the database, the database docker container must be up and running:
 
 ```shell
-docker compose up
+deno task start-db
 ```
 
 When the database is running, set up your `.env` file to provide the necessary environment variables for the database connection, then run your seeder:
@@ -36,10 +36,11 @@ You can then run `docker compose stop` to shut down the database. The database w
 
 ## Running application locally
 
-To run locally:
+To run locally, start the database, then start the web server:
 
 ```shell
-deno task start-all
+deno task start-db
+deno task start-web
 ```
 
 ### Keeping integrity through lock file
