@@ -1,6 +1,6 @@
 import { DataSource } from 'typeorm';
 import { Seeder, SeederFactoryManager } from 'typeorm-extension';
-import { Technology } from '../../entities/technology.entity';
+import { Technology } from '../entities/technology.entity';
 
 export default class TechnologySeeder implements Seeder {
   public async run(dataSource: DataSource, factoryManager: SeederFactoryManager): Promise<void> {
