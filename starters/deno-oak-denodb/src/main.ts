@@ -34,8 +34,8 @@ app.use(router.routes());
 app.use(router.allowedMethods());
 
 if (db.getConnector()._connected) {
-	logger.info(`%cDatabase connected to: ${DATABASE_HOST}`, 'color: green');
+	logger.info(`Database connected to: ${DATABASE_HOST}`);
 }
-logger.info(`%c🚀 Application is running on: ${API_HOST}:${PORT}`, 'color: green');
+logger.info(`Application is running on: ${API_HOST}:${PORT}`);
 
 await app.listen({ port });
