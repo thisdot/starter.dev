@@ -1,10 +1,10 @@
-# express-typescript-typeorm-postgres starter kit
+# express-typeorm-postgres starter kit
 
 This starter kit features Express, Typescript API setup
 
 ## Table of Contents
 
-- [express-typescript-typeorm-postgres starter kit](#express-typescript-typeorm-postgres-starter-kit)
+- [express-typeorm-postgres starter kit](#express-typeorm-postgres-starter-kit)
   - [Table of Contents](#table-of-contents)
   - [Overview](#overview)
     - [Tech Stack](#tech-stack)
@@ -54,16 +54,16 @@ The handlers have caching enabled using the [cachified](https://www.npmjs.com/pa
 ### CLI (Recommended)
 
 ```bash
-npm create @this-dot/starter --kit express-typescript-typeorm-postgres
+npm create @this-dot/starter --kit express-typeorm-postgres
 ```
 
 or
 
 ```bash
-yarn create @this-dot/starter --kit express-typescript-typeorm-postgres
+yarn create @this-dot/starter --kit express-typeorm-postgres
 ```
 
-- Follow the prompts to select the `express-typescript-typeorm-postgres` starter kit and name your new project.
+- Follow the prompts to select the `express-typeorm-postgres` starter kit and name your new project.
 - `cd` into your project directory and run `npm install`.
 - Make sure you have docker & docker-compose installed on your machine
 - Create a `.env` file and copy the contents of `.env.example` into it.
@@ -77,7 +77,7 @@ yarn create @this-dot/starter --kit express-typescript-typeorm-postgres
 git clone https://github.com/thisdot/starter.dev.git
 ```
 
-- Copy and rename the `starters/express-typescript-typeorm-postgres` directory to the name of your new project.
+- Copy and rename the `starters/express-typeorm-postgres` directory to the name of your new project.
 - Make sure you have docker & docker-compose installed on your machine
 - `cd` into your project directory and run `npm install`.
 - Make sure you have docker & docker-compose installed on your machine
