@@ -11,7 +11,7 @@ export async function createTechnology(
   next: NextFunction
 ): Promise<void> {
   const inserted = await insertTechnology({
-    displayName: req.body.name,
+    displayName: req.body.displayName,
     description: req.body.description,
   });
 

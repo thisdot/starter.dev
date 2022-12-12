@@ -15,10 +15,11 @@
     "dev": "concurrently --raw -n \"docker,tsc,server\" -s \"last\" -c \"blue,magenta,yellow\" \"npm run infrastructure:start\" \"npm run build:watch\" \"npm run start\"",
     "infrastructure:start": "docker-compose up",
     "infrastructure:stop": "docker-compose stop",
-    "infrastructure:clear": "npm run prebuild && npm run db:delete && npm run cache:delete",
+    "infrastructure:clear": "npm run prebuild && npm run db:delete && npm run cache:delete && npm run queue:delete",
     "db:seed": "ts-node src/db/run-seeders.ts",
     "db:delete": "npx rimraf pg_data && docker rm data_storage -f",
     "cache:delete": "npx rimraf cache_data && npx rimraf cache_conf && docker rm cache -f",
+    "queue:delete": "npx rimraf cache_data && npx rimraf cache_conf && docker rm queue -f",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "format": "prettier --write \"src/**/*.ts\"",
     "format:check": "prettier --check \"src/**/*.ts\"",
@@ -28,6 +29,7 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand"
   },
   "dependencies": {
+    "bullmq": "3.3.5",
     "cachified": "3.0.0",
     "cors": "2.8.5",
     "dotenv": "^16.0.3",
@@ -84,6 +86,8 @@
       "pg_data",
       "cache_data",
       "cache_conf",
+      "queue_data",
+      "queue_conf",
       "**/swagger.json",
       "**/swagger_v3.json"
     ]
