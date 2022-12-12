@@ -12,7 +12,7 @@ import {
 	REDIS_CACHE_PORT,
 } from './config/environment.ts';
 import { logger } from './util/logger.ts';
-import { Cache } from './cache/Cache.ts';
+import { Cache } from './cache/caches.ts';
 
 const port = +PORT || 3333;
 const redisHostname = REDIS_CACHE_HOST || 'localhost';
