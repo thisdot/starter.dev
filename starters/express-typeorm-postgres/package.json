@@ -5,7 +5,6 @@
   "author": "This Dot Labs",
   "license": "MIT",
   "scripts": {
-    "postinstall": "docker-compose pull",
     "prebuild": "rimraf dist",
     "build": "tsc --project ./tsconfig.build.json",
     "postbuild": "node tools/generators/generate-prod-package-json.js",
