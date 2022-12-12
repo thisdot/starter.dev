@@ -6,23 +6,23 @@ import { LogHelper } from '../../../utils/log-helper';
 import { deleteTechnologyEntry } from '../services/technology.service';
 
 export async function deleteTechnology(
-  req: Request,
-  res: Response,
-  next: NextFunction
+	req: Request,
+	res: Response,
+	next: NextFunction
 ): Promise<void> {
-  const technologyId: number = parseInt(req.params.technologyId);
-  const deleteResult = await deleteTechnologyEntry(technologyId);
+	const technologyId: number = parseInt(req.params.technologyId);
+	const deleteResult = await deleteTechnologyEntry(technologyId);
 
-  if (deleteResult.type === Result.ERROR) {
-    LogHelper.error(deleteResult.message, deleteResult.error);
-    next(deleteResult.error);
-    return;
-  }
+	if (deleteResult.type === Result.ERROR) {
+		LogHelper.error(deleteResult.message, deleteResult.error);
+		next(deleteResult.error);
+		return;
+	}
 
-  clearCacheEntry(req.baseUrl);
-  clearCacheEntry(req.originalUrl);
+	clearCacheEntry(req.baseUrl);
+	clearCacheEntry(req.originalUrl);
 
-  res.status(StatusCodes.OK).json({
-    id: technologyId,
-  });
+	res.status(StatusCodes.OK).json({
+		id: technologyId,
+	});
 }
