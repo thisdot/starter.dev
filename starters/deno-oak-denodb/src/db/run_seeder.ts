@@ -9,7 +9,7 @@ import {
 	DATABASE_USERNAME,
 } from '../config/environment.ts';
 
-async function runSeeder() {
+async function runSeeder(): Promise<void> {
 	const connection = new PostgresConnector({
 		host: DATABASE_HOST,
 		username: DATABASE_USERNAME,

@@ -6,7 +6,7 @@ export const createTechnology = async (
 	_: unknown,
 	{ technology }: { technology: TechnologyInput },
 	{ ds }: { ds: Cache },
-) => {
+): Promise<Technologies> => {
 	await ds.invalidateItem('getTechnologies');
 	const createdTechnology = await Technologies.create({
 		id: crypto.randomUUID(),
@@ -19,8 +19,8 @@ export const updateTechnology = async (
 	_: unknown,
 	{ id, input }: { id: string; input: TechnologyInput },
 	{ ds }: { ds: Cache },
-	info: any,
-) => {
+	info: Record<string, string>,
+): Promise<{ done: boolean }> => {
 	await Technologies.where('id', id).update({
 		...input,
 	});
@@ -34,8 +34,8 @@ export const deleteTechnologyById = async (
 	_: unknown,
 	{ id }: { id: string },
 	{ ds }: { ds: Cache },
-	info: any,
-) => {
+	info: Record<string, string>,
+): Promise<{ done: boolean }> => {
 	await Technologies.deleteById(id);
 	await ds.invalidateItem(`${info.fieldName}:${id}`);
 	return {

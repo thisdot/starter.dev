@@ -5,9 +5,9 @@ export const getTechnologies = async (
 	_p: unknown,
 	_: unknown,
 	{ ds }: { ds: Cache },
-	info: any,
+	info: Record<string, string>,
 ): Promise<Technologies[]> => {
-	const cacheTechnologies = await ds.readItem({ cacheKey: info.fieldName });
+	const cacheTechnologies = await ds.readItem<Technologies[]>({ cacheKey: info.fieldName });
 	if (cacheTechnologies) {
 		return cacheTechnologies;
 	}
@@ -21,9 +21,9 @@ export const getTechnology = async (
 	_: unknown,
 	{ id }: { id: string },
 	{ ds }: { ds: Cache },
-	info: any,
-) => {
-	const cacheTechnology = await ds.readItem({ cacheKey: `${info.fieldName}:${id}` });
+	info: Record<string, string>,
+): Promise<Technologies> => {
+	const cacheTechnology = await ds.readItem<Technologies>({ cacheKey: `${info.fieldName}:${id}` });
 	if (cacheTechnology) {
 		return cacheTechnology;
 	}

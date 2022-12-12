@@ -2,8 +2,8 @@ import { connect, Redis, SetOpts } from '../../deps.ts';
 import { REDIS_CACHE_HOST, REDIS_CACHE_PORT } from '../config/environment.ts';
 import { logger } from '../util/logger.ts';
 
-type GetFreshValue<Value> = {
-	(): Promise<Value> | Value;
+type GetFreshValue<T> = {
+	(): Promise<T> | T;
 };
 
 const redisHostname = REDIS_CACHE_HOST || 'localhost';
@@ -15,7 +15,7 @@ export class Cache {
 		this.connectToRedis();
 	}
 
-	private async connectToRedis() {
+	private async connectToRedis(): Promise<void> {
 		this.redisClient = await connect({
 			hostname: redisHostname,
 			port: redisPort,
@@ -23,7 +23,7 @@ export class Cache {
 		this.redisClient.isConnected && logger.info('Connected to Redis');
 	}
 
-	async readItem({ cacheKey }: { cacheKey: string; ex?: number }) {
+	async readItem<T>({ cacheKey }: { cacheKey: string; ex?: number }): Promise<T | null> {
 		const cacheValue = await this.redisClient.get(cacheKey);
 		if (cacheValue) {
 			return JSON.parse(cacheValue);
@@ -31,13 +31,13 @@ export class Cache {
 		return null;
 	}
 
-	async writeItem<Value>(
+	async writeItem<T>(
 		{ cacheKey, ex }: { cacheKey: string; ex?: number },
-		callback: GetFreshValue<Value>,
-	) {
+		callback: GetFreshValue<T>,
+	): Promise<T> {
 		const results = await callback();
 		let redisCachingOpts: SetOpts = { keepttl: true };
-    console.log("results", results)
+		console.log('results', results);
 
 		// Set the expiration time for the individual request if provided
 		if (ex) {
@@ -57,7 +57,7 @@ export class Cache {
 		await this.redisClient.flushall();
 	}
 
-	async invalidateItem(cacheKey: string) {
+	async invalidateItem(cacheKey: string): Promise<void> {
 		await this.redisClient.del(cacheKey);
 	}
 }
