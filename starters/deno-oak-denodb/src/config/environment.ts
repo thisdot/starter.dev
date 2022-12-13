@@ -9,6 +9,8 @@ export const {
 	PORT,
 	CORS_ALLOWED_ORIGINS,
 	LOG_LEVEL,
+	REDIS_CACHE_HOST,
+	REDIS_CACHE_PORT,
 	PRODUCTION,
 } = config({
 	safe: true,

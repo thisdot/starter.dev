@@ -5,20 +5,27 @@ import { technologyTypes } from './graphql/schema/technology.ts';
 import { corsAllowedOrigins } from './util/cors_allowed_origins.ts';
 import { API_HOST, DATABASE_HOST, PORT, PRODUCTION } from './config/environment.ts';
 import { logger } from './util/logger.ts';
+import { Cache } from './cache/cache.ts';
+
+const port = +PORT || 3333;
 
 const app = new Application();
-const port = +PORT || 3333;
 const router = new Router();
 
 router.get('/', ({ request, response }: Context) => {
 	response.body = `Hello from the starter.dev starter kit, running at ${request.url}`;
 });
 
+const cache = new Cache();
+await cache.connectToRedis();
 const GraphQLService = await applyGraphQL<Router>({
 	Router,
 	typeDefs: technologyTypes,
 	resolvers: technologyResolvers,
 	usePlayground: PRODUCTION !== 'true',
+	context: () => {
+		return { cache };
+	},
 });
 
 app.use(
@@ -36,6 +43,7 @@ app.use(router.allowedMethods());
 if (db.getConnector()._connected) {
 	logger.info(`Database connected to: ${DATABASE_HOST}`);
 }
+
 logger.info(`Application is running on: ${API_HOST}:${PORT}`);
 
 await app.listen({ port });
