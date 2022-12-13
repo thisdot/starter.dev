@@ -7,7 +7,17 @@ export async function isCacheRunning(): Promise<boolean> {
 	let isRunning;
 
 	try {
-		isRunning = await cache.pingRedis() === 'PONG';
+		const pingResponses = Promise.race([
+			cache.pingRedis(),
+			new Promise<'PONG'>((_, reject) => {
+				setTimeout(() => {
+					reject(
+						new Error(`Timeout error, Redis did not respond to ping under 2 seconds`)
+					);
+				}, 2000);
+			}),
+		]);
+		isRunning = (await pingResponses)[0] === 'PONG';
 	} catch (e) {
 		isRunning = false;
 		logger.error(e);
