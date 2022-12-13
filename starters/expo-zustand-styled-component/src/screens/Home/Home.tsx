@@ -1,7 +1,14 @@
-import { Image, TouchableOpacity } from 'react-native';
 import React from 'react';
-import { SafeAreaViewStyled, RawStyled, TitleStyled, CountStyled } from './Home.styles';
+import { TouchableOpacity } from 'react-native';
+
 import Button from '../../components/Button';
+import {
+  SafeAreaViewStyled,
+  RawStyled,
+  TitleStyled,
+  CountStyled,
+  ImageStyled,
+} from './Home.styles';
 import { useCounter } from './useCounter';
 
 const Home = ({ navigation }: { navigation: any }) => {
@@ -14,10 +21,10 @@ const Home = ({ navigation }: { navigation: any }) => {
     <SafeAreaViewStyled>
       <RawStyled>
         <TouchableOpacity onPress={() => navigation.navigate('about')}>
-          <Image source={require('../../../assets/about-icon.png')} />
+          <ImageStyled source={require('../../../assets/about-icon.png')} />
         </TouchableOpacity>
         <TouchableOpacity onPress={reset}>
-          <Image source={require('../../../assets/reload-icon.png')} />
+          <ImageStyled source={require('../../../assets/reload-icon.png')} />
         </TouchableOpacity>
       </RawStyled>
       <TitleStyled>Counter</TitleStyled>
