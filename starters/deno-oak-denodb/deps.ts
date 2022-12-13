@@ -14,9 +14,5 @@ export type { Redis, SetOpts } from 'https://deno.land/x/redis@v0.27.4/mod.ts';
 export type { GraphQLResolveInfo } from 'https://deno.land/x/graphql_deno@v15.0.0/mod.ts';
 export { assertEquals } from 'https://deno.land/std@0.167.0/testing/asserts.ts';
 export { assertSpyCall, assertSpyCalls, spy, stub } from 'https://deno.land/std@0.165.0/testing/mock.ts';
-export {
-	afterEach,
-	beforeEach,
-	describe,
-	it,
-} from "https://deno.land/std@0.165.0/testing/bdd.ts";
+export { afterEach, beforeEach, describe, it } from 'https://deno.land/std@0.165.0/testing/bdd.ts';
+export type { Stub, Spy } from 'https://deno.land/std@0.165.0/testing/mock.ts';
