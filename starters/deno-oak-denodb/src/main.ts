@@ -5,8 +5,8 @@ import { technologyTypes } from './graphql/schema/technology.ts';
 import { corsAllowedOrigins } from './util/cors_allowed_origins.ts';
 import { API_HOST, DATABASE_HOST, PORT, PRODUCTION } from './config/environment.ts';
 import { logger } from './util/logger.ts';
-import { handleHealthCheck } from './rest/controllers/healthcheck.ts';
 import { cache } from './cache/mod.ts';
+import { handleHealthCheck } from './rest/handlers/healtcheck_handler.ts';
 
 const port = +PORT || 3333;
 
