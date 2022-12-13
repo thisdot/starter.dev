@@ -1,5 +1,5 @@
 import { GraphQLResolveInfo } from '../../../deps.ts';
-import { useCache } from '../../cache/useCache.ts';
+import { useCache } from '../../cache/use_cache.ts';
 import { Technologies } from '../../db/model/technology.ts';
 import { GraphqlContext, TechnologyArg } from '../interfaces/graphql_interfaces.ts';
 
