@@ -1,23 +1,20 @@
-import { Application, applyGraphQL, Context, oakCors, Router } from '../deps.ts';
+import { Application, applyGraphQL, oakCors, Router } from '../deps.ts';
 import { db } from './db/db.ts';
 import { technologyResolvers } from './graphql/resolvers/resolvers.ts';
 import { technologyTypes } from './graphql/schema/technology.ts';
 import { corsAllowedOrigins } from './util/cors_allowed_origins.ts';
 import { API_HOST, DATABASE_HOST, PORT, PRODUCTION } from './config/environment.ts';
 import { logger } from './util/logger.ts';
-import { Cache } from './cache/cache.ts';
+import { cache } from './cache/mod.ts';
+import { handleHealthCheck } from './rest/handlers/healtcheck_handler.ts';
 
 const port = +PORT || 3333;
 
 const app = new Application();
 const router = new Router();
 
-router.get('/', ({ request, response }: Context) => {
-	response.body = `Hello from the starter.dev starter kit, running at ${request.url}`;
-});
+router.get('/health', handleHealthCheck);
 
-const cache = new Cache();
-await cache.connectToRedis();
 const GraphQLService = await applyGraphQL<Router>({
 	Router,
 	typeDefs: technologyTypes,
