@@ -25,6 +25,7 @@ This starter kit features Express, Typescript API setup
     - [Caching](#caching)
     - [Queue](#queue)
     - [Testing](#testing)
+    - [OpenAPI and Schema generation](#openapi-and-schema-generation)
 
 ## Overview
 
@@ -97,6 +98,7 @@ git clone https://github.com/thisdot/starter.dev.git
 - `npm test` - Runs the unit tests.
 - `npm run lint` - Runs ESLint on the project.
 - `npm run format` - Formats code for the entire project
+- `npm run generate:schema`: - Generates the API schema types into the `src/interfaces/schema.ts` file
 
 ## Database and Redis
 
@@ -159,4 +161,9 @@ Caching is set up with the [cachified](https://www.npmjs.com/package/cachified) 
 The queue is set up using [BullMQ](https://docs.bullmq.io/) with a redis instance separate from the cache redis instance. You can find how it is set up under the `src/queue` folder to utilise processing in a separate thread. You can trigger the queue by sending a `POST` request to localhost:3333/queue with a request body.
 
 ### Testing
+
 Testing is set up with [Jest](https://jestjs.io/). You can see some example spec files under `src/controllers/technology/handlers`.
+
+### OpenAPI and Schema generation
+
+The kit uses [express-oas-generator](https://www.npmjs.com/package/express-oas-generator) middlewares that generates the OpenAPI documentation into the `swagger.json` and `swagger_v3.json` files. If you'd like to generate a schema, run `npm run generate:schema` that will place a `schema.ts` file under the `src/interfaces` folder.

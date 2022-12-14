@@ -40,7 +40,7 @@ export function insertTechnology(
 		.insert(technology)
 		.then<SuccessResult<{ id: Technology['id'] }>>((insertedTechnology: InsertResult) => ({
 			type: Result.SUCCESS,
-			data: { id: insertedTechnology.raw.id },
+			data: { id: insertedTechnology.raw[0].id },
 		}))
 		.catch((error) => ({
 			type: Result.ERROR,

@@ -18,8 +18,8 @@ export async function getAllTechnologies(
 			technologiesResult.message,
 			technologiesResult.error
 		);
-		next(technologiesResult.error);
-		return;
+		return next(technologiesResult.error);
 	}
 	res.status(StatusCodes.OK).json(technologiesResult.data);
+	return next();
 }

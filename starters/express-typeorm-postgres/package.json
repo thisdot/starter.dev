@@ -21,7 +21,8 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
-    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand"
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "generate:schema": "npx --yes openapi-typescript swagger_v3.json --output src/interfaces/schema.ts"
   },
   "dependencies": {
     "bullmq": "3.3.5",

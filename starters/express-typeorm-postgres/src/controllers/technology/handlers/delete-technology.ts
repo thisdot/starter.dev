@@ -15,8 +15,7 @@ export async function deleteTechnology(
 
 	if (deleteResult.type === Result.ERROR) {
 		LogHelper.error(deleteResult.message, deleteResult.error);
-		next(deleteResult.error);
-		return;
+		return next(deleteResult.error);
 	}
 
 	clearCacheEntry(req.baseUrl);
@@ -25,4 +24,5 @@ export async function deleteTechnology(
 	res.status(StatusCodes.OK).json({
 		id: technologyId,
 	});
+	return next();
 }

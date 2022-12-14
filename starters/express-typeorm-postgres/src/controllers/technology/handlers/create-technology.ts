@@ -17,11 +17,11 @@ export async function createTechnology(
 
 	if (inserted.type === Result.ERROR) {
 		LogHelper.error(inserted.message, inserted.error);
-		next(inserted.error);
-		return;
+		return next(inserted.error);
 	}
 
 	clearCacheEntry(req.baseUrl);
 
 	res.status(StatusCodes.ACCEPTED).json(inserted.data);
+	return next();
 }
