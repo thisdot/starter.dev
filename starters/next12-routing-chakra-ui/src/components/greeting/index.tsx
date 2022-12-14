@@ -1,4 +1,4 @@
-import { Text, Center } from '@chakra-ui/react';
+import { Text, Center } from "@chakra-ui/react";
 
 export const Greeting = ({ name }: { name: string | string[] | undefined }) => {
   return (
