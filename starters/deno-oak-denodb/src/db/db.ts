@@ -1,5 +1,5 @@
 import { Database, PostgresConnector } from '../../deps.ts';
-import { Technologies } from './model/technology.ts';
+import { TechnologyModel } from './model/technology_model.ts';
 import {
 	DATABASE_HOST,
 	DATABASE_NAME,
@@ -16,6 +16,6 @@ const connection = new PostgresConnector({
 
 const db = new Database(connection);
 
-db.link([Technologies]);
+db.link([TechnologyModel]);
 
 export { db };
