@@ -25,6 +25,7 @@ This starter kit features Express, Typescript API setup
     - [Caching](#caching)
     - [Queue](#queue)
     - [Testing](#testing)
+    - [OpenAPI and Schema generation](#openapi-and-schema-generation)
 
 ## Overview
 
@@ -165,4 +166,4 @@ Testing is set up with [Jest](https://jestjs.io/). You can see some example spec
 
 ### OpenAPI and Schema generation
 
-The kit uses [express-oas-generator](https://www.npmjs.com/package/express-oas-generator) middlewares that generates the OpenAPI documentation into the `swagger.json` and `swagger_v3.json` files. If you'd like to generate a schema
+The kit uses [express-oas-generator](https://www.npmjs.com/package/express-oas-generator) middlewares that generates the OpenAPI documentation into the `swagger.json` and `swagger_v3.json` files. If you'd like to generate a schema, run `npm run generate:schema` that will place a `schema.ts` file under the `src/interfaces` folder.
