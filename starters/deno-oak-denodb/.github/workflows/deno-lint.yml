@@ -1,4 +1,4 @@
-name: Deno lint
+name: Deno lint and test
 on:
   push:
     branches:
@@ -20,3 +20,5 @@ jobs:
         run: deno fmt --check
       - name: Deno lint check
         run: deno lint
+      - name: Deno run tests
+        run: deno test
