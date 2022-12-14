@@ -17,7 +17,14 @@ const fontWeights = {
   bold: 800,
 };
 
-const theme = extendTheme({ colors, fontWeights });
+const breakpoints = {
+  sm: "320px",
+  md: "768px",
+  lg: "960px",
+  xl: "1200px",
+};
+
+const theme = extendTheme({ colors, fontWeights, breakpoints });
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

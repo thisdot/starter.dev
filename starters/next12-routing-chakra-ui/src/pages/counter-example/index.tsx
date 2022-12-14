@@ -39,7 +39,12 @@ const CounterExample: NextPage = () => {
         </Heading>
       </Center>
 
-      <Flex justifyContent="space-around" my={8} alignItems="center">
+      <Flex
+        flexDirection={{ sm: "column", md: "row" }}
+        justifyContent="space-around"
+        my={8}
+        alignItems="center"
+      >
         <Flex alignItems="center">
           <Heading role="heading" mr={2} as="h2">
             Count:
@@ -51,6 +56,7 @@ const CounterExample: NextPage = () => {
 
         {counterButtons.map(({ text, setCounterState }, idx) => (
           <Button
+            my={8}
             key={`${idx}-${text}`}
             onClick={() => setCount(setCounterState)}
             colorScheme="brand"
