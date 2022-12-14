@@ -4,6 +4,7 @@ export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+export type RequireFields<T, K extends keyof T> = Omit<T, K> & { [P in K]-?: NonNullable<T[P]> };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -15,57 +16,57 @@ export type Scalars = {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  createTechnology: Maybe<Technology>;
+  createTechnology?: Maybe<Technology>;
   deleteTechnologyById: ResolveType;
   updateTechnology: ResolveType;
 };
 
 
 export type MutationCreateTechnologyArgs = {
-  technology: InputMaybe<TechnologyInput>;
+  input: TechnologyInput;
 };
 
 
 export type MutationDeleteTechnologyByIdArgs = {
-  id: InputMaybe<Scalars['String']>;
+  id: Scalars['String'];
 };
 
 
 export type MutationUpdateTechnologyArgs = {
-  id: InputMaybe<Scalars['String']>;
-  input: InputMaybe<TechnologyInput>;
+  id: Scalars['String'];
+  input: TechnologyInput;
 };
 
 export type Query = {
   __typename?: 'Query';
-  getTechnologies: Maybe<Array<Technology>>;
-  getTechnology: Maybe<Technology>;
+  getTechnologies: Array<Technology>;
+  getTechnology?: Maybe<Technology>;
 };
 
 
 export type QueryGetTechnologyArgs = {
-  id: InputMaybe<Scalars['String']>;
+  id: Scalars['String'];
 };
 
 export type ResolveType = {
   __typename?: 'ResolveType';
-  done: Maybe<Scalars['Boolean']>;
+  done?: Maybe<Scalars['Boolean']>;
 };
 
 export type Technology = {
   __typename?: 'Technology';
-  createdAt: Maybe<Scalars['String']>;
-  description: Maybe<Scalars['String']>;
-  displayName: Maybe<Scalars['String']>;
-  id: Maybe<Scalars['String']>;
-  updatedAt: Maybe<Scalars['String']>;
-  url: Maybe<Scalars['String']>;
+  createdAt: Scalars['String'];
+  description: Scalars['String'];
+  displayName: Scalars['String'];
+  id: Scalars['String'];
+  updatedAt: Scalars['String'];
+  url: Scalars['String'];
 };
 
 export type TechnologyInput = {
-  description: InputMaybe<Scalars['String']>;
-  displayName: InputMaybe<Scalars['String']>;
-  url: InputMaybe<Scalars['String']>;
+  description: Scalars['String'];
+  displayName: Scalars['String'];
+  url: Scalars['String'];
 };
 
 
@@ -158,35 +159,35 @@ export type ResolversParentTypes = {
 };
 
 export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
-  createTechnology: Resolver<Maybe<ResolversTypes['Technology']>, ParentType, ContextType, Partial<MutationCreateTechnologyArgs>>;
-  deleteTechnologyById: Resolver<ResolversTypes['ResolveType'], ParentType, ContextType, Partial<MutationDeleteTechnologyByIdArgs>>;
-  updateTechnology: Resolver<ResolversTypes['ResolveType'], ParentType, ContextType, Partial<MutationUpdateTechnologyArgs>>;
+  createTechnology?: Resolver<Maybe<ResolversTypes['Technology']>, ParentType, ContextType, RequireFields<MutationCreateTechnologyArgs, 'input'>>;
+  deleteTechnologyById?: Resolver<ResolversTypes['ResolveType'], ParentType, ContextType, RequireFields<MutationDeleteTechnologyByIdArgs, 'id'>>;
+  updateTechnology?: Resolver<ResolversTypes['ResolveType'], ParentType, ContextType, RequireFields<MutationUpdateTechnologyArgs, 'id' | 'input'>>;
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
-  getTechnologies: Resolver<Maybe<Array<ResolversTypes['Technology']>>, ParentType, ContextType>;
-  getTechnology: Resolver<Maybe<ResolversTypes['Technology']>, ParentType, ContextType, Partial<QueryGetTechnologyArgs>>;
+  getTechnologies?: Resolver<Array<ResolversTypes['Technology']>, ParentType, ContextType>;
+  getTechnology?: Resolver<Maybe<ResolversTypes['Technology']>, ParentType, ContextType, RequireFields<QueryGetTechnologyArgs, 'id'>>;
 };
 
 export type ResolveTypeResolvers<ContextType = any, ParentType extends ResolversParentTypes['ResolveType'] = ResolversParentTypes['ResolveType']> = {
-  done: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
+  done?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
 export type TechnologyResolvers<ContextType = any, ParentType extends ResolversParentTypes['Technology'] = ResolversParentTypes['Technology']> = {
-  createdAt: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  description: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  displayName: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  id: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  updatedAt: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  url: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  createdAt?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  description?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  displayName?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  id?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  updatedAt?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  url?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
 export type Resolvers<ContextType = any> = {
-  Mutation: MutationResolvers<ContextType>;
-  Query: QueryResolvers<ContextType>;
-  ResolveType: ResolveTypeResolvers<ContextType>;
-  Technology: TechnologyResolvers<ContextType>;
+  Mutation?: MutationResolvers<ContextType>;
+  Query?: QueryResolvers<ContextType>;
+  ResolveType?: ResolveTypeResolvers<ContextType>;
+  Technology?: TechnologyResolvers<ContextType>;
 };
 

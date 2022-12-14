@@ -1,10 +1,10 @@
 import { GraphqlContext, TechnologyArg } from '../interfaces/graphql_interfaces.ts';
-import { ResolveType, Technology } from "../interfaces/codegen.ts";
+import { ResolveType, Technology } from '../interfaces/codegen.ts';
 import { TechnologyRepository } from '../../db/repository/technology_repository.ts';
 
 export const createTechnology = async (
 	_parent: unknown,
-	{ input }: TechnologyArg,
+	{ input }: Pick<TechnologyArg, 'input'>,
 	{ cache }: GraphqlContext,
 ): Promise<Technology> => {
 	await cache.invalidateItem('getTechnologies');
@@ -30,7 +30,7 @@ export const updateTechnology = async (
 
 export const deleteTechnologyById = async (
 	_parent: unknown,
-	{ id }: TechnologyArg,
+	{ id }: Pick<TechnologyArg, 'id'>,
 	{ cache }: GraphqlContext,
 ): Promise<ResolveType> => {
 	await TechnologyRepository.deleteById(id);

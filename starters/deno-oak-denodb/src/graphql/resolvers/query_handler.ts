@@ -1,12 +1,12 @@
 import { GraphQLResolveInfo } from '../../../deps.ts';
 import { useCache } from '../../cache/use_cache.ts';
-import { Technology } from "../interfaces/codegen.ts";
+import { Technology } from '../interfaces/codegen.ts';
 import { GraphqlContext, TechnologyArg } from '../interfaces/graphql_interfaces.ts';
 import { TechnologyRepository } from '../../db/repository/technology_repository.ts';
 
 export const getTechnologies = (
 	_parent: unknown,
-	_args: TechnologyArg,
+	_args: unknown,
 	{ cache }: GraphqlContext,
 	info: GraphQLResolveInfo,
 ): Promise<Technology[]> => {
@@ -17,7 +17,7 @@ export const getTechnologies = (
 
 export const getTechnology = (
 	_parent: unknown,
-	{ id }: TechnologyArg,
+	{ id }: Pick<TechnologyArg, 'id'>,
 	{ cache }: GraphqlContext,
 	info: GraphQLResolveInfo,
 ): Promise<Technology> => {
