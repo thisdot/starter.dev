@@ -16,6 +16,8 @@ import {
 
 const MOCK_INFO: any = { fieldName: 'technologies' };
 
+type MockCache = { readItem: Spy; writeItem: Spy };
+
 describe(`getTechnologies`, () => {
 	let repositoryStub: Stub;
 
@@ -47,7 +49,7 @@ describe(`getTechnologies`, () => {
 	});
 
 	it(`returns a list of technologies if the cache has value and skips calling the database`, async () => {
-		const MOCK_CACHE: { readItem: Spy; writeItem: Spy } = {
+		const MOCK_CACHE: MockCache = {
 			readItem: spy((_cacheKey: string) =>
 				Promise.resolve([{ id: 1, displayName: 'string', description: 'whatever' }])
 			),
@@ -67,7 +69,7 @@ describe(`getTechnologies`, () => {
 
 describe('getTechnology', () => {
 	it('returns a single technology by ID', async () => {
-		const MOCK_CACHE: { readItem: Spy; writeItem: Spy } = {
+		const MOCK_CACHE: MockCache = {
 			readItem: spy((_cacheKey: string) =>
 				Promise.resolve({ id: 1, displayName: 'string', description: 'whatever' })
 			),
