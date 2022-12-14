@@ -8,9 +8,13 @@ export function bootstrapApp(): Express {
 	const app = express();
 
 	expressOasGenerator.handleResponses(app, {
+		specOutputPath: 'swagger.json',
+		writeIntervalMs: 2000,
 		swaggerUiServePath: 'docs',
-		specOutputFileBehavior: SPEC_OUTPUT_FILE_BEHAVIOR.RECREATE,
-		swaggerDocumentOptions: {},
+		specOutputFileBehavior: SPEC_OUTPUT_FILE_BEHAVIOR.PRESERVE,
+		swaggerDocumentOptions: {
+			version: '3.0.3',
+		},
 	});
 	app.use(express.json());
 
@@ -28,4 +32,5 @@ function genericErrorHandler(err, req: Request, res: Response, next: NextFunctio
 	res
 		.status(StatusCodes.INTERNAL_SERVER_ERROR)
 		.send({ error: getReasonPhrase(StatusCodes.INTERNAL_SERVER_ERROR) });
+	return next();
 }

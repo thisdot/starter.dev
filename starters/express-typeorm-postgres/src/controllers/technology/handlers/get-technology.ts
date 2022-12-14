@@ -17,8 +17,7 @@ export async function getTechnology(
 
 	if (technologyResult.type === Result.ERROR) {
 		LogHelper.error(technologyResult.message, technologyResult.error);
-		next(technologyResult.error);
-		return;
+		return next(technologyResult.error);
 	}
 
 	if (technologyResult.type === Result.NOT_FOUND) {
@@ -26,7 +25,8 @@ export async function getTechnology(
 			error: getReasonPhrase(StatusCodes.NOT_FOUND),
 			details: technologyResult.message,
 		});
-		return;
+		return next();
 	}
 	res.json(technologyResult.data);
+	return next();
 }

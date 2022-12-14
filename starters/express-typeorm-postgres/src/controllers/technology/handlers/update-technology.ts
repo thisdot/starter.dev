@@ -18,12 +18,12 @@ export async function updateTechnology(
 
 	if (updateResult.type === Result.ERROR) {
 		LogHelper.error(updateResult.message, updateResult.error);
-		next(updateResult.error);
-		return;
+		return next(updateResult.error);
 	}
 
 	clearCacheEntry(req.baseUrl);
 	clearCacheEntry(req.originalUrl);
 
 	res.status(StatusCodes.OK).json(updateResult.data);
+	return next();
 }
