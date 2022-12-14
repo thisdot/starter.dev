@@ -71,6 +71,7 @@ Deno supports [tasks](https://deno.land/manual@v1.28.3/tools/task_runner) which 
 - `write-lock-file` writes the lock file for checking integrity of packages (see the [dedicated chapter](#keeping-integrity-through-lock-file) for details)
 - `reload-cache` re-downloads the dependencies to the cache
 - `show-docs` shows the JSDoc-based documentation from the code (see the [dedicated chapter](#generating-documentation) for details)
+- `generate-type-definition` generates TypeScript types from the GraphQL schema (see the [dedicated chapter](#generating-typescript-files-from-graphql-schema) for details)
 
 ### Formatting and linting
 
@@ -134,6 +135,26 @@ deno task show-docs
 ```
 
 The documentation is printed to standard out - it can be redirected to a file if necessary.
+
+### Generating TypeScript files from GraphQL schema
+
+Currently, there are no stable Deno modules for generating TypeScript types from a GraphQL schema. Therefore, we've used an npm package for this as can be seen in the `src/tools/generate_type_definition.ts` file:
+
+```typescript
+import { CodegenConfig, generate } from 'npm:@graphql-codegen/cli';
+import 'npm:@graphql-codegen/typescript';
+import 'npm:@graphql-codegen/typescript-resolvers';
+
+//...
+```
+
+This can also be a good example of how you can use npm packages elsewhere in the code.
+
+Whenever you change the GraphQL schema (located in `src/graphql/schema`), the types should be re-generated using the command:
+
+```shell
+deno task generate-type-definition
+```
 
 ## Using the GraphQL API
 

@@ -1,3 +1,4 @@
+// deno-lint-ignore-file
 import { GraphQLResolveInfo } from '../../../deps.ts';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
