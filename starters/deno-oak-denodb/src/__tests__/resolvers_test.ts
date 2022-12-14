@@ -1,24 +1,36 @@
-import { afterEach, assertEquals, beforeEach, describe, it, spy, stub, assertSpyCall, assertSpyCalls, Stub, Spy } from '../../deps.ts';
-import { Technologies } from '../db/model/technology.ts';
 import { getTechnologies, getTechnology } from '../graphql/resolvers/query_handler.ts';
+import { TechnologyRepository } from '../db/repository/technology_repository.ts';
+import {
+	afterEach,
+	assertEquals,
+	assertSpyCall,
+	assertSpyCalls,
+	beforeEach,
+	describe,
+	it,
+	Spy,
+	spy,
+	Stub,
+	stub,
+} from '../../dev_deps.ts';
 
 const MOCK_INFO: any = { fieldName: 'technologies' };
 
 describe(`getTechnologies`, () => {
-	let technologiesStub: Stub;
+	let repositoryStub: Stub;
 
 	beforeEach(() => {
-		technologiesStub = stub(Technologies, 'all', () => Promise.resolve([]));
+		repositoryStub = stub(TechnologyRepository, 'getAll', () => Promise.resolve([]));
 	});
 
 	afterEach(() => {
-		technologiesStub.restore();
+		repositoryStub.restore();
 	});
 
 	it(`returns a list of technologies if the cache has nothing stored`, async () => {
 		const MOCK_CACHE: { readItem: Spy; writeItem: Spy } = {
-			readItem: spy((cacheKey: string) => Promise.resolve(null)),
-			writeItem: spy((cacheKey: string, value: unknown) => Promise.resolve(value)),
+			readItem: spy((_cacheKey: string) => Promise.resolve(null)),
+			writeItem: spy((_cacheKey: string, value: unknown) => Promise.resolve(value)),
 		};
 
 		const result = await getTechnologies({}, { id: '' }, { cache: MOCK_CACHE } as any, MOCK_INFO);
@@ -36,8 +48,10 @@ describe(`getTechnologies`, () => {
 
 	it(`returns a list of technologies if the cache has value and skips calling the database`, async () => {
 		const MOCK_CACHE: { readItem: Spy; writeItem: Spy } = {
-			readItem: spy((cacheKey: string) => Promise.resolve([{ id: 1, displayName: 'string', description: 'whatever' }])),
-			writeItem: spy((cacheKey: string, value: unknown) => Promise.resolve(value)),
+			readItem: spy((_cacheKey: string) =>
+				Promise.resolve([{ id: 1, displayName: 'string', description: 'whatever' }])
+			),
+			writeItem: spy((_cacheKey: string, value: unknown) => Promise.resolve(value)),
 		};
 
 		const result = await getTechnologies({}, { id: '' }, { cache: MOCK_CACHE } as any, MOCK_INFO);
@@ -54,8 +68,10 @@ describe(`getTechnologies`, () => {
 describe('getTechnology', () => {
 	it('returns a single technology by ID', async () => {
 		const MOCK_CACHE: { readItem: Spy; writeItem: Spy } = {
-			readItem: spy((cacheKey: string) => Promise.resolve({ id: 1, displayName: 'string', description: 'whatever' })),
-			writeItem: spy((cacheKey: string, value: unknown) => Promise.resolve(value)),
+			readItem: spy((_cacheKey: string) =>
+				Promise.resolve({ id: 1, displayName: 'string', description: 'whatever' })
+			),
+			writeItem: spy((_cacheKey: string, value: unknown) => Promise.resolve(value)),
 		};
 
 		const result = await getTechnology({}, { id: '1' }, { cache: MOCK_CACHE } as any, MOCK_INFO);
