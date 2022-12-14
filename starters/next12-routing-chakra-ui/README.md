@@ -1,8 +1,8 @@
-# nextjs12-routing-chakra-ui starter kit<!-- omit in toc -->
+# nextjs12-routing-chakra-ui starter kit
 
 This starter kit features **Next.js v12** and **Chakra UI**.
 
-## Table of Contents<!-- omit in toc -->
+## Table of Contents
 
 - [Overview](#overview)
   - [Tech Stack](#tech-stack)
