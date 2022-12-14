@@ -12,7 +12,7 @@ export async function isCacheRunning(): Promise<boolean> {
 			new Promise<'PONG'>((_, reject) => {
 				setTimeout(() => {
 					reject(
-						new Error(`Timeout error, Redis did not respond to ping under 2 seconds`)
+						new Error(`Timeout error, Redis did not respond to ping under 2 seconds`),
 					);
 				}, 2000);
 			}),
