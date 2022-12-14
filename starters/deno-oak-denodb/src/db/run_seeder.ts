@@ -1,5 +1,5 @@
 import { Database, PostgresConnector } from '../../deps.ts';
-import { Technologies } from './model/technology.ts';
+import { TechnologyModel } from './model/technology_model.ts';
 import { technologySeedData } from './seeding/technology_seeder.ts';
 
 import {
@@ -18,10 +18,10 @@ async function runSeeder(): Promise<void> {
 	});
 
 	const db = new Database(connection);
-	db.link([Technologies]);
+	db.link([TechnologyModel]);
 
 	await db.sync({ drop: true });
-	await Technologies.create(technologySeedData);
+	await TechnologyModel.create(technologySeedData);
 
 	console.log('%cDatabase Seeded', 'color: green; font-weight: bold');
 	Deno.exit();

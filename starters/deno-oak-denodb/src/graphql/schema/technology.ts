@@ -10,10 +10,16 @@ export const technologyTypes = gql`
     updatedAt: String!
   }
 
-  input TechnologyInput {
+  input CreateTechnologyInput {
     displayName: String!
     description: String!
     url: String!
+  }
+
+	input UpdateTechnologyInput {
+    displayName: String
+    description: String
+    url: String
   }
 
   type ResolveType {
@@ -26,8 +32,8 @@ export const technologyTypes = gql`
   }
 
   type Mutation {
-    createTechnology(input: TechnologyInput!): Technology
-    updateTechnology(id: String!, input: TechnologyInput!): ResolveType!
+    createTechnology(input: CreateTechnologyInput!): Technology
+    updateTechnology(id: String!, input: UpdateTechnologyInput!): ResolveType!
     deleteTechnologyById(id: String!): ResolveType!
   }
 `;

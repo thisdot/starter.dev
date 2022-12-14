@@ -14,6 +14,12 @@ export type Scalars = {
 	Float: number;
 };
 
+export type CreateTechnologyInput = {
+	description: Scalars['String'];
+	displayName: Scalars['String'];
+	url: Scalars['String'];
+};
+
 export type Mutation = {
 	__typename?: 'Mutation';
 	createTechnology?: Maybe<Technology>;
@@ -22,7 +28,7 @@ export type Mutation = {
 };
 
 export type MutationCreateTechnologyArgs = {
-	input: TechnologyInput;
+	input: CreateTechnologyInput;
 };
 
 export type MutationDeleteTechnologyByIdArgs = {
@@ -31,7 +37,7 @@ export type MutationDeleteTechnologyByIdArgs = {
 
 export type MutationUpdateTechnologyArgs = {
 	id: Scalars['String'];
-	input: TechnologyInput;
+	input: UpdateTechnologyInput;
 };
 
 export type Query = {
@@ -59,10 +65,10 @@ export type Technology = {
 	url: Scalars['String'];
 };
 
-export type TechnologyInput = {
-	description: Scalars['String'];
-	displayName: Scalars['String'];
-	url: Scalars['String'];
+export type UpdateTechnologyInput = {
+	description?: InputMaybe<Scalars['String']>;
+	displayName?: InputMaybe<Scalars['String']>;
+	url?: InputMaybe<Scalars['String']>;
 };
 
 export type ResolverTypeWrapper<T> = Promise<T> | T;
@@ -150,23 +156,25 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
 	Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
+	CreateTechnologyInput: CreateTechnologyInput;
 	Mutation: ResolverTypeWrapper<{}>;
 	Query: ResolverTypeWrapper<{}>;
 	ResolveType: ResolverTypeWrapper<ResolveType>;
 	String: ResolverTypeWrapper<Scalars['String']>;
 	Technology: ResolverTypeWrapper<Technology>;
-	TechnologyInput: TechnologyInput;
+	UpdateTechnologyInput: UpdateTechnologyInput;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
 	Boolean: Scalars['Boolean'];
+	CreateTechnologyInput: CreateTechnologyInput;
 	Mutation: {};
 	Query: {};
 	ResolveType: ResolveType;
 	String: Scalars['String'];
 	Technology: Technology;
-	TechnologyInput: TechnologyInput;
+	UpdateTechnologyInput: UpdateTechnologyInput;
 };
 
 export type MutationResolvers<

@@ -24,6 +24,8 @@ describe('createTechnology', () => {
 		displayName: 'technology1',
 		description: 'whatever',
 		url: 'http://lulz.com',
+		updatedAt: '1670510658096',
+		createdAt: '1670506784654',
 	};
 
 	beforeEach(() => {
@@ -59,7 +61,7 @@ describe('createTechnology', () => {
 			invalidateItem: spy((_cacheKey: string) => Promise.resolve(null)),
 		};
 
-		const result = await createTechnology({}, { id: '1', input: MOCK_CREATE_INPUT }, {
+		const result = await createTechnology({}, { input: MOCK_CREATE_INPUT }, {
 			cache: MOCK_CACHE as any,
 		});
 

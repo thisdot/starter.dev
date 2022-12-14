@@ -1,21 +1,35 @@
-import { GraphqlContext, TechnologyArg } from '../interfaces/graphql_interfaces.ts';
-import { ResolveType, Technology } from '../interfaces/codegen.ts';
+import { GraphqlContext } from '../interfaces/graphql_interfaces.ts';
+import {
+	MutationCreateTechnologyArgs,
+	MutationDeleteTechnologyByIdArgs,
+	MutationUpdateTechnologyArgs,
+	ResolveType,
+	Technology,
+} from '../interfaces/codegen.ts';
 import { TechnologyRepository } from '../../db/repository/technology_repository.ts';
 
 export const createTechnology = async (
 	_parent: unknown,
-	{ input }: Pick<TechnologyArg, 'input'>,
+	{ input }: MutationCreateTechnologyArgs,
 	{ cache }: GraphqlContext,
 ): Promise<Technology> => {
 	await cache.invalidateItem('getTechnologies');
-	return await TechnologyRepository.create({
+	const technologyModel = await TechnologyRepository.create({
 		...input,
 	});
+	return {
+		id: technologyModel.id,
+		displayName: technologyModel.displayName,
+		description: technologyModel.description,
+		url: technologyModel.url,
+		createdAt: technologyModel.createdAt,
+		updatedAt: technologyModel.updatedAt,
+	} as Technology;
 };
 
 export const updateTechnology = async (
 	_parent: unknown,
-	{ id, input }: TechnologyArg,
+	{ id, input }: MutationUpdateTechnologyArgs,
 	{ cache }: GraphqlContext,
 ): Promise<ResolveType> => {
 	await TechnologyRepository.update(id, {
@@ -30,7 +44,7 @@ export const updateTechnology = async (
 
 export const deleteTechnologyById = async (
 	_parent: unknown,
-	{ id }: Pick<TechnologyArg, 'id'>,
+	{ id }: MutationDeleteTechnologyByIdArgs,
 	{ cache }: GraphqlContext,
 ): Promise<ResolveType> => {
 	await TechnologyRepository.deleteById(id);
