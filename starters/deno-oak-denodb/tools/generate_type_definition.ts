@@ -16,9 +16,9 @@ const execute = async () => {
 
 	// The generated file includes an import, which imports a type from graphql npm package,
 	// So we read the file and replace the import with the same type in our deps.ts file.
-	const codeGenFile = Deno.readTextFileSync('./src/graphql/interfaces/codegen.ts');
-	const result = codeGenFile.replace(`import { GraphQLResolveInfo } from 'graphql';`, `import { GraphQLResolveInfo } from '../../../deps.ts';`);
-	Deno.writeTextFileSync('./src/graphql/interfaces/codegen.ts', result);
+	const codeGenFileContent = Deno.readTextFileSync('./src/graphql/interfaces/codegen.ts');
+	const codeGenWithFixedImports = codeGenFileContent.replace(`import { GraphQLResolveInfo } from 'graphql';`, `import { GraphQLResolveInfo } from '../../../deps.ts';`);
+	Deno.writeTextFileSync('./src/graphql/interfaces/codegen.ts', `// deno-lint-ignore-file\n${codeGenWithFixedImports}`);
 };
 
 execute();
