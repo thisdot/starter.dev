@@ -14,7 +14,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const { slug } = context.query;
 
   const res = await fetch(
-    `https://api.starter.dev/hello?greeting=from ${checkSlugType(slug)}!`
+    `https://api.starter.dev/.netlify/functions/server/hello?greeting=from ${checkSlugType(
+      slug
+    )}!`
   );
   const userStr = await res.text();
 
