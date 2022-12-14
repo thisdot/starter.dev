@@ -102,7 +102,7 @@ export const TECHNOLOGIES = [
   },
   {
     key: 'solidjs',
-    name: 'SolidJs',
+    name: 'SolidJS',
     tags: ['Core UI'],
     Icon: (props) => <SolidJsIcon {...props} />,
   },
@@ -111,6 +111,12 @@ export const TECHNOLOGIES = [
     name: 'NextJS 12',
     tags: ['Framework'],
     Icon: (props) => <NextIcon {...props} />,
+  },
+  {
+    key: 'nuxt 2',
+    name: 'NuxtJS 2',
+    tags: ['Framework'],
+    Icon: (props) => <NuxtIcon {...props} />,
   },
   {
     key: 'nuxt',

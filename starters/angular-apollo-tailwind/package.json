@@ -1,13 +1,17 @@
 {
   "name": "angular-apollo-tailwind",
+  "version": "0.0.1",
   "description": "Angular, Apollo, and TailwindCSS",
   "keywords": [
     "angular",
     "apollo",
     "tailwind"
   ],
-  "version": "0.0.1",
   "hasShowcase": true,
+  "private": true,
+  "engines": {
+    "node": ">= 16.0"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -21,7 +25,6 @@
     "storybook": "yarn docs:json && start-storybook -p 6006",
     "build-storybook": "yarn docs:json && build-storybook"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "13.3.0",
     "@angular/common": "13.3.0",
@@ -72,6 +75,7 @@
     "karma-coverage": "2.1.0",
     "karma-jasmine": "4.0.0",
     "karma-jasmine-html-reporter": "1.7.0",
+    "karma-verbose-reporter": "0.0.8",
     "postcss": "8.4.12",
     "prettier": "2.6.2",
     "stylelint": "14.9.1",

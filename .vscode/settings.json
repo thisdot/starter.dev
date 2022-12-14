@@ -1,0 +1,16 @@
+{
+  "eslint.workingDirectories": [
+    "./packages/create-starter",
+    "./packages/website",
+    "./starters/angular-apollo-tailwind",
+    "./starters/angular-ngrx-scss",
+    "./starters/cra-rxjs-styled-components",
+    "./starters/next12-react-query-tailwind",
+    "./starters/next-routing-chakra-ui",
+    "./starters/qwik-graphql-tailwind",
+    "./starters/remix-gql-tailwind",
+    "./starters/solidjs-tailwind",
+    "./starters/svelte-kit-scss",
+    "./starters/vue3-apollo-quasar"
+  ]
+}

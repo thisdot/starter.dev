@@ -1,0 +1,6 @@
+{
+  "root": true,
+  "extends": ["next/core-web-vitals", "plugin:testing-library/react"],
+  "plugins": ["testing-library"],
+  "rules": {}
+}
