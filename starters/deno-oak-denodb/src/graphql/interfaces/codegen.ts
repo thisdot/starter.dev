@@ -43,11 +43,11 @@ export type MutationUpdateTechnologyArgs = {
 
 export type Query = {
 	__typename?: 'Query';
-	getTechnologies: Array<Technology>;
-	getTechnology?: Maybe<Technology>;
+	technologies: Array<Technology>;
+	technology?: Maybe<Technology>;
 };
 
-export type QueryGetTechnologyArgs = {
+export type QueryTechnologyArgs = {
 	id: Scalars['String'];
 };
 
@@ -206,12 +206,12 @@ export type QueryResolvers<
 	ContextType = any,
 	ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query'],
 > = {
-	getTechnologies?: Resolver<Array<ResolversTypes['Technology']>, ParentType, ContextType>;
-	getTechnology?: Resolver<
+	technologies?: Resolver<Array<ResolversTypes['Technology']>, ParentType, ContextType>;
+	technology?: Resolver<
 		Maybe<ResolversTypes['Technology']>,
 		ParentType,
 		ContextType,
-		RequireFields<QueryGetTechnologyArgs, 'id'>
+		RequireFields<QueryTechnologyArgs, 'id'>
 	>;
 };
 

@@ -27,8 +27,8 @@ export const technologyTypes = gql`
   }
 
   type Query {
-    getTechnologies: [Technology!]!
-    getTechnology(id: String!): Technology
+    technologies: [Technology!]!
+    technology(id: String!): Technology
   }
 
   type Mutation {
