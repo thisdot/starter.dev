@@ -1,4 +1,4 @@
-import { InsertResult, UpdateResult } from 'typeorm';
+import { InsertResult } from 'typeorm';
 import { Result } from '../../../constants/result';
 import { dataSource } from '../../../db/datasource';
 import { Technology } from '../../../db/entities/technology.entity';

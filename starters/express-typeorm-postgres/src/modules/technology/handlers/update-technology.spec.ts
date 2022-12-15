@@ -3,7 +3,7 @@ import { dataSource } from '../../../db/datasource';
 import { updateTechnology } from './update-technology';
 
 jest.mock('../../../cache/cache', () => ({
-	clearCacheEntry: (key) => void 0,
+	clearCacheEntry: () => void 0,
 }));
 
 const MOCK_REQUEST: any = {
