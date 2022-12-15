@@ -1,50 +1,50 @@
 {
-  "tasks": {
-    "start-db": "docker compose up",
-    "stop-db": "docker compose stop",
-    "start-web": "deno run --watch --allow-net --allow-env --allow-read ./src/main.ts",
-    "start-all": "deno task start-db & deno task start-web",
-    "seed": "deno run --allow-net --allow-env --allow-read ./src/db/run_seeder.ts",
-    "write-lock-file": "deno cache --lock=lock.json --lock-write deps.ts && deno cache --lock=lock.json --lock-write dev_deps.ts",
-    "reload-cache": "deno cache --reload --lock=lock.json deps.ts && deno cache --reload --lock=lock.json dev_deps.ts",
-    "show-docs": "deno doc src/docs/sources.ts",
-    "generate-type-definition": "deno run --allow-net --allow-env --allow-read --allow-write --allow-sys ./tools/generate_type_definition.ts"
-  },
-  "lint": {
-    "files": {
-      "include": [
-        "./src"
-      ]
-    },
-    "rules": {
-      "tags": [
-        "recommended"
-      ],
-      "include": [
-        "no-external-import",
-        "no-const-assign",
-        "explicit-function-return-type",
-        "camelcase",
-        "explicit-module-boundary-types",
-        "default-param-last"
-      ],
-      "exclude": [
-        "no-explicit-any"
-      ]
-    }
-  },
-  "fmt": {
-    "files": {
-      "include": [
-        "./src"
-      ]
-    },
-    "options": {
-      "useTabs": true,
-      "lineWidth": 100,
-      "indentWidth": 2,
-      "singleQuote": true,
-      "proseWrap": "always"
-    }
-  }
+	"tasks": {
+		"start-db": "docker compose up",
+		"stop-db": "docker compose stop",
+		"start-web": "deno run --watch --allow-net --allow-env --allow-read ./src/main.ts",
+		"start-all": "deno task start-db & deno task start-web",
+		"seed": "deno run --allow-net --allow-env --allow-read ./src/db/run_seeder.ts",
+		"write-lock-file": "deno cache --lock=lock.json --lock-write deps.ts && deno cache --lock=lock.json --lock-write dev_deps.ts",
+		"reload-cache": "deno cache --reload --lock=lock.json deps.ts && deno cache --reload --lock=lock.json dev_deps.ts",
+		"show-docs": "deno doc src/docs/sources.ts",
+		"generate-type-definition": "deno run --allow-net --allow-env --allow-read --allow-write --allow-sys ./tools/generate_type_definition.ts"
+	},
+	"lint": {
+		"files": {
+			"include": [
+				"./src"
+			]
+		},
+		"rules": {
+			"tags": [
+				"recommended"
+			],
+			"include": [
+				"no-external-import",
+				"no-const-assign",
+				"explicit-function-return-type",
+				"camelcase",
+				"explicit-module-boundary-types",
+				"default-param-last"
+			],
+			"exclude": [
+				"no-explicit-any"
+			]
+		}
+	},
+	"fmt": {
+		"files": {
+			"include": [
+				"./src"
+			]
+		},
+		"options": {
+			"useTabs": true,
+			"lineWidth": 100,
+			"indentWidth": 2,
+			"singleQuote": true,
+			"proseWrap": "always"
+		}
+	}
 }
