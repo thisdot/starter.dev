@@ -17,7 +17,7 @@ export async function isCacheRunning(): Promise<boolean> {
 				}, 2000);
 			}),
 		]);
-		isRunning = (await pingResponses)[0] === 'PONG';
+		isRunning = (await pingResponses) === 'PONG';
 	} catch (e) {
 		isRunning = false;
 		logger.error(e);
