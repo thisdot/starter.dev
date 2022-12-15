@@ -8,6 +8,13 @@ import {
 } from '../interfaces/codegen.ts';
 import { TechnologyRepository } from '../../db/repository/technology_repository.ts';
 
+/**
+ * GraphQL mutation handler for creating a new technology instance.
+ *
+ * @param _parent (Unused) the response of the previous resolver
+ * @param input Input data
+ * @param cache Cache to invalidate
+ */
 export const createTechnology = async (
 	_parent: unknown,
 	{ input }: MutationCreateTechnologyArgs,
@@ -27,6 +34,14 @@ export const createTechnology = async (
 	} as Technology;
 };
 
+/**
+ * GraphQL mutation handler for updating an existing technology instance.
+ *
+ * @param _parent (Unused) the response of the previous resolver
+ * @param id ID of the technology to update
+ * @param input Input data
+ * @param cache Cache to invalidate
+ */
 export const updateTechnology = async (
 	_parent: unknown,
 	{ id, input }: MutationUpdateTechnologyArgs,
@@ -42,6 +57,13 @@ export const updateTechnology = async (
 	};
 };
 
+/**
+ * GraphQL mutation handler for deleting an existing technology instance.
+ *
+ * @param _parent (Unused) the response of the previous resolver
+ * @param id ID of the technology to delete
+ * @param cache Cache to invalidate
+ */
 export const deleteTechnologyById = async (
 	_parent: unknown,
 	{ id }: MutationDeleteTechnologyByIdArgs,

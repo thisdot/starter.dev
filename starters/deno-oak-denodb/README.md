@@ -191,7 +191,7 @@ The documentation is generated using the command:
 deno task show-docs
 ```
 
-The documentation is printed to standard out - it can be redirected to a file if necessary.
+The documentation is printed to standard out - it can be redirected to a file if necessary. All documentation is generated from JSDoc comments, and we've documented some utility functions and the API handlers as an example
 
 ### Generating TypeScript files from GraphQL schema
 
@@ -219,14 +219,14 @@ The GraphQL API playground is available at <http://localhost:3333/graphql>. You 
 
 ```graphql
 {
-  getTechnologies {
-    id
-    displayName
-    description
-    url
-    createdAt
-    updatedAt
-  }
+	getTechnologies {
+		id
+		displayName
+		description
+		url
+		createdAt
+		updatedAt
+	}
 }
 ```
 

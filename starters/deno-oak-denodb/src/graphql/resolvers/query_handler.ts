@@ -5,6 +5,14 @@ import { GraphqlContext } from '../interfaces/graphql_interfaces.ts';
 import { TechnologyRepository } from '../../db/repository/technology_repository.ts';
 import { TechnologyModel } from '../../db/model/technology_model.ts';
 
+/**
+ * GraphQL query handler for getting all technologies in the database.
+ *
+ * @param _parent (Unused) the response of the previous resolver
+ * @param _args (Unused) the arguments provided to the resolver
+ * @param cache Cache to populate
+ * @param info GraphQL resolve info
+ */
 export const technologies = async (
 	_parent: unknown,
 	_args: unknown,
@@ -26,6 +34,14 @@ export const technologies = async (
 	});
 };
 
+/**
+ * GraphQL query handler for getting a single technology from the database.
+ *
+ * @param _parent (Unused) the response of the previous resolver
+ * @param id ID of the technology to get
+ * @param cache Cache to read from
+ * @param info GraphQL resolve info
+ */
 export const technology = async (
 	_parent: unknown,
 	{ id }: QueryTechnologyArgs,
