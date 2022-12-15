@@ -1,6 +1,6 @@
 {
 	"tasks": {
-		"start-db": "docker compose up",
+		"start-db": "docker compose up -d",
 		"stop-db": "docker compose stop",
 		"start-web": "deno run --watch --allow-net --allow-env --allow-read ./src/main.ts",
 		"start-all": "deno task start-db & deno task start-web",

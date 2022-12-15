@@ -1,5 +1,31 @@
 # deno-oak-denodb starter kit
 
+## Table of contents
+
+* [Overview](#overview)
+* [Installation](#installation)
+	+ [CLI (Recommended)](#cli-recommended)
+	+ [Manual](#manual)
+	+ [Database setup](#database-setup)
+	+ [Seeding](#seeding)
+* [Available commands](#available-commands)
+	+ [Tasks](#tasks)
+	+ [Formatting and linting](#formatting-and-linting)
+	+ [Testing](#testing)
+	+ [Keeping integrity through lock file](#keeping-integrity-through-lock-file)
+	+ [Generating documentation](#generating-documentation)
+	+ [Generating TypeScript files from GraphQL schema](#generating-typescript-files-from-graphql-schema)
+* [Using the GraphQL API](#using-the-graphql-api)
+* [CORS configuration](#cors-configuration)
+* [Kit organization / architecture](#kit-organization--architecture)
+	+ [Default API routes](#default-api-routes)
+	+ [Expanding further](#expanding-further)
+		- [Authentication](#authentication)
+		- [Templating](#templating)
+* [Deployment](#deployment)
+
+## Overview
+
 This starter kit can be used for scaffolding an all-Deno based backend. It uses the following technologies:
 
 - [Deno](https://deno.land/) as the runtime
@@ -47,9 +73,9 @@ git clone https://github.com/thisdot/starter.dev.git
 - Open your browser to `http://localhost:3333/health` to see the API running.
 - Proceed to the [Seeding](#seeding) chapter to seed the database with some sample data.
 
-### Database
+### Database setup
 
-[Denodb](https://eveningkid.com/denodb-docs/) was used in setting up the database. The ORM currently supports PostgreSQL, MySQL, SQLite and MongoDB databases.
+[DenoDB](https://eveningkid.com/denodb-docs/) was used in setting up the database. The ORM currently supports PostgreSQL, MySQL, SQLite and MongoDB databases.
 To setup your database, make sure to have the database environment variables set or copy the default from `.env.example`.
 
 ```bash
@@ -60,7 +86,7 @@ DATABASE_PASSWORD=
 DATABASE_PORT=
 ```
 
-Define the schema for the new table by creating a class that extends the Model class provided by Denodb in the `src/model/` folder. This class should define the columns and data types for each field in the table. Find all the data types supported by Denodb [here](https://eveningkid.com/denodb-docs/docs/api/data-types).
+Define the schema for the new table by creating a class that extends the Model class provided by Denodb in the `src/model/` folder. This class should define the columns and data types for each field in the table. Find all the data types supported by DenoDB [here](https://eveningkid.com/denodb-docs/docs/api/data-types).
 
 ```ts
 export class TechnologyModel extends Model {
@@ -79,19 +105,19 @@ export class TechnologyModel extends Model {
 }
 ```
 
-Denodb also supports field descriptors. They provide extra description as to what and how the data field should be. [Here](https://eveningkid.com/denodb-docs/docs/api/field-descriptors) are all the field descriptors provided by Denodb.
+DenoDB also supports field descriptors. They provide extra description as to what and how the data field should be. [Here](https://eveningkid.com/denodb-docs/docs/api/field-descriptors) are all the field descriptors provided by DenoDB.
 
-In the `src/db/db.ts`:
+In the `src/db/db.ts`, the following steps are done:
 
-- Create an instance of the Database class and connect to the database by providing the necessary connection details from env, such as the database name, user name, and password.
+- Creating an instance of the database class and connect to the database by providing the necessary connection details from the environment, such as the database name, user name, and password.
 
-- Register the model with the database instance by calling the `link` method and passing the model class as an argument.
+- Registering all the models with the database instance by calling the `link` method and passing the model class as an argument. If you need to create a new model, you need to link it here.
 
 ```bash
 db.link([TechnologyModel])
 ```
 
-- Synchronize the models by initializing the table in the database by calling the `sync` method on the model. This will create the table in the database if it does not already exist. This was included in the `src/db/run_seeders.ts` file. If you chose not to seed the db, then add it to the `src/db/db.ts` file.
+- Synchronizing the models by initializing the table in the database by calling the `sync` method on the model. This will create the table in the database if it does not already exist. This was included in the `src/db/run_seeders.ts` file. If you chose not to seed the db, then add it to the `src/db/db.ts` file.
 
 ```bash
 db.sync()
@@ -100,7 +126,7 @@ db.sync()
 db.sync({ drop: true })
 ```
 
-- Update `docker-compose.yml` file to work with your new database setup.
+- Update `docker-compose.yml` file if needed to work with your new database setup.
 
 You can now use the model to perform CRUD (create, read, update, delete) operations on the new table in the database.
 
@@ -191,7 +217,7 @@ The documentation is generated using the command:
 deno task show-docs
 ```
 
-The documentation is printed to standard out - it can be redirected to a file if necessary.
+The documentation is printed to standard out - it can be redirected to a file if necessary. All documentation is generated from JSDoc comments, and we've documented some utility functions and the API handlers as an example
 
 ### Generating TypeScript files from GraphQL schema
 
@@ -249,6 +275,33 @@ This starter kit has the following structure in the src folder:
 - `rest` contains only the health endpoint. Should you need to use a REST API instead, you can use this health endpoint as an example for building a REST API.
 - `util` contains various utility functions.
 
+### Default API routes
+
+The starter kit comes with a REST API for the healthcheck and a GraphQL API for everything else.
+
+The REST API's healtcheck is available at http://localhost:3333/health by default and returns the status of the databases.
+
+The GraphQL API is available at http://localhost:3333/graphql by default. If you execute a GET on it, you will get the GraphQL playground (in non-production only). If you execute a POST, you can use the GraphQL API. The API has the following operations:
+
+- `technologies` gets you all technologies in the database
+- `technology` gets you a single technology from the database
+- `createTechnology` creates a new technology
+- `updateTechnology` updates an existing technology
+- `deleteTechnologyById` deletes an existing technology
+
+A "technology" is an example model that we used in the starter kit. Below is an example of one technology instance:
+
+```json
+{
+  "id": "34a3a076-31ec-4138-972d-41db0e8ec654",
+  "displayName": "Oak",
+  "description": "A middleware framework for Deno's native HTTP server, Deno Deploy and Node.js 16.5 and later. It also includes a middleware router.",
+  "url": "https://oakserver.github.io/oak/",
+  "createdAt": "2022-12-10T17:32:41.086Z",
+  "updatedAt": "2022-12-10T17:32:41.086Z"
+}
+```
+
 ### Expanding further
 
 When building more advanced web apps, you may need to expand the project further to include authentication and templating.
@@ -266,3 +319,4 @@ This starter kit is an example of how to build an API on top of Deno. If you nee
 [Deno Deploy](https://deno.com/deploy) is far the most popular platform for deploying Deno applications. To use it, all you need to integrate with your GitHub repository and specify the entrypoint for the application.
 
 You can use an alternative platform as well, as long as it has support for the Deno runtime. If it doesn't, you can also deploy the app using Docker, provided that the platform supports containerized deployments. There's a `Dockerfile` in the root of the starter kit for your convenience.
+
