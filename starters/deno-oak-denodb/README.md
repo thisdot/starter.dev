@@ -13,13 +13,13 @@ This starter kit can be used for scaffolding an all-Deno based backend. It uses 
 
 ### CLI (Recommended)
 
-```
+```shell
 npm create @this-dot/starter --kit deno-oak-denodb
 ```
 
 or
 
-```
+```shell
 yarn create @this-dot/starter --kit deno-oak-denodb
 ```
 
@@ -34,7 +34,7 @@ yarn create @this-dot/starter --kit deno-oak-denodb
 
 ### Manual
 
-```
+```shell
 git clone https://github.com/thisdot/starter.dev.git
 ```
 
@@ -46,6 +46,63 @@ git clone https://github.com/thisdot/starter.dev.git
 - Run `deno task start-web` to start the development server.
 - Open your browser to `http://localhost:3333/health` to see the API running.
 - Proceed to the [Seeding](#seeding) chapter to seed the database with some sample data.
+
+### Database
+
+[Denodb](https://eveningkid.com/denodb-docs/) was used in setting up the database. The ORM currently supports PostgreSQL, MySQL, SQLite and MongoDB databases.
+To setup your database, make sure to have the database environment variables set or copy the default from `.env.example`.
+
+```bash
+DATABASE_HOST=
+DATABASE_NAME=
+DATABASE_USERNAME=
+DATABASE_PASSWORD=
+DATABASE_PORT=
+```
+
+Define the schema for the new table by creating a class that extends the Model class provided by Denodb in the `src/model/` folder. This class should define the columns and data types for each field in the table. Find all the data types supported by Denodb [here](https://eveningkid.com/denodb-docs/docs/api/data-types).
+
+```ts
+export class TechnologyModel extends Model {
+ static table = 'technologies';
+ static timestamps = true;
+
+ static fields = {
+  id: {
+   type: DataTypes.UUID,
+   primaryKey: true,
+  },
+  displayName: { type: DataTypes.STRING },
+  description: { type: DataTypes.STRING },
+  url: { type: DataTypes.STRING },
+ };
+}
+```
+
+Denodb also supports field descriptors. They provide extra description as to what and how the data field should be. [Here](https://eveningkid.com/denodb-docs/docs/api/field-descriptors) are all the field descriptors provided by Denodb.
+
+In the `src/db/db.ts`:
+
+- Create an instance of the Database class and connect to the database by providing the necessary connection details from env, such as the database name, user name, and password.
+
+- Register the model with the database instance by calling the `link` method and passing the model class as an argument.
+
+```bash
+db.link([TechnologyModel])
+```
+
+- Synchronize the models by initializing the table in the database by calling the `sync` method on the model. This will create the table in the database if it does not already exist. This was included in the `src/db/run_seeders.ts` file. If you chose not to seed the db, then add it to the `src/db/db.ts` file.
+
+```bash
+db.sync()
+
+# If the model or data structure have changed and you want to drop the database
+db.sync({ drop: true })
+```
+
+- Update `docker-compose.yml` file to work with your new database setup.
+
+You can now use the model to perform CRUD (create, read, update, delete) operations on the new table in the database.
 
 ### Seeding
 
@@ -93,7 +150,7 @@ deno fmt
 
 Deno will execute all tests by running:
 
-```
+```shell
 deno test
 ```
 
@@ -105,7 +162,7 @@ This will find any tests with the following glob pattern:
 
 Deno will collect test coverage into a directory for your code if you specify the `--coverage` flag when starting `deno test`. For example:
 
-```
+```shell
 # Collect your coverage profile with deno test --coverage=<output_directory>
 deno test --coverage=cov_profile
 ```
@@ -158,7 +215,7 @@ deno task generate-type-definition
 
 ## Using the GraphQL API
 
-The GraphQL API playground is available at http://localhost:3333/graphql. You can execute the following query to retrieve all technologies, assuming that they were seeded properly.
+The GraphQL API playground is available at <http://localhost:3333/graphql>. You can execute the following query to retrieve all technologies, assuming that they were seeded properly.
 
 ```graphql
 {
@@ -177,7 +234,7 @@ The playground is disabled when the `PRODUCTION` environment variable is set to 
 
 ## CORS configuration
 
-In order to restrict origin URLs that can access your API, you need to add a list of comma separated origin URLs in the `CORS_ALLOWED_ORIGINS` variable located in your `.env` file. For example `CORS_ALLOWED_ORIGINS=https://starter.dev`. In case you need to access the API in a development environment, you can add the local url http://127.0.0.1 to the `CORS_ALLOWED_ORIGINS` variable as `CORS_ALLOWED_ORIGINS=https://starter.dev,http://127.0.0.1`.
+In order to restrict origin URLs that can access your API, you need to add a list of comma separated origin URLs in the `CORS_ALLOWED_ORIGINS` variable located in your `.env` file. For example `CORS_ALLOWED_ORIGINS=https://starter.dev`. In case you need to access the API in a development environment, you can add the local url <http://127.0.0.1> to the `CORS_ALLOWED_ORIGINS` variable as `CORS_ALLOWED_ORIGINS=https://starter.dev,http://127.0.0.1`.
 
 ## Kit organization / architecture
 
@@ -209,4 +266,3 @@ This starter kit is an example of how to build an API on top of Deno. If you nee
 [Deno Deploy](https://deno.com/deploy) is far the most popular platform for deploying Deno applications. To use it, all you need to integrate with your GitHub repository and specify the entrypoint for the application.
 
 You can use an alternative platform as well, as long as it has support for the Deno runtime. If it doesn't, you can also deploy the app using Docker, provided that the platform supports containerized deployments. There's a `Dockerfile` in the root of the starter kit for your convenience.
-
