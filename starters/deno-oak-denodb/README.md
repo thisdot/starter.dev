@@ -219,14 +219,14 @@ The GraphQL API playground is available at <http://localhost:3333/graphql>. You 
 
 ```graphql
 {
-	getTechnologies {
-		id
-		displayName
-		description
-		url
-		createdAt
-		updatedAt
-	}
+  getTechnologies {
+    id
+    displayName
+    description
+    url
+    createdAt
+    updatedAt
+  }
 }
 ```
 
@@ -248,6 +248,35 @@ This starter kit has the following structure in the src folder:
 - `graphql` contains the schema, the TypeScript interfaces used in the schema, as well as GraphQL resolvers.
 - `rest` contains only the health endpoint. Should you need to use a REST API instead, you can use this health endpoint as an example for building a REST API.
 - `util` contains various utility functions.
+
+### Default API routes
+
+The starter kit comes with a REST API for the healthcheck and a GraphQL API for everything else.
+
+The REST API's healtcheck is available at http://localhost:3333/health by default and returns the status of the databases.
+
+The GraphQL API is available at http://localhost:3333/graphql by default. If you execute a GET on it, you will get the GraphQL playground (in non-production only). If you execute a POST, you can use the GraphQL API. The API has the following operations:
+
+- `getTechnologies` gets you all technologies in the database
+- `getTechnology` gets you a single technology from the database
+- `createTechnology` creates a new technology
+- `updateTechnology` updates an existing technology
+- `deleteTechnologyById` deletes an existing technology
+
+A "technology" is an example model that we used in the starter kit. Below is an example of one technology instance:
+
+```
+{
+  "id": "34a3a076-31ec-4138-972d-41db0e8ec654",
+  "displayName": "Oak",
+  "description": "A middleware framework for Deno's native HTTP server, Deno Deploy and Node.js 16.5 and later. It also includes a middleware router.",
+  "url": "https://oakserver.github.io/oak/",
+  "createdAt": "2022-12-10T17:32:41.086Z",
+  "updatedAt": "2022-12-10T17:32:41.086Z"
+}
+```
+
+
 
 ### Expanding further
 
