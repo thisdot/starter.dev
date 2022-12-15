@@ -23,5 +23,4 @@ export async function createTechnology(
 	clearCacheEntry(req.baseUrl);
 
 	res.status(StatusCodes.ACCEPTED).json(inserted.data);
-	return next();
 }

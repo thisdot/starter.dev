@@ -45,7 +45,7 @@ describe(updateTechnology.name, () => {
 	});
 
 	it(`Returns with 200 status code and with the updated technology`, async () => {
-		MOCK_REPOSITORY.update.mockResolvedValue({ raw: MOCK_TECHNOLOGY });
+		MOCK_REPOSITORY.update.mockResolvedValue({ raw: [] });
 		MOCK_RESPONSE.status.mockReturnValue(MOCK_RESPONSE);
 
 		await updateTechnology(MOCK_REQUEST, MOCK_RESPONSE, MOCK_NEXT_FN);

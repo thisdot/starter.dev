@@ -25,8 +25,7 @@ export async function getTechnology(
 			error: getReasonPhrase(StatusCodes.NOT_FOUND),
 			details: technologyResult.message,
 		});
-		return next();
+		return;
 	}
 	res.json(technologyResult.data);
-	return next();
 }

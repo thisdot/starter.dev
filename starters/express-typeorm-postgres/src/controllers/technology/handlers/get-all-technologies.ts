@@ -21,5 +21,4 @@ export async function getAllTechnologies(
 		return next(technologiesResult.error);
 	}
 	res.status(StatusCodes.OK).json(technologiesResult.data);
-	return next();
 }

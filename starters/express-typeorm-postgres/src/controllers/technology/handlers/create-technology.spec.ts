@@ -42,7 +42,7 @@ describe(createTechnology.name, () => {
 	});
 
 	it(`Returns with 200 status code and with the inserted technology`, async () => {
-		MOCK_REPOSITORY.insert.mockResolvedValue({ raw: MOCK_TECHNOLOGY });
+		MOCK_REPOSITORY.insert.mockResolvedValue({ raw: [MOCK_TECHNOLOGY] });
 		MOCK_RESPONSE.status.mockReturnValue(MOCK_RESPONSE);
 
 		await createTechnology(MOCK_REQUEST, MOCK_RESPONSE, MOCK_NEXT_FN);

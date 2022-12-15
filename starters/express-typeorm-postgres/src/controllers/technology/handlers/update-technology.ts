@@ -25,5 +25,4 @@ export async function updateTechnology(
 	clearCacheEntry(req.originalUrl);
 
 	res.status(StatusCodes.OK).json(updateResult.data);
-	return next();
 }

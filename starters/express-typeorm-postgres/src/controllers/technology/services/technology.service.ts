@@ -21,9 +21,9 @@ export function updateTechnologyEntry(
 			},
 			technologyData
 		)
-		.then<SuccessResult<{ id: Technology['id'] }>>((updateResult: UpdateResult) => ({
+		.then<SuccessResult<{ id: Technology['id'] }>>(() => ({
 			type: Result.SUCCESS,
-			data: { id: updateResult.raw.id },
+			data: { id: technologyId },
 		}))
 		.catch((error) => ({
 			type: Result.ERROR,

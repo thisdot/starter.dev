@@ -24,5 +24,4 @@ export async function deleteTechnology(
 	res.status(StatusCodes.OK).json({
 		id: technologyId,
 	});
-	return next();
 }
