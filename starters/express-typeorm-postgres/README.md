@@ -93,7 +93,7 @@ git clone https://github.com/thisdot/starter.dev.git
 - `npm test` - Runs the unit tests.
 - `npm run lint` - Runs ESLint on the project.
 - `npm run format` - Formats code for the entire project
-- `npm run generate:schema`: - Generates the API schema types into the `src/interfaces/schema.ts` file
+- `npm run generate:schema` - Generates the API schema types into the `src/interfaces/schema.ts` file
 
 ## Example Controllers
 
@@ -139,7 +139,7 @@ The [Cross-Origin Resource Sharing](https://developer.mozilla.org/en-US/docs/Web
 
 This application accepts CORS from all origins by default. Some web applications may require you to add the HTTP header `'Access-Control-Allow-Origin': '*'` to allow access.
 
-In order to restrict origins urls that can access your api, you need to add a list of comma separated origin urls in the `CORS_ALLOWED_ORIGINS` variable located in your `.env` file. For example `CORS_ALLOWED_ORIGINS="https://start.dev"`. In case you need to access the api in a development environment i.e. a sveltekit application, you can add the local url `http://127.0.0.1` to the `CORS_ALLOWED_ORIGINS` variable as `CORS_ALLOWED_ORIGINS=https://start.dev,http://127.0.0.1`.
+In order to restrict origins urls that can access your api, you need to add a list of comma separated origin urls in the `CORS_ALLOWED_ORIGINS` variable located in your `.env` file. For example `CORS_ALLOWED_ORIGINS="https://starter.dev"`. In case you need to access the api in a development environment i.e. a sveltekit application, you can add the local url `http://127.0.0.1` to the `CORS_ALLOWED_ORIGINS` variable as `CORS_ALLOWED_ORIGINS=https://starter.dev,http://127.0.0.1`.
 
 ## Kit Organization / Architecture
 
@@ -197,7 +197,7 @@ Testing is set up with [Jest](https://jestjs.io/). You can see some example spec
 
 The kit uses [express-oas-generator](https://www.npmjs.com/package/express-oas-generator) middlewares that generates the OpenAPI documentation into the `swagger.json` and `swagger_v3.json` files. When you are building new API endpoints, the API documentation for those endpoints will be generated.
 
-In order to for this middleware to be able to generate all the data, make sure you hit your freshly created endpoints by using Postman or other similar tools. This is how you can keep the documentation up-to-date. If you'd like to generate an entirely new
+In order to for this middleware to be able to generate all the data, make sure you hit your freshly created endpoints by using Postman or other similar tools. This is how you can keep the documentation up-to-date. If you'd like to generate an entirely new API documentation, feel free to delete the swagger related json files and restart your dev-server to start from scratch.
 
 When you run the development server, you can find the generated Swagger API documentation page under `localhost:3333/docs`. Please note, that if you don't want to expose this documentation in production, make sure you set the `NODE_ENV` environment variable to `production`.
 
