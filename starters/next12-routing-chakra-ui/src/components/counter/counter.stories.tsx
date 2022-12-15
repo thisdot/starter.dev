@@ -1,4 +1,4 @@
-import CounterExample from "./index";
+import CounterExample from "./Counter";
 
 export default {
   title: "Pages/Counter",

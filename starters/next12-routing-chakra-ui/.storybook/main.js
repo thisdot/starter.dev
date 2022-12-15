@@ -5,6 +5,7 @@ module.exports = {
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
     "@storybook/addon-a11y",
+    "@chakra-ui/storybook-addon",
   ],
   framework: "@storybook/react",
   core: {
@@ -12,5 +13,17 @@ module.exports = {
   },
   docsPage: {
     docs: "automatic",
+  },
+  features: {
+    emotionAlias: false,
+  },
+  webpackFinal: async (config) => {
+    config.module.rules.push({
+      test: /\.mjs$/,
+      include: /node_modules/,
+      type: "javascript/auto",
+    });
+
+    return config;
   },
 };

@@ -1,3 +1,5 @@
+import { theme } from "../src/pages/_app";
+
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
@@ -5,5 +7,8 @@ export const parameters = {
       color: /(background|color)$/i,
       date: /Date$/,
     },
+  },
+  chakra: {
+    theme,
   },
 };

@@ -1,6 +1,6 @@
 import type { GetServerSideProps, NextPage } from "next";
 import Link from "next/link";
-import { Greeting } from "../../components/greeting";
+import { Greeting } from "../../components/greeting/Greeting";
 import { Heading, Center } from "@chakra-ui/react";
 
 const checkSlugType = (slug: string[] | string | undefined) => {

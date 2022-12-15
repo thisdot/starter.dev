@@ -24,7 +24,7 @@ const breakpoints = {
   xl: "1200px",
 };
 
-const theme = extendTheme({ colors, fontWeights, breakpoints });
+export const theme = extendTheme({ colors, fontWeights, breakpoints });
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
