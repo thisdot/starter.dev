@@ -1,7 +1,7 @@
 import express, { Express, NextFunction, Request, Response } from 'express';
 import expressOasGenerator, { SPEC_OUTPUT_FILE_BEHAVIOR } from 'express-oas-generator';
 import { getReasonPhrase, StatusCodes } from 'http-status-codes';
-import { apiRouter } from './controllers/router';
+import { apiRouter } from './modules/router';
 import { corsMiddleware } from './middlewares/cors';
 
 export function bootstrapApp(): Express {

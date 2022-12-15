@@ -5,27 +5,28 @@ This starter kit features Express, Typescript API setup
 ## Table of Contents
 
 - [express-typeorm-postgres starter kit](#express-typeorm-postgres-starter-kit)
-  - [Table of Contents](#table-of-contents)
-  - [Overview](#overview)
-    - [Tech Stack](#tech-stack)
-    - [Included Tooling](#included-tooling)
-    - [Example Controllers](#example-controllers)
-  - [Installation](#installation)
-    - [CLI (Recommended)](#cli-recommended)
-    - [Manual](#manual)
-  - [Commands](#commands)
-  - [Database and Redis](#database-and-redis)
-    - [Seeding](#seeding)
-    - [Reset infrastructure](#reset-infrastructure)
-    - [Production build](#production-build)
-    - [CORS Cross-Origin Resource Sharing](#cors-cross-origin-resource-sharing)
-  - [Kit Organization / Architecture](#kit-organization--architecture)
-    - [Express](#express)
-    - [TypeOrm](#typeorm)
-    - [Caching](#caching)
-    - [Queue](#queue)
-    - [Testing](#testing)
-    - [OpenAPI and Schema generation](#openapi-and-schema-generation)
+	- [Table of Contents](#table-of-contents)
+	- [Overview](#overview)
+		- [Tech Stack](#tech-stack)
+		- [Included Tooling](#included-tooling)
+	- [Installation](#installation)
+		- [CLI (Recommended)](#cli-recommended)
+		- [Manual](#manual)
+	- [Commands](#commands)
+	- [Example Controllers](#example-controllers)
+	- [Database and Redis](#database-and-redis)
+		- [Seeding](#seeding)
+		- [Reset infrastructure](#reset-infrastructure)
+		- [Production build](#production-build)
+		- [CORS Cross-Origin Resource Sharing](#cors-cross-origin-resource-sharing)
+	- [Kit Organization / Architecture](#kit-organization--architecture)
+		- [Folder structure](#folder-structure)
+		- [Express](#express)
+		- [TypeOrm](#typeorm)
+		- [Caching](#caching)
+		- [Queue](#queue)
+		- [Testing](#testing)
+		- [API documentation and Schema generation](#api-documentation-and-schema-generation)
 
 ## Overview
 
@@ -43,12 +44,6 @@ This starter kit features Express, Typescript API setup
 - [TypeScript](https://www.typescriptlang.org/) - Type checking
 - [ESLint](https://eslint.org/) - Code linting
 - [Prettier](https://prettier.io/) - Code formatting
-
-### Example Controllers
-
-The starter contains an example CRUD implementation for technologies. You can find the controller and its handlers under the `/src/controllers/technology/` folder.
-
-The handlers have caching enabled using the [cachified](https://www.npmjs.com/package/cachified) package. It uses redis under the hood. For more information on these endpoints, see the code, or check out the localhost:3333/docs after you start up your development server.
 
 ## Installation
 
@@ -70,7 +65,7 @@ yarn create @this-dot/starter --kit express-typeorm-postgres
 - Create a `.env` file and copy the contents of `.env.example` into it.
 - Run `npm run infrastructure:start` to start the database and the redis instances
 - Run `npm run dev` to start the development server.
-- Open your browser to `http://localhost:3333/health` to see the API running.
+- Open your browser to `http://localhost:3333/docs` to see the API documentation with the existing endpoints.
 
 ### Manual
 
@@ -85,7 +80,7 @@ git clone https://github.com/thisdot/starter.dev.git
 - Create a `.env` file and copy the contents of `.env.example` into it.
 - Run `npm run infrastructure:start` to start the database and the redis instances
 - Run `npm run dev` to start the development server.
-- Open your browser to `http://localhost:3333/health` to see the API running.
+- Open your browser to `http://localhost:3333/docs` to see the API documentation with the existing endpoints.
 
 ## Commands
 
@@ -99,6 +94,12 @@ git clone https://github.com/thisdot/starter.dev.git
 - `npm run lint` - Runs ESLint on the project.
 - `npm run format` - Formats code for the entire project
 - `npm run generate:schema`: - Generates the API schema types into the `src/interfaces/schema.ts` file
+
+## Example Controllers
+
+The starter contains an example CRUD implementation for technologies. You can find the controller and its handlers under the `/src/modules/technology/` folder.
+
+The handlers have caching enabled using the [cachified](https://www.npmjs.com/package/cachified) package. It uses redis under the hood. For more information on these endpoints, see the code, or check out the `localhost:3333/docs` after you start up your development server.
 
 ## Database and Redis
 
@@ -142,9 +143,33 @@ In order to restrict origins urls that can access your api, you need to add a li
 
 ## Kit Organization / Architecture
 
+### Folder structure
+
+```text
+- misc
+- src
+	- cache
+	- constants
+	- db
+	- interfaces
+	- middlewares
+	- modules
+	- queue
+	- utils
+- tools
+```
+
+The `misc` folder contains sub-folders for the infrastructure docker containers. When you start up your infrastructure, the sub-folders get mounted to the redis and postgres docker containers. This allows persisting data during development and lets developers to quickly get rid of database contents and reinitalise their infrastructure.
+
+The `src` folder contains everything that is related to API development. The `cache`, `db` and `queue` folders contain everything that has to do with connecting to the redis and postgres containers. The `constants`, `utils` and `interfaces` folders contain logic, types and variables that are / can be shared across the codebase. The `middlewares` folder contains custom and/or customised middlewares for the application.
+
+The `src/modules` folder contains the controllers, route handlers and services separated in feature related directories. Every feature directory should contain logic related to that particular feature.
+
+The `tools` folder contains scripts that help with generating files or building the app. For example, a generator script is provided that creates a sanitized package.json for the production built code, which can be used to install only the dependencies used in the API.
+
 ### Express
 
-The ExpressJS API starts at the `main.ts` file. The `bootstrapApp()` method creates and sets up the routes. The API routes are set up under the `src/controllers` folder. Route handlers and feature specific routes are set up under feature folders.
+The ExpressJS API starts at the `main.ts` file. The `bootstrapApp()` method creates and sets up the routes. The API routes are set up under the `src/modules` folder. This set up differentiates modules based on the feature they provide, and in a feature directory you can find the `controller`, related `services` and the `route handlers`.
 
 ### TypeOrm
 
@@ -152,18 +177,29 @@ TypeOrm related initiators are set up under the `src/db` folder, the `initialise
 
 The `DataSource` is set up to look for entities automatically. This kit uses the `src/db/entities` folder to store these, but feel free to store your entities in feature folders or where it makes more sense to you.
 
+You can create your own Entities using the tools provided by TypeOrm. For more information, please refer to [the documentation](https://typeorm.io/entities).
+
 ### Caching
 
-Caching is set up with the [cachified](https://www.npmjs.com/package/cachified) library. It utilises redis in the background for caching. Under the `cache` folder you can find the redis client connection and the two functions that are used for caching and invalidating. See the `useCache` and the `clearCacheEntry` methods used in the example CRUD handlers, under `src/controllers/technology/handlers`.
+Caching is set up with the [cachified](https://www.npmjs.com/package/cachified) library. It utilises redis in the background for caching. Under the `cache` folder you can find the redis client connection and the two functions that are used for caching and invalidating. See the `useCache` and the `clearCacheEntry` methods used in the example CRUD handlers, under `src/modules/technology/handlers`.
 
 ### Queue
 
-The queue is set up using [BullMQ](https://docs.bullmq.io/) with a redis instance separate from the cache redis instance. You can find how it is set up under the `src/queue` folder to utilise processing in a separate thread. You can trigger the queue by sending a `POST` request to localhost:3333/queue with a request body.
+The queue is set up using [BullMQ](https://www.npmjs.com/package/bullmq) with a redis instance separate from the cache redis instance. You can find how it is set up under the `src/queue` folder.
+
+We set it up to utilise processing in a separate thread. You can trigger the queue by sending a `POST` request to `localhost:3333/queue` with a request body of your choice. You can customise the queue and the job processors as you see fit, for more information on how to do it, please refer to the [BullMQ documentation](https://docs.bullmq.io/).
 
 ### Testing
 
-Testing is set up with [Jest](https://jestjs.io/). You can see some example spec files under `src/controllers/technology/handlers`.
+Testing is set up with [Jest](https://jestjs.io/). You can see some example spec files under `src/modules/technology/handlers`.
 
-### OpenAPI and Schema generation
+### API documentation and Schema generation
 
-The kit uses [express-oas-generator](https://www.npmjs.com/package/express-oas-generator) middlewares that generates the OpenAPI documentation into the `swagger.json` and `swagger_v3.json` files. If you'd like to generate a schema, run `npm run generate:schema` that will place a `schema.ts` file under the `src/interfaces` folder.
+The kit uses [express-oas-generator](https://www.npmjs.com/package/express-oas-generator) middlewares that generates the OpenAPI documentation into the `swagger.json` and `swagger_v3.json` files. When you are building new API endpoints, the API documentation for those endpoints will be generated.
+
+In order to for this middleware to be able to generate all the data, make sure you hit your freshly created endpoints by using Postman or other similar tools. This is how you can keep the documentation up-to-date. If you'd like to generate an entirely new
+
+When you run the development server, you can find the generated Swagger API documentation page under `localhost:3333/docs`. Please note, that if you don't want to expose this documentation in production, make sure you set the `NODE_ENV` environment variable to `production`.
+
+If you'd like to generate a schema typescript file, run `npm run generate:schema` that will place a `schema.ts` file under the `src/interfaces` folder. This schema will be generated based on the existing `swagger_v3.json` file.
+

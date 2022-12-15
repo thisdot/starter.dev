@@ -39,6 +39,7 @@ export interface paths {
 						};
 					};
 				};
+				304: never;
 			};
 		};
 	};
@@ -57,6 +58,7 @@ export interface paths {
 						}[];
 					};
 				};
+				304: never;
 			};
 		};
 		/** /technology */
@@ -96,6 +98,7 @@ export interface paths {
 						};
 					};
 				};
+				304: never;
 			};
 		};
 		/** /technology/{technologyId} */
