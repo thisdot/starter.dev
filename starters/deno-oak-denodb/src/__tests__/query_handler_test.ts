@@ -1,4 +1,4 @@
-import { getTechnologies, getTechnology } from '../graphql/resolvers/query_handler.ts';
+import { technologies, technology } from '../graphql/resolvers/query_handler.ts';
 import { TechnologyRepository } from '../db/repository/technology_repository.ts';
 import {
 	afterEach,
@@ -18,7 +18,7 @@ const MOCK_INFO: any = { fieldName: 'technologies' };
 
 type MockCache = { readItem: Spy; writeItem: Spy };
 
-describe(`getTechnologies`, () => {
+describe(`technologies`, () => {
 	let repositoryStub: Stub;
 
 	beforeEach(() => {
@@ -35,7 +35,7 @@ describe(`getTechnologies`, () => {
 			writeItem: spy((_cacheKey: string, value: unknown) => Promise.resolve(value)),
 		};
 
-		const result = await getTechnologies({}, { id: '' }, { cache: MOCK_CACHE } as any, MOCK_INFO);
+		const result = await technologies({}, { id: '' }, { cache: MOCK_CACHE } as any, MOCK_INFO);
 
 		assertEquals(result, []);
 		assertSpyCall(MOCK_CACHE.readItem, 0, {
@@ -56,7 +56,7 @@ describe(`getTechnologies`, () => {
 			writeItem: spy((_cacheKey: string, value: unknown) => Promise.resolve(value)),
 		};
 
-		const result = await getTechnologies({}, { id: '' }, { cache: MOCK_CACHE } as any, MOCK_INFO);
+		const result = await technologies({}, { id: '' }, { cache: MOCK_CACHE } as any, MOCK_INFO);
 
 		assertEquals(result, [{ id: 1, displayName: 'string', description: 'whatever' } as any]);
 		assertSpyCall(MOCK_CACHE.readItem, 0, {
@@ -67,7 +67,7 @@ describe(`getTechnologies`, () => {
 	});
 });
 
-describe('getTechnology', () => {
+describe('technology', () => {
 	it('returns a single technology by ID', async () => {
 		const MOCK_CACHE: MockCache = {
 			readItem: spy((_cacheKey: string) =>
@@ -76,7 +76,7 @@ describe('getTechnology', () => {
 			writeItem: spy((_cacheKey: string, value: unknown) => Promise.resolve(value)),
 		};
 
-		const result = await getTechnology({}, { id: '1' }, { cache: MOCK_CACHE } as any, MOCK_INFO);
+		const result = await technology({}, { id: '1' }, { cache: MOCK_CACHE } as any, MOCK_INFO);
 
 		assertEquals(result, { id: 1, displayName: 'string', description: 'whatever' } as any);
 		assertSpyCall(MOCK_CACHE.readItem, 0, {
