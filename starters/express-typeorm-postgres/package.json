@@ -2,7 +2,12 @@
   "name": "express-typeorm-postgres",
   "version": "0.0.1",
   "description": "Express.js, TypeOrm, and PostgreSQL",
-  "author": "This Dot Labs",
+	"keywords": [
+		"express",
+		"typeorm",
+		"postgres"
+	],
+	"hasShowcase": false,
   "license": "MIT",
   "scripts": {
     "prebuild": "rimraf dist",
