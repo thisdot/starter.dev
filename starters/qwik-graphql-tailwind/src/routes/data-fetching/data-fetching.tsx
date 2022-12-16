@@ -1,4 +1,4 @@
-import { component$, useStore, Resource, useResource$ } from '@builder.io/qwik';
+import { component$, Resource, useResource$ } from '@builder.io/qwik';
 import { useQuery } from '../../utils/useQuery';
 import * as styles from './data-fetching.classNames';
 
@@ -15,33 +15,17 @@ interface HelloResponse {
 }
 
 export const DataFetching = component$(() => {
-  const store = useStore({
-    greeting: '',
-  });
-
-  const greetingResource = useResource$<HelloResponse>(({ track, cleanup }) => {
-    // Use `track` to trigger re-run of the the data fetching function.
-    track(() => store.greeting);
-
+  const greetingResource = useResource$<HelloResponse>(({ cleanup }) => {
     // The `cleanup` function will be called when the function re-runs and the `AbortController` will abort the previous request.
     const abortController = new AbortController();
     cleanup(() => abortController.abort());
 
     // Fetch the the greeting and return Promise that resolves to the greeting.
-    return fetchGreeting(store.greeting, abortController);
+    return fetchGreeting('from This Dot Labs!', abortController);
   });
 
   return (
     <div>
-      <div className={styles.inputContainer}>
-        <input
-          type="text"
-          value={store.greeting}
-          placeholder="Who should the server greet?"
-          onInput$={(ev) => (store.greeting = (ev.target as HTMLInputElement).value)}
-          className={styles.input}
-        />
-      </div>
       <div className={styles.textContainer}>
         <Resource
           value={greetingResource}
