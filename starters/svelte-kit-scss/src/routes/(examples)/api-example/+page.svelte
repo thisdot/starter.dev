@@ -7,4 +7,3 @@
 </script>
 
 <Greeting message={data.message} />
-
