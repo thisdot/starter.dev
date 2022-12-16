@@ -10,7 +10,5 @@
 	});
 </script>
 
-<form method="POST" action="?/greeting">
-  <Greeting message={message} />
-</form>
+<Greeting message={message} />
 
