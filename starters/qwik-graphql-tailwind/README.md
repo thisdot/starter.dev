@@ -81,7 +81,7 @@ git clone https://github.com/thisdot/starter.dev.git
 -   `yarn build.client` - Builds a compiled production version of your app without building types and running linting.
 -   `yarn build.types` - Runs tsc compiler.
 -   `yarn preview` - Builds your app and serves in in production mode on a local vite preview server.
--   `yarn build.preview` - Builds your app in production mode to be used with wite preview server.
+-   `yarn build.preview` - Builds your app in production mode to be used with vite preview server.
 -   `yarn qwik` - Invokes the Qwik CLI. Possible arguments:
     - `add` - Add an integration to your app.
     - `build` - Builds your app in production mode.
