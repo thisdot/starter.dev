@@ -31,7 +31,7 @@ export const DataFetching = component$(() => {
           value={greetingResource}
           onPending={() => <>Loading...</>}
           onRejected={(error) => <>Error: {error.message}</>}
-          onResolved={({ data }) => <strong>{data.hello}.</strong>}
+          onResolved={({ data }) => <div>Message: {data.hello}.</div>}
         />
       </div>
     </div>
