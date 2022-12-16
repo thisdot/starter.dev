@@ -2,10 +2,10 @@
 
 <template>
   <main>
-    <div class="title">
+    <div class="home__title">
       <h1>Vue 3 + XState + CSS</h1>
     </div>
-    <div class="links">
+    <div class="home__links">
       <RouterLink to="/counter">See button example component</RouterLink>
       <RouterLink to="/fetch">See data fetching example component</RouterLink>
     </div>
@@ -13,7 +13,7 @@
 </template>
 
 <style scoped>
-.title {
+.home__title {
   width: 80%;
   padding: 1% 2%;
   margin: 0 auto 5%;
@@ -26,7 +26,7 @@ h1 {
   text-align: center;
 }
 
-.links {
+.home__links {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
