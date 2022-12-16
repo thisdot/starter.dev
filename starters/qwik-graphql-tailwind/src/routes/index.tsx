@@ -1,6 +1,7 @@
 import { component$ } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
 import { Link } from '@builder.io/qwik-city';
+import { APP_TITLE } from '../utils/constants';
 import * as styles from './homepage.classNames';
 
 export default component$(() => {
@@ -20,5 +21,5 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: 'Welcome to Qwik Starter Kit',
+  title: APP_TITLE,
 };
