@@ -1,16 +1,10 @@
 <script lang="ts">
   import Greeting from '$lib/components/Greeting/Greeting.svelte';
-  import { getGreeting } from '$lib/helpers/greeting';
-  import { onMount } from 'svelte';
-
-  let message: string = '';
-
-  onMount(async () => {
-		message = await getGreeting('This Dot Labs!');
-	});
+  
+  export let data: {
+    message: string;
+  };
 </script>
 
-<form method="POST" action="?/greeting">
-  <Greeting message={message} />
-</form>
+<Greeting message={message} />
 
