@@ -1,4 +1,13 @@
 {
+	"name": "deno-oak-denodb",
+	"version": "0.0.1",
+	"description": "Deno, Oak, and DenoDB",
+	"keywords": [
+		"deno",
+		"oak",
+		"denodb"
+	],
+	"hasShowcase": true,
 	"tasks": {
 		"start-db": "docker compose up -d",
 		"stop-db": "docker compose stop",
