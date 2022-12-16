@@ -75,11 +75,24 @@ git clone https://github.com/thisdot/starter.dev.git
 ## Commands
 
 -   `yarn start` - Starts the development server.
--   `yarn build` - Builds a compiled version of your app.
+-   `yarn dev` - Equivalent to `yarn start`, but uses `127.0.0.1` instead of `localhost` when opening browser.
+-   `yarn dev.debug` - Attaches [Node.js inspector](https://nodejs.org/en/docs/inspector).
+-   `yarn build` - Builds a compiled production version of your app. Equivalent to `yarn qwik build`.
+-   `yarn build.client` - Builds a compiled production version of your app without building types and running linting.
+-   `yarn build.types` - Runs tsc compiler.
+-   `yarn preview` - Builds your app and serves in in production mode on a local vite preview server.
+-   `yarn build.preview` - Builds your app in production mode to be used with vite preview server.
+-   `yarn qwik` - Invokes the Qwik CLI. Possible arguments:
+    - `add` - Add an integration to your app.
+    - `build` - Builds your app in production mode.
+    - `build preview` - Same as `build` but for preview server.
 -   `yarn test` - Runs the unit tests.
+-   `yarn test.coverage` - Runs the unit tests and generates a coverage report.
 -   `yarn storybook` - Starts the Storybook UI.
+-   `yarn build-storybook` - Builds storybook instance to `storybook-static` folder.
 -   `yarn lint` - Runs ESLint on the project.
--   `yarn prettier` - Formats code for the entire project
+-   `yarn prettier` - Formats code for the entire project.
+-   `yarn prettier.check` - Checks all project code to conform to prettier rules.
 
 ### Demo Implementation
 
