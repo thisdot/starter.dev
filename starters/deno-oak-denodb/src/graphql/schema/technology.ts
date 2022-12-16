@@ -8,6 +8,7 @@ export const technologyTypes = gql`
     url: String!
     createdAt: String!
     updatedAt: String!
+		imageUrl: String!
   }
 
   input CreateTechnologyInput {

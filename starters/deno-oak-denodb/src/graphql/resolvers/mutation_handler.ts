@@ -8,6 +8,7 @@ import {
 } from '../interfaces/codegen.ts';
 import { TechnologyRepository } from '../../db/repository/technology_repository.ts';
 
+const thumbnailWorker = new Worker(new URL("../../worker/worker.ts", import.meta.url).href, { type: "module" });
 /**
  * GraphQL mutation handler for creating a new technology instance.
  *
@@ -24,6 +25,10 @@ export const createTechnology = async (
 	const technologyModel = await TechnologyRepository.create({
 		...input,
 	});
+
+	// Generate thumbnails asynchronously in a separate thread
+	thumbnailWorker.postMessage({imageUrl: input.imageUrl})
+
 	return {
 		id: technologyModel.id,
 		displayName: technologyModel.displayName,
