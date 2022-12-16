@@ -36,6 +36,7 @@ import {
   PiniaIcon,
   QwikIcon,
   SolidJsIcon,
+  DenoIcon,
 } from './icons';
 
 export interface NavItem {
@@ -99,7 +100,7 @@ export const TECHNOLOGIES = [
     tags: ['Core UI'],
     Icon: (props) => <VueIcon {...props} />,
   },
-   {
+  {
     key: 'solidjs',
     name: 'SolidJs',
     tags: ['Core UI'],
@@ -284,6 +285,24 @@ export const TECHNOLOGIES = [
     name: 'Pinia',
     tags: ['Data Management'],
     Icon: (props) => <PiniaIcon {...props} />,
+  },
+  {
+    key: 'deno',
+    name: 'Deno',
+    tags: ['Framework'],
+    Icon: (props) => <DenoIcon {...props} />,
+  },
+  {
+    key: 'oak',
+    name: 'Oak',
+    tags: ['Framework'],
+    Icon: (props) => <DenoIcon {...props} />,
+  },
+  {
+    key: 'denodb',
+    name: 'DenoDB',
+    tags: ['Data Management'],
+    Icon: (props) => <DenoIcon {...props} />,
   },
 ];
 
