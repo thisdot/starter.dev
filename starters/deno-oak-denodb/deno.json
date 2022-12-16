@@ -7,7 +7,7 @@
 		"oak",
 		"denodb"
 	],
-	"hasShowcase": true,
+	"hasShowcase": false,
 	"tasks": {
 		"start-db": "docker compose up -d",
 		"stop-db": "docker compose stop",
