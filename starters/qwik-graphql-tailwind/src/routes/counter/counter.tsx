@@ -1,6 +1,5 @@
 import { component$, $, useStore } from '@builder.io/qwik';
 import { Button } from '../../components/button/button';
-import * as styles from './counter.classNames';
 
 export const Counter = component$(() => {
   const store = useStore({
@@ -20,27 +19,19 @@ export const Counter = component$(() => {
   });
 
   return (
-    <div className={styles.container}>
+    <div className="flex justify-evenly whitespace-nowrap">
       <Display store={store} />
-      <div className={styles.buttonsContainer}>
-        <div className={styles.button}>
-          <Button title="-" action$={decrement$} />
-        </div>
-        <div className={styles.button}>
-          <Button title="+" action$={increment$} />
-        </div>
-        <div className={styles.button}>
-          <Button title="&times;" action$={reset$} />
-        </div>
-      </div>
+      <Button title="Increment" action$={increment$} />
+      <Button title="Decrement" action$={decrement$} />
+      <Button title="Reset" action$={reset$} />
     </div>
   );
 });
 
 export const Display = component$((props: { store: { count: number } }) => {
   return (
-    <div className={styles.textContainer}>
-      <p className={styles.h3Text}>Count:</p> <h1 className={styles.h1Text}>{props.store.count}</h1>
-    </div>
+    <h2 className="text-2xl font-bold" role="display-element">
+      Count: {props.store.count}
+    </h2>
   );
 });
