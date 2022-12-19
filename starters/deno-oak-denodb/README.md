@@ -90,18 +90,18 @@ Define the schema for the new table by creating a class that extends the Model c
 
 ```ts
 export class TechnologyModel extends Model {
- static table = 'technologies';
- static timestamps = true;
+	static table = 'technologies';
+	static timestamps = true;
 
- static fields = {
-  id: {
-   type: DataTypes.UUID,
-   primaryKey: true,
-  },
-  displayName: { type: DataTypes.STRING },
-  description: { type: DataTypes.STRING },
-  url: { type: DataTypes.STRING },
- };
+	static fields = {
+		id: {
+			type: DataTypes.UUID,
+			primaryKey: true,
+		},
+		displayName: { type: DataTypes.STRING },
+		description: { type: DataTypes.STRING },
+		url: { type: DataTypes.STRING },
+	};
 }
 ```
 
@@ -241,7 +241,7 @@ deno task generate-type-definition
 
 ## Using the GraphQL API
 
-The GraphQL API playground is available at <http://localhost:3333/graphql>. You can execute the following query to retrieve all technologies, assuming that they were seeded properly.
+The GraphQL API playground is available at http://localhost:3333/graphql. You can execute the following query to retrieve all technologies, assuming that they were seeded properly.
 
 ```graphql
 {
@@ -260,7 +260,7 @@ The playground is disabled when the `PRODUCTION` environment variable is set to 
 
 ## CORS configuration
 
-In order to restrict origin URLs that can access your API, you need to add a list of comma separated origin URLs in the `CORS_ALLOWED_ORIGINS` variable located in your `.env` file. For example `CORS_ALLOWED_ORIGINS=https://starter.dev`. In case you need to access the API in a development environment, you can add the local url <http://127.0.0.1> to the `CORS_ALLOWED_ORIGINS` variable as `CORS_ALLOWED_ORIGINS=https://starter.dev,http://127.0.0.1`.
+In order to restrict origin URLs that can access your API, you need to add a list of comma separated origin URLs in the `CORS_ALLOWED_ORIGINS` variable located in your `.env` file. For example `CORS_ALLOWED_ORIGINS=https://starter.dev`. In case you need to access the API in a development environment, you can add the local url http://127.0.0.1 to the `CORS_ALLOWED_ORIGINS` variable as `CORS_ALLOWED_ORIGINS=https://starter.dev,http://127.0.0.1`.
 
 ## Kit organization / architecture
 
@@ -319,4 +319,5 @@ This starter kit is an example of how to build an API on top of Deno. If you nee
 [Deno Deploy](https://deno.com/deploy) is far the most popular platform for deploying Deno applications. To use it, all you need to integrate with your GitHub repository and specify the entrypoint for the application.
 
 You can use an alternative platform as well, as long as it has support for the Deno runtime. If it doesn't, you can also deploy the app using Docker, provided that the platform supports containerized deployments. There's a `Dockerfile` in the root of the starter kit for your convenience.
+
 
