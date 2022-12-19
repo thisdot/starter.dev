@@ -13,12 +13,8 @@ beforeAll(() => {
 
 describe('Fetching component', function () {
   it('should render', async () => {
-    const { render, screen } = await createDOM();
-    const spy = vi.spyOn(global, 'fetch').mockImplementationOnce(() => {
-      return Promise.resolve({
-        text: () => Promise.resolve('Hello World'),
-      } as any);
-    });
+    const { render, screen, userEvent } = await createDOM();
+    const spy = vi.spyOn(global, 'fetch');
 
     await render(<DataFetching />);
 
@@ -38,5 +34,9 @@ describe('Fetching component', function () {
       }),
       signal: expect.any(AbortSignal),
     });
+
+    // eslint-disable-next-line qwik/no-use-after-await
+    await userEvent(screen.querySelector('input'), 'change');
+    expect(screen.querySelector('.text-5xl')?.textContent).toBe('Hello, there.');
   });
 });

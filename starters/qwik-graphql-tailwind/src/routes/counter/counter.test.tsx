@@ -3,11 +3,6 @@ import { describe, expect, it } from 'vitest';
 import { Counter } from './counter';
 
 describe('Counter component', function () {
-  it('should assert true', async () => {
-    // just example test
-    expect(true).toBe(true);
-  });
-
   it('should render', async () => {
     const { render, screen } = await createDOM();
 
