@@ -2,6 +2,19 @@ import path from 'path';
 import fs from 'fs/promises';
 import { exec } from 'child_process';
 
+export async function fileExists(path: string) {
+  try {
+    await fs.stat(path);
+    return true;
+  } catch (error) {
+    if (error.code === 'ENOENT') {
+      return false;
+    } else {
+      throw error;
+    }
+  }
+}
+
 export async function initGitRepo(path: string) {
   return new Promise((resolve, reject) => {
     exec(`git init ${path}`, (err) => {

@@ -69,19 +69,28 @@ ${markdown}`;
   for (const dir of kitDirs) {
     const kitPath = path.join(repoPath, 'starters', dir);
 
+    let infoFile = 'package.json';
+    if (dir.startsWith('deno-')) {
+      // For Deno, we don't have package.json
+      infoFile = 'deno.json';
+    }
+
     try {
       const readme = await fs.readFile(
         path.join(kitPath, 'README.md'),
         'utf-8'
       );
-      const json = await fs.readFile(
-        path.join(kitPath, 'package.json'),
-        'utf-8'
-      );
+      const json = await fs.readFile(path.join(kitPath, infoFile), 'utf-8');
       const data = JSON.parse(json);
 
       const kitData = {
-        ...pick(data, ['name', 'version', 'description', 'keywords', 'hasShowcase']),
+        ...pick(data, [
+          'name',
+          'version',
+          'description',
+          'keywords',
+          'hasShowcase',
+        ]),
         readmePath: path.join(kitPath, 'README.md'),
         starterPath: `/starters/${dir}`,
       };
