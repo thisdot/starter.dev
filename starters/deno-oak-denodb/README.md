@@ -37,29 +37,6 @@ This starter kit can be used for scaffolding an all-Deno based backend. It uses 
 
 ## Installation
 
-### CLI (Recommended)
-
-```shell
-npm create @this-dot/starter --kit deno-oak-denodb
-```
-
-or
-
-```shell
-yarn create @this-dot/starter --kit deno-oak-denodb
-```
-
-- Follow the prompts to select the `deno-oak-denodb` starter kit and name your new project.
-- `cd` into your project directory.
-- Make sure you have Docker & docker-compose installed on your machine
-- Create a `.env` file and copy the contents of `.env.example` into it.
-- Run `deno task start-db` to start the local PostgreSQL and Redis
-- Run `deno task start-web` to start the development server.
-- Open your browser to `http://localhost:3333/health` to see the API running.
-- Proceed to the [Seeding](#seeding) chapter to seed the database with some sample data.
-
-### Manual
-
 ```shell
 git clone https://github.com/thisdot/starter.dev.git
 ```
@@ -245,7 +222,7 @@ The GraphQL API playground is available at http://localhost:3333/graphql. You ca
 
 ```graphql
 {
-  getTechnologies {
+  technologies {
     id
     displayName
     description
@@ -295,7 +272,7 @@ A "technology" is an example model that we used in the starter kit. Below is an 
 {
   "id": "34a3a076-31ec-4138-972d-41db0e8ec654",
   "displayName": "Oak",
-  "description": "A middleware framework for Deno's native HTTP server, Deno Deploy and Node.js 16.5 and later. It also includes a middleware router.",
+  "description": "A middleware framework for Deno.",
   "url": "https://oakserver.github.io/oak/",
   "createdAt": "2022-12-10T17:32:41.086Z",
   "updatedAt": "2022-12-10T17:32:41.086Z"
