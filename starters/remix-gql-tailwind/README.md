@@ -75,7 +75,7 @@ The `Greeting` directory contains the following files:
 ### CLI (Recommended)
 
 ```bash
-npm create @this-dot/starter --kit remix-gql-tailwind
+npx @this-dot/create-starter --kit remix-gql-tailwind
 ```
 
 or
