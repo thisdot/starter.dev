@@ -28,12 +28,6 @@ const config: UserConfig & { test: VitestConfig['test'] } = {
     // Exclude playwright tests folder
     exclude: [...configDefaults.exclude, 'tests'],
   },
-
-  resolve: {
-    alias: {
-      $lib: path.resolve(__dirname, './src/lib'),
-    },
-  },
 };
 
 export default config;
