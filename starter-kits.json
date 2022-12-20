@@ -8,5 +8,6 @@
   "vue3-apollo-quasar": "Vue3, Apollo, and Quasar",
   "qwik-graphql-tailwind": "Qwik, GraphQL, and TailwindCSS",
   "solidjs-tailwind": "SolidJs and TailwindCSS",
-  "angular-ngrx-scss": "Angular, NgRx, and SCSS"
+  "angular-ngrx-scss": "Angular, NgRx, and SCSS",
+  "deno-oak-denodb": "Deno, Oak, and DenoDB"
 }

@@ -1,6 +1,6 @@
 # svelte-kit-scss Starter Kit
 
-This starter kit features **Svelte** and **SCSS**
+This starter kit features **SvelteKit** and **SCSS**
 
 ## Table of Contents
 
@@ -9,11 +9,11 @@ This starter kit features **Svelte** and **SCSS**
   - [Overview](#overview)
     - [Tech Stack](#tech-stack)
     - [Included Tooling](#included-tooling)
-    - [Architecture Decisions](#architecture-decisions)
   - [Installation](#installation)
     - [CLI (Recommended)](#cli-recommended)
     - [Manual](#manual)
   - [Commands](#commands)
+  - [Architecture Decisions](#architecture-decisions)
   - [Demo Implementation](#demo-implementation)
 
 ## Overview
@@ -33,34 +33,6 @@ This starter kit features **Svelte** and **SCSS**
 - [Vite](https://vitejs.dev/) - Bundler
 - [Vitest](https://vitest.dev/) - Unit Test Framework
 
-### Architecture Decisions
-
-For this kit, we maintained the [Sveltekit Project Strucuture](https://kit.svelte.dev/docs/project-structure) and we do recommend it. For the `src/lib/components` folder, each component is co-located with its tests and stories. This structure makes it easy to find all the code and functionality related to a specific component. Due to Sveltekit's preference for data fetching from the route page, the components are primarily simple view components.
-
-- #### Storybook
-
-  Storybook was introduced because it is really a great tool for testing components in isolation and good for documentation.
-
-- #### Styling
-
-  Svelte comes with sass support. Sass being one of the most mature, stable, and powerful professional grade CSS extension language, it quickly allows us to design robust components.
-
-- #### Example Components
-
-  In this `svelte-kit-scss/src/lib/components` directory you will find the `Counter` and `Greeting` directory.
-
-  The `Counter` directory contains the following files:
-
-  - Counter.spec.ts
-  - Counter.svelte
-  - Counter.stories.ts
-
-  The `Greeting` directory contains the following files:
-
-  - Greeting.spec.ts
-  - Greeting.svelte
-  - Greeting.stories.ts
-
 ## Installation
 
 ### CLI (Recommended)
@@ -76,7 +48,7 @@ yarn create @this-dot/starter --kit svelte-kit-scss
 ```
 
 - Follow the prompts to select the `svelte-kit-scss` starter kit and name your new project.
-- `cd` into your project directory and run `npm`.
+- `cd` into your project directory and run `npm i`.
 - Run `npm run dev` to start the development server.
 - Open your browser to `http://localhost:5137` to see the included example code running.
 
@@ -96,12 +68,47 @@ git clone https://github.com/thisdot/starter.dev.git
 ## Commands
 
 - `npm start` - Starts the dev server new tab.
-- `npm test` - Runs the unit tests.
 - `npm run dev` - Starts the development server.
-- `npm run test:e2e` - Runs the playwright e2e tests.
-- `npm run storybook` - Starts the Storybook UI.
-- `npm run format` - Formats code with prettier for the entire project.
 - `npm run build` - Builds the project for production.
+- `npm run preview` - Starts a local static web server that serves the files from dist
+- `npm test` - Runs the unit tests.
+- `npm test:watch` - Runs the unit tests and checks for file changes.
+- `npm run test:e2e` - Runs the playwright e2e tests.
+- `npm run test:coverage` - Runs the test coverage report
+- `npm run check` - Runs Svelte diagnostics
+- `npm run check:watch` - Runs Svelte diagnostics and checks for file changes
+- `npm run storybook` - Starts the Storybook UI.
+- `npm run build-storybook` - Builds the Storybook UI.
+- `npm run lint` - Finds problems in your javascript code.
+- `npm run format` - Formats code with prettier for the entire project.
+
+## Architecture Decisions
+
+For this kit, we maintained the [SvelteKit Project Structure](https://kit.svelte.dev/docs/project-structure) and we do recommend it. For the `src/lib/components` folder, each component is co-located with its tests and stories. This structure makes it easy to find all the code and functionality related to a specific component. Due to SvelteKit's preference for data fetching from the route page, the components are primarily simple view components.
+
+- Storybook
+
+  Storybook was introduced because it is a great tool for testing components in isolation and good for documentation.
+
+- Styling
+
+  Svelte comes with sass support. Sass is one of the most mature, stable, and powerful professional-grade CSS extension language. It quickly allows us to design robust components.
+
+- Example Components
+
+  In this `svelte-kit-scss/src/lib/components` directory you will find the `Counter` and `Greeting` directory.
+
+  The `Counter` directory contains the following files:
+
+  - Counter.spec.ts
+  - Counter.svelte
+  - Counter.stories.ts
+
+  The `Greeting` directory contains the following files:
+
+  - Greeting.spec.ts
+  - Greeting.svelte
+  - Greeting.stories.ts
 
 ## Demo Implementation
 

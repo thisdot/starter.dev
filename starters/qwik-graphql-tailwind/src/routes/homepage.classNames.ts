@@ -1,5 +1,5 @@
 export const container = 'text-center';
-export const h1Text = 'text-4xl font-bold';
-export const ul = 'list-inside list-disc my-8 text-xl';
-export const li = 'py-2';
-export const link = 'text-blue-500 underline italic hover:text-blue-800';
+export const header =
+  'flex justify-center items-center text-white my-5 mx-auto bg-blue-500  w-full lg:w-[75%] p-4 text-lg';
+export const linksContainer = 'flex flex-col gap-2 items-center text-blue-800 underline text-base';
+export const link = '"hover:text-blue-500 transition-colors delay-100"';

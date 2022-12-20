@@ -27,7 +27,7 @@ const kit = parseKit(content);
     <NavBar currentPath={path} client:load />
     <KitHero {...kit} />
     <StickyHero {...kit} />
-    <main>
+    <main class="kit-page">
       <MobileNavigation {headers} client:load />
       <div class="toggleDiv grid grid-cols-12 gap-x-8 max-w-screen-2xl mx-auto">
         <aside class="hidden lg:block col-span-3">
