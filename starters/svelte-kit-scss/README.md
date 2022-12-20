@@ -38,7 +38,7 @@ This starter kit features **SvelteKit** and **SCSS**
 ### CLI (Recommended)
 
 ```bash
-npx @this-dot/create-starter --kit svelte-kit-scss
+npm create @this-dot/starter -- --kit svelte-kit-scss
 ```
 
 or

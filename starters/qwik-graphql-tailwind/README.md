@@ -46,7 +46,7 @@ In this `starters/qwik-graphql-tailwind/src/routes` directory you will find the 
 ### CLI (Recommended)
 
 ```bash
-npx @this-dot/create-starter --kit qwik-graphql-tailwind
+npm create @this-dot/starter -- --kit qwik-graphql-tailwind
 ```
 
 or

@@ -51,7 +51,7 @@ Angular components are split up into multiple files:
 ### CLI (Recommended)
 
 ```bash
-npx @this-dot/create-starter --kit angular-apollo-tailwind
+npm create @this-dot/starter -- --kit angular-apollo-tailwind
 ```
 
 or
