@@ -1,9 +1,10 @@
 <script lang="ts">
   import Greeting from '$lib/components/Greeting/Greeting.svelte';
-  
-  export let data: {
-    message: string;
-  };
+  import type { PageServerData } from './$types';
+
+  export let data: PageServerData;
+
+  $: ({ message } = data);
 </script>
 
-<Greeting message={data.message} />
+<Greeting {message} />
