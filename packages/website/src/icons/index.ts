@@ -39,3 +39,6 @@ export { LinkedinIcon } from './LinkedinIcon';
 export { QwikIcon } from './QwikIcon';
 export { SolidJsIcon } from './SolidJsIcon';
 export { DenoIcon } from './DenoIcon.tsx';
+export { ExpressIcon } from './ExpressIcon';
+export { PostgresIcon } from './PostgresIcon';
+export { TypeOrmIcon } from './TypeOrmIcon';
