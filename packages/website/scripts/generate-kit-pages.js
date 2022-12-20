@@ -50,7 +50,7 @@ ${markdown}`;
   try {
     const handle = await fs.opendir(kitPagesPath);
     console.info('kitgen: deleting existing kit pages');
-    rimraf(`${kitPagesPath}/*.md`, async (err) => {
+    rimraf(`${kitPagesPath}/*.md,${kitPagesPath}/*.mdx`, async (err) => {
       if (err) {
         console.error(err);
       }
@@ -101,7 +101,7 @@ ${markdown}`;
       const kitPagePath = path.join(
         repoPath,
         'packages/website/src/pages/kits',
-        `${data.name}.md`
+        `${data.name}.mdx`
       );
 
       await fs.writeFile(kitPagePath, formattedMarkdown, 'utf-8');

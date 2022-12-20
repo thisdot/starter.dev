@@ -1,5 +1,7 @@
-import { defineConfig } from "astro/config";
-import react from "@astrojs/react";
+import { defineConfig } from 'astro/config';
+import react from '@astrojs/react';
+import mdx from '@astrojs/mdx';
+
 // Full Astro Configuration API Documentation:
 // https://docs.astro.build/reference/configuration-reference
 // @type-check enabled!
@@ -10,8 +12,9 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig(
-/** @type {import('astro').AstroUserConfig} */
-{
-  // Enable the React renderer to support React JSX components.
-  integrations: [react()]
-});
+  /** @type {import('astro').AstroUserConfig} */
+  {
+    // Enable the React renderer to support React JSX components.
+    integrations: [react(), mdx()],
+  }
+);
