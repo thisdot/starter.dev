@@ -65,7 +65,7 @@ The `state` directory is where all of our NgRx logic lives. You'll find a folder
 ### CLI (Recommended)
 
 ```bash
-npm create @this-dot/create-starter --kit angular-ngrx-scss
+npm create @this-dot/starter -- --kit angular-ngrx-scss
 ```
 
 or

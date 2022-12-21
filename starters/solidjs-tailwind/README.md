@@ -5,13 +5,13 @@ This starter kit features SolidJS combined with Tailwind CSS.
 ## Table of Contents
 
 - [Overview](#overview)
-    - [Tech Stack](#tech-stack)
-    - [Included Tooling](#included-tooling)
-    - [Architectural Decisions](#architectural-decisions)
-    - [Example Components](#example-components)
+  - [Tech Stack](#tech-stack)
+  - [Included Tooling](#included-tooling)
+  - [Architectural Decisions](#architectural-decisions)
+  - [Example Components](#example-components)
 - [Installation](#installation)
-    - [CLI](#cli)
-    - [Manual](#manual)
+  - [CLI](#cli)
+  - [Manual](#manual)
 - [Commands](#commands)
 - [Demo Implementation](#demo-implementation)
 

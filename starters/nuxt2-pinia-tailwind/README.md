@@ -54,7 +54,13 @@ The `TheGreeting` directory component uses `@nuxtjs/axios` to fetch data from th
 ### CLI (Recommended)
 
 ```bash
-npx create-starter-dev
+npm create @this-dot/starter -- --kit nuxt2-pinia-tailwind
+```
+
+or
+
+```bash
+yarn create @this-dot/starter --kit nuxt2-pinia-tailwind
 ```
 
 - Follow the prompts to select the `nuxt2-pinia-tailwind` starter kit and name your new project.
