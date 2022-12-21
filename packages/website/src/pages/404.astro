@@ -3,7 +3,7 @@ import BaseHead from '../layouts/BaseHead.astro';
 import { NavBar } from '../components/NavBar.tsx';
 import Footer from '../components/Footer.astro';
 const { title, description } = Astro.props;
-const path = Astro.site.pathname;
+const path = Astro.url.pathname;
 ---
 <html>
   <head>
