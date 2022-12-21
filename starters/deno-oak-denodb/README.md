@@ -49,7 +49,7 @@ or
 yarn create @this-dot/starter -- --kit deno-oak-denodb
 ```
 
-- Follow the prompts to select the `deno-oak-denodb` starter kit and name your new project.
+- Follow the prompt to name your new project.
 - `cd` into your project directory.
 - Make sure you have Docker & docker-compose installed on your machine
 - Create a `.env` file and copy the contents of `.env.example` into it.
