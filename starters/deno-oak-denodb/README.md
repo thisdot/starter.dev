@@ -37,6 +37,29 @@ This starter kit can be used for scaffolding an all-Deno based backend. It uses 
 
 ## Installation
 
+### CLI (Recommended)
+
+```shell
+npm create @this-dot/starter -- --kit deno-oak-denodb
+```
+
+or
+
+```shell
+yarn create @this-dot/starter -- --kit deno-oak-denodb
+```
+
+- Follow the prompt to name your new project.
+- `cd` into your project directory.
+- Make sure you have Docker & docker-compose installed on your machine
+- Create a `.env` file and copy the contents of `.env.example` into it.
+- Run `deno task start-db` to start the local PostgreSQL and Redis
+- Run `deno task start-web` to start the development server.
+- Open your browser to `http://localhost:3333/health` to see the API running.
+- Proceed to the [Seeding](#seeding) chapter to seed the database with some sample data.
+
+### Manual
+
 ```shell
 git clone https://github.com/thisdot/starter.dev.git
 ```
