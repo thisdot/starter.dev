@@ -1,0 +1,17 @@
+version: '3'
+services:
+  dynamodb:
+    image: amazon/dynamodb-local
+    hostname: dynamodb
+    restart: always
+    volumes:
+      - ./.dynamodb:/home/dynamodblocal/data
+    ports:
+      - 8000:8000
+    command: '-jar DynamoDBLocal.jar -sharedDb -dbPath /home/dynamodblocal/data/'
+
+  sqs:
+    image: softwaremill/elasticmq:1.1.1
+    ports:
+      - 9324:9324
+      - 9325:9325
