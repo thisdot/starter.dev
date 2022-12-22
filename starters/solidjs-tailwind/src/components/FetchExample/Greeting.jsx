@@ -1,5 +1,5 @@
 import { createResource, Match, Switch } from 'solid-js';
-import greetingFetcher from './GreetingFetcher';
+import greetingFetcher from './greetingFetcher';
 
 const Greeting = () => {
   const [message] = createResource(greetingFetcher());

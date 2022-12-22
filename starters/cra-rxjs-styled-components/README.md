@@ -73,7 +73,7 @@ The `Homepage` directory contains the following files:
 ### CLI (Recommended)
 
 ```bash
-npm create @this-dot/starter --kit cra-rxjs-styled-components
+npm create @this-dot/starter -- --kit cra-rxjs-styled-components
 ```
 
 or

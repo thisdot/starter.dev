@@ -5,7 +5,7 @@ import prompts, { Choice } from 'prompts';
 import degit from 'tiged';
 import fetch from 'node-fetch';
 import yargs from 'yargs-parser';
-import { initGitRepo, removeLockFileIfExists, overrideAngularJsonIfExists } from './utils';
+import { initGitRepo, removeLockFileIfExists, overrideAngularJsonIfExists, fileExists } from './utils';
 
 const STARTER_KITS_JSON_URL = 'https://raw.githubusercontent.com/thisdot/starter.dev/main/starter-kits.json';
 const EXCLUDED_PACKAGE_JSON_FIELDS = ['hasShowcase'];
@@ -74,30 +74,43 @@ export async function main() {
   }
 
   try {
-    const packageJSON = JSON.parse(await fs.readFile(path.join(destPath, 'package.json'), 'utf8'));
-    packageJSON.name = options.name;
-    packageJSON.version = '0.1.0';
-    EXCLUDED_PACKAGE_JSON_FIELDS.forEach((field) => delete packageJSON[field]);
+    const packageJsonPath = path.join(destPath, 'package.json');
+    const packageJsonExists = await fileExists(packageJsonPath);
+    if (packageJsonExists) {
+      // Node-based starter kit
+      await initNodeProject(packageJsonPath, destPath, options);
+    }
 
-    try {
-      await fs.writeFile(path.join(destPath, 'package.json'), JSON.stringify(packageJSON, null, 2));
-      await overrideAngularJsonIfExists(destPath, options.kit, options.name);
+    await initGitRepo(destPath);
+    console.log(bold(green('✔') + ' Done!'));
+    console.log('\nNext steps:');
+    console.log(` ${bold(cyan(`cd ${options.name}`))}`);
 
-      await initGitRepo(destPath);
-    } catch (_) {
-      console.info(gray(`> ${bold('Note:')} Failed to update package.json. You may need to do this manually.`));
+    if (packageJsonExists) {
+      console.log(` ${bold(cyan('npm install'))} (or pnpm install, yarn, etc)`);
     }
   } catch (err: unknown) {
-    console.error(red('Failed to read package.json. This probably means that you provided an invalid kit name.'));
+    console.error(red('Failed to initialize the starter kit. This probably means that you provided an invalid kit name.'));
     process.exit(1);
   }
-
-  removeLockFileIfExists('package-lock.json', destPath);
-  removeLockFileIfExists('yarn.lock', destPath);
-  removeLockFileIfExists('pnpm-lock.yaml', destPath);
-
-  console.log(bold(green('✔') + ' Done!'));
-  console.log('\nNext steps:');
-  console.log(` ${bold(cyan(`cd ${options.name}`))}`);
-  console.log(` ${bold(cyan('npm install'))} (or pnpm install, yarn, etc)`);
 }
+
+async function initNodeProject(packageJsonPath: string, projectDestPath: string, options: any) {
+  const packageJSON = JSON.parse(await fs.readFile(packageJsonPath, 'utf8'));
+  packageJSON.name = options.name;
+  packageJSON.version = '0.1.0';
+  EXCLUDED_PACKAGE_JSON_FIELDS.forEach((field) => delete packageJSON[field]);
+
+  try {
+    await fs.writeFile(path.join(projectDestPath, 'package.json'), JSON.stringify(packageJSON, null, 2));
+    await overrideAngularJsonIfExists(projectDestPath, options.kit, options.name);
+
+    await removeLockFileIfExists('package-lock.json', projectDestPath);
+    await removeLockFileIfExists('yarn.lock', projectDestPath);
+    await removeLockFileIfExists('pnpm-lock.yaml', projectDestPath);
+  } catch (_) {
+    console.info(gray(`> ${bold('Note:')} Failed to update package.json. You may need to do this manually.`));
+  }
+}
+
+

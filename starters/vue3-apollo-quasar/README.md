@@ -65,7 +65,7 @@ This kit includes 2 components to demonstrate how you can best utilize this kit 
 ### CLI (Recommended)
 
 ```bash
-npm create @this-dot/starter --kit vue3-apollo-quasar
+npm create @this-dot/starter -- --kit vue3-apollo-quasar
 ```
 
 ```bash
