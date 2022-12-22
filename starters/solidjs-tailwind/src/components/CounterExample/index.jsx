@@ -1,6 +1,6 @@
 import CounterButton from './CounterButton';
 import CounterDisplay from './CounterDisplay';
-import { decrease, increase, reset } from './CounterStore';
+import { decrease, increase, reset } from './cccounterStore';
 
 export const CounterExample = () => {
   return (
