@@ -1,4 +1,4 @@
-import { count } from './cccounterStore';
+import { count } from './counterStore';
 
 const CounterDisplay = () => (
   <strong role="display-count" class="text-xl">
