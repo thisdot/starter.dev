@@ -4,9 +4,14 @@ const serverlessConfiguration: Serverless = {
 	service: 'serverless-framework-sqs-dynamodb',
 	frameworkVersion: '3',
 	useDotenv: true,
-	plugins: ['serverless-esbuild', 'serverless-analyze-bundle-plugin', 'serverless-dynamodb-local', 'serverless-offline'],
+	plugins: [
+		'serverless-esbuild',
+		'serverless-analyze-bundle-plugin',
+		'serverless-dynamodb-local',
+		'serverless-offline',
+	],
 	custom: {
-		dynamodb: {
+		'dynamodb': {
 			stages: ['dev'],
 			start: {
 				docker: true,
@@ -18,7 +23,7 @@ const serverlessConfiguration: Serverless = {
 				noStart: true,
 			},
 		},
-		esbuild: {
+		'esbuild': {
 			packager: 'yarn',
 			plugins: './esbuild-plugins.ts',
 			bundle: true,
