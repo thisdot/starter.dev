@@ -40,7 +40,7 @@ describe('Fetching component', function () {
       method: 'POST',
       body: JSON.stringify({
         query: GET_GREETING,
-        variables: { greeting: 'there' },
+        variables: { greeting: 'from This Dot Labs!' },
       }),
       signal: new AbortController().signal,
     });
