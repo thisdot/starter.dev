@@ -16,7 +16,8 @@
 		"skipDefaultLibCheck": true,
 		"baseUrl": ".",
 		"paths": {
-			"@utils/*": ["src/utils/*"]
+			"@/types/*": ["src/types/*"],
+			"@/utils/*": ["src/utils/*"]
 		}
 	},
 	"exclude": ["node_modules", "tmp"]
