@@ -1,11 +1,34 @@
-import type { Serverless } from 'serverless/aws';
+import type { AWS } from '@serverless/typescript';
 
-const serverlessConfiguration: Serverless = {
+const serverlessConfiguration: AWS = {
 	service: 'serverless-framework-sqs-dynamodb',
 	frameworkVersion: '3',
 	useDotenv: true,
-	plugins: ['serverless-esbuild', 'serverless-analyze-bundle-plugin', 'serverless-offline'],
+	plugins: [
+		'serverless-esbuild',
+		'serverless-analyze-bundle-plugin',
+		'serverless-dynamodb-local',
+		'serverless-offline',
+	],
 	custom: {
+		'dynamodb': {
+			stages: ['dev'],
+			start: {
+				port: 8000,
+				convertEmptyValues: true,
+				noStart: true,
+			},
+			seed: {
+				core: {
+					sources: [
+						{
+							table: '${param:technologiesTable}',
+							sources: ['./db/technologies-seed.json'],
+						},
+					],
+				},
+			},
+		},
 		'esbuild': {
 			packager: 'yarn',
 			plugins: './esbuild-plugins.ts',
@@ -32,12 +55,23 @@ const serverlessConfiguration: Serverless = {
 		patterns: ['src/handlers/*.ts', '!src/handlers/*.test.ts', '!node_modules/**'],
 		excludeDevDependencies: true,
 	},
+	params: {
+		production: {
+			technologiesTable: 'technologies-production',
+		},
+		staging: {
+			technologiesTable: 'technologies-staging',
+		},
+		dev: {
+			technologiesTable: 'technologies-dev',
+		},
+	},
 	provider: {
 		name: 'aws',
 		runtime: 'nodejs16.x',
 		// profile: '<your profile>', // assumes default aws profile by default
 		stage: "${opt:stage, 'dev'}",
-		region: "${opt:region, 'us-east-1'}",
+		region: "${opt:region, 'us-east-1'}" as AWS['provider']['region'], // Temp fix. See https://github.com/serverless/typescript/issues/11.
 		memorySize: 512, // default: 1024MB
 		timeout: 29, // default: max allowable for Gateway
 		httpApi: {
@@ -47,6 +81,8 @@ const serverlessConfiguration: Serverless = {
 		environment: {
 			REGION: '${aws:region}',
 			SLS_STAGE: '${sls:stage}',
+			// DynamoDB Tables
+			TECHNOLOGIES_TABLE: '${param:technologiesTable}',
 		},
 		iam: {
 			role: {
@@ -55,6 +91,17 @@ const serverlessConfiguration: Serverless = {
 						Effect: 'Allow',
 						Action: ['lambda:InvokeFunction'],
 						Resource: 'arn:aws:lambda:*:*:*',
+					},
+					{
+						Effect: 'Allow',
+						Action: [
+							'dynamodb:Scan',
+							'dynamodb:Query',
+							'dynamodb:GetItem',
+							'dynamodb:PutItem',
+							'dynamodb:UpdateItem',
+						],
+						Resource: 'arn:aws:dynamodb:*:*:table/${param:technologiesTable}',
 					},
 				],
 			},
@@ -82,7 +129,7 @@ const serverlessConfiguration: Serverless = {
 			technologiesTable: {
 				Type: 'AWS::DynamoDB::Table',
 				Properties: {
-					TableName: 'technologiesTable',
+					TableName: '${param:technologiesTable}',
 					AttributeDefinitions: [
 						{
 							AttributeName: 'id',
