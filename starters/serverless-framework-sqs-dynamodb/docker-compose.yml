@@ -1,5 +1,6 @@
 version: '3'
 services:
+  # configures DynamoDB resource for persistent storage
   dynamodb:
     image: amazon/dynamodb-local
     hostname: dynamodb
@@ -10,6 +11,17 @@ services:
       - 8000:8000
     command: '-jar DynamoDBLocal.jar -sharedDb -dbPath /home/dynamodblocal/data/'
 
+  # configures DynamoDB admin shell for the browser
+  dynamodb-admin:
+    image: aaronshaf/dynamodb-admin
+    ports:
+      - "8001:8001"
+    environment:
+      DYNAMO_ENDPOINT: "http://dynamodb:8000"
+    depends_on:
+      - dynamodb
+
+  # configures ElasticMQ to emulate SQS behaviors
   sqs:
     image: softwaremill/elasticmq:1.1.1
     ports:

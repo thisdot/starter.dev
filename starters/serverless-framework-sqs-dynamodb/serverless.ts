@@ -4,25 +4,8 @@ const serverlessConfiguration: Serverless = {
 	service: 'serverless-framework-sqs-dynamodb',
 	frameworkVersion: '3',
 	useDotenv: true,
-	plugins: [
-		'serverless-esbuild',
-		'serverless-analyze-bundle-plugin',
-		'serverless-dynamodb-local',
-		'serverless-offline',
-	],
+	plugins: ['serverless-esbuild', 'serverless-analyze-bundle-plugin', 'serverless-offline'],
 	custom: {
-		'dynamodb': {
-			stages: ['dev'],
-			start: {
-				docker: true,
-				port: 8000,
-				inMemory: true,
-				migrate: true,
-				seed: true,
-				convertEmptyValues: true,
-				noStart: true,
-			},
-		},
 		'esbuild': {
 			packager: 'yarn',
 			plugins: './esbuild-plugins.ts',
@@ -92,6 +75,32 @@ const serverlessConfiguration: Serverless = {
 					},
 				},
 			],
+		},
+	},
+	resources: {
+		Resources: {
+			technologiesTable: {
+				Type: 'AWS::DynamoDB::Table',
+				Properties: {
+					TableName: 'technologiesTable',
+					AttributeDefinitions: [
+						{
+							AttributeName: 'id',
+							AttributeType: 'S',
+						},
+					],
+					KeySchema: [
+						{
+							AttributeName: 'id',
+							KeyType: 'HASH',
+						},
+					],
+					ProvisionedThroughput: {
+						ReadCapacityUnits: 1,
+						WriteCapacityUnits: 1,
+					},
+				},
+			},
 		},
 	},
 };

@@ -12,3 +12,7 @@
 - `infrastructure:down` deletes the docker container and related images.
 - `infrastructure:start` starts the docker container.
 - `infrastructure:stop` stops the docker container.
+
+## DynamoDB
+
+View Local Admin Tool at http://localhost:8001/

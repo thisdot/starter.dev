@@ -1,9 +1,7 @@
-# package directories
+coverage
 node_modules
 jspm_packages
 
-# Serverless directories
 .serverless
-
-# dyanmodb directories
 .dynamodb
+.esbuild
