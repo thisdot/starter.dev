@@ -12,6 +12,7 @@ module.exports = {
 			},
 			rules: {
 				'no-unused-expressions': 'off',
+				'@typescript-eslint/no-var-requires': 'off',
 			},
 		},
 	],
@@ -100,7 +101,12 @@ module.exports = {
 		'import/no-extraneous-dependencies': [
 			'error',
 			{
-				devDependencies: ['**/*.test.ts', 'prettier.config.js', 'esbuild-plugins.ts'],
+				devDependencies: [
+					'**/*.test.ts',
+					'prettier.config.js',
+					'jest.config.ts',
+					'esbuild-plugins.ts',
+				],
 			},
 		],
 		'import/no-mutable-exports': 'error',
