@@ -1,14 +1,14 @@
-import { DynamoDB } from '@aws-sdk/client-dynamodb';
+import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 
 describe('getClient', () => {
 	const OLD_ENV = process.env;
 	let subject;
-	let client: DynamoDB;
+	let client: DynamoDBClient;
 
 	describe('when IS_OFFLINE is true', () => {
 		beforeAll(() => {
 			jest.resetModules();
-			client = require('@aws-sdk/client-dynamodb').DynamoDB;
+			client = require('@aws-sdk/client-dynamodb').DynamoDBClient;
 			const { getClient } = require('./getClient');
 			process.env = {
 				...OLD_ENV,
@@ -35,7 +35,7 @@ describe('getClient', () => {
 	describe('when IS_OFFLINE is false', () => {
 		beforeAll(() => {
 			jest.resetModules();
-			client = require('@aws-sdk/client-dynamodb').DynamoDB;
+			client = require('@aws-sdk/client-dynamodb').DynamoDBClient;
 			const { getClient } = require('./getClient');
 			process.env = {
 				...OLD_ENV,
@@ -65,9 +65,9 @@ describe('getClient', () => {
 
 			dynamodb = require('@aws-sdk/client-dynamodb');
 			jest.doMock('@aws-sdk/client-dynamodb', () => ({
-				DynamoDB: jest.fn().mockImplementation(() => new dynamodb.DynamoDB({})),
+				DynamoDBClient: jest.fn().mockImplementation(() => new dynamodb.DynamoDBClient({})),
 			}));
-			client = require('@aws-sdk/client-dynamodb').DynamoDB;
+			client = require('@aws-sdk/client-dynamodb').DynamoDBClient;
 
 			const { getClient } = require('./getClient');
 			process.env = {
@@ -87,7 +87,7 @@ describe('getClient', () => {
 		});
 
 		it('returns a cached client', () => {
-			expect(subject).toEqual(expect.any(dynamodb.DynamoDB));
+			expect(subject).toEqual(expect.any(dynamodb.DynamoDBClient));
 		});
 	});
 });

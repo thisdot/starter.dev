@@ -1,7 +1,7 @@
-import { DynamoDB, DynamoDBClientConfig } from '@aws-sdk/client-dynamodb';
-import { isOffline } from '@utils/is-offline';
+import { DynamoDBClient, DynamoDBClientConfig } from '@aws-sdk/client-dynamodb';
+import { isOffline } from '@/utils/is-offline';
 
-let cachedClient: DynamoDB;
+let cachedClient: DynamoDBClient;
 
 export const getClient = () => {
 	if (cachedClient) {
@@ -23,6 +23,6 @@ export const getClient = () => {
 		};
 	}
 
-	cachedClient = new DynamoDB(config);
+	cachedClient = new DynamoDBClient(config);
 	return cachedClient;
 };
