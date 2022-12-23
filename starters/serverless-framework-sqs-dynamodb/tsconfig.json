@@ -11,10 +11,13 @@
 		"importHelpers": false,
 		"target": "ESNext",
 		"module": "node16",
+		"resolveJsonModule": true,
 		"skipLibCheck": true,
 		"skipDefaultLibCheck": true,
 		"baseUrl": ".",
-		"paths": {}
+		"paths": {
+			"@utils/*": ["src/utils/*"]
+		}
 	},
 	"exclude": ["node_modules", "tmp"]
 }

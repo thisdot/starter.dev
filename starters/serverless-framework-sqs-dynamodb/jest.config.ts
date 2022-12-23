@@ -1,5 +1,7 @@
-/** @type {import('ts-jest').JestConfigWithTsJest} */
-module.exports = {
+import { pathsToModuleNameMapper, JestConfigWithTsJest } from 'ts-jest';
+import { compilerOptions } from './tsconfig.json';
+
+const jestConfig: JestConfigWithTsJest = {
 	collectCoverage: true,
 	coverageDirectory: './coverage',
 	coverageReporters: ['html', 'json'],
@@ -11,6 +13,10 @@ module.exports = {
 			statements: 100,
 		},
 	},
+	modulePaths: [compilerOptions.baseUrl],
+	moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths),
 	preset: 'ts-jest',
 	testEnvironment: 'node',
 };
+
+export default jestConfig;
