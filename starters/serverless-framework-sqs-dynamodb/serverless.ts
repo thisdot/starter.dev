@@ -52,7 +52,7 @@ const serverlessConfiguration: Serverless = {
 	provider: {
 		name: 'aws',
 		runtime: 'nodejs16.x',
-		// profile: '<your profile>',
+		// profile: '<your profile>', // assumes default aws profile by default
 		stage: "${opt:stage, 'dev'}",
 		region: "${opt:region, 'us-east-1'}",
 		memorySize: 512, // default: 1024MB
