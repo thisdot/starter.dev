@@ -14,8 +14,10 @@
 		"resolveJsonModule": true,
 		"skipLibCheck": true,
 		"skipDefaultLibCheck": true,
+		"strict": true,
 		"baseUrl": ".",
 		"paths": {
+			"@/models/*": ["src/models/*"],
 			"@/types/*": ["src/types/*"],
 			"@/utils/*": ["src/utils/*"]
 		}
