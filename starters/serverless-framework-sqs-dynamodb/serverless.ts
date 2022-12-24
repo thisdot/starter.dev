@@ -158,7 +158,7 @@ const serverlessConfiguration: AWS = {
 			],
 		},
 		technology_update: {
-			handler: 'src/handlers/technology.put',
+			handler: 'src/handlers/technology.update',
 			events: [
 				{
 					httpApi: {
