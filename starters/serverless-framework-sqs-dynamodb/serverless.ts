@@ -124,6 +124,61 @@ const serverlessConfiguration: AWS = {
 				},
 			],
 		},
+		technology_index: {
+			handler: 'src/handlers/technology.index',
+			events: [
+				{
+					httpApi: {
+						path: '/technology',
+						method: 'get',
+					},
+				},
+			],
+		},
+		technology_create: {
+			handler: 'src/handlers/technology.create',
+			events: [
+				{
+					httpApi: {
+						path: '/technology',
+						method: 'post',
+					},
+				},
+			],
+		},
+		technology_show: {
+			handler: 'src/handlers/technology.show',
+			events: [
+				{
+					httpApi: {
+						path: '/technology/{id}',
+						method: 'get',
+					},
+				},
+			],
+		},
+		technology_update: {
+			handler: 'src/handlers/technology.put',
+			events: [
+				{
+					httpApi: {
+						path: '/technology/{id}',
+						method: 'put',
+					},
+				},
+			],
+		},
+		technology_destroy: {
+			handler: 'src/handlers/technology.destroy',
+			events: [
+				{
+					httpApi: {
+						path: '/technology/{id}',
+						method: 'delete',
+					},
+				},
+			],
+		},
 	},
 	resources: {
 		Resources: {
