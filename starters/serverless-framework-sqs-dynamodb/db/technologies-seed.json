@@ -1,20 +1,20 @@
 [
 	{
-		"id": "Ds2UJdz4-QSHIO2MblWy5",
+		"id": "629202fd-00bc-46f2-9f67-3ddeb149b931",
 		"displayName": "Serverless Framework",
 		"description": "All-in-one development solution for auto-scaling apps on AWS Lambda",
-		"url": "https://www.serverless.com/"
+		"websiteUrl": "https://www.serverless.com/"
 	},
 	{
-		"id": "gny3_Bq335TIUMp1YaDZR",
+		"id": "dfb3378f-a991-4e45-8e23-59e27768f96f",
 		"displayName": "AWS DynamoDB",
 		"description": "Fast, flexible NoSQL database service for single-digit millisecond performance at any scale",
-		"url": "https://aws.amazon.com/dynamodb/"
+		"websiteUrl": "https://aws.amazon.com/dynamodb/"
 	},
 	{
-		"id": "hkUFI46rClB1Jsz0dswx4",
+		"id": "ca9085fa-45a6-4d56-b6ee-8d6c59bebbfa",
 		"displayName": "AWS SQS",
 		"description": "Fully managed message queuing for microservices, distributed systems, and serverless applications",
-		"url": "https://aws.amazon.com/sqs/"
+		"websiteUrl": "https://aws.amazon.com/sqs/"
 	}
 ]
