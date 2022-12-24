@@ -11,7 +11,7 @@
 	],
 	"scripts": {
 		"build": "sls package",
-		"start": "SLS_DEBUG=* sls offline start",
+		"start": "SLS_DEBUG=* sls offline start --verbose",
 		"test": "jest",
 		"lint": "eslint",
 		"format:check": "prettier --check .",
@@ -25,7 +25,9 @@
 	},
 	"dependencies": {
 		"@aws-sdk/client-dynamodb": "^3.236.0",
-		"nanoid": "^4.0.0"
+		"@aws-sdk/util-dynamodb": "^3.238.0",
+		"uuid": "^9.0.0",
+		"zod": "^3.20.2"
 	},
 	"devDependencies": {
 		"@serverless/typescript": "^3.25.0",
@@ -33,6 +35,7 @@
 		"@types/jest": "^29.2.4",
 		"@types/node": "^18.11.17",
 		"@types/serverless": "^3.12.9",
+		"@types/uuid": "^9.0.0",
 		"@typescript-eslint/eslint-plugin": "^5.0.0",
 		"@typescript-eslint/parser": "^5.47.0",
 		"dotenv": "^16.0.3",
