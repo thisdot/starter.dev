@@ -39,6 +39,7 @@ const serverlessConfiguration: AWS = {
 		'serverless-offline': {
 			httpPort: 4000,
 			lambdaPort: 4002,
+			reloadHandler: true,
 		},
 		'serverless-offline-sqs': {
 			autoCreate: true,
