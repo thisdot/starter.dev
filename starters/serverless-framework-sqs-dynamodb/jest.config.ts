@@ -14,6 +14,7 @@ const jestConfig: JestConfigWithTsJest = {
 		},
 	},
 	modulePaths: [compilerOptions.baseUrl],
+	modulePathIgnorePatterns: ['<rootDir>/.esbuild/'],
 	moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths),
 	preset: 'ts-jest',
 	testEnvironment: 'node',
