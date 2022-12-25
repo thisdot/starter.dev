@@ -113,6 +113,9 @@ module.exports = {
 		'import/no-named-as-default': 'error',
 		'import/no-named-as-default-member': 'error',
 		'import/no-unresolved': ['error', { commonjs: true }],
+
+		// typescript settings
+		'@typescript-eslint/no-empty-function': false,
 	},
 	settings: {
 		'import/resolver': {
