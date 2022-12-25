@@ -83,6 +83,7 @@ const serverlessConfiguration: AWS = {
 			REGION: '${aws:region}',
 			SLS_STAGE: '${sls:stage}',
 			// DynamoDB Tables
+			REDIS_CACHE_URL: '${env:REDIS_CACHE_URL}',
 			TECHNOLOGIES_TABLE: '${param:technologiesTable}',
 		},
 		iam: {

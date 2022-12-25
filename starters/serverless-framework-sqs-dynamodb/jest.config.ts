@@ -18,6 +18,7 @@ const jestConfig: JestConfigWithTsJest = {
 	moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths),
 	preset: 'ts-jest',
 	testEnvironment: 'node',
+	setupFiles: ['./jest.setup.ts'],
 };
 
 export default jestConfig;

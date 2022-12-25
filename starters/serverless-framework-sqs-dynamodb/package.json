@@ -12,7 +12,7 @@
 	"scripts": {
 		"build": "sls package",
 		"start": "SLS_DEBUG=* sls offline start --verbose",
-		"test": "jest",
+		"test": "jest --runInBand",
 		"lint": "eslint",
 		"format:check": "prettier --check .",
 		"format:write": "prettier --write .",
@@ -26,6 +26,8 @@
 	"dependencies": {
 		"@aws-sdk/client-dynamodb": "^3.236.0",
 		"@aws-sdk/util-dynamodb": "^3.238.0",
+		"ioredis": "^5.2.4",
+		"ioredis-mock": "^8.2.2",
 		"uuid": "^9.0.0",
 		"zod": "^3.20.2"
 	},
@@ -49,7 +51,9 @@
 		"eslint-plugin-import": "^2.25.2",
 		"eslint-plugin-n": "^15.0.0",
 		"eslint-plugin-promise": "^6.0.0",
+		"i": "^0.3.7",
 		"jest": "^29.3.1",
+		"npm": "^9.2.0",
 		"prettier": "^2.8.1",
 		"serverless": "^3.26.0",
 		"serverless-analyze-bundle-plugin": "^1.2.1",

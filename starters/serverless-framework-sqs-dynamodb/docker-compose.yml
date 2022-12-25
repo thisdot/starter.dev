@@ -21,6 +21,18 @@ services:
     depends_on:
       - dynamodb
 
+  # configure Redis for caching
+  redis_cache:
+    image: 'redis:alpine'
+    command: redis-server --save 20 1 --loglevel warning --requirepass sOmE_sEcUrE_pAsS
+    ports:
+      - '6379:6379'
+    volumes:
+      - ./.redis/cache_data:/var/lib/redis
+      - ./.redis/cache_conf:/usr/local/etc/redis/redis.conf
+    environment:
+      - REDIS_REPLICATION_MODE=master
+
   # configures ElasticMQ to emulate SQS behaviors
   sqs:
     image: softwaremill/elasticmq:1.1.1

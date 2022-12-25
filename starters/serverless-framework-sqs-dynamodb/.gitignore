@@ -2,8 +2,8 @@ coverage
 node_modules
 jspm_packages
 
-.serverless
 .dynamodb
 .esbuild
-
 .env
+.redis
+.serverless
