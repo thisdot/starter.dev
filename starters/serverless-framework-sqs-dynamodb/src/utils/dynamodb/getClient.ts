@@ -3,7 +3,7 @@ import { isOffline } from '@/utils/is-offline';
 
 let cachedClient: DynamoDBClient;
 
-export const getClient = () => {
+export const getClient = (): DynamoDBClient => {
 	if (cachedClient) {
 		return cachedClient;
 	}

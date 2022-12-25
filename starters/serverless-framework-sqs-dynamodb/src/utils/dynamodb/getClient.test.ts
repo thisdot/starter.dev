@@ -2,7 +2,7 @@ import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 
 describe('getClient', () => {
 	const OLD_ENV = process.env;
-	let subject;
+	let subject: DynamoDBClient;
 	let client: DynamoDBClient;
 
 	describe('when IS_OFFLINE is true', () => {
@@ -21,12 +21,14 @@ describe('getClient', () => {
 			process.env = OLD_ENV;
 		});
 
-		it('returns an DynamoDB', () => {
+		it('returns an DynamoDBClient', () => {
 			expect(subject).toEqual(expect.any(client));
 		});
 
 		it('sets the endpoint to localhost', async () => {
-			expect(subject.config.isCustomEndpoint).toBe(true);
+			if (!subject.config.endpoint) {
+				fail('client misconfigured');
+			}
 			const { hostname } = await subject.config.endpoint();
 			expect(hostname).toMatch(/localhost/);
 		});
@@ -48,27 +50,21 @@ describe('getClient', () => {
 			process.env = OLD_ENV;
 		});
 
-		it('returns an LambdaClient', () => {
+		it('returns an DynamoDBClient', () => {
 			expect(subject).toEqual(expect.any(client));
 		});
 
 		it('uses the default AWS Lambda endpoint', async () => {
-			expect(subject.config.isCustomEndpoint).toBe(false);
+			expect(subject.config.endpoint).toBeUndefined();
 		});
 	});
 
 	describe('when called twice', () => {
-		let dynamodb;
-
-		beforeAll(() => {
+		beforeAll(async () => {
 			jest.resetModules();
 
-			dynamodb = require('@aws-sdk/client-dynamodb');
-			jest.doMock('@aws-sdk/client-dynamodb', () => ({
-				DynamoDBClient: jest.fn().mockImplementation(() => new dynamodb.DynamoDBClient({})),
-			}));
+			jest.mock('@aws-sdk/client-dynamodb');
 			client = require('@aws-sdk/client-dynamodb').DynamoDBClient;
-
 			const { getClient } = require('./getClient');
 			process.env = {
 				...OLD_ENV,
@@ -84,10 +80,6 @@ describe('getClient', () => {
 
 		it('runs the constructor once', () => {
 			expect(client).toHaveBeenCalledTimes(1);
-		});
-
-		it('returns a cached client', () => {
-			expect(subject).toEqual(expect.any(dynamodb.DynamoDBClient));
 		});
 	});
 });

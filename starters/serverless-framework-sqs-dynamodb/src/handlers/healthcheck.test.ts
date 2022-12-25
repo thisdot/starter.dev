@@ -1,11 +1,15 @@
-import type { APIGatewayProxyEvent, Context, Callback } from 'aws-lambda';
+import type { APIGatewayProxyEvent, Context, Callback, APIGatewayProxyResult } from 'aws-lambda';
 import { handler } from './healthcheck';
 
 describe('healtcheck', () => {
-	let subject;
+	let subject: APIGatewayProxyResult;
 
 	beforeAll(async () => {
-		subject = await handler({} as APIGatewayProxyEvent, {} as Context, {} as Callback);
+		subject = (await handler(
+			{} as APIGatewayProxyEvent,
+			{} as Context,
+			{} as Callback
+		)) as APIGatewayProxyResult;
 	});
 
 	it('returns a 200 statusCode', () => {
