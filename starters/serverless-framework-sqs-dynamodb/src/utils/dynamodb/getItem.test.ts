@@ -3,7 +3,7 @@ import { mockClient } from 'aws-sdk-client-mock';
 import { getClient } from './getClient';
 import { getItem } from './getItem';
 
-describe('getItem', () => {
+describe('dynamodb.getItem()', () => {
 	let subject: Record<string, unknown> | null;
 	const ddbMock = mockClient(getClient());
 

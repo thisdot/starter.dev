@@ -4,7 +4,7 @@ type CircularType = { obj?: unknown };
 const circularExample: CircularType = {};
 circularExample.obj = circularExample;
 
-describe('getErrorMessage', () => {
+describe('getErrorMessage()', () => {
 	describe.each([
 		{
 			label: 'error object with message',

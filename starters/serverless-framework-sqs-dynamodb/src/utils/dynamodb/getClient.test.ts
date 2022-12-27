@@ -1,6 +1,6 @@
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 
-describe('getClient', () => {
+describe('dynamodb.getClient()', () => {
 	const OLD_ENV = process.env;
 	let subject: DynamoDBClient;
 	let client: DynamoDBClient;

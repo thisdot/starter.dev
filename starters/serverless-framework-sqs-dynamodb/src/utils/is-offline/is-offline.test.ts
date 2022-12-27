@@ -1,6 +1,6 @@
 import { isOffline } from './is-offline';
 
-describe('isOffline ', () => {
+describe('isOffline()', () => {
 	const env = process.env;
 
 	beforeEach(() => {
