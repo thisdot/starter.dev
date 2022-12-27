@@ -10,7 +10,7 @@ export default component$(() => {
         Qwik, GraphQL and Tailwind CSS Starter kit
       </header>
       <div className="flex flex-col gap-2 items-center text-blue-800 underline text-base">
-        <Link href="/counter" className="hover:text-blue-500 transition-colors delay-100">
+        <Link href="/counter-example" className="hover:text-blue-500 transition-colors delay-100">
           See Counter example component
         </Link>
         <Link href="./data-fetching" className="hover:text-blue-500 transition-colors delay-100">
