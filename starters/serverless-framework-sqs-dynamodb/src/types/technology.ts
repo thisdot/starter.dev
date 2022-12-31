@@ -7,6 +7,13 @@ export type Technology = {
 	websiteUrl: string;
 };
 
+export const TechnologySchema = z.object({
+	id: z.string().uuid(),
+	displayName: z.string(),
+	description: z.string().min(10),
+	websiteUrl: z.string().url(),
+});
+
 export const TechnologyCreateSchema = z.object({
 	displayName: z.string(),
 	description: z.string().min(10),

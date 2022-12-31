@@ -17,6 +17,6 @@ export const scan = async (tableName: string) => {
 		return response.Items.map((item) => unmarshall(item));
 	} catch (err) {
 		console.error(`dynamodb.scan Error - ${getErrorMessage(err)}`);
-		return null;
+		return [];
 	}
 };

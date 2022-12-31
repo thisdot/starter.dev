@@ -1,7 +1,29 @@
 import { useCache } from './useCache';
 
 describe('cache.useCache()', () => {
-	let subject: string;
+	let subject: string | null;
+
+	describe('when fails checkValue', () => {
+		beforeAll(async () => {
+			jest.resetModules();
+			jest.spyOn(console, 'error').mockImplementation(() => {});
+			subject = await useCache<string>({
+				key: 'test-with-ttl',
+				getFreshValue() {
+					return 'test-value';
+				},
+				checkValue(value: unknown) {
+					if (typeof value === 'string') {
+						return value.startsWith('tests-');
+					}
+				},
+			});
+		});
+
+		it('returns null', () => {
+			expect(subject).toBeNull();
+		});
+	});
 
 	describe('when using default ttl', () => {
 		beforeAll(async () => {

@@ -92,7 +92,7 @@ describe('dynamodb.scan()', () => {
 		});
 
 		it('returns null', () => {
-			expect(subject).toBeNull();
+			expect(subject).toEqual([]);
 		});
 
 		it('logs the error', () => {
