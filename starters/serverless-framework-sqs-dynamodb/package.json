@@ -27,6 +27,7 @@
 		"@aws-sdk/client-dynamodb": "^3.236.0",
 		"@aws-sdk/util-dynamodb": "^3.238.0",
 		"cachified": "^3.0.1",
+		"http-status-codes": "^2.2.0",
 		"ioredis": "^5.2.4",
 		"ioredis-mock": "^8.2.2",
 		"uuid": "^9.0.0",
