@@ -142,6 +142,15 @@ const serverlessConfiguration: AWS = {
 					httpApi: {
 						path: '/healthcheck',
 						method: 'get',
+						// @ts-expect-error Swagger Types not in main ts type
+						responseData: {
+							[StatusCodes.OK]: {
+								description: 'All systems ready to use',
+							},
+							[StatusCodes.SERVICE_UNAVAILABLE]: {
+								description: 'Systems are not operating correctly',
+							},
+						},
 					},
 				},
 			],
@@ -283,21 +292,14 @@ const serverlessConfiguration: AWS = {
 						path: '/generate_job',
 						method: 'post',
 						// @ts-expect-error Swagger Types not in main ts type
-						bodyType: 'TechnologyCreateBody',
 						responseData: {
 							[StatusCodes.CREATED]: {
-								description: 'Technology Successfully Created',
-								bodyType: 'Technology',
+								description: 'Job Generated',
 							},
 							[StatusCodes.BAD_REQUEST]: {
-								description: 'Failed to create Technology',
-								bodyType: 'TechnologyCreateFormError',
-							},
-							[StatusCodes.INTERNAL_SERVER_ERROR]: {
-								description: 'Server Error',
+								description: 'Failed to generate job',
 							},
 						},
-						swaggerTags: ['Technology'],
 					},
 				},
 			],
