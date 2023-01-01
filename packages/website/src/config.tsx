@@ -40,6 +40,9 @@ import {
   ExpressIcon,
   PostgresIcon,
   TypeOrmIcon,
+  ServerlessFrameworkIcon,
+  DynamoDBIcon,
+  SQSIcon,
 } from './icons';
 
 export interface NavItem {
@@ -311,20 +314,38 @@ export const TECHNOLOGIES = [
     key: 'express',
     name: 'Express.js',
     tags: ['Framework'],
-    Icon: (props) => <ExpressIcon {...props} />
+    Icon: (props) => <ExpressIcon {...props} />,
   },
   {
     key: 'typeorm',
     name: 'TypeORM',
     tags: ['Data Management'],
-    Icon: (props) => <TypeOrmIcon {...props} />
+    Icon: (props) => <TypeOrmIcon {...props} />,
   },
   {
     key: 'postgres',
     name: 'Postgres',
     tags: ['Data Management'],
-    Icon: (props) => <PostgresIcon {...props} />
-  }
+    Icon: (props) => <PostgresIcon {...props} />,
+  },
+  {
+    key: 'serverless-framework',
+    name: 'Serverless Framework',
+    tags: ['Framework'],
+    Icon: (props) => <ServerlessFrameworkIcon {...props} />,
+  },
+  {
+    key: 'dynamodb',
+    name: 'AWS DynamoDB',
+    tags: ['Data Management'],
+    Icon: (props) => <DynamoDBIcon {...props} />,
+  },
+  {
+    key: 'sqs',
+    name: 'AWS SQS',
+    tags: ['Data Queue'],
+    Icon: (props) => <SQSIcon {...props} />,
+  },
 ];
 
 export const SPONSORS_ICON = [

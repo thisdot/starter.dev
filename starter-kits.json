@@ -10,5 +10,6 @@
   "solidjs-tailwind": "SolidJs and TailwindCSS",
   "angular-ngrx-scss": "Angular, NgRx, and SCSS",
   "deno-oak-denodb": "Deno, Oak, and DenoDB",
-  "express-typeorm-postgres": "Express.js, TypeOrm, and PostgreSQL"
+  "express-typeorm-postgres": "Express.js, TypeOrm, and PostgreSQL",
+  "serverless-framework-sqs-dynamodb": "Serverless Framework, AWS SQS, and AWS DynamoDB"
 }

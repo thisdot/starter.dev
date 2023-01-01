@@ -10,6 +10,7 @@
 		"sqs"
 	],
 	"sideEffects": false,
+	"hasShowcase": false,
 	"scripts": {
 		"build": "sls package",
 		"deploy": "sls deploy",
