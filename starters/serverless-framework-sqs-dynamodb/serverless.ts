@@ -10,6 +10,8 @@ const serverlessConfiguration: AWS = {
 		'serverless-esbuild',
 		'serverless-analyze-bundle-plugin',
 		'serverless-dynamodb-local',
+		'serverless-offline-dynamodb-streams',
+		'serverless-offline-sqs',
 		'serverless-offline',
 	],
 	custom: {
@@ -45,6 +47,15 @@ const serverlessConfiguration: AWS = {
 			httpPort: 4000,
 			lambdaPort: 4002,
 			reloadHandler: true,
+		},
+		'serverless-offline-dynamodb-streams': {
+			apiVersion: '2015-03-31',
+			endpoint: 'http://0.0.0.0:8000',
+			region: '${aws:region}',
+			accessKeyId: 'root',
+			secretAccessKey: 'root',
+			skipCacheInvalidation: false,
+			readInterval: 500,
 		},
 		'serverless-offline-sqs': {
 			autoCreate: true,
@@ -110,6 +121,11 @@ const serverlessConfiguration: AWS = {
 						],
 						Resource: 'arn:aws:dynamodb:*:*:table/${param:technologiesTable}',
 					},
+					{
+						Effect: 'Allow',
+						Action: ['sqs:CreateQueue', 'sqs:SendMessage', 'sqs:GetQueueUrl'],
+						Resource: 'arn:aws:sqs:*:*:*',
+					},
 				],
 			},
 		},
@@ -137,14 +153,14 @@ const serverlessConfiguration: AWS = {
 					httpApi: {
 						path: '/technology',
 						method: 'get',
-						// @ts-expect-error Swagger Types not in main ts type
-						responses: {
-							[StatusCodes.OK]: {
-								description: 'Fetched Technologies Successfully',
-								bodyType: 'Technologies',
-							},
-						},
-						swaggerTags: ['Technology'],
+						// // @ts-expect-error Swagger Types not in main ts type
+						// responses: {
+						// 	[StatusCodes.OK]: {
+						// 		description: 'Fetched Technologies Successfully',
+						// 		bodyType: 'Technologies',
+						// 	},
+						// },
+						// swaggerTags: ['Technology'],
 					},
 				},
 			],
@@ -241,20 +257,38 @@ const serverlessConfiguration: AWS = {
 					httpApi: {
 						path: '/technology/{id}',
 						method: 'delete',
-						// @ts-expect-error Swagger Types not in main ts type
-						responses: {
-							[StatusCodes.OK]: {
-								description: 'Technology Successfully Deleted',
-								bodyType: 'Technology',
-							},
-							[StatusCodes.BAD_REQUEST]: {
-								description: 'Invalid Request',
-							},
-							[StatusCodes.INTERNAL_SERVER_ERROR]: {
-								description: 'Server Error',
-							},
+		generate_job: {
+			handler: 'src/handlers/generate_job.handler',
+			events: [
+				{
+					httpApi: {
+						path: '/generate_job',
+						method: 'post',
+					},
+				},
+			],
+		},
+		example_job_processor: {
+			handler: 'src/handlers/example_job_processor.handler',
+			events: [
+				{
+					sqs: {
+						arn: {
+							'Fn::GetAtt': ['ExampleQueue', 'Arn'],
 						},
-						swaggerTags: ['Technology'],
+					},
+				},
+			],
+		},
+		example_stream_processor: {
+			handler: 'src/handlers/example_stream_processor.handler',
+			events: [
+				{
+					stream: {
+						type: 'dynamodb',
+						arn: {
+							'Fn::GetAtt': ['technologiesTable', 'StreamArn'],
+						},
 					},
 				},
 			],
@@ -282,6 +316,15 @@ const serverlessConfiguration: AWS = {
 						ReadCapacityUnits: 1,
 						WriteCapacityUnits: 1,
 					},
+					StreamSpecification: {
+						StreamViewType: 'NEW_AND_OLD_IMAGES',
+					},
+				},
+			},
+			ExampleQueue: {
+				Type: 'AWS::SQS::Queue',
+				Properties: {
+					QueueName: 'ExampleQueue',
 				},
 			},
 		},
