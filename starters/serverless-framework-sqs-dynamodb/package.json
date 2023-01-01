@@ -11,6 +11,7 @@
 	],
 	"scripts": {
 		"build": "sls package",
+		"deploy": "sls deploy",
 		"start": "SLS_DEBUG=* sls offline start --verbose",
 		"test": "jest --runInBand",
 		"lint": "eslint",
