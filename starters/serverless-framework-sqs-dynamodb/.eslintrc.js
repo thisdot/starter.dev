@@ -105,6 +105,7 @@ module.exports = {
 					'**/*.test.ts',
 					'prettier.config.js',
 					'jest.config.ts',
+					'jest.setup.ts',
 					'esbuild-plugins.ts',
 				],
 			},
@@ -112,10 +113,10 @@ module.exports = {
 		'import/no-mutable-exports': 'error',
 		'import/no-named-as-default': 'error',
 		'import/no-named-as-default-member': 'error',
-		'import/no-unresolved': ['error', { commonjs: true }],
+		'import/no-unresolved': ['error', { commonjs: false }],
 
 		// typescript settings
-		'@typescript-eslint/no-empty-function': false,
+		'@typescript-eslint/no-empty-function': 'off',
 	},
 	settings: {
 		'import/resolver': {
