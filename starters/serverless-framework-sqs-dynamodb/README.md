@@ -13,6 +13,8 @@
   - [DynamoDB Commands](#dynamodb-commands)
   - [Infrastructure Commands](#infrastructure-commands)
 - [DynamoDB](#dynamodb)
+- [Jest](#jest)
+- [Deployment](#deployment)
 
 ## Overview
 
@@ -90,7 +92,8 @@ yarn start
 
 ### General Commands
 
-- `build` bundles the project using the serverless packaging serverless. The produced artifacts will ship bundles shipped to AWS on deployment. You can optionally pass `--analyze <function name>` to run the bundle analzyer and visualize the results to understand your handler bundles.
+- `build` bundles the project using the serverless packaging serverless. The produced artifacts will ship bundles shipped to AWS on deployment. You can optionally pass `--analyze <function name>` to run the bundle analyzer and visualize the results to understand your handler bundles.
+- `deploy` ships the project to the configured AWS account using the Serverless Framework CLI command.
 - `start` runs the `serverless-offline` provided server for local development and testing. Be sure to have the local docker infrastructure running to emulate the related services.
 - `test` runs `jest` under the hood.
 - `lint` runs `eslint` under the hood. You can use all the eslint available command line arguments. To lint the entire project, run `yarn lint .`, or equivalent. You can affix `--fix` to auto-correct linting issues that eslint can handle.
@@ -111,20 +114,50 @@ yarn start
 
 ## Project Structure
 
-TODO: insert tree structure
+- `db` contains seed files for database initialization using the `db:seed` script
+- `src/handlers` contains Lambda function handlers referenced by the Serverless Configuration.
+- `src/models` contains directories of different data models used by the project and exports all available methods.
+- `src/types` contains all TypeScript types for the project.
+- `src/utils` contains utility functions and wrappers.
+- `serverless.ts` - the Serverless Configuration
+
+**Note:** All tests are co-located with their implementation files.
 
 ## Serverless Configuration
 
 This kit uses the TypeScript option for configuration. It is type checked using the `@serverless/typescript` definitions over the DefinitelyTyped definitions because DefinitelyTyped is currently behind on its definition. However, the `@serverless/typescript` types have known issues with certain fields are noted directly in the configuration.
 
-Things to note:
+It is not compatible with the automated CI/CD of the Serverless Dashboard as they only support the default YAML format. You can read more about [setting up CI/CD using GitHub for this project on the This Dot blog](https://www.thisdot.co/blog/github-actions-for-serverless-framework-deployments).
 
-- profile field
-- httpApi cors
-- defined stages: dev, staging, production
-- esbuild
-- bundle analyzer
-- package patterns
+### Key Fields to Note
+
+#### `profile`
+
+This is left blank and will default to use your system configured AWS default profile. If you want to use a custom profile, set this field with the name of the profile used. This should ideally be selected based on the AWS organization used.
+
+#### `httpApi.cors`
+
+This setting was enabled out of the box to help with development quickly. Ideally, these CORS settings should be more restrictive in production environments. You can read more about [this option in the official docs](https://www.serverless.com/framework/docs/providers/aws/events/http-api/#cors-setup).
+
+#### Defined Stages
+
+This project comes configured with 3 default stages: `dev`, `staging`, `production`.
+
+- `dev` should be used for local development. If you need a shared dev environment for your team, it is recommended to add a new `local` stage for local dev and promote `dev` to the shared deployment stage value.
+- `staging` should be the pre-production staging environment for all changes.
+- `production` should be the production environment.
+
+#### esbuild
+
+This project uses [serverless-esbuild](https://www.npmjs.com/package/serverless-esbuild) over its webpack counterpart. The esbuild tool chain is generally faster and requires less dependencies to work out of the box.
+
+#### Bundle Analyzer
+
+This project ships with the [serverless-analyze-bundle-plugin](https://www.npmjs.com/package/serverless-analyze-bundle-plugin) to allow you to visualize your Lambda bundles. This is an especially important factor when dealing with cold starts and should be monitored. To analyze a function bundle, run `yarn build --analyze <functionName>`. This will give you a visualization of your function's dependencies and their sizes.
+
+#### File Patterns
+
+Barrel files are not used as they increase the size of the final output bundle due to [how esbuild interprets these types of files](https://github.com/evanw/esbuild/issues/2164). As such, it is recommended to split usable chunks of code into individually packaged files and directly imported for use.
 
 ## DynamoDB
 
@@ -155,3 +188,21 @@ seed: {
 ```
 
 Once defined, run `yarn db:seed` to seed your database. See https://github.com/99x/serverless-dynamodb-local#seeding-sls-dynamodb-seed for more information.
+
+## Jest
+
+All test files are co-located with their implementations. There are no integration or e2e tests implemented for this project. All tests are implemented as unit tests.
+
+### Stubbed Databases
+
+Both Redis and DynamoDB are fully stubbed in the tests.
+
+Redis is fully stubbed because it does not have the concept of environments or tables so it would require 2 instances to be running. Redis can easily be mocked in memory and there are several existing solutions for this problem. We're using [ioredis](https://github.com/luin/ioredis) for our implementation and its related [ioredis-mock](https://github.com/stipsan/ioredis-mock).
+
+There is an existing [DynamoDB Local preset for Jest](https://github.com/shelfio/jest-dynamodb). However, it indiscriminately clears the entire database before and after all tests are run. We've [submitted a PR to fix this problem](https://github.com/shelfio/jest-dynamodb/pull/190) which we can utilize once released. In the meantime, we're stubbing the DynamoDB during testing using the [aws-sdk-client-mock](https://github.com/m-radzikowski/aws-sdk-client-mock) to stub the AWS JS v3 SDK.
+
+## Deployment
+
+As a serverless implementation, most of the infrastructure will be deployed and configured correctly simply utilizing the `deploy` script provided by this kit which is just an alias for [`serverless deploy`](https://www.serverless.com/framework/docs/providers/aws/cli-reference/deploy). However, the Redis instance is not configurable via the Serverless Configuration and will need to be set up ahead of your first deploy and configured via environment variables. We recommend using [Serverless Framework's interface for AWS Secret Manager](https://www.serverless.com/blog/aws-secrets-management/) for security purposes.
+
+This entire stack can be deployed via CI tools such as GitHub Actions, CircleCI, etc. and is our recommended approach as this kit is incompatible with the Serverless Dashboard. The Serverless Dashboard CI only works with the configuration in the YAML format which we do not use to give developers type-safety in the config file.
