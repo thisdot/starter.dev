@@ -1,16 +1,21 @@
 import type { AWS } from '@serverless/typescript';
+import { StatusCodes } from 'http-status-codes';
 
 const serverlessConfiguration: AWS = {
 	service: 'serverless-framework-sqs-dynamodb',
 	frameworkVersion: '3',
 	useDotenv: true,
 	plugins: [
+		'serverless-auto-swagger',
 		'serverless-esbuild',
 		'serverless-analyze-bundle-plugin',
 		'serverless-dynamodb-local',
 		'serverless-offline',
 	],
 	custom: {
+		'autoswagger': {
+			excludeStages: ['production'],
+		},
 		'dynamodb': {
 			stages: ['dev'],
 			start: {
@@ -132,6 +137,14 @@ const serverlessConfiguration: AWS = {
 					httpApi: {
 						path: '/technology',
 						method: 'get',
+						// @ts-expect-error Swagger Types not in main ts type
+						responses: {
+							[StatusCodes.OK]: {
+								description: 'Fetched Technologies Successfully',
+								bodyType: 'Technologies',
+							},
+						},
+						swaggerTags: ['Technology'],
 					},
 				},
 			],
@@ -143,6 +156,22 @@ const serverlessConfiguration: AWS = {
 					httpApi: {
 						path: '/technology',
 						method: 'post',
+						// @ts-expect-error Swagger Types not in main ts type
+						bodyType: 'TechnologyCreateBody',
+						responses: {
+							[StatusCodes.CREATED]: {
+								description: 'Technology Successfully Created',
+								bodyType: 'Technology',
+							},
+							[StatusCodes.BAD_REQUEST]: {
+								description: 'Failed to create Technology',
+								bodyType: 'TechnologyCreateFormError',
+							},
+							[StatusCodes.INTERNAL_SERVER_ERROR]: {
+								description: 'Server Error',
+							},
+						},
+						swaggerTags: ['Technology'],
 					},
 				},
 			],
@@ -154,6 +183,23 @@ const serverlessConfiguration: AWS = {
 					httpApi: {
 						path: '/technology/{id}',
 						method: 'get',
+						// @ts-expect-error Swagger Types not in main ts type
+						responses: {
+							[StatusCodes.OK]: {
+								description: 'Fetched Technology Successfully',
+								bodyType: 'Technology',
+							},
+							[StatusCodes.BAD_REQUEST]: {
+								description: 'Invalid Request',
+							},
+							[StatusCodes.NOT_FOUND]: {
+								description: 'Technology Not Found',
+							},
+							[StatusCodes.INTERNAL_SERVER_ERROR]: {
+								description: 'Server Error',
+							},
+						},
+						swaggerTags: ['Technology'],
 					},
 				},
 			],
@@ -165,6 +211,25 @@ const serverlessConfiguration: AWS = {
 					httpApi: {
 						path: '/technology/{id}',
 						method: 'put',
+						// @ts-expect-error Swagger Types not in main ts type
+						bodyType: 'TechnologyUpdateBody',
+						responses: {
+							[StatusCodes.OK]: {
+								description: 'Technology Successfully Updated',
+								bodyType: 'Technology',
+							},
+							[StatusCodes.BAD_REQUEST]: {
+								description: 'Invalid Request',
+								bodyType: 'TechnologyUpdateFormError',
+							},
+							[StatusCodes.NOT_FOUND]: {
+								description: 'Technology Not Found',
+							},
+							[StatusCodes.INTERNAL_SERVER_ERROR]: {
+								description: 'Server Error',
+							},
+						},
+						swaggerTags: ['Technology'],
 					},
 				},
 			],
@@ -176,6 +241,20 @@ const serverlessConfiguration: AWS = {
 					httpApi: {
 						path: '/technology/{id}',
 						method: 'delete',
+						// @ts-expect-error Swagger Types not in main ts type
+						responses: {
+							[StatusCodes.OK]: {
+								description: 'Technology Successfully Deleted',
+								bodyType: 'Technology',
+							},
+							[StatusCodes.BAD_REQUEST]: {
+								description: 'Invalid Request',
+							},
+							[StatusCodes.INTERNAL_SERVER_ERROR]: {
+								description: 'Server Error',
+							},
+						},
+						swaggerTags: ['Technology'],
 					},
 				},
 			],
