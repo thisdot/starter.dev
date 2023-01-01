@@ -153,14 +153,14 @@ const serverlessConfiguration: AWS = {
 					httpApi: {
 						path: '/technology',
 						method: 'get',
-						// // @ts-expect-error Swagger Types not in main ts type
-						// responses: {
-						// 	[StatusCodes.OK]: {
-						// 		description: 'Fetched Technologies Successfully',
-						// 		bodyType: 'Technologies',
-						// 	},
-						// },
-						// swaggerTags: ['Technology'],
+						// @ts-expect-error Swagger Types not in main ts type
+						responseData: {
+							[StatusCodes.OK]: {
+								description: 'Fetched Technologies Successfully',
+								bodyType: 'Technologies',
+							},
+						},
+						swaggerTags: ['Technology'],
 					},
 				},
 			],
@@ -174,7 +174,7 @@ const serverlessConfiguration: AWS = {
 						method: 'post',
 						// @ts-expect-error Swagger Types not in main ts type
 						bodyType: 'TechnologyCreateBody',
-						responses: {
+						responseData: {
 							[StatusCodes.CREATED]: {
 								description: 'Technology Successfully Created',
 								bodyType: 'Technology',
@@ -200,7 +200,7 @@ const serverlessConfiguration: AWS = {
 						path: '/technology/{id}',
 						method: 'get',
 						// @ts-expect-error Swagger Types not in main ts type
-						responses: {
+						responseData: {
 							[StatusCodes.OK]: {
 								description: 'Fetched Technology Successfully',
 								bodyType: 'Technology',
@@ -229,7 +229,7 @@ const serverlessConfiguration: AWS = {
 						method: 'put',
 						// @ts-expect-error Swagger Types not in main ts type
 						bodyType: 'TechnologyUpdateBody',
-						responses: {
+						responseData: {
 							[StatusCodes.OK]: {
 								description: 'Technology Successfully Updated',
 								bodyType: 'Technology',
@@ -257,6 +257,24 @@ const serverlessConfiguration: AWS = {
 					httpApi: {
 						path: '/technology/{id}',
 						method: 'delete',
+						// @ts-expect-error Swagger Types not in main ts type
+						responseData: {
+							[StatusCodes.OK]: {
+								description: 'Technology Successfully Deleted',
+								bodyType: 'Technology',
+							},
+							[StatusCodes.BAD_REQUEST]: {
+								description: 'Invalid Request',
+							},
+							[StatusCodes.INTERNAL_SERVER_ERROR]: {
+								description: 'Server Error',
+							},
+						},
+						swaggerTags: ['Technology'],
+					},
+				},
+			],
+		},
 		generate_job: {
 			handler: 'src/handlers/generate_job.handler',
 			events: [
@@ -264,6 +282,22 @@ const serverlessConfiguration: AWS = {
 					httpApi: {
 						path: '/generate_job',
 						method: 'post',
+						// @ts-expect-error Swagger Types not in main ts type
+						bodyType: 'TechnologyCreateBody',
+						responseData: {
+							[StatusCodes.CREATED]: {
+								description: 'Technology Successfully Created',
+								bodyType: 'Technology',
+							},
+							[StatusCodes.BAD_REQUEST]: {
+								description: 'Failed to create Technology',
+								bodyType: 'TechnologyCreateFormError',
+							},
+							[StatusCodes.INTERNAL_SERVER_ERROR]: {
+								description: 'Server Error',
+							},
+						},
+						swaggerTags: ['Technology'],
 					},
 				},
 			],
