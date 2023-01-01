@@ -1,5 +1,5 @@
 import Redis from 'ioredis';
-import { getClient as getRedisClient } from '@/utils/redis';
+import { getClient as getRedisClient } from '@/utils/redis/getClient';
 import { DEFAULT_CACHE_TIME } from './constants';
 import { addToCache } from './addToCache';
 

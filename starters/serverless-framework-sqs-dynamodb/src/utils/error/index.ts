@@ -1,1 +1,0 @@
-export { getErrorMessage } from './getErrorMessage';

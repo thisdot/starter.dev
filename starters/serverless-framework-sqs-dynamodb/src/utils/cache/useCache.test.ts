@@ -1,7 +1,7 @@
 import { useCache } from './useCache';
 
 describe('cache.useCache()', () => {
-	let subject: string | null;
+	let subject: Awaited<ReturnType<typeof useCache>>;
 
 	describe('when fails checkValue', () => {
 		beforeAll(async () => {
@@ -16,6 +16,7 @@ describe('cache.useCache()', () => {
 					if (typeof value === 'string') {
 						return value.startsWith('tests-');
 					}
+					return true;
 				},
 			});
 		});

@@ -1,5 +1,5 @@
 import { cachified, CachifiedOptions } from 'cachified';
-import { getErrorMessage } from '../error/getErrorMessage';
+import { getErrorMessage } from '@/utils/error/getErrorMessage';
 import { DEFAULT_CACHE_TIME } from './constants';
 import { getClient } from './getClient';
 import { removeFromCache } from './removeFromCache';

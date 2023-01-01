@@ -5,11 +5,11 @@ import {
 	ServiceOutputTypes,
 } from '@aws-sdk/client-dynamodb';
 import { AwsStub, mockClient } from 'aws-sdk-client-mock';
-import { getClient } from '@/utils/dynamodb';
+import { getClient } from '@/utils/dynamodb/getClient';
 import { update } from './update';
 
 describe('technology.update()', () => {
-	let subject: Record<string, unknown> | null;
+	let subject: Awaited<ReturnType<typeof update>>;
 	let ddbMock: AwsStub<ServiceInputTypes, ServiceOutputTypes>;
 
 	beforeAll(() => {

@@ -1,10 +1,10 @@
 import { DeleteItemCommand } from '@aws-sdk/client-dynamodb';
 import { mockClient } from 'aws-sdk-client-mock';
-import { getClient } from '@/utils/dynamodb';
+import { getClient } from '@/utils/dynamodb/getClient';
 import { destroy } from './destroy';
 
 describe('technology.destroy()', () => {
-	let subject: Record<string, unknown> | null;
+	let subject: Awaited<ReturnType<typeof destroy>>;
 
 	const ddbMock = mockClient(getClient());
 

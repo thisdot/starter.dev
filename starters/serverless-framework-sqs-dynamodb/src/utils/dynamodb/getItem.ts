@@ -1,6 +1,6 @@
 import { GetItemCommand, GetItemCommandInput } from '@aws-sdk/client-dynamodb';
 import { marshall, unmarshall } from '@aws-sdk/util-dynamodb';
-import { getErrorMessage } from '@/utils/error';
+import { getErrorMessage } from '@/utils/error/getErrorMessage';
 import { getClient } from './getClient';
 
 export const getItem = async (

@@ -1,5 +1,5 @@
 import Redis from 'ioredis';
-import { getClient as getRedisClient } from '@/utils/redis';
+import { getClient as getRedisClient } from '@/utils/redis/getClient';
 import { removeFromCache } from './removeFromCache';
 
 describe('cache.removeFromCache()', () => {

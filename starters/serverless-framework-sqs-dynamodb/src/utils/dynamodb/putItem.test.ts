@@ -4,7 +4,7 @@ import { getClient } from './getClient';
 import { putItem } from './putItem';
 
 describe('dynamodb.putItem()', () => {
-	let subject: boolean;
+	let subject: Awaited<ReturnType<typeof putItem>>;
 	const ddbMock = mockClient(getClient());
 
 	afterAll(() => {

@@ -1,6 +1,6 @@
 import Redis from 'ioredis';
 
-let cachedClients: Record<string, Redis> = {};
+const cachedClients: Record<string, Redis> = {};
 
 export const getClient = async (type: string, url: string): Promise<Redis> => {
 	if (cachedClients[type]) {

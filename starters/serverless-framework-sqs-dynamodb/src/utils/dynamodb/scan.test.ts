@@ -4,7 +4,7 @@ import { getClient } from './getClient';
 import { scan } from './scan';
 
 describe('dynamodb.scan()', () => {
-	let subject: Record<string, unknown>[] | null;
+	let subject: Awaited<ReturnType<typeof scan>>;
 	const ddbMock = mockClient(getClient());
 
 	afterAll(() => {

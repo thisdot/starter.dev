@@ -1,6 +1,6 @@
 import { TechnologyUpdate } from '@/types/technology';
 import { addToCache } from '@/utils/cache/addToCache';
-import { putItem } from '@/utils/dynamodb';
+import { putItem } from '@/utils/dynamodb/putItem';
 import { get } from './get';
 
 export const update = async (id: string, payload: TechnologyUpdate) => {

@@ -1,10 +1,10 @@
 import { ScanCommand } from '@aws-sdk/client-dynamodb';
 import { mockClient } from 'aws-sdk-client-mock';
-import { getClient } from '@/utils/dynamodb';
+import { getClient } from '@/utils/dynamodb/getClient';
 import { getAll } from './getAll';
 
 describe('technology.getAll()', () => {
-	let subject: Record<string, unknown>[];
+	let subject: Awaited<ReturnType<typeof getAll>>;
 
 	const ddbMock = mockClient(getClient());
 

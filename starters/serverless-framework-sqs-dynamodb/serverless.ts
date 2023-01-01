@@ -126,7 +126,7 @@ const serverlessConfiguration: AWS = {
 			],
 		},
 		technology_index: {
-			handler: 'src/handlers/technology.index',
+			handler: 'src/handlers/technology_index.handler',
 			events: [
 				{
 					httpApi: {
@@ -137,7 +137,7 @@ const serverlessConfiguration: AWS = {
 			],
 		},
 		technology_create: {
-			handler: 'src/handlers/technology.create',
+			handler: 'src/handlers/technology_create.handler',
 			events: [
 				{
 					httpApi: {
@@ -148,7 +148,7 @@ const serverlessConfiguration: AWS = {
 			],
 		},
 		technology_show: {
-			handler: 'src/handlers/technology.show',
+			handler: 'src/handlers/technology_show.handler',
 			events: [
 				{
 					httpApi: {
@@ -159,7 +159,7 @@ const serverlessConfiguration: AWS = {
 			],
 		},
 		technology_update: {
-			handler: 'src/handlers/technology.update',
+			handler: 'src/handlers/technology_update.handler',
 			events: [
 				{
 					httpApi: {
@@ -170,7 +170,7 @@ const serverlessConfiguration: AWS = {
 			],
 		},
 		technology_destroy: {
-			handler: 'src/handlers/technology.destroy',
+			handler: 'src/handlers/technology_destroy.handler',
 			events: [
 				{
 					httpApi: {

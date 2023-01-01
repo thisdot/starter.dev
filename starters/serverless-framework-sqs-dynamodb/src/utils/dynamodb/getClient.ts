@@ -1,5 +1,5 @@
 import { DynamoDBClient, DynamoDBClientConfig } from '@aws-sdk/client-dynamodb';
-import { isOffline } from '@/utils/is-offline';
+import { isOffline } from '@/utils/isOffline/isOffline';
 
 let cachedClient: DynamoDBClient;
 

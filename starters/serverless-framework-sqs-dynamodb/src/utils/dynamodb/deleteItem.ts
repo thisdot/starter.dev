@@ -1,6 +1,6 @@
 import { DeleteItemCommand } from '@aws-sdk/client-dynamodb';
 import { marshall, unmarshall } from '@aws-sdk/util-dynamodb';
-import { getErrorMessage } from '@/utils/error';
+import { getErrorMessage } from '@/utils/error/getErrorMessage';
 import { getClient } from './getClient';
 
 export const deleteItem = async (tableName: string, key: Record<string, unknown>) => {

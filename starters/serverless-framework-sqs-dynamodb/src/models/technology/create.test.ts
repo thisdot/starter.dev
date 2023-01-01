@@ -1,10 +1,10 @@
 import { PutItemCommand } from '@aws-sdk/client-dynamodb';
 import { mockClient } from 'aws-sdk-client-mock';
-import { getClient } from '@/utils/dynamodb';
+import { getClient } from '@/utils/dynamodb/getClient';
 import { create } from './create';
 
 describe('technology.create()', () => {
-	let subject: Record<string, unknown> | null;
+	let subject: Awaited<ReturnType<typeof create>>;
 
 	const ddbMock = mockClient(getClient());
 

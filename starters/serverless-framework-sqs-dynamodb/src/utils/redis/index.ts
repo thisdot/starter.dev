@@ -1,1 +1,0 @@
-export { getClient } from './getClient';

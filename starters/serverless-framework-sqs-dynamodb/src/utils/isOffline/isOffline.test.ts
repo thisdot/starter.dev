@@ -1,4 +1,4 @@
-import { isOffline } from './is-offline';
+import { isOffline } from './isOffline';
 
 describe('isOffline()', () => {
 	const env = process.env;

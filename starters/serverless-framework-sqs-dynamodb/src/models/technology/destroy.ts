@@ -1,5 +1,5 @@
-import { removeFromCache } from '@/utils/cache';
-import { deleteItem } from '@/utils/dynamodb';
+import { removeFromCache } from '@/utils/cache/removeFromCache';
+import { deleteItem } from '@/utils/dynamodb/deleteItem';
 import { getCacheKey } from './getCacheKey';
 
 export const destroy = async (key: string) => {

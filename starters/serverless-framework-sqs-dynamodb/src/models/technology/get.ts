@@ -1,8 +1,7 @@
-import { useCache } from '@/utils/cache';
-import { getItem } from '@/utils/dynamodb';
+import { useCache } from '@/utils/cache/useCache';
+import { getItem } from '@/utils/dynamodb/getItem';
 import { TechnologySchema } from '@/types/technology';
 import { getCacheKey } from './getCacheKey';
-import { getErrorMessage } from '@/utils/error/getErrorMessage';
 
 export const get = async (key: string) => {
 	return useCache({

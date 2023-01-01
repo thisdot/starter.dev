@@ -4,7 +4,7 @@ import { getClient } from './getClient';
 import { getItem } from './getItem';
 
 describe('dynamodb.getItem()', () => {
-	let subject: Record<string, unknown> | null;
+	let subject: Awaited<ReturnType<typeof getItem>>;
 	const ddbMock = mockClient(getClient());
 
 	afterAll(() => {

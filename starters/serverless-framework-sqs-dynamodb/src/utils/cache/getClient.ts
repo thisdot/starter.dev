@@ -1,5 +1,5 @@
 import { Cache, totalTtl } from 'cachified';
-import { getClient as getRedisClient } from '@/utils/redis';
+import { getClient as getRedisClient } from '@/utils/redis/getClient';
 
 let cachedClient: Cache;
 export const getClient = async () => {

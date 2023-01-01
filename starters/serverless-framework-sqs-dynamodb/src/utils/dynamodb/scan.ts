@@ -1,6 +1,6 @@
 import { ScanCommand } from '@aws-sdk/client-dynamodb';
 import { unmarshall } from '@aws-sdk/util-dynamodb';
-import { getErrorMessage } from '@/utils/error';
+import { getErrorMessage } from '@/utils/error/getErrorMessage';
 import { getClient } from './getClient';
 
 export const scan = async (tableName: string) => {

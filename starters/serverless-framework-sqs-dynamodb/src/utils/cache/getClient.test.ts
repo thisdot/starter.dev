@@ -1,9 +1,7 @@
-import { Cache } from 'cachified';
-import Redis from 'ioredis';
 import { getClient } from './getClient';
 
 describe('cache.getClient()', () => {
-	let subject: Cache;
+	let subject: Awaited<ReturnType<typeof getClient>>;
 
 	describe('when called once', () => {
 		beforeAll(async () => {
