@@ -123,6 +123,22 @@ yarn start
 
 **Note:** All tests are co-located with their implementation files.
 
+### Default API Routes
+
+This starter kit ships with a set of RESTful APIs. All routes are served via `http://localhost:4000` when using the local development mode.
+
+- `GET /healthcheck` returns the status of the databases
+- `GET /swagger` returns OpenAPI documentation for the API via Swagger
+- `POST /generate_job` generates a job to run on the queue
+
+**Technology CRUD**
+
+- `GET /technology` returns all technologies in the database
+- `POST /technology` creates a new technology record
+- `GET /technology/:id` get a technology by ID
+- `PUT /technology/:id` update a technology by ID
+- `DELETE /technology/:id` delete a technology by ID
+
 ## Serverless Configuration
 
 This kit uses the TypeScript option for configuration. It is type checked using the `@serverless/typescript` definitions over the DefinitelyTyped definitions because DefinitelyTyped is currently behind on its definition. However, the `@serverless/typescript` types have known issues with certain fields are noted directly in the configuration.
@@ -188,6 +204,14 @@ seed: {
 ```
 
 Once defined, run `yarn db:seed` to seed your database. See https://github.com/99x/serverless-dynamodb-local#seeding-sls-dynamodb-seed for more information.
+
+### Streams
+
+This kit provides a way to create DynamoDB Stream handlers. It provides an out-of-the-box example against the technology table that you can replicate for other use cases. It's great for managing subscriptions or post-commit life cycle operations for records. We utilize the [serverless-offline-dynamodb-streams](https://github.com/CoorpAcademy/serverless-plugins/tree/master/packages/serverless-offline-dynamodb-streams) plugin to provide this functionality offline.
+
+## SQS
+
+AWS Simple Queue Service (SQS) is a great way to do asynchronous jobs off the main thread of your Lambdas. This kit configures a default ExampleQueue for use with an example job generator and consumer.
 
 ## Jest
 
