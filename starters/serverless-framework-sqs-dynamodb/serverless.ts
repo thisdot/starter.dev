@@ -113,6 +113,7 @@ const serverlessConfiguration: AWS = {
 					{
 						Effect: 'Allow',
 						Action: [
+							'dynamodb:ListTables',
 							'dynamodb:Scan',
 							'dynamodb:Query',
 							'dynamodb:GetItem',
@@ -123,7 +124,7 @@ const serverlessConfiguration: AWS = {
 					},
 					{
 						Effect: 'Allow',
-						Action: ['sqs:CreateQueue', 'sqs:SendMessage', 'sqs:GetQueueUrl'],
+						Action: ['sqs:ListQueues', 'sqs:CreateQueue', 'sqs:SendMessage', 'sqs:GetQueueUrl'],
 						Resource: 'arn:aws:sqs:*:*:*',
 					},
 				],
