@@ -2,15 +2,15 @@ import cn from 'clsx';
 import { Header } from './MobileNavigation';
 
 interface Props {
-  headers: Header[];
+  headings: Header[];
   toggleNavigation: () => void;
 }
 
-export function KitNavigation({ headers, toggleNavigation }: Props) {
+export function KitNavigation({ headings, toggleNavigation }: Props) {
   return (
     <nav>
       <ul>
-        {headers
+        {headings
           .filter(({ depth }) => depth > 1 && depth < 4)
           .map((header) => (
             <li key={header.slug}>

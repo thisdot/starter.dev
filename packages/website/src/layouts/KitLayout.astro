@@ -9,9 +9,8 @@ import KitDemoHero from '../components/KitDemoHero.astro';
 import KitTechnologies from '../components/KitTechnologies.astro';
 import Footer from '../components/Footer.astro';
 import { parseKit } from '../lib/parseKits';
-const { content } = Astro.props;
-const path = Astro.site.pathname;
-const headers = content?.astro?.headers;
+const { content, headings } = Astro.props;
+const path = Astro.url.pathname;
 const kit = parseKit(content);
 ---
 
@@ -28,13 +27,13 @@ const kit = parseKit(content);
     <KitHero {...kit} />
     <StickyHero {...kit} />
     <main class="kit-page">
-      <MobileNavigation {headers} client:load />
+      <MobileNavigation {headings} client:load />
       <div class="toggleDiv grid grid-cols-12 gap-x-8 max-w-screen-2xl mx-auto">
         <aside class="hidden lg:block col-span-3">
           <div
             class="pt-8 sticky top-32 border-r border-gray-400 dark:border-gray-700 min-h-[calc(100vh-120px)] overflow-y-auto"
           >
-            <TableOfContents {headers} client:only />
+            <TableOfContents {headings} client:only />
           </div>
         </aside>
         <div
@@ -56,18 +55,18 @@ const kit = parseKit(content);
       let CTA = document.getElementById('callToAction');
       document.addEventListener('scroll', () => {
         if (window.scrollY >= 278) {
-          CTA.classList.remove('lg:invisible');
+          CTA?.classList.remove('lg:invisible');
         } else {
-          CTA.classList.add('lg:invisible');
+          CTA?.classList.add('lg:invisible');
         }
       });
     </script>
     <script>
       const articleEl = document.getElementsByTagName('article');
-      const articleLinkEls = articleEl[0].getElementsByTagName('a')
-      for (let anchor of articleLinkEls) {
+      const articleLinkEls = articleEl[0]?.getElementsByTagName('a');
+      for (let anchor of articleLinkEls ?? []) {
         // if it's not a link to content in readme, open in a new tab
-        const url = new URL(anchor.href)
+        const url = new URL(anchor.href);
         if (!url.hash) {
           anchor.target = '_blank';
           anchor.rel = 'noopener noreferrer';

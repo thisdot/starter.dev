@@ -6,7 +6,7 @@ import { TECHNOLOGIES } from '../../config';
 import Contributors from '../../components/Contributors.astro';
 import { generateHeaderAnchor } from '../../lib/generateHeaderAnchor';
 
-const items = await Astro.glob('../kits/*.md');
+const items = await Astro.glob('../kits/*.mdx');
 const keywords = items
   .map((item) => item.frontmatter.keywords?.split(',') || [])
   .flat(10);

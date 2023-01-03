@@ -1,7 +1,7 @@
 ---
 import KitList from './KitList.astro';
 import { parseKits } from '../lib/parseKits';
-const items = await Astro.glob('../pages/kits/*.md');
+const items = await Astro.glob('../pages/kits/*.mdx');
 const kits = parseKits(items);
 ---
 
