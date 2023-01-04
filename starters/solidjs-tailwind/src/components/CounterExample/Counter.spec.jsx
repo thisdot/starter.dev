@@ -16,4 +16,16 @@ describe('CounterExample', () => {
     const countText = await screen.getByText('Count: 1');
     expect(countText).toBeVisible();
   });
+
+  it('should mount and decrement', async () => {
+    await render(() => <CounterExample />);
+    const button = await screen.getByText('Decrement');
+    expect(button).toBeVisible();
+    fireEvent.click(button);
+    const countText = await screen.getByText('Count: 0');
+    expect(countText).toBeVisible();
+    fireEvent.click(button);
+    const countTextNegative = await screen.getByText('Count: -1');
+    expect(countTextNegative).toBeVisible();
+  });
 });
