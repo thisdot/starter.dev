@@ -1,11 +1,11 @@
 import { component$, Resource, useResource$ } from '@builder.io/qwik';
-import { useQuery } from '../../utils/useQuery';
+// import { useQuery } from '~/utils/useQuery';
 
-export const GET_GREETING = `
-  query HelloQuery($greeting: String!) {
-    hello(greeting: $greeting)
-  }
-`;
+// export const GET_GREETING = `
+//   query HelloQuery($greeting: String!) {
+//     hello(greeting: $greeting)
+//   }
+// `;
 
 interface HelloResponse {
   data: {
@@ -50,15 +50,22 @@ export const DataFetching = component$(() => {
 });
 
 export async function fetchGreeting(greeting: string, abortController?: AbortController): Promise<HelloResponse> {
-  const { executeQuery$ } = useQuery(GET_GREETING);
+  // with fetch
+  const encodedMessage = encodeURIComponent(greeting);
+  const endpoint = `https://api.starter.dev/.netlify/functions/server/hello?greeting=${encodedMessage}`;
 
-  const resp = await executeQuery$({
-    signal: abortController?.signal,
-    url: 'https://api.starter.dev/graphql',
-    variables: {
-      greeting,
-    },
-  });
+  const resp = await fetch(endpoint, { signal: abortController?.signal });
 
-  return await resp.json();
+  return { data: { hello: await resp.text() } };
+
+  // with graphql
+  // const { executeQuery$ } = useQuery(GET_GREETING);
+
+  // const resp = await executeQuery$({
+  //   signal: abortController?.signal,
+  //   url: 'https://api.starter.dev/.netlify/functions/graphql',
+  //   variables: {
+  //     greeting,
+  //   },
+  // });
 }
