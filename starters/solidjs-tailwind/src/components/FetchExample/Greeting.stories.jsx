@@ -7,7 +7,7 @@ export default {
   parameters: {
     mockData: [
       {
-        url: 'https://api.starter.dev/hello?greeting=',
+        url: 'https://api.starter.dev/.netlify/functions/server/hello?greeting=',
         method: 'GET',
         status: 200,
         response: () => 'Hi storybook user!',
