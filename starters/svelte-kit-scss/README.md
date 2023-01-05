@@ -1,6 +1,6 @@
 # svelte-kit-scss Starter Kit
 
-This starter kit features **SvelteKit** and **SCSS** and is really cool
+This starter kit features **SvelteKit** and **SCSS**
 
 ## Table of Contents
 
