@@ -7,7 +7,7 @@
     "ngrx",
     "sass"
   ],
-  "hasShowcase": false,
+  "hasShowcase": true,
   "private": true,
   "engines": {
     "node": ">= 16.0"
