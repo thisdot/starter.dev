@@ -1,16 +1,7 @@
 import { component$, Resource, useResource$ } from '@builder.io/qwik';
-// import { useQuery } from '~/utils/useQuery';
-
-// export const GET_GREETING = `
-//   query HelloQuery($greeting: String!) {
-//     hello(greeting: $greeting)
-//   }
-// `;
 
 interface HelloResponse {
-  data: {
-    hello: string;
-  };
+  hello: string;
 }
 
 export const DataFetching = component$(() => {
@@ -36,11 +27,11 @@ export const DataFetching = component$(() => {
             Error: {error.message}
           </div>
         )}
-        onResolved={({ data }) => (
+        onResolved={({ hello }) => (
           <>
             <div className="mr-4">Message:</div>
             <div className="text-left" role="display-message">
-              {data.hello}
+              {hello}
             </div>
           </>
         )}
@@ -50,22 +41,10 @@ export const DataFetching = component$(() => {
 });
 
 export async function fetchGreeting(greeting: string, abortController?: AbortController): Promise<HelloResponse> {
-  // with fetch
   const encodedMessage = encodeURIComponent(greeting);
   const endpoint = `https://api.starter.dev/.netlify/functions/server/hello?greeting=${encodedMessage}`;
 
   const resp = await fetch(endpoint, { signal: abortController?.signal });
 
-  return { data: { hello: await resp.text() } };
-
-  // with graphql
-  // const { executeQuery$ } = useQuery(GET_GREETING);
-
-  // const resp = await executeQuery$({
-  //   signal: abortController?.signal,
-  //   url: 'https://api.starter.dev/.netlify/functions/graphql',
-  //   variables: {
-  //     greeting,
-  //   },
-  // });
+  return { hello: await resp.text() };
 }
