@@ -1,4 +1,5 @@
 import { component$ } from '@builder.io/qwik';
+import { Link } from '@builder.io/qwik-city';
 import Counter from '~/components/counter';
 
 export default component$(() => {
@@ -9,6 +10,11 @@ export default component$(() => {
       </h1>
       <div className="py-5">
         <Counter />
+      </div>
+      <div className="my-2.5">
+        <Link className="underline text-blue-600 hover:text-blue-800 text-xl" href="/">
+          Return Home
+        </Link>
       </div>
     </div>
   );
