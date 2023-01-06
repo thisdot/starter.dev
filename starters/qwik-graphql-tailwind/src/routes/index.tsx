@@ -6,7 +6,7 @@ import { APP_TITLE } from '../utils/constants';
 export default component$(() => {
   return (
     <>
-      <header className="flex justify-center items-center text-white my-5 mx-auto bg-blue-500  w-full lg:w-[75%] p-4 text-lg">
+      <header className="flex justify-center items-center text-white mx-auto bg-blue-500  w-full lg:w-[75%] p-4 text-lg">
         Qwik, GraphQL and Tailwind CSS Starter kit
       </header>
       <div className="flex flex-col gap-2 items-center text-blue-800 underline text-base">
