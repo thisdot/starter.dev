@@ -54,7 +54,7 @@ export async function fetchGreeting(greeting: string, abortController?: AbortCon
 
   const resp = await executeQuery$({
     signal: abortController?.signal,
-    url: 'https://api.starter.dev/graphql',
+    url: 'https://api.starter.dev/.netlify/functions/graphql',
     variables: {
       greeting,
     },
