@@ -1,5 +1,6 @@
+import { defineNuxtConfig } from '@nuxt/bridge'
 
-export default {
+export default defineNuxtConfig({
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'nuxt-bridge-pinia-tailwind starter kit',
@@ -59,4 +60,4 @@ export default {
   build: {},
 
   devServerHandlers: [],
-}
+})
