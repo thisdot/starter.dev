@@ -6,14 +6,14 @@ import { APP_TITLE } from '../utils/constants';
 export default component$(() => {
   return (
     <>
-      <header className="flex justify-center items-center text-white mx-auto bg-blue-500  w-full lg:w-[75%] p-4 text-lg">
+      <header class="flex justify-center items-center text-white mx-auto bg-blue-500 w-full lg:w-[75%] p-4 text-lg">
         Qwik, GraphQL and Tailwind CSS Starter kit
       </header>
-      <div className="flex flex-col gap-2 items-center text-blue-800 underline text-base">
-        <Link href="/counter-example" className="hover:text-blue-500 transition-colors delay-100">
+      <div class="flex flex-col gap-2 items-center text-blue-800 underline text-base">
+        <Link href="/counter-example" class="hover:text-blue-500 transition-colors delay-100">
           See Counter example component
         </Link>
-        <Link href="./data-fetching" className="hover:text-blue-500 transition-colors delay-100">
+        <Link href="./data-fetching" class="hover:text-blue-500 transition-colors delay-100">
           See Fetch example component
         </Link>
       </div>

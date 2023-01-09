@@ -6,13 +6,13 @@ import { DataFetching } from '~/components/data-fetching/data-fetching';
 
 export default component$(() => {
   return (
-    <div className="w-2/5 mx-auto text-center">
-      <h1 className="text-[2rem] font-bold border-b-4 border-blue-600 py-4 my-5">
+    <div class="w-2/5 mx-auto text-center">
+      <h1 class="text-[2rem] font-bold border-b-4 border-blue-600 py-4 my-5">
         Qwik + GraphQL Fetch Data using API route
       </h1>
       <DataFetching />
-      <div className="my-2.5">
-        <Link className="underline text-blue-600 hover:text-blue-800 text-xl" href="/">
+      <div class="my-2.5">
+        <Link class="underline text-blue-600 hover:text-blue-800 text-xl" href="/">
           Return Home
         </Link>
       </div>

@@ -19,7 +19,7 @@ export const Counter = component$(() => {
   });
 
   return (
-    <div className="flex justify-evenly whitespace-nowrap">
+    <div class="flex justify-evenly whitespace-nowrap">
       <Display store={store} />
       <Button title="Increment" action$={increment$} />
       <Button title="Decrement" action$={decrement$} />
@@ -30,7 +30,7 @@ export const Counter = component$(() => {
 
 export const Display = component$((props: { store: { count: number } }) => {
   return (
-    <h2 className="text-2xl font-bold" role="display-element">
+    <h2 class="text-2xl font-bold" role="display-element">
       Count: {props.store.count}
     </h2>
   );
