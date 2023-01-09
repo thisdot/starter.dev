@@ -29,31 +29,6 @@ This starter kit features SolidJS combined with Tailwind CSS.
 - [ESLint](https://eslint.org/) - Code linting
 - [Prettier](https://prettier.io/) - Code formatting
 
-### Architectural Decisions
-
-#### State management
-
-Managing state between components is a big part of creating modern web applications. Typically, this is done by using a third-party package. Sometimes it can be combined with fetching server data (e.g., Apollo or Tanstack Query).
-
-So, we investigated two options which are:
-
-- **Tanstack Query** - Used in other starter kits and offers a lean setup combining state and server communication
-- **createResource** - Built-in SolidJS and offers a similar experience to Tanstack Query
-
-Having weighed out some pros and cons, we opted out for SolidJS' native `createResource` as it comes bundles and is the "solid way" of handling things.
-
-### Example Components
-
-#### Counter `src/components/CounterExample`
-
-A small counter example which showcases how to use state in SolidJS. You can view the example on the `src/pages/Counter`.
-
-Signals can live outside of components. Each relevant component subscribes to its value by using it.
-
-#### Fetch `src/components/FetchExample`
-
-Demonstrates how to retrieve data from a third-party API by using `createResource`.
-
 ## Installation
 
 ### CLI (Recommended)
@@ -89,6 +64,31 @@ git clone https://github.com/thisdot/starter.dev.git
 - `pnpm run lint` - Uses eslint to find potential issues in the codebase
 - `pnpm run lint-fix` - Tries to auto fix potential issues
 - `pnpm run format` - Fixes formatting issues in the codebase
+
+### Architectural Decisions
+
+#### State management
+
+Managing state between components is a big part of creating modern web applications. Typically, this is done by using a third-party package. Sometimes it can be combined with fetching server data (e.g., Apollo or Tanstack Query).
+
+So, we investigated two options which are:
+
+- **Tanstack Query** - Used in other starter kits and offers a lean setup combining state and server communication
+- **createResource** - Built-in SolidJS and offers a similar experience to Tanstack Query
+
+Having weighed out some pros and cons, we opted out for SolidJS' native `createResource` as it comes bundles and is the "solid way" of handling things.
+
+### Example Components
+
+#### Counter `src/components/CounterExample`
+
+A small counter example which showcases how to use state in SolidJS. You can view the example on the `src/pages/Counter`.
+
+Signals can live outside of components. Each relevant component subscribes to its value by using it.
+
+#### Fetch `src/components/FetchExample`
+
+Demonstrates how to retrieve data from a third-party API by using `createResource`.
 
 ## Demo Implementation
 
