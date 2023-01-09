@@ -36,6 +36,7 @@
     "eslint-plugin-solid": "0.7.4",
     "eslint-plugin-unused-imports": "2.0.0",
     "jsdom": "20.0.1",
+    "msw": "^0.49.2",
     "postcss": "8.4.18",
     "prettier": "2.7.1",
     "solid-testing-library": "0.3.0",
@@ -44,7 +45,8 @@
     "typescript": "4.8.4",
     "vite": "3.1.8",
     "vite-plugin-solid": "2.3.10",
-    "vitest": "0.24.3"
+    "vitest": "0.24.3",
+    "whatwg-fetch": "^3.6.2"
   },
   "dependencies": {
     "solid-js": "1.6.0"
