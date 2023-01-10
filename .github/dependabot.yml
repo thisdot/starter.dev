@@ -1,0 +1,17 @@
+# Dependabot config for website and cli
+
+version: 2
+updates:
+  # website package
+  - package-ecosystem: 'npm'
+    directory: '/packages/website/'
+    schedule:
+      interval: 'weekly'
+    open-pull-requests-limit: 10
+
+  # Cli package
+  - package-ecosystem: 'npm'
+    directory: '/packages/create-starter/'
+    schedule:
+      interval: 'weekly'
+    open-pull-requests-limit: 10
