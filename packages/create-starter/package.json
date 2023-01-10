@@ -47,7 +47,7 @@
   },
   "dependencies": {
     "kleur": "^4.1.4",
-    "node-fetch": "^3.2.4",
+    "node-fetch": "^3.2.10",
     "prompts": "^2.4.2",
     "tiged": "^2.12.0",
     "yargs-parser": "^21.1.1"
