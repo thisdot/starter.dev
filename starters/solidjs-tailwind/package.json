@@ -2,7 +2,7 @@
   "name": "solidjs-tailwind",
   "version": "0.1.0",
   "private": true,
-  "description": "SolidJs and TailwindCSS",
+  "description": "SolidJS and TailwindCSS",
   "scripts": {
     "start": "vite",
     "dev": "vite",

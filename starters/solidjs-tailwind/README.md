@@ -38,7 +38,7 @@ npm i -g pnpm
 pnpm create @this-dot/starter --kit solidjs-tailwind
 ```
 
-- Follow the prompts to select the SolidJs and TailwindCSS starter kit and name your new project.
+- Follow the prompts to select the SolidJS and TailwindCSS starter kit and name your new project.
 - `cd` into your project directory and run `pnpm install`.
 - Run `pnpm run dev` to start the development server.
 - Open your browser to `http://localhost:3000` to see the included example code running.
