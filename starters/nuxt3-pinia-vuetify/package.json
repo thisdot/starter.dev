@@ -8,6 +8,8 @@
     "postinstall": "nuxt prepare",
     "lint": "eslint --ext .ts,.js,.vue .",
     "lint-fix": "eslint --fix --ext .ts,.js,.vue .",
+    "storybook": "start-storybook -p 6006 -s ./public,./assets",
+    "build:storybook": "STORYBOOK_BASE_HREF=storybook build-storybook",
     "test": "vitest --run --reporter verbose --globals",
     "test:watch": "vitest --reporter verbose --globals"
   },
@@ -15,18 +17,26 @@
     "@nuxt/test-utils-edge": "^3.0.1-rc.0-27810184.d991a55",
     "@nuxtjs/eslint-config-typescript": "^11.0.0",
     "@pinia/testing": "^0.0.14",
+    "@storybook/addon-a11y": "^6.5.13",
+    "@storybook/addon-essentials": "^6.5.13",
+    "@storybook/addon-postcss": "2.0.0",
+    "@storybook/builder-vite": "^0.2.5",
+    "@storybook/vue3": "^6.5.13",
     "@testing-library/vue": "^6.6.1",
     "@typescript-eslint/eslint-plugin": "^5.42.0",
     "@vitejs/plugin-vue": "^3.2.0",
+    "@vitest/coverage-c8": "^0.25.2",
+    "@vitest/ui": "^0.25.2",
     "eslint": "^8.26.0",
     "jsdom": "^20.0.2",
-    "nuxt": "npm:nuxt3@latest",
+    "nuxt": "3.0.0",
+    "sass": "^1.56.1",
+    "storybook-dark-mode": "^1.1.2",
     "typescript": "^4.8.4",
     "vitest": "^0.25.2"
   },
   "dependencies": {
     "@pinia/nuxt": "^0.4.3",
-    "sass": "^1.56.1",
     "vuetify": "^3.0.1"
   }
 }

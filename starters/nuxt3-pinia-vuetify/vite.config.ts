@@ -15,7 +15,10 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, './'),
       '~': path.resolve(__dirname, './'),
-      '~~': path.resolve(__dirname, './')
-    }
+      '~~': path.resolve(__dirname, './'),
+      '#app': path.resolve(__dirname, './node_modules/nuxt/dist/app/index.mjs'),
+      '#head': path.resolve(__dirname, './node_modules/nuxt/dist/head/runtime/index.mjs'),
+      '#build': path.resolve(__dirname, './.nuxt')
+    },
   }
-})
+});
