@@ -1,5 +1,5 @@
 import { component$, useStore, Resource, useResource$ } from '@builder.io/qwik';
-import { useQuery } from '../../utils/useQuery';
+import { useQuery } from '~/utils/useQuery';
 
 export const GET_GREETING = `
   query HelloQuery($greeting: String!) {
@@ -31,7 +31,7 @@ export const DataFetching = component$(() => {
 
   return (
     <div>
-      <div class="text-center pb-8">
+      <div class="pb-8 text-center">
         <input
           type="text"
           value={store.greeting}
@@ -41,16 +41,16 @@ export const DataFetching = component$(() => {
               store.greeting = (ev.target as HTMLInputElement).value;
             }, 1000);
           }}
-          class="px-4 py-4 bg-white rounded border-0 shadow outline-none focus:outline-none focus:ring w-96 max-w-full placeholder:italic text-l"
+          class="text-l w-96 max-w-full rounded border-0 bg-white px-4 py-4 shadow outline-none placeholder:italic focus:outline-none focus:ring"
         />
       </div>
-      <div class="flex w-full text-xl justify-center">
+      <div class="flex w-full justify-center text-xl">
         <Resource
           value={greetingResource}
-          onPending={() => <div class="text-left grow animate-pulse bg-gray-200 rounded-md">Loading...</div>}
+          onPending={() => <div class="grow animate-pulse rounded-md bg-gray-200 text-left">Loading...</div>}
           onRejected={(error) => (
             <div
-              class="grow border border-solid border-red-300 rounded bg-red-100 p-4 text-center text-red-500"
+              class="grow rounded border border-solid border-red-300 bg-red-100 p-4 text-center text-red-500"
               role="error-message"
             >
               Error: {error.message}

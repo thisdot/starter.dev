@@ -8,7 +8,7 @@ interface ButtonProps {
 export const Button = component$((props: ButtonProps) => {
   return (
     <button
-      class="bg-blue-500 hover:bg-blue-700 text-white text-xl font-semibold leading-none align-middle py-2 px-4 rounded"
+      class="rounded bg-blue-500 py-2 px-4 align-middle text-xl font-semibold leading-none text-white hover:bg-blue-700"
       onClick$={props.action$}
     >
       {props.title}
