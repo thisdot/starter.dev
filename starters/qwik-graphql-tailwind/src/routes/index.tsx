@@ -1,19 +1,19 @@
 import { component$ } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
 import { Link } from '@builder.io/qwik-city';
-import { APP_TITLE } from '../utils/constants';
+import { APP_TITLE } from '~/utils/constants';
 
 export default component$(() => {
   return (
     <>
-      <header class="flex justify-center items-center text-white mx-auto bg-blue-500 w-full lg:w-[75%] p-4 text-lg">
+      <header class="mx-auto flex w-full items-center justify-center bg-blue-500 p-4 text-lg text-white lg:w-[75%]">
         Qwik, GraphQL and Tailwind CSS Starter kit
       </header>
-      <div class="flex flex-col gap-2 items-center text-blue-800 underline text-base">
-        <Link href="/counter-example" class="hover:text-blue-500 transition-colors delay-100">
+      <div class="flex flex-col items-center gap-2 text-base text-blue-800 underline">
+        <Link href="/counter-example" class="transition-colors delay-100 hover:text-blue-500">
           See Counter example component
         </Link>
-        <Link href="./data-fetching" class="hover:text-blue-500 transition-colors delay-100">
+        <Link href="./data-fetching" class="transition-colors delay-100 hover:text-blue-500">
           See Fetch example component
         </Link>
       </div>
