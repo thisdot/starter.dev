@@ -1,7 +1,7 @@
 import { component$ } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
 import { Link } from '@builder.io/qwik-city';
-import { APP_TITLE } from '../utils/constants';
+import { APP_TITLE } from '~/utils/constants';
 
 export default component$(() => {
   return (

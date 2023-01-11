@@ -1,5 +1,5 @@
 import { component$, useStore, Resource, useResource$ } from '@builder.io/qwik';
-import { useQuery } from '../../utils/useQuery';
+import { useQuery } from '~/utils/useQuery';
 
 export const GET_GREETING = `
   query HelloQuery($greeting: String!) {

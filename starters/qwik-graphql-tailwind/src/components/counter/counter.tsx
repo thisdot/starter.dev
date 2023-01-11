@@ -1,5 +1,5 @@
 import { component$, $, useStore } from '@builder.io/qwik';
-import { Button } from '../../components/button/button';
+import { Button } from '~/components/button';
 
 export const Counter = component$(() => {
   const store = useStore({

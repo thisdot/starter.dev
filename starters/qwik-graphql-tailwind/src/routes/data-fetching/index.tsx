@@ -2,7 +2,7 @@ import { component$ } from '@builder.io/qwik';
 import { Link } from '@builder.io/qwik-city';
 import { DocumentHead } from '@builder.io/qwik-city';
 import { APP_TITLE } from '~/utils/constants';
-import { DataFetching } from '~/components/data-fetching/data-fetching';
+import { DataFetching } from '~/components/data-fetching';
 
 export default component$(() => {
   return (
