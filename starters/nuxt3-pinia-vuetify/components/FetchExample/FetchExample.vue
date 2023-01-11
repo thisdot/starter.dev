@@ -16,7 +16,14 @@
 </template>
 
 <script lang="ts" setup>
-const { data: message } = useLazyFetch('https://api.starter.dev/hello?greeting=from This Dot Labs!')
+const message = ref('loading...');
+
+try {
+  const { data } = await useFetch<string>('https://api.starter.dev/hello?greeting=from This Dot Labs!');
+  message.value = data.value || 'Failed to fetch';
+} catch( e ) {
+  message.value = 'Failed to fetch';
+}
 </script>
 
 <style lang="scss">
