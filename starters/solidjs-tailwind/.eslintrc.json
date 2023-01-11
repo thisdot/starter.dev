@@ -3,6 +3,9 @@
   "extends": ["eslint:recommended", "plugin:solid/recommended"],
   "parser": "@typescript-eslint/parser",
   "plugins": ["unused-imports", "solid"],
+  "env": {
+    "node": true
+  },
   "rules":  {
     "no-unused-vars": "off",
     "unused-imports/no-unused-imports": "error",
