@@ -40,6 +40,7 @@ import {
   ExpressIcon,
   PostgresIcon,
   TypeOrmIcon,
+  VuetifyIcon
 } from './icons';
 
 export interface NavItem {
@@ -124,6 +125,12 @@ export const TECHNOLOGIES = [
   {
     key: 'nuxt',
     name: 'NuxtJS',
+    tags: ['Framework'],
+    Icon: (props) => <NuxtIcon {...props} />,
+  },
+  {
+    key: 'nuxt 3',
+    name: 'NuxtJS 3',
     tags: ['Framework'],
     Icon: (props) => <NuxtIcon {...props} />,
   },
@@ -324,7 +331,13 @@ export const TECHNOLOGIES = [
     name: 'Postgres',
     tags: ['Data Management'],
     Icon: (props) => <PostgresIcon {...props} />
-  }
+  },
+  {
+    key: 'vuetify',
+    name: 'Vuetify',
+    tags: ['Framework, Styling'],
+    Icon: (props) => <VuetifyIcon {...props} />,
+  },
 ];
 
 export const SPONSORS_ICON = [

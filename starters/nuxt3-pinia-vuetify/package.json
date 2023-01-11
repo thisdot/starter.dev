@@ -1,4 +1,12 @@
 {
+  "name": "nuxt3-pinia-vuetify",
+  "description": "Nuxt 3, Pinia, and Vuetify",
+  "keywords": [
+    "nuxt 3",
+    "pinia",
+    "vuetify"
+  ],
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "build": "nuxt build",
