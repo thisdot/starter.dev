@@ -1,4 +1,4 @@
-# Dependabot config for website and cli
+# Dependabot config for website and cli security updates
 
 version: 2
 updates:
@@ -7,11 +7,13 @@ updates:
     directory: '/packages/website/'
     schedule:
       interval: 'weekly'
-    open-pull-requests-limit: 10
+    # Only do security updates
+    open-pull-requests-limit: 0
 
   # Cli package
   - package-ecosystem: 'npm'
     directory: '/packages/create-starter/'
     schedule:
       interval: 'weekly'
-    open-pull-requests-limit: 10
+    # Only do security updates
+    open-pull-requests-limit: 0
