@@ -15,7 +15,7 @@ interface HelloResponse {
 
 export const DataFetching = component$(() => {
   const store = useStore({
-    greeting: 'there',
+    greeting: '',
   });
 
   const greetingResource = useResource$<HelloResponse>(({ track, cleanup }) => {
@@ -74,7 +74,7 @@ export async function fetchGreeting(greeting: string, abortController?: AbortCon
   const { executeQuery$ } = useQuery(GET_GREETING);
 
   if (!greeting) {
-    greeting = 'there';
+    greeting = '';
   }
 
   const resp = await executeQuery$({
