@@ -60,7 +60,7 @@ export const DataFetching = component$(() => {
             <>
               <div class="mr-4">Message:</div>
               <div class="text-left" role="display-message">
-                {data.hello}
+                {data.hello} from This Dot Labs!
               </div>
             </>
           )}
