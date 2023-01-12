@@ -7,7 +7,7 @@
   "svelte-kit-scss": "SvelteKit and SCSS",
   "vue3-apollo-quasar": "Vue3, Apollo, and Quasar",
   "qwik-graphql-tailwind": "Qwik, GraphQL, and TailwindCSS",
-  "solidjs-tailwind": "SolidJs and TailwindCSS",
+  "solidjs-tailwind": "SolidJS and TailwindCSS",
   "angular-ngrx-scss": "Angular, NgRx, and SCSS",
   "deno-oak-denodb": "Deno, Oak, and DenoDB",
   "express-typeorm-postgres": "Express.js, TypeOrm, and PostgreSQL"

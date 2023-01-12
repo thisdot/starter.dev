@@ -4,7 +4,7 @@ const Home = () => {
   return (
     <>
       <header class="flex justify-center items-center text-white my-5 mx-auto bg-blue-500  w-full lg:w-[75%] p-4 text-lg ">
-        SolidJs and Tailwind CSS Starter kit
+        SolidJS and Tailwind CSS Starter kit
       </header>
       <div class="flex flex-col gap-2 items-center text-blue-800 underline text-base">
         <NavLink
