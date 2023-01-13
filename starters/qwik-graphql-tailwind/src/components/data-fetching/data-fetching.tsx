@@ -1,5 +1,5 @@
 import { component$, useStore, Resource, useResource$ } from '@builder.io/qwik';
-import { useQuery } from '~/utils/useQuery';
+import { useStarterQuery } from '~/utils/useStarterQuery';
 
 export const GET_GREETING = `
   query HelloQuery($greeting: String!) {
@@ -71,19 +71,11 @@ export const DataFetching = component$(() => {
 });
 
 export async function fetchGreeting(greeting: string, abortController?: AbortController): Promise<HelloResponse> {
-  const { executeQuery$ } = useQuery(GET_GREETING);
-
   if (!greeting) {
     greeting = '';
   }
 
-  const resp = await executeQuery$({
-    signal: abortController?.signal,
-    url: 'https://api.starter.dev/.netlify/functions/graphql',
-    variables: {
-      greeting,
-    },
-  });
+  const resp = await useStarterQuery(GET_GREETING, { greeting }, abortController?.signal);
 
   return await resp.json();
 }
