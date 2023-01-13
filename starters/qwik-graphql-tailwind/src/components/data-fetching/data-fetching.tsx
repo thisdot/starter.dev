@@ -71,11 +71,11 @@ export const DataFetching = component$(() => {
 });
 
 export async function fetchGreeting(greeting: string, abortController?: AbortController): Promise<HelloResponse> {
-  const resp = await useStarterQuery(GET_GREETING, { greeting }, abortController?.signal);
-
   if (!greeting) {
     greeting = '';
   }
+
+  const resp = await useStarterQuery(GET_GREETING, { greeting }, abortController?.signal);
 
   return await resp.json();
 }
