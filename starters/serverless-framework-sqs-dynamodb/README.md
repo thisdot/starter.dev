@@ -58,7 +58,7 @@ git clone https://github.com/thisdot/starter.dev.git
 
 ### Getting Started
 
-This README uses `yarn` for commands. If you're using `npm` or `pnpm`, utilize the equivalent version of the commands.
+This README uses `npm` for commands. If you're using `yarn` or `pnpm`, utilize the equivalent version of the commands.
 
 1. Create a `.env` file:
 
@@ -66,24 +66,24 @@ This README uses `yarn` for commands. If you're using `npm` or `pnpm`, utilize t
 cp .env.example .env
 ```
 
-2. Run `yarn` to install deps
+2. Run `npm i` to install deps
 3. Standup the project infrastructure using docker via:
 
 ```bash
-yarn infrastructure:up
+npm run infrastructure:up
 ```
 
 4. Sync database tables and seed the project via:
 
 ```bash
-yarn db:sync
-yarn db:seed
+npm run db:sync
+npm run db:seed
 ```
 
 5. Start the local development server:
 
 ```bash
-yarn start
+npm start
 ```
 
 6. Make changes and enjoy building your new backend!
@@ -96,7 +96,7 @@ yarn start
 - `deploy` ships the project to the configured AWS account using the Serverless Framework CLI command.
 - `start` runs the `serverless-offline` provided server for local development and testing. Be sure to have the local docker infrastructure running to emulate the related services.
 - `test` runs `jest` under the hood.
-- `lint` runs `eslint` under the hood. You can use all the eslint available command line arguments. To lint the entire project, run `yarn lint .`, or equivalent. You can affix `--fix` to auto-correct linting issues that eslint can handle.
+- `lint` runs `eslint` under the hood. You can use all the eslint available command line arguments. To lint the entire project, run `npm run lint .`, or equivalent. You can affix `--fix` to auto-correct linting issues that eslint can handle.
 - `format:check` runs prettier format checking on all project files.
 - `format:write` runs prettier format writing on all project files.
 
@@ -165,11 +165,11 @@ This project comes configured with 3 default stages: `dev`, `staging`, `producti
 
 #### esbuild
 
-This project uses [serverless-esbuild](https://www.npmjs.com/package/serverless-esbuild) over its webpack counterpart. The esbuild tool chain is generally faster and requires less dependencies to work out of the box.
+This project uses [serverless-esbuild](https://www.npmjs.com/package/serverless-esbuild) over its webpack counterpart. The esbuild tool chain is generally faster and requires less dependencies to work out of the box. Currently, the tooling is configured to use `npm`. If you wish to use `yarn` or `pnpm`, please change the `packager` field in the configuration accordingly.
 
 #### Bundle Analyzer
 
-This project ships with the [serverless-analyze-bundle-plugin](https://www.npmjs.com/package/serverless-analyze-bundle-plugin) to allow you to visualize your Lambda bundles. This is an especially important factor when dealing with cold starts and should be monitored. To analyze a function bundle, run `yarn build --analyze <functionName>`. This will give you a visualization of your function's dependencies and their sizes.
+This project ships with the [serverless-analyze-bundle-plugin](https://www.npmjs.com/package/serverless-analyze-bundle-plugin) to allow you to visualize your Lambda bundles. This is an especially important factor when dealing with cold starts and should be monitored. To analyze a function bundle, run `npm run build --analyze <functionName>`. This will give you a visualization of your function's dependencies and their sizes.
 
 #### File Patterns
 
@@ -183,7 +183,7 @@ To help manage the database locally, the [`aaronshaf/dynamodb-admin`](https://gi
 
 ### Defining New Tables
 
-To create a new table, define it via the `serverless.ts` resources section. It utilizes the [DynamoDB Cloudformation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dynamodb-table.html) to define data. Table names should be defined per environment through the Serverless `params` config. Once your table is defined, use the `yarn db:sync` command to create the table.
+To create a new table, define it via the `serverless.ts` resources section. It utilizes the [DynamoDB Cloudformation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dynamodb-table.html) to define data. Table names should be defined per environment through the Serverless `params` config. Once your table is defined, use the `npm run db:sync` command to create the table.
 
 ### Defining New Seeds
 
@@ -203,7 +203,7 @@ seed: {
 }
 ```
 
-Once defined, run `yarn db:seed` to seed your database. See https://github.com/99x/serverless-dynamodb-local#seeding-sls-dynamodb-seed for more information.
+Once defined, run `npm run db:seed` to seed your database. See https://github.com/99x/serverless-dynamodb-local#seeding-sls-dynamodb-seed for more information.
 
 ### Streams
 

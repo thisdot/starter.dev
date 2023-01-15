@@ -37,7 +37,7 @@ const serverlessConfiguration: AWS = {
 			},
 		},
 		'esbuild': {
-			packager: 'yarn',
+			packager: 'npm',
 			plugins: './esbuild-plugins.ts',
 			bundle: true,
 			minify: true,
