@@ -42,6 +42,7 @@ describe('dynamodb.deleteItem()', () => {
 
 	describe('when item does not exist', () => {
 		beforeAll(async () => {
+			jest.spyOn(console, 'warn').mockImplementation(() => {});
 			jest.spyOn(console, 'error').mockImplementation(() => {});
 			ddbMock.on(DeleteItemCommand).resolves({
 				Attributes: undefined,

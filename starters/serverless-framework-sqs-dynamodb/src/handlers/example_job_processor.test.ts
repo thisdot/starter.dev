@@ -6,7 +6,7 @@ describe('demo', () => {
 	let logMock: jest.SpyInstance;
 
 	beforeAll(async () => {
-		logMock = jest.spyOn(console, 'log').mockImplementation(() => ({}));
+		logMock = jest.spyOn(console, 'log').mockImplementation(() => {});
 		subject = await handler(
 			{
 				Records: [

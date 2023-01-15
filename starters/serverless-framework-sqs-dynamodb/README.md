@@ -60,7 +60,7 @@ git clone https://github.com/thisdot/starter.dev.git
 
 This README uses `npm` for commands. If you're using `yarn` or `pnpm`, utilize the equivalent version of the commands.
 
-1. Create a `.env` file:
+1. Create a `.env` file. This is to support any variable in the Serverless Configuration being read from `env:` and test running:
 
 ```bash
 cp .env.example .env
@@ -92,11 +92,11 @@ npm start
 
 ### General Commands
 
-- `build` bundles the project using the serverless packaging serverless. The produced artifacts will ship bundles shipped to AWS on deployment. You can optionally pass `--analyze <function name>` to run the bundle analyzer and visualize the results to understand your handler bundles.
+- `build` bundles the project using the Serverless Framework's out of the box `package` command. The produced artifacts will be shipped to AWS on deployment. You can optionally pass `--analyze <function name>` to run the bundle analyzer and visualize the results to understand your handler bundles.
 - `deploy` ships the project to the configured AWS account using the Serverless Framework CLI command.
 - `start` runs the `serverless-offline` provided server for local development and testing. Be sure to have the local docker infrastructure running to emulate the related services.
 - `test` runs `jest` under the hood.
-- `lint` runs `eslint` under the hood. You can use all the eslint available command line arguments. To lint the entire project, run `npm run lint .`, or equivalent. You can affix `--fix` to auto-correct linting issues that eslint can handle.
+- `lint` runs `eslint` under the hood. You can use all the available eslint command line arguments. To lint the entire project, run `npm run lint .`, or equivalent. You can affix `--fix` to auto-correct linting issues that eslint can handle.
 - `format:check` runs prettier format checking on all project files.
 - `format:write` runs prettier format writing on all project files.
 
@@ -141,7 +141,7 @@ This starter kit ships with a set of RESTful APIs. All routes are served via `ht
 
 ## Serverless Configuration
 
-This kit uses the TypeScript option for configuration. It is type checked using the `@serverless/typescript` definitions over the DefinitelyTyped definitions because DefinitelyTyped is currently behind on its definition. However, the `@serverless/typescript` types have known issues with certain fields are noted directly in the configuration.
+This kit uses the TypeScript option for configuration. It is type checked using the `@serverless/typescript` definitions over the DefinitelyTyped definitions because DefinitelyTyped is currently behind on its definition. However, the `@serverless/typescript` types have known issues with certain fields, which are noted directly in the configuration.
 
 It is not compatible with the automated CI/CD of the Serverless Dashboard as they only support the default YAML format. You can read more about [setting up CI/CD using GitHub for this project on the This Dot blog](https://www.thisdot.co/blog/github-actions-for-serverless-framework-deployments).
 
@@ -226,6 +226,8 @@ Redis is fully stubbed because it does not have the concept of environments or t
 There is an existing [DynamoDB Local preset for Jest](https://github.com/shelfio/jest-dynamodb). However, it indiscriminately clears the entire database before and after all tests are run. We've [submitted a PR to fix this problem](https://github.com/shelfio/jest-dynamodb/pull/190) which we can utilize once released. In the meantime, we're stubbing the DynamoDB during testing using the [aws-sdk-client-mock](https://github.com/m-radzikowski/aws-sdk-client-mock) to stub the AWS JS v3 SDK.
 
 ## Deployment
+
+<!-- TODO: add note about AWS setup -->
 
 As a serverless implementation, most of the infrastructure will be deployed and configured correctly simply utilizing the `deploy` script provided by this kit which is just an alias for [`serverless deploy`](https://www.serverless.com/framework/docs/providers/aws/cli-reference/deploy). However, the Redis instance is not configurable via the Serverless Configuration and will need to be set up ahead of your first deploy and configured via environment variables. We recommend using [Serverless Framework's interface for AWS Secret Manager](https://www.serverless.com/blog/aws-secrets-management/) for security purposes.
 

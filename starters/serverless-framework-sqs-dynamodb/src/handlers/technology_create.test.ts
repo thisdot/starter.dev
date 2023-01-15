@@ -2,9 +2,7 @@ import type { APIGatewayProxyResult, APIGatewayProxyEvent, Context, Callback } f
 import { PutItemCommand, ServiceInputTypes, ServiceOutputTypes } from '@aws-sdk/client-dynamodb';
 import { AwsStub, mockClient } from 'aws-sdk-client-mock';
 import { getClient } from '@/utils/dynamodb/getClient';
-import { removeFromCache } from '@/utils/cache/removeFromCache';
 import * as technologyCreate from '@/models/technology/create';
-import { getCacheKey } from '@/models/technology/getCacheKey';
 import { handler } from './technology_create';
 
 describe('POST /technology', () => {
@@ -33,7 +31,6 @@ describe('POST /technology', () => {
 
 		afterAll(async () => {
 			ddbMock.restore();
-			await removeFromCache(getCacheKey('87af19b1-aa0d-4178-a30c-2fa8cd1f2cff'));
 		});
 
 		it('returns 201 status', () => {
@@ -63,7 +60,6 @@ describe('POST /technology', () => {
 
 		afterAll(async () => {
 			jest.restoreAllMocks();
-			await removeFromCache(getCacheKey('87af19b1-aa0d-4178-a30c-2fa8cd1f2cff'));
 		});
 
 		it('returns 400 status', () => {
@@ -97,7 +93,6 @@ describe('POST /technology', () => {
 
 		afterAll(async () => {
 			jest.restoreAllMocks();
-			await removeFromCache(getCacheKey('87af19b1-aa0d-4178-a30c-2fa8cd1f2cff'));
 		});
 
 		it('returns 500 status', () => {
