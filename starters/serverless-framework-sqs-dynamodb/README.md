@@ -227,7 +227,7 @@ There is an existing [DynamoDB Local preset for Jest](https://github.com/shelfio
 
 ## Deployment
 
-<!-- TODO: add note about AWS setup -->
+This kit deploys to AWS and its serverless offering. As such, you will need to setup your system with the AWS CLI. You can read more about that in the [official AWS docs](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html). Take note to the section on profiles. This kit assumes it will use the `default` profile out of the box but can be configured as noted above in the [`profile`](#profile) section.
 
 As a serverless implementation, most of the infrastructure will be deployed and configured correctly simply utilizing the `deploy` script provided by this kit which is just an alias for [`serverless deploy`](https://www.serverless.com/framework/docs/providers/aws/cli-reference/deploy). However, the Redis instance is not configurable via the Serverless Configuration and will need to be set up ahead of your first deploy and configured via environment variables. We recommend using [Serverless Framework's interface for AWS Secret Manager](https://www.serverless.com/blog/aws-secrets-management/) for security purposes.
 
