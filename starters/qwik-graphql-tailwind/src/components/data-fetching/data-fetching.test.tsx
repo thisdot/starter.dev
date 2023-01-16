@@ -19,24 +19,24 @@ describe('Fetching component', function () {
     await render(<DataFetching />);
 
     expect(screen.querySelectorAll('input').length).toBe(1);
-    expect(screen.querySelector('.text-5xl')?.textContent).toBe('Loading...');
+    expect(screen.querySelector('.text-left')?.textContent).toBe('Loading...');
 
     // Wait for the fetch to be called.
     await new Promise((resolve) => setTimeout(resolve, 100));
-    expect(spy).toBeCalledWith('https://api.starter.dev/graphql', {
+    expect(spy).toBeCalledWith('https://api.starter.dev/.netlify/functions/graphql', {
       headers: {
         'Content-Type': 'application/json',
       },
       method: 'POST',
       body: JSON.stringify({
         query: GET_GREETING,
-        variables: { greeting: 'from This Dot Labs!' },
+        variables: { greeting: '' },
       }),
       signal: expect.any(AbortSignal),
     });
 
     // eslint-disable-next-line qwik/no-use-after-await
     await userEvent(screen.querySelector('input'), 'change');
-    expect(screen.querySelector('.text-5xl')?.textContent).toBe('Hello, there.');
+    expect(screen.querySelector('.text-left')?.textContent).toBe('Hello, there from This Dot Labs!');
   });
 });

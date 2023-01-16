@@ -9,7 +9,7 @@ describe('Counter component', function () {
     await render(<Counter />);
 
     expect(screen.querySelectorAll('button').length).toBe(3);
-    expect(screen.querySelector('h1')?.textContent).toBe('0');
+    expect(screen.querySelector('h2')?.textContent).toBe('Count: 0');
   });
 
   it('should increment', async () => {
@@ -17,10 +17,10 @@ describe('Counter component', function () {
 
     await render(<Counter />);
 
-    const plusButton = screen.querySelectorAll('button')[1];
+    const plusButton = screen.querySelectorAll('button')[0];
     // eslint-disable-next-line qwik/no-use-after-await
     await userEvent(plusButton, 'click');
-    expect(screen.querySelector('h1')?.textContent).toBe('1');
+    expect(screen.querySelector('h2')?.textContent).toBe('Count: 1');
   });
 
   it('should decrement', async () => {
@@ -28,19 +28,19 @@ describe('Counter component', function () {
 
     await render(<Counter />);
 
-    const plusButton = screen.querySelectorAll('button')[1];
+    const plusButton = screen.querySelectorAll('button')[0];
     // eslint-disable-next-line qwik/no-use-after-await
     await userEvent(plusButton, 'click');
-    expect(screen.querySelector('h1')?.textContent).toBe('1');
+    expect(screen.querySelector('h2')?.textContent).toBe('Count: 1');
 
     // eslint-disable-next-line qwik/no-use-after-await
     await userEvent(plusButton, 'click');
-    expect(screen.querySelector('h1')?.textContent).toBe('2');
+    expect(screen.querySelector('h2')?.textContent).toBe('Count: 2');
 
-    const minusButton = screen.querySelectorAll('button')[0];
+    const minusButton = screen.querySelectorAll('button')[1];
     // eslint-disable-next-line qwik/no-use-after-await
     await userEvent(minusButton, 'click');
-    expect(screen.querySelector('h1')?.textContent).toBe('1');
+    expect(screen.querySelector('h2')?.textContent).toBe('Count: 1');
   });
 
   it('should reeset the counter', async () => {
@@ -48,18 +48,18 @@ describe('Counter component', function () {
 
     await render(<Counter />);
 
-    const plusButton = screen.querySelectorAll('button')[1];
+    const plusButton = screen.querySelectorAll('button')[0];
     // eslint-disable-next-line qwik/no-use-after-await
     await userEvent(plusButton, 'click');
-    expect(screen.querySelector('h1')?.textContent).toBe('1');
+    expect(screen.querySelector('h2')?.textContent).toBe('Count: 1');
 
     // eslint-disable-next-line qwik/no-use-after-await
     await userEvent(plusButton, 'click');
-    expect(screen.querySelector('h1')?.textContent).toBe('2');
+    expect(screen.querySelector('h2')?.textContent).toBe('Count: 2');
 
     const resetButton = screen.querySelectorAll('button')[2];
     // eslint-disable-next-line qwik/no-use-after-await
     await userEvent(resetButton, 'click');
-    expect(screen.querySelector('h1')?.textContent).toBe('0');
+    expect(screen.querySelector('h2')?.textContent).toBe('Count: 0');
   });
 });
