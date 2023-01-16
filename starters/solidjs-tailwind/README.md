@@ -17,6 +17,10 @@ This starter kit features SolidJS combined with Tailwind CSS.
 
 ## Overview
 
+This starter kit features the most two hot frameworks in JavaScript and CSS echosystems. SolidJS is a new framework that is built on top of the React API and offers a leaner and more performant alternative to React. Tailwind CSS is a utility-first CSS framework that offers a lot of flexibility and is easy to use. It is also very performant and offers a lot of customization options. This starter kit combines both frameworks to offer a lean and performant setup.
+
+[View the kit on Github](https://github.com/thisdot/starter.dev/tree/main/starters/solidjs-tailwind)
+
 ### Tech Stack
 
 - [SolidJS](https://www.solidjs.com/)
@@ -92,6 +96,6 @@ Demonstrates how to retrieve data from a third-party API by using `createResourc
 
 ## Demo Implementation
 
-[Repository](https://github.com/thisdot/starter.dev-github-showcases/tree/main/solidjs-tailwind)
+[Repository](https://github.com/thisdot/starter.dev-github-showcases/tree/main/solidjs-tailwind) [Live demo](https://solidjs-tailwind.starter.dev/)
 
 The demo application re-implements some of GitHub's pages and functionality. It uses the OAuth credentials in GitHub to authenticate users with their GitHub accounts and uses RxJS to fetch data from the GitHub API. Check out the link above to learn more or check out the demo!
