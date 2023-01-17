@@ -6,4 +6,3 @@ export const helloTypeDefs = gql`
     hello(greeting: String!): String!
   }
 `;
-

@@ -62,4 +62,3 @@ export class CommentModel {
     return entry;
   };
 }
-

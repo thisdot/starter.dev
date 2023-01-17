@@ -1,8 +1,10 @@
 import gql from 'graphql-tag';
 import { apolloServer } from '../../handlers/graphql';
+import { GraphQLResponse } from '@apollo/server/src/externalTypes';
+import { FormattedExecutionResult } from '@graphql-tools/executor';
 
 describe('hello query', () => {
-  let subject: any;
+  let subject: GraphQLResponse;
   let greeting: string;
 
   beforeAll(async () => {
@@ -18,18 +20,17 @@ describe('hello query', () => {
         greeting,
       },
     });
-
-    console.log('subject', subject.data);
-  });
-
-  afterAll(() => {
-    subject = undefined;
   });
 
   it('returns the salutation concatenated with the greeting', () => {
-    expect(subject.body.singleResult.data).toEqual({
+    expect(
+      (
+        subject.body as {
+          singleResult: FormattedExecutionResult<Record<string, unknown>>;
+        }
+      ).singleResult.data
+    ).toEqual({
       hello: `Hello, ${greeting}`,
     });
   });
 });
-

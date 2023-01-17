@@ -1,8 +1,9 @@
-// load dotenv config
-require('dotenv').config();
-
 import { CommentModel } from '../src/models/CommentModel';
 import { PostModel } from '../src/models/PostModel';
+import * as dotenv from 'dotenv';
+
+// load dotenv config
+dotenv.config();
 
 // Add some dummy data to the database
 
@@ -28,4 +29,3 @@ CommentModel.create('My favorite food is pizza!');
 CommentModel.create('What is your favorite movie?');
 
 console.log('Database seeded!');
-
