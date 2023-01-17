@@ -62,4 +62,3 @@ export class PostModel {
     return entry;
   };
 }
-
