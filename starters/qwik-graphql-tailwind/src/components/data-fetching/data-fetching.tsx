@@ -15,16 +15,18 @@ interface HelloResponse {
 }
 
 export const DataFetching = component$(() => {
+  const location = useLocation();
+
   const store = useStore({
     greeting: '',
   });
-  const location = useLocation();
 
   const greetingResource = useResource$<HelloResponse>(({ track, cleanup }) => {
     // Use `track` to trigger re-run of the the data fetching function.
     track(() => store.greeting);
     track(() => location.query);
 
+    // const greetingValue = store.greeting;
     const greetingValue = store.greeting || location.query.greeting;
     // The `cleanup` function will be called when the function re-runs and the `AbortController` will abort the previous request.
     const abortController = new AbortController();
