@@ -4,13 +4,13 @@ import { postTypeDefs, postResolvers } from './post';
 import { commentTypeDefs, commentResolvers } from './comment';
 
 export const typeDefs = mergeTypeDefs([
-  helloTypeDefs,
-  postTypeDefs,
-  commentTypeDefs,
+	helloTypeDefs,
+	postTypeDefs,
+	commentTypeDefs,
 ]);
 
 export const resolvers = mergeResolvers([
-  helloResolvers,
-  postResolvers,
-  commentResolvers,
+	helloResolvers,
+	postResolvers,
+	commentResolvers,
 ]);
