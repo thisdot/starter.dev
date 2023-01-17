@@ -7,6 +7,9 @@ export default {
   argTypes: {
     message: 'from Storybook',
   },
+  args: {
+    message: 'from Storybook',
+  },
 };
 
 const Template = ({ ...args }) => ({
@@ -15,6 +18,3 @@ const Template = ({ ...args }) => ({
 });
 
 export const Default = Template.bind({});
-Default.arguments = {
-  message: 'from Storybook',
-};
