@@ -107,10 +107,10 @@ npm start
 
 ### Infrastructure Commands
 
-- `infrastructure:up` creates docker container and related images and runs them in the background. This should only be needed once during initial setup.
-- `infrastructure:down` deletes the docker container and related images.
-- `infrastructure:start` starts the docker container.
-- `infrastructure:stop` stops the docker container.
+- `infrastructure:up` creates docker containers and runs them in the background. This should only be needed once during initial setup.
+- `infrastructure:down` deletes the docker containers.
+- `infrastructure:start` starts the docker containers.
+- `infrastructure:stop` stops the docker containers.
 
 ## Project Structure
 
