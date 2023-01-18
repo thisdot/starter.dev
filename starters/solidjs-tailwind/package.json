@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "SolidJS and TailwindCSS",
+  "author": "Maarten, Chinedu, Daina, Mattai, Mark, Victor, Dane, Jan, Jerry",
   "scripts": {
     "start": "vite",
     "dev": "vite",
