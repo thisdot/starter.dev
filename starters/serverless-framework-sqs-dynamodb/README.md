@@ -169,7 +169,7 @@ This project uses [serverless-esbuild](https://www.npmjs.com/package/serverless-
 
 #### Bundle Analyzer
 
-This project ships with the [serverless-analyze-bundle-plugin](https://www.npmjs.com/package/serverless-analyze-bundle-plugin) to allow you to visualize your Lambda bundles. This is an especially important factor when dealing with cold starts and should be monitored. To analyze a function bundle, run `npm run build --analyze <functionName>`. This will give you a visualization of your function's dependencies and their sizes.
+This project ships with the [serverless-analyze-bundle-plugin](https://www.npmjs.com/package/serverless-analyze-bundle-plugin) to allow you to visualize your Lambda bundles. This is an especially important factor when dealing with cold starts and should be monitored. To analyze a function bundle, run `npm run build -- --analyze <functionName>`. This will give you a visualization of your function's dependencies and their sizes.
 
 #### File Patterns
 
