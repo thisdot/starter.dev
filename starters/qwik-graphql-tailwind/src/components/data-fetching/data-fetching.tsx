@@ -1,4 +1,5 @@
 import { component$, useStore, Resource, useResource$ } from '@builder.io/qwik';
+import { useLocation } from '@builder.io/qwik-city';
 import { useStarterQuery } from '~/utils/useStarterQuery';
 
 export const GET_GREETING = `
@@ -14,6 +15,8 @@ interface HelloResponse {
 }
 
 export const DataFetching = component$(() => {
+  const location = useLocation();
+
   const store = useStore({
     greeting: '',
   });
@@ -21,12 +24,16 @@ export const DataFetching = component$(() => {
   const greetingResource = useResource$<HelloResponse>(({ track, cleanup }) => {
     // Use `track` to trigger re-run of the the data fetching function.
     track(() => store.greeting);
+    track(() => location.query);
+
+    // const greetingValue = store.greeting;
+    const greetingValue = store.greeting || location.query.greeting;
     // The `cleanup` function will be called when the function re-runs and the `AbortController` will abort the previous request.
     const abortController = new AbortController();
     cleanup(() => abortController.abort());
 
     // Fetch the the greeting and return Promise that resolves to the greeting.
-    return fetchGreeting(store.greeting, abortController);
+    return fetchGreeting(greetingValue, abortController);
   });
 
   return (
