@@ -58,6 +58,24 @@ git clone https://github.com/thisdot/starter.dev.git
 - Run `npm run dev` to start the development server.
 - Open your browser to `http://localhost:3000` to see the included example code running.
 
+### Environment variables
+
+Copy the content of `.env.example` into a new `.env` file.
+
+```bash
+cp .env.example .env
+```
+
+You would need an account with [contentful.com](http://contentful.com) in order to get the environment variables required:
+
+```bash
+CONTENTFUL_CONTENT_MANAGEMENT_API_TOKEN=xxx
+CONTENTFUL_SPACE_ID=xxx
+CONTENTFUL_ENVIRONMENT=master
+```
+
+You need your API TOKEN and Space ID from contentful which are the first two required environment variable here, once you have those, replace with `xxx`.
+
 ## Commands
 
 - `npm run dev` - Starts the development server.
