@@ -2,6 +2,7 @@ import { APIGatewayProxyEvent, Context, Callback } from 'aws-lambda';
 import { handler } from './healthcheck';
 
 describe('healthcheck', () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let subject: any;
 
   beforeAll(async () => {

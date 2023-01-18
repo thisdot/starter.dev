@@ -2,6 +2,7 @@ import gql from 'graphql-tag';
 import { apolloServer } from '../../handlers/graphql';
 
 describe('hello query', () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let subject: any;
   let greeting: string;
 
