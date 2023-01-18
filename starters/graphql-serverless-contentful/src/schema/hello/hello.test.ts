@@ -32,4 +32,3 @@ describe('hello query', () => {
     });
   });
 });
-

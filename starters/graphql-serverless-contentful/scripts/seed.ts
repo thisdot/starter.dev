@@ -28,4 +28,3 @@ CommentModel.create('My favorite food is pizza!');
 CommentModel.create('What is your favorite movie?');
 
 console.log('Database seeded!');
-

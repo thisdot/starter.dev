@@ -18,4 +18,3 @@ export const commentTypeDefs = gql`
     deleteComment(id: ID!): ID
   }
 `;
-
