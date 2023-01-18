@@ -1,5 +1,6 @@
 // load dotenv config
-require('dotenv').config();
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 import { CommentModel } from '../src/models/CommentModel';
 import { PostModel } from '../src/models/PostModel';
