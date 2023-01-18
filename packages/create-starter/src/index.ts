@@ -95,7 +95,7 @@ export async function main() {
   }
 }
 
-async function initNodeProject(packageJsonPath: string, projectDestPath: string, options: any) {
+async function initNodeProject(packageJsonPath: string, projectDestPath: string, options: prompts.Answers<"name" | "kit">) {
   const packageJSON = JSON.parse(await fs.readFile(packageJsonPath, 'utf8'));
   packageJSON.name = options.name;
   packageJSON.version = '0.1.0';
