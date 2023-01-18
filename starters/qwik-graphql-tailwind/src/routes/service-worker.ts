@@ -13,6 +13,13 @@ setupServiceWorker();
 
 addEventListener('install', () => self.skipWaiting());
 
-addEventListener('activate', () => self.clients.claim());
+addEventListener('activate', () => {
+  caches.keys().then(function (cacheNames) {
+    cacheNames.forEach(function (cacheName) {
+      caches.delete(cacheName);
+    });
+  });
+  return self.clients.claim();
+});
 
 declare const self: ServiceWorkerGlobalScope;
