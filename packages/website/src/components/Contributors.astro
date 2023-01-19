@@ -1,7 +1,8 @@
 ---
 import { REPO_URL } from '../config';
 import { getContributorsData } from '../lib/getContributorsData';
-const contributors = (await getContributorsData()) ?? [];
+const contributorsData = await getContributorsData();
+const contributors = Array.isArray(contributorsData) ? contributorsData : [];
 ---
 
 <div class="mx-auto max-w-screen-2xl">
@@ -34,7 +35,7 @@ const contributors = (await getContributorsData()) ?? [];
     </div>
     <div class="col-span-5 px-12 py-4 bg-gray-100 border-t border-gray-400 dark:bg-gray-700 dark:border-gray-700">
       <ul>
-        {contributors?.map((contributor) => (
+        {contributors.map((contributor) => (
           <li class="inline-block mr-4">
             <a
               href={contributor.html_url}
