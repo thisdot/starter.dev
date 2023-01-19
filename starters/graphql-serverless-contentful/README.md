@@ -74,7 +74,21 @@ CONTENTFUL_SPACE_ID=xxx
 CONTENTFUL_ENVIRONMENT=master
 ```
 
-You need your API TOKEN and Space ID from contentful which are the first two required environment variable here, once you have those, replace with `xxx`.
+#### Steps to setup contentful
+
+1. Once you're signed in to contentful create a space
+
+2. After you've dont that, create two content models (`Post` and `Comment`)
+![content models](./screenshots/content-models.png)
+
+3. When that's done, go to **Settings** -> **API keys**
+Click on **Generate personal token** to get the `CONTENTFUL_CONTENT_MANAGEMENT_API_TOKEN` variable
+![API tokens](./screenshots/api-tokens.png)
+
+4. Go to **Settings** -> **General settings** to get the `CONTENTFUL_SPACE_ID`
+![Space ID](./screenshots/space-id.png)
+
+After you've gotten your API TOKEN and Space ID from contentful, modify the `.env` file and replace them with `xxx`.
 
 ## Commands
 
