@@ -5,9 +5,11 @@ const Greeting = () => {
   const [greeting, setGreeting] = createSignal('');
   const [message, setMessage] = createSignal('');
 
+  const greetingValue = greeting
+
   const [resp] = createResource(
-    () => greeting(),
-    () => greetingFetcher(greeting())
+    greetingValue,
+     () => greetingFetcher(greetingValue())
   );
 
   createEffect(() => {
