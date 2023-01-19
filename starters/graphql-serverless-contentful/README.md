@@ -40,6 +40,12 @@ or
 yarn create @this-dot/starter --kit serverless-framework-apollo-contentful
 ````
 
+or
+
+```bash
+pnpm create @this-dot/starter --kit serverless-framework-apollo-contentful
+```
+
 - Follow the prompts to select the `serverless-framework-apollo-contentful` starter kit and name your new project.
 - `cd` into your project directory and run `npm install`.
 - Run `npm run dev` to start the development server.
