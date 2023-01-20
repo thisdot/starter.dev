@@ -11,10 +11,10 @@ export type Header = {
 
 interface Props {
   sections?: string[];
-  headers?: Header[];
+  headings?: Header[];
 }
 
-export default function MobileNavigation({ sections, headers }: Props) {
+export default function MobileNavigation({ sections, headings }: Props) {
   const [open, setOpen] = useState(false);
 
   const toggleNavigation = () => {
@@ -28,7 +28,7 @@ export default function MobileNavigation({ sections, headers }: Props) {
       return (
         <>
           <MenuIcon className="w-5 h-5 mr-2" aria-hidden="true" />{' '}
-          {(sections && `Categories`) || (headers && `Overview`)}
+          {(sections && `Categories`) || (headings && `Overview`)}
         </>
       );
     }
@@ -57,9 +57,9 @@ export default function MobileNavigation({ sections, headers }: Props) {
               toggleNavigation={toggleNavigation}
             />
           )) ||
-            (headers && (
+            (headings && (
               <KitNavigation
-                headers={headers}
+                headings={headings}
                 toggleNavigation={toggleNavigation}
               />
             ))}

@@ -12,5 +12,8 @@
     "./starters/solidjs-tailwind",
     "./starters/svelte-kit-scss",
     "./starters/vue3-apollo-quasar"
-  ]
+  ],
+  "files.associations": {
+    "*.mdx": "markdown"
+  }
 }

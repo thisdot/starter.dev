@@ -32,7 +32,7 @@ This starter kit features **Next.js**, **React Query**, and **Tailwind CSS**.
 ### CLI (Recommended)
 
 ```bash
-npm create @this-dot/starter --kit next12-react-query-tailwind
+npm create @this-dot/starter -- --kit next12-react-query-tailwind
 ```
 
 or

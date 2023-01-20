@@ -50,7 +50,7 @@ ${markdown}`;
   try {
     const handle = await fs.opendir(kitPagesPath);
     console.info('kitgen: deleting existing kit pages');
-    rimraf(`${kitPagesPath}/*.md`, async (err) => {
+    rimraf(`${kitPagesPath}/*.md,${kitPagesPath}/*.mdx`, async (err) => {
       if (err) {
         console.error(err);
       }
@@ -69,19 +69,28 @@ ${markdown}`;
   for (const dir of kitDirs) {
     const kitPath = path.join(repoPath, 'starters', dir);
 
+    let infoFile = 'package.json';
+    if (dir.startsWith('deno-')) {
+      // For Deno, we don't have package.json
+      infoFile = 'deno.json';
+    }
+
     try {
       const readme = await fs.readFile(
         path.join(kitPath, 'README.md'),
         'utf-8'
       );
-      const json = await fs.readFile(
-        path.join(kitPath, 'package.json'),
-        'utf-8'
-      );
+      const json = await fs.readFile(path.join(kitPath, infoFile), 'utf-8');
       const data = JSON.parse(json);
 
       const kitData = {
-        ...pick(data, ['name', 'version', 'description', 'keywords', 'hasShowcase']),
+        ...pick(data, [
+          'name',
+          'version',
+          'description',
+          'keywords',
+          'hasShowcase',
+        ]),
         readmePath: path.join(kitPath, 'README.md'),
         starterPath: `/starters/${dir}`,
       };
@@ -92,7 +101,7 @@ ${markdown}`;
       const kitPagePath = path.join(
         repoPath,
         'packages/website/src/pages/kits',
-        `${data.name}.md`
+        `${data.name}.mdx`
       );
 
       await fs.writeFile(kitPagePath, formattedMarkdown, 'utf-8');

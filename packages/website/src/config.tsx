@@ -37,6 +37,10 @@ import {
   QwikIcon,
   SolidJsIcon,
   ChakraIcon,
+  DenoIcon,
+  ExpressIcon,
+  PostgresIcon,
+  TypeOrmIcon,
 } from './icons';
 
 export interface NavItem {
@@ -292,6 +296,42 @@ export const TECHNOLOGIES = [
     tags: ['Data Management'],
     Icon: (props) => <PiniaIcon {...props} />,
   },
+  {
+    key: 'deno',
+    name: 'Deno',
+    tags: ['Framework'],
+    Icon: (props) => <DenoIcon {...props} />,
+  },
+  {
+    key: 'oak',
+    name: 'Oak',
+    tags: ['Framework'],
+    Icon: (props) => <DenoIcon {...props} />,
+  },
+  {
+    key: 'denodb',
+    name: 'DenoDB',
+    tags: ['Data Management'],
+    Icon: (props) => <DenoIcon {...props} />,
+  },
+  {
+    key: 'express',
+    name: 'Express.js',
+    tags: ['Framework'],
+    Icon: (props) => <ExpressIcon {...props} />
+  },
+  {
+    key: 'typeorm',
+    name: 'TypeORM',
+    tags: ['Data Management'],
+    Icon: (props) => <TypeOrmIcon {...props} />
+  },
+  {
+    key: 'postgres',
+    name: 'Postgres',
+    tags: ['Data Management'],
+    Icon: (props) => <PostgresIcon {...props} />
+  }
 ];
 
 export const SPONSORS_ICON = [

@@ -3,10 +3,10 @@ import { useState, useRef, useEffect } from 'react';
 import cn from 'clsx';
 
 export interface Props {
-  headers: MarkdownHeader[];
+  headings: MarkdownHeader[];
 }
 
-export function TableOfContents({ headers }: Props) {
+export function TableOfContents({ headings }: Props) {
   const itemOffsets = useRef([]);
   const [activeId, setActiveId] = useState<string>(undefined);
 
@@ -51,25 +51,25 @@ export function TableOfContents({ headers }: Props) {
   return (
     <nav>
       <ul>
-        {headers
+        {headings
           .filter(({ depth }) => depth > 1 && depth < 4)
-          .map((header) => (
-            <li key={header.slug}>
+          .map((heading) => (
+            <li key={heading.slug}>
               <a
-                onClick={() => handleClick(header.slug)}
+                onClick={() => handleClick(heading.slug)}
                 className={cn(
-                  'block header-link py-2 px-4 cursor-pointer hover:text-blue-500 dark:hover:text-blue-500 border-r-2 border-transparent hover:border-brand-500',
+                  'block heading-link py-2 px-4 cursor-pointer hover:text-blue-500 dark:hover:text-blue-500 border-r-2 border-transparent hover:border-brand-500',
                   {
                     'dark:text-[#95DFFF] dark:border-[#95DFFF] text-blue-500 border-brand-500':
-                      activeId === header.slug,
+                      activeId === heading.slug,
                     'text-[22px] leading-8 font-semibold t-dark dark:dark-t-light my-4':
-                      header.depth === 2,
+                      heading.depth === 2,
                     'text-[18px] leading-6 text-gray-800 dark:dark-t my-3':
-                      header.depth === 3,
+                      heading.depth === 3,
                   }
                 )}
               >
-                {header.text}
+                {heading.text}
               </a>
             </li>
           ))}

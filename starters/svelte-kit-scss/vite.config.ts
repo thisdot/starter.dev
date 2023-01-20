@@ -1,7 +1,6 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import type { UserConfig } from 'vite';
 import { configDefaults, type UserConfig as VitestConfig } from 'vitest/config';
-import path from 'path';
 
 const config: UserConfig & { test: VitestConfig['test'] } = {
   plugins: [sveltekit()],
@@ -27,12 +26,6 @@ const config: UserConfig & { test: VitestConfig['test'] } = {
     },
     // Exclude playwright tests folder
     exclude: [...configDefaults.exclude, 'tests'],
-  },
-
-  resolve: {
-    alias: {
-      $lib: path.resolve(__dirname, './src/lib'),
-    },
   },
 };
 
