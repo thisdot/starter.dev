@@ -78,17 +78,16 @@ CONTENTFUL_ENVIRONMENT=master
 
 1. Once you're signed in to contentful create a space
 
-2. After you've dont that, create two content models (`Post` and `Comment`)
-![content models](./screenshots/content-models.png)
-
-3. When that's done, go to **Settings** -> **API keys**
+2. When that's done, go to **Settings** -> **API keys**
 Click on **Generate personal token** to get the `CONTENTFUL_CONTENT_MANAGEMENT_API_TOKEN` variable
 ![API tokens](./screenshots/api-tokens.png)
 
-4. Go to **Settings** -> **General settings** to get the `CONTENTFUL_SPACE_ID`
-![Space ID](./screenshots/space-id.png)
-
+3. Go to **Settings** -> **General settings** to get the `CONTENTFUL_SPACE_ID`
+![Space ID](./screenshots/space-id.png)  
 After you've gotten your API TOKEN and Space ID from contentful, modify the `.env` file and replace them with `xxx`.
+
+4. For demo purposes, this kit comes pre-configured with a `Post` and `Comment` model. To use these, create the content models for them in Contentful. Each model only has a `content` text field, the `id` field gets provided by Contentful.
+   ![content models](./screenshots/content-models.png)
 
 ## Commands
 
