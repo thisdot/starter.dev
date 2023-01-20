@@ -18,7 +18,7 @@
 		"build": "tsc --project tsconfig.build.json",
 		"lint": "eslint \"src/**/*.ts\"",
 		"lint:fix": "npm run lint --fix",
-		"format": "prettier --write \"src/**/*.ts\"",
+		"format": "prettier --write .",
 		"format:codegen": "prettier --write \"src/graphql/schema/generated/**/*\""
 	},
 	"author": "",
