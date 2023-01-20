@@ -24,7 +24,6 @@
 	"dependencies": {
 		"@apollo/server": "4.3.0",
 		"@as-integrations/aws-lambda": "1.1.0",
-		"@graphql-tools/executor": "^0.0.12",
 		"contentful-management": "10.26.0",
 		"graphql": "16.6.0",
 		"graphql-tag": "2.12.6",
@@ -36,6 +35,7 @@
 		"@graphql-codegen/introspection": "2.2.3",
 		"@graphql-codegen/typescript": "2.8.7",
 		"@graphql-codegen/typescript-resolvers": "2.7.12",
+		"@graphql-tools/executor": "^0.0.12",
 		"@graphql-tools/merge": "8.3.15",
 		"@types/aws-lambda": "8.10.109",
 		"@types/jest": "29.2.5",
