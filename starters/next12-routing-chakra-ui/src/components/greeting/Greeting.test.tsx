@@ -1,6 +1,6 @@
 import fetch from "jest-fetch-mock";
 import { render, screen } from "@testing-library/react";
-import FetchExample from "../../pages/fetch-example/[[...slug]]";
+import FetchExample from "../../pages/fetch-example";
 import "@testing-library/jest-dom";
 
 describe("Fetch Example page", () => {

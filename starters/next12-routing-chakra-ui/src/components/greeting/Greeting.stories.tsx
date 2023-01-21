@@ -1,4 +1,4 @@
-import FetchExample from "../../pages/fetch-example/[[...slug]]";
+import FetchExample from "../../pages/fetch-example";
 
 export default {
   title: "Pages/FetchComponent",
