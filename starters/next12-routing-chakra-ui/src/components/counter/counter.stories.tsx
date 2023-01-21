@@ -1,8 +1,8 @@
-import CounterExample from "./Counter";
+import { Counter } from "./Counter";
 
 export default {
   title: "Pages/Counter",
-  component: CounterExample,
+  component: Counter,
 };
 
-export const CounterExamplePage = () => <CounterExample />;
+export const CounterExamplePage = () => <Counter />;

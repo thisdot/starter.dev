@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import CounterExample from "../src/pages/counter-example/index";
+import CounterExample from "../../pages/counter-example";
 import "@testing-library/jest-dom";
 
 describe("Counter Example page", () => {

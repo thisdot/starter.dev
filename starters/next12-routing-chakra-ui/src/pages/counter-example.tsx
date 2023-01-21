@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Link from "next/link";
 import { Center, Heading } from "@chakra-ui/react";
-import Counter from "../../components/counter/Counter";
+import { Counter } from "../components/Counter";
 
 const CounterExample: NextPage = () => {
   return (
