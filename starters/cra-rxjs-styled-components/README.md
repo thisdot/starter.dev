@@ -121,6 +121,6 @@ The demo components included in the starter.kit are co-located with the tests an
 
 ## Demo Implementation
 
-[Repository](https://github.com/thisdot/starter.dev-showcases/tree/main/cra-rxjs-styled-components)
+[Repository](https://github.com/thisdot/starter.dev-github-showcases/tree/main/cra-rxjs-styled-components)
 
 The demo application re-implements some of GitHub's pages and functionality. It uses the OAuth credentials in GitHub to authenticate users with their GitHub accounts and uses RxJS to fetch data from the GitHub API. Check out the link above to learn more or check out the demo!
