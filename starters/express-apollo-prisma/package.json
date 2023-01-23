@@ -19,8 +19,7 @@
 		"lint": "eslint \"src/**/*.ts\"",
 		"lint:fix": "npm run lint --fix",
 		"format": "prettier --write .",
-		"format:codegen": "prettier --write \"src/graphql/schema/generated/**/*\"",
-		"ji": "jest --init"
+		"format:codegen": "prettier --write \"src/graphql/schema/generated/**/*\""
 	},
 	"author": "",
 	"devDependencies": {
