@@ -1,131 +1,209 @@
 import gql from 'graphql-tag';
 import { apolloServer } from '../../handlers/graphql';
 import { GraphQLResponse } from '@apollo/server/src/externalTypes';
-import { FormattedExecutionResult } from '@graphql-tools/executor';
 import assert from 'assert';
 
+const MOCK_COMMENTS = [
+	'This is the test comment content',
+	'This is the updated test comment content',
+];
+
 jest.mock('../../utils/contentful', () => {
+	const MOCK_COMMENTS = [
+		'This is the test comment content',
+		'This is the updated test comment content',
+	];
+	const MOCK_ID = 'xxx';
 	const MOCK_CONTENTFUL_ENTRIES = {
-		items: [],
+		items: MOCK_COMMENTS.map((content) => ({
+			sys: {
+				id: MOCK_ID,
+			},
+			fields: {
+				content: {
+					'en-US': content,
+				},
+			},
+		})),
 	};
+
 	const MOCK_CONTENTFUL_ENVIRONMENT = {
+		getEntry: jest.fn().mockReturnValue({
+			...MOCK_CONTENTFUL_ENTRIES.items[0],
+			publish: jest.fn().mockReturnValue({}),
+			update: jest.fn().mockReturnValue({}),
+			updatePost: {
+				id: MOCK_ID,
+				content: MOCK_COMMENTS[1],
+			},
+		}),
+		createEntry: jest.fn().mockReturnValue({
+			...MOCK_CONTENTFUL_ENTRIES.items[0],
+			publish: jest.fn().mockReturnValue({
+				createPost: {
+					id: MOCK_ID,
+					content: MOCK_COMMENTS[0],
+				},
+			}),
+		}),
 		getEntries: jest.fn().mockReturnValue(MOCK_CONTENTFUL_ENTRIES),
 	};
 	const MOCK_CONTENTFUL_SPACE = {
 		getEnvironment: jest.fn().mockReturnValue(MOCK_CONTENTFUL_ENVIRONMENT),
 	};
 	const MOCK_CONTENTFUL_CLIENT = {
-		getSpace: jest.fn().mockReturnValue(MOCK_CONTENTFUL_SPACE),
+		client: {
+			getSpace: jest.fn().mockReturnValue(MOCK_CONTENTFUL_SPACE),
+		},
 	};
 	return MOCK_CONTENTFUL_CLIENT;
 });
 
-beforeAll(async () => {
-	// const space = await client.getSpace(`${process.env.CONTENTFUL_SPACE_ID}`);
-	// const environment = await space.getEnvironment(
-	//     `${process.env.CONTENTFUL_ENVIRONMENT}`
-	// );
-	// MOCK THESE I GUESS
-});
+describe('comment queries and mutations', () => {
+	let subject: any;
+	let comment: any;
+	let content: string;
 
-describe('comment resolver', () => {
-	const MOCK_COMMENTS = [
-		{
-			content: 'Comment 1',
-		},
-		{
-			content: 'Comment 2',
-		},
-	];
-
-	it('adds comment', async () => {
-		const QUERY = gql`
-			mutation Mutation($content: String!) {
-				createComment(content: $content) {
-					content
+	beforeAll(async () => {
+		content = 'This is the test comment content';
+		const MUTATION = gql`
+			mutation CreatePostMutation($content: String!) {
+				createPost(content: $content) {
 					id
+					content
 				}
 			}
 		`;
-		const subject: GraphQLResponse = await apolloServer.executeOperation<{
-			content: string;
-		}>({
-			query: QUERY,
+
+		const res: GraphQLResponse = await apolloServer.executeOperation({
+			query: MUTATION,
 			variables: {
-				content: MOCK_COMMENTS[0].content,
+				content,
 			},
 		});
 
-		assert(subject.body.kind === 'single');
-		expect(subject.body.singleResult.errors).toBeUndefined();
-		console.log(subject.body.singleResult);
+		assert(res.body.kind === 'single');
+		expect(res.body.singleResult.errors).toBeUndefined();
+		assert(res.body.singleResult.data);
 
-		expect(subject.body).toBeTruthy();
+		comment = res.body.singleResult.data.createPost;
 	});
 
-	// it('returns a comment', async () => {
-	// 	const QUERY = gql`
-	// 		query GetComment($content: String!) {
-	// 			comments(id: $id)
-	// 		}
-	// 	`;
-	// 	const subject: GraphQLResponse = await apolloServer.executeOperation({
-	// 		query: QUERY,
-	// 		variables: {
-	// 			id: 1,
-	// 		},
-	// 	});
+	afterEach(async () => {
+		subject = undefined;
+	});
 
-	// 	expect(
-	// 		(
-	// 			subject.body as {
-	// 				singleResult: FormattedExecutionResult<Record<string, unknown>>;
-	// 			}
-	// 		).singleResult.data
-	// 	).toBeTruthy();
-	// });
+	describe('query posts', () => {
+		beforeAll(async () => {
+			const QUERY = gql`
+				query {
+					posts {
+						id
+						content
+					}
+				}
+			`;
 
-	// it('returns all comments', async () => {
-	// 	const QUERY = gql`
-	// 		query GetAllComments {
-	// 			comments {
-	// 				id
-	// 				content
-	// 			}
-	// 		}
-	// 	`;
-	// 	const subject: GraphQLResponse = await apolloServer.executeOperation({
-	// 		query: QUERY,
-	// 	});
+			subject = await apolloServer.executeOperation({
+				query: QUERY,
+			});
+		});
 
-	// 	expect(
-	// 		(
-	// 			subject.body as {
-	// 				singleResult: FormattedExecutionResult<Record<string, unknown>>;
-	// 			}
-	// 		).singleResult.data[0].content
-	// 	).toEqual(MOCK_COMMENTS[0].content);
-	// });
+		it('returns created comment', () => {
+			const createdPosts = subject.body.singleResult.data.posts;
+			expect(true).toEqual(true);
+			expect(createdPosts).toContainEqual({
+				id: comment.id,
+				content: comment.content,
+			});
+		});
+	});
 
-	// it('update a comment', async () => {
-	// 	const QUERY = gql`
-	// 		query GetAllComments {
-	// 			comments {
-	// 				id
-	// 				content
-	// 			}
-	// 		}
-	// 	`;
-	// 	const subject: GraphQLResponse = await apolloServer.executeOperation({
-	// 		query: QUERY,
-	// 	});
+	describe('query comment by id', () => {
+		beforeAll(async () => {
+			const QUERY = gql`
+				query PostQuery($id: ID!) {
+					posts(id: $id) {
+						id
+						content
+					}
+				}
+			`;
 
-	// 	expect(
-	// 		(
-	// 			subject.body as {
-	// 				singleResult: FormattedExecutionResult<Record<string, unknown>>;
-	// 			}
-	// 		).singleResult.data
-	// 	).toBeTruthy();
-	// });
+			subject = await apolloServer.executeOperation({
+				query: QUERY,
+				variables: {
+					id: comment.id,
+				},
+			});
+		});
+
+		it('returns the comment with the given id', () => {
+			// console.log('by id', JSON.stringify(subject));
+			expect(subject.body.singleResult.data).toEqual({
+				posts: [
+					{
+						id: comment.id,
+						content: comment.content,
+					},
+				],
+			});
+		});
+	});
+
+	describe('mutation createPost', () => {
+		let created_post: any;
+
+		beforeAll(async () => {
+			const MUTATION = gql`
+				mutation CreatePostMutation($content: String!) {
+					createPost(content: $content) {
+						id
+						content
+					}
+				}
+			`;
+
+			subject = await apolloServer.executeOperation({
+				query: MUTATION,
+				variables: {
+					content,
+				},
+			});
+
+			created_post = subject.body.singleResult.data.createPost;
+		});
+
+		it('creates a comment with the given content', () => {
+			expect(created_post.content).toEqual(content);
+		});
+	});
+
+	describe('mutation updatePost', () => {
+		beforeAll(async () => {
+			const MUTATION = gql`
+				mutation UpdatePostMutation($id: ID!, $content: String!) {
+					updatePost(id: $id, content: $content) {
+						id
+						content
+					}
+				}
+			`;
+
+			subject = await apolloServer.executeOperation({
+				query: MUTATION,
+				variables: {
+					id: comment.id,
+					content: MOCK_COMMENTS[1],
+				},
+			});
+		});
+
+		it('updates the comment with the given content', () => {
+			expect(subject.body.singleResult.data.updatePost).toEqual({
+				id: comment.id,
+				content: MOCK_COMMENTS[1],
+			});
+		});
+	});
 });
