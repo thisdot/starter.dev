@@ -25,29 +25,12 @@ describe('Greeting', () => {
         <Greeting />
       </Router>
     ));
-
-    window.fetch = () => {
-      return new Promise((resolve) => {
-        resolve({
-          json: () => {
-            return new Promise((resolve) => {
-              resolve({
-                results: {
-                  text: () => 'daian',
-                },
-              });
-            });
-          },
-        });
-      });
-    };
   });
   it('should mount', async () => {
     expect(wrapper).toBeTruthy();
   });
 
   it('should show the mocked greeting', async () => {
-    const text = await screen.findByText('Hi Learner from This Dot Labs!');
-    expect(text).toBeVisible();
+    expect(await wrapper.findByText('Hi Learner from This Dot Labs!')).toBeTruthy();
   });
 });
