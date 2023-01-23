@@ -2,6 +2,8 @@ import gql from 'graphql-tag';
 import { apolloServer } from '../../handlers/graphql';
 import { GraphQLResponse } from '@apollo/server/src/externalTypes';
 import assert from 'assert';
+import { Query } from '../../generated/graphql';
+type CommentQuery = Pick<Query, 'comments'>;
 
 const MOCK_COMMENTS = [
 	'This is the test comment content',
@@ -75,12 +77,13 @@ describe('comment queries and mutations', () => {
 			}
 		`;
 
-		const res: GraphQLResponse = await apolloServer.executeOperation({
-			query: MUTATION,
-			variables: {
-				content,
-			},
-		});
+		const res: GraphQLResponse =
+			await apolloServer.executeOperation<CommentQuery>({
+				query: MUTATION,
+				variables: {
+					content,
+				},
+			});
 
 		assert(res.body.kind === 'single');
 		expect(res.body.singleResult.errors).toBeUndefined();
@@ -104,14 +107,13 @@ describe('comment queries and mutations', () => {
 				}
 			`;
 
-			subject = await apolloServer.executeOperation({
+			subject = await apolloServer.executeOperation<CommentQuery>({
 				query: QUERY,
 			});
 		});
 
 		it('returns created comment', () => {
 			const createdComments = subject.body.singleResult.data.posts;
-			expect(true).toEqual(true);
 			expect(createdComments).toContainEqual({
 				id: comment.id,
 				content: comment.content,
@@ -130,7 +132,7 @@ describe('comment queries and mutations', () => {
 				}
 			`;
 
-			subject = await apolloServer.executeOperation({
+			subject = await apolloServer.executeOperation<CommentQuery>({
 				query: QUERY,
 				variables: {
 					id: comment.id,
@@ -164,7 +166,7 @@ describe('comment queries and mutations', () => {
 				}
 			`;
 
-			subject = await apolloServer.executeOperation({
+			subject = await apolloServer.executeOperation<CommentQuery>({
 				query: MUTATION,
 				variables: {
 					content,
@@ -190,7 +192,7 @@ describe('comment queries and mutations', () => {
 				}
 			`;
 
-			subject = await apolloServer.executeOperation({
+			subject = await apolloServer.executeOperation<CommentQuery>({
 				query: MUTATION,
 				variables: {
 					id: comment.id,
