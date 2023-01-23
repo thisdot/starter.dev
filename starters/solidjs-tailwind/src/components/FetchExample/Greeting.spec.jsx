@@ -16,7 +16,7 @@ describe('Greeting', () => {
 
   it('should show the mocked greeting', async () => {
     await render(() => <Greeting />);
-    const text = await screen.findByText('Message: Hi Learner');
+    const text = await screen.findByText('Hi Learner from This Dot Labs!');
     expect(text).toBeVisible();
   });
 });
