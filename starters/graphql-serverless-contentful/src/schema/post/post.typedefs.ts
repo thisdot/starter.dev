@@ -7,12 +7,12 @@ export const postTypeDefs = gql`
 	}
 
 	type Query {
-		"Get Post"
+		"Post(s): GET"
 		posts(id: ID): [Post]
 	}
 
 	type Mutation {
-		"CRUD operations"
+		"Post: CRUD operations"
 		createPost(content: String!): Post
 		updatePost(id: ID!, content: String!): Post
 		deletePost(id: ID!): ID
