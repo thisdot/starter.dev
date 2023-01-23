@@ -32,7 +32,7 @@ jest.mock('../../utils/contentful', () => {
 			...MOCK_CONTENTFUL_ENTRIES.items[0],
 			publish: jest.fn().mockReturnValue({}),
 			update: jest.fn().mockReturnValue({}),
-			updatePost: {
+			updateComment: {
 				id: MOCK_ID,
 				content: MOCK_COMMENTS[1],
 			},
@@ -40,7 +40,7 @@ jest.mock('../../utils/contentful', () => {
 		createEntry: jest.fn().mockReturnValue({
 			...MOCK_CONTENTFUL_ENTRIES.items[0],
 			publish: jest.fn().mockReturnValue({
-				createPost: {
+				createComment: {
 					id: MOCK_ID,
 					content: MOCK_COMMENTS[0],
 				},
@@ -67,8 +67,8 @@ describe('comment queries and mutations', () => {
 	beforeAll(async () => {
 		content = 'This is the test comment content';
 		const MUTATION = gql`
-			mutation CreatePostMutation($content: String!) {
-				createPost(content: $content) {
+			mutation CreateCommentMutation($content: String!) {
+				createComment(content: $content) {
 					id
 					content
 				}
@@ -86,7 +86,7 @@ describe('comment queries and mutations', () => {
 		expect(res.body.singleResult.errors).toBeUndefined();
 		assert(res.body.singleResult.data);
 
-		comment = res.body.singleResult.data.createPost;
+		comment = res.body.singleResult.data.createComment;
 	});
 
 	afterEach(async () => {
@@ -110,9 +110,9 @@ describe('comment queries and mutations', () => {
 		});
 
 		it('returns created comment', () => {
-			const createdPosts = subject.body.singleResult.data.posts;
+			const createdComments = subject.body.singleResult.data.posts;
 			expect(true).toEqual(true);
-			expect(createdPosts).toContainEqual({
+			expect(createdComments).toContainEqual({
 				id: comment.id,
 				content: comment.content,
 			});
@@ -122,7 +122,7 @@ describe('comment queries and mutations', () => {
 	describe('query comment by id', () => {
 		beforeAll(async () => {
 			const QUERY = gql`
-				query PostQuery($id: ID!) {
+				query CommentQuery($id: ID!) {
 					posts(id: $id) {
 						id
 						content
@@ -151,13 +151,13 @@ describe('comment queries and mutations', () => {
 		});
 	});
 
-	describe('mutation createPost', () => {
+	describe('mutation createComment', () => {
 		let created_post: any;
 
 		beforeAll(async () => {
 			const MUTATION = gql`
-				mutation CreatePostMutation($content: String!) {
-					createPost(content: $content) {
+				mutation CreateCommentMutation($content: String!) {
+					createComment(content: $content) {
 						id
 						content
 					}
@@ -171,7 +171,7 @@ describe('comment queries and mutations', () => {
 				},
 			});
 
-			created_post = subject.body.singleResult.data.createPost;
+			created_post = subject.body.singleResult.data.createComment;
 		});
 
 		it('creates a comment with the given content', () => {
@@ -179,11 +179,11 @@ describe('comment queries and mutations', () => {
 		});
 	});
 
-	describe('mutation updatePost', () => {
+	describe('mutation updateComment', () => {
 		beforeAll(async () => {
 			const MUTATION = gql`
-				mutation UpdatePostMutation($id: ID!, $content: String!) {
-					updatePost(id: $id, content: $content) {
+				mutation UpdateCommentMutation($id: ID!, $content: String!) {
+					updateComment(id: $id, content: $content) {
 						id
 						content
 					}
@@ -200,7 +200,7 @@ describe('comment queries and mutations', () => {
 		});
 
 		it('updates the comment with the given content', () => {
-			expect(subject.body.singleResult.data.updatePost).toEqual({
+			expect(subject.body.singleResult.data.updateComment).toEqual({
 				id: comment.id,
 				content: MOCK_COMMENTS[1],
 			});
