@@ -3,6 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "description": "SolidJS and TailwindCSS",
+  "contributors": [
+    "Maarten Bicknese <maarten.bicknese@thisdot.co>",
+    "Chinedu Okpala <chinedu.okpala@thisdot.co>",
+    "Daina Scuarissi <daian@thisdot.co>",
+    "Mattia Magi <mattia.magi@thisdot.co>",
+    "Mark Shenouda <mark@thisdot.co>",
+    "Victor Umeh <victor.umeh@thisdot.co>",
+    "Dane Grant <dane@thisdot.co>",
+    "Jan Kaiser <jan.kaiser@thisdot.co>",
+    "Jerry Hogan <jerry.hogan@thisdot.co>"
+  ],
   "scripts": {
     "start": "vite",
     "dev": "vite",
