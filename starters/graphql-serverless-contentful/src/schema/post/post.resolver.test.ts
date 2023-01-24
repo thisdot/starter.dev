@@ -106,8 +106,7 @@ describe('post queries and mutations', () => {
 			expect(subject.body.singleResult.errors).toBeUndefined();
 			assert(subject.body.singleResult.data);
 
-			const createdPosts = subject.body.singleResult.data.posts;
-			expect(createdPosts).toContainEqual({
+			expect(subject.body.singleResult.data.posts).toContainEqual({
 				id: post.id,
 				content: post.content,
 			});
