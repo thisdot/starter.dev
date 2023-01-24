@@ -78,7 +78,7 @@
         "fields": [
           {
             "name": "createComment",
-            "description": "CRUD Operations",
+            "description": "Comment: CRUD Operations",
             "args": [
               {
                 "name": "content",
@@ -107,7 +107,7 @@
           },
           {
             "name": "createPost",
-            "description": "CRUD operations",
+            "description": "Post: CRUD operations",
             "args": [
               {
                 "name": "content",
@@ -338,7 +338,7 @@
         "fields": [
           {
             "name": "comments",
-            "description": "Get Comment",
+            "description": "Comment(s): GET",
             "args": [
               {
                 "name": "id",
@@ -400,7 +400,7 @@
           },
           {
             "name": "posts",
-            "description": "Get Post",
+            "description": "Post(s): GET",
             "args": [
               {
                 "name": "id",
