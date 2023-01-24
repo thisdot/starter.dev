@@ -3,6 +3,9 @@ import { apolloServer } from '../../handlers/graphql';
 import { GraphQLResponse } from '@apollo/server/src/externalTypes';
 import assert from 'assert';
 import { Query } from '../../generated/graphql';
+import { client } from '../../utils/contentful';
+import { MOCK_ENV_VARS } from '../../../.jest/set-env-vars';
+import { ClientAPI, Environment, Space } from 'contentful-management';
 type CommentQuery = Pick<Query, 'comments'>;
 
 const MOCK_COMMENTS = [
@@ -63,6 +66,20 @@ jest.mock('../../utils/contentful', () => {
 });
 
 describe('comment queries and mutations', () => {
+	let mockContentfulClient: ClientAPI;
+	let mockContentfulSpace: Space;
+	let mockContentfulEnviroment: Environment;
+
+	beforeAll(async () => {
+		mockContentfulClient = client;
+		mockContentfulSpace = await client.getSpace(
+			MOCK_ENV_VARS.CONTENTFUL_SPACE_ID
+		);
+		mockContentfulEnviroment = await mockContentfulSpace.getEnvironment(
+			MOCK_ENV_VARS.CONTENTFUL_ENVIRONMENT
+		);
+	});
+
 	describe('query comments', () => {
 		it('returns created comment', async () => {
 			const QUERY = gql`
@@ -87,6 +104,16 @@ describe('comment queries and mutations', () => {
 			expect(createdComments).toContainEqual({
 				id: MOCK_ID,
 				content: MOCK_COMMENTS[0],
+			});
+
+			expect(mockContentfulClient.getSpace).toHaveBeenCalledWith(
+				MOCK_ENV_VARS.CONTENTFUL_SPACE_ID
+			);
+			expect(mockContentfulSpace.getEnvironment).toHaveBeenCalledWith(
+				MOCK_ENV_VARS.CONTENTFUL_ENVIRONMENT
+			);
+			expect(mockContentfulEnviroment.getEntries).toHaveBeenCalledWith({
+				content_type: 'comment',
 			});
 		});
 	});
@@ -121,6 +148,14 @@ describe('comment queries and mutations', () => {
 					},
 				],
 			});
+
+			expect(mockContentfulClient.getSpace).toHaveBeenCalledWith(
+				MOCK_ENV_VARS.CONTENTFUL_SPACE_ID
+			);
+			expect(mockContentfulSpace.getEnvironment).toHaveBeenCalledWith(
+				MOCK_ENV_VARS.CONTENTFUL_ENVIRONMENT
+			);
+			expect(mockContentfulEnviroment.getEntry).toHaveBeenCalledWith(MOCK_ID);
 		});
 	});
 
@@ -152,6 +187,23 @@ describe('comment queries and mutations', () => {
 			created_comment = subject.body.singleResult.data.createComment;
 
 			expect(created_comment.content).toEqual(MOCK_COMMENTS[0]);
+
+			expect(mockContentfulClient.getSpace).toHaveBeenCalledWith(
+				MOCK_ENV_VARS.CONTENTFUL_SPACE_ID
+			);
+			expect(mockContentfulSpace.getEnvironment).toHaveBeenCalledWith(
+				MOCK_ENV_VARS.CONTENTFUL_ENVIRONMENT
+			);
+			expect(mockContentfulEnviroment.createEntry).toHaveBeenCalledWith(
+				'comment',
+				{
+					fields: {
+						content: {
+							'en-US': MOCK_COMMENTS[0],
+						},
+					},
+				}
+			);
 		});
 	});
 
@@ -183,6 +235,14 @@ describe('comment queries and mutations', () => {
 				id: MOCK_ID,
 				content: MOCK_COMMENTS[1],
 			});
+
+			expect(mockContentfulClient.getSpace).toHaveBeenCalledWith(
+				MOCK_ENV_VARS.CONTENTFUL_SPACE_ID
+			);
+			expect(mockContentfulSpace.getEnvironment).toHaveBeenCalledWith(
+				MOCK_ENV_VARS.CONTENTFUL_ENVIRONMENT
+			);
+			expect(mockContentfulEnviroment.getEntry).toHaveBeenCalledWith(MOCK_ID);
 		});
 	});
 });
