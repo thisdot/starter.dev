@@ -60,7 +60,6 @@ jest.mock('../../utils/contentful', () => {
 });
 
 describe('post queries and mutations', () => {
-	let subject: any;
 	let post: any;
 	let content: string;
 
@@ -89,12 +88,8 @@ describe('post queries and mutations', () => {
 		post = res.body.singleResult.data.createPost;
 	});
 
-	afterEach(async () => {
-		subject = undefined;
-	});
-
 	describe('query posts', () => {
-		beforeAll(async () => {
+		it('returns created post', async () => {
 			const QUERY = gql`
 				query {
 					posts {
@@ -104,14 +99,14 @@ describe('post queries and mutations', () => {
 				}
 			`;
 
-			subject = await apolloServer.executeOperation({
+			const subject: GraphQLResponse = await apolloServer.executeOperation({
 				query: QUERY,
 			});
-		});
+			assert(subject.body.kind === 'single');
+			expect(subject.body.singleResult.errors).toBeUndefined();
+			assert(subject.body.singleResult.data);
 
-		it('returns created post', () => {
 			const createdPosts = subject.body.singleResult.data.posts;
-			expect(true).toEqual(true);
 			expect(createdPosts).toContainEqual({
 				id: post.id,
 				content: post.content,
@@ -120,7 +115,7 @@ describe('post queries and mutations', () => {
 	});
 
 	describe('query post by id', () => {
-		beforeAll(async () => {
+		it('returns the post with the given id', async () => {
 			const QUERY = gql`
 				query PostQuery($id: ID!) {
 					posts(id: $id) {
@@ -130,16 +125,15 @@ describe('post queries and mutations', () => {
 				}
 			`;
 
-			subject = await apolloServer.executeOperation({
+			const subject: GraphQLResponse = await apolloServer.executeOperation({
 				query: QUERY,
 				variables: {
 					id: post.id,
 				},
 			});
-		});
-
-		it('returns the post with the given id', () => {
-			// console.log('by id', JSON.stringify(subject));
+			assert(subject.body.kind === 'single');
+			expect(subject.body.singleResult.errors).toBeUndefined();
+			assert(subject.body.singleResult.data);
 			expect(subject.body.singleResult.data).toEqual({
 				posts: [
 					{
@@ -154,7 +148,7 @@ describe('post queries and mutations', () => {
 	describe('mutation createPost', () => {
 		let created_post: any;
 
-		beforeAll(async () => {
+		it('creates a post with the given content', async () => {
 			const MUTATION = gql`
 				mutation CreatePostMutation($content: String!) {
 					createPost(content: $content) {
@@ -164,23 +158,22 @@ describe('post queries and mutations', () => {
 				}
 			`;
 
-			subject = await apolloServer.executeOperation({
+			const subject: GraphQLResponse = await apolloServer.executeOperation({
 				query: MUTATION,
 				variables: {
 					content,
 				},
 			});
-
+			assert(subject.body.kind === 'single');
+			expect(subject.body.singleResult.errors).toBeUndefined();
+			assert(subject.body.singleResult.data);
 			created_post = subject.body.singleResult.data.createPost;
-		});
-
-		it('creates a post with the given content', () => {
 			expect(created_post.content).toEqual(content);
 		});
 	});
 
 	describe('mutation updatePost', () => {
-		beforeAll(async () => {
+		it('updates the post with the given content', async () => {
 			const MUTATION = gql`
 				mutation UpdatePostMutation($id: ID!, $content: String!) {
 					updatePost(id: $id, content: $content) {
@@ -190,16 +183,18 @@ describe('post queries and mutations', () => {
 				}
 			`;
 
-			subject = await apolloServer.executeOperation({
+			const subject: GraphQLResponse = await apolloServer.executeOperation({
 				query: MUTATION,
 				variables: {
 					id: post.id,
 					content: MOCK_CONTENT[1],
 				},
 			});
-		});
 
-		it('updates the post with the given content', () => {
+			assert(subject.body.kind === 'single');
+			expect(subject.body.singleResult.errors).toBeUndefined();
+			assert(subject.body.singleResult.data);
+
 			expect(subject.body.singleResult.data.updatePost).toEqual({
 				id: post.id,
 				content: MOCK_CONTENT[1],
