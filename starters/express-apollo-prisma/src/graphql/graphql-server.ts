@@ -1,7 +1,8 @@
 import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
 import { schema } from './schema';
-import { ServerContext, serverContextMiddlewareOptions } from './server-context';
+import { ServerContext } from './server-context';
+import { serverContextMiddlewareOptions } from './server-context/server-context-middleware-options';
 
 const server = new ApolloServer<ServerContext>({
 	schema,
@@ -10,4 +11,4 @@ const server = new ApolloServer<ServerContext>({
 export const graphqlServer = server;
 
 export const createGraphqlServerMiddleware = () =>
-	expressMiddleware(server, serverContextMiddlewareOptions);
+	expressMiddleware<ServerContext>(server, serverContextMiddlewareOptions);
