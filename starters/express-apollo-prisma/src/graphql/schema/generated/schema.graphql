@@ -1,0 +1,8 @@
+schema {
+	query: Query
+}
+
+type Query {
+	"Simple hello world query that accepts a greeting"
+	hello(greeting: String!): String!
+}
