@@ -1,10 +1,9 @@
-import { expressMiddleware } from '@apollo/server/express4';
 import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
 import express from 'express';
 import http from 'http';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import { graphqlServer } from './graphql';
+import { graphqlServer, createGraphqlServerMiddleware } from './graphql';
 import * as dotenv from 'dotenv';
 const { parsed: ENV } = dotenv.config();
 
@@ -30,12 +29,7 @@ if (isNaN(PORT)) {
 	await graphqlServer.start();
 
 	// Set up server-related Express middleware
-	app.use(
-		'/',
-		expressMiddleware(graphqlServer, {
-			context: async ({ req }) => ({ token: req.headers.authorization }),
-		})
-	);
+	app.use('/', createGraphqlServerMiddleware());
 
 	// Modified server startup
 	await new Promise<void>((resolve) => httpServer.listen({ port: PORT }, resolve));

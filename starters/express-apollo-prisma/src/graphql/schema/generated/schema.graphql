@@ -1,8 +1,45 @@
 schema {
 	query: Query
+	mutation: Mutation
+}
+
+input CreateTechnology {
+	"Technology Name"
+	name: String!
+}
+
+"""
+Technology mutations
+"""
+type Mutation {
+	"Creates a new Technology"
+	createTechnology(input: CreateTechnology!): Technology!
+	"Removes a Technology"
+	deleteTechnology(id: ID!): Boolean
+	"Updates a Technology"
+	updateTechnology(id: ID!, input: UpdateTechnology!): Technology!
 }
 
 type Query {
 	"Simple hello world query that accepts a greeting"
 	hello(greeting: String!): String!
+	"Returns a list of Technologies"
+	technologies: [Technology]!
+	"Returns a single Technology by ID"
+	technology(id: ID!): Technology
+}
+
+"""
+Technology object
+"""
+type Technology {
+	"The ID of the Technology"
+	id: ID!
+	"The name of the Technology"
+	name: String!
+}
+
+input UpdateTechnology {
+	"Technology Name"
+	name: String
 }
