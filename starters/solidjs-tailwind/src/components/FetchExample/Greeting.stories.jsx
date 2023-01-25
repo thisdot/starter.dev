@@ -1,3 +1,4 @@
+import { Router } from '@solidjs/router';
 import { Greeting } from '.';
 
 export default {
@@ -17,4 +18,8 @@ export default {
   },
 };
 
-export const FetchExample = (args) => <Greeting {...args} />;
+export const FetchExample = (args) => (
+  <Router>
+    <Greeting {...args} />
+  </Router>
+);
