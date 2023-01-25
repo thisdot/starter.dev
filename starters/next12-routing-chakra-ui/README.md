@@ -1,123 +1,34 @@
 # nextjs12-routing-chakra-ui starter kit
 
-This starter kit features **Next.js v12** and **Chakra UI**.
-
 ## Table of Contents
 
 - [Overview](#overview)
-  - [Tech Stack](#tech-stack)
-  - [Included Tooling](#included-tooling)
-  - [Unit testing](#unit-testing)
-  - [Storybook's Accessibility testing](#storybooks-accessibility-testing)
-  - [Chakra UI's Customizable theme](#chakra-uis-customizable-theme)
-  - [Example Components](#example-components)
-    - [API routes example](#api-routes-example)
-    - [Counter Example](#counter-example)
-    - [Fetch example](#fetch-example)
 - [Installation](#installation)
   - [CLI (Recommended)](#cli-recommended)
   - [Manual](#manual)
 - [Commands](#commands)
+- [State management](#state-management)
+- [Testing](#testing)
+  - [Unit testing](#unit-testing)
+  - [Storybook's Accessibility testing](#storybooks-accessibility-testing)
+- [Chakra UI's Customizable theme](#chakra-uis-customizable-theme)
+- [Example Components](#example-components)
+  - [API routes example](#api-routes-example)
+  - [Counter Example](#counter-example)
+  - [Fetch example](#fetch-example)
 - [Kit Organization / Architecture](#kit-organization--architecture)
 
 ## Overview
 
-### Tech Stack
+This Next.js 12 starter kit comes with formatting, linting, example components, testing and styling. Here is the complete list of technologies and tooling used in this kit:
 
 - [Next.js 12](https://nextjs.org/blog/next-12)
 - [Chakra UI](https://chakra-ui.com/)
-
-### Included Tooling
-
 - [Jest](https://jestjs.io/) - Test runner
 - [TypeScript](https://www.typescriptlang.org/) - Type checking
 - [Storybook](https://storybook.js.org/) - Component library
 - [ESLint](https://eslint.org/) - Code linting
 - [Prettier](https://prettier.io/) - Code formatting
-
-### Unit testing
-
-All of the unit tests for this kit can be found in the `__tests__` directory.
-
-```
-.
-├── __tests__
-│   ├── counter-example.test.tsx
-│   ├── fetch-example.test.tsx
-│   └── index.test.tsx
-```
-
-### Storybook's Accessibility testing
-
-This starter kit comes with the `@storybook/addon-a11y` which is used to check for common accessibility errors in your components. When you run `yarn run storybook`, each story will show detailed explanations with suggested fixes if errors are found.
-
-### Chakra UI's Customizable theme
-
-Inside the `src/pages/_app.tsx` directory, you will find the basic setup for customizing your theme, colors, and font styles using Chakra UI.
-
-```js
-const colors = {
-  brand: {
-    50: "#1a365d",
-    100: "#153e75",
-    500: "#2464ec",
-  },
-};
-
-const fontWeights = {
-  normal: 400,
-  medium: 600,
-  bold: 800,
-};
-
-const theme = extendTheme({ colors, fontWeights });
-```
-
-### Example Components
-
-#### API routes example
-
-Inside the `src/pages/api` directory, you will find a `hello.ts` file which includes an example on how to create your own API's with Next.js 12.
-
-```js
-import type { NextApiRequest, NextApiResponse } from "next";
-
-type Data = {
-  name: string,
-};
-
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
-) {
-  res.status(200).json({ name: "This Dot Labs" });
-}
-```
-
-#### Counter Example
-
-Inside the `src/pages/counter-example` directory, you will find the counter-example `index.tsx` and `counter.stories.tsx` files. In this example, you will see how to work with Chakra UI components in Next.js 12. You will also see examples on how to write stories for your components using Storybook.
-
-#### Fetch example
-
-Inside the `src/pages/fetch-example` directory, you will find the fetch example `[[...slug]].tsx` and `fetch.stories.tsx` files. This example will show you how to work with a REST API and `getServerSideProps`.You will also see examples on how to write stories for your components using Storybook.
-
-```js
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { slug } = context.query;
-
-  const res = await fetch(
-    `https://api.starter.dev/.netlify/functions/server/hello?greeting=from ${checkSlugType(
-      slug
-    )}!`
-  );
-  const userStr = await res.text();
-
-  return {
-    props: { userStr },
-  };
-};
-```
 
 ## Installation
 
@@ -159,6 +70,102 @@ git clone https://github.com/thisdot/starter.dev.git
 - `yarn run lint` - Runs ESLint on the project.
 - `yarn run format:fix` - Formats code for the entire project
 
+## State management
+
+For this starter kit we are not using a global state manager but instead storing state inside the routes for Next.js.
+
+## Testing
+
+### Unit testing
+
+The unit tests for the home page can be found in the `__tests__` directory.
+
+```
+.
+├── __tests__
+│   └── index.test.tsx
+```
+
+The unit tests for the `Counter` and `Greeting` examples can be found in the `components` directory.
+
+```
+.
+├─ src/
+│  ├─ components
+│  |  ├─ Counter
+|  |  |  ├─ Counter.stories.tsx
+|  |  |  ├─ Counter.test.tsx
+|  |  |  ├─ Counter.tsx
+|  |  |  ├─ Index.ts
+│  |  ├─ Greeting
+|  |  |  ├─ Greeting.stories.tsx
+|  |  |  ├─ Greeting.test.tsx
+|  |  |  ├─ Greeting.tsx
+|  |  |  ├─ Index.ts
+```
+
+### Storybook's Accessibility testing
+
+This starter kit comes with the `@storybook/addon-a11y` which is used to check for common accessibility errors in your components. When you run `yarn run storybook`, each story will show detailed explanations with suggested fixes if errors are found.
+
+### Chakra UI's Customizable theme
+
+Inside the `src/pages/_app.tsx` directory, you will find the basic setup for customizing your theme, colors, and font styles using Chakra UI.
+
+```js
+const colors = {
+  brand: {
+    50: "#1a365d",
+    100: "#153e75",
+    500: "#2464ec",
+  },
+};
+
+const fontWeights = {
+  normal: 400,
+  medium: 600,
+  bold: 800,
+};
+
+const breakpoints = {
+  sm: "320px",
+  md: "768px",
+  lg: "960px",
+  xl: "1200px",
+};
+
+export const theme = extendTheme({ colors, fontWeights, breakpoints });
+```
+
+### Example Components
+
+#### API routes example
+
+Inside the `src/pages/api` directory, you will find a `hello.ts` file which includes an example on how to create your own API's with Next.js 12.
+
+```js
+import type { NextApiRequest, NextApiResponse } from "next";
+
+type Data = {
+  name: string,
+};
+
+export default function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<Data>
+) {
+  res.status(200).json({ name: "This Dot Labs" });
+}
+```
+
+#### Counter Example
+
+Inside the `src/components/Counter` directory, you will find the `Counter.tsx` and `Counter.stories.tsx` files. In this example, you will see how to work with Chakra UI components in Next.js 12. You will also see examples on how to write stories for your components using Storybook.
+
+#### Fetch example
+
+Inside the `src/pages` directory, you will find the `fetch-example.tsx` which demonstrates how to fetch data using Next.js 12. Inside the `src/components/Greeting` directory, the `Greeting.stories.tsx` provides examples on how to write stories for your components using Storybook.
+
 ## Kit Organization / Architecture
 
 At the root level, you will find all of the testing, linting, Prettier, Storybook and TypeScript configurations along with the `src` and `public` directories.
@@ -166,19 +173,26 @@ At the root level, you will find all of the testing, linting, Prettier, Storyboo
 Inside the `src` directory, you will find the following structure:
 
 ```
+
 .
 ├── components
-│   └── greeting
-│       └── index.tsx
+│   ├── Counter
+│   │   ├── Counter.stories.tsx
+│   │   ├── Counter.test.tsx
+│   │   ├── Counter.tsx
+│   │   └── index.ts
+│   ├── Greeting
+│   │   ├── Greeting.stories.tsx
+│   │   ├── Greeting.test.tsx
+│   │   ├── Greeting.tsx
+│   │   └── index.ts
+│   └── index.ts
 └── pages
     ├── api
     │   └── hello.ts
-    ├── counter-example
-    │   ├── counter.stories.tsx
-    │   └── index.tsx
-    ├── fetch-example
-    │   ├── [[...slug]].tsx
-    │   └── fetch.stories.tsx
     ├── _app.tsx
+    ├── counter-example.tsx
+    ├── fetch-example.tsx
     └── index.tsx
+
 ```
