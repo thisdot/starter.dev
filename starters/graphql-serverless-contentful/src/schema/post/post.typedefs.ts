@@ -7,12 +7,12 @@ export const postTypeDefs = gql`
 	}
 
 	type Query {
-		"Simple hello world query that accepts a greeting"
+		"Post(s): GET"
 		posts(id: ID): [Post]
 	}
 
 	type Mutation {
-		"Simple hello world mutation that accepts a greeting"
+		"Post: CRUD operations"
 		createPost(content: String!): Post
 		updatePost(id: ID!, content: String!): Post
 		deletePost(id: ID!): ID

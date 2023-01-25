@@ -7,11 +7,10 @@ const config: JestConfigWithTsJest = {
 	coverageReporters: ['html', 'json', 'lcov', 'text', 'clover'],
 	coverageDirectory: 'coverage',
 	coveragePathIgnorePatterns: ['/node_modules/', '/test/'],
-	globals: {
-		'ts-jest': {
-			tsconfig: '<rootDir>/tsconfig.spec.json',
-		},
+	transform: {
+		'\\.[jt]sx?$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.spec.json' }],
 	},
+	setupFiles: ['<rootDir>/.jest/set-env-vars.ts'],
 };
 
 export default config;

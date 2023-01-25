@@ -7,12 +7,12 @@ export const commentTypeDefs = gql`
 	}
 
 	type Query {
-		"Simple hello world query that accepts a greeting"
+		"Comment(s): GET"
 		comments(id: ID): [Comment]
 	}
 
 	type Mutation {
-		"Simple hello world mutation that accepts a greeting"
+		"Comment: CRUD Operations"
 		createComment(content: String!): Comment
 		updateComment(id: ID!, content: String!): Comment
 		deleteComment(id: ID!): ID
