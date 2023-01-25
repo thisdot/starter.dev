@@ -5,8 +5,8 @@ import greetingFetcher from './greetingFetcher';
 const Greeting = () => {
   const location = useLocation();
 
-  const [resp] = createResource(
-    () => greetingFetcher(location.query?.greeting ?? '')
+  const [resp] = createResource(() =>
+    greetingFetcher(location.query?.greeting ?? '')
   );
 
   return (
