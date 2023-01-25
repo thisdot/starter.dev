@@ -1,4 +1,5 @@
 import { JestConfigWithTsJest } from 'ts-jest';
+
 const config: JestConfigWithTsJest = {
 	preset: 'ts-jest',
 	testEnvironment: 'node',
@@ -6,7 +7,7 @@ const config: JestConfigWithTsJest = {
 	collectCoverageFrom: ['src/**/*.ts'],
 	coverageReporters: ['html', 'json', 'lcov', 'text', 'clover'],
 	coverageDirectory: 'coverage',
-	coveragePathIgnorePatterns: ['/node_modules/', '/test/'],
+	coveragePathIgnorePatterns: ['/node_modules/', '/test/', '/utils/'],
 	transform: {
 		'\\.[jt]sx?$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.spec.json' }],
 	},
