@@ -134,8 +134,6 @@ The `.typedefs.ts` files handle all the types for GraphQL.
 
 `Apollo Server` is great for a straightforward setup, incremental adoption and universal compatibility and production readiness.
 
-![Apollo Server](./screenshots/apollo-server.svg)
-
 ### Serverless v3.x
 
 `Serverless` is an all-in-one development solution for auto-scaling apps on AWS Lambda.
