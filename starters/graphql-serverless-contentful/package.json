@@ -28,7 +28,10 @@
 	"graphql": "16.6.0",
 	"graphql-tag": "2.12.6",
 	"serverless": "3.26.0",
-	"serverless-plugin-typescript": "2.1.4"
+	"serverless-plugin-typescript": "2.1.4",
+	"@apollo/utils.keyvadapter": "^2.0.0",
+	"@keyv/redis": "^2.5.4",
+	"keyv": "^4.5.2"
   },
   "devDependencies": {
 	"@graphql-codegen/cli": "2.16.4",
