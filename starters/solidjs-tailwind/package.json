@@ -23,7 +23,8 @@
     "lint": "eslint --ext .js,.jsx ./src",
     "lint-fix": "pnpm lint --fix",
     "format": "prettier --write ./src --ignore-path .gitignore",
-    "storybook": "start-storybook"
+    "storybook": "start-storybook",
+    "prepare": "cd .. && cd .. && husky install starters/solidjs-tailwind/.husky"
   },
   "license": "MIT",
   "devDependencies": {
@@ -47,6 +48,7 @@
     "eslint": "8.26.0",
     "eslint-plugin-solid": "0.7.4",
     "eslint-plugin-unused-imports": "2.0.0",
+    "husky": "^8.0.3",
     "jsdom": "20.0.1",
     "msw": "^0.49.2",
     "postcss": "8.4.18",
