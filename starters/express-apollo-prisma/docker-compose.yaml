@@ -1,18 +1,32 @@
 version: '3.8'
 
 services:
-  mysqldb:
-    image: mysql:5.7
+  mysql:
     container_name: mysql
+    image: mysql:5.7
     restart: unless-stopped
     env_file: ./.env
     environment:
       - MYSQL_ROOT_PASSWORD=$DOCKER_MYSQLDB_ROOT_PASSWORD
       - MYSQL_DATABASE=$DOCKER_MYSQLDB_DATABASE
     ports:
-      - $DOCKER_MYSQLDB_LOCAL_PORT:$DOCKER_MYSQLDB_DOCKER_PORT
+      - $DOCKER_MYSQLDB_PORT_LOCAL:$DOCKER_MYSQLDB_PORT_CONTAINER
     volumes:
       - db:/var/lib/mysql
-
+  redis:
+    container_name: redis
+    image: redis:7.0-alpine
+    restart: unless-stopped
+    env_file: ./.env
+    command: redis-server --loglevel warning --requirepass $DOCKER_REDIS_PASSWORD
+    ports:
+      - $DOCKER_REDIS_PORT_LOCAL:$DOCKER_REDIS_PORT_CONTAINER
+    volumes:
+      - $PWD/redis-data:/var/lib/redis
+      - $PWD/redis.conf:/usr/local/etc/redis/redis.conf
+    environment:
+      - REDIS_REPLICATION_MODE=master
+    depends_on:
+      - mysql
 volumes:
   db:
