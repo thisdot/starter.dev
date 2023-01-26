@@ -6,7 +6,7 @@
   "contributors": [
     "Maarten Bicknese <maarten.bicknese@thisdot.co>",
     "Chinedu Okpala <chinedu.okpala@thisdot.co>",
-    "Daina Scuarissi <daian@thisdot.co>",
+    "Daian Scuarissi <daian@thisdot.co>",
     "Mattia Magi <mattia.magi@thisdot.co>",
     "Mark Shenouda <mark@thisdot.co>",
     "Victor Umeh <victor.umeh@thisdot.co>",
@@ -21,7 +21,7 @@
     "serve": "vite preview",
     "test": "vitest",
     "lint": "eslint --ext .js,.jsx ./src",
-    "lint-fix": "pnpm lint --fix",
+    "lint-fix": "eslint --ext .js,.jsx ./src --fix",
     "format": "prettier --write ./src --ignore-path .gitignore",
     "storybook": "start-storybook",
     "prepare": "cd .. && cd .. && husky install starters/solidjs-tailwind/.husky"
