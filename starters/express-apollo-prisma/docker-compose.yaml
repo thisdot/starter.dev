@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  mysqldb:
+    image: mysql:5.7
+    container_name: mysql
+    restart: unless-stopped
+    env_file: ./.env
+    environment:
+      - MYSQL_ROOT_PASSWORD=$DOCKER_MYSQLDB_ROOT_PASSWORD
+      - MYSQL_DATABASE=$DOCKER_MYSQLDB_DATABASE
+    ports:
+      - $DOCKER_MYSQLDB_LOCAL_PORT:$DOCKER_MYSQLDB_DOCKER_PORT
+    volumes:
+      - db:/var/lib/mysql
+
+volumes:
+  db:
