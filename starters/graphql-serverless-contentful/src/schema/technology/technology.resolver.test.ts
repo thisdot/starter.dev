@@ -117,7 +117,6 @@ describe('technology queries and mutations', () => {
 	});
 
 	describe('mutation createTechnology', () => {
-		let created_technology: any;
 
 		it('creates a technology with the given content', async () => {
 			const query = gql`
