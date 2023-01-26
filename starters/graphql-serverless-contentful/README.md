@@ -65,7 +65,7 @@ git clone https://github.com/thisdot/starter.dev.git
 
 ### Environment variables
 
-Copy the content of `.env.example` into a new `.env` file.
+Copy the contents of the file `.env.example` into a new `.env` file.
 
 ```bash
 cp .env.example .env
@@ -103,11 +103,11 @@ CONTENTFUL_ENVIRONMENT=master
 - `npm run test` - Runs the unit tests.
 - `npm run lint` - Runs ESLint on the project.
 - `npm run prettier` - Formats code for the entire project
+- `npm run deploy` - Deploy your application on `AWS Lambda`
 
-## Kit Organization / Architecture
+## Project Structure
 
-The demo components included in the starter kit are co-located with the tests. This kit includes things like mocks, and
-data fetching queries that are modeled after an MVC type architecture. Using this structure makes it easy to find all
+The demo components included in the starter kit are co-located with the tests. This kit includes things like mocks and data-fetching queries that are modeled after an MVC-type architecture. Using this structure makes it easy to find all
 the code and functionality related to a specific component. This pattern follows the single responsibility principle
 since each file has one purpose. For example, the `.resolvers.ts` files handle data for all resolvers with the
 functionality related to data fetching for your query. The `.test.ts` files handle all the unit tests for the resolvers.
@@ -121,3 +121,47 @@ The `.typedefs.ts` files handle all the types for GraphQL.
 - technologies.test.ts - Unit tests for the Technology entity
 - technologies.typedefs.ts - Type definitions for the Technology entity
 ```
+
+## Technologies
+
+### GraphQL
+
+`GraphQL` is a query language for your API and a server-side runtime for executing queries using a type system you define for your data. In this kit, we use GraphQL to query only the data we require from our `Contentful CMS` space.
+
+### Apollo Server v4.x
+
+`Apollo Server` is an open-source, spec-compliant GraphQL server that's compatible with any GraphQL client, including Apollo Client. It's the best way to build a production-ready, self-documenting GraphQL API that can use data from any source.
+
+`Apollo Server` is great for a straightforward setup, incremental adoption and universal compatibility and production readiness.
+
+### Serverless v3.x
+
+`Serverless` is an all-in-one development solution for auto-scaling apps on AWS Lambda.
+Easily define your applications as AWS Lambda functions and their triggers through simple abstract syntax in the `serverless.yaml` file.
+
+`Serverless plugins` extend the Serverless Framework with new features. Plugins in this application include:
+
+- [`serverless-offline](https://github.com/dherault/serverless-offline)` - allows us to deploy our application locally to speed up development cycles.
+- [`serverless-plugin-typescript`](https://github.com/graphcool/serverless-plugin-typescript) - use Typescript with zero-config
+- [serverless-dotenv-plugin](https://github.com/infrontlabs/serverless-dotenv-plugin) - Preload function environment variables into Serverless.
+-
+
+### Contentful CMS
+
+Contentful CMS is a composable content management platform that meets the unique demands of digital content and all the teams that produce and work with it. It allows content creators to focus on assembling, editing, approving and publishing content.
+
+## Deployment
+
+To deploy your application on `AWS lambda` simply run:
+
+```sh
+   sls deploy
+```
+
+To deploy a single function run:
+
+```sh
+   deploy function --function myFunction
+```
+
+For more information on checkout this [article](https://www.serverless.com/framework/docs/providers/aws/guide/deploying)
