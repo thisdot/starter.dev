@@ -4,6 +4,7 @@ import { GraphQLResponse } from '@apollo/server/src/externalTypes';
 import assert from 'assert';
 import { Query } from '../../generated/graphql';
 import { client } from '../../utils/contentful';
+import { Environment, Space } from 'contentful-management';
 
 type TechnologyQuery = Pick<Query, 'technology'>;
 
@@ -51,19 +52,16 @@ const MOCK_CONTENTFUL_ENTRIES = {
 const getEntries = jest.fn(() => MOCK_CONTENTFUL_ENTRIES);
 const getEntry = jest.fn(() => MOCK_CONTENTFUL_ENTRIES.items[1]);
 const createEntry = jest.fn(() => MOCK_CONTENTFUL_ENTRIES.items[0]);
-// @ts-ignore
-client.getSpace = (key) =>
-	// @ts-ignore
+
+client.getSpace = () =>
 	Promise.resolve({
-		// @ts-ignore
-		getEnvironment: (key) =>
-			// @ts-ignore
+		getEnvironment: () =>
 			Promise.resolve({
 				getEntry,
 				getEntries,
 				createEntry,
-			}),
-	});
+			} as unknown as Environment),
+	} as unknown as Space);
 
 describe('technology queries and mutations', () => {
 	describe('query technologies', () => {
