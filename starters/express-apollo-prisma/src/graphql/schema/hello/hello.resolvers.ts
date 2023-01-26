@@ -1,4 +1,4 @@
-import { ServerContext } from '../../server-context';
+import { ServerContext } from '../../server-context/server-context';
 import { Resolvers } from '../generated/types';
 
 export const helloResolvers: Resolvers<ServerContext> = {

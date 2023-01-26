@@ -14,14 +14,68 @@ export type Scalars = {
 	Float: number;
 };
 
+export type CreateTechnology = {
+	/** Technology Name */
+	name: Scalars['String'];
+};
+
+/** Technology mutations */
+export type Mutation = {
+	__typename?: 'Mutation';
+	/** Creates a new Technology */
+	createTechnology: Technology;
+	/** Removes a Technology */
+	deleteTechnology?: Maybe<Scalars['Boolean']>;
+	/** Updates a Technology */
+	updateTechnology: Technology;
+};
+
+/** Technology mutations */
+export type MutationcreateTechnologyArgs = {
+	input: CreateTechnology;
+};
+
+/** Technology mutations */
+export type MutationdeleteTechnologyArgs = {
+	id: Scalars['ID'];
+};
+
+/** Technology mutations */
+export type MutationupdateTechnologyArgs = {
+	id: Scalars['ID'];
+	input: UpdateTechnology;
+};
+
 export type Query = {
 	__typename?: 'Query';
 	/** Simple hello world query that accepts a greeting */
 	hello: Scalars['String'];
+	/** Returns a list of Technologies */
+	technologies: Array<Maybe<Technology>>;
+	/** Returns a single Technology by ID */
+	technology?: Maybe<Technology>;
 };
 
 export type QueryhelloArgs = {
 	greeting: Scalars['String'];
+};
+
+export type QuerytechnologyArgs = {
+	id: Scalars['ID'];
+};
+
+/** Technology object */
+export type Technology = {
+	__typename?: 'Technology';
+	/** The ID of the Technology */
+	id: Scalars['ID'];
+	/** The name of the Technology */
+	name: Scalars['String'];
+};
+
+export type UpdateTechnology = {
+	/** Technology Name */
+	name?: InputMaybe<Scalars['String']>;
 };
 
 export type ResolverTypeWrapper<T> = Promise<T> | T;
@@ -109,15 +163,49 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
 	Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
+	CreateTechnology: CreateTechnology;
+	ID: ResolverTypeWrapper<Scalars['ID']>;
+	Mutation: ResolverTypeWrapper<{}>;
 	Query: ResolverTypeWrapper<{}>;
 	String: ResolverTypeWrapper<Scalars['String']>;
+	Technology: ResolverTypeWrapper<Technology>;
+	UpdateTechnology: UpdateTechnology;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
 	Boolean: Scalars['Boolean'];
+	CreateTechnology: CreateTechnology;
+	ID: Scalars['ID'];
+	Mutation: {};
 	Query: {};
 	String: Scalars['String'];
+	Technology: Technology;
+	UpdateTechnology: UpdateTechnology;
+};
+
+export type MutationResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']
+> = {
+	createTechnology?: Resolver<
+		ResolversTypes['Technology'],
+		ParentType,
+		ContextType,
+		RequireFields<MutationcreateTechnologyArgs, 'input'>
+	>;
+	deleteTechnology?: Resolver<
+		Maybe<ResolversTypes['Boolean']>,
+		ParentType,
+		ContextType,
+		RequireFields<MutationdeleteTechnologyArgs, 'id'>
+	>;
+	updateTechnology?: Resolver<
+		ResolversTypes['Technology'],
+		ParentType,
+		ContextType,
+		RequireFields<MutationupdateTechnologyArgs, 'id' | 'input'>
+	>;
 };
 
 export type QueryResolvers<
@@ -130,8 +218,26 @@ export type QueryResolvers<
 		ContextType,
 		RequireFields<QueryhelloArgs, 'greeting'>
 	>;
+	technologies?: Resolver<Array<Maybe<ResolversTypes['Technology']>>, ParentType, ContextType>;
+	technology?: Resolver<
+		Maybe<ResolversTypes['Technology']>,
+		ParentType,
+		ContextType,
+		RequireFields<QuerytechnologyArgs, 'id'>
+	>;
+};
+
+export type TechnologyResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['Technology'] = ResolversParentTypes['Technology']
+> = {
+	id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+	name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
 export type Resolvers<ContextType = any> = {
+	Mutation?: MutationResolvers<ContextType>;
 	Query?: QueryResolvers<ContextType>;
+	Technology?: TechnologyResolvers<ContextType>;
 };
