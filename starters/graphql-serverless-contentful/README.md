@@ -20,9 +20,7 @@ This starter kit features **Serverless**, **GraphQL**, **Apollo Server**, and **
 
 ### Example Code
 
-- GraphQL `hello world` resolver
-- `posts` query to fetch posts data from Contentful
-- `comments` query to fetch comments data from Contentful
+- `Technology` query to fetch technology data from Contentful
 
 ## Installation
 
@@ -53,7 +51,8 @@ pnpm create @this-dot/starter --kit serverless-framework-apollo-contentful
 
 ### Manual
 
-This requires a download of the entire starter.dev repository and extraction of the `serverless-framework-apollo-contentful` kit from the starters directory.
+This requires a download of the entire starter.dev repository and extraction of
+the `serverless-framework-apollo-contentful` kit from the starters directory.
 
 ```bash
 git clone https://github.com/thisdot/starter.dev.git
@@ -72,7 +71,8 @@ Copy the content of `.env.example` into a new `.env` file.
 cp .env.example .env
 ```
 
-You would need an account with [contentful.com](http://contentful.com) in order to get the environment variables required:
+You would need an account with [contentful.com](http://contentful.com) in order to get the environment variables
+required:
 
 ```bash
 CONTENTFUL_CONTENT_MANAGEMENT_API_TOKEN=xxx
@@ -85,14 +85,16 @@ CONTENTFUL_ENVIRONMENT=master
 1. Once you're signed in to contentful create a space
 
 2. When that's done, go to **Settings** -> **API keys**
-Click on **Generate personal token** to get the `CONTENTFUL_CONTENT_MANAGEMENT_API_TOKEN` variable
-![API tokens](./screenshots/api-tokens.png)
+   Click on **Generate personal token** to get the `CONTENTFUL_CONTENT_MANAGEMENT_API_TOKEN` variable
+   ![API tokens](./screenshots/api-tokens.png)
 
 3. Go to **Settings** -> **General settings** to get the `CONTENTFUL_SPACE_ID`
-![Space ID](./screenshots/space-id.png)  
-After you've gotten your API TOKEN and Space ID from contentful, modify the `.env` file and replace them with `xxx`.
+   ![Space ID](./screenshots/space-id.png)  
+   After you've gotten your API TOKEN and Space ID from contentful, modify the `.env` file and replace them with `xxx`.
 
-4. For demo purposes, this kit comes pre-configured with a `Post` and `Comment` model. To use these, create the content models for them in Contentful. Each model only has a `content` text field, the `id` field gets provided by Contentful.
+4. For demo purposes, this kit comes pre-configured with a `Technology` model. To use this, create the content model for
+   it in Contentful. The model has `displayName`, `description` and `url` text fields, the `id` field gets provided by
+   Contentful.
    ![content models](./screenshots/content-models.png)
 
 ## Commands
@@ -104,17 +106,18 @@ After you've gotten your API TOKEN and Space ID from contentful, modify the `.en
 
 ## Kit Organization / Architecture
 
-The demo components included in the starter kit are co-located with the tests. This kit includes things like mocks, and data fetching queries that are modeled after an MVC type architecture. Using this structure makes it easy to find all the code and functionality related to a specific component. This pattern follows the single responsibility principle since each file has one purpose. For example, the `.resolvers.ts` files handle data for all resolvers with the functionality related to data fetching for your query. The `.test.ts` files handle all the unit tests for the resolvers. The `.typedefs.ts` files handle all the types for GraphQL.
+The demo components included in the starter kit are co-located with the tests. This kit includes things like mocks, and
+data fetching queries that are modeled after an MVC type architecture. Using this structure makes it easy to find all
+the code and functionality related to a specific component. This pattern follows the single responsibility principle
+since each file has one purpose. For example, the `.resolvers.ts` files handle data for all resolvers with the
+functionality related to data fetching for your query. The `.test.ts` files handle all the unit tests for the resolvers.
+The `.typedefs.ts` files handle all the types for GraphQL.
 
 ### Example directory
 
 ```
-- PostModel.ts - Model for the Post entity
-- CommentModel.ts - Model for the Comment entity
-- posts.resolvers.ts - Resolvers for the Post entity
-- comments.resolvers.ts - Resolvers for the Comment entity
-- posts.test.ts - Unit tests for the Post entity
-- comments.test.ts - Unit tests for the Comment entity
-- posts.typedefs.ts - Type definitions for the Post entity
-- comments.typedefs.ts - Type definitions for the Comment entity
+- TechnologyModel.ts - Model for the Technology entity
+- technologies.resolvers.ts - Resolvers for the Technology entity
+- technologies.test.ts - Unit tests for the Technology entity
+- technologies.typedefs.ts - Type definitions for the Technology entity
 ```

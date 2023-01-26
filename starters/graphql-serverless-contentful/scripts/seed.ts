@@ -1,31 +1,31 @@
-import { CommentModel } from '../src/models/CommentModel';
-import { PostModel } from '../src/models/PostModel';
-import * as dotenv from 'dotenv';
+import { TechnologyModel } from "../src/models/TechnologyModel";
+import * as dotenv from "dotenv";
 
 // load dotenv config
 dotenv.config();
 
 // Add some dummy data to the database
+(async () => {
+	console.log('Seeding database...');
 
-console.log('Seeding database...');
+	await TechnologyModel.create({
+		displayName: 'GraphQL',
+		description:
+			'GraphQL provides a strong-typing system to better understand and utilize our API to retrieve and interact with our data.',
+		url: 'https://graphql.framework.dev/',
+	});
+	await TechnologyModel.create({
+		displayName: 'Node.js',
+		description:
+			'Node.js® is an open-source, cross-platform JavaScript runtime environment.',
+		url: 'https://nodejs.framework.dev/',
+	});
+	await TechnologyModel.create({
+		displayName: 'Express',
+		description:
+			'Express is a minimal and flexible Node.js web application framework.',
+		url: 'https://www.npmjs.com/package/express',
+	});
 
-PostModel.create('Hello world!');
-PostModel.create('Good morning!');
-PostModel.create('Good afternoon!');
-PostModel.create('Good evening!');
-PostModel.create('Have a nice day!');
-PostModel.create('Have a nice weekend!');
-
-CommentModel.create('How are you?');
-CommentModel.create('I am fine, thank you!');
-CommentModel.create('How is the weather?');
-CommentModel.create('It is sunny today!');
-CommentModel.create('What are you doing?');
-CommentModel.create('I am coding!');
-CommentModel.create('What is your favorite color?');
-CommentModel.create('My favorite color is blue!');
-CommentModel.create('What is your favorite food?');
-CommentModel.create('My favorite food is pizza!');
-CommentModel.create('What is your favorite movie?');
-
-console.log('Database seeded!');
+	console.log('Database seeded!');
+})();

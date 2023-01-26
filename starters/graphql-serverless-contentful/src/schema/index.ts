@@ -1,16 +1,6 @@
 import { mergeResolvers, mergeTypeDefs } from '@graphql-tools/merge';
-import { helloTypeDefs, helloResolvers } from './hello';
-import { postTypeDefs, postResolvers } from './post';
-import { commentTypeDefs, commentResolvers } from './comment';
+import { technologyResolvers, technologyTypeDefs } from './technology';
 
-export const typeDefs = mergeTypeDefs([
-	helloTypeDefs,
-	postTypeDefs,
-	commentTypeDefs,
-]);
+export const typeDefs = mergeTypeDefs([technologyTypeDefs]);
 
-export const resolvers = mergeResolvers([
-	helloResolvers,
-	postResolvers,
-	commentResolvers,
-]);
+export const resolvers = mergeResolvers([technologyResolvers]);
