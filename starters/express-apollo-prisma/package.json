@@ -22,8 +22,12 @@
 		"format": "prettier --write . && npm run prisma:format",
 		"format:codegen": "prettier --write \"src/graphql/schema/generated/**/*\"",
 		"prisma:format": "prisma format",
+		"prisma:migrate:reset": "prisma migrate reset",
 		"prisma:migrate:dev": "prisma migrate dev",
-		"prisma:generate": "prisma generate"
+		"prisma:generate": "prisma generate",
+		"prisma:deploy": "prisma migrate deploy",
+		"docker:build": "docker compose up -d",
+		"docker:start": "docker compose start"
 	},
 	"author": "",
 	"devDependencies": {
