@@ -1,8 +1,8 @@
 {
-  "name": "solidstart-tanstackrouter-tailwind-modules",
+  "name": "solidstart-tanstackquery-tailwind-modules",
   "version": "0.1.0",
   "private": true,
-  "description": "SolidStart TanStack Router and TailwindCSS with CSSModules",
+  "description": "SolidStart TanStackQuery and TailwindCSS with CSSModules",
   "contributors": [
     "Chinedu Okpala <chinedu.okpala@thisdot.co>",
     "Daian Scuarissi <daian@thisdot.co>",
