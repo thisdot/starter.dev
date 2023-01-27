@@ -15,6 +15,8 @@ import {
 } from "solid-start";
 import "./root.css";
 
+import { QueryClient, QueryClientProvider } from '@tanstack/solid-query';
+
 export default function Root() {
   const location = useLocation();
   const active = (path: string) =>
