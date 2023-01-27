@@ -1,0 +1,37 @@
+{
+  "name": "solidstart-tanstackquery-tailwind-modules",
+  "version": "0.1.0",
+  "private": true,
+  "description": "SolidStart TanStackQuery and TailwindCSS with CSSModules",
+  "contributors": [
+    "Chinedu Okpala <chinedu.okpala@thisdot.co>",
+    "Daian Scuarissi <daian@thisdot.co>",
+    "Mattia Magi <mattia.magi@thisdot.co>",
+    "Mark Shenouda <mark@thisdot.co>",
+    "Jerry Hogan <jerry.hogan@thisdot.co>"
+  ],
+  "scripts": {
+    "dev": "solid-start dev",
+    "build": "solid-start build",
+    "start": "solid-start start"
+  },
+  "type": "module",
+  "devDependencies": {
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.21",
+    "solid-start-node": "^0.2.15",
+    "tailwindcss": "^3.2.4",
+    "typescript": "^4.9.4",
+    "vite": "^3.2.5"
+  },
+  "dependencies": {
+    "@solidjs/meta": "^0.28.2",
+    "@solidjs/router": "^0.7.0",
+    "solid-js": "^1.6.9",
+    "solid-start": "^0.2.15",
+    "undici": "^5.15.1"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}
