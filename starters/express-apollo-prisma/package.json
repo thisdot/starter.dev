@@ -13,7 +13,7 @@
 	"main": "src/main.ts",
 	"scripts": {
 		"test": "jest",
-		"start": "prisma migrate deploy && npm run codegen && npm run prisma:generate && npm run dev",
+		"start": "npm run prisma:generate && prisma migrate deploy && npm run codegen && npm run dev",
 		"dev": "nodemon",
 		"codegen": "graphql-codegen && npm run format:codegen",
 		"build": "tsc --project tsconfig.build.json",
