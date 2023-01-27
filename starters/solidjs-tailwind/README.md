@@ -17,7 +17,7 @@ This starter kit features SolidJS combined with Tailwind CSS.
 
 ## Overview
 
-This starter kit features the most two hot frameworks in JavaScript and CSS echosystems. SolidJS is a new framework that is built on top of the React API and offers a leaner and more performant alternative to React. Tailwind CSS is a utility-first CSS framework that offers a lot of flexibility and is easy to use. It is also very performant and offers a lot of customization options. This starter kit combines both frameworks to offer a lean and performant setup.
+This starter kit features two of the hottest frameworks in the JavaScript and CSS ecosystems. SolidJS is a new framework built on top of the React API and offers a leaner and more performant alternative to React. Tailwind CSS is a utility-first CSS framework that offers a lot of flexibility and is easy to use. It is also very performant and offers a lot of customization options. This starter kit combines both frameworks to offer a lean and performant setup.
 
 [View the kit on Github](https://github.com/thisdot/starter.dev/tree/main/starters/solidjs-tailwind)
 
@@ -34,6 +34,8 @@ This starter kit features the most two hot frameworks in JavaScript and CSS echo
 - [Prettier](https://prettier.io/) - Code formatting
 
 ## Installation
+
+This README is written with pnpm in mind but you can use other manager runner 
 
 ### CLI (Recommended)
 
@@ -60,14 +62,14 @@ git clone https://github.com/thisdot/starter.dev.git
 
 ## Commands
 
-- `pnpm run dev` - Runs the development server on localhost port 3000 with HMR
-- `pnpm run test` - Runs the test suite
-- `pnpm run storbook` - To showcase the component library
-- `pnpm run build` - Builds a production version of the app to deploy
-- `pnpm run serve` - Serves a production build on localhost port 4173
-- `pnpm run lint` - Uses eslint to find potential issues in the codebase
-- `pnpm run lint-fix` - Tries to auto-fix potential issues
-- `pnpm run format` - Fixes formatting issues in the codebase
+- `dev` - Runs the development server on localhost port 3000 with HMR
+- `test` - Runs the test suite
+- `storybook` - To showcase the component library
+- `build` - Builds a production version of the app to deploy
+- `serve` - Serves a production build on localhost port 4173
+- `lint` - Uses eslint to find potential issues in the codebase
+- `lint-fix` - Tries to auto-fix potential issues
+- `format` - Fixes formatting issues in the codebase
 
 ### Architectural Decisions
 
@@ -96,6 +98,7 @@ Demonstrates how to retrieve data from a third-party API by using `createResourc
 
 ## Demo Implementation
 
-[Repository](https://github.com/thisdot/starter.dev-github-showcases/tree/main/solidjs-tailwind) [Live demo](https://solidjs-tailwind.starter.dev/)
+[Repository](https://github.com/thisdot/starter.dev-github-showcases/tree/main/solidjs-tailwind)  
+[Live demo](https://solidjs-tailwind.starter.dev/)
 
 The demo application re-implements some of GitHub's pages and functionality. It uses the OAuth credentials in GitHub to authenticate users with their GitHub accounts and uses RxJS to fetch data from the GitHub API. Check out the link above to learn more or check out the demo!
