@@ -31,7 +31,7 @@
 	},
 	"author": "",
 	"devDependencies": {
-		"@apollo/utils.withrequired": "^2.0.0",
+		"@apollo/utils.withrequired": "2.0.0",
 		"@graphql-codegen/cli": "2.16.4",
 		"@graphql-codegen/introspection": "2.2.3",
 		"@graphql-codegen/schema-ast": "2.6.1",
