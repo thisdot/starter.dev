@@ -14,7 +14,10 @@
     "dev": "solid-start dev",
     "build": "solid-start build",
     "start": "solid-start start",
-    "test": "vitest"
+    "test": "vitest",
+    "lint": "eslint --ext .js,.jsx ./src",
+    "lint-fix": "eslint --ext .js,.jsx ./src --fix",
+    "format": "prettier --write ./src --ignore-path .gitignore"
   },
   "type": "module",
   "devDependencies": {
