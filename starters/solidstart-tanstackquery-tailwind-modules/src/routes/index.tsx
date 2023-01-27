@@ -1,31 +1,25 @@
 import { A } from "solid-start";
-import Counter from "~/components/Counter";
 
 export default function Home() {
   return (
-    <main class="text-center mx-auto text-gray-700 p-4">
-      <h1 class="max-6-xs text-6xl text-sky-700 font-thin uppercase my-16">
-        Hello world!
-      </h1>
-      <Counter />
-      <p class="mt-8">
-        Visit{" "}
-        <a
-          href="https://solidjs.com"
-          target="_blank"
-          class="text-sky-600 hover:underline"
+     <>
+      <header class="flex justify-center items-center text-white my-5 mx-auto bg-blue-500  w-full lg:w-[75%] p-4 text-lg ">
+        SolidStart - TanStackQuery - TailwindCss - Css Modules - Kit
+      </header>
+      <div class="flex flex-col gap-2 items-center text-blue-800 underline text-base">
+        <A
+          href="/counter"
+          class="hover:text-blue-500 transition-colors delay-100"
         >
-          solidjs.com
-        </a>{" "}
-        to learn how to build Solid apps.
-      </p>
-      <p class="my-4">
-        <span>Home</span>
-        {" - "}
-        <A href="/about" class="text-sky-600 hover:underline">
-          About Page
-        </A>{" "}
-      </p>
-    </main>
+          See Counter example component
+        </A>
+        <A
+          href="/api-example"
+          class="hover:text-blue-500 transition-colors delay-100"
+        >
+          See API example component
+        </A>
+      </div>
+    </>
   );
 }
