@@ -2,8 +2,11 @@ import type { NextPage } from "next";
 import Link from "next/link";
 import { Center, Heading } from "@chakra-ui/react";
 import { Counter } from "../components/Counter";
+import { useState } from "react";
 
 const CounterExample: NextPage = () => {
+  const [count, setCount] = useState<number>(0);
+
   return (
     <>
       <Center>
@@ -18,7 +21,7 @@ const CounterExample: NextPage = () => {
         </Heading>
       </Center>
 
-      <Counter />
+      <Counter count={count} setCount={setCount} />
 
       <Center fontSize="xl" textDecoration="underline" color="#376fec">
         <Link href="/">Return Home</Link>

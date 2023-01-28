@@ -40,7 +40,7 @@ const FetchExample: NextPage = () => {
         </Heading>
       </Center>
 
-      <Greeting name={isLoading ? "Loading..." : greeting} />
+      <Greeting msg={isLoading ? "Loading..." : greeting} />
       <Center fontSize="xl" textDecoration="underline" color="#376fec">
         <Link href="/">Return Home</Link>
       </Center>

@@ -1,9 +1,12 @@
 import { Text, Center } from "@chakra-ui/react";
 
-export const Greeting = ({ name }: { name: string | string[] | undefined }) => {
+type GreetingParams = {
+  msg: string;
+};
+export const Greeting = ({ msg }: GreetingParams) => {
   return (
     <Center my={4}>
-      <Text fontSize="xl">Message: {name}</Text>
+      <Text fontSize="xl">Message: {msg}</Text>
     </Center>
   );
 };

@@ -1,9 +1,12 @@
 import { Heading, Button, Text, Flex } from "@chakra-ui/react";
-import { SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 
-export const Counter = () => {
-  const [count, setCount] = useState(0);
+type CountStateParams = {
+  count: number;
+  setCount: Dispatch<SetStateAction<number>>;
+};
 
+export const Counter = ({ count, setCount }: CountStateParams) => {
   const counterButtons: {
     text: string;
     setCounterState: SetStateAction<number>;
