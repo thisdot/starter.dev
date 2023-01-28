@@ -15,7 +15,7 @@ services:
       - db:/var/lib/mysql
   redis:
     container_name: redis
-    image: 'redis:6.2-alpine'
+    image: 'redis:7.0-alpine'
     restart: unless-stopped
     env_file: ./.env
     entrypoint: /bin/sh -c
