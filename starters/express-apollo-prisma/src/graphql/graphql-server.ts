@@ -1,8 +1,9 @@
 import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
+import { RedisClient } from '../redis';
 import { schema } from './schema';
 import { ServerContext } from './server-context';
-import { serverContextMiddlewareOptions } from './server-context/server-context-middleware-options';
+import { createServerContextMiddlewareOptions } from './server-context/server-context-middleware-options';
 
 const server = new ApolloServer<ServerContext>({
 	schema,
@@ -10,5 +11,11 @@ const server = new ApolloServer<ServerContext>({
 
 export const graphqlServer = server;
 
-export const createGraphqlServerMiddleware = () =>
-	expressMiddleware<ServerContext>(server, serverContextMiddlewareOptions);
+export const createGraphqlServerMiddleware = (
+	redisClient?: RedisClient,
+	redisCacheTtlSeconds?: number
+) =>
+	expressMiddleware<ServerContext>(
+		server,
+		createServerContextMiddlewareOptions(redisClient, redisCacheTtlSeconds)
+	);

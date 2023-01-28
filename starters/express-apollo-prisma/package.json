@@ -29,7 +29,7 @@
 		"docker:build": "docker compose up -d",
 		"docker:start": "docker compose start",
 		"docker:stop": "docker compose stop",
-		"docker:down": "docker compose down",		
+		"docker:down": "docker compose down",
 		"docker:remove": "docker compose rm",
 		"docker:mount": "npm run docker:build && npm run docker:start",
 		"docker:unmount": "npm run docker:stop && npm run docker:down && npm run docker:remove"
@@ -80,6 +80,7 @@
 		"express": "4.18.2",
 		"graphql": "16.6.0",
 		"graphql-tag": "2.12.6",
-		"http": "0.0.1-security"
+		"http": "0.0.1-security",
+		"redis": "4.6.2"
 	}
 }

@@ -5,11 +5,22 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import { graphqlServer, createGraphqlServerMiddleware } from './graphql';
 import * as dotenv from 'dotenv';
+import { connectRedisClient } from './redis';
 const { parsed: ENV } = dotenv.config();
 
 const PORT = Number(ENV?.PORT);
 if (isNaN(PORT)) {
-	throw new Error(`[Invalid .env file] Not found: PORT`);
+	throw new Error(`[Invalid environment] Variable not found: PORT`);
+}
+
+const REDIS_URL = ENV?.REDIS_URL;
+if (!REDIS_URL) {
+	throw new Error(`[Invalid environment] Variable not found: REDIS_URL`);
+}
+
+const REDIS_CACHE_TTL_SECONDS = Number(ENV?.REDIS_CACHE_TTL_SECONDS);
+if (isNaN(REDIS_CACHE_TTL_SECONDS)) {
+	throw new Error(`[Invalid environment] Variable is not a number: REDIS_CACHE_TTL_SECONDS`);
 }
 
 (async () => {
@@ -28,8 +39,10 @@ if (isNaN(PORT)) {
 	graphqlServer.addPlugin(ApolloServerPluginDrainHttpServer({ httpServer }));
 	await graphqlServer.start();
 
+	const redisClient = await connectRedisClient(REDIS_URL);
+
 	// Set up server-related Express middleware
-	app.use('/', createGraphqlServerMiddleware());
+	app.use('/', createGraphqlServerMiddleware(redisClient, REDIS_CACHE_TTL_SECONDS));
 
 	// Modified server startup
 	await new Promise<void>((resolve) => httpServer.listen({ port: PORT }, resolve));
