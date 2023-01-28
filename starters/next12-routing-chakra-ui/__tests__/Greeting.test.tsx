@@ -1,11 +1,11 @@
 import fetch from "jest-fetch-mock";
 import { render, screen } from "@testing-library/react";
-import FetchExample from "../../pages/fetch-example";
+import FetchExample from "../src/pages/fetch-example";
 import "@testing-library/jest-dom";
 
 describe("Fetch Example page", () => {
   it("renders a heading", () => {
-    render(<FetchExample userStr="This Dot Labs" />);
+    render(<FetchExample />);
 
     const heading = screen.getByRole("heading", {
       name: "NextJS 12 fetching data example from a REST API",
