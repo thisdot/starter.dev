@@ -72,7 +72,7 @@ git clone https://github.com/thisdot/starter.dev.git
 
 ## State management
 
-For this starter kit we are not using a global state manager but instead storing state inside the routes for Next.js.
+For this starter kit we are not using a global state manager but instead storing state inside the routes for Next.js. For example, please look at the `/src/pages/counter-example.tsx` and `src/pages/fetch-example.tsx` files.
 
 ## Testing
 
@@ -82,26 +82,9 @@ The unit tests for the home page can be found in the `__tests__` directory.
 
 ```
 .
-├── __tests__
-│   └── index.test.tsx
-```
-
-The unit tests for the `Counter` and `Greeting` examples can be found in the `components` directory.
-
-```
-.
-├─ src/
-│  ├─ components
-│  |  ├─ Counter
-|  |  |  ├─ Counter.stories.tsx
-|  |  |  ├─ Counter.test.tsx
-|  |  |  ├─ Counter.tsx
-|  |  |  ├─ Index.ts
-│  |  ├─ Greeting
-|  |  |  ├─ Greeting.stories.tsx
-|  |  |  ├─ Greeting.test.tsx
-|  |  |  ├─ Greeting.tsx
-|  |  |  ├─ Index.ts
+├── Counter.test.tsx
+├── Greeting.test.tsx
+└── index.test.tsx
 ```
 
 ### Storybook's Accessibility testing
@@ -168,22 +151,19 @@ Inside the `src/pages` directory, you will find the `fetch-example.tsx` which de
 
 ## Kit Organization / Architecture
 
-At the root level, you will find all of the testing, linting, Prettier, Storybook and TypeScript configurations along with the `src` and `public` directories.
+At the root level, you will find all of the testing, linting, Prettier formatting, Storybook and TypeScript configurations along with the `src` and `public` directories.
 
 Inside the `src` directory, you will find the following structure:
 
 ```
-
 .
 ├── components
 │   ├── Counter
 │   │   ├── Counter.stories.tsx
-│   │   ├── Counter.test.tsx
 │   │   ├── Counter.tsx
 │   │   └── index.ts
 │   ├── Greeting
 │   │   ├── Greeting.stories.tsx
-│   │   ├── Greeting.test.tsx
 │   │   ├── Greeting.tsx
 │   │   └── index.ts
 │   └── index.ts
