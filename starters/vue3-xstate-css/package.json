@@ -17,6 +17,7 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@xstate/inspect": "^0.7.0",
     "@xstate/vue": "2.0.0",
     "vue": "3.2.41",
     "vue-router": "4.1.5",

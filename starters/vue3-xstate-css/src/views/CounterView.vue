@@ -32,17 +32,17 @@ const counterMachine = createMachine(
   }
 );
 
-const { state, send } = useMachine(counterMachine);
+const { state, send } = useMachine(counterMachine, { devTools: true });
 </script>
 
 <template>
   <main>
     <h1>Increment, Decrement and Reset Button Examples</h1>
     <section class="counter__section">
-      <p>Count: {{ state.context.count }}</p>
-      <button @click="send('INC')">Increment</button>
-      <button @click="send('DEC')">Decrement</button>
-      <button @click="send('RESET')">Reset</button>
+      <p data-cy="count">Count: {{ state.context.count }}</p>
+      <button @click="send('INC')" data-cy="inc-button">Increment</button>
+      <button @click="send('DEC')" data-cy="dec-button">Decrement</button>
+      <button @click="send('RESET')" data-cy="res-button">Reset</button>
     </section>
     <div class="counter__home-link">
       <RouterLink to="/">Return Home</RouterLink>
