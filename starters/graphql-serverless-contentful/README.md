@@ -110,6 +110,7 @@ REDIS_USER=default
 REDIS_HOST=127.0.0.1
 REDIS_PORT=6379
 REDIS_PASS=
+REDIS_CACHE_TTL_SECONDS=900
 ```
 
 These are the defaults and should work seamlessly if you have redis running already on your local.
