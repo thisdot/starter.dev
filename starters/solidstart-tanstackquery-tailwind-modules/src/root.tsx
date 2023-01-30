@@ -15,12 +15,22 @@ import {
 } from "solid-start";
 import "./root.css";
 
+import { QueryClient, QueryClientProvider } from '@tanstack/solid-query';
+
 export default function Root() {
   const location = useLocation();
   const active = (path: string) =>
     path == location.pathname
       ? "border-sky-600"
       : "border-transparent hover:border-sky-600";
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnMount: true,
+        staleTime: 1000,
+      },
+    },
+  });
   return (
     <Html lang="en">
       <Head>
@@ -29,13 +39,15 @@ export default function Root() {
         <Meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <Body>
-        <Suspense>
-          <ErrorBoundary>
-            <Routes>
-              <FileRoutes />
-            </Routes>
-          </ErrorBoundary>
-        </Suspense>
+        <QueryClientProvider client={queryClient}>
+          <Suspense>
+            <ErrorBoundary>
+              <Routes>
+                <FileRoutes />
+              </Routes>
+            </ErrorBoundary>
+          </Suspense>
+        </QueryClientProvider>
         <Scripts />
       </Body>
     </Html>
