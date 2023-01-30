@@ -22,6 +22,7 @@ This starter kit features Express, Typescript API setup
     - [Folder structure](#folder-structure)
     - [MVC Pattern](#mvc-pattern)
       - [Example directory](#example-directory)
+    - [Example directory](#example-directory-1)
   - [Technologies](#technologies)
     - [Express](#express)
     - [Apollo Server](#apollo-server)
@@ -159,7 +160,11 @@ In order to restrict origin URLs that can access your API, you need to add a lis
 
 The demo components included in the starter kit are co-located with the tests. This kit includes things like mocks and data-fetching queries that are modeled after an MVC-type architecture. Using this structure makes it easy to find all the code and functionality related to a specific component. This pattern follows the single responsibility principle since each file has one purpose. For example, the .resolvers.ts files handle data for all resolvers with the functionality related to data fetching for your query. The .test.ts files handle all the unit tests for the resolvers. The .typedefs.ts files handle all the types for GraphQL.
 
+<<<<<<< HEAD
 #### Example directory
+=======
+### Example directory
+>>>>>>> ef978eb40639f8f57d66c24cd78e78ad897f9838
 
 - `technologies.resolvers.ts` - Resolvers for the Technology entity.
 - `technologies.spec.ts` - Unit tests for the Technology entity.
