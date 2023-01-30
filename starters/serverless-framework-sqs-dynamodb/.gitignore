@@ -1,0 +1,10 @@
+coverage
+node_modules
+jspm_packages
+
+.dynamodb
+.esbuild
+.env
+.redis
+.serverless
+swagger

@@ -1,0 +1,26 @@
+{
+	"compileOnSave": false,
+	"compilerOptions": {
+		"rootDir": ".",
+		"sourceMap": true,
+		"declaration": false,
+		"moduleResolution": "Node16",
+		"esModuleInterop": true,
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"importHelpers": false,
+		"target": "ESNext",
+		"module": "node16",
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"skipDefaultLibCheck": true,
+		"strict": true,
+		"baseUrl": ".",
+		"paths": {
+			"@/models/*": ["src/models/*"],
+			"@/types/*": ["src/types/*"],
+			"@/utils/*": ["src/utils/*"]
+		}
+	},
+	"exclude": ["node_modules", "tmp"]
+}
