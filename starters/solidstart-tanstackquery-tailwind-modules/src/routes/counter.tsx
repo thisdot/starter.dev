@@ -1,15 +1,13 @@
-import { A } from "solid-start";
+import CounterExample from "~/components/CounterExample/Counter";
+import PageFooter from "~/components/PageFooter";
+import PageHeader from "~/components/PageHeader";
 
-export default function Counter () {
+export default function Counter() {
   return (
     <>
-      <h1>Counter Page</h1>
-        <A
-          href="/"
-          class="text-blue-800 hover:text-blue-500 transition-colors delay-100 underline"
-        >
-          Return Home
-        </A>
+      <PageHeader>Increment, Decrement and Reset Button Example</PageHeader>
+      <CounterExample />
+      <PageFooter />
     </>
   )
 }
