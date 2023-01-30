@@ -20,8 +20,6 @@
   },
   "type": "module",
   "devDependencies": {
-    "@tanstack/solid-query": "^4.22.4",
-    "@testing-library/jest-dom": "^5.16.5",
     "@babel/core": "^7.20.12",
     "@storybook/addon-actions": "^6.5.16",
     "@storybook/addon-essentials": "^6.5.16",
@@ -30,17 +28,21 @@
     "@storybook/builder-vite": "^0.3.0",
     "@storybook/html": "^6.5.16",
     "@storybook/testing-library": "^0.0.13",
+    "@tanstack/solid-query": "^4.22.4",
+    "@testing-library/jest-dom": "^5.16.5",
     "autoprefixer": "^10.4.13",
     "babel-loader": "^8.3.0",
-    "@testing-library/jest-dom": "^5.16.5",
     "jsdom": "^21.1.0",
+    "msw": "^1.0.0",
+    "msw-storybook-addon": "^1.7.0",
     "postcss": "^8.4.21",
     "solid-start-node": "^0.2.15",
     "solid-testing-library": "^0.5.0",
     "tailwindcss": "^3.2.4",
     "typescript": "^4.9.4",
     "vite": "^3.2.5",
-    "vitest": "^0.28.2"
+    "vitest": "^0.28.2",
+    "whatwg-fetch": "^3.6.2"
   },
   "dependencies": {
     "@solidjs/meta": "^0.28.2",
@@ -51,5 +53,8 @@
   },
   "engines": {
     "node": ">=16"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }

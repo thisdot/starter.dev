@@ -1,6 +1,7 @@
 import { A } from "solid-start";
 import { createEffect, createSignal,  For, Match, Switch } from 'solid-js'
 import { createQuery } from '@tanstack/solid-query';
+import { Greeting } from "~/components/FetchExample";
 
 
 interface PostData {
@@ -37,25 +38,9 @@ export default function ApiExample () {
         >
           Return Home
         </A>
-      <div>
-      <Switch>
-        <Match when={query.isLoading}>
-          <p>Loading...</p>
-        </Match>
-        <Match when={query.isError}>
-          <p>Error: {'Error'}</p>
-        </Match>
-        <Match when={query.isSuccess}>
-          <For each={data()}>
-            {(todo) => <p class="p-3 bg-slate-800 text-white mt-6 w-[50%] mx-auto">{todo.body}</p>}
-          </For>
-          <div class="flex items-center justify-center p-3 gap-3">
-            <button onClick={() => setPostId(postId() - 1)} class="mr-2">Prev</button>
-            <button onClick={() => setPostId(postId() + 1)} class="">Next</button>
-          </div>
-        </Match>
-      </Switch>
-    </div>
+      <div class="my-4">
+        <Greeting />
+      </div>
     </>
   )
 }
