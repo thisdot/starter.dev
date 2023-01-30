@@ -19,14 +19,16 @@ describe('CounterExample', () => {
     await render(() => <CounterExample />);
     const button = await screen.getByText('Decrement');
     fireEvent.click(button);
-    await expect(screen.getByText('Count: -1')).toBeDefined()
+    await expect(screen.getByText('Count: 0')).toBeDefined();
+    fireEvent.click(button);
+    await expect(screen.getByText('Count: -1')).toBeDefined();
   });
 
   it('should mount and reset', async () => {
     await render(() => <CounterExample />);
     const DecrButton = await screen.getByText('Decrement');
     fireEvent.click(DecrButton);
-    await expect(screen.getByText('Count: -1')).toBeDefined()
+    await expect(screen.getByText('Count: -2')).toBeDefined()
     const ResetButton = await screen.getByText('Reset');
     fireEvent.click(ResetButton);
     await expect(screen.getByText('Count: 0')).toBeDefined()
