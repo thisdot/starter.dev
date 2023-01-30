@@ -103,7 +103,7 @@ git clone https://github.com/thisdot/starter.dev.git
 - `npm run docker:start` - Runs an existing docker container.
 - `npm run docker:stop` - Stops an existing docker container.
 - `npm run docker:down` - Stop and removes the docker container & network.
-- `npm `run docker:` `remove` - Removes stopped docker service containers.
+- `npm run docker:remove` - Removes stopped docker service containers.
 
 ### Database and Redis 
 To start up your API in dev mode with an active database connection, please follow the following steps:
