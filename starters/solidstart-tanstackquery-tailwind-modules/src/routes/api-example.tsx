@@ -2,6 +2,8 @@ import { A } from "solid-start";
 import { createEffect, createSignal,  For, Match, Switch } from 'solid-js'
 import { createQuery } from '@tanstack/solid-query';
 import { Greeting } from "~/components/FetchExample";
+import PageHeader from "~/components/PageHeader";
+import PageFooter from "~/components/PageFooter";
 
 
 interface PostData {
@@ -31,16 +33,9 @@ export default function ApiExample () {
   })
   return (
     <>
-      <h1>API Example Page</h1>
-        <A
-          href="/"
-          class="text-blue-800 hover:text-blue-500 transition-colors delay-100 underline"
-        >
-          Return Home
-        </A>
-      <div class="my-4">
+      <PageHeader>Solid Start Tanstack Query Fetch Data from API</PageHeader>
         <Greeting />
-      </div>
+      <PageFooter />
     </>
   )
 }

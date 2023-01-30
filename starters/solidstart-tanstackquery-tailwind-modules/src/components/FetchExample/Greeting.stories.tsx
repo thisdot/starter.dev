@@ -13,22 +13,13 @@ const queryClient = new QueryClient({
 });
 
 export default {
-  title: 'Example/Fetch Example',
+  title: 'Component/Fetch Example',
   component: Greeting,
   argTypes: {},
   parameters: {
     msw: {
       handlers: [greetingHandler]
     },
-    // mockData: [
-    //   {
-    //     url: 'https://api.starter.dev/.netlify/functions/server/hello?greeting=',
-    //     method: 'GET',
-    //     status: 200,
-    //     response: () => 'Hi storybook user!',
-    //     delay: 1000,
-    //   },
-    // ],
   },
 };
 
