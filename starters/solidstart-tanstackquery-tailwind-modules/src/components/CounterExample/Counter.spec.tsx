@@ -12,22 +12,22 @@ describe('CounterExample', () => {
     await render(() => <CounterExample />);
     const button = await screen.getByText('Increment');
     fireEvent.click(button);
-    await expect(screen.getByText('Count: 1')).toBeDefined()
+    expect(screen.getByText('Count: 1')).toBeDefined()
   });
 
   it('should mount and decrement', async () => {
     await render(() => <CounterExample />);
     const button = await screen.getByText('Decrement');
     fireEvent.click(button);
-    await expect(screen.getByText('Count: 0')).toBeDefined();
+    expect(screen.getByText('Count: 0')).toBeDefined();
     fireEvent.click(button);
-    await expect(screen.getByText('Count: -1')).toBeDefined();
+    expect(screen.getByText('Count: -1')).toBeDefined();
   });
 
   it('should mount and reset', async () => {
     await render(() => <CounterExample />);
     const ResetButton = await screen.getByText('Reset');
     fireEvent.click(ResetButton);
-    await expect(screen.getByText('Count: 0')).toBeDefined()
+    expect(screen.getByText('Count: 0')).toBeDefined()
   });
 });
