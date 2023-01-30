@@ -15,17 +15,21 @@ services:
       - db:/var/lib/mysql
   redis:
     container_name: redis
-    image: redis:7.0-alpine
+    image: 'redis:7.0-alpine'
     restart: unless-stopped
     env_file: ./.env
-    command: redis-server --loglevel warning --requirepass $DOCKER_REDIS_PASSWORD
+    entrypoint: /bin/sh -c
+    command:
+      - |
+        # echo $$DOCKER_REDIS_PASSWORD        
+        redis-server --loglevel warning --requirepass $$DOCKER_REDIS_PASSWORD
     ports:
       - $DOCKER_REDIS_PORT_LOCAL:$DOCKER_REDIS_PORT_CONTAINER
-    volumes:
-      - $PWD/redis-data:/var/lib/redis
-      - $PWD/redis.conf:/usr/local/etc/redis/redis.conf
     environment:
       - REDIS_REPLICATION_MODE=master
+    volumes:
+      - ./redis:/var/lib/redis
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
     depends_on:
       - mysql
 volumes:

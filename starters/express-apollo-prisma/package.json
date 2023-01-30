@@ -29,7 +29,7 @@
 		"docker:build": "docker compose up -d",
 		"docker:start": "docker compose start",
 		"docker:stop": "docker compose stop",
-		"docker:down": "docker compose down",		
+		"docker:down": "docker compose down",
 		"docker:remove": "docker compose rm",
 		"docker:mount": "npm run docker:build && npm run docker:start",
 		"docker:unmount": "npm run docker:stop && npm run docker:down && npm run docker:remove"
@@ -73,6 +73,7 @@
 		"@graphql-tools/merge": "8.3.15",
 		"@graphql-tools/schema": "9.0.13",
 		"@prisma/client": "4.9.0",
+		"@redis/client": "1.5.3",
 		"body-parser": "1.20.1",
 		"compression": "1.7.4",
 		"cors": "2.8.5",
@@ -80,6 +81,7 @@
 		"express": "4.18.2",
 		"graphql": "16.6.0",
 		"graphql-tag": "2.12.6",
-		"http": "0.0.1-security"
+		"http": "0.0.1-security",
+		"redis": "4.6.2"
 	}
 }
