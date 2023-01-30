@@ -13,7 +13,7 @@ This starter kit features Express, Typescript API setup
     - [CLI (Recommended)](#cli-recommended)
     - [Manual](#manual)
   - [Commands](#commands)
-  - [Database and RedisTo start up your API in dev mode with an active database connection, please follow the following steps:](#database-and-redisto-start-up-your-api-in-dev-mode-with-an-active-database-connection-please-follow-the-following-steps)
+    - [Database and Redis](#database-and-redis)
     - [Seeding](#seeding)
     - [Reset infrastructure](#reset-infrastructure)
     - [Production build](#production-build)
@@ -21,8 +21,12 @@ This starter kit features Express, Typescript API setup
   - [Project Structure](#project-structure)
     - [Folder structure](#folder-structure)
     - [MVC Pattern](#mvc-pattern)
-    - [Example directory](#example-directory)
+      - [Example directory](#example-directory)
   - [Technologies](#technologies)
+    - [Express](#express)
+    - [Apollo Server](#apollo-server)
+    - [Caching](#caching)
+    - [Testing](#testing)
 
 ## Overview
 
@@ -99,9 +103,10 @@ git clone https://github.com/thisdot/starter.dev.git
 - `npm run docker:start` - Runs an existing docker container.
 - `npm run docker:stop` - Stops an existing docker container.
 - `npm run docker:down` - Stop and removes the docker container & network.
-- `npm run docker:remove` - Removes stopped docker service containers.
+- `npm `run docker:` `remove` - Removes stopped docker service containers.
 
-## Database and RedisTo start up your API in dev mode with an active database connection, please follow the following steps:
+### Database and Redis 
+To start up your API in dev mode with an active database connection, please follow the following steps:
 
 1. create a `.env` file. For the defaults, copy the contents of the `.env.example` file's content into it.
 2. run `npm run docker:mount`
@@ -110,8 +115,7 @@ git clone https://github.com/thisdot/starter.dev.git
 The above steps will make sure your API connects to the database and Redis instances that get started up with docker. When you finish work, run `npm run infrastructure:stop` to stop your database and Redis containers.
 
 ### Seeding
-
-TODO
+<!-- TODO -->
 
 ### Reset infrastructure
 
@@ -119,7 +123,7 @@ To seed the database, you need to do the following steps:
 
 1. create a `.env` file. For the defaults, copy the contents of the `.env.example` file's content into it.
 2. run `npm run docker:mount`
-3. TODO add seeding
+<!-- TODO 3. add seeding -->
 
 ### Production build
 
@@ -155,7 +159,7 @@ In order to restrict origin URLs that can access your API, you need to add a lis
 
 The demo components included in the starter kit are co-located with the tests. This kit includes things like mocks and data-fetching queries that are modeled after an MVC-type architecture. Using this structure makes it easy to find all the code and functionality related to a specific component. This pattern follows the single responsibility principle since each file has one purpose. For example, the .resolvers.ts files handle data for all resolvers with the functionality related to data fetching for your query. The .test.ts files handle all the unit tests for the resolvers. The .typedefs.ts files handle all the types for GraphQL.
 
-### Example directory
+#### Example directory
 
 - `technologies.resolvers.ts` - Resolvers for the Technology entity.
 - `technologies.spec.ts` - Unit tests for the Technology entity.
@@ -163,38 +167,25 @@ The demo components included in the starter kit are co-located with the tests. T
 
 ## Technologies
 
-<!-- ### Express
+### Express
 
 The ExpressJS API starts at the `main.ts` file. The `bootstrapApp()` method creates and sets up the routes. The API routes are set up under the `src/modules` folder. This set up differentiates modules based on the feature they provide, and in a feature directory you can find the `controller`, related `services` and the `route handlers`.
 
 ### Apollo Server
 
-TypeOrm related initiators are set up under the `src/db` folder, the `initialiseDataSource()` function gets called at start-up. It has a built-in retry mechanism that can be configured using environment variables. See the `.env.example` file for more information.
+Apollo Server is an open-source, spec-compliant GraphQL server that's compatible with any GraphQL client, including Apollo Client. It's the best way to build a production-ready, self-documenting GraphQL API that can use data from any source.
 
-The `DataSource` is set up to look for entities automatically. This kit uses the `src/db/entities` folder to store these, but feel free to store your entities in feature folders or where it makes more sense to you.
+We use the [`expressMiddleware`](https://www.apollographql.com/docs/apollo-server/api/express-middleware#expressmiddleware) function from `@apollo/server` to enable you to attach Apollo Server to an Express server. We also recommend using [`ApolloServerPluginDrainHttpServer`](https://www.apollographql.com/docs/apollo-server/api/plugin/drain-http-server) plugin to ensure your server gracefully shuts down. 
 
-You can create your own Entities using the tools provided by TypeOrm. For more information, please refer to [the documentation](https://typeorm.io/entities).
+The data sources are located in `src/graphql/data-sources`. The data sources of the entities are passed in `src\graphql\server-context\server-context-middleware-options.ts`.
 
 ### Caching
 
-Caching is set up with the [cachified](https://www.npmjs.com/package/cachified) library. It utilises redis in the background for caching. Under the `cache` folder you can find the redis client connection and the two functions that are used for caching and invalidating. See the `useCache` and the `clearCacheEntry` methods used in the example CRUD handlers, under `src/modules/technology/handlers`.
+To reduce API response times and [rate limiting](https://en.wikipedia.org/wiki/Rate_limiting), you can cache your data so that the application makes a single request to an API, and all the subsequent data requests will retrieve the data from the cache. We use Redis, an in-memory database that stores data in the server memory, to counter our response problems.
 
-### Queue
-
-The queue is set up using [BullMQ](https://www.npmjs.com/package/bullmq) with a redis instance separate from the cache redis instance. You can find how it is set up under the `src/queue` folder.
-
-We set it up to utilise processing in a separate thread. You can trigger the queue by sending a `POST` request to `localhost:3333/queue` with a request body of your choice. You can customise the queue and the job processors as you see fit, for more information on how to do it, please refer to the [BullMQ documentation](https://docs.bullmq.io/).
+We set up Redis by creating a Redis client with the `createClient` function from the `redis` package. Each entity has optional caching. This can be achieved by passing the Redis client with the TTL(time to live) in the `src\graphql\server-context\server-context-middleware-options.ts`.
 
 ### Testing
 
-Testing is set up with [Jest](https://jestjs.io/). You can see some example spec files under `src/modules/technology/handlers`.
+Testing is set up with [Jest](https://jestjs.io/). You can see some example spec files under `src/graphql/schema/technology`.
 
-### API documentation and Schema generation
-
-The kit uses [express-oas-generator](https://www.npmjs.com/package/express-oas-generator) middlewares that generates the OpenAPI documentation into the `swagger.json` and `swagger_v3.json` files. When you are building new API endpoints, the API documentation for those endpoints will be generated.
-
-In order to for this middleware to be able to generate all the data, make sure you hit your freshly created endpoints by using Postman or other similar tools. This is how you can keep the documentation up-to-date. If you'd like to generate an entirely new API documentation, feel free to delete the swagger related json files and restart your dev-server to start from scratch.
-
-When you run the development server, you can find the generated Swagger API documentation page under `localhost:3333/docs`. Please note, that if you don't want to expose this documentation in production, make sure you set the `NODE_ENV` environment variable to `production`.
-
-If you'd like to generate a schema typescript file, run `npm run generate:schema` that will place a `schema.ts` file under the `src/interfaces` folder. This schema will be generated based on the existing `swagger_v3.json` file. -->
