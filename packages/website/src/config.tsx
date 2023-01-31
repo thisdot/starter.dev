@@ -40,6 +40,7 @@ import {
   ExpressIcon,
   PostgresIcon,
   TypeOrmIcon,
+  SolidStartIcon,
 } from './icons';
 
 export interface NavItem {
@@ -132,6 +133,12 @@ export const TECHNOLOGIES = [
     name: 'Remix',
     tags: ['Framework'],
     Icon: (props) => <RemixIcon {...props} />,
+  },
+  {
+    key: 'solidstart',
+    name: 'Solid Start',
+    tags: ['Framework'],
+    Icon: (props) => <SolidStartIcon {...props} />,
   },
   {
     key: 'quasar',
