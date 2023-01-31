@@ -35,7 +35,7 @@ const Greeting = () => {
           </div>
         </Match>
         <Match when={query.isSuccess}>
-          <div class='flex w-full justify-center text-xl'>
+          <div class="flex w-full justify-center text-xl">
             <div class="mr-4">Message:</div>
             <div class="text-left">{message()} from This Dot Labs!</div>
           </div>
