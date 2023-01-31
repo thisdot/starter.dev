@@ -1,8 +1,8 @@
-import { A } from "solid-start";
+import { A } from 'solid-start';
 
 export default function Home() {
   return (
-     <>
+    <>
       <header class="flex justify-center items-center text-white my-5 mx-auto bg-blue-500  w-full lg:w-[75%] p-4 text-lg ">
         SolidStart - TanStackQuery - TailwindCss - Css Modules - Kit
       </header>

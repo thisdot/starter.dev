@@ -3,6 +3,14 @@
 import { render } from "solid-js/web";
 import '../src/root.css';
 
+import {
+  initialize,
+  mswDecorator
+} from 'msw-storybook-addon';
+
+// Initialize MSW
+initialize();
+
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
@@ -32,4 +40,5 @@ export const decorators = [
     return solidRoot;
     // return createRoot(() => Story()); // do not work correctly https://github.com/solidjs/solid/issues/553
   },
+  mswDecorator
 ];

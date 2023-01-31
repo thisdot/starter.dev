@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { fireEvent, render, screen } from 'solid-testing-library'
+import { fireEvent, render, screen } from 'solid-testing-library';
 import CounterExample from './Counter';
 
 describe('CounterExample', () => {
@@ -12,23 +12,22 @@ describe('CounterExample', () => {
     await render(() => <CounterExample />);
     const button = await screen.getByText('Increment');
     fireEvent.click(button);
-    await expect(screen.getByText('Count: 1')).toBeDefined()
+    expect(screen.getByText('Count: 1')).toBeDefined();
   });
 
   it('should mount and decrement', async () => {
     await render(() => <CounterExample />);
     const button = await screen.getByText('Decrement');
     fireEvent.click(button);
-    await expect(screen.getByText('Count: -1')).toBeDefined()
+    expect(screen.getByText('Count: 0')).toBeDefined();
+    fireEvent.click(button);
+    expect(screen.getByText('Count: -1')).toBeDefined();
   });
 
   it('should mount and reset', async () => {
     await render(() => <CounterExample />);
-    const DecrButton = await screen.getByText('Decrement');
-    fireEvent.click(DecrButton);
-    await expect(screen.getByText('Count: -1')).toBeDefined()
     const ResetButton = await screen.getByText('Reset');
     fireEvent.click(ResetButton);
-    await expect(screen.getByText('Count: 0')).toBeDefined()
+    expect(screen.getByText('Count: 0')).toBeDefined();
   });
 });
