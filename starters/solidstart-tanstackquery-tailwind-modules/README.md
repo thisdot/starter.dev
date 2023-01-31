@@ -45,6 +45,8 @@ Demonstrates how to retrieve data from a third-party API by using `createResourc
 
 ## Installation
 
+This README is written with npm in mind but you can use other manager runners
+
 ### CLI (Recommended)
 
 ```bash
@@ -63,20 +65,20 @@ git clone https://github.com/thisdot/starter.dev.git
 ```
 
 - Copy and rename the `starters/solidstart-tanstackquery-tailwind-modules` directory to the name of your new project.
-- `cd` into your project directory and run `pnpm install`.
+- `cd` into your project directory and run `npm install`.
 - Run `npm run dev` to start the development server.
 - Open your browser to `http://localhost:3000` to see the included example code running.
 
 ## Commands
 
-- `pnpm run dev` - Runs the development server on localhost port 3000 with HMR
-- `pnpm run test` - Runs the test suite
-<!-- - `pnpm run storbook` - To showcase the component library -->
-- `pnpm run build` - Builds a production version of the app to deploy
-- `pnpm run serve` - Serves a production build on localhost port 4173
-<!-- - `pnpm run lint` - Uses eslint to find potential issues in the codebase -->
-<!-- - `pnpm run lint-fix` - Tries to auto-fix potential issues -->
-<!-- - `pnpm run format` - Fixes formatting issues in the codebase -->
+- `npm run dev` - Runs the development server on localhost port 3000 with HMR
+- `npm run test` - Runs the test suite
+- `npm run storbook` - To showcase the component library
+- `npm run build` - Builds a production version of the app to deploy
+- `npm run serve` - Serves a production build on localhost port 4173
+- `npm run lint` - Uses eslint to find potential issues in the codebase
+- `npm run lint-fix` - Tries to auto-fix potential issues
+- `npm run format` - Fixes formatting issues in the codebase
 
 ## Demo Implementation
 
@@ -84,4 +86,4 @@ git clone https://github.com/thisdot/starter.dev.git
 
 [Live demo](https://solidstart-tanstackquery-tailwind-modules.starter.dev/)
 
-The demo application re-implements some of GitHub's pages and functionality. It uses the OAuth credentials in GitHub to authenticate users with their GitHub accounts and uses RxJS to fetch data from the GitHub API. Check out the link above to learn more or check out the demo!
+The demo application re-implements some of GitHub's pages and functionality. It uses the OAuth credentials in GitHub to authenticate users with their GitHub accounts and uses window.fetch() to fetch data from the GitHub API. Check out the link above to learn more or check out the demo!
