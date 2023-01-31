@@ -1,6 +1,6 @@
-import CounterExample from "~/components/CounterExample/Counter";
-import PageFooter from "~/components/PageFooter";
-import PageHeader from "~/components/PageHeader";
+import CounterExample from '~/components/CounterExample/Counter';
+import PageFooter from '~/components/PageFooter';
+import PageHeader from '~/components/PageHeader';
 
 export default function Counter() {
   return (
@@ -9,5 +9,5 @@ export default function Counter() {
       <CounterExample />
       <PageFooter />
     </>
-  )
+  );
 }

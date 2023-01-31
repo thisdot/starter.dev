@@ -1,8 +1,8 @@
-import Counter from "./Counter";
+import Counter from './Counter';
 
 export default {
-  title: 'Component/Counter'
-}
+  title: 'Component/Counter',
+};
 
 const Template = () => <Counter />;
 
