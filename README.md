@@ -54,7 +54,7 @@ For proper integration with the starter-dev CLI and website there are also some 
 
 ### Adding starter kit to the website
 
-They `keyword` field in your starter kit's `package.json` categorizes/tags each starter kit on the website. For a reference of the keys that should be used here take a look at the `package/website/src/config.tsx` file. If a particular technology you're needing is missing from the `TECHNOLOGIES` list, please open a PR to add it including an icon _(if available)_.
+They `keyword` field in your starter kit's `package.json` categorizes/tags each starter kit on the website. For a reference of the keys that should be used here take a look at the` `package/website/src/config.tsx`` file. If a particular technology you're needing is missing from the `TECHNOLOGIES` list, please open a PR to add it including an icon _(if available)_.
 
 Once you've added your description, keywords, and made sure the keywords exist in the `TECHNOLOGIES` list in the websites `config.tsx` file, your starter kit will automatically be added to the website and deployed once you merge into the `main` branch.
 

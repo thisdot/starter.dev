@@ -10,5 +10,6 @@
   "solidjs-tailwind": "SolidJS and TailwindCSS",
   "angular-ngrx-scss": "Angular, NgRx, and SCSS",
   "deno-oak-denodb": "Deno, Oak, and DenoDB",
-  "express-typeorm-postgres": "Express.js, TypeOrm, and PostgreSQL"
+  "express-typeorm-postgres": "Express.js, TypeOrm, and PostgreSQL",
+  "solidstart-tanstackquery-tailwind-modules": "SolidStart, TanStackQuery and TailwindCSS with CSSModules"
 }

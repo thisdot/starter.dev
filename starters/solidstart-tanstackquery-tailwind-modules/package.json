@@ -2,7 +2,13 @@
   "name": "solidstart-tanstackquery-tailwind-modules",
   "version": "0.1.0",
   "private": true,
-  "description": "SolidStart TanStackQuery and TailwindCSS with CSSModules",
+  "description": "SolidStart, TanStackQuery and TailwindCSS with CSSModules",
+  "keywords": [
+    "solidstart",
+    "tanstack-query",
+    "tailwind"
+  ],
+  "hasShowcase": true,
   "contributors": [
     "Chinedu Okpala <chinedu.okpala@thisdot.co>",
     "Daian Scuarissi <daian@thisdot.co>",
