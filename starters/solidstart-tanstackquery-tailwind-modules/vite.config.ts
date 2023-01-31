@@ -6,6 +6,11 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
   plugins: [solid()],
+  server: {
+    hmr: {
+      overlay: false
+    }
+  },
   test: {
     globals: true,
     environment: 'jsdom',
