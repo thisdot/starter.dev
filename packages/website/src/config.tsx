@@ -41,6 +41,7 @@ import {
   PostgresIcon,
   TypeOrmIcon,
   SolidStartIcon,
+  TanstackIcon,
 } from './icons';
 
 export interface NavItem {
@@ -241,6 +242,12 @@ export const TECHNOLOGIES = [
     name: 'Redux',
     tags: ['Data Management'],
     Icon: (props) => <ReduxIcon {...props} />,
+  },
+  {
+    key: 'tanstack-query',
+    name: 'Tanstack Query',
+    tags: ['Data Management'],
+    Icon: (props) => <TanstackIcon {...props} />,
   },
   {
     key: 'ngrx',
