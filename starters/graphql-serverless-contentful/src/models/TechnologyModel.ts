@@ -1,4 +1,4 @@
-import { client } from '../utils/contentful';
+import { getEnvironment } from '../utils/contentful';
 import { MakeOptional } from '../generated/graphql';
 
 type fields = {
@@ -9,10 +9,7 @@ type fields = {
 
 export class TechnologyModel {
 	public static getAll = async () => {
-		const space = await client.getSpace(`${process.env.CONTENTFUL_SPACE_ID}`);
-		const environment = await space.getEnvironment(
-			`${process.env.CONTENTFUL_ENVIRONMENT}`
-		);
+		const environment = await getEnvironment();
 		const entries = await environment.getEntries({
 			content_type: 'technology',
 		});
@@ -21,20 +18,14 @@ export class TechnologyModel {
 	};
 
 	public static get = async (id: string) => {
-		const space = await client.getSpace(`${process.env.CONTENTFUL_SPACE_ID}`);
-		const environment = await space.getEnvironment(
-			`${process.env.CONTENTFUL_ENVIRONMENT}`
-		);
+		const environment = await getEnvironment();
 		const entry = await environment.getEntry(id);
 
 		return entry;
 	};
 
 	public static create = async ({ displayName, description, url }: fields) => {
-		const space = await client.getSpace(`${process.env.CONTENTFUL_SPACE_ID}`);
-		const environment = await space.getEnvironment(
-			`${process.env.CONTENTFUL_ENVIRONMENT}`
-		);
+		const environment = await getEnvironment();
 		const entry = await environment.createEntry('technology', {
 			fields: {
 				displayName: {
@@ -56,10 +47,7 @@ export class TechnologyModel {
 		id: string,
 		{ displayName, description, url }: MakeOptional<fields, 'displayName'>
 	) => {
-		const space = await client.getSpace(`${process.env.CONTENTFUL_SPACE_ID}`);
-		const environment = await space.getEnvironment(
-			`${process.env.CONTENTFUL_ENVIRONMENT}`
-		);
+		const environment = await getEnvironment();
 		const entry = await environment.getEntry(id);
 		entry.fields.displayName['en-US'] =
 			displayName ?? entry.fields.displayName['en-US'];
