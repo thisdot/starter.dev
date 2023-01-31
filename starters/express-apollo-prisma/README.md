@@ -85,7 +85,7 @@ git clone https://github.com/thisdot/starter.dev.git
 
 ## Commands
 
-- `npm run docker:mount` - Starts up a Mysql database and two Redis instances for caching
+- `npm run docker:mount` - Starts up a Mysql database and Redis instance for caching
 - `npm run docker:unmount` - Stops the running database and Redis docker containers.
 <!-- TODO - `npm run db:seed` - Allows you to seed the database (See the Seeding section) -->
 - `npm run dev` - Starts the development server (Needs a running infrastructure first)
