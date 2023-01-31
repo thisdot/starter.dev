@@ -27,7 +27,6 @@ const Greeting = () => {
         <Match when={query.isError}>
            <div
           class="grow rounded border border-solid border-red-300 bg-red-100 p-4 text-center text-red-500"
-          role="error-message"
         >
           Error:{' '}
           <span class="text-red-500">
@@ -37,7 +36,7 @@ const Greeting = () => {
         </Match>
         <Match when={query.isSuccess}>
            <div class="mr-4">Message:</div>
-            <div class="text-left" role="display-message">
+            <div class="text-left">
               {message()} from This Dot Labs!
             </div>
         </Match>
