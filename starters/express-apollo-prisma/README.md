@@ -64,7 +64,7 @@ yarn create @this-dot/starter --kit express-apollo-prisma
 - `cd` into your project directory and run `npm install`.
 - Make sure you have docker & docker-compose installed on your machine
 - Create a `.env` file and copy the contents of `.env.example` into it.
-- Run `npm run docker:mount` to start the database and the redis instances
+- Run `npm run docker:mount` to start the database and the Redis instances
 - Run `npm run start` to start the development server.
 - Open your browser to `http://localhost:4001` to see the API documentation with the existing endpoints.
 
@@ -79,14 +79,14 @@ git clone https://github.com/thisdot/starter.dev.git
 - `cd` into your project directory and run `npm install`.
 - Make sure you have docker & docker-compose installed on your machine
 - Create a `.env` file and copy the contents of `.env.example` into it.
-- Run `npm run docker:mount` to start the database and the redis instances
+- Run `npm run docker:mount` to start the database and the Redis instances
 - Run `npm run start` to start the development server.
 - Open your browser to `http://localhost:4001` to see the API documentation with the existing endpoints.
 
 ## Commands
 
-- `npm run docker:mount` - Starts up a mysql database and two redis instances for caching
-- `npm run docker:unmount` - Stops the running database and redis docker containers.
+- `npm run docker:mount` - Starts up a Mysql database and two Redis instances for caching
+- `npm run docker:unmount` - Stops the running database and Redis docker containers.
 <!-- TODO - `npm run db:seed` - Allows you to seed the database (See the Seeding section) -->
 - `npm run dev` - Starts the development server (Needs a running infrastructure first)
 - `npm run build` - Builds the app.
@@ -135,7 +135,7 @@ The [Cross-Origin Resource Sharing](https://developer.mozilla.org/en-US/docs/Web
 
 This application accepts CORS from all origins by default. Some web applications may require you to add the HTTP header `'Access-Control-Allow-Origin': '*'` to allow access.
 
-In order to restrict origin URLs that can access your API, you need to add a list of comma-separated origin URLs in the `CORS_ALLOWED_ORIGINS` variable located in your `.env` file. For example `CORS_ALLOWED_ORIGINS="https://starter.dev"`. In case you need to access the api in a development environment i.e. a Sveltekit application, you can add the local URL `http://127.0.0.1` to the `CORS_ALLOWED_ORIGINS` variable as `CORS_ALLOWED_ORIGINS=https://starter.dev,http://127.0.0.1`.
+In order to restrict origin URLs that can access your API, you need to add a list of comma-separated origin URLs in the `CORS_ALLOWED_ORIGINS` variable located in your `.env` file. For example `CORS_ALLOWED_ORIGINS="https://starter.dev"`. In case you need to access the API in a development environment i.e. a Sveltekit application, you can add the local URL `http://127.0.0.1` to the `CORS_ALLOWED_ORIGINS` variable as `CORS_ALLOWED_ORIGINS=https://starter.dev,http://127.0.0.1`.
 
 ## Project Structure
 
@@ -169,8 +169,7 @@ The demo components included in the starter kit are co-located with the tests. T
 
 ### Express
 
-The ExpressJS API starts at the `main.ts` file. The `bootstrapApp()` method creates and sets up the routes. The API routes are set up under the `src/modules` folder. This set up differentiates modules based on the feature they provide, and in a feature directory you can find the `controller`, related `services` and the `route handlers`.
-
+The ExpressJS API starts at the `main.ts` file. The `bootstrapApp()` method uses the `expressMiddleware` function from `@apollo/server` to create Graphql endpoints.
 ### Apollo Server
 
 Apollo Server is an open-source, spec-compliant GraphQL server that's compatible with any GraphQL client, including Apollo Client. It's the best way to build a production-ready, self-documenting GraphQL API that can use data from any source.
