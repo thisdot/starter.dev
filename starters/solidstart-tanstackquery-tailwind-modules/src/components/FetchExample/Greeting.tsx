@@ -19,7 +19,7 @@ const Greeting = () => {
   });
 
   return (
-    <div class="w-1/4 mx-auto">
+    <div class="w-1/2 mx-auto">
       <Switch>
         <Match when={query.isLoading}>
           <div class="grow animate-pulse rounded-md bg-gray-200 text-left">
@@ -35,8 +35,10 @@ const Greeting = () => {
           </div>
         </Match>
         <Match when={query.isSuccess}>
-          <div class="mr-4">Message:</div>
-          <div class="text-left">{message()} from This Dot Labs!</div>
+          <div class='flex w-full justify-center text-xl'>
+            <div class="mr-4">Message:</div>
+            <div class="text-left">{message()} from This Dot Labs!</div>
+          </div>
         </Match>
       </Switch>
     </div>
