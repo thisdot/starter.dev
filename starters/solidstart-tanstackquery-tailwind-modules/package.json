@@ -14,9 +14,12 @@
     "dev": "solid-start dev",
     "build": "solid-start build",
     "start": "solid-start start",
+    "test": "vitest",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "test": "vitest"
+    "lint": "eslint --ext .js,.jsx ./src",
+    "lint-fix": "eslint --ext .js,.jsx ./src --fix",
+    "format": "prettier --write ./src --ignore-path .gitignore"
   },
   "type": "module",
   "devDependencies": {
