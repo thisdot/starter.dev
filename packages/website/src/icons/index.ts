@@ -42,3 +42,5 @@ export { DenoIcon } from './DenoIcon.tsx';
 export { ExpressIcon } from './ExpressIcon';
 export { PostgresIcon } from './PostgresIcon';
 export { TypeOrmIcon } from './TypeOrmIcon';
+export { SolidStartIcon } from './SolidStartIcon';
+export { TanstackIcon } from './TanstackIcon';
