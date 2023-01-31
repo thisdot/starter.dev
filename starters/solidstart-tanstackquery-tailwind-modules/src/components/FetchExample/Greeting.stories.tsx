@@ -4,12 +4,12 @@ import { QueryClient, QueryClientProvider } from '@tanstack/solid-query';
 import greetingHandler from '../../mock/greetingHandler';
 
 const queryClient = new QueryClient({
-    defaultOptions: {
-      queries: {
-        refetchOnMount: true,
-        staleTime: 1000,
-      },
+  defaultOptions: {
+    queries: {
+      refetchOnMount: true,
+      staleTime: 1000,
     },
+  },
 });
 
 export default {
@@ -18,7 +18,7 @@ export default {
   argTypes: {},
   parameters: {
     msw: {
-      handlers: [greetingHandler]
+      handlers: [greetingHandler],
     },
   },
 };

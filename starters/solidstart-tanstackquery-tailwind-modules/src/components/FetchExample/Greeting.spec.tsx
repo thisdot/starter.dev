@@ -7,7 +7,6 @@ import {
   afterAll,
   afterEach,
   beforeEach,
-  vi,
 } from 'vitest';
 import 'whatwg-fetch';
 import { server } from '../../mock/serverSetup';
@@ -20,12 +19,12 @@ afterAll(() => server.close());
 afterEach(() => server.resetHandlers());
 
 const queryClient = new QueryClient({
-    defaultOptions: {
-      queries: {
-        refetchOnMount: true,
-        staleTime: 1000,
-      },
+  defaultOptions: {
+    queries: {
+      refetchOnMount: true,
+      staleTime: 1000,
     },
+  },
 });
 
 describe('Greeting', () => {
