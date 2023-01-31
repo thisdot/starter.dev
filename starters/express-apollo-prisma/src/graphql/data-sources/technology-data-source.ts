@@ -68,10 +68,14 @@ export class TechnologyDataSource {
 
 	private async getCached(id: TechnologyEntityId): Promise<TechnologyEntity | null> {
 		if (this.redisClient) {
-			const key = this.composeRedisKey(id);
-			const serialized = await this.redisClient.get(key);
-			if (serialized) {
-				return JSON.parse(serialized);
+			try {
+				const key = this.composeRedisKey(id);
+				const serialized = await this.redisClient.get(key);
+				if (serialized) {
+					return JSON.parse(serialized);
+				}
+			} catch {
+				console.warn('Redis cache disabled. Please restart the server');
 			}
 		}
 		return null;
@@ -79,19 +83,26 @@ export class TechnologyDataSource {
 
 	private async cache(technology: TechnologyEntity): Promise<void> {
 		if (this.redisClient) {
-			const key = this.composeRedisKey(technology.id);
-			const serialized = JSON.stringify(technology);
-			this.redisClient.expire;
-			await this.redisClient.set(key, serialized, {
-				EX: this.redisCacheTtlSeconds,
-			});
+			try {
+				const key = this.composeRedisKey(technology.id);
+				const serialized = JSON.stringify(technology);
+				await this.redisClient.set(key, serialized, {
+					EX: this.redisCacheTtlSeconds,
+				});
+			} catch {
+				console.warn('Redis cache disabled. Please restart the server');
+			}
 		}
 	}
 
 	private async invalidateCached(id: TechnologyEntityId): Promise<void> {
 		if (this.redisClient) {
-			const key = this.composeRedisKey(id);
-			await this.redisClient.del(key);
+			try {
+				const key = this.composeRedisKey(id);
+				await this.redisClient.del(key);
+			} catch {
+				console.warn('Redis cache disabled. Please restart the server');
+			}
 		}
 	}
 }
