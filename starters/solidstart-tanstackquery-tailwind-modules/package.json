@@ -25,7 +25,8 @@
     "build-storybook": "build-storybook",
     "lint": "eslint --ext .ts,.tsx ./src",
     "lint-fix": "eslint --ext .ts,.tsx ./src --fix",
-    "format": "prettier --write ./src --ignore-path .gitignore"
+    "format": "prettier --write ./src --ignore-path .gitignore",
+    "prepare": "cd .. && cd .. && husky install starters/solidstart-tanstackquery-tailwind-modules/.husky"
   },
   "type": "module",
   "devDependencies": {
@@ -43,6 +44,7 @@
     "babel-loader": "^8.3.0",
     "eslint-plugin-solid": "^0.9.4",
     "eslint-plugin-unused-imports": "^2.0.0",
+    "husky": "^8.0.3",
     "jsdom": "^21.1.0",
     "msw": "^1.0.0",
     "msw-storybook-addon": "^1.7.0",
