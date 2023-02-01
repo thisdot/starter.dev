@@ -1,0 +1,73 @@
+{
+  "name": "solidstart-tanstackquery-tailwind-modules",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Solid Start, Tanstack Query and Tailwind CSS with CSS Modules",
+  "keywords": [
+    "solidstart",
+    "tanstack-query",
+    "tailwind"
+  ],
+  "hasShowcase": true,
+  "contributors": [
+    "Chinedu Okpala <chinedu.okpala@thisdot.co>",
+    "Daian Scuarissi <daian@thisdot.co>",
+    "Mattia Magi <mattia.magi@thisdot.co>",
+    "Mark Shenouda <mark@thisdot.co>",
+    "Jerry Hogan <jerry.hogan@thisdot.co>"
+  ],
+  "scripts": {
+    "dev": "solid-start dev",
+    "build": "solid-start build",
+    "start": "solid-start start",
+    "test": "vitest",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "lint": "eslint --ext .ts,.tsx ./src",
+    "lint-fix": "eslint --ext .ts,.tsx ./src --fix",
+    "format": "prettier --write ./src --ignore-path .gitignore",
+    "prepare": "cd .. && cd .. && husky install starters/solidstart-tanstackquery-tailwind-modules/.husky"
+  },
+  "type": "module",
+  "devDependencies": {
+    "@babel/core": "^7.20.12",
+    "@storybook/addon-actions": "^6.5.16",
+    "@storybook/addon-essentials": "^6.5.16",
+    "@storybook/addon-interactions": "^6.5.16",
+    "@storybook/addon-links": "^6.5.16",
+    "@storybook/builder-vite": "^0.3.0",
+    "@storybook/html": "^6.5.16",
+    "@storybook/testing-library": "^0.0.13",
+    "@tanstack/solid-query": "^4.22.4",
+    "@testing-library/jest-dom": "^5.16.5",
+    "autoprefixer": "^10.4.13",
+    "babel-loader": "^8.3.0",
+    "eslint-plugin-solid": "^0.9.4",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "husky": "^8.0.3",
+    "jsdom": "^21.1.0",
+    "msw": "^1.0.0",
+    "msw-storybook-addon": "^1.7.0",
+    "postcss": "^8.4.21",
+    "solid-start-node": "^0.2.15",
+    "solid-testing-library": "^0.5.0",
+    "tailwindcss": "^3.2.4",
+    "typescript": "^4.9.4",
+    "vite": "^3.2.5",
+    "vitest": "^0.28.2",
+    "whatwg-fetch": "^3.6.2"
+  },
+  "dependencies": {
+    "@solidjs/meta": "^0.28.2",
+    "@solidjs/router": "^0.7.0",
+    "solid-js": "^1.6.9",
+    "solid-start": "^0.2.15",
+    "undici": "^5.15.1"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "msw": {
+    "workerDirectory": "public"
+  }
+}
