@@ -2,10 +2,19 @@ import { APIGatewayProxyHandler } from 'aws-lambda';
 import { redisClient } from '../utils/redis';
 
 export const handler: APIGatewayProxyHandler = async () => {
-	await redisClient.get(''); // should throw if not connected
+	let cacheDatabase: boolean;
+	try {
+		await redisClient.get('');
+		cacheDatabase = true;
+	} catch {
+		cacheDatabase = false;
+	}
 
 	return {
 		statusCode: 200,
-		body: 'Okay!',
+		body: JSON.stringify({ cacheDatabase }),
+		headers: {
+			'Content-Type': 'application/json',
+		},
 	};
 };
