@@ -5,6 +5,11 @@ import { getEnvironment } from '../src/utils/contentful';
 
 	const environment = await getEnvironment();
 
+	if (await environment.getContentType('technology')) {
+		console.log('Technology Content Type exists');
+		return;
+	}
+
 	const technology = await environment.createContentTypeWithId('technology', {
 		name: 'Technology',
 		fields: [
@@ -12,24 +17,25 @@ import { getEnvironment } from '../src/utils/contentful';
 				id: 'displayName',
 				name: 'Display Name',
 				required: true,
-				localized: false,
+				localized: true,
 				type: 'Text',
 			},
 			{
 				id: 'description',
 				name: 'Description',
 				required: false,
-				localized: false,
+				localized: true,
 				type: 'Text',
 			},
 			{
 				id: 'url',
 				name: 'url',
 				required: false,
-				localized: false,
+				localized: true,
 				type: 'Text',
 			},
 		],
+		displayField: 'displayName',
 	});
 
 	await technology.publish();
