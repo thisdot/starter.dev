@@ -71,7 +71,7 @@ git clone https://github.com/thisdot/starter.dev.git
 
 ## Commands
 
-- `npm run dev` - starts a development server backed by Vite on localhost port 3000 with HMR
+- `npm run dev` - Starts a development server backed by Vite on localhost port 5173 with HMR
 - `npm run start` - Starts the production build with a local version of adapter.
 - `npm run build` - Builds a production version of the app to deploy
 - `npm run test` - Runs the test suite
