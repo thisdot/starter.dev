@@ -15,7 +15,6 @@ This starter kit features Express, Typescript API setup
   - [Commands](#commands)
     - [Database and Redis](#database-and-redis)
     - [Seeding](#seeding)
-    - [Reset infrastructure](#reset-infrastructure)
     - [Production build](#production-build)
     - [CORS Cross-Origin Resource Sharing](#cors-cross-origin-resource-sharing)
   - [Project Structure](#project-structure)
@@ -112,18 +111,16 @@ To start up your API in dev mode with an active database connection, please foll
 2. run `npm run docker:mount`
 3. run `npm run dev`
 
-The above steps will make sure your API connects to the database and Redis instances that get started up with docker. When you finish work, run `npm run infrastructure:stop` to stop your database and Redis containers.
+The above steps will make sure your API connects to the database and Redis instances that get started up with docker. When you finish work, run `npm run docker:unmount` to stop your database and Redis containers.
 
 ### Seeding
-<!-- TODO -->
 
-### Reset infrastructure
-
-To seed the database, you need to do the following steps:
+<!-- TODO To seed the database, you need to do the following steps:
 
 1. create a `.env` file. For the defaults, copy the contents of the `.env.example` file's content into it.
 2. run `npm run docker:mount`
-<!-- TODO 3. add seeding -->
+3. run `npm run db:seed` -->
+
 
 ### Production build
 
@@ -142,17 +139,16 @@ In order to restrict origin URLs that can access your API, you need to add a lis
 ### Folder structure
 
 ```text
-- prisma
-- src
-	- graphql
-    - data-sources
-    - mappers
-    - schema
-      - hello
-      - technology
-    - server-context
-    - utils
-  - main.ts
+- **/prisma/** - holds prisma migration files and schema.
+- **/src
+	- /graphql - holds graphql-related files.
+    - /data-sources/** - holds a Datasource file for each model.
+    - /mappers/** - holds a mappers for particular models.
+    - /schema/** - holds a directory for each model. Each model needs a `resolver`, `typedef` and optionally  a test.
+    - /server-context/** - holds server-context types and middleware
+    - /utils/** - holds related utilities required in graphql connection
+  - /redis/** - holds redis connection files
+  - main.ts - bootstraps Express application with Apollo Server
 ```
 
 ### MVC Pattern
@@ -170,6 +166,7 @@ The demo components included in the starter kit are co-located with the tests. T
 ### Express
 
 The ExpressJS API starts at the `main.ts` file. The `bootstrapApp()` method uses the `expressMiddleware` function from `@apollo/server` to create Graphql endpoints.
+
 ### Apollo Server
 
 Apollo Server is an open-source, spec-compliant GraphQL server that's compatible with any GraphQL client, including Apollo Client. It's the best way to build a production-ready, self-documenting GraphQL API that can use data from any source.
