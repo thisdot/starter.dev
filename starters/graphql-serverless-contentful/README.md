@@ -47,7 +47,7 @@ pnpm create @this-dot/starter --kit serverless-framework-apollo-contentful
 
 - Follow the prompts to select the `serverless-framework-apollo-contentful` starter kit and name your new project.
 - `cd` into your project directory and run `npm install`.
-- The kit uses docker for redis caching locally. Start up the container with:
+- Docker is used to run redis in the kit. Start up the docker container with:
 
  ```shell
  npm run infrastructure:build
@@ -167,6 +167,10 @@ Easily define your applications as AWS Lambda functions and their triggers throu
 ### Contentful CMS
 
 Contentful CMS is a composable content management platform that meets the unique demands of digital content and all the teams that produce and work with it. It allows content creators to focus on assembling, editing, approving and publishing content.
+
+### Redis
+
+`Redis` is an open source, in-memory data structure store that can be used as a database, cache and message broker. In this kit, we use Redis to cache GraphQL queries and responses.
 
 ## Deployment
 
