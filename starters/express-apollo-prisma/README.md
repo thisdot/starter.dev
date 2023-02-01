@@ -19,8 +19,8 @@ This starter kit features Express, Typescript API setup
     - [CORS Cross-Origin Resource Sharing](#cors-cross-origin-resource-sharing)
   - [Project Structure](#project-structure)
     - [Folder structure](#folder-structure)
-    - [MVC Pattern](#mvc-pattern)
-      - [Example directory](#example-directory)
+    - [GraphQL Moodules](#graphql-moodules)
+      - [Example GraphQL Module](#example-graphql-module)
   - [Technologies](#technologies)
     - [Express](#express)
     - [Apollo Server](#apollo-server)
@@ -144,22 +144,22 @@ In order to restrict origin URLs that can access your API, you need to add a lis
 	- /graphql - holds graphql-related files.
     - /data-sources/** - holds a Datasource file for each model.
     - /mappers/** - holds a mappers for particular models.
-    - /schema/** - holds a directory for each model. Each model needs a `resolver`, `typedef` and optionally  a test.
+    - /schema/** - holds a directory for each GraphQL Module. Each module needs a `resolver`, `typedef` and optionally  a test.
     - /server-context/** - holds server-context types and middleware
     - /utils/** - holds related utilities required in graphql connection
   - /redis/** - holds redis connection files
   - main.ts - bootstraps Express application with Apollo Server
 ```
 
-### MVC Pattern
+### GraphQL Moodules
 
-The demo components included in the starter kit are co-located with the tests. This kit includes things like mocks and data-fetching queries that are modeled after an MVC-type architecture. Using this structure makes it easy to find all the code and functionality related to a specific component. This pattern follows the single responsibility principle since each file has one purpose. For example, the .resolvers.ts files handle data for all resolvers with the functionality related to data fetching for your query. The .test.ts files handle all the unit tests for the resolvers. The .typedefs.ts files handle all the types for GraphQL.
+This pattern follows the single responsibility principle since each file has one purpose. For example, the .resolvers.ts files handle data for all resolvers with the functionality related to data fetching for your query. The .spec.ts files handle all the unit tests for the resolvers. The .typedefs.ts files handle all the types for GraphQL.
 
-#### Example directory
+#### Example GraphQL Module
 
 - `technologies.resolvers.ts` - Resolvers for the Technology entity.
 - `technologies.spec.ts` - Unit tests for the Technology entity.
-- `technologies.typedefs.ts` - Type definitions for the Technology entity.Technologies
+- `technologies.typedefs.ts` - Type definitions for the Technology entity.
 
 ## Technologies
 
