@@ -45,7 +45,7 @@ Demonstrates how to retrieve data from a third-party API by using `createResourc
 
 ## Installation
 
-This README is written with npm in mind but you can use other manager runners
+This README is written with npm in mind but you can use other manager runners (yarn, pnpm, etc.)
 
 ### CLI (Recommended)
 
@@ -71,14 +71,14 @@ git clone https://github.com/thisdot/starter.dev.git
 
 ## Commands
 
-- `npm run dev` - Starts a development server backed by Vite on localhost port 5173 with HMR
-- `npm run start` - Starts the production build with a local version of adapter.
-- `npm run build` - Builds a production version of the app to deploy
-- `npm run test` - Runs the test suite
-- `npm run storbook` - To showcase the component library
-- `npm run lint` - Uses eslint to find potential issues in the codebase
-- `npm run lint-fix` - Tries to auto-fix potential issues
-- `npm run format` - Fixes formatting issues in the codebase
+- `dev` - Starts a development server backed by Vite on localhost port 5173 with HMR
+- `start` - Starts the production build with a local version of adapter.
+- `build` - Builds a production version of the app to deploy
+- `test` - Runs the test suite
+- `storbook` - To showcase the component library
+- `lint` - Uses eslint to find potential issues in the codebase
+- `lint-fix` - Tries to auto-fix potential issues
+- `format` - Fixes formatting issues in the codebase
 
 ## Demo Implementation
 
