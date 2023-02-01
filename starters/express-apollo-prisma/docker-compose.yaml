@@ -3,7 +3,7 @@ version: '3.8'
 services:
   mysql:
     container_name: mysql
-    image: mysql:5.7
+    image: mysql:8.0
     restart: unless-stopped
     env_file: ./.env
     environment:
@@ -21,7 +21,7 @@ services:
     entrypoint: /bin/sh -c
     command:
       - |
-        # echo $$DOCKER_REDIS_PASSWORD        
+        # echo $$DOCKER_REDIS_PASSWORD
         redis-server --loglevel warning --requirepass $$DOCKER_REDIS_PASSWORD
     ports:
       - $DOCKER_REDIS_PORT_LOCAL:$DOCKER_REDIS_PORT_CONTAINER
