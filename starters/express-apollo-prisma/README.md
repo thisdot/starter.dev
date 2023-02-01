@@ -63,7 +63,7 @@ yarn create @this-dot/starter --kit express-apollo-prisma
 - `cd` into your project directory and run `npm install`.
 - Make sure you have docker & docker-compose installed on your machine
 - Create a `.env` file and copy the contents of `.env.example` into it.
-- Run `npm run docker:mount` to start the database and the Redis instances
+- Run `npm run infrastructure:start` to start the database and the Redis instances
 - Run `npm run start` to start the development server.
 - Open your browser to `http://localhost:4001` to see the API documentation with the existing endpoints.
 
@@ -78,14 +78,14 @@ git clone https://github.com/thisdot/starter.dev.git
 - `cd` into your project directory and run `npm install`.
 - Make sure you have docker & docker-compose installed on your machine
 - Create a `.env` file and copy the contents of `.env.example` into it.
-- Run `npm run docker:mount` to start the database and the Redis instances
+- Run `npm run infrastructure:start` to start the database and the Redis instances
 - Run `npm run start` to start the development server.
 - Open your browser to `http://localhost:4001` to see the API documentation with the existing endpoints.
 
 ## Commands
 
-- `npm run docker:mount` - Starts up a Mysql database and Redis instance for caching
-- `npm run docker:unmount` - Stops the running database and Redis docker containers.
+- `npm run infrastructure:start` - Starts up a Mysql database and Redis instance for caching
+- `npm run infrastructure:stop` - Stops the running database and Redis docker containers.
 <!-- TODO - `npm run db:seed` - Allows you to seed the database (See the Seeding section) -->
 - `npm run dev` - Starts the development server (Needs a running infrastructure first)
 - `npm run build` - Builds the app.
@@ -98,29 +98,24 @@ git clone https://github.com/thisdot/starter.dev.git
 - `npm prisma:migrate:dev` - updates your database using migrations during development and creates the database if it does not exist.
 - `npm run prisma:generate` - Generates the API schema types into the `src/interfaces/schema.ts` file
 - `npm run prisma:deploy` - Applies all pending migrations, and creates the database if it does not exist. Primarily used in non-development environments.
-- `npm run docker:build` - Builds, (re)creates, starts, and attaches to containers to a service in the background.
-- `npm run docker:start` - Runs an existing docker container.
-- `npm run docker:stop` - Stops an existing docker container.
-- `npm run docker:down` - Stop and removes the docker container & network.
-- `npm run docker:remove` - Removes stopped docker service containers.
 
-### Database and Redis 
+### Database and Redis
+
 To start up your API in dev mode with an active database connection, please follow the following steps:
 
 1. create a `.env` file. For the defaults, copy the contents of the `.env.example` file's content into it.
-2. run `npm run docker:mount`
+2. run `npm run infrastructure:start`
 3. run `npm run dev`
 
-The above steps will make sure your API connects to the database and Redis instances that get started up with docker. When you finish work, run `npm run docker:unmount` to stop your database and Redis containers.
+The above steps will make sure your API connects to the database and Redis instances that get started up with docker. When you finish work, run `npm run infrastructure:stop` to stop your MySQL and Redis containers.
 
 ### Seeding
 
 <!-- TODO To seed the database, you need to do the following steps:
 
 1. create a `.env` file. For the defaults, copy the contents of the `.env.example` file's content into it.
-2. run `npm run docker:mount`
+2. run `npm run infrastructure:start`
 3. run `npm run db:seed` -->
-
 
 ### Production build
 
@@ -171,7 +166,7 @@ The ExpressJS API starts at the `main.ts` file. The `bootstrapApp()` method uses
 
 Apollo Server is an open-source, spec-compliant GraphQL server that's compatible with any GraphQL client, including Apollo Client. It's the best way to build a production-ready, self-documenting GraphQL API that can use data from any source.
 
-We use the [`expressMiddleware`](https://www.apollographql.com/docs/apollo-server/api/express-middleware#expressmiddleware) function from `@apollo/server` to enable you to attach Apollo Server to an Express server. We also recommend using [`ApolloServerPluginDrainHttpServer`](https://www.apollographql.com/docs/apollo-server/api/plugin/drain-http-server) plugin to ensure your server gracefully shuts down. 
+We use the [`expressMiddleware`](https://www.apollographql.com/docs/apollo-server/api/express-middleware#expressmiddleware) function from `@apollo/server` to enable you to attach Apollo Server to an Express server. We also recommend using [`ApolloServerPluginDrainHttpServer`](https://www.apollographql.com/docs/apollo-server/api/plugin/drain-http-server) plugin to ensure your server gracefully shuts down.
 
 The data sources are located in `src/graphql/data-sources`. The data sources of the entities are passed in `src\graphql\server-context\server-context-middleware-options.ts`.
 
@@ -184,4 +179,3 @@ We set up Redis by creating a Redis client with the `createClient` function from
 ### Testing
 
 Testing is set up with [Jest](https://jestjs.io/). You can see some example spec files under `src/graphql/schema/technology`.
-
