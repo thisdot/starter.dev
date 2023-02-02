@@ -26,13 +26,8 @@
 		"prisma:migrate:dev": "prisma migrate dev",
 		"prisma:generate": "prisma generate",
 		"prisma:deploy": "prisma migrate deploy",
-		"docker:build": "docker compose up -d",
-		"docker:start": "docker compose start",
-		"docker:stop": "docker compose stop",
-		"docker:down": "docker compose down",
-		"docker:remove": "docker compose rm",
-		"docker:mount": "npm run docker:build && npm run docker:start",
-		"docker:unmount": "npm run docker:stop && npm run docker:down && npm run docker:remove"
+		"infrastructure:start": "docker compose up -d",
+		"infrastructure:stop": "docker compose down"
 	},
 	"author": "",
 	"devDependencies": {
