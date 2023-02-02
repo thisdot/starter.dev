@@ -1,5 +1,5 @@
-import { TechnologyModel } from "../src/models/TechnologyModel";
-import * as dotenv from "dotenv";
+import { TechnologyModel } from '../src/models/TechnologyModel';
+import * as dotenv from 'dotenv';
 
 // load dotenv config
 dotenv.config();

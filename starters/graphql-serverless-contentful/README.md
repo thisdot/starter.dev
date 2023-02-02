@@ -122,6 +122,8 @@ These are the defaults and should work seamlessly if you have redis running alre
 - `npm run lint` - Runs ESLint on the project.
 - `npm run prettier` - Formats code for the entire project
 - `npm run deploy` - Deploy your application on `AWS Lambda`
+- `npm run db:migration` - Run database migrations
+- `npm run db:seed` - Seed Database
 
 ## Project Structure
 
