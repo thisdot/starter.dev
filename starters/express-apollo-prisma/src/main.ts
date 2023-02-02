@@ -6,6 +6,9 @@ import bodyParser from 'body-parser';
 import { graphqlServer, createGraphqlServerMiddleware } from './graphql';
 import * as dotenv from 'dotenv';
 import { connectRedisClient } from './redis';
+import { createHealthcheckHandler } from './healthcheck';
+import { PrismaClient } from '@prisma/client';
+
 const { parsed: ENV } = dotenv.config();
 
 const PORT = Number(ENV?.PORT);
@@ -42,7 +45,9 @@ if (isNaN(REDIS_CACHE_TTL_SECONDS)) {
 	const redisClient = await connectRedisClient(REDIS_URL);
 
 	// Set up server-related Express middleware
-	app.use('/', createGraphqlServerMiddleware(redisClient, REDIS_CACHE_TTL_SECONDS));
+	app.use('/graphql', createGraphqlServerMiddleware(redisClient, REDIS_CACHE_TTL_SECONDS));
+	const prismaClient = new PrismaClient();
+	app.use('/health', createHealthcheckHandler({ redisClient, prismaClient }));
 
 	// Modified server startup
 	await new Promise<void>((resolve) => httpServer.listen({ port: PORT }, resolve));
