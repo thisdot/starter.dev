@@ -157,9 +157,11 @@ describe('TechnologyDataSource', () => {
 					MOCK_PRISMA_CLIENT.technologyEntity.update.mockResolvedValue(MOCK_TECHNOLOGY);
 					result = await instance.updateTechnology(MOCK_TECHNOLOGY.id, MOCK_TECHNOLOGY_INPUT);
 				});
+
 				afterAll(() => {
 					MOCK_PRISMA_CLIENT.technologyEntity.update.mockReset();
 				});
+
 				it('calls PrismaClient update method once with valid arguments', () => {
 					expect(MOCK_PRISMA_CLIENT.technologyEntity.update).toHaveBeenCalledTimes(1);
 					expect(MOCK_PRISMA_CLIENT.technologyEntity.update).toHaveBeenCalledWith({
@@ -169,6 +171,35 @@ describe('TechnologyDataSource', () => {
 						data: MOCK_TECHNOLOGY_INPUT,
 					});
 				});
+
+				it('returns expected result', () => {
+					expect(result).toEqual(MOCK_TECHNOLOGY);
+				});
+			});
+		});
+
+		describe('#deleteTechnology', () => {
+			describe('when called', () => {
+				let result: TechnologyEntity;
+
+				beforeAll(async () => {
+					MOCK_PRISMA_CLIENT.technologyEntity.delete.mockResolvedValue(MOCK_TECHNOLOGY);
+					result = await instance.deleteTechnology(MOCK_TECHNOLOGY.id);
+				});
+
+				afterAll(() => {
+					MOCK_PRISMA_CLIENT.technologyEntity.delete.mockReset();
+				});
+
+				it('calls PrismaClient delete method once with valid arguments', () => {
+					expect(MOCK_PRISMA_CLIENT.technologyEntity.delete).toHaveBeenCalledTimes(1);
+					expect(MOCK_PRISMA_CLIENT.technologyEntity.delete).toHaveBeenCalledWith({
+						where: {
+							id: MOCK_TECHNOLOGY.id,
+						},
+					});
+				});
+
 				it('returns expected result', () => {
 					expect(result).toEqual(MOCK_TECHNOLOGY);
 				});
@@ -365,6 +396,40 @@ describe('TechnologyDataSource', () => {
 							EX: EXPECTED_CACHE_TTL_DEFAULT,
 						}
 					);
+				});
+
+				it('returns expected result', () => {
+					expect(result).toEqual(MOCK_TECHNOLOGY);
+				});
+			});
+		});
+
+		describe('#deleteTechnology', () => {
+			describe('when called', () => {
+				let result: TechnologyEntity;
+
+				beforeAll(async () => {
+					MOCK_PRISMA_CLIENT.technologyEntity.delete.mockResolvedValue(MOCK_TECHNOLOGY);
+					result = await instance.deleteTechnology(MOCK_TECHNOLOGY.id);
+				});
+
+				afterAll(() => {
+					MOCK_PRISMA_CLIENT.technologyEntity.delete.mockReset();
+					MOCK_REDIS_CLIENT.del.mockReset();
+				});
+
+				it('calls PrismaClient delete method once with valid argument', () => {
+					expect(MOCK_PRISMA_CLIENT.technologyEntity.delete).toHaveBeenCalledTimes(1);
+					expect(MOCK_PRISMA_CLIENT.technologyEntity.delete).toHaveBeenCalledWith({
+						where: {
+							id: MOCK_TECHNOLOGY.id,
+						},
+					});
+				});
+
+				it('calls RedisClient.del method once with valid argument', () => {
+					expect(MOCK_REDIS_CLIENT.del).toHaveBeenCalledTimes(1);
+					expect(MOCK_REDIS_CLIENT.del).toHaveBeenCalledWith(EXPECTED_CACHE_KEY);
 				});
 
 				it('returns expected result', () => {
