@@ -147,7 +147,7 @@ How to run migrations:
    contentful space create --name "ThisDot example"
 ```
 
-- Set the newly-created space as the default space for all further CLI operations. This will present a list of all available spaces â€“ choose the one we just created
+- Set the newly-created space as the default space for all further CLI operations. This will present a list of all available spaces – choose the one we just created
 
 ```sh
    contentful space use
