@@ -205,6 +205,14 @@ describe('TechnologyDataSource', () => {
 				});
 			});
 		});
+
+		describe('#composeRedisKey', () => {
+			it('returns expected result', () => {
+				const result = instance.composeRedisKey(MOCK_NON_EXISTING_ID);
+
+				expect(result).toEqual(EXPECTED_CACHE_KEY_NON_EXISTING);
+			});
+		});
 	});
 
 	describe('when created with Prisma Client (required) and Redis Client (optional)', () => {
@@ -300,6 +308,30 @@ describe('TechnologyDataSource', () => {
 
 				it('returns expected result', () => {
 					expect(result).toStrictEqual(null);
+				});
+			});
+
+			describe('when called and Redis unavailable', () => {
+				let spyConsoleWarn: jest.SpyInstance;
+				beforeAll(async () => {
+					MOCK_REDIS_CLIENT.get.mockRejectedValueOnce(new Error());
+					MOCK_REDIS_CLIENT.set.mockRejectedValueOnce(new Error());
+					MOCK_PRISMA_CLIENT.technologyEntity.findFirst.mockResolvedValue(MOCK_TECHNOLOGY);
+					spyConsoleWarn = jest.spyOn(console, 'warn').mockImplementation();
+					await instance.getTechnologyById(MOCK_TECHNOLOGY.id);
+				});
+
+				afterAll(() => {
+					MOCK_REDIS_CLIENT.get.mockReset();
+					MOCK_REDIS_CLIENT.set.mockReset();
+					MOCK_PRISMA_CLIENT.technologyEntity.findFirst.mockReset();
+					spyConsoleWarn.mockReset();
+					spyConsoleWarn.mockRestore();
+				});
+
+				it('logs warning into console', () => {
+					expect(spyConsoleWarn).toHaveBeenCalledTimes(2);
+					expect(spyConsoleWarn).toHaveBeenCalledWith('Redis cache unavailable.');
 				});
 			});
 		});
@@ -430,6 +462,46 @@ describe('TechnologyDataSource', () => {
 				it('calls RedisClient.del method once with valid argument', () => {
 					expect(MOCK_REDIS_CLIENT.del).toHaveBeenCalledTimes(1);
 					expect(MOCK_REDIS_CLIENT.del).toHaveBeenCalledWith(EXPECTED_CACHE_KEY);
+				});
+
+				it('returns expected result', () => {
+					expect(result).toEqual(MOCK_TECHNOLOGY);
+				});
+			});
+			describe('when called and Redis unavailable', () => {
+				let result: TechnologyEntity;
+				let spyConsoleWarn: jest.SpyInstance;
+				beforeAll(async () => {
+					MOCK_PRISMA_CLIENT.technologyEntity.delete.mockResolvedValue(MOCK_TECHNOLOGY);
+					MOCK_REDIS_CLIENT.del.mockRejectedValue(new Error());
+					spyConsoleWarn = jest.spyOn(console, 'warn').mockImplementation();
+					result = await instance.deleteTechnology(MOCK_TECHNOLOGY.id);
+				});
+
+				afterAll(() => {
+					MOCK_PRISMA_CLIENT.technologyEntity.delete.mockReset();
+					MOCK_REDIS_CLIENT.del.mockReset();
+					spyConsoleWarn.mockReset();
+					spyConsoleWarn.mockRestore();
+				});
+
+				it('calls PrismaClient delete method once with valid argument', () => {
+					expect(MOCK_PRISMA_CLIENT.technologyEntity.delete).toHaveBeenCalledTimes(1);
+					expect(MOCK_PRISMA_CLIENT.technologyEntity.delete).toHaveBeenCalledWith({
+						where: {
+							id: MOCK_TECHNOLOGY.id,
+						},
+					});
+				});
+
+				it('calls RedisClient.del method once with valid argument', () => {
+					expect(MOCK_REDIS_CLIENT.del).toHaveBeenCalledTimes(1);
+					expect(MOCK_REDIS_CLIENT.del).toHaveBeenCalledWith(EXPECTED_CACHE_KEY);
+				});
+
+				it('logs warning into console', () => {
+					expect(spyConsoleWarn).toHaveBeenCalledTimes(1);
+					expect(spyConsoleWarn).toHaveBeenCalledWith('Redis cache unavailable.');
 				});
 
 				it('returns expected result', () => {

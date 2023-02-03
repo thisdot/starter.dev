@@ -64,7 +64,7 @@ export class TechnologyDataSource {
 		return deleted;
 	}
 
-	private composeRedisKey = (id?: TechnologyEntityId): string => `technology:${id || '*'}`;
+	composeRedisKey = (id: TechnologyEntityId): string => `technology:${id}`;
 
 	private async getCached(id: TechnologyEntityId): Promise<TechnologyEntity | null> {
 		if (this.redisClient) {
@@ -75,7 +75,7 @@ export class TechnologyDataSource {
 					return JSON.parse(serialized);
 				}
 			} catch {
-				console.warn('Redis cache disabled. Please restart the server');
+				console.warn('Redis cache unavailable.');
 			}
 		}
 		return null;
@@ -90,7 +90,7 @@ export class TechnologyDataSource {
 					EX: this.redisCacheTtlSeconds,
 				});
 			} catch {
-				console.warn('Redis cache disabled. Please restart the server');
+				console.warn('Redis cache unavailable.');
 			}
 		}
 	}
@@ -101,7 +101,7 @@ export class TechnologyDataSource {
 				const key = this.composeRedisKey(id);
 				await this.redisClient.del(key);
 			} catch {
-				console.warn('Redis cache disabled. Please restart the server');
+				console.warn('Redis cache unavailable.');
 			}
 		}
 	}
