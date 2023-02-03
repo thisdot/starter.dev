@@ -10,6 +10,7 @@ This starter kit features **Serverless**, **GraphQL**, **Apollo Server**, and **
 - [Apollo Server v4.x](https://www.apollographql.com/docs/apollo-server/)
 - [Serverless v3.x](https://serverless.com/)
 - [Contentful CMS](https://www.contentful.com/)
+- [AWS SQS](https://aws.amazon.com/sqs/)
 
 ### Included Tooling
 
@@ -149,6 +150,16 @@ Easily define your applications as AWS Lambda functions and their triggers throu
 ### Contentful CMS
 
 Contentful CMS is a composable content management platform that meets the unique demands of digital content and all the teams that produce and work with it. It allows content creators to focus on assembling, editing, approving and publishing content.
+
+### AWS SQS
+
+`AWS Simple Queue Service` (SQS) is a fully managed message queue service that makes it easy to decouple and scale microservices, distributed systems, and serverless applications.
+
+SQS uses docker to process queues locally. Start up the container with:
+
+```shell
+yarn infrastructure:up
+```
 
 ## Deployment
 
