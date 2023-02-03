@@ -10,6 +10,7 @@ This starter kit features **Serverless**, **GraphQL**, **Apollo Server**, and **
 - [Apollo Server v4.x](https://www.apollographql.com/docs/apollo-server/)
 - [Serverless v3.x](https://serverless.com/)
 - [Contentful CMS](https://www.contentful.com/)
+- [Redis](https://redis.com)
 - [AWS SQS](https://aws.amazon.com/sqs/)
 
 ### Included Tooling
@@ -47,6 +48,12 @@ pnpm create @this-dot/starter --kit serverless-framework-apollo-contentful
 
 - Follow the prompts to select the `serverless-framework-apollo-contentful` starter kit and name your new project.
 - `cd` into your project directory and run `npm install`.
+- Docker is used to run redis in the kit. Start up the docker container with:
+
+ ```shell
+ npm run infrastructure:build
+ ```
+
 - Run `npm run dev` to start the development server.
 - Open your browser to `http://localhost:3000` to see the included example code running.
 
@@ -72,8 +79,7 @@ Copy the contents of the file `.env.example` into a new `.env` file.
 cp .env.example .env
 ```
 
-You would need an account with [contentful.com](http://contentful.com) in order to get the environment variables
-required:
+You would need an account with [contentful.com](http://contentful.com) in order to get the environment variables required:
 
 ```bash
 CONTENTFUL_CONTENT_MANAGEMENT_API_TOKEN=xxx
@@ -98,6 +104,18 @@ CONTENTFUL_ENVIRONMENT=master
    Contentful.
    ![content models](./screenshots/content-models.png)
 
+The kit uses Redis for caching, so you would also need the credentials for the redis server.
+
+```bash
+REDIS_USER=default
+REDIS_HOST=127.0.0.1
+REDIS_PORT=6379
+REDIS_PASS=
+REDIS_CACHE_TTL_SECONDS=900
+```
+
+These are the defaults and should work seamlessly if you have redis running already on your local.
+
 ## Commands
 
 - `npm run dev` - Starts the development server.
@@ -105,6 +123,8 @@ CONTENTFUL_ENVIRONMENT=master
 - `npm run lint` - Runs ESLint on the project.
 - `npm run prettier` - Formats code for the entire project
 - `npm run deploy` - Deploy your application on `AWS Lambda`
+- `npm run db:migration` - Run database migrations
+- `npm run db:seed` - Seed Database
 
 ## Project Structure
 
@@ -150,6 +170,10 @@ Easily define your applications as AWS Lambda functions and their triggers throu
 ### Contentful CMS
 
 Contentful CMS is a composable content management platform that meets the unique demands of digital content and all the teams that produce and work with it. It allows content creators to focus on assembling, editing, approving and publishing content.
+
+### Redis
+
+`Redis` is an open source, in-memory data structure store that can be used as a database, cache and message broker. In this kit, we use Redis to cache GraphQL queries and responses.
 
 ### AWS SQS
 

@@ -1,7 +1,18 @@
 version: '3'
 services:
+  cache:
+    image: redis:6.2-alpine
+    restart: always
+    ports:
+      - '6379:6379'
+    command: redis-server --save 20 1 --loglevel warning
+    volumes:
+      - cache:/data
   sqs:
     image: softwaremill/elasticmq:1.1.1
     ports:
       - 9324:9324
       - 9325:9325
+volumes:
+  cache:
+    driver: local
