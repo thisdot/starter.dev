@@ -50,6 +50,12 @@ functions:
       - http:
           path: sqs-generate-job
           method: post
+    iamRoleStatements:
+      - Effect: 'Allow'
+        Action:
+          - 'sqs:SendMessage'
+          - 'sqs:GetQueueUrl'
+        Resource: 'arn:aws:sqs:*:*:*'
 
 custom:
   serverless-offline-sqs:
