@@ -1,29 +1,57 @@
 import gql from 'graphql-tag';
-import { graphqlServer } from '../../graphql-server';
-import { Query } from '../generated/types';
+import { Query, Technology } from '../generated/types';
 import assert from 'assert';
+import { serverExecuteOperation } from '../../utils/test';
+import { PrismaClient } from '@prisma/client';
+import { RedisClient } from '../../../redis';
 
-type HelloQuery = Pick<Query, 'hello'>;
+type TechnologyQuery = Pick<Query, 'technology'>;
 
-describe('hello query', () => {
-	const MOCK_QUERY = gql`
-		query HelloWorldQuery($greeting: String!) {
-			hello(greeting: $greeting)
+const MOCK_EXISTING_ID = '123';
+const MOCK_EXISTING_NAME = 'MOCK_EXISTING_NAME';
+const MOCK_EXISTING_TECHNOLOGY: Technology = {
+	id: MOCK_EXISTING_ID,
+	name: MOCK_EXISTING_NAME
+};
+const MOCK_QUERY_TECHNOLOGY = gql`
+	query TechnologyQuery($id: ID!) {
+		technology(id: $id) {
+			id
+			name
 		}
-	`;
+	}
+`;
 
-	it('returns expected result', async () => {
-		const MOCK_GREETING = 'MOCK_GREETING';
-		const subject = await graphqlServer.executeOperation<HelloQuery>({
-			query: MOCK_QUERY,
-			variables: {
-				greeting: MOCK_GREETING,
-			},
-		});
-		expect(subject.body.kind).toEqual('single');
-		assert(subject.body.kind === 'single');
-		expect(subject.body.singleResult.data).toEqual({
-			hello: `Hello, ${MOCK_GREETING}`,
+jest.mock('../../data-sources/technology-data-source', () => {
+	return {
+		TechnologyDataSource: (prismaClient: PrismaClient, redisClient?: RedisClient, redisCacheTtlSeconds?: number) => {
+
+		}
+	}
+});
+
+const mockTechnologyDataSource = 
+
+describe('technologyResolvers', () => {
+	describe('.Query', () => {
+		describe('.technology', () => {
+			describe('when called with existing id', () => {
+				beforeAll(() => {
+
+				}));
+
+				it('returns expected result', async () => {
+					const subject = await serverExecuteOperation<TechnologyQuery>({
+						query: MOCK_QUERY_TECHNOLOGY,
+						variables: {
+							id: MOCK_EXISTING_ID,
+						},
+					});
+					expect(subject.body.kind).toEqual('single');
+					assert(subject.body.kind === 'single');
+					expect(subject.body.singleResult.data).toEqual(MOCK_EXISTING_TECHNOLOGY);
+				});
+			});
 		});
 	});
 });

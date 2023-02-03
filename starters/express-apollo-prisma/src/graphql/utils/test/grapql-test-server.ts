@@ -9,7 +9,7 @@ import { Request } from 'express';
 import { Response } from 'express-serve-static-core';
 import { DocumentNode, TypedQueryDocumentNode } from 'graphql';
 import { graphqlServer } from '../../graphql-server';
-import { ServerContext, serverContextMiddlewareOptions } from '../../server-context';
+import { ServerContext, createServerContextMiddlewareOptions } from '../../server-context';
 
 const MOCK_EXPRESS_REQUEST = { headers: {} } as Request;
 const MOCK_EXPRESS_RESPONSE = {} as Response;
@@ -30,6 +30,7 @@ export const serverExecuteOperation = async <
 ): Promise<GraphQLResponse<TData>> => {
 	let executeOperationOptions = options;
 	if (!executeOperationOptions) {
+		const serverContextMiddlewareOptions = createServerContextMiddlewareOptions();
 		const contextValue = await serverContextMiddlewareOptions.context(
 			MOCK_EXPRESS_CONTEXT_FUNCTION_ARGUMENT
 		);
