@@ -182,7 +182,7 @@ Contentful CMS is a composable content management platform that meets the unique
 SQS uses docker to process queues locally. Start up the container with:
 
 ```shell
-yarn infrastructure:up
+yarn infrastructure:start
 ```
 
 ## Deployment
