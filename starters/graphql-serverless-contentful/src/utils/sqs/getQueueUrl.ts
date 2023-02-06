@@ -3,10 +3,10 @@ import { getClient } from './client';
 
 const queueName = process.env.JOB_QUEUE;
 
-export const getQueueUrl = async (): Promise<string> => {
-  if (!queueName) {
-    throw 'Unable to find queue.';
-  }
+export const getQueueUrl = async (): Promise<string | undefined> => {
+	if (!queueName) {
+		throw 'Unable to find queue.';
+	}
 
 	const command = new GetQueueUrlCommand({
 		QueueName: queueName,
@@ -14,7 +14,7 @@ export const getQueueUrl = async (): Promise<string> => {
 
 	try {
 		const { QueueUrl } = await getClient().send(command);
-		return QueueUrl as string;
+		return QueueUrl;
 	} catch (error: any) {
 		throw new Error(error.message);
 	}
