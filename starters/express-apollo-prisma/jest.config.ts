@@ -29,8 +29,9 @@ export default {
 	coveragePathIgnorePatterns: [
 		'<rootDir>/main.ts',
 		'<rootDir>/graphql/schema/generated',
+		'<rootDir>/graphql/utils/test',
 		'index.ts',
-		'<rootDir>/graphql/server-context.ts',
+		'<rootDir>/mocks',
 	],
 
 	// Indicates which provider should be used to instrument code for coverage
