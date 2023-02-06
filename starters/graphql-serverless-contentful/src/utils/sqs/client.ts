@@ -3,6 +3,8 @@ import { isOffline } from './is-offline';
 
 let cachedClient: SQSClient | null = null;
 
+const SQS_PORT = process.env.SQS_PORT;
+
 export const getClient = (): SQSClient => {
 	if (cachedClient) {
 		return cachedClient;
@@ -10,7 +12,7 @@ export const getClient = (): SQSClient => {
 
 	const config: SQSClientConfig = {};
 	if (isOffline()) {
-		config.endpoint = 'http://localhost:9324';
+		config.endpoint = `http://localhost:${SQS_PORT}`;
 	}
 
 	cachedClient = new SQSClient(config);
