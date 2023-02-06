@@ -30,7 +30,8 @@ export default {
 		'<rootDir>/main.ts',
 		'<rootDir>/graphql/schema/generated',
 		'index.ts',
-		'<rootDir>/graphql/server-context.ts',
+		'<rootDir>/mocks',
+		'<rootDir>/utils/test',
 	],
 
 	// Indicates which provider should be used to instrument code for coverage
