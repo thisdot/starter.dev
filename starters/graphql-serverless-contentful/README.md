@@ -11,6 +11,7 @@ This starter kit features **Serverless**, **GraphQL**, **Apollo Server**, and **
 - [Serverless v3.x](https://serverless.com/)
 - [Contentful CMS](https://www.contentful.com/)
 - [Redis](https://redis.com)
+- [AWS SQS](https://aws.amazon.com/sqs/)
 
 ### Included Tooling
 
@@ -173,6 +174,16 @@ Contentful CMS is a composable content management platform that meets the unique
 ### Redis
 
 `Redis` is an open source, in-memory data structure store that can be used as a database, cache and message broker. In this kit, we use Redis to cache GraphQL queries and responses.
+
+### AWS SQS
+
+`AWS Simple Queue Service` (SQS) is a fully managed message queue service that makes it easy to decouple and scale microservices, distributed systems, and serverless applications.
+
+SQS uses docker to process queues locally. Start up the container with:
+
+```shell
+yarn infrastructure:start
+```
 
 ## Deployment
 

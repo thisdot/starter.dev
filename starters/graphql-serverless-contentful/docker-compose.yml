@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3'
 services:
   cache:
     image: redis:6.2-alpine
@@ -8,6 +8,10 @@ services:
     command: redis-server --save 20 1 --loglevel warning
     volumes:
       - cache:/data
+  sqs:
+    image: softwaremill/elasticmq:1.1.1
+    ports:
+      - $SQS_PORT:$SQS_PORT
 volumes:
   cache:
     driver: local

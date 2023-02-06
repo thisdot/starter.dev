@@ -7,11 +7,15 @@
 		"test": "npm run codegen && jest",
 		"dev": "sls offline start",
 		"lint": "eslint . --ext .ts",
+		"infrastructure:build": "docker compose up -d",
+		"infrastructure:remove": "docker compose down",
+		"infrastructure:start": "docker compose start",
+		"infrastructure:stop": "docker compose stop",
 		"deploy": "sls deploy",
 		"format": "prettier --write \"**/*.{ts,js,json,md}\"",
 		"ts:check": "tsc --noEmit",
 		"codegen": "graphql-codegen --config codegen.ts",
-		"db:seed": "ts-node ./scripts/seed.ts",
+                "db:seed": "ts-node ./scripts/seed.ts",
 		"db:migration": "ts-node ./scripts/migration.ts"
 	},
 	"keywords": [
@@ -25,14 +29,17 @@
 	"dependencies": {
 		"@apollo/server": "4.3.0",
 		"@as-integrations/aws-lambda": "1.1.0",
+		"@aws-sdk/client-sqs": "3.259.0",
+		"aws-sdk": "2.1306.0",
 		"contentful-management": "10.26.0",
 		"graphql": "16.6.0",
 		"graphql-tag": "2.12.6",
 		"serverless": "3.26.0",
+		"serverless-offline-sqs": "7.3.2",
 		"serverless-plugin-typescript": "2.1.4",
-		"@apollo/utils.keyvadapter": "^2.0.0",
-		"@keyv/redis": "^2.5.4",
-		"keyv": "^4.5.2"
+		"@apollo/utils.keyvadapter": "2.0.0",
+		"@keyv/redis": "2.5.4",
+		"keyv": "4.5.2"
 	},
 	"devDependencies": {
 		"@graphql-codegen/cli": "2.16.4",
