@@ -73,16 +73,6 @@ resources:
       Properties:
         QueueName: DemoJobQueue
 
-# params:
-#   prod:
-#     jobQueueName: demo-job-queue
-#   stage:
-#     jobQueueName: demo-job-queue-stage
-#   dev:
-#     jobQueueName: demo-job-queue-dev
-#   default:
-#     jobQueueName: demo-job-queue-dev
-
 plugins:
   - serverless-offline-sqs
   - serverless-offline
