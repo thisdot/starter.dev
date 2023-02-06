@@ -32,13 +32,11 @@ This starter kit features **Serverless**, **GraphQL**, **Apollo Server**, and **
 npm create @this-dot/starter --kit serverless-framework-apollo-contentful
 ```
 
-````
-
 or
 
 ```bash
 yarn create @this-dot/starter --kit serverless-framework-apollo-contentful
-````
+```
 
 or
 
@@ -48,11 +46,11 @@ pnpm create @this-dot/starter --kit serverless-framework-apollo-contentful
 
 - Follow the prompts to select the `serverless-framework-apollo-contentful` starter kit and name your new project.
 - `cd` into your project directory and run `npm install`.
-- Docker is used to run redis in the kit. Start up the docker container with:
+- Docker is used to runnning Redis in the kit. Start up the docker container with:
 
- ```shell
- npm run infrastructure:build
- ```
+```shell
+npm run infrastructure:build
+```
 
 - Run `npm run dev` to start the development server.
 - Open your browser to `http://localhost:3000` to see the included example code running.
@@ -79,7 +77,7 @@ Copy the contents of the file `.env.example` into a new `.env` file.
 cp .env.example .env
 ```
 
-You would need an account with [contentful.com](http://contentful.com) in order to get the environment variables required:
+You would need an account with [contentful.com](http://contentful.com) to get the environment variables required:
 
 ```bash
 CONTENTFUL_CONTENT_MANAGEMENT_API_TOKEN=xxx
@@ -104,7 +102,7 @@ CONTENTFUL_ENVIRONMENT=master
    Contentful.
    ![content models](./screenshots/content-models.png)
 
-The kit uses Redis for caching, so you would also need the credentials for the redis server.
+The kit uses Redis for caching, so you would also need the credentials for the Redis server.
 
 ```bash
 REDIS_USER=default
@@ -114,7 +112,7 @@ REDIS_PASS=
 REDIS_CACHE_TTL_SECONDS=900
 ```
 
-These are the defaults and should work seamlessly if you have redis running already on your local.
+These are the defaults and should work seamlessly if you have Redis running already on your local.
 
 ## Commands
 
@@ -162,10 +160,9 @@ Easily define your applications as AWS Lambda functions and their triggers throu
 
 `Serverless plugins` extend the Serverless Framework with new features. Plugins in this application include:
 
-- [`serverless-offline](https://github.com/dherault/serverless-offline)` - allows us to deploy our application locally to speed up development cycles.
-- [`serverless-plugin-typescript`](https://github.com/graphcool/serverless-plugin-typescript) - use Typescript with zero-config
-- [serverless-dotenv-plugin](https://github.com/infrontlabs/serverless-dotenv-plugin) - Preload function environment variables into Serverless.
--
+- [`serverless-offline`](https://github.com/dherault/serverless-offline) - allows us to deploy our application locally to speed up development cycles.
+- [`serverless-plugin-typescript`](https://github.com/graphcool/serverless-plugin-typescript) - allows use of Typescript with zero-config
+- [`serverless-dotenv-plugin`](https://github.com/infrontlabs/serverless-dotenv-plugin) - Preload function environment variables into Serverless.
 
 ### Contentful CMS
 
@@ -173,7 +170,7 @@ Contentful CMS is a composable content management platform that meets the unique
 
 ### Redis
 
-`Redis` is an open source, in-memory data structure store that can be used as a database, cache and message broker. In this kit, we use Redis to cache GraphQL queries and responses.
+`Redis` is an open-source, in-memory data structure store that can be used as a database, cache and message broker. In this kit, we use Redis to cache GraphQL queries and responses.
 
 ### AWS SQS
 
@@ -196,7 +193,7 @@ To deploy your application on `AWS lambda` simply run:
 To deploy a single function run:
 
 ```sh
-   deploy function --function myFunction
+   sls deploy function --function myFunction
 ```
 
 For more information on checkout this [article](https://www.serverless.com/framework/docs/providers/aws/guide/deploying)
