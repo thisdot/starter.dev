@@ -11,8 +11,7 @@ services:
   sqs:
     image: softwaremill/elasticmq:1.1.1
     ports:
-      - 9324:9324
-      - 9325:9325
+      - '9324:9324'
 volumes:
   cache:
     driver: local
