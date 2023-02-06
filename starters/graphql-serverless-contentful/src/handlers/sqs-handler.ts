@@ -2,7 +2,7 @@ import { SQSHandler } from 'aws-lambda';
 
 export const handler: SQSHandler = async (event) => {
 	const recordHandler = async (record: any) => {
-		console.log(JSON.stringify(record.body));
+		console.log('Job Message:', JSON.stringify(record.body));
 	};
 
 	// Ensuring we await on all the promises is super important to avoid
