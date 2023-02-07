@@ -46,7 +46,7 @@ pnpm create @this-dot/starter --kit serverless-framework-apollo-contentful
 
 - Follow the prompts to select the `serverless-framework-apollo-contentful` starter kit and name your new project.
 - `cd` into your project directory and run `npm install`.
-- Docker is used to runnning Redis in the kit. Start up the docker container with:
+- Docker is used to run Redis in the kit. Start up the docker container with:
 
 ```shell
 npm run infrastructure:build
@@ -183,6 +183,14 @@ SQS uses docker to process queues locally. Start up the container with:
 ```shell
    yarn infrastructure:start
 ```
+
+### Migration
+
+To manage our Contentful content types via code we implement migration scripts which are located in `scripts/migration`.
+
+### Seeding
+
+To pre-populate the data within contentful we implement seeding scripts which are located in `scripts/seed`.
 
 ### Testing
 
