@@ -14,25 +14,24 @@ jest.mock('contentful-management', () => {
 		) => {
 			return {
 				...contentfulManagement.createClient(...args),
-				getSpace: () => {
+				getSpace: jest.fn().mockResolvedValue(() => {
 					return {
-						getEnvironment: jest.fn().mockReturnValue(dummyEnvironment),
+						getEnvironment: jest.fn().mockResolvedValue(dummyEnvironment),
 					};
-				},
+				}),
 			};
 		},
 	};
 });
 
-describe('getEnviroment', () => {
+describe('.getEnviroment', () => {
 	let environment: Environment;
 
 	beforeAll(async () => {
 		environment = await getEnvironment();
 	});
 
-	it('should return the getEnvironment', () => {
+	it('returns expected result', () => {
 		expect(environment).toBe(dummyEnvironment);
-		expect(environment).not.toBe({});
 	});
 });
