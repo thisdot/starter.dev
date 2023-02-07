@@ -124,6 +124,18 @@ These are the defaults and should work seamlessly if you have Redis running alre
 - `npm run db:migration` - Run database migrations
 - `npm run db:seed` - Seed Database
 
+### Migration
+
+To manage our Contentful content types via code we implement migration scripts which are located in `scripts/migration`.
+
+### Seeding
+
+To pre-populate the data within contentful we implement seeding scripts which are located in `scripts/seed`.
+
+### Testing
+
+Testing is set up with `Jest`. You can see some example test files under `src/schema/technology`
+
 ## Project Structure
 
 The demo components included in the starter kit are co-located with the tests. This kit includes things like mocks and data-fetching queries that are modeled after an MVC-type architecture. Using this structure makes it easy to find all
@@ -168,7 +180,7 @@ Easily define your applications as AWS Lambda functions and their triggers throu
 
 Contentful CMS is a composable content management platform that meets the unique demands of digital content and all the teams that produce and work with it. It allows content creators to focus on assembling, editing, approving and publishing content.
 
-### Caching
+### Redis
 
 To reduce API response times and rate limiting, you can cache your data so that the application makes a single request to an API, and all the subsequent data requests will retrieve the data from the cache. We use Redis, an in-memory database that stores data in the server memory, to counter our response problems.
 
@@ -183,18 +195,6 @@ SQS uses docker to process queues locally. Start up the container with:
 ```shell
    yarn infrastructure:start
 ```
-
-### Migration
-
-To manage our Contentful content types via code we implement migration scripts which are located in `scripts/migration`.
-
-### Seeding
-
-To pre-populate the data within contentful we implement seeding scripts which are located in `scripts/seed`.
-
-### Testing
-
-Testing is set up with `Jest`. You can see some example test files under `src/schema/technology`
 
 ## Deployment
 
