@@ -9,7 +9,6 @@ import { Environment } from 'contentful-management';
 type TechnologyQuery = Pick<Query, 'technology'>;
 
 jest.mock('../../utils/contentful', () => ({
-	client: {},
 	getEnvironment: jest.fn(),
 }));
 
