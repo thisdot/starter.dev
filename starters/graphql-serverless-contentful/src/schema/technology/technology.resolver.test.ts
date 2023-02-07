@@ -3,13 +3,13 @@ import { apolloServer } from '../../handlers/graphql';
 import { GraphQLResponse } from '@apollo/server/src/externalTypes';
 import assert from 'assert';
 import { Query } from '../../generated/graphql';
-import { client } from '../../utils/contentful';
-import { Environment, Space } from 'contentful-management';
+import { getEnvironment } from '../../utils/contentful';
+import { Environment } from 'contentful-management';
 
 type TechnologyQuery = Pick<Query, 'technology'>;
 
 jest.mock('../../utils/contentful', () => ({
-	client: {},
+	getEnvironment: jest.fn(),
 }));
 
 const MOCK_TECHNOLOGIES = [
@@ -53,15 +53,14 @@ const getEntries = jest.fn(() => MOCK_CONTENTFUL_ENTRIES);
 const getEntry = jest.fn(() => MOCK_CONTENTFUL_ENTRIES.items[1]);
 const createEntry = jest.fn(() => MOCK_CONTENTFUL_ENTRIES.items[0]);
 
-client.getSpace = () =>
-	Promise.resolve({
-		getEnvironment: () =>
-			Promise.resolve({
-				getEntry,
-				getEntries,
-				createEntry,
-			} as unknown as Environment),
-	} as unknown as Space);
+const mockGetEnvironment = getEnvironment as jest.MockedFunction<
+	typeof getEnvironment
+>;
+mockGetEnvironment.mockResolvedValue({
+	getEntry,
+	getEntries,
+	createEntry,
+} as unknown as Environment);
 
 describe('technology queries and mutations', () => {
 	describe('query technologies', () => {
@@ -82,6 +81,7 @@ describe('technology queries and mutations', () => {
 
 			assert(subject.body.kind === 'single');
 			expect(subject.body.singleResult.errors).toBeUndefined();
+			expect(mockGetEnvironment).toHaveBeenCalledTimes(1);
 			expect(getEntries).toHaveBeenCalledWith({ content_type: 'technology' });
 			expect(subject.body.singleResult.data?.technology).toEqual(
 				MOCK_TECHNOLOGIES
