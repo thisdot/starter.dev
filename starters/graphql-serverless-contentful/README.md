@@ -161,16 +161,18 @@ Easily define your applications as AWS Lambda functions and their triggers throu
 `Serverless plugins` extend the Serverless Framework with new features. Plugins in this application include:
 
 - [`serverless-offline`](https://github.com/dherault/serverless-offline) - allows us to deploy our application locally to speed up development cycles.
-- [`serverless-plugin-typescript`](https://github.com/graphcool/serverless-plugin-typescript) - allows use of Typescript with zero-config
+- [`serverless-plugin-typescript`](https://github.com/graphcool/serverless-plugin-typescript) - allows the use of Typescript with zero-config.
 - [`serverless-dotenv-plugin`](https://github.com/infrontlabs/serverless-dotenv-plugin) - Preload function environment variables into Serverless.
 
 ### Contentful CMS
 
 Contentful CMS is a composable content management platform that meets the unique demands of digital content and all the teams that produce and work with it. It allows content creators to focus on assembling, editing, approving and publishing content.
 
-### Redis
+### Caching
 
-`Redis` is an open-source, in-memory data structure store that can be used as a database, cache and message broker. In this kit, we use Redis to cache GraphQL queries and responses.
+To reduce API response times and rate limiting, you can cache your data so that the application makes a single request to an API, and all the subsequent data requests will retrieve the data from the cache. We use Redis, an in-memory database that stores data in the server memory, to counter our response problems.
+
+We set up Redis by creating a Redis client with the [`KeyV`](https://github.com/jaredwray/keyv) storage adapter that provides a consistent interface for key-value storage across multiple backends. The adapter is provided to the `cache` option of the `ApolloServer` constructor.
 
 ### AWS SQS
 
@@ -179,8 +181,12 @@ Contentful CMS is a composable content management platform that meets the unique
 SQS uses docker to process queues locally. Start up the container with:
 
 ```shell
-yarn infrastructure:start
+   yarn infrastructure:start
 ```
+
+### Testing
+
+Testing is set up with `Jest`. You can see some example test files under `src/schema/technology`
 
 ## Deployment
 
