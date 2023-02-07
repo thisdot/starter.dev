@@ -99,7 +99,6 @@ Demonstrates how to retrieve data from a third-party API by using `createResourc
 ## Demo Implementation
 
 [Repository](https://github.com/thisdot/starter.dev-github-showcases/tree/main/solidjs-tailwind)  
-[Live demo](https://solidjs-tailwind.starter.dev/)
 
 [Live demo](https://solidjs-tailwind.starter.dev/)
 
