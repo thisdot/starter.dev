@@ -36,7 +36,6 @@ This starter kit features Express, Typescript API setup
 - [Prisma v4](https://www.prisma.io/)
 - [MySQL](https://www.mysql.com/)
 - [Redis](https://redis.io/)
--
 
 ### Included Tooling
 
@@ -136,7 +135,7 @@ In order to restrict origin URLs that can access your API, you need to add a lis
 ```text
 - **/prisma/** - holds prisma migration files and schema.
 - **/src
-	- /graphql - holds graphql-related files.
+  - /graphql - holds graphql-related files.
     - /data-sources/** - holds a Datasource file for each model.
     - /mappers/** - holds a mappers for particular models.
     - /schema/** - holds a directory for each GraphQL Module. Each module needs a `resolver`, `typedef` and optionally  a test.
