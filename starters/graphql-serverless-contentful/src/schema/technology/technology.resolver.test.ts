@@ -54,7 +54,12 @@ const getEntry = jest.fn(() => MOCK_CONTENTFUL_ENTRIES.items[1]);
 const createEntry = jest.fn(() => MOCK_CONTENTFUL_ENTRIES.items[0]);
 
 const mockGetEnvironment = getEnvironment as jest.MockedFunction<typeof getEnvironment>
-mockGetEnvironment.mockReturnValue(
+const mockGetEnvironment = getEnvironment as jest.MockedFunction<typeof getEnvironment>
+mockGetEnvironment.mockResolvedValue({
+                getEntry,
+		getEntries,
+		createEntry,
+	}
 	Promise.resolve({
 		getEntry,
 		getEntries,
