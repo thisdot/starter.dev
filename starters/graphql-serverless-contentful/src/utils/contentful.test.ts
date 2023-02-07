@@ -1,3 +1,4 @@
+import { Environment } from 'contentful-management';
 import { getEnvironment } from './contentful';
 
 const dummyEnvironment = {
@@ -23,7 +24,15 @@ jest.mock('contentful-management', () => {
 	};
 });
 
-it('getEnvironment', async () => {
-	expect(await getEnvironment()).toBe(dummyEnvironment);
-	expect(await getEnvironment()).not.toBe({});
+describe('getEnviroment', () => {
+	let environment: Environment;
+
+	beforeAll(async () => {
+		environment = await getEnvironment();
+	});
+
+	it('should return the getEnvironment', () => {
+		expect(environment).toBe(dummyEnvironment);
+		expect(environment).not.toBe({});
+	});
 });
