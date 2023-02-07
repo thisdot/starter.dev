@@ -4,7 +4,7 @@ import * as dotenv from 'dotenv';
 // load dotenv config
 dotenv.config();
 
-export const client = createClient({
+const client = createClient({
 	accessToken: `${process.env.CONTENTFUL_CONTENT_MANAGEMENT_API_TOKEN}`,
 });
 
