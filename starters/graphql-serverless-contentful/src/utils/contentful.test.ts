@@ -4,25 +4,14 @@ import { getEnvironment } from './contentful';
 const dummyEnvironment = {
 	accessToken: 'DUMMYTOKEN',
 };
-jest.mock('contentful-management', () => {
-	const contentfulManagement = jest.requireActual('contentful-management');
 
-	return {
-		...contentfulManagement,
-		createClient: (
-			...args: Parameters<typeof contentfulManagement.createClient>
-		) => {
-			return {
-				...contentfulManagement.createClient(...args),
-				getSpace: jest.fn().mockResolvedValue(() => {
-					return {
-						getEnvironment: jest.fn().mockResolvedValue(dummyEnvironment),
-					};
-				}),
-			};
-		},
-	};
-});
+jest.mock('contentful-management', () => ({
+	createClient: () => ({
+		getSpace: () => ({
+			getEnvironment: jest.fn().mockResolvedValue(dummyEnvironment),
+		}),
+	}),
+}));
 
 describe('.getEnviroment', () => {
 	let environment: Environment;
