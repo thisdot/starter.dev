@@ -65,7 +65,7 @@ const kit = parseKit(content);
       const articleEl = document.getElementsByTagName('article');
       const articleLinkEls = articleEl[0]?.getElementsByTagName('a');
       for (let anchor of articleLinkEls ?? []) {
-        // if it's not a link to content in readme, open in a new tab
+        // if it's not a link to content in README, open in a new tab
         const url = new URL(anchor.href);
         if (!url.hash) {
           anchor.target = '_blank';

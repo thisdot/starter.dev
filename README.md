@@ -54,7 +54,7 @@ For proper integration with the starter-dev CLI and website there are also some 
 
 ### Adding starter kit to the website
 
-They `keyword` field in your starter kit's `package.json` categorizes/tags each starter kit on the website. For a reference of the keys that should be used here take a look at the` `package/website/src/config.tsx`` file. If a particular technology you're needing is missing from the `TECHNOLOGIES` list, please open a PR to add it including an icon _(if available)_.
+They `keyword` field in your starter kit's `package.json` categorizes/tags each starter kit on the website. For a reference of the keys that should be used here take a look at the` `package/website/src/config.tsx``file. If a particular technology you're needing is missing from the`TECHNOLOGIES` list, please open a PR to add it including an icon _(if available)_.
 
 Once you've added your description, keywords, and made sure the keywords exist in the `TECHNOLOGIES` list in the websites `config.tsx` file, your starter kit will automatically be added to the website and deployed once you merge into the `main` branch.
 
@@ -64,4 +64,4 @@ Currently to add your starter kit to be an available option on the starter.dev C
 
 ### Starter kit README files
 
-We are still working on defining a general structure and format for starter kit readme files. These are particularly important because the starter kit page on the website is based on the readme files. See: [next12-react-query-tailwind readme content #17](https://github.com/thisdot/starter.dev/pull/17)
+We are still working on defining a general structure and format for starter kit README files. These are particularly important because the starter kit page on the website is based on the README files. See: [next12-react-query-tailwind readme content #17](https://github.com/thisdot/starter.dev/pull/17)
