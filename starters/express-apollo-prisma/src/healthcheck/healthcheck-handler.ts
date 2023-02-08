@@ -1,5 +1,5 @@
 import { RequestHandler } from 'express';
-import { RedisClient } from '../redis';
+import { RedisClient } from '../cache/redis';
 import { HealthCheckResult } from './healthcheck-result';
 import { PrismaClient, Prisma } from '@prisma/client';
 

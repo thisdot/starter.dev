@@ -1,17 +1,13 @@
 import { PrismaClient, Prisma, TechnologyEntity } from '@prisma/client';
-import { RedisClient } from '../../redis';
+import { CacheAPIWrapper } from '../../cache';
 
 type TechnologyEntityId = TechnologyEntity['id'];
 
 export class TechnologyDataSource {
-	constructor(
-		private prismaClient: PrismaClient,
-		private redisClient?: RedisClient,
-		private redisCacheTtlSeconds: number = 360
-	) {}
+	constructor(private prismaClient: PrismaClient, private cacheAPIWrapper?: CacheAPIWrapper) {}
 
 	async getTechnologyById(id: TechnologyEntityId): Promise<TechnologyEntity | null> {
-		let entity = await this.getCached(id);
+		let entity = await this.cacheAPIWrapper?.getCached<TechnologyEntity>(id);
 		if (entity) {
 			return entity;
 		}
@@ -21,7 +17,7 @@ export class TechnologyDataSource {
 			},
 		});
 		if (entity) {
-			await this.cache(entity);
+			await this.cacheAPIWrapper?.cache<TechnologyEntity>(entity, 'id');
 		}
 		return entity;
 	}
@@ -34,7 +30,7 @@ export class TechnologyDataSource {
 		const entity = await this.prismaClient.technologyEntity.create({
 			data,
 		});
-		this.cache(entity);
+		this.cacheAPIWrapper?.cache<TechnologyEntity>(entity, 'id');
 		return entity;
 	}
 
@@ -48,7 +44,7 @@ export class TechnologyDataSource {
 			},
 			data: updateTechnology,
 		});
-		await this.cache(entity);
+		await this.cacheAPIWrapper?.cache<TechnologyEntity>(entity, 'id');
 		return entity;
 	}
 
@@ -59,50 +55,8 @@ export class TechnologyDataSource {
 			},
 		});
 		if (deleted) {
-			await this.invalidateCached(id);
+			await this.cacheAPIWrapper?.invalidateCached(id);
 		}
 		return deleted;
-	}
-
-	composeRedisKey = (id: TechnologyEntityId): string => `technology:${id}`;
-
-	private async getCached(id: TechnologyEntityId): Promise<TechnologyEntity | null> {
-		if (this.redisClient) {
-			try {
-				const key = this.composeRedisKey(id);
-				const serialized = await this.redisClient.get(key);
-				if (serialized) {
-					return JSON.parse(serialized);
-				}
-			} catch {
-				console.warn('Redis cache unavailable.');
-			}
-		}
-		return null;
-	}
-
-	private async cache(technology: TechnologyEntity): Promise<void> {
-		if (this.redisClient) {
-			try {
-				const key = this.composeRedisKey(technology.id);
-				const serialized = JSON.stringify(technology);
-				await this.redisClient.set(key, serialized, {
-					EX: this.redisCacheTtlSeconds,
-				});
-			} catch {
-				console.warn('Redis cache unavailable.');
-			}
-		}
-	}
-
-	private async invalidateCached(id: TechnologyEntityId): Promise<void> {
-		if (this.redisClient) {
-			try {
-				const key = this.composeRedisKey(id);
-				await this.redisClient.del(key);
-			} catch {
-				console.warn('Redis cache unavailable.');
-			}
-		}
 	}
 }

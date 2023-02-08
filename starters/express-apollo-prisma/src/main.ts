@@ -3,9 +3,9 @@ import express from 'express';
 import http from 'http';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import { graphqlServer, createGraphqlServerMiddleware } from './graphql';
+import { graphqlServer, createGraphqlServerMiddlewareAsync } from './graphql';
 import * as dotenv from 'dotenv';
-import { connectRedisClient } from './redis';
+import { connectRedisClient } from './cache/redis';
 import { createHealthcheckHandler } from './healthcheck';
 import { PrismaClient } from '@prisma/client';
 
@@ -45,11 +45,15 @@ if (isNaN(REDIS_CACHE_TTL_SECONDS)) {
 	const redisClient = await connectRedisClient(REDIS_URL);
 
 	// Set up server-related Express middleware
-	app.use('/graphql', createGraphqlServerMiddleware(redisClient, REDIS_CACHE_TTL_SECONDS));
+	app.use('/graphql', await createGraphqlServerMiddlewareAsync());
 	const prismaClient = new PrismaClient();
 	app.use('/health', createHealthcheckHandler({ redisClient, prismaClient }));
 
 	// Modified server startup
 	await new Promise<void>((resolve) => httpServer.listen({ port: PORT }, resolve));
-	console.log(`🚀 Server ready at http://localhost:${PORT}/`);
+	console.log('\x1b[33m 🚀 Server ready. Endpoints: \x1b[0m');
+	console.table({
+		GraphQL: { Method: 'GET', Endpoint: `http://localhost:${PORT}/graphql` },
+		HealthCheck: { Method: 'GET', Endpoint: `http://localhost:${PORT}/health` },
+	});
 })();
