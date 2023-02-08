@@ -18,21 +18,21 @@ describe('TechnologyDataSource', () => {
 	const MOCK_NON_EXISTING_ID = 321;
 
 	describe('constructor', () => {
-		describe('when called with Prisma Client (required)', () => {
+		describe('when called with PrismaClient (required)', () => {
 			it('creates an instance', () => {
 				const instance = new TechnologyDataSource(MOCK_PRISMA_CLIENT);
 				expect(instance).toBeInstanceOf(TechnologyDataSource);
 			});
 		});
 
-		describe('when called with Prisma Client (required) and Redis Client (optional)', () => {
+		describe('when called with PrismaClient (required) and CacheAPIWrapper (optional)', () => {
 			it('creates an instance', () => {
 				const instance = new TechnologyDataSource(MOCK_PRISMA_CLIENT, MOCK_CACHE_API_WRAPPER);
 				expect(instance).toBeInstanceOf(TechnologyDataSource);
 			});
 		});
 
-		describe('when called with Prisma Client (required), Redis Client (optional) and Redis Cache TTL Seconds (optional)', () => {
+		describe('when called with PrismaClient (required), CacheAPIWrapper (optional) and Cache TTL Seconds (optional)', () => {
 			it('creates an instance', () => {
 				const instance = new TechnologyDataSource(MOCK_PRISMA_CLIENT, MOCK_CACHE_API_WRAPPER);
 				expect(instance).toBeInstanceOf(TechnologyDataSource);
@@ -40,7 +40,7 @@ describe('TechnologyDataSource', () => {
 		});
 	});
 
-	describe('when created with Prisma Client (required)', () => {
+	describe('when created with PrismaClient (required)', () => {
 		const instance = new TechnologyDataSource(MOCK_PRISMA_CLIENT);
 
 		describe('#getTechnologyById', () => {
@@ -197,7 +197,7 @@ describe('TechnologyDataSource', () => {
 		});
 	});
 
-	describe('when created with Prisma Client (required) and Redis Client (optional)', () => {
+	describe('when created with PrismaClient (required) and CacheAPIWrapper (optional)', () => {
 		const instance = new TechnologyDataSource(MOCK_PRISMA_CLIENT, MOCK_CACHE_API_WRAPPER);
 
 		describe('#getTechnologyById', () => {
@@ -274,7 +274,7 @@ describe('TechnologyDataSource', () => {
 					MOCK_PRISMA_CLIENT.technologyEntity.findFirst.mockReset();
 				});
 
-				it('calls RedisClient.get method once with valid arguments', () => {
+				it('calls CacheAPIWrapper.get method once with valid arguments', () => {
 					expect(MOCK_CACHE_API_WRAPPER.getCached).toHaveBeenCalledTimes(1);
 					expect(MOCK_CACHE_API_WRAPPER.getCached).toHaveBeenLastCalledWith(MOCK_NON_EXISTING_ID);
 				});
@@ -286,36 +286,12 @@ describe('TechnologyDataSource', () => {
 					});
 				});
 
-				it('does not call RedisClient.set method', () => {
+				it('does not call CacheAPIWrapper.set method', () => {
 					expect(MOCK_CACHE_API_WRAPPER.cache).not.toHaveBeenCalled();
 				});
 
 				it('returns expected result', () => {
 					expect(result).toStrictEqual(null);
-				});
-			});
-
-			describe('when called and Redis unavailable', () => {
-				let spyConsoleWarn: jest.SpyInstance;
-				beforeAll(async () => {
-					MOCK_CACHE_API_WRAPPER.getCached.mockRejectedValueOnce(new Error());
-					MOCK_CACHE_API_WRAPPER.cache.mockRejectedValueOnce(new Error());
-					MOCK_PRISMA_CLIENT.technologyEntity.findFirst.mockResolvedValue(MOCK_TECHNOLOGY);
-					spyConsoleWarn = jest.spyOn(console, 'warn').mockImplementation();
-					await instance.getTechnologyById(MOCK_TECHNOLOGY.id);
-				});
-
-				afterAll(() => {
-					MOCK_CACHE_API_WRAPPER.getCached.mockReset();
-					MOCK_CACHE_API_WRAPPER.cache.mockReset();
-					MOCK_PRISMA_CLIENT.technologyEntity.findFirst.mockReset();
-					spyConsoleWarn.mockReset();
-					spyConsoleWarn.mockRestore();
-				});
-
-				it('logs warning into console', () => {
-					expect(spyConsoleWarn).toHaveBeenCalledTimes(2);
-					expect(spyConsoleWarn).toHaveBeenCalledWith('Redis cache unavailable.');
 				});
 			});
 		});
@@ -365,7 +341,7 @@ describe('TechnologyDataSource', () => {
 					});
 				});
 
-				it('calls RedisClient.set method once with valid argument', () => {
+				it('calls CacheAPIWrapper.set method once with valid argument', () => {
 					expect(MOCK_CACHE_API_WRAPPER.cache).toHaveBeenCalledTimes(1);
 					expect(MOCK_CACHE_API_WRAPPER.cache).toHaveBeenCalledWith(MOCK_TECHNOLOGY, 'id');
 				});
@@ -399,7 +375,7 @@ describe('TechnologyDataSource', () => {
 					});
 				});
 
-				it('calls RedisClient.set method once with valid arguments', () => {
+				it('calls CacheAPIWrapper.set method once with valid arguments', () => {
 					expect(MOCK_CACHE_API_WRAPPER.cache).toHaveBeenCalledTimes(1);
 					expect(MOCK_CACHE_API_WRAPPER.cache).toHaveBeenCalledWith(MOCK_TECHNOLOGY, 'id');
 				});
@@ -433,50 +409,10 @@ describe('TechnologyDataSource', () => {
 					});
 				});
 
-				it('calls RedisClient.del method once with valid argument', () => {
+				it('calls CacheAPIWrapper.del method once with valid argument', () => {
 					expect(MOCK_CACHE_API_WRAPPER.invalidateCached).toHaveBeenCalledTimes(1);
 					expect(MOCK_CACHE_API_WRAPPER.invalidateCached).toHaveBeenCalledWith(MOCK_TECHNOLOGY.id);
 				});
-
-				it('returns expected result', () => {
-					expect(result).toEqual(MOCK_TECHNOLOGY);
-				});
-			});
-			describe('when called and Redis unavailable', () => {
-				let result: TechnologyEntity;
-				let spyConsoleWarn: jest.SpyInstance;
-				beforeAll(async () => {
-					MOCK_PRISMA_CLIENT.technologyEntity.delete.mockResolvedValue(MOCK_TECHNOLOGY);
-					MOCK_CACHE_API_WRAPPER.invalidateCached.mockRejectedValue(new Error());
-					spyConsoleWarn = jest.spyOn(console, 'warn').mockImplementation();
-					result = await instance.deleteTechnology(MOCK_TECHNOLOGY.id);
-				});
-
-				afterAll(() => {
-					MOCK_PRISMA_CLIENT.technologyEntity.delete.mockReset();
-					MOCK_CACHE_API_WRAPPER.invalidateCached.mockReset();
-					spyConsoleWarn.mockReset();
-					spyConsoleWarn.mockRestore();
-				});
-
-				it('calls PrismaClient delete method once with valid argument', () => {
-					expect(MOCK_PRISMA_CLIENT.technologyEntity.delete).toHaveBeenCalledTimes(1);
-					expect(MOCK_PRISMA_CLIENT.technologyEntity.delete).toHaveBeenCalledWith({
-						where: {
-							id: MOCK_TECHNOLOGY.id,
-						},
-					});
-				});
-
-				it('calls RedisClient.del method once with valid argument', () => {
-					expect(MOCK_CACHE_API_WRAPPER.invalidateCached).toHaveBeenCalledTimes(1);
-					expect(MOCK_CACHE_API_WRAPPER.invalidateCached).toHaveBeenCalledWith(MOCK_TECHNOLOGY.id);
-				});
-
-				// it('logs warning into console', () => {
-				// 	expect(spyConsoleWarn).toHaveBeenCalledTimes(1);
-				// 	expect(spyConsoleWarn).toHaveBeenCalledWith('Redis cache unavailable.');
-				// });
 
 				it('returns expected result', () => {
 					expect(result).toEqual(MOCK_TECHNOLOGY);
