@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 import { Query } from '../generated/types';
 import assert from 'assert';
-import { serverExecuteOperation } from '../../utils/test';
+import { testServerExecuteOperation } from '../../utils/test';
 
 type HelloQuery = Pick<Query, 'hello'>;
 
@@ -15,7 +15,7 @@ describe('hello query', () => {
 	it('returns expected result', async () => {
 		const MOCK_GREETING = 'MOCK_GREETING';
 
-		const subject = await serverExecuteOperation<HelloQuery>({
+		const subject = await testServerExecuteOperation<HelloQuery>({
 			query: MOCK_QUERY,
 			variables: {
 				greeting: MOCK_GREETING,

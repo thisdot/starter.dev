@@ -7,7 +7,7 @@ import {
 	UpdateTechnology,
 } from '../generated/types';
 import assert from 'assert';
-import { serverExecuteOperation } from '../../utils/test';
+import { testServerExecuteOperation } from '../../utils/test';
 import { createMockTechnologyDataSource } from '../../utils/test';
 import { GraphQLResponse } from '@apollo/server';
 import { ApolloServerErrorCode } from '@apollo/server/errors';
@@ -32,6 +32,7 @@ const MOCK_EXISTING_TECHNOLOGY_ENTITY: TechnologyEntity = {
 };
 const MOCK_NON_EXISTING_ID = 321;
 const MOCK_NON_EXISTING_ID_STRING = '321';
+
 const MOCK_QUERY_TECHNOLOGY = gql`
 	query TechnologyQuery($id: ID!) {
 		technology(id: $id) {
@@ -51,12 +52,9 @@ const MOCK_QUERY_TECHNOLOGIES = gql`
 `;
 
 const MOCK_TECHNOLOGY_DATASOURCE = createMockTechnologyDataSource();
-const MOCK_EXECUTE_OPERATION_OPTIONS: ExecuteOperationOptions<ServerContext> = {
-	contextValue: {
-		dataSources: {
-			technologyDataSource: MOCK_TECHNOLOGY_DATASOURCE,
-		},
-		token: undefined,
+const MOCK_CONTEXT: ServerContext = {
+	dataSources: {
+		technologyDataSource: MOCK_TECHNOLOGY_DATASOURCE,
 	},
 };
 
@@ -115,14 +113,14 @@ describe('technologyResolvers', () => {
 					MOCK_TECHNOLOGY_DATASOURCE.getTechnologyById.mockResolvedValue(
 						MOCK_EXISTING_TECHNOLOGY_ENTITY
 					);
-					response = await serverExecuteOperation<QueryTechnology>(
+					response = await testServerExecuteOperation<QueryTechnology>(
 						{
 							query: MOCK_QUERY_TECHNOLOGY,
 							variables: {
 								id: MOCK_EXISTING_ID_STRING,
 							},
 						},
-						MOCK_EXECUTE_OPERATION_OPTIONS
+						MOCK_CONTEXT
 					);
 				});
 
@@ -158,14 +156,14 @@ describe('technologyResolvers', () => {
 
 				beforeAll(async () => {
 					MOCK_TECHNOLOGY_DATASOURCE.getTechnologyById.mockResolvedValue(null);
-					response = await serverExecuteOperation<QueryTechnology>(
+					response = await testServerExecuteOperation<QueryTechnology>(
 						{
 							query: MOCK_QUERY_TECHNOLOGY,
 							variables: {
 								id: MOCK_NON_EXISTING_ID_STRING,
 							},
 						},
-						MOCK_EXECUTE_OPERATION_OPTIONS
+						MOCK_CONTEXT
 					);
 				});
 
@@ -202,14 +200,14 @@ describe('technologyResolvers', () => {
 				let response: GraphQLResponse<QueryTechnology>;
 
 				beforeAll(async () => {
-					response = await serverExecuteOperation<QueryTechnology>(
+					response = await testServerExecuteOperation<QueryTechnology>(
 						{
 							query: MOCK_QUERY_TECHNOLOGY,
 							variables: {
 								id: 'INVALID_NUMBER_ID',
 							},
 						},
-						MOCK_EXECUTE_OPERATION_OPTIONS
+						MOCK_CONTEXT
 					);
 				});
 
@@ -245,11 +243,11 @@ describe('technologyResolvers', () => {
 					MOCK_TECHNOLOGY_DATASOURCE.getTechnologies.mockResolvedValue(
 						MOCK_RESULT_TECHNOLOGY_ENTITY_ARRAY
 					);
-					response = await serverExecuteOperation<QueryTechnologies>(
+					response = await testServerExecuteOperation<QueryTechnologies>(
 						{
 							query: MOCK_QUERY_TECHNOLOGIES,
 						},
-						MOCK_EXECUTE_OPERATION_OPTIONS
+						MOCK_CONTEXT
 					);
 				});
 
@@ -290,14 +288,14 @@ describe('technologyResolvers', () => {
 					MOCK_TECHNOLOGY_DATASOURCE.createTechnology.mockResolvedValue(
 						MOCK_EXISTING_TECHNOLOGY_ENTITY
 					);
-					response = await serverExecuteOperation<MutationCreateTechnology>(
+					response = await testServerExecuteOperation<MutationCreateTechnology>(
 						{
 							query: MOCK_MUTATION_CREATE_TECHNOLOGY,
 							variables: {
 								input: MOCK_INPUT_CREATE_TECHNOLOGY,
 							},
 						},
-						MOCK_EXECUTE_OPERATION_OPTIONS
+						MOCK_CONTEXT
 					);
 				});
 
@@ -337,7 +335,7 @@ describe('technologyResolvers', () => {
 					MOCK_TECHNOLOGY_DATASOURCE.updateTechnology.mockResolvedValue(
 						MOCK_EXISTING_TECHNOLOGY_ENTITY
 					);
-					response = await serverExecuteOperation<MutationUpdateTechnology>(
+					response = await testServerExecuteOperation<MutationUpdateTechnology>(
 						{
 							query: MOCK_MUTATION_UPDATE_TECHNOLOGY,
 							variables: {
@@ -345,7 +343,7 @@ describe('technologyResolvers', () => {
 								input: MOCK_INPUT_UPDATE_TECHNOLOGY,
 							},
 						},
-						MOCK_EXECUTE_OPERATION_OPTIONS
+						MOCK_CONTEXT
 					);
 				});
 
@@ -381,7 +379,7 @@ describe('technologyResolvers', () => {
 				let response: GraphQLResponse<MutationUpdateTechnology>;
 
 				beforeAll(async () => {
-					response = await serverExecuteOperation<MutationUpdateTechnology>(
+					response = await testServerExecuteOperation<MutationUpdateTechnology>(
 						{
 							query: MOCK_MUTATION_UPDATE_TECHNOLOGY,
 							variables: {
@@ -391,7 +389,7 @@ describe('technologyResolvers', () => {
 								},
 							},
 						},
-						MOCK_EXECUTE_OPERATION_OPTIONS
+						MOCK_CONTEXT
 					);
 				});
 
@@ -424,14 +422,14 @@ describe('technologyResolvers', () => {
 					MOCK_TECHNOLOGY_DATASOURCE.deleteTechnology.mockResolvedValue(
 						MOCK_EXISTING_TECHNOLOGY_ENTITY
 					);
-					response = await serverExecuteOperation<MutationDeleteTechnology>(
+					response = await testServerExecuteOperation<MutationDeleteTechnology>(
 						{
 							query: MOCK_MUTATION_DELETE_TECHNOLOGY,
 							variables: {
 								id: MOCK_EXISTING_ID_STRING,
 							},
 						},
-						MOCK_EXECUTE_OPERATION_OPTIONS
+						MOCK_CONTEXT
 					);
 				});
 

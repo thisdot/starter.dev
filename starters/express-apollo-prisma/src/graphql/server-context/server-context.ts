@@ -8,5 +8,4 @@ export type ServerContextDataSources = {
 export type ServerContext = BaseContext & {
 	// custom context properties
 	dataSources: ServerContextDataSources;
-	token: string | undefined;
-};
+} & Partial<{ token?: string }>;
