@@ -15,8 +15,7 @@
 		"format": "prettier --write \"**/*.{ts,js,json,md}\"",
 		"ts:check": "tsc --noEmit",
 		"codegen": "graphql-codegen --config codegen.ts",
-		"db:seed": "npm codegen && ts-node ./scripts/seed.ts",
-		"db:migration": "ts-node ./scripts/migration.ts"
+		"db:seed": "npm codegen && ts-node ./scripts/seed.ts"
 	},
 	"keywords": [
 		"serverless",
