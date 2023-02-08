@@ -24,6 +24,7 @@ This starter kit features Express, Typescript API setup
   - [Technologies](#technologies)
     - [Express](#express)
     - [Apollo Server](#apollo-server)
+    - [Prisma](#prisma)
     - [Caching](#caching)
     - [Testing](#testing)
 
@@ -85,7 +86,7 @@ git clone https://github.com/thisdot/starter.dev.git
 
 - `npm run infrastructure:start` - Starts up a Mysql database and Redis instance for caching
 - `npm run infrastructure:stop` - Stops the running database and Redis docker containers.
-<!-- TODO - `npm run db:seed` - Allows you to seed the database (See the Seeding section) -->
+- `npm run db:seed` - Allows you to seed the database (See the Seeding section)
 - `npm run dev` - Starts the development server (Needs a running infrastructure first)
 - `npm run build` - Builds the app.
 - `npm start` - Starts the built app. (Needs a running infrastructure first)
@@ -110,11 +111,11 @@ The above steps will make sure your API connects to the database and Redis insta
 
 ### Seeding
 
-<!-- TODO To seed the database, you need to do the following steps:
+To seed the database, you need to do the following steps:
 
 1. create a `.env` file. For the defaults, copy the contents of the `.env.example` file's content into it.
 2. run `npm run infrastructure:start`
-3. run `npm run db:seed` -->
+3. run `npm run db:seed`
 
 ### Production build
 
@@ -168,6 +169,17 @@ Apollo Server is an open-source, spec-compliant GraphQL server that's compatible
 We use the [`expressMiddleware`](https://www.apollographql.com/docs/apollo-server/api/express-middleware#expressmiddleware) function from `@apollo/server` to enable you to attach Apollo Server to an Express server. We also recommend using [`ApolloServerPluginDrainHttpServer`](https://www.apollographql.com/docs/apollo-server/api/plugin/drain-http-server) plugin to ensure your server gracefully shuts down.
 
 The data sources are located in `src/graphql/data-sources`. The data sources of the entities are passed in `src\graphql\server-context\server-context-middleware-options.ts`.
+
+### Prisma
+
+Prisma is a next-generation ORM that makes working with databases easy for application developers and features.
+
+We use Prisma for the following:
+
+- [Prisma Client](https://www.prisma.io/docs/concepts/components/prisma-client) - an auto-generated and type-safe database client for use in your application.
+- [Prisma Migrate](https://www.prisma.io/docs/concepts/components/prisma-migrate) - a declarative data modeling and migration tool.
+
+To learn more about [Prisma](https://www.prisma.io/docs/concepts/overview/prisma-in-your-stack/is-prisma-an-orm)
 
 ### Caching
 
