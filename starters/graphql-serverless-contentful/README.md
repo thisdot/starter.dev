@@ -121,12 +121,47 @@ These are the defaults and should work seamlessly if you have Redis running alre
 - `npm run lint` - Runs ESLint on the project.
 - `npm run prettier` - Formats code for the entire project
 - `npm run deploy` - Deploy your application on `AWS Lambda`
-- `npm run db:migration` - Run database migrations
 - `npm run db:seed` - Seed Database
 
 ### Migration
 
 To manage our Contentful content types via code we implement migration scripts which are located in `scripts/migration`.
+
+How to run migrations:
+
+- First, install `contentful-cli`.
+
+```sh
+   npm i -g contentful-cli
+```
+
+- Login to Contentful via `contentful-cli`.
+
+```sh
+   contenful login
+```
+
+- Create a space using `contentful-cli`, if not created yet in Contentful web app.
+
+```sh
+   contentful space create --name "ThisDot example"
+```
+
+- Set the newly-created space as the default space for all further CLI operations. This will present a list of all available spaces – choose the one we just created
+
+```sh
+   contentful space use
+```
+
+- Migrations are located in `scripts/migrations/**`. Create a migration file here
+
+- Run a migration using the following command
+
+```sh
+   contentful space migration scripts/migrations/01-create-technology-contentType.js -y
+```
+
+[Learn more on migrations](https://www.contentful.com/developers/docs/tutorials/cli/scripting-migrations/)
 
 ### Seeding
 
