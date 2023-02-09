@@ -1,11 +1,15 @@
 # starter.dev
 
-This is a monorepo for the starter.dev project.
+This is a monorepo for the [starter.dev](https://starter.dev/) project.
 
 - `/packages` - Includes the starter.dev website and CLI
 - `/starters` - Directory of all starter kit projects
 
-starter.dev is a collection of starter kit projects and related tools to help get you up and running on your next project without spending days adding all the pieces and configuration to supporting whatever libraries or frameworks that you choose. Choose a kit with the set of tools you are looking for and use our CLI to generate your new project. The starter kits come with all the essentials included and configured, such as TypeScript, testing, linting, storybook, and more.
+[starter.dev](https://starter.dev/) is a collection of starter kit projects and related tools to help get you up and running on your next project without spending days adding all the pieces and configuration to supporting whatever libraries or frameworks that you choose. Choose a kit with the set of tools you are looking for and use our CLI to generate your new project. The starter kits come with all the essentials included and configured, such as TypeScript, testing, linting, storybook, and more.
+
+## How to run the scaffolding script
+
+In the command line, run `npx @this-dot/create-starter` and you will see the list of available starter kits. Select the kit you are interested in and name your new project. Once the installation is complete, `cd` into your new project and install the dependencies(`npm install`, `yarn`, etc.) Now you are ready to get started with your brand new project.
 
 ## Starter kit essentials
 
@@ -54,7 +58,7 @@ For proper integration with the starter-dev CLI and website there are also some 
 
 ### Adding starter kit to the website
 
-They `keyword` field in your starter kit's `package.json` categorizes/tags each starter kit on the website. For a reference of the keys that should be used here take a look at the` `package/website/src/config.tsx`` file. If a particular technology you're needing is missing from the `TECHNOLOGIES` list, please open a PR to add it including an icon _(if available)_.
+They `keyword` field in your starter kit's `package.json` categorizes/tags each starter kit on the website. For a reference of the keys that should be used here take a look at the`package/website/src/config.tsx` file. If a particular technology you're needing is missing from the`TECHNOLOGIES` list, please open a PR to add it including an icon _(if available)_.
 
 Once you've added your description, keywords, and made sure the keywords exist in the `TECHNOLOGIES` list in the websites `config.tsx` file, your starter kit will automatically be added to the website and deployed once you merge into the `main` branch.
 
