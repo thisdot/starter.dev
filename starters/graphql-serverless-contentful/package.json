@@ -41,7 +41,7 @@
 		"serverless-plugin-typescript": "2.1.4"
 	},
 	"devDependencies": {
-		"@aws-sdk/types": "^3.267.0",
+		"@aws-sdk/types": "3.267.0",
 		"@graphql-codegen/cli": "2.16.4",
 		"@graphql-codegen/introspection": "2.2.3",
 		"@graphql-codegen/typescript": "2.8.7",
