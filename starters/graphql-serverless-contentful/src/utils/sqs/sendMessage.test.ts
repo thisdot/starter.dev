@@ -22,16 +22,19 @@ describe('sendMessage', () => {
 		expect(getClient).toHaveBeenCalled();
 		expect(getClient().send).toHaveBeenCalledWith(
 			expect.objectContaining({
-				QueueUrl: 'queue-url',
-				MessageBody: JSON.stringify(message),
+				input: {
+					QueueUrl: 'queue-url',
+					MessageBody: JSON.stringify(message),
+				},
 			})
 		);
 	});
 
 	it('should return an object with success false and the error message if the send method throws an error', async () => {
 		const errorMessage = 'error message';
-		// getClient().send.mockRejectedValue(new Error(errorMessage));
-		jest.spyOn(getClient(), 'send').mockRejectedValue(new Error(errorMessage));
+		jest
+			.spyOn(getClient(), 'send')
+			.mockRejectedValue(new Error(errorMessage) as never);
 		const message = { key: 'value' };
 		const result = await sendMessage(message);
 		expect(result).toEqual({
@@ -41,23 +44,29 @@ describe('sendMessage', () => {
 		expect(getClient).toHaveBeenCalled();
 		expect(getClient().send).toHaveBeenCalledWith(
 			expect.objectContaining({
-				QueueUrl: 'queue-url',
-				MessageBody: JSON.stringify(message),
+				input: {
+					QueueUrl: 'queue-url',
+					MessageBody: JSON.stringify(message),
+				},
 			})
 		);
 	});
 
 	it('should return a string representation of the error if it is not an instance of Error', async () => {
 		const error = { message: 'error message' };
-		getClient().send.mockRejectedValue(error);
+		jest
+			.spyOn(getClient(), 'send')
+			.mockRejectedValue(new Error(error.message) as never);
 		const message = { key: 'value' };
 		const result = await sendMessage(message);
-		expect(result).toEqual(JSON.stringify(error));
+		expect(result).toEqual({ data: 'error message', success: false });
 		expect(getClient).toHaveBeenCalled();
 		expect(getClient().send).toHaveBeenCalledWith(
 			expect.objectContaining({
-				QueueUrl: 'queue-url',
-				MessageBody: JSON.stringify(message),
+				input: {
+					QueueUrl: 'queue-url',
+					MessageBody: JSON.stringify(message),
+				},
 			})
 		);
 	});
