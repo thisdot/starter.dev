@@ -3,7 +3,7 @@ import Keyv from 'keyv';
 import { redisClient } from './redis';
 
 jest.mock('./redis', () => {
-	// Require the original module to not be mocked...
+	// Original env snapshot 
 	const _originalEnv = process.env;
 	process.env = {
 		REDIS_PORT: '1234',
@@ -11,6 +11,7 @@ jest.mock('./redis', () => {
 		REDIS_USER: 'MOCK_USER',
 		REDIS_PASS: 'MOCK_PASS',
 	};
+		// Require the original module to not be mocked...
 	const originalModule =
 		jest.requireActual<typeof import('./redis')>('./redis');
 
