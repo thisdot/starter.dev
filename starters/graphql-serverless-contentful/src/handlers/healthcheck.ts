@@ -11,7 +11,7 @@ export const handler: APIGatewayProxyHandler = async () => {
 	}
 
 	return {
-		statusCode: cacheDatabase ? 200 : 500,
+		statusCode: cacheDatabase ? 200 : 503,
 		body: JSON.stringify({ cacheDatabase }),
 		headers: {
 			'Content-Type': 'application/json',
