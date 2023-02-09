@@ -84,6 +84,6 @@ git clone https://github.com/thisdot/starter.dev.git
 
 [Repository](https://github.com/thisdot/starter.dev-github-showcases/tree/main/solidstart-tanstackquery-tailwind-modules)
 
-[Live demo](https://solidstart-tanstackquery-tailwind-modules.starter.dev/)
+<!--[Live demo](https://solidstart-tanstackquery-tailwind-modules.starter.dev/) -->
 
 The demo application re-implements some of GitHub's pages and functionality. It uses the OAuth credentials in GitHub to authenticate users with their GitHub accounts and uses window.fetch() to fetch data from the GitHub API. Check out the link above to learn more or check out the demo!
