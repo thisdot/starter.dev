@@ -1,5 +1,5 @@
 {
-	"name": "apollo-serverless-contentful",
+	"name": "serverless-apollo-contentful",
 	"version": "1.0.0",
 	"description": "AWS Serverless, GraphQL Apollo Server, and Contentful CMS",
 	"main": "src/handlers/graphql.ts",
@@ -7,15 +7,13 @@
 		"test": "npm run codegen && jest",
 		"dev": "sls offline start",
 		"lint": "eslint . --ext .ts",
-		"infrastructure:build": "docker compose up -d",
-		"infrastructure:remove": "docker compose down",
-		"infrastructure:start": "docker compose start",
-		"infrastructure:stop": "docker compose stop",
+		"infrastructure:start": "docker compose up -d",
+		"infrastructure:stop": "docker compose down",
 		"deploy": "sls deploy",
 		"format": "prettier --write \"**/*.{ts,js,json,md}\"",
 		"ts:check": "tsc --noEmit",
 		"codegen": "graphql-codegen --config codegen.ts",
-		"db:seed": "npm codegen && ts-node ./scripts/seed.ts"
+		"db:seed": "npm run codegen && ts-node ./scripts/seed.ts"
 	},
 	"keywords": [
 		"serverless",
