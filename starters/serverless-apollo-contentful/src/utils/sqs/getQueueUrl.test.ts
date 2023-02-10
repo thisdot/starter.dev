@@ -7,6 +7,7 @@ const MOCK_QUEUE_URL = 'MOCK_QUEUE_URL';
 const MOCK_ERROR_MESSAGE = 'MOCK_ERROR_MESSAGE';
 
 const MOCK_GET_CLIENT = getClient as jest.Mock;
+
 const MOCK_DATA = {
 	QueueUrl: MOCK_QUEUE_URL,
 };
@@ -16,10 +17,12 @@ jest.mock('./client', () => ({
 }));
 
 describe('.getQueueUrl', () => {
-	process.env = {};
-	process.env['JOB_QUEUE'] = MOCK_JOB_QUEUE;
+	const originalEnv = process.env;
 
 	describe('when process.env.JOB_QUEUE is defined', () => {
+		process.env = {};
+		process.env['JOB_QUEUE'] = MOCK_JOB_QUEUE;
+
 		describe('and client.send returns result', () => {
 			let result: string | undefined;
 			beforeAll(async () => {
@@ -31,6 +34,7 @@ describe('.getQueueUrl', () => {
 
 			afterAll(() => {
 				MOCK_GET_CLIENT.mockReset();
+				process.env = originalEnv;
 			});
 
 			it('calls getClient', () => {
@@ -73,7 +77,7 @@ describe('.getQueueUrl', () => {
 
 	describe('when process.env.JOB_QUEUE is not defined', () => {
 		beforeAll(() => {
-			delete process.env.JOB_QUEUE;
+			process.env = originalEnv;
 		});
 
 		it('throws expected error', async () => {
