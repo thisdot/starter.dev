@@ -27,7 +27,7 @@ jest.mock('./getQueueUrl', () => ({
 }));
 
 describe('.sendMessage', () => {
-	const message: Message = { key: 'mock_value' };
+	const message: Message = { mock_key: 'mock_value' };
 	let result: SendMessageResult;
 
 	describe('when called with correct argument', () => {
@@ -52,12 +52,18 @@ describe('.sendMessage', () => {
 				expect(MOCK_GET_QUEUE_URL).toHaveBeenCalledTimes(1);
 			});
 			it('calls SQSClient.send with expected command', () => {
-				const EXPECTED_ARGUMENT = new SendMessageCommand({
+				const EXPECTED_INPUT = {
 					QueueUrl: MOCK_QUEUE_URL,
 					MessageBody: JSON.stringify(message),
-				});
-				expect(getClient().send).toHaveBeenCalledTimes(1);
-				expect(getClient().send).toHaveBeenCalledWith(EXPECTED_ARGUMENT);
+				};
+
+				const mockSend = MOCK_GET_CLIENT.mock.results[0].value.send;
+				expect(mockSend).toHaveBeenCalledTimes(1);
+
+				const expectedArgument = mockSend.mock.calls[0][0];
+
+				expect(expectedArgument).toBeInstanceOf(SendMessageCommand);
+				expect(expectedArgument.input).toEqual(EXPECTED_INPUT);
 			});
 			it('returns expected result', () => {
 				const EXPECTED_RESULT: SendMessageResult = {
@@ -88,12 +94,18 @@ describe('.sendMessage', () => {
 				expect(MOCK_GET_QUEUE_URL).toHaveBeenCalledTimes(1);
 			});
 			it('calls SQSClient.send with expected command', () => {
-				const EXPECTED_ARGUMENT = new SendMessageCommand({
+				const EXPECTED_INPUT = {
 					QueueUrl: MOCK_QUEUE_URL,
 					MessageBody: JSON.stringify(message),
-				});
-				expect(getClient().send).toHaveBeenCalledTimes(1);
-				expect(getClient().send).toHaveBeenCalledWith(EXPECTED_ARGUMENT);
+				};
+
+				const mockSend = MOCK_GET_CLIENT.mock.results[0].value.send;
+				expect(mockSend).toHaveBeenCalledTimes(1);
+
+				const expectedArgument = mockSend.mock.calls[0][0];
+
+				expect(expectedArgument).toBeInstanceOf(SendMessageCommand);
+				expect(expectedArgument.input).toEqual(EXPECTED_INPUT);
 			});
 			it('returns expected result', () => {
 				const EXPECTED_RESULT: SendMessageResult = {
