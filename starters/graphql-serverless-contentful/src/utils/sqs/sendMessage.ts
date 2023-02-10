@@ -1,12 +1,22 @@
-import { SendMessageCommand } from '@aws-sdk/client-sqs';
+import {
+	SendMessageCommand,
+	SendMessageCommandOutput,
+} from '@aws-sdk/client-sqs';
 import { getClient } from './client';
 import { getQueueUrl } from './getQueueUrl';
 
-type Message = {
+export type Message = {
 	[key: string]: string | number | boolean | null;
 };
 
-export const sendMessage = async (message: Message) => {
+export type SendMessageResult = {
+	success: boolean;
+	data: SendMessageCommandOutput | string;
+};
+
+export const sendMessage = async (
+	message: Message
+): Promise<SendMessageResult> => {
 	const client = getClient();
 	const queueUrl = await getQueueUrl();
 	const command = new SendMessageCommand({
@@ -20,10 +30,11 @@ export const sendMessage = async (message: Message) => {
 			success: true,
 			data,
 		};
-	} catch (error: any) {
+	} catch (err) {
+		const error = err as Error;
 		return {
 			success: false,
-			data: error?.message,
+			data: error.message,
 		};
 	}
 };
