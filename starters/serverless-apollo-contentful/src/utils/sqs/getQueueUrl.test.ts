@@ -20,12 +20,10 @@ describe('.getQueueUrl', () => {
 	const originalEnv = process.env;
 
 	describe('when process.env.JOB_QUEUE is defined', () => {
-		process.env = {};
-		process.env['JOB_QUEUE'] = MOCK_JOB_QUEUE;
-
 		describe('and client.send returns result', () => {
 			let result: string | undefined;
 			beforeAll(async () => {
+				process.env = { JOB_QUEUE: MOCK_JOB_QUEUE };
 				MOCK_GET_CLIENT.mockReturnValue({
 					send: jest.fn().mockResolvedValue(MOCK_DATA),
 				});
