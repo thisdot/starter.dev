@@ -19,7 +19,8 @@ describe('getQueueUrl', () => {
 		}));
 
 		const result = await getQueueUrl();
-		expect(result).toEqual('https://test-queue-url');
+		expect(+.
+			).toEqual('https://test-queue-url');
 		expect(mockSend).toHaveBeenCalledWith(expect.any(GetQueueUrlCommand));
 	});
 
@@ -29,6 +30,8 @@ describe('getQueueUrl', () => {
 			getClient: jest.fn().mockReturnValue({ send: mockSend }),
 		}));
 
+
+		
 		await expect(getQueueUrl()).rejects.toThrowError('Queue not found');
 		expect(mockSend).toHaveBeenCalledWith(expect.any(GetQueueUrlCommand));
 	});
