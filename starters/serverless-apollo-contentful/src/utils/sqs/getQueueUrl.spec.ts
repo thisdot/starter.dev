@@ -58,6 +58,7 @@ describe('.getQueueUrl', () => {
 
 		describe('and client.send throws error', () => {
 			beforeAll(() => {
+				process.env = { JOB_QUEUE: MOCK_JOB_QUEUE };
 				MOCK_GET_CLIENT.mockReturnValue({
 					send: jest.fn().mockRejectedValue(new Error(MOCK_ERROR_MESSAGE)),
 				});
