@@ -5,7 +5,7 @@ import {
 import { getClient } from './client';
 import { getQueueUrl } from './getQueueUrl';
 
-type Message = {
+export type Message = {
 	[key: string]: string | number | boolean | null;
 };
 

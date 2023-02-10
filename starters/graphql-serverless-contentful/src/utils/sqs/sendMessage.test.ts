@@ -1,6 +1,9 @@
-import { SendMessageCommandOutput } from '@aws-sdk/client-sqs';
+import {
+	SendMessageCommand,
+	SendMessageCommandOutput,
+} from '@aws-sdk/client-sqs';
 import { ResponseMetadata } from '@aws-sdk/types/dist-types';
-import { sendMessage, SendMessageResult } from './sendMessage';
+import { Message, sendMessage, SendMessageResult } from './sendMessage';
 import { getClient } from './client';
 import { getQueueUrl } from './getQueueUrl';
 
@@ -24,7 +27,7 @@ jest.mock('./getQueueUrl', () => ({
 }));
 
 describe('.sendMessage', () => {
-	const message = { key: 'value' };
+	const message: Message = { key: 'mock_value' };
 	let result: SendMessageResult;
 
 	describe('when called with correct argument', () => {
@@ -49,21 +52,19 @@ describe('.sendMessage', () => {
 				expect(MOCK_GET_QUEUE_URL).toHaveBeenCalledTimes(1);
 			});
 			it('calls SQSClient.send with expected command', () => {
+				const EXPECTED_ARGUMENT = new SendMessageCommand({
+					QueueUrl: MOCK_QUEUE_URL,
+					MessageBody: JSON.stringify(message),
+				});
 				expect(getClient().send).toHaveBeenCalledTimes(1);
-				expect(getClient().send).toHaveBeenCalledWith(
-					expect.objectContaining({
-						input: {
-							QueueUrl: MOCK_QUEUE_URL,
-							MessageBody: JSON.stringify(message),
-						},
-					})
-				);
+				expect(getClient().send).toHaveBeenCalledWith(EXPECTED_ARGUMENT);
 			});
 			it('returns expected result', () => {
-				expect(result).toEqual({
+				const EXPECTED_RESULT: SendMessageResult = {
 					success: true,
 					data: MOCK_DATA,
-				});
+				};
+				expect(result).toEqual(EXPECTED_RESULT);
 			});
 		});
 
@@ -87,21 +88,19 @@ describe('.sendMessage', () => {
 				expect(MOCK_GET_QUEUE_URL).toHaveBeenCalledTimes(1);
 			});
 			it('calls SQSClient.send with expected command', () => {
+				const EXPECTED_ARGUMENT = new SendMessageCommand({
+					QueueUrl: MOCK_QUEUE_URL,
+					MessageBody: JSON.stringify(message),
+				});
 				expect(getClient().send).toHaveBeenCalledTimes(1);
-				expect(getClient().send).toHaveBeenCalledWith(
-					expect.objectContaining({
-						input: {
-							QueueUrl: MOCK_QUEUE_URL,
-							MessageBody: JSON.stringify(message),
-						},
-					})
-				);
+				expect(getClient().send).toHaveBeenCalledWith(EXPECTED_ARGUMENT);
 			});
 			it('returns expected result', () => {
-				expect(result).toEqual({
+				const EXPECTED_RESULT: SendMessageResult = {
 					success: false,
 					data: MOCK_ERROR_MESSAGE,
-				});
+				};
+				expect(result).toEqual(EXPECTED_RESULT);
 			});
 		});
 	});
