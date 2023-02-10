@@ -1,10 +1,11 @@
 import { SQSClient, SQSClientConfig } from '@aws-sdk/client-sqs';
 import { isOffline } from './is-offline';
 
-export const getClient = (): SQSClient => {
-	let cachedClient: SQSClient | null = null;
-	const SQS_PORT = process.env.SQS_PORT;
+let cachedClient: SQSClient | null = null;
 
+const SQS_PORT = process.env.SQS_PORT;
+
+export const getClient = (): SQSClient => {
 	if (cachedClient) {
 		return cachedClient;
 	}
