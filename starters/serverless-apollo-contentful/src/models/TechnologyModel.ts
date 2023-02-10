@@ -1,7 +1,8 @@
 import { getEnvironment } from '../utils/contentful';
 import { MakeOptional } from '../generated/graphql';
+import { CONTENTFUL_CONTENT_TYPE_ID_TECHNOLOGY } from '../contentful/constants';
 
-type fields = {
+export type Fields = {
 	displayName: string;
 	description?: string | null | undefined;
 	url?: string | null | undefined;
@@ -11,7 +12,7 @@ export class TechnologyModel {
 	public static getAll = async () => {
 		const environment = await getEnvironment();
 		const entries = await environment.getEntries({
-			content_type: 'technology',
+			content_type: CONTENTFUL_CONTENT_TYPE_ID_TECHNOLOGY,
 		});
 
 		return entries.items;
@@ -24,9 +25,9 @@ export class TechnologyModel {
 		return entry;
 	};
 
-	public static create = async ({ displayName, description, url }: fields) => {
+	public static create = async ({ displayName, description, url }: Fields) => {
 		const environment = await getEnvironment();
-		const entry = await environment.createEntry('technology', {
+		const entry = await environment.createEntry(CONTENTFUL_CONTENT_TYPE_ID_TECHNOLOGY, {
 			fields: {
 				displayName: {
 					'en-US': displayName,
@@ -45,7 +46,7 @@ export class TechnologyModel {
 
 	public static update = async (
 		id: string,
-		{ displayName, description, url }: MakeOptional<fields, 'displayName'>
+		{ displayName, description, url }: MakeOptional<Fields, 'displayName'>
 	) => {
 		const environment = await getEnvironment();
 		const entry = await environment.getEntry(id);
