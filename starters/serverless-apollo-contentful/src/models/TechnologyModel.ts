@@ -1,6 +1,6 @@
 import { getEnvironment } from '../utils/contentful';
 import { MakeOptional } from '../generated/graphql';
-import { CONTENTFUL_CONTENT_TYPE_ID_TECHNOLOGY } from '../contentful/constants';
+import { CONTENTFUL_CONTENT_TYPE_ID_TECHNOLOGY } from '../utils/contentful/constants';
 
 export type Fields = {
 	displayName: string;

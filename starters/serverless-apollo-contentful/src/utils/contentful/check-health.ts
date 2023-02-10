@@ -1,5 +1,5 @@
 import { QueryOptions } from 'contentful-management';
-import { CONTENTFUL_CONTENT_TYPE_ID_TECHNOLOGY } from '../../contentful/constants';
+import { CONTENTFUL_CONTENT_TYPE_ID_TECHNOLOGY } from './constants';
 import { getEnvironment } from './get-environment';
 
 export const CONTENTFUL_HEALTH_CHECK_QUERY_OPTIONS: QueryOptions = {
