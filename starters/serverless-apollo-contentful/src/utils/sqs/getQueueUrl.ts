@@ -1,11 +1,11 @@
 import { GetQueueUrlCommand } from '@aws-sdk/client-sqs';
 import { getClient } from './client';
 
-const queueName = process.env.JOB_QUEUE;
-
 export const getQueueUrl = async (): Promise<string | undefined> => {
+	const queueName = process.env.JOB_QUEUE;
+
 	if (!queueName) {
-		throw 'Unable to find queue.';
+		throw new Error('Unable to find queue.');
 	}
 
 	const command = new GetQueueUrlCommand({
@@ -15,7 +15,8 @@ export const getQueueUrl = async (): Promise<string | undefined> => {
 	try {
 		const { QueueUrl } = await getClient().send(command);
 		return QueueUrl;
-	} catch (error: any) {
+	} catch (err) {
+		const error = err as Error;
 		throw new Error(error.message);
 	}
 };
