@@ -17,6 +17,7 @@
   - [Counter Example](#counter-example)
   - [Fetch example](#fetch-example)
 - [Kit Organization / Architecture](#kit-organization--architecture)
+- [How to deploy your project](#how-to-deploy-your-project)
 
 ## Overview
 
@@ -176,3 +177,7 @@ Inside the `src` directory, you will find the following structure:
     └── index.tsx
 
 ```
+
+## How to deploy your project
+
+You can use services like Netlify or Vercel to deploy your application. Both of these services will come with a built-in CI/CD pipeline and live previews.
