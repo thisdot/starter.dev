@@ -12,18 +12,30 @@ import 'whatwg-fetch';
 import { server } from '../../mock/serverSetup';
 import { Greeting } from '.';
 import { Router } from '@solidjs/router';
+import { QueryClient, QueryClientProvider } from '@tanstack/solid-query';
 
 beforeAll(() => server.listen());
 afterAll(() => server.close());
 afterEach(() => server.resetHandlers());
 
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnMount: true,
+      staleTime: 1000,
+    },
+  },
+});
+
 describe('Greeting', () => {
-  let wrapper;
+  let wrapper: any;
   beforeEach(() => {
     wrapper = render(() => (
-      <Router>
-        <Greeting />
-      </Router>
+      <QueryClientProvider client={queryClient}>
+        <Router>
+          <Greeting />
+        </Router>
+      </QueryClientProvider>
     ));
   });
   it('should mount', async () => {
@@ -32,7 +44,7 @@ describe('Greeting', () => {
 
   it('should show the mocked greeting', async () => {
     expect(
-      await wrapper.findByText('Hi Learner from This Dot Labs!')
+      await wrapper.findByText('Hi Learners from This Dot Labs!')
     ).toBeTruthy();
   });
 });
