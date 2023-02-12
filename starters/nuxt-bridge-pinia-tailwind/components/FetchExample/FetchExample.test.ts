@@ -1,6 +1,6 @@
 import { rest } from 'msw'
 import axios from 'axios'
-import TheGreeting from './TheGreeting.vue'
+import FetchExample from './FetchExample.vue'
 import { render, screen, waitFor } from '@/test/utils'
 import { mswServer } from '~/test/__mocks__/mswServer'
 
@@ -8,10 +8,26 @@ beforeAll(() => mswServer.listen())
 afterEach(() => mswServer.resetHandlers())
 afterAll(() => mswServer.close())
 
-describe('<TheGreeting />', () => {
+describe('<FetchExample />', () => {
+
+  beforeEach(() => {
+    // mock useAsyncLazyData
+    jest.mock('~/composables/useAsyncLazyData', () => ({
+      useAsyncLazyData: () => ({
+        data: {
+          message: 'Hello, from This Dot Labs!',
+        },
+        error: null,
+        loading: false,
+      }),
+    }))
+    
+  })
+
+
   it('Should display correct message', async () => {
     // Arrange
-    render(TheGreeting, {
+    render(FetchExample, {
       mocks: {
         $nuxt: {
           context: {
@@ -34,13 +50,13 @@ describe('<TheGreeting />', () => {
 
   it('Should display error message', async () => {
     mswServer.use(
-      rest.get('https://api.starter.dev/hello', (_, res, ctx) => {
+      rest.get('https://api.starter.dev/.netlify/functions/server/hello', (_, res, ctx) => {
         return res(ctx.status(500))
       })
     )
 
     // Arrange
-    render(TheGreeting, {
+    render(FetchExample, {
       mocks: {
         $nuxt: {
           context: {

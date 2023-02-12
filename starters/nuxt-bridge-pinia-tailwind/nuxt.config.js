@@ -1,4 +1,5 @@
 import { defineNuxtConfig } from '@nuxt/bridge'
+import { fromNodeMiddleware } from 'h3';
 
 export default defineNuxtConfig({
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -17,7 +18,7 @@ export default defineNuxtConfig({
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: ['@/assets/css/main.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
@@ -27,16 +28,12 @@ export default defineNuxtConfig({
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    // https://go.nuxtjs.dev/typescript
-    '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/stylelint-module',
-    // https://go.nuxtjs.dev/tailwindcss
-    '@nuxtjs/tailwindcss',
-    // https://composition-api.nuxtjs.org/getting-started/setup#quick-start
-    '@nuxtjs/composition-api/module',
     // https://pinia.vuejs.org/ssr/nuxt.html#installation
     '@pinia/nuxt',
+    // https://tailwindcss.com/docs/guides/nuxtjs
+    '@nuxt/postcss8',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -56,8 +53,28 @@ export default defineNuxtConfig({
     // Options
   },
 
+  hooks: {
+    ready(nuxt) {
+      // https://github.com/nuxt/bridge/issues/607
+      // translate nuxt 2 hook from @nuxt/webpack-edge to nuxt bridge hook
+      nuxt.hook('server:devMiddleware', async (devMiddleware) => {
+        await nuxt.callHook('server:devHandler', fromNodeMiddleware(devMiddleware));
+      });
+    },
+  },
+
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    postcss: {
+      plugins: {
+        tailwindcss: {},
+        autoprefixer: {},
+      },
+    },
+  },
+
+
 
   devServerHandlers: [],
 })

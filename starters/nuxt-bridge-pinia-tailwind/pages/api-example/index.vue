@@ -1,6 +1,3 @@
 <template>
-  <TheGreeting />
+  <FetchExample />
 </template>
-<script>
-export default {}
-</script>

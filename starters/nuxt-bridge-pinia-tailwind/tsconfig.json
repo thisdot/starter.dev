@@ -12,10 +12,6 @@
     "noEmit": true,
     "experimentalDecorators": true,
     "baseUrl": ".",
-    "paths": {
-      "~/*": ["./*"],
-      "@/*": ["./*"]
-    },
     "types": [
       "@nuxt/types",
       "@nuxtjs/axios",
@@ -27,5 +23,11 @@
     ],
     "jsx": "preserve"
   },
-  "exclude": ["node_modules", ".nuxt", "dist"]
+  "vueCompilerOptions": {
+    "target": 2,
+    "extensions": [
+      ".vue"
+    ]
+  },
+  "exclude": ["node_modules", "dist"]
 }

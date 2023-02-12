@@ -1,17 +1,17 @@
 import Vue from 'vue'
 import { createTestingPinia } from '@pinia/testing'
 import { PiniaVuePlugin } from 'pinia'
-import TheCounter from './TheCounter.vue'
+import CounterExample from './CounterExample.vue'
 import { fireEvent, render, screen } from '@/test/utils'
 
-describe('<TheCounter />', () => {
+describe('<CounterExample />', () => {
   beforeEach(() => {
     Vue.use(PiniaVuePlugin)
   })
 
   it('Should increase by 1 the count when clicking increase button', async () => {
     // Arrange
-    render(TheCounter, {
+    render(CounterExample, {
       pinia: createTestingPinia(),
       stubs: {
         NuxtLink: true,
@@ -33,7 +33,7 @@ describe('<TheCounter />', () => {
 
   it('Should decrease by 1 the count when clicking decrease button', async () => {
     // Arrange
-    render(TheCounter, {
+    render(CounterExample, {
       pinia: createTestingPinia({
         initialState: {
           counterStore: {
@@ -60,7 +60,7 @@ describe('<TheCounter />', () => {
 
   it('Should reset the count when clicking the reset button', async () => {
     // Arrange
-    render(TheCounter, {
+    render(CounterExample, {
       pinia: createTestingPinia({
         initialState: {
           counterStore: {

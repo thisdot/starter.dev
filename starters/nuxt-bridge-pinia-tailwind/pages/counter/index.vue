@@ -1,6 +1,4 @@
 <template>
-  <TheCounter />
+  <CounterExample />
 </template>
-<script>
-export default {}
-</script>
+
