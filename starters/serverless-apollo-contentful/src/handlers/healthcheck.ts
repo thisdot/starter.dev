@@ -1,5 +1,5 @@
 import { APIGatewayProxyHandler } from 'aws-lambda';
-import { getEnvironment } from '../utils/contentful';
+import { getContentfulHealth } from '../utils/contentful';
 import { redisClient } from '../utils/redis';
 
 type HealthCheckResult = {
@@ -9,7 +9,6 @@ type HealthCheckResult = {
 
 export const handler: APIGatewayProxyHandler = async () => {
 	let cacheDatabase: boolean;
-	let contentful: boolean;
 	try {
 		await redisClient.get('');
 		cacheDatabase = true;
@@ -17,16 +16,9 @@ export const handler: APIGatewayProxyHandler = async () => {
 		cacheDatabase = false;
 	}
 
-	try {
-		await getEnvironment();
-		contentful = true;
-	} catch {
-		contentful = false;
-	}
-
 	const result: HealthCheckResult = {
 		cacheDatabase,
-		contentful,
+		contentful: await getContentfulHealth(),
 	};
 
 	const hasFailedCheck = Object.values(result).includes(false);
