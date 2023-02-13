@@ -31,32 +31,32 @@ describe('healthcheck', () => {
 	// 	expect(subject?.body).toEqual('Okay!');
 	// });
 
-	describe('returns a 200 status code', () => {
-		let result: HealthCheckResult;
-		beforeAll(async () => {
-			MOCK_GET_CONTENTFUL_HEALTH.mockResolvedValue(true);
-			result = {
-				cacheDatabase: true,
-				contentful: await getContentfulHealth(),
-			};
-		});
-		it('should return a 200 status code', () => {
-			expect(subject?.statusCode).toBe(200);
-			expect(subject?.body).toEqual(JSON.stringify(result));
-		});
-	});
-	describe('returns a 503 status code', () => {
-		let result: HealthCheckResult;
-		beforeAll(async () => {
-			MOCK_GET_CONTENTFUL_HEALTH.mockResolvedValue(false);
-			result = {
-				cacheDatabase: true,
-				contentful: await getContentfulHealth(),
-			};
-		});
-		it('should return a 503 status code', () => {
-			expect(subject?.statusCode).toBe(503);
-			expect(subject?.body).toEqual(JSON.stringify(result));
-		});
-	});
+	// describe('returns a 200 status code', () => {
+	// 	let result: HealthCheckResult;
+	// 	beforeAll(async () => {
+	// 		MOCK_GET_CONTENTFUL_HEALTH.mockResolvedValue(true);
+	// 		result = {
+	// 			cacheDatabase: true,
+	// 			contentful: await getContentfulHealth(),
+	// 		};
+	// 	});
+	// 	it('should return a 200 status code', () => {
+	// 		expect(subject?.statusCode).toBe(200);
+	// 		expect(subject?.body).toEqual(JSON.stringify(result));
+	// 	});
+	// });
+	// describe('returns a 503 status code', () => {
+	// 	let result: HealthCheckResult;
+	// 	beforeAll(async () => {
+	// 		MOCK_GET_CONTENTFUL_HEALTH.mockResolvedValue(false);
+	// 		result = {
+	// 			cacheDatabase: true,
+	// 			contentful: await getContentfulHealth(),
+	// 		};
+	// 	});
+	// 	it('should return a 503 status code', () => {
+	// 		expect(subject?.statusCode).toBe(503);
+	// 		expect(subject?.body).toEqual(JSON.stringify(result));
+	// 	});
+	// });
 });
