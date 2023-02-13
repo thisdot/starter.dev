@@ -8,65 +8,124 @@ jest.mock('./is-offline', () => ({
 
 const MOCK_IS_OFFLINE = isOffline as jest.Mock;
 
-const MOCK_PORT = '12345';
-
 jest.mock('@aws-sdk/client-sqs', () => {
-	const mSQSClient = {};
 	return {
-		SQSClient: jest.fn(() => mSQSClient),
+		SQSClient: jest.fn(),
 	};
 });
+const MOCK_SQS_CLIENT_CONSTRUCTOR = <jest.Mock>SQSClient;
+const EXPECTED_REFERENCE_SQS_CLIENT_INSTANCE: SQSClient = {} as SQSClient;
 
 describe('.getClient', () => {
-	let mockSqsClient: SQSClient;
-	const originalEnv = process.env;
+	let originalEnv: NodeJS.ProcessEnv;
 
-	beforeEach(() => {
-		mockSqsClient = new SQSClient({});
+	beforeAll(() => {
+		originalEnv = process.env;
+		MOCK_SQS_CLIENT_CONSTRUCTOR.mockReturnValue(
+			EXPECTED_REFERENCE_SQS_CLIENT_INSTANCE
+		);
 	});
 
-	afterEach(() => {
+	afterAll(() => {
+		MOCK_SQS_CLIENT_CONSTRUCTOR.mockReset();
 		process.env = originalEnv;
-		jest.clearAllMocks();
 	});
 
-	describe('when isOffline returns false', () => {
-		beforeAll(() => {
-			MOCK_IS_OFFLINE.mockReturnValue(false);
-		});
+	describe('when called', () => {
+		describe('and Offline', () => {
+			beforeAll(() => {
+				MOCK_IS_OFFLINE.mockReturnValue(true);
+			});
 
-		it('returns an instance of SQSClient with an empty config', () => {
-			const result = getClient();
-			expect(result).toBe(mockSqsClient);
-			expect(SQSClient).toHaveBeenCalledWith({});
-		});
-	});
+			afterAll(() => {
+				MOCK_IS_OFFLINE.mockReset();
+			});
 
-	describe('when isOffline returns true', () => {
-		beforeAll(() => {
-			MOCK_IS_OFFLINE.mockReturnValue(true);
-			process.env = { SQS_PORT: MOCK_PORT };
-		});
+			describe('and environment variable SQS_PORT set', () => {
+				const EXPECTED_SQS_CLIENT_CONFIG: SQSClientConfig = {
+					endpoint: `http://localhost:12345`,
+				};
+				let result: SQSClient;
 
-		it('returns an instance of SQSClient with an empty config', () => {
-			const result = getClient();
-			expect(result).toBe(mockSqsClient);
-			expect(SQSClient).toHaveBeenCalledWith({
-				endpoint: `http://localhost:${MOCK_PORT}`,
+				beforeAll(() => {
+					process.env = {
+						SQS_PORT: '12345',
+					};
+					result = getClient();
+				});
+
+				afterAll(() => {
+					MOCK_IS_OFFLINE.mockClear();
+					MOCK_SQS_CLIENT_CONSTRUCTOR.mockClear();
+					process.env = originalEnv;
+				});
+
+				it('calls SQSClient constructor with expected constructor arguments', () => {
+					expect(MOCK_SQS_CLIENT_CONSTRUCTOR).toHaveBeenCalledTimes(1);
+					expect(MOCK_SQS_CLIENT_CONSTRUCTOR).toHaveBeenCalledWith(
+						EXPECTED_SQS_CLIENT_CONFIG
+					);
+				});
+
+				it('returns expected result', () => {
+					expect(result).toBe(EXPECTED_REFERENCE_SQS_CLIENT_INSTANCE);
+				});
+			});
+
+			describe('and environment variable SQS_PORT not set', () => {
+				const EXPECTED_SQS_CLIENT_CONFIG: SQSClientConfig = {
+					endpoint: 'http://localhost:undefined',
+				};
+
+				let result: SQSClient;
+
+				beforeAll(() => {
+					process.env = {};
+					result = getClient();
+				});
+
+				afterAll(() => {
+					MOCK_IS_OFFLINE.mockClear();
+					MOCK_SQS_CLIENT_CONSTRUCTOR.mockClear();
+					process.env = originalEnv;
+				});
+
+				it('calls SQSClient constructor with expected constructor arguments', () => {
+					expect(MOCK_SQS_CLIENT_CONSTRUCTOR).toHaveBeenCalledTimes(1);
+					expect(MOCK_SQS_CLIENT_CONSTRUCTOR).toHaveBeenCalledWith(
+						EXPECTED_SQS_CLIENT_CONFIG
+					);
+				});
+
+				it('returns expected result', () => {
+					expect(result).toBe(EXPECTED_REFERENCE_SQS_CLIENT_INSTANCE);
+				});
 			});
 		});
-	});
+		describe('and not Offline', () => {
+			const EXPECTED_SQS_CLIENT_CONFIG: SQSClientConfig = {};
+			let result: SQSClient;
 
-	describe('when caching', () => {
-		beforeAll(() => {
-			MOCK_IS_OFFLINE.mockReturnValueOnce(false);
-		});
+			beforeAll(() => {
+				MOCK_IS_OFFLINE.mockReturnValue(false);
+				result = getClient();
+			});
 
-		it('returns a cached SQSClient instance when one already exists', () => {
-			const firstResult = mockSqsClient;
-			const secondResult = mockSqsClient;
-			expect(secondResult).toBe(firstResult);
-			expect(SQSClient).toHaveBeenCalledTimes(1);
+			afterAll(() => {
+				MOCK_IS_OFFLINE.mockReset();
+				MOCK_SQS_CLIENT_CONSTRUCTOR.mockClear();
+			});
+
+			it('calls SQSClient constructor with expected constructor arguments', () => {
+				expect(MOCK_SQS_CLIENT_CONSTRUCTOR).toHaveBeenCalledTimes(1);
+				expect(MOCK_SQS_CLIENT_CONSTRUCTOR).toHaveBeenCalledWith(
+					EXPECTED_SQS_CLIENT_CONFIG
+				);
+			});
+
+			it('returns expected result', () => {
+				expect(result).toBe(EXPECTED_REFERENCE_SQS_CLIENT_INSTANCE);
+			});
 		});
 	});
 });
