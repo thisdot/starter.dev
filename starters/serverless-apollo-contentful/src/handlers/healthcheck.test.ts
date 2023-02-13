@@ -5,7 +5,6 @@ import {
 	APIGatewayProxyResult,
 } from 'aws-lambda';
 import { redisClient } from '../utils/redis';
-import { checkHealth } from '../utils/contentful';
 import { handler } from './healthcheck';
 
 jest.mock('../utils/redis', () => ({
@@ -21,18 +20,16 @@ jest.mock('../utils/contentful', () => ({
 	checkHealth: jest.fn(),
 }));
 
-const MOCK_CHECK_HEALTH = <jest.Mock>checkHealth;
-
 describe('.handler', () => {
 	describe('when called', () => {
 
 		describe.each([
-			['and redisClient.get does not throw error', 'and contentful healhy', new Error,() => ]
+			['and redisClient.get does not throw error', 'and contentful healthy', new Error,() => ]
 		]);
 		describe('and redisClient.get does not throw error', () => {
 			beforeAll(() => {
 				MOCK_REDIS_CLIENT_GET.mockResolvedValue(null);
-				
+
 			});
 
 			afterAll(() => {
@@ -45,7 +42,7 @@ describe('.handler', () => {
 			});
 
 			it('returns expected result', () => {
-				
+
 			})
 		})
 
@@ -53,13 +50,13 @@ describe('.handler', () => {
 			beforeAll(() => {
 
 			});
-			
+
 			it('calls redisClient.get with expected argument', () => {
 
 			})
 
 			it('returns expected result', () => {
-				
+
 			})
 		})
 	})

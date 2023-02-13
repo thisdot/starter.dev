@@ -1,2 +1,1 @@
-export * from './get-environment';
-export * from './check-health';
+export * from "./get-environment";
