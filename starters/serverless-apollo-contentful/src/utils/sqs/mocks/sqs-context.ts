@@ -1,6 +1,8 @@
 import { Context } from 'aws-lambda';
 
-export const mockSQSContext = (callbackWaitsForEmptyEventLoop?: boolean): Context => ({
+export const mockSQSContext = (
+	callbackWaitsForEmptyEventLoop?: boolean
+): Context => ({
 	callbackWaitsForEmptyEventLoop: Boolean(callbackWaitsForEmptyEventLoop),
 	functionName: 'MOCK_functionName',
 	functionVersion: 'MOCK_functionVersion',
@@ -9,16 +11,8 @@ export const mockSQSContext = (callbackWaitsForEmptyEventLoop?: boolean): Contex
 	awsRequestId: 'MOCK_awsRequestId',
 	logGroupName: 'MOCK_logGroupName',
 	logStreamName: 'MOCK_logStreamName',
-	getRemainingTimeInMillis: function (): number {
-		throw new Error('Function not implemented.');
-	},
-	done: function (error?: Error | undefined, result?: any): void {
-		throw new Error('Function not implemented.');
-	},
-	fail: function (error: string | Error): void {
-		throw new Error('Function not implemented.');
-	},
-	succeed: function (messageOrObject: any): void {
-		throw new Error('Function not implemented.');
-	},
+	getRemainingTimeInMillis: jest.fn<number, []>(),
+	done: jest.fn<void, [Error | undefined, unknown | undefined]>(),
+	fail: jest.fn<void, [string | Error]>(),
+	succeed: jest.fn<void, [unknown]>(),
 });
