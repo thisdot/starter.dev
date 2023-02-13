@@ -1,10 +1,10 @@
 import { handler } from './sqs-handler';
 
-import { mockSQSEvent, mockSQSContext } from '../utils/sqs/mocks';
+import { mockSQSEvent, mockAWSLambdaHandlerContext } from '../utils/mocks';
 
 const MOCK_RECORDS_COUNT = 2;
 const MOCK_SQS_EVENT = mockSQSEvent(MOCK_RECORDS_COUNT);
-const MOCK_CONTEXT = mockSQSContext();
+const MOCK_CONTEXT = mockAWSLambdaHandlerContext();
 const MOCK_CALLBACK = jest.fn();
 
 describe('.handler', () => {

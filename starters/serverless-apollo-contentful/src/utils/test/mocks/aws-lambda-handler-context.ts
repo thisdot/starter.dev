@@ -1,6 +1,6 @@
 import { Context } from 'aws-lambda';
 
-export const mockSQSContext = (
+export const mockAWSLambdaHandlerContext = (
 	callbackWaitsForEmptyEventLoop?: boolean
 ): Context => ({
 	callbackWaitsForEmptyEventLoop: Boolean(callbackWaitsForEmptyEventLoop),
