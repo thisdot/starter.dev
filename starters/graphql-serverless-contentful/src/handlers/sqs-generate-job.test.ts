@@ -6,8 +6,7 @@ import {
 } from 'aws-lambda';
 import { sendMessage } from '../utils/sqs/sendMessage';
 import { handler } from './sqs-generate-job';
-
-// jest.mock('@serverless-template/aws');
+import assert from 'assert';
 
 describe('generateDemoJob', () => {
 	let subject: void | APIGatewayProxyResult;
@@ -44,14 +43,15 @@ describe('generateDemoJob', () => {
 		});
 
 		it('returns a 200 status code', () => {
-			if (subject) expect(subject.statusCode).toBe(200);
+			assert(subject != null);
+			expect(subject.statusCode).toBe(200);
 		});
 
 		it('returns the returned messaged', () => {
-			if (subject)
-				expect(JSON.parse(subject.body)).toEqual({
-					MessageId: '123456789',
-				});
+			assert(subject != null);
+			expect(JSON.parse(subject.body)).toEqual({
+				MessageId: '123456789',
+			});
 		});
 	});
 
@@ -77,7 +77,8 @@ describe('generateDemoJob', () => {
 		});
 
 		it('returns the returned messaged', () => {
-			if (subject) expect(JSON.parse(subject.body)).toEqual('bad request');
+			assert(subject != null);
+			expect(JSON.parse(subject.body)).toEqual('bad request');
 		});
 	});
 });
