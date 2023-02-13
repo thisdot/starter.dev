@@ -1,7 +1,7 @@
 import { getRedisHealth } from './redis-healthcheck';
 import { redisClient } from './redis';
 
-const MOCK_REDIS_CLIENT = redisClient.get as jest.Mock;
+const MOCK_REDIS_CLIENT_GET = redisClient.get as jest.Mock;
 jest.mock('./redis', () => ({
 	redisClient: {
 		get: jest.fn(),
@@ -13,8 +13,16 @@ describe('.healthcheck', () => {
 		let result: boolean;
 
 		beforeAll(async () => {
-			MOCK_REDIS_CLIENT.mockResolvedValue('');
+			MOCK_REDIS_CLIENT_GET.mockResolvedValue(null);
 			result = await getRedisHealth();
+		});
+		afterAll(() => {
+			MOCK_REDIS_CLIENT_GET.mockReset();
+		});
+
+		it('calls RedisClient.get withod with expected argument', () => {
+			expect(MOCK_REDIS_CLIENT_GET).toHaveBeenCalledTimes(1);
+			expect(MOCK_REDIS_CLIENT_GET).toHaveBeenCalledWith('');
 		});
 
 		it('should return true', () => {
@@ -26,8 +34,17 @@ describe('.healthcheck', () => {
 		let result: boolean;
 
 		beforeAll(async () => {
-			MOCK_REDIS_CLIENT.mockRejectedValue(undefined);
+			MOCK_REDIS_CLIENT_GET.mockRejectedValue(new Error());
 			result = await getRedisHealth();
+		});
+
+		afterAll(() => {
+			MOCK_REDIS_CLIENT_GET.mockReset();
+		});
+
+		it('calls RedisClient.get withod with expected argument', () => {
+			expect(MOCK_REDIS_CLIENT_GET).toHaveBeenCalledTimes(1);
+			expect(MOCK_REDIS_CLIENT_GET).toHaveBeenCalledWith('');
 		});
 
 		it('should return false', () => {
