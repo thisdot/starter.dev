@@ -2,7 +2,7 @@ import { APIGatewayProxyHandler } from 'aws-lambda';
 import { getContentfulHealth } from '../utils/contentful';
 import { redisClient } from '../utils/redis';
 
-type HealthCheckResult = {
+export type HealthCheckResult = {
 	cacheDatabase: boolean;
 	contentful: boolean;
 };
