@@ -3,22 +3,23 @@ import { ExpressMiddlewareOptions } from '@apollo/server/express4';
 import { WithRequired } from '@apollo/utils.withrequired';
 import { TechnologyDataSource } from '../data-sources';
 import { PrismaClient } from '@prisma/client';
-import { RedisClient } from '../../redis';
+import { createCacheAPIWrapperAsync } from '../../cache';
 
-const prismaClient = new PrismaClient();
+export const createServerContextMiddlewareOptionsAsync = async (): Promise<
+	WithRequired<ExpressMiddlewareOptions<ServerContext>, 'context'>
+> => {
+	const prismaClient = new PrismaClient();
+	const technologyCacheAPIWrapper = await createCacheAPIWrapperAsync('technology');
+	const technologyDataSource = technologyCacheAPIWrapper
+		? new TechnologyDataSource(prismaClient, technologyCacheAPIWrapper)
+		: new TechnologyDataSource(prismaClient);
 
-export const createServerContextMiddlewareOptions = (
-	redisClient?: RedisClient,
-	redisCacheTtlSeconds?: number
-): WithRequired<ExpressMiddlewareOptions<ServerContext>, 'context'> => ({
-	context: async ({ req }) => ({
-		dataSources: {
-			technologyDataSource: new TechnologyDataSource(
-				prismaClient,
-				redisClient,
-				redisCacheTtlSeconds
-			),
-		},
-		token: req.headers.authorization,
-	}),
-});
+	return {
+		context: async ({ req }) => ({
+			dataSources: {
+				technologyDataSource: technologyDataSource,
+			},
+			token: req.headers.authorization,
+		}),
+	};
+};
