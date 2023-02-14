@@ -69,3 +69,5 @@ Currently to add your starter kit to be an available option on the starter.dev C
 ### Starter kit README files
 
 We are still working on defining a general structure and format for starter kit readme files. These are particularly important because the starter kit page on the website is based on the readme files. See: [next12-react-query-tailwind readme content #17](https://github.com/thisdot/starter.dev/pull/17)
+
+**WARNING**: Please do not add any comments to the README files. Comments in the markdown will cause the website builds to fail.
