@@ -1,7 +1,12 @@
+import { APIGatewayProxyEvent } from 'aws-lambda';
 import { handler } from './sqs-generate-job';
 import { sendMessage } from '../utils/sqs';
 
-import { APIGatewayProxyEvent, Callback, Context } from 'aws-lambda';
+import { mockAWSLambdaHandlerContext } from '../utils/test/mocks';
+
+let MOCK_API_EVENT: APIGatewayProxyEvent;
+const MOCK_CONTEXT = mockAWSLambdaHandlerContext();
+const MOCK_CALLBACK = jest.fn();
 const MOCK_SEND_MESSAGE = sendMessage as jest.Mock;
 
 let SUCCESS = false;
@@ -18,13 +23,13 @@ jest.mock('../utils/sqs', () => ({
 describe('.handler', () => {
 	let subject: any;
 
+	afterAll(() => {
+		MOCK_SEND_MESSAGE.mockReset();
+	});
+
 	describe('when called with event', () => {
 		beforeAll(async () => {
-			subject = await handler(
-				{} as APIGatewayProxyEvent,
-				{} as Context,
-				{} as Callback
-			);
+			subject = await handler(MOCK_API_EVENT, MOCK_CONTEXT, MOCK_CALLBACK);
 		});
 
 		it('calls sendMessage with expected arguments', () => {
@@ -52,11 +57,7 @@ describe('.handler', () => {
 
 	describe('when sendMessage fails', () => {
 		beforeAll(async () => {
-			subject = await handler(
-				{} as APIGatewayProxyEvent,
-				{} as Context,
-				{} as Callback
-			);
+			subject = await handler(MOCK_API_EVENT, MOCK_CONTEXT, MOCK_CALLBACK);
 		});
 
 		it('should have different statusCode if sendMessage fails', () => {
