@@ -1,4 +1,3 @@
-import { Platform } from 'react-native';
 import styled from 'styled-components/native';
 
 export const SafeAreaViewStyled = styled.SafeAreaView`
@@ -14,7 +13,6 @@ export const RawStyled = styled.View`
   justify-content: space-between;
   flex-direction: row;
   width: 80%;
-  margin-top: ${Platform.OS === 'web' ? '20px' : ''};
 `;
 
 export const NavButtonStyled = styled.TouchableOpacity`
