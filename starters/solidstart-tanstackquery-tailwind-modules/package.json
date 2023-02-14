@@ -67,6 +67,17 @@
   "engines": {
     "node": ">=16"
   },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "react",
+        "react-dom",
+        "@babel/*",
+        "webpack",
+        "@storybook/*"
+      ]
+    }
+  },
   "msw": {
     "workerDirectory": "public"
   }
