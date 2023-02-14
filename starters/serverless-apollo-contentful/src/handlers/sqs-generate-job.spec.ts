@@ -4,10 +4,14 @@ import { sendMessage } from '../utils/sqs';
 import { APIGatewayProxyEvent, Callback, Context } from 'aws-lambda';
 const MOCK_SEND_MESSAGE = sendMessage as jest.Mock;
 
+let SUCCESS = false;
 jest.mock('../utils/sqs', () => ({
-	sendMessage: jest.fn().mockReturnValue({
-		success: true,
-		data: {},
+	sendMessage: jest.fn(function () {
+		SUCCESS = !SUCCESS;
+		return {
+			success: SUCCESS,
+			data: {},
+		};
 	}),
 }));
 
@@ -42,6 +46,30 @@ describe('.handler', () => {
 			expect(subject).toHaveProperty('statusCode');
 			expect(subject).toHaveProperty('body');
 			expect(subject.statusCode).toEqual(200);
+			expect(subject.body).toEqual('{}');
+		});
+
+		it('should have different statusCode if sendMessage fails', () => {
+			expect(subject).toHaveProperty('statusCode');
+			expect(subject).toHaveProperty('body');
+			expect(subject.statusCode).toEqual(200);
+			expect(subject.body).toEqual('{}');
+		});
+	});
+
+	describe('when sendMessage fails', () => {
+		beforeAll(async () => {
+			subject = await handler(
+				{} as APIGatewayProxyEvent,
+				{} as Context,
+				{} as Callback
+			);
+		});
+
+		it('should have different statusCode if sendMessage fails', () => {
+			expect(subject).toHaveProperty('statusCode');
+			expect(subject).toHaveProperty('body');
+			expect(subject.statusCode).toEqual(400);
 			expect(subject.body).toEqual('{}');
 		});
 	});
