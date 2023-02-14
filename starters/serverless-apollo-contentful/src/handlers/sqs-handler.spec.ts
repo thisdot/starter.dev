@@ -1,6 +1,6 @@
 import { handler } from './sqs-handler';
 
-import { mockSQSEvent, mockAWSLambdaHandlerContext } from '../utils/mocks';
+import { mockSQSEvent, mockAWSLambdaHandlerContext } from '../utils/test/mocks';
 
 const MOCK_RECORDS_COUNT = 2;
 const MOCK_SQS_EVENT = mockSQSEvent(MOCK_RECORDS_COUNT);

@@ -1,2 +1,2 @@
-export * from './sqs-context';
+export * from './aws-lambda-handler-context';
 export * from './sqs-record';
