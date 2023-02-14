@@ -48,13 +48,6 @@ describe('.handler', () => {
 			expect(subject.statusCode).toEqual(200);
 			expect(subject.body).toEqual('{}');
 		});
-
-		it('should have different statusCode if sendMessage fails', () => {
-			expect(subject).toHaveProperty('statusCode');
-			expect(subject).toHaveProperty('body');
-			expect(subject.statusCode).toEqual(200);
-			expect(subject.body).toEqual('{}');
-		});
 	});
 
 	describe('when sendMessage fails', () => {
