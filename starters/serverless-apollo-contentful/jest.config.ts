@@ -12,6 +12,7 @@ const config: JestConfigWithTsJest = {
 		'/test/',
 		'/mocks/',
 		'/index.ts',
+		'/index.js',
 	],
 	transform: {
 		'\\.[jt]sx?$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.spec.json' }],
