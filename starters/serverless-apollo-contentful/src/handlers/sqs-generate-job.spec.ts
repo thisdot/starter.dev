@@ -9,12 +9,16 @@ const MOCK_CONTEXT = mockAWSLambdaHandlerContext();
 const MOCK_CALLBACK = jest.fn();
 const MOCK_SEND_MESSAGE = sendMessage as jest.Mock;
 
-let SUCCESS = false;
 jest.mock('../utils/sqs', () => ({
 	sendMessage: jest.fn(),
 }));
 
+const mockMath = Object.create(global.Math);
+mockMath.ceil = () => 0;
+global.Math = mockMath;
+
 describe('.handler', () => {
+	// let subject: (event: any, context: any, callback: any): void | Promise<...>;
 	let subject: any;
 
 	afterAll(() => {
@@ -23,47 +27,60 @@ describe('.handler', () => {
 
 	describe('when called with event', () => {
 		beforeAll(async () => {
-		        MOCK_SEND_MESSAGE.mockResolvedValue(....you code here)
+			MOCK_SEND_MESSAGE.mockReturnValue({
+				success: true,
+				data: {},
+			});
 			subject = await handler(MOCK_API_EVENT, MOCK_CONTEXT, MOCK_CALLBACK);
 		});
-		
+
 		afterAll(() => {
-		  MOCK_SEND_MESSAGE.mockReset();
-		})
+			MOCK_SEND_MESSAGE.mockReset();
+		});
 
 		it('calls sendMessage with expected arguments', () => {
 			expect(MOCK_SEND_MESSAGE).toHaveBeenCalledTimes(1);
-			const actualCallsArgs = MOCK_SEND_MESSAGE.mock.calls[0][0];
-			expect(actualCallsArgs).toHaveProperty('message');
-			expect(actualCallsArgs.message).toEqual('Hello World!');
+			expect(MOCK_SEND_MESSAGE).toHaveBeenCalledWith({
+				id: 0,
+				message: 'Hello World!',
+			});
 		});
 
 		it('sendMessage returns expected result', () => {
 			const actualCallsResults = MOCK_SEND_MESSAGE.mock.results[0];
 			const rval = actualCallsResults.value;
-			expect(rval).toHaveProperty('success');
-			expect(rval).toHaveProperty('data');
-			expect(rval.success).toEqual(true);
+			expect(rval).toEqual({
+				success: true,
+				data: {},
+			});
 		});
 
 		it('returns expected response', () => {
-			expect(subject).toHaveProperty('statusCode');
-			expect(subject).toHaveProperty('body');
-			expect(subject.statusCode).toEqual(200);
-			expect(subject.body).toEqual('{}');
+			expect(subject).toEqual({
+				statusCode: 200,
+				body: '{}',
+			});
 		});
 	});
 
 	describe('when sendMessage fails', () => {
 		beforeAll(async () => {
+			MOCK_SEND_MESSAGE.mockReturnValue({
+				success: false,
+				data: {},
+			});
 			subject = await handler(MOCK_API_EVENT, MOCK_CONTEXT, MOCK_CALLBACK);
 		});
 
+		afterAll(() => {
+			MOCK_SEND_MESSAGE.mockReset();
+		});
+
 		it('should have different statusCode if sendMessage fails', () => {
-			expect(subject).toHaveProperty('statusCode');
-			expect(subject).toHaveProperty('body');
-			expect(subject.statusCode).toEqual(400);
-			expect(subject.body).toEqual('{}');
+			expect(subject).toEqual({
+				statusCode: 400,
+				body: '{}',
+			});
 		});
 	});
 });
