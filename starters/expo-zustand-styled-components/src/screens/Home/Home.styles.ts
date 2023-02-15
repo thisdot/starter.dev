@@ -8,7 +8,7 @@ export const SafeAreaViewStyled = styled.SafeAreaView`
   justify-content: space-between;
 `;
 
-export const RawStyled = styled.View`
+export const RowStyled = styled.View`
   display: flex;
   justify-content: space-between;
   flex-direction: row;

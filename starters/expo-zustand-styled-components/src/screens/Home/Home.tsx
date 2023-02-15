@@ -4,7 +4,7 @@ import { TouchableOpacity } from 'react-native';
 import Button from '../../components/Button';
 import {
   SafeAreaViewStyled,
-  RawStyled,
+  RowStyled,
   TitleStyled,
   CountStyled,
   ImageStyled,
@@ -19,20 +19,20 @@ const Home = ({ navigation }: { navigation: any }) => {
 
   return (
     <SafeAreaViewStyled>
-      <RawStyled>
+      <RowStyled>
         <TouchableOpacity onPress={() => navigation.navigate('about')}>
           <ImageStyled source={require('../../../assets/about-icon.png')} />
         </TouchableOpacity>
         <TouchableOpacity onPress={reset}>
           <ImageStyled source={require('../../../assets/reload-icon.png')} />
         </TouchableOpacity>
-      </RawStyled>
+      </RowStyled>
       <TitleStyled>Counter</TitleStyled>
       <CountStyled>{count}</CountStyled>
-      <RawStyled>
+      <RowStyled>
         <Button title="-" onPress={decrement} />
         <Button title="+" onPress={increment} />
-      </RawStyled>
+      </RowStyled>
     </SafeAreaViewStyled>
   );
 };
