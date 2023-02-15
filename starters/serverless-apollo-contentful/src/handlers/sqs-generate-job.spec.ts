@@ -1,4 +1,4 @@
-import { APIGatewayProxyEvent } from 'aws-lambda';
+import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 import { handler } from './sqs-generate-job';
 import { sendMessage } from '../utils/sqs';
 
@@ -18,8 +18,7 @@ mockMath.ceil = () => 0;
 global.Math = mockMath;
 
 describe('.handler', () => {
-	// let subject: (event: any, context: any, callback: any): void | Promise<...>;
-	let subject: any;
+	let subject: void | APIGatewayProxyResult;
 
 	afterAll(() => {
 		MOCK_SEND_MESSAGE.mockReset();
