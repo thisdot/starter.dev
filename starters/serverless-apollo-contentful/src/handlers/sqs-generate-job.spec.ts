@@ -11,13 +11,7 @@ const MOCK_SEND_MESSAGE = sendMessage as jest.Mock;
 
 let SUCCESS = false;
 jest.mock('../utils/sqs', () => ({
-	sendMessage: jest.fn(function () {
-		SUCCESS = !SUCCESS;
-		return {
-			success: SUCCESS,
-			data: {},
-		};
-	}),
+	sendMessage: jest.fn(),
 }));
 
 describe('.handler', () => {
