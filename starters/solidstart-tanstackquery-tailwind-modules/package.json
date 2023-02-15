@@ -41,6 +41,7 @@
     "@storybook/testing-library": "^0.0.13",
     "@tanstack/solid-query": "^4.22.4",
     "@testing-library/jest-dom": "^5.16.5",
+    "@typescript-eslint/parser": "^5.52.0",
     "autoprefixer": "^10.4.13",
     "babel-loader": "^8.3.0",
     "eslint-plugin-solid": "^0.9.4",
@@ -68,6 +69,17 @@
     "node": ">=16"
   },
   "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "react",
+        "react-dom",
+        "@babel/*",
+        "webpack",
+        "@storybook/*"
+      ]
+    }
+  },
+  "npm": {
     "peerDependencyRules": {
       "ignoreMissing": [
         "react",
