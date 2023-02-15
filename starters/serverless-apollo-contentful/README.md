@@ -167,6 +167,28 @@ How to run migrations:
 
 To pre-populate the data within contentful we implement seeding scripts which are located in `scripts/seed`.
 
+### Queueing
+
+Amazon Simple Queue Service (SQS) is a fully managed message queuing service that enables the decoupling of distributed applications and microservices and ensures reliable and scalable processing of application messages.
+
+In this implementation, an SQS message is sent by the `APIGatewayProxyHandler` in `sqs-generate-job` via the `sendMessage` function, which is then stored in a queue called `DemoJobQueue`. The SQS handler `sqs-handler` polls this queue and processes any message received.
+
+The handler function of `sqs-handler` retrieves the messages from the event parameter passed to it, calls the `recordHandler` function for each record in the event, and logs the message.
+
+The `recordHandler` function processes the individual message by taking the body of the message and logging it.
+
+Note: The demo implementation just logs the body to showcase the message successfully arrived at the handler. A real-world application would parse the message and act on it.
+
+The sendMessage function sends the message to the queue by calling the `SendMessageCommand` of the AWS SDK client for SQS, passing in the queue URL and message body. The function also returns a `SendMessageResult` object that indicates whether the message was successfully sent or not.
+
+The `getQueueUrl` function retrieves the URL of the `DemoJobQueue` by calling the `GetQueueUrlCommand` of the AWS SDK client for SQS, passing in the name of the queue. The URL is then used to send messages to the queue.
+
+The `getClient` function returns an instance of the AWS SDK client for SQS, which is cached to prevent multiple instances from being created.
+
+The `isOffline` function is a utility function that checks whether the functions are being run locally via serverless offline or on infrastructure. This function helps detect which connection string to use.
+
+The `serverless.yml` file contains the configuration for the Serverless Framework, which specifies the service name, runtime, functions to deploy, and the events that trigger them. The configuration also includes IAM role statements that allow the `APIGatewayProxyHandler` in `sqs-generate-job` function to send messages to the `DemoJobQueue` queue. Additionally, it sets up a local SQS server via the `serverless-offline-sqs` plugin for development and testing purposes.
+
 ### Testing
 
 Testing is set up with `Jest`. You can see some example test files under `src/schema/technology`
