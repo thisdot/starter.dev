@@ -13,16 +13,16 @@ jest.mock('../utils/sqs', () => ({
 	sendMessage: jest.fn(),
 }));
 
-
 describe('.handler', () => {
 	let subject: void | APIGatewayProxyResult;
-        const originalMathCeil = Math.ceil
-        beforeAll(() => {
-               Math.ceil = jest.fn();
-        })
+	const originalMathCeil = Math.ceil;
+	beforeAll(() => {
+		Math.ceil = jest.fn().mockReturnValue(0);
+	});
+
 	afterAll(() => {
 		MOCK_SEND_MESSAGE.mockReset();
-		Math.ceil = originalMathCeil 
+		Math.ceil = originalMathCeil;
 	});
 
 	describe('when called with event', () => {
