@@ -7,7 +7,13 @@ const config: JestConfigWithTsJest = {
 	collectCoverageFrom: ['src/**/*.ts'],
 	coverageReporters: ['html', 'json', 'lcov', 'text', 'clover'],
 	coverageDirectory: 'coverage',
-	coveragePathIgnorePatterns: ['/node_modules/', '/test/', '/mocks/'],
+	coveragePathIgnorePatterns: [
+		'/node_modules/',
+		'/test/',
+		'/mocks/',
+		'/index.ts',
+		'/index.js',
+	],
 	transform: {
 		'\\.[jt]sx?$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.spec.json' }],
 	},
