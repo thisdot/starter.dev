@@ -255,16 +255,30 @@ SQS uses docker to process queues locally. Start up the container with:
 
 ## Deployment
 
-To deploy your application on `AWS lambda` simply run:
+The Serverless Framework needs access to your cloud provider account so that it can create and manage resources on your behalf. You can follow the [guide](https://www.serverless.com/framework/docs/providers/aws/guide/credentials/) to get started.
+
+Steps to get started:
+
+1. [Sign up for an AWS account](https://aws.amazon.com/)
+2. [Create an IAM User and Access Key](https://www.serverless.com/framework/docs/providers/aws/guide/credentials#create-an-iam-user-and-access-key)
+3. Export your `AWS_ACCESS_KEY_ID` & `AWS_SECRET_ACCESS_KEY` credentials.
+   ```sh
+      export AWS_ACCESS_KEY_ID=<your-key-here>
+      export AWS_SECRET_ACCESS_KEY=<your-secret-key-here>
+   ```
+4. Deploy your application on `AWS lambda`:
+   ```sh
+      npm run deploy
+   ```
+5. To deploy a single function run:
+   ```sh
+      npm run deploy function --function myFunction
+   ```
+
+To stop your Serverless application, run:
 
 ```sh
-   sls deploy
+   serverless remove
 ```
 
-To deploy a single function run:
-
-```sh
-   sls deploy function --function myFunction
-```
-
-For more information on checkout this [article](https://www.serverless.com/framework/docs/providers/aws/guide/deploying)
+For more information on Serverless deployment check out this [article](https://www.serverless.com/framework/docs/providers/aws/guide/deploying)
