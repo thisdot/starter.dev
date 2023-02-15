@@ -13,9 +13,6 @@ jest.mock('../utils/sqs', () => ({
 	sendMessage: jest.fn(),
 }));
 
-const mockMath = Object.create(global.Math);
-mockMath.ceil = () => 0;
-global.Math = mockMath;
 
 describe('.handler', () => {
 	let subject: void | APIGatewayProxyResult;
