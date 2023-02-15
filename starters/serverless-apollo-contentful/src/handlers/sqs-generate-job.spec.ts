@@ -23,8 +23,13 @@ describe('.handler', () => {
 
 	describe('when called with event', () => {
 		beforeAll(async () => {
+		        MOCK_SEND_MESSAGE.mockResolvedValue(....you code here)
 			subject = await handler(MOCK_API_EVENT, MOCK_CONTEXT, MOCK_CALLBACK);
 		});
+		
+		afterAll(() => {
+		  MOCK_SEND_MESSAGE.mockReset();
+		})
 
 		it('calls sendMessage with expected arguments', () => {
 			expect(MOCK_SEND_MESSAGE).toHaveBeenCalledTimes(1);
