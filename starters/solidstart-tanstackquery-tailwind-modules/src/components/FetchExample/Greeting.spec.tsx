@@ -1,4 +1,4 @@
-import { render } from 'solid-testing-library';
+import { render } from '@solidjs/testing-library';
 import {
   describe,
   expect,

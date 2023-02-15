@@ -31,12 +31,13 @@
   "type": "module",
   "devDependencies": {
     "@babel/core": "^7.20.12",
+    "@solidjs/testing-library": "^0.6.1",
     "@storybook/addon-actions": "^6.5.16",
-    "@storybook/addon-essentials": "^6.5.16",
+    "@storybook/addon-essentials": "^6.4.22",
     "@storybook/addon-interactions": "^6.5.16",
     "@storybook/addon-links": "^6.5.16",
-    "@storybook/builder-vite": "^0.3.0",
-    "@storybook/html": "^6.5.16",
+    "@storybook/builder-vite": "^0.1.37",
+    "@storybook/html": "^6.1.21",
     "@storybook/testing-library": "^0.0.13",
     "@tanstack/solid-query": "^4.22.4",
     "@testing-library/jest-dom": "^5.16.5",
@@ -46,11 +47,10 @@
     "eslint-plugin-unused-imports": "^2.0.0",
     "husky": "^8.0.3",
     "jsdom": "^21.1.0",
-    "msw": "^1.0.0",
-    "msw-storybook-addon": "^1.7.0",
+    "msw": "0.35.0",
+    "msw-storybook-addon": "1.6.0",
     "postcss": "^8.4.21",
     "solid-start-node": "^0.2.15",
-    "solid-testing-library": "^0.5.0",
     "tailwindcss": "^3.2.4",
     "typescript": "^4.9.4",
     "vite": "^3.2.5",
@@ -66,6 +66,17 @@
   },
   "engines": {
     "node": ">=16"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "react",
+        "react-dom",
+        "@babel/*",
+        "webpack",
+        "@storybook/*"
+      ]
+    }
   },
   "msw": {
     "workerDirectory": "public"
