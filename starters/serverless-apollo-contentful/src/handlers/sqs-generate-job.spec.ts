@@ -19,9 +19,13 @@ global.Math = mockMath;
 
 describe('.handler', () => {
 	let subject: void | APIGatewayProxyResult;
-
+        const originalMathCeil = Math.ceil
+        beforeAll(() => {
+               Math.ceil = jest.fn();
+        })
 	afterAll(() => {
 		MOCK_SEND_MESSAGE.mockReset();
+		Math.ceil = originalMathCeil 
 	});
 
 	describe('when called with event', () => {
