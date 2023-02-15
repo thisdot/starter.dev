@@ -198,7 +198,7 @@ Testing is set up with `Jest`. You can see some example test files under `src/sc
 The demo components included in the starter kit are co-located with the tests. This kit includes things like mocks and data-fetching queries that are modeled after an MVC-type architecture. Using this structure makes it easy to find all
 the code and functionality related to a specific component. This pattern follows the single responsibility principle
 since each file has one purpose. For example, the `.resolvers.ts` files handle data for all resolvers with the
-functionality related to data fetching for your query. The `.test.ts` files handle all the unit tests for the resolvers.
+functionality related to data fetching for your query. The `.spec.ts` files handle all the unit tests for the resolvers.
 The `.typedefs.ts` files handle all the types for GraphQL.
 
 ### Example directory
@@ -206,7 +206,7 @@ The `.typedefs.ts` files handle all the types for GraphQL.
 ```
 - TechnologyModel.ts - Model for the Technology entity
 - technologies.resolvers.ts - Resolvers for the Technology entity
-- technologies.test.ts - Unit tests for the Technology entity
+- technologies.spec.ts - Unit tests for the Technology entity
 - technologies.typedefs.ts - Type definitions for the Technology entity
 ```
 
