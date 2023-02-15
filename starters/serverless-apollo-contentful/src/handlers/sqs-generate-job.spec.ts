@@ -16,10 +16,10 @@ jest.mock('../utils/sqs', () => ({
 describe('.handler', () => {
 	let subject: void | APIGatewayProxyResult;
 	const originalMathCeil = Math.ceil;
+	const MOCK_MATH_CEIL = jest.fn<number, [number]>();
 	beforeAll(() => {
-		Math.ceil = jest.fn().mockReturnValue(0);
+		Math.ceil = MOCK_MATH_CEIL;
 	});
-
 	afterAll(() => {
 		MOCK_SEND_MESSAGE.mockReset();
 		Math.ceil = originalMathCeil;
@@ -31,27 +31,20 @@ describe('.handler', () => {
 				success: true,
 				data: {},
 			});
+			MOCK_MATH_CEIL.mockReturnValue(123);
 			subject = await handler(MOCK_API_EVENT, MOCK_CONTEXT, MOCK_CALLBACK);
 		});
 
 		afterAll(() => {
 			MOCK_SEND_MESSAGE.mockReset();
+			MOCK_MATH_CEIL.mockReset();
 		});
 
 		it('calls sendMessage with expected arguments', () => {
 			expect(MOCK_SEND_MESSAGE).toHaveBeenCalledTimes(1);
 			expect(MOCK_SEND_MESSAGE).toHaveBeenCalledWith({
-				id: 0,
+				id: 123,
 				message: 'Hello World!',
-			});
-		});
-
-		it('sendMessage returns expected result', () => {
-			const actualCallsResults = MOCK_SEND_MESSAGE.mock.results[0];
-			const rval = actualCallsResults.value;
-			expect(rval).toEqual({
-				success: true,
-				data: {},
 			});
 		});
 
