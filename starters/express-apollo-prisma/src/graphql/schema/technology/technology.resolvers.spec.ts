@@ -11,7 +11,6 @@ import { testServerExecuteOperation } from '../../utils/test';
 import { createMockTechnologyDataSource } from '../../utils/test';
 import { GraphQLResponse } from '@apollo/server';
 import { ApolloServerErrorCode } from '@apollo/server/errors';
-import { ExecuteOperationOptions } from '@apollo/server/dist/esm/externalTypes/graphql';
 import { ServerContext } from '../../server-context';
 
 import { TechnologyEntity } from '@prisma/client';
@@ -25,19 +24,22 @@ type MutationDeleteTechnology = Pick<Mutation, 'deleteTechnology'>;
 
 const MOCK_EXISTING_ID = 123;
 const MOCK_EXISTING_ID_STRING = String(MOCK_EXISTING_ID);
-const MOCK_EXISTING_NAME = 'MOCK_EXISTING_NAME';
 const MOCK_EXISTING_TECHNOLOGY_ENTITY: TechnologyEntity = {
 	id: MOCK_EXISTING_ID,
-	name: MOCK_EXISTING_NAME,
+	displayName: 'MOCK_TECHNOLOGY',
+	description: 'MOCK_TECHNOLOGY_DESCRIPTION',
+	url: 'MOCK_TECHNOLOGY_URL',
 };
 const MOCK_NON_EXISTING_ID = 321;
-const MOCK_NON_EXISTING_ID_STRING = '321';
+const MOCK_NON_EXISTING_ID_STRING = String(MOCK_NON_EXISTING_ID);
 
 const MOCK_QUERY_TECHNOLOGY = gql`
 	query TechnologyQuery($id: ID!) {
 		technology(id: $id) {
 			id
-			name
+			displayName
+			description
+			url
 		}
 	}
 `;
@@ -46,7 +48,9 @@ const MOCK_QUERY_TECHNOLOGIES = gql`
 	query TechnologiesQuery {
 		technologies {
 			id
-			name
+			displayName
+			description
+			url
 		}
 	}
 `;
@@ -60,33 +64,43 @@ const MOCK_CONTEXT: ServerContext = {
 
 const EXPECTED_RESULT_EXISTING_TECHNOLOGY: Technology = {
 	id: '123',
-	name: 'MOCK_EXISTING_NAME',
+	displayName: 'MOCK_TECHNOLOGY',
+	description: 'MOCK_TECHNOLOGY_DESCRIPTION',
+	url: 'MOCK_TECHNOLOGY_URL',
 };
 
 const MOCK_MUTATION_CREATE_TECHNOLOGY = gql`
 	mutation CreateTechnologyMutation($input: CreateTechnology!) {
 		createTechnology(input: $input) {
 			id
-			name
+			displayName
+			description
+			url
 		}
 	}
 `;
 
 const MOCK_INPUT_CREATE_TECHNOLOGY: CreateTechnology = {
-	name: 'MOCK_EXISTING_NAME',
+	displayName: 'MOCK_TECHNOLOGY',
+	description: 'MOCK_TECHNOLOGY_DESCRIPTION',
+	url: 'MOCK_TECHNOLOGY_URL',
 };
 
 const MOCK_MUTATION_UPDATE_TECHNOLOGY = gql`
 	mutation UpdateTechnologyMutation($id: ID!, $input: UpdateTechnology!) {
 		updateTechnology(id: $id, input: $input) {
 			id
-			name
+			displayName
+			description
+			url
 		}
 	}
 `;
 
 const MOCK_INPUT_UPDATE_TECHNOLOGY: UpdateTechnology = {
-	name: 'MOCK_EXISTING_NAME',
+	displayName: 'MOCK_TECHNOLOGY',
+	description: 'MOCK_TECHNOLOGY_DESCRIPTION',
+	url: 'MOCK_TECHNOLOGY_URL',
 };
 
 const MOCK_MUTATION_DELETE_TECHNOLOGY = gql`
@@ -98,7 +112,9 @@ const MOCK_MUTATION_DELETE_TECHNOLOGY = gql`
 jest.mock('../../mappers/technology', () => ({
 	mapTechnology: jest.fn().mockReturnValue({
 		id: '123',
-		name: 'MOCK_EXISTING_NAME',
+		displayName: 'MOCK_TECHNOLOGY',
+		description: 'MOCK_TECHNOLOGY_DESCRIPTION',
+		url: 'MOCK_TECHNOLOGY_URL',
 	}),
 }));
 const MOCK_MAP_TECHNOLOGY = mapTechnology as jest.Mock<Technology, [TechnologyEntity]>;
@@ -375,7 +391,7 @@ describe('technologyResolvers', () => {
 				});
 			});
 
-			describe('when called with invalid input: name value is null', () => {
+			describe('when called with invalid input: displayName value is null', () => {
 				let response: GraphQLResponse<MutationUpdateTechnology>;
 
 				beforeAll(async () => {
@@ -385,7 +401,7 @@ describe('technologyResolvers', () => {
 							variables: {
 								id: MOCK_EXISTING_ID_STRING,
 								input: {
-									name: null,
+									displayName: null,
 								},
 							},
 						},
@@ -401,12 +417,12 @@ describe('technologyResolvers', () => {
 					expect(response.body.singleResult.errors).toHaveLength(1);
 					assert(Array.isArray(response.body.singleResult.errors));
 					expect(response.body.singleResult.errors[0]).toMatchObject({
-						message: 'Invalid argument property value. Name cannot be null.',
+						message: 'Invalid argument property value. Display Name cannot be null.',
 						path: ['updateTechnology'],
 						extensions: {
 							code: ApolloServerErrorCode.BAD_USER_INPUT,
 							argumentName: 'input',
-							propertyName: 'name',
+							propertyName: 'displayName',
 							propertyValue: null,
 						},
 					});

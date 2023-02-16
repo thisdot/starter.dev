@@ -10,9 +10,9 @@ export const technologyTypeDefs = gql`
 		"The display name of the Technology"
 		displayName: String!
 		"The brief description of the Technology"
-		description: String!
+		description: String
 		"The link to the Technology's documentation"
-		url: String!
+		url: String
 	}
 
 	type Query {
@@ -25,15 +25,15 @@ export const technologyTypeDefs = gql`
 	input CreateTechnology {
 		"Technology Display Name"
 		displayName: String!
-		description: String!
-		url: String!
+		description: String
+		url: String
 	}
 
 	input UpdateTechnology {
 		"Technology Display Name"
 		displayName: String!
-		description: String!
-		url: String!
+		description: String
+		url: String
 	}
 
 	"""
