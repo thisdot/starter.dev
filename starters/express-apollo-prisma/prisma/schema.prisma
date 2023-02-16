@@ -12,9 +12,9 @@ datasource db {
 
 model TechnologyEntity {
   description String?
-  displayName String @unique
-  id   Int    @id @default(autoincrement())
-  url String?
+  displayName String  @unique
+  id          Int     @id @default(autoincrement())
+  url         String?
 
   @@map("technology")
 }
