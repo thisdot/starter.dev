@@ -15,8 +15,10 @@ export type Scalars = {
 };
 
 export type CreateTechnology = {
-	/** Technology Name */
-	name: Scalars['String'];
+	description: Scalars['String'];
+	/** Technology Display Name */
+	displayName: Scalars['String'];
+	url: Scalars['String'];
 };
 
 /** Technology mutations */
@@ -31,17 +33,17 @@ export type Mutation = {
 };
 
 /** Technology mutations */
-export type MutationcreateTechnologyArgs = {
+export type MutationCreateTechnologyArgs = {
 	input: CreateTechnology;
 };
 
 /** Technology mutations */
-export type MutationdeleteTechnologyArgs = {
+export type MutationDeleteTechnologyArgs = {
 	id: Scalars['ID'];
 };
 
 /** Technology mutations */
-export type MutationupdateTechnologyArgs = {
+export type MutationUpdateTechnologyArgs = {
 	id: Scalars['ID'];
 	input: UpdateTechnology;
 };
@@ -56,26 +58,32 @@ export type Query = {
 	technology?: Maybe<Technology>;
 };
 
-export type QueryhelloArgs = {
+export type QueryHelloArgs = {
 	greeting: Scalars['String'];
 };
 
-export type QuerytechnologyArgs = {
+export type QueryTechnologyArgs = {
 	id: Scalars['ID'];
 };
 
 /** Technology object */
 export type Technology = {
 	__typename?: 'Technology';
+	/** The brief description of the Technology */
+	description: Scalars['String'];
+	/** The display name of the Technology */
+	displayName: Scalars['String'];
 	/** The ID of the Technology */
 	id: Scalars['ID'];
-	/** The name of the Technology */
-	name: Scalars['String'];
+	/** The link to the Technology's documentation */
+	url: Scalars['String'];
 };
 
 export type UpdateTechnology = {
-	/** Technology Name */
-	name?: InputMaybe<Scalars['String']>;
+	description: Scalars['String'];
+	/** Technology Display Name */
+	displayName: Scalars['String'];
+	url: Scalars['String'];
 };
 
 export type ResolverTypeWrapper<T> = Promise<T> | T;
@@ -192,19 +200,19 @@ export type MutationResolvers<
 		ResolversTypes['Technology'],
 		ParentType,
 		ContextType,
-		RequireFields<MutationcreateTechnologyArgs, 'input'>
+		RequireFields<MutationCreateTechnologyArgs, 'input'>
 	>;
 	deleteTechnology?: Resolver<
 		Maybe<ResolversTypes['Boolean']>,
 		ParentType,
 		ContextType,
-		RequireFields<MutationdeleteTechnologyArgs, 'id'>
+		RequireFields<MutationDeleteTechnologyArgs, 'id'>
 	>;
 	updateTechnology?: Resolver<
 		ResolversTypes['Technology'],
 		ParentType,
 		ContextType,
-		RequireFields<MutationupdateTechnologyArgs, 'id' | 'input'>
+		RequireFields<MutationUpdateTechnologyArgs, 'id' | 'input'>
 	>;
 };
 
@@ -216,14 +224,14 @@ export type QueryResolvers<
 		ResolversTypes['String'],
 		ParentType,
 		ContextType,
-		RequireFields<QueryhelloArgs, 'greeting'>
+		RequireFields<QueryHelloArgs, 'greeting'>
 	>;
 	technologies?: Resolver<Array<Maybe<ResolversTypes['Technology']>>, ParentType, ContextType>;
 	technology?: Resolver<
 		Maybe<ResolversTypes['Technology']>,
 		ParentType,
 		ContextType,
-		RequireFields<QuerytechnologyArgs, 'id'>
+		RequireFields<QueryTechnologyArgs, 'id'>
 	>;
 };
 
@@ -231,8 +239,10 @@ export type TechnologyResolvers<
 	ContextType = any,
 	ParentType extends ResolversParentTypes['Technology'] = ResolversParentTypes['Technology']
 > = {
+	description?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+	displayName?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
 	id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
-	name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+	url?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
