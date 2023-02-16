@@ -32,7 +32,7 @@ async function main() {
     }
   })
 
-  console.log(`Successfully seeded technology table with: `, { expressTech, apolloTech, prismaTech })
+  console.log(`Seeding completed successfully:`, { expressTech, apolloTech, prismaTech })
 }
 main()
   .then(async () => {
