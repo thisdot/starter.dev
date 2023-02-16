@@ -15,8 +15,12 @@ export type Scalars = {
 };
 
 export type CreateTechnology = {
+	/** A brief description of the Technology */
+	description?: InputMaybe<Scalars['String']>;
 	/** Technology Name */
 	displayName: Scalars['String'];
+	/** The link to the Technology's documentation */
+	url?: InputMaybe<Scalars['String']>;
 };
 
 /** Technology mutations */
@@ -67,15 +71,23 @@ export type QuerytechnologyArgs = {
 /** Technology object */
 export type Technology = {
 	__typename?: 'Technology';
+	/** A brief description of the Technology */
+	description?: Maybe<Scalars['String']>;
 	/** The name of the Technology */
 	displayName: Scalars['String'];
 	/** The ID of the Technology */
 	id: Scalars['ID'];
+	/** The link to the Technology's documentation */
+	url?: Maybe<Scalars['String']>;
 };
 
 export type UpdateTechnology = {
+	/** A brief description of the Technology */
+	description?: InputMaybe<Scalars['String']>;
 	/** Technology Name */
 	displayName?: InputMaybe<Scalars['String']>;
+	/** The link to the Technology's documentation */
+	url?: InputMaybe<Scalars['String']>;
 };
 
 export type ResolverTypeWrapper<T> = Promise<T> | T;
@@ -231,8 +243,10 @@ export type TechnologyResolvers<
 	ContextType = any,
 	ParentType extends ResolversParentTypes['Technology'] = ResolversParentTypes['Technology']
 > = {
+	description?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
 	displayName?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
 	id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+	url?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 

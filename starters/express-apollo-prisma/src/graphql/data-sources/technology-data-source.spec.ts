@@ -9,7 +9,9 @@ describe('TechnologyDataSource', () => {
 	const MOCK_PRISMA_CLIENT: DeepMockProxy<PrismaClient> = createMockPrismaClient();
 	const MOCK_CACHE_API_WRAPPER: DeepMockProxy<CacheAPIWrapper> = createMockCacheApiWrapper();
 	const MOCK_TECHNOLOGY_INPUT = {
-		name: 'MOCK_TECHNOLOGY',
+		displayName: 'MOCK_TECHNOLOGY',
+		description: 'MOCK_TECHNOLOGY_DESCRIPTION',
+		url: 'MOCK_TECHNOLOGY_URL',
 	};
 	const MOCK_TECHNOLOGY: TechnologyEntity = {
 		id: 123,

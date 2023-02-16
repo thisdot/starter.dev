@@ -25,6 +25,18 @@
 				"fields": null,
 				"inputFields": [
 					{
+						"name": "description",
+						"description": "A brief description of the Technology",
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"defaultValue": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
 						"name": "displayName",
 						"description": "Technology Name",
 						"type": {
@@ -35,6 +47,18 @@
 								"name": "String",
 								"ofType": null
 							}
+						},
+						"defaultValue": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "url",
+						"description": "The link to the Technology's documentation",
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
 						},
 						"defaultValue": null,
 						"isDeprecated": false,
@@ -286,6 +310,18 @@
 				"description": "Technology object",
 				"fields": [
 					{
+						"name": "description",
+						"description": "A brief description of the Technology",
+						"args": [],
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
 						"name": "displayName",
 						"description": "The name of the Technology",
 						"args": [],
@@ -316,6 +352,18 @@
 						},
 						"isDeprecated": false,
 						"deprecationReason": null
+					},
+					{
+						"name": "url",
+						"description": "The link to the Technology's documentation",
+						"args": [],
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
 					}
 				],
 				"inputFields": null,
@@ -330,8 +378,32 @@
 				"fields": null,
 				"inputFields": [
 					{
+						"name": "description",
+						"description": "A brief description of the Technology",
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"defaultValue": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
 						"name": "displayName",
 						"description": "Technology Name",
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"defaultValue": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "url",
+						"description": "The link to the Technology's documentation",
 						"type": {
 							"kind": "SCALAR",
 							"name": "String",
