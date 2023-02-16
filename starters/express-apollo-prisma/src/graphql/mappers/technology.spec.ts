@@ -7,12 +7,12 @@ describe('.mapTechnology', () => {
 		it('returns expected result', () => {
 			const MOCK_TECHNOLOGY: TechnologyEntity = {
 				id: 123,
-				name: 'MOCK_TECHNOLOGY',
+				displayName: 'MOCK_TECHNOLOGY',
 			};
 			const expectResult: Technology = {
 				__typename: 'Technology',
 				id: '123',
-				name: 'MOCK_TECHNOLOGY',
+				displayName: 'MOCK_TECHNOLOGY',
 			};
 
 			const result = mapTechnology(MOCK_TECHNOLOGY);

@@ -47,17 +47,17 @@ export const technologyResolvers: Resolvers<ServerContext> = {
 		},
 		updateTechnology: async (_, { id, input }, { dataSources }) => {
 			const idNumber = parseTechnologyId(id);
-			if (input.name === null) {
-				throw new GraphQLError(`Invalid argument property value. Name cannot be null.`, {
+			if (input.displayName === null) {
+				throw new GraphQLError(`Invalid argument property value. Display Name cannot be null.`, {
 					extensions: {
 						code: ApolloServerErrorCode.BAD_USER_INPUT,
 						argumentName: 'input',
-						propertyName: 'name',
-						propertyValue: input.name,
+						propertyName: 'displayName',
+						propertyValue: input.displayName,
 					},
 				});
 			}
-			const validated = input as ExcludeNullProp<UpdateTechnology, 'name'>;
+			const validated = input as ExcludeNullProp<UpdateTechnology, 'displayName'>;
 			const entity = await dataSources.technologyDataSource.updateTechnology(idNumber, validated);
 			return mapTechnology(entity);
 		},

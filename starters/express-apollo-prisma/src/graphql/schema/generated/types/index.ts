@@ -16,7 +16,7 @@ export type Scalars = {
 
 export type CreateTechnology = {
 	/** Technology Name */
-	name: Scalars['String'];
+	displayName: Scalars['String'];
 };
 
 /** Technology mutations */
@@ -67,15 +67,15 @@ export type QuerytechnologyArgs = {
 /** Technology object */
 export type Technology = {
 	__typename?: 'Technology';
+	/** The name of the Technology */
+	displayName: Scalars['String'];
 	/** The ID of the Technology */
 	id: Scalars['ID'];
-	/** The name of the Technology */
-	name: Scalars['String'];
 };
 
 export type UpdateTechnology = {
 	/** Technology Name */
-	name?: InputMaybe<Scalars['String']>;
+	displayName?: InputMaybe<Scalars['String']>;
 };
 
 export type ResolverTypeWrapper<T> = Promise<T> | T;
@@ -231,8 +231,8 @@ export type TechnologyResolvers<
 	ContextType = any,
 	ParentType extends ResolversParentTypes['Technology'] = ResolversParentTypes['Technology']
 > = {
+	displayName?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
 	id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
-	name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 

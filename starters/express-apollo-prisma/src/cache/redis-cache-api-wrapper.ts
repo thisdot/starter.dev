@@ -11,14 +11,14 @@ export class RedisCacheAPIWrapper extends CacheAPIWrapper {
 	}
 
 	composeRedisKey<
-		TItem extends { [k: string]: number | string },
+		TItem extends { [k: string]: number | string | null },
 		TUniqueKey extends keyof TItem = 'id'
 	>(id: TItem[TUniqueKey]): string {
 		return `${this.keyPrefix}:${id}`;
 	}
 
 	async getCached<
-		TItem extends { [k: string]: number | string },
+		TItem extends { [k: string]: number | string | null },
 		TIdKey extends keyof TItem = 'id'
 	>(uniqueKeyValue: TItem[TIdKey]): Promise<TItem | null> {
 		if (this.redisClient) {
@@ -36,7 +36,7 @@ export class RedisCacheAPIWrapper extends CacheAPIWrapper {
 	}
 
 	async cache<
-		TItem extends { [k: string]: number | string },
+		TItem extends { [k: string]: number | string | null },
 		TUniqueKey extends keyof TItem = 'id'
 	>(item: TItem, uniqueKey: TUniqueKey): Promise<void> {
 		if (this.redisClient) {
@@ -53,7 +53,7 @@ export class RedisCacheAPIWrapper extends CacheAPIWrapper {
 	}
 
 	async invalidateCached<
-		TItem extends { [k: string]: number | string },
+		TItem extends { [k: string]: number | string | null },
 		TUniqueKey extends keyof TItem = 'id'
 	>(uniqueKey: TItem[TUniqueKey]): Promise<void> {
 		if (this.redisClient) {

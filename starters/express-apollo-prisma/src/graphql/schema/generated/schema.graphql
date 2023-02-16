@@ -5,7 +5,7 @@ schema {
 
 input CreateTechnology {
 	"Technology Name"
-	name: String!
+	displayName: String!
 }
 
 """
@@ -33,13 +33,13 @@ type Query {
 Technology object
 """
 type Technology {
+	"The name of the Technology"
+	displayName: String!
 	"The ID of the Technology"
 	id: ID!
-	"The name of the Technology"
-	name: String!
 }
 
 input UpdateTechnology {
 	"Technology Name"
-	name: String
+	displayName: String
 }
