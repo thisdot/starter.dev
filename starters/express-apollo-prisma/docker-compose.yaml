@@ -27,8 +27,6 @@ services:
       - $DOCKER_REDIS_PORT_LOCAL:$DOCKER_REDIS_PORT_CONTAINER
     environment:
       - REDIS_REPLICATION_MODE=master
-    volumes:
-      - ./redis.conf:/usr/local/etc/redis/redis.conf
     depends_on:
       - mysql
 volumes:
