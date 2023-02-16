@@ -4,8 +4,12 @@ schema {
 }
 
 input CreateTechnology {
+	"A brief description of the Technology"
+	description: String
 	"Technology Name"
-	name: String!
+	displayName: String!
+	"The link to the Technology's documentation"
+	url: String
 }
 
 """
@@ -33,13 +37,21 @@ type Query {
 Technology object
 """
 type Technology {
+	"A brief description of the Technology"
+	description: String
+	"The name of the Technology"
+	displayName: String!
 	"The ID of the Technology"
 	id: ID!
-	"The name of the Technology"
-	name: String!
+	"The link to the Technology's documentation"
+	url: String
 }
 
 input UpdateTechnology {
+	"A brief description of the Technology"
+	description: String
 	"Technology Name"
-	name: String
+	displayName: String
+	"The link to the Technology's documentation"
+	url: String
 }

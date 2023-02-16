@@ -8,7 +8,11 @@ export const technologyTypeDefs = gql`
 		"The ID of the Technology"
 		id: ID!
 		"The name of the Technology"
-		name: String!
+		displayName: String!
+		"A brief description of the Technology"
+		description: String
+		"The link to the Technology's documentation"
+		url: String
 	}
 
 	type Query {
@@ -20,12 +24,20 @@ export const technologyTypeDefs = gql`
 
 	input CreateTechnology {
 		"Technology Name"
-		name: String!
+		displayName: String!
+		"A brief description of the Technology"
+		description: String
+		"The link to the Technology's documentation"
+		url: String
 	}
 
 	input UpdateTechnology {
 		"Technology Name"
-		name: String
+		displayName: String
+		"A brief description of the Technology"
+		description: String
+		"The link to the Technology's documentation"
+		url: String
 	}
 
 	"""
