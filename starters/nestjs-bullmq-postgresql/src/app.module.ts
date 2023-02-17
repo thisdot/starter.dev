@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { SequelizeModule } from '@nestjs/sequelize';
 import 'dotenv/config';
 import { Dialect } from 'sequelize';
+import { Technology } from './technology/technology.model';
 
 @Module({
 	imports: [
@@ -14,7 +15,7 @@ import { Dialect } from 'sequelize';
 			username: process.env.username,
 			password: process.env.password,
 			database: process.env.database,
-			models: [],
+			models: [Technology],
 		}),
 	],
 	controllers: [AppController],
