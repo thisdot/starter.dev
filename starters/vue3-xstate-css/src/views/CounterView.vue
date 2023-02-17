@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { createMachine, assign } from 'xstate';
 import { useMachine } from '@xstate/vue';
+import ButtonComponent from '../components/ButtonComponent.vue';
+import HeaderComponent from '../components/HeaderComponent.vue';
 
 const counterMachine = createMachine(
   {
@@ -37,12 +39,20 @@ const { state, send } = useMachine(counterMachine, { devTools: true });
 
 <template>
   <main>
-    <h1>Increment, Decrement and Reset Button Examples</h1>
+    <HeaderComponent>
+      Increment, Decrement and Reset Button Examples
+    </HeaderComponent>
     <section class="counter__section">
       <p data-cy="count">Count: {{ state.context.count }}</p>
-      <button @click="send('INC')" data-cy="inc-button">Increment</button>
-      <button @click="send('DEC')" data-cy="dec-button">Decrement</button>
-      <button @click="send('RESET')" data-cy="res-button">Reset</button>
+      <ButtonComponent @click="send('INC')" data-cy="inc-button">
+        Increment
+      </ButtonComponent>
+      <ButtonComponent @click="send('DEC')" data-cy="dec-button">
+        Decrement
+      </ButtonComponent>
+      <ButtonComponent @click="send('RESET')" data-cy="res-button">
+        Reset
+      </ButtonComponent>
     </section>
     <div class="counter__home-link">
       <RouterLink to="/">Return Home</RouterLink>
@@ -51,13 +61,6 @@ const { state, send } = useMachine(counterMachine, { devTools: true });
 </template>
 
 <style scoped>
-h1 {
-  font-weight: bold;
-  text-align: center;
-  border-bottom: 3px solid var(--lightBlue);
-  padding-bottom: 1%;
-}
-
 .counter__section {
   display: flex;
   align-items: center;
@@ -69,17 +72,6 @@ p {
   font-weight: bold;
   font-size: 1.5rem;
   flex-basis: 9.5rem;
-}
-
-button {
-  width: 9.5rem;
-  background: var(--lightBlue);
-  color: var(--white);
-  font-weight: bold;
-  font-size: 1.05rem;
-  padding: 1% 2%;
-  border-radius: 3px;
-  border-color: var(--lightBlue);
 }
 
 .counter__home-link {
