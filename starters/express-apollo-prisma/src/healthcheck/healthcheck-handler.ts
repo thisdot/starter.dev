@@ -1,4 +1,4 @@
-import { RequestHandler } from 'express';
+import { Request, RequestHandler, Response } from 'express';
 import { RedisClient } from '../cache/redis';
 import { HealthCheckResult } from './healthcheck-result';
 import { PrismaClient } from '@prisma/client';
@@ -13,7 +13,7 @@ export type CreateHealthcheckHandlerOptions = {
 export const createHealthcheckHandler = (
 	options: CreateHealthcheckHandlerOptions
 ): RequestHandler<Record<string, never>, HealthCheckResult> => {
-	return async (req, res) => {
+	return async (req: Request, res: Response) => {
 		const result: HealthCheckResult = {
 			cacheDatabase: await getRedisHealth(options.redisClient),
 			dataSource: await getDataSourceHealth(options.prismaClient),
