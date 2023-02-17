@@ -6,6 +6,7 @@ import HeaderComponent from '../components/HeaderComponent.vue';
 
 const counterMachine = createMachine(
   {
+    id: 'Counter',
     predictableActionArguments: true,
     schema: {
       context: {} as { count: number },
