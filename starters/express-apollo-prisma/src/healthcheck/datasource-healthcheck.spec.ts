@@ -1,5 +1,6 @@
 import { createMockPrismaClient } from '../mocks/prisma-client';
 import { getDataSourceHealth } from './datasource-healthcheck';
+
 describe('.getDataSourceHealth', () => {
 	describe('when called without prismaCleint', () => {
 		let result: boolean;
