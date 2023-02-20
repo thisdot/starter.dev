@@ -10,6 +10,7 @@ export const connectRedisClient = async (
 	maxReconnectRetries = 5
 ): Promise<RedisClient | undefined> => {
 	const existingClient = clientInstances[url];
+
 	if (existingClient) {
 		return existingClient;
 	}
@@ -42,7 +43,7 @@ export const connectRedisClient = async (
 	} catch (error) {
 		console.warn({ error });
 		console.warn('Cannot connect Redis client.');
+		client.quit();
+		return undefined;
 	}
-
-	return undefined;
 };
