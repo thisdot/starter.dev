@@ -21,11 +21,6 @@ if (!REDIS_URL) {
 	throw new Error(`[Invalid environment] Variable not found: REDIS_URL`);
 }
 
-const REDIS_CACHE_TTL_SECONDS = Number(ENV?.REDIS_CACHE_TTL_SECONDS);
-if (isNaN(REDIS_CACHE_TTL_SECONDS)) {
-	throw new Error(`[Invalid environment] Variable is not a number: REDIS_CACHE_TTL_SECONDS`);
-}
-
 (async () => {
 	// Required logic for integrating with Express
 	const app = express();
