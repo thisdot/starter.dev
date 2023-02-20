@@ -113,9 +113,6 @@ describe('.healthcheck-handler', () => {
 					MOCK_GET_DATA_SOURCE_HEALTH.mockResolvedValue(healthcheck.dataSource);
 					MOCK_GET_REDIS_HEALTH.mockResolvedValue(healthcheck.cacheDatabase);
 
-					const req = {} as Request<Record<string, never>, HealthCheckResult>;
-					const next = jest.fn();
-
 					const options = {
 						prismaClient: MOCK_PRISMA_CLIENT,
 						redisClient: MOCK_REDIS_CLIENT,
