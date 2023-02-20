@@ -1,23 +1,12 @@
-export abstract class CacheAPIWrapper {
-	protected constructor(public readonly keyPrefix: string) {}
+export interface CacheAPIWrapper<
+	TEntity extends { [k: string]: number | string | null },
+	TUniqueKey extends keyof TEntity = 'id'
+> {
+	composeRedisKey(id: TEntity[TUniqueKey]): string;
 
-	abstract composeRedisKey<
-		TEntity extends { [k: string]: number | string | null },
-		TUniqueKey extends keyof TEntity = 'id'
-	>(id: TEntity[TUniqueKey]): string;
+	getCached(id: TEntity[TUniqueKey]): Promise<TEntity | null>;
 
-	abstract getCached<
-		TEntity extends { [k: string]: number | string | null },
-		TIdKey extends keyof TEntity = 'id'
-	>(id: TEntity[TIdKey]): Promise<TEntity | null>;
+	cache(entity: TEntity, uniqueKey: TUniqueKey): Promise<void>;
 
-	abstract cache<
-		TItem extends { [k: string]: number | string | null },
-		TUniqueKey extends keyof TItem = 'id'
-	>(item: TItem, uniqueKey: TUniqueKey): Promise<void>;
-
-	abstract invalidateCached<
-		TItem extends { [k: string]: number | string | null },
-		TUniqueKey extends keyof TItem = 'id'
-	>(uniqueKey: TItem[TUniqueKey]): Promise<void>;
+	invalidateCached(uniqueKey: TEntity[TUniqueKey]): Promise<void>;
 }

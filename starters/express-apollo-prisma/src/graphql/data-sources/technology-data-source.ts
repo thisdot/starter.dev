@@ -4,10 +4,13 @@ import { CacheAPIWrapper } from '../../cache';
 type TechnologyEntityId = TechnologyEntity['id'];
 
 export class TechnologyDataSource {
-	constructor(private prismaClient: PrismaClient, private cacheAPIWrapper?: CacheAPIWrapper) {}
+	constructor(
+		private prismaClient: PrismaClient,
+		private cacheAPIWrapper?: CacheAPIWrapper<TechnologyEntity>
+	) {}
 
 	async getTechnologyById(id: TechnologyEntityId): Promise<TechnologyEntity | null> {
-		let entity = await this.cacheAPIWrapper?.getCached<TechnologyEntity>(id);
+		let entity = await this.cacheAPIWrapper?.getCached(id);
 		if (entity) {
 			return entity;
 		}
@@ -17,7 +20,7 @@ export class TechnologyDataSource {
 			},
 		});
 		if (entity) {
-			await this.cacheAPIWrapper?.cache<TechnologyEntity>(entity, 'id');
+			await this.cacheAPIWrapper?.cache(entity, 'id');
 		}
 		return entity;
 	}
@@ -30,7 +33,7 @@ export class TechnologyDataSource {
 		const entity = await this.prismaClient.technologyEntity.create({
 			data,
 		});
-		this.cacheAPIWrapper?.cache<TechnologyEntity>(entity, 'id');
+		this.cacheAPIWrapper?.cache(entity, 'id');
 		return entity;
 	}
 
@@ -44,7 +47,7 @@ export class TechnologyDataSource {
 			},
 			data: updateTechnology,
 		});
-		await this.cacheAPIWrapper?.cache<TechnologyEntity>(entity, 'id');
+		await this.cacheAPIWrapper?.cache(entity, 'id');
 		return entity;
 	}
 

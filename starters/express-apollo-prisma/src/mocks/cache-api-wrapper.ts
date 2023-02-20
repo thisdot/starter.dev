@@ -1,6 +1,6 @@
-import { PrismaClient } from '@prisma/client';
-import { DeepMockProxy, mockDeep } from 'jest-mock-extended';
+import { TechnologyEntity } from '@prisma/client';
+import { mock, MockProxy } from 'jest-mock-extended';
 import { CacheAPIWrapper } from '../cache';
 
-export const createMockCacheApiWrapper = (): DeepMockProxy<CacheAPIWrapper> =>
-	mockDeep<CacheAPIWrapper>();
+export const createMockCacheApiWrapper = (): MockProxy<CacheAPIWrapper<TechnologyEntity>> =>
+	mock<CacheAPIWrapper<TechnologyEntity>>();
