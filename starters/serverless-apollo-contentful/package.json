@@ -4,8 +4,8 @@
 	"description": "AWS Serverless, GraphQL Apollo Server, and Contentful CMS",
 	"main": "src/handlers/graphql.ts",
 	"scripts": {
-		"test": "npm run codegen && jest",
 		"dev": "sls offline start",
+		"test": "npm run codegen && jest",
 		"lint": "eslint . --ext .ts",
 		"infrastructure:start": "docker compose up -d",
 		"infrastructure:stop": "docker compose down",

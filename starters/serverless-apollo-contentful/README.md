@@ -49,7 +49,7 @@ pnpm create @this-dot/starter --kit serverless-framework-apollo-contentful
 - Docker is used to run Redis in the kit. Start up the docker container with:
 
 ```shell
-npm run infrastructure:build
+npm run infrastructure:start
 ```
 
 - Run `npm run dev` to start the development server.
@@ -116,12 +116,16 @@ These are the defaults and should work seamlessly if you have Redis running alre
 
 ## Commands
 
-- `npm run dev` - Starts the development server.
-- `npm run test` - Runs the unit tests.
-- `npm run lint` - Runs ESLint on the project.
-- `npm run prettier` - Formats code for the entire project
-- `npm run deploy` - Deploy your application on `AWS Lambda`
+- `npm run codegen` - Run Graphql code generator.
 - `npm run db:seed` - Seed Database
+- `npm run deploy` - Deploy your application on `AWS Lambda`
+- `npm run dev` - Starts the development server.
+- `npm run format` - Formats code for the entire project
+- `npm run infrastructure:start` - Starts up a ElasticMQ instance for Queueing and Redis instance for caching
+- `npm run infrastructure:stop` - Stops the running ElasticMQ and Redis docker containers.
+- `npm run lint` - Runs ESLint on the project.
+- `npm run test` - Runs the unit tests.
+- `npm run ts:check` - Run type checking.
 
 ### Migration
 
@@ -167,6 +171,10 @@ How to run migrations:
 
 To pre-populate the data within contentful we implement seeding scripts which are located in `scripts/seed`.
 
+```sh
+npm run db:seed
+```
+
 ### Queueing
 
 Amazon Simple Queue Service (SQS) is a fully managed message queuing service that enables the decoupling of distributed applications and microservices and ensures reliable and scalable processing of application messages.
@@ -192,6 +200,18 @@ The `serverless.yml` file contains the configuration for the Serverless Framewor
 ### Testing
 
 Testing is set up with `Jest`. You can see some example test files under `src/schema/technology`
+
+To run all tests
+
+```sh
+npm run test
+```
+
+To run test on one file:
+
+```sh
+npm run test filepath
+```
 
 ## Project Structure
 
