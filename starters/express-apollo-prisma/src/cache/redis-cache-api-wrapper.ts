@@ -12,47 +12,42 @@ export class RedisCacheAPIWrapper<
 		private readonly cacheTtlSeconds: number = 360
 	) {}
 
-	composeRedisKey(id: TEntity[TUniqueKey]): string {
-		return `${this.keyPrefix}:${id}`;
+	composeRedisKey(uniqueKeyValue: TEntity[TUniqueKey]): string {
+		return `${this.keyPrefix}:${uniqueKeyValue}`;
 	}
 
 	async getCached(uniqueKeyValue: TEntity[TUniqueKey]): Promise<TEntity | null> {
-		if (this.redisClient) {
-			try {
-				const key = this.composeRedisKey(uniqueKeyValue);
-				const serialized = await this.redisClient.get(key);
-				if (serialized) {
-					return JSON.parse(serialized);
-				}
-			} catch {
-				console.warn('Redis cache unavailable.');
+		let result: TEntity | null = null;
+		try {
+			const key = this.composeRedisKey(uniqueKeyValue);
+			const serialized = await this.redisClient.get(key);
+			if (serialized) {
+				result = JSON.parse(serialized);
 			}
+		} catch {
+			console.warn('Redis cache unavailable.');
 		}
-		return null;
+		return result;
 	}
 
 	async cache(entity: TEntity, uniqueKey: TUniqueKey): Promise<void> {
-		if (this.redisClient) {
-			try {
-				const key = this.composeRedisKey(entity[uniqueKey]);
-				const serialized = JSON.stringify(entity);
-				await this.redisClient.set(key, serialized, {
-					EX: this.cacheTtlSeconds,
-				});
-			} catch {
-				console.warn('Redis cache unavailable.');
-			}
+		try {
+			const key = this.composeRedisKey(entity[uniqueKey]);
+			const serialized = JSON.stringify(entity);
+			await this.redisClient.set(key, serialized, {
+				EX: this.cacheTtlSeconds,
+			});
+		} catch {
+			console.warn('Redis cache unavailable.');
 		}
 	}
 
-	async invalidateCached(uniqueKey: TEntity[TUniqueKey]): Promise<void> {
-		if (this.redisClient) {
-			try {
-				const key = this.composeRedisKey(uniqueKey);
-				await this.redisClient.del(key);
-			} catch {
-				console.warn('Redis cache unavailable.');
-			}
+	async invalidateCached(uniqueKeyValue: TEntity[TUniqueKey]): Promise<void> {
+		try {
+			const key = this.composeRedisKey(uniqueKeyValue);
+			await this.redisClient.del(key);
+		} catch {
+			console.warn('Redis cache unavailable.');
 		}
 	}
 }

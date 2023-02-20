@@ -14,14 +14,8 @@ export const createCacheAPIWrapperAsync = async <
 	}
 
 	const REDIS_CACHE_TTL_SECONDS_STRING = process.env.REDIS_CACHE_TTL_SECONDS;
-
-	if (!REDIS_CACHE_TTL_SECONDS_STRING) {
-		throw new Error(`[Invalid environment] Variable not found: REDIS_CACHE_TTL_SECONDS`);
-	}
-
 	const REDIS_CACHE_TTL_SECONDS = Number(REDIS_CACHE_TTL_SECONDS_STRING);
-
-	if (isNaN(REDIS_CACHE_TTL_SECONDS)) {
+	if (REDIS_CACHE_TTL_SECONDS_STRING && isNaN(REDIS_CACHE_TTL_SECONDS)) {
 		throw new Error(
 			`[Invalid environment] Invalid variable: REDIS_CACHE_TTL_SECONDS. Should be a number`
 		);
