@@ -1,6 +1,8 @@
-import { TechnologyEntity } from '@prisma/client';
 import { mock, MockProxy } from 'jest-mock-extended';
 import { CacheAPIWrapper } from '../cache';
 
-export const createMockCacheApiWrapper = (): MockProxy<CacheAPIWrapper<TechnologyEntity>> =>
-	mock<CacheAPIWrapper<TechnologyEntity>>();
+export const createMockCacheApiWrapper = <
+	TEntity extends { [k: string]: number | string | null },
+	TUniqueKey extends keyof TEntity = 'id'
+>(): MockProxy<CacheAPIWrapper<TEntity, TUniqueKey>> =>
+	mock<CacheAPIWrapper<TEntity, TUniqueKey>>();

@@ -6,7 +6,7 @@ import { createMockCacheApiWrapper } from '../../mocks/cache-api-wrapper';
 
 describe('TechnologyDataSource', () => {
 	const MOCK_PRISMA_CLIENT: DeepMockProxy<PrismaClient> = createMockPrismaClient();
-	const MOCK_CACHE_API_WRAPPER = createMockCacheApiWrapper();
+	const MOCK_CACHE_API_WRAPPER = createMockCacheApiWrapper<TechnologyEntity>();
 	const MOCK_TECHNOLOGY_INPUT = {
 		displayName: 'MOCK_TECHNOLOGY',
 		description: 'MOCK_TECHNOLOGY_DESCRIPTION',
