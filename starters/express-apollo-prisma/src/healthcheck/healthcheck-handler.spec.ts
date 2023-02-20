@@ -5,7 +5,7 @@ import { Request } from 'express';
 import { HealthCheckResult } from './healthcheck-result';
 import { createMockPrismaClient } from '../mocks/prisma-client';
 import { createMockRedisClient } from '../mocks/redis-client';
-import { MOCK_RESPONSE } from '../mocks/express';
+import { createMockExpressResponse } from '../mocks/express';
 
 const MOCK_REDIS_CLIENT = createMockRedisClient();
 const MOCK_PRISMA_CLIENT = createMockPrismaClient();
@@ -13,8 +13,9 @@ const MOCK_PRISMA_CLIENT = createMockPrismaClient();
 const MOCK_GET_DATA_SOURCE_HEALTH = getDataSourceHealth as jest.Mock;
 const MOCK_GET_REDIS_HEALTH = getRedisHealth as jest.Mock;
 
-const res = MOCK_RESPONSE;
-const req = {} as Request<Record<string, never>, HealthCheckResult>;
+const MOCK_REQUEST = {} as Request<Record<string, never>, HealthCheckResult>;
+const req = MOCK_REQUEST;
+const res = createMockExpressResponse();
 const next = jest.fn();
 
 jest.mock('./datasource-healthcheck', () => ({
