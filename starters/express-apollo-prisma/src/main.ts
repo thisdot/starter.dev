@@ -50,7 +50,7 @@ if (!AMQP_URL) {
 	const prismaClient = new PrismaClient();
 	app.use('/health', createHealthcheckHandler({ redisClient, prismaClient }));
 	const queueChannel = await createQueueChannel(AMQP_URL);
-	app.post('/example-job', createJobGenerator({ queueChannel }));
+	app.post('/example-job', createJobGeneratorHandler());
 
 	// Modified server startup
 	await new Promise<void>((resolve) => httpServer.listen({ port: PORT }, resolve));
