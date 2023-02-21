@@ -22,11 +22,6 @@ if (!REDIS_URL) {
 	throw new Error(`[Invalid environment] Variable not found: REDIS_URL`);
 }
 
-const AMQP_URL = ENV?.AMQP_URL;
-if (!AMQP_URL) {
-	throw new Error(`[Invalid environment] Variable not found: AMQP_URL`);
-}
-
 (async () => {
 	// Required logic for integrating with Express
 	const app = express();
