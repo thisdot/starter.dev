@@ -46,7 +46,7 @@ pnpm create @this-dot/starter --kit serverless-framework-apollo-contentful
 
 - Follow the prompts to select the `serverless-framework-apollo-contentful` starter kit and name your new project.
 - `cd` into your project directory and run `npm install`.
-- Docker is used to run Redis in the kit. Start up the docker container with:
+- Docker is used to run Redis in the kit. Start up the Docker container with:
 
 ```shell
 npm run infrastructure:start
@@ -85,9 +85,9 @@ CONTENTFUL_SPACE_ID=xxx
 CONTENTFUL_ENVIRONMENT=master
 ```
 
-#### Steps to setup contentful
+#### Steps to setup Contentful
 
-1. Once you're signed in to contentful create a space
+1. Once you're signed in to Contentful create a space
 
 2. When that's done, go to **Settings** -> **API keys**
    Click on **Generate personal token** to get the `CONTENTFUL_CONTENT_MANAGEMENT_API_TOKEN` variable
@@ -95,10 +95,10 @@ CONTENTFUL_ENVIRONMENT=master
 
 3. Go to **Settings** -> **General settings** to get the `CONTENTFUL_SPACE_ID`
    ![Space ID](./screenshots/space-id.png)  
-   After you've gotten your API TOKEN and Space ID from contentful, modify the `.env` file and replace them with `xxx`.
+   After you've gotten your API TOKEN and Space ID from contentful, modify the `.env` file and replace the `CONTENTFUL_CONTENT_MANAGEMENT_API_TOKEN` and `CONTENTFUL_SPACE_ID` variables.
 
-4. For demo purposes, this kit comes pre-configured with a `Technology` model. To use this, create the content model for
-   it in Contentful. The model has `displayName`, `description` and `url` text fields, the `id` field gets provided by
+4. For demo purposes, this kit comes preconfigured with a `Technology` model. To use this, create the content model for
+   it in Contentful. The model has `displayName`, `description` and `url` text fields. The `id` field gets provided by
    Contentful.
    ![content models](./screenshots/content-models.png)
 
@@ -112,17 +112,17 @@ REDIS_PASS=
 REDIS_CACHE_TTL_SECONDS=900
 ```
 
-These are the defaults and should work seamlessly if you have Redis running already on your local.
+These are the defaults and should work seamlessly if you have Redis running already on your local machine.
 
 ## Commands
 
-- `npm run codegen` - Run Graphql code generator.
-- `npm run db:seed` - Seed Database
-- `npm run deploy` - Deploy your application on `AWS Lambda`
-- `npm run dev` - Starts the development server.
+- `npm run codegen` - Runs Graphql code generator
+- `npm run db:seed` - Seeds Database
+- `npm run deploy` - Deploys your application on `AWS Lambda`
+- `npm run dev` - Starts the development server
 - `npm run format` - Formats code for the entire project
 - `npm run infrastructure:start` - Starts up a ElasticMQ instance for Queueing and Redis instance for caching
-- `npm run infrastructure:stop` - Stops the running ElasticMQ and Redis docker containers.
+- `npm run infrastructure:stop` - Stops the running ElasticMQ and Redis Docker containers.
 - `npm run lint` - Runs ESLint on the project.
 - `npm run test` - Runs the unit tests.
 - `npm run ts:check` - Run type checking.
@@ -142,7 +142,7 @@ How to run migrations:
 - Login to Contentful via `contentful-cli`.
 
 ```sh
-   contenful login
+   contentful login
 ```
 
 - Create a space using `contentful-cli`, if not created yet in Contentful web app.
@@ -151,7 +151,7 @@ How to run migrations:
    contentful space create --name "ThisDot example"
 ```
 
-- Set the newly-created space as the default space for all further CLI operations. This will present a list of all available spaces – choose the one we just created
+- Set the newly-created space as the default space for all further CLI operations. This will present a list of all available spaces. Choose the one we just created.
 
 ```sh
    contentful space use
@@ -238,20 +238,18 @@ The `.typedefs.ts` files handle all the types for GraphQL.
 
 ### Apollo Server v4.x
 
-`Apollo Server` is an open-source, spec-compliant GraphQL server that's compatible with any GraphQL client, including Apollo Client. It's the best way to build a production-ready, self-documenting GraphQL API that can use data from any source.
-
-`Apollo Server` is great for a straightforward setup, incremental adoption and universal compatibility and production readiness.
+`Apollo Server` is an open-source, spec-compliant GraphQL server that's compatible with any GraphQL client, including Apollo Client. It's the best way to build a production-ready, self-documenting GraphQL API that can use data from any source. `Apollo Server` is great for a straightforward setup, incremental adoption and universal compatibility and production readiness.
 
 ### Serverless v3.x
 
 `Serverless` is an all-in-one development solution for auto-scaling apps on AWS Lambda.
-Easily define your applications as AWS Lambda functions and their triggers through simple abstract syntax in the `serverless.yaml` file.
+Easily define your applications as AWS Lambda functions and their triggers through simple abstract syntax in the `serverless.yml` file.
 
 `Serverless plugins` extend the Serverless Framework with new features. Plugins in this application include:
 
 - [`serverless-offline`](https://github.com/dherault/serverless-offline) - allows us to deploy our application locally to speed up development cycles.
 - [`serverless-plugin-typescript`](https://github.com/graphcool/serverless-plugin-typescript) - allows the use of Typescript with zero-config.
-- [`serverless-dotenv-plugin`](https://github.com/infrontlabs/serverless-dotenv-plugin) - Preload function environment variables into Serverless.
+- [`serverless-dotenv-plugin`](https://github.com/infrontlabs/serverless-dotenv-plugin) - preloads function environment variables into Serverless.
 
 ### Contentful CMS
 
@@ -267,7 +265,7 @@ We set up Redis by creating a Redis client with the [`KeyV`](https://github.com/
 
 `AWS Simple Queue Service` (SQS) is a fully managed message queue service that makes it easy to decouple and scale microservices, distributed systems, and serverless applications.
 
-SQS uses docker to process queues locally. Start up the container with:
+SQS uses Docker to process queues locally. Start up the container with:
 
 ```shell
    yarn infrastructure:start
@@ -286,11 +284,11 @@ Steps to get started:
       export AWS_ACCESS_KEY_ID=<your-key-here>
       export AWS_SECRET_ACCESS_KEY=<your-secret-key-here>
    ```
-4. Deploy your application on `AWS lambda`:
+4. Deploy your application on `AWS Lambda`:
    ```sh
       npm run deploy
    ```
-5. To deploy a single function run:
+5. To deploy a single function, run:
    ```sh
       npm run deploy function --function myFunction
    ```
@@ -301,4 +299,4 @@ To stop your Serverless application, run:
    serverless remove
 ```
 
-For more information on Serverless deployment check out this [article](https://www.serverless.com/framework/docs/providers/aws/guide/deploying)
+For more information on Serverless deployment check out this [article](https://www.serverless.com/framework/docs/providers/aws/guide/deploying).
