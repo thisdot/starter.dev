@@ -1,11 +1,9 @@
 import { Request, RequestHandler, Response } from 'express';
 import amqplib from 'amqplib';
 
-export const createJobGenerator = ({
-	queueChannel,
-}: {
-	queueChannel: amqplib.Channel;
-}): RequestHandler<Record<string, never>, string> => {
+// rename the function for readability and clarity
+export const createJobGeneratorHandler = (): RequestHandler<Record<string, never>, string> => {
+       // use [SNIPPET#1] here + create channel here (before return)
 	return async (req: Request, res: Response) => {
 		try {
 			const queue = 'DEMOQUEUE';
@@ -25,7 +23,8 @@ export const createJobGenerator = ({
 	};
 };
 
-export const createQueueChannel = async (amqpUrl: string) => {
+// remove export. it should be encapsulated here to make the Queueing feature optional
+const createQueueChannel = async (amqpUrl: string) => {
 	const connection = await amqplib.connect(amqpUrl, 'heartbeat=60');
 	const channel = await connection.createChannel();
 	return channel;
