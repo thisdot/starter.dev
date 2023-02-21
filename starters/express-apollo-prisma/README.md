@@ -122,9 +122,9 @@ To seed the database, you need to do the following steps:
 
 As your application grows you need to add/update your entities.
 
-For example, let's edit our `Technology` entity.
+For example, let's edit your `Technology` entity.
 
-1. Edit your `prisma/schema.prisma` file and add an `authorName` property to our entity
+1. Edit your `prisma/schema.prisma` file and add an `authorName` property to your entity
 
    ```prisma
     model TechnologyEntity {
@@ -138,7 +138,7 @@ For example, let's edit our `Technology` entity.
     }
    ```
 
-2. Run `npm run prisma:migrate:dev` to generate a migration on prisma.
+2. Run `npm run prisma:migrate:dev` to generate a migration on Prisma.
    Then add your migration name.
    ![Prisma Generate](screenshots/prisma_generate.png)
 
@@ -220,7 +220,7 @@ For example, let's edit our `Technology` entity.
 
 ### Production build
 
-The `npm run build` command compiles the typescript code into the `/dist` folder and generates a `package.json` file. To use it in production, for example in a docker container, one would copy the contents of the `/dist` folder, and then run `npm install` to have all the dependencies.
+The `npm run build` command compiles the TypeScript code into the `/dist` folder and generates a `package.json` file. To use it in production, for example in a Docker container, one would copy the contents of the `/dist` folder, and then run `npm install` to have all the dependencies.
 
 ### CORS Cross-Origin Resource Sharing
 
