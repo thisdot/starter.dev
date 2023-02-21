@@ -30,7 +30,7 @@
 		"db:seed": "ts-node prisma/seed.ts",
 		"infrastructure:start": "docker compose up -d",
 		"infrastructure:stop": "docker compose down",
-		"queue:run": "ts-node src/queue/worker.ts"
+		"queue:run": "ts-node queue/worker.ts"
 	},
 	"author": "",
 	"devDependencies": {
