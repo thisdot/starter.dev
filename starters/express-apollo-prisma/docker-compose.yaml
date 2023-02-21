@@ -29,5 +29,19 @@ services:
       - REDIS_REPLICATION_MODE=master
     depends_on:
       - mysql
+  rabbitmq:
+    image: rabbitmq:3.8-management-alpine
+    container_name: 'rabbitmq'
+    ports:
+      - 5673:5672
+      - 15673:15672
+    volumes:
+      - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+      - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+    networks:
+      - rabbitmq_nodejs
+networks:
+  rabbitmq_nodejs:
+    driver: bridge
 volumes:
   db:
