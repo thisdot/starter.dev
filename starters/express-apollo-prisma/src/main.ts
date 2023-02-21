@@ -7,6 +7,7 @@ import { graphqlServer, createGraphqlServerMiddlewareAsync } from './graphql';
 import * as dotenv from 'dotenv';
 import { connectRedisClient } from './cache/redis';
 import { createHealthcheckHandler } from './healthcheck';
+import { createJobGeneratorHandler } from './queue/job-generator-handler';
 import { PrismaClient } from '@prisma/client';
 
 const { parsed: ENV } = dotenv.config();
@@ -43,6 +44,7 @@ if (!REDIS_URL) {
 	app.use('/graphql', await createGraphqlServerMiddlewareAsync());
 	const prismaClient = new PrismaClient();
 	app.use('/health', createHealthcheckHandler({ redisClient, prismaClient }));
+	app.post('/example-job', createJobGeneratorHandler());
 
 	// Modified server startup
 	await new Promise<void>((resolve) => httpServer.listen({ port: PORT }, resolve));
@@ -50,5 +52,6 @@ if (!REDIS_URL) {
 	console.table({
 		GraphQL: { Method: 'GET', Endpoint: `http://localhost:${PORT}/graphql` },
 		HealthCheck: { Method: 'GET', Endpoint: `http://localhost:${PORT}/health` },
+		GenerateQueueJob: { Method: 'POST', Endpoint: `http://localhost:${PORT}/example-job` },
 	});
 })();
