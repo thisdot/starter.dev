@@ -77,9 +77,7 @@ describe('.createJobGeneratorHandler', () => {
 
 	describe('invalid environment', () => {
 		beforeAll(() => {
-			process.env = {
-				AMQP_URL: undefined,
-			};
+			process.env = {};
 		});
 
 		afterAll(() => {
