@@ -18,11 +18,9 @@ services:
     image: 'redis:7.0-alpine'
     restart: unless-stopped
     env_file: ./.env
-    entrypoint: /bin/sh -c
     command:
-      - |
-        # echo $$DOCKER_REDIS_PASSWORD
-        redis-server --loglevel warning --requirepass $$DOCKER_REDIS_PASSWORD
+      - --loglevel warning
+      - --requirepass "$DOCKER_REDIS_PASSWORD"
     ports:
       - $DOCKER_REDIS_PORT_LOCAL:$DOCKER_REDIS_PORT_CONTAINER
     environment:
