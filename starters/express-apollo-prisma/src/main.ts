@@ -7,6 +7,7 @@ import { graphqlServer, createGraphqlServerMiddlewareAsync } from './graphql';
 import * as dotenv from 'dotenv';
 import { connectRedisClient } from './cache/redis';
 import { createHealthcheckHandler } from './healthcheck';
+import { createJobGenerator, createQueueChannel } from './queue/producer';
 import { PrismaClient } from '@prisma/client';
 
 const { parsed: ENV } = dotenv.config();
@@ -19,6 +20,11 @@ if (isNaN(PORT)) {
 const REDIS_URL = ENV?.REDIS_URL;
 if (!REDIS_URL) {
 	throw new Error(`[Invalid environment] Variable not found: REDIS_URL`);
+}
+
+const AMQP_URL = ENV?.AMQP_URL;
+if (!AMQP_URL) {
+	throw new Error(`[Invalid environment] Variable not found: AMQP_URL`);
 }
 
 (async () => {
@@ -43,6 +49,8 @@ if (!REDIS_URL) {
 	app.use('/graphql', await createGraphqlServerMiddlewareAsync());
 	const prismaClient = new PrismaClient();
 	app.use('/health', createHealthcheckHandler({ redisClient, prismaClient }));
+	const queueChannel = await createQueueChannel(AMQP_URL);
+	app.post('/example-job', createJobGenerator({ queueChannel }));
 
 	// Modified server startup
 	await new Promise<void>((resolve) => httpServer.listen({ port: PORT }, resolve));
@@ -50,5 +58,6 @@ if (!REDIS_URL) {
 	console.table({
 		GraphQL: { Method: 'GET', Endpoint: `http://localhost:${PORT}/graphql` },
 		HealthCheck: { Method: 'GET', Endpoint: `http://localhost:${PORT}/health` },
+		GenerateQueueJob: { Method: 'POST', Endpoint: `http://localhost:${PORT}/example-job` },
 	});
 })();
