@@ -19,7 +19,7 @@ export const createServerContextMiddlewareOptionsAsync = async (): Promise<
 	return {
 		context: async ({ req }) => ({
 			dataSources: {
-				technologyDataSource: technologyDataSource,
+				technologyDataSource,
 			},
 			token: req.headers.authorization,
 		}),

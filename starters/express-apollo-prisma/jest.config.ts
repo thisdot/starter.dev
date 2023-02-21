@@ -32,6 +32,7 @@ export default {
 		'<rootDir>/graphql/utils/test',
 		'index.ts',
 		'<rootDir>/mocks',
+		'\\.(d.ts)$',
 	],
 
 	// Indicates which provider should be used to instrument code for coverage
