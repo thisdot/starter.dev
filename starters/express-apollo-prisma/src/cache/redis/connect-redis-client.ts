@@ -1,9 +1,31 @@
+import { RedisSocketCommonOptions } from '@redis/client/dist/lib/client/socket';
 import { RedisFunctions, RedisScripts } from '@redis/client/dist/lib/commands';
 import { createClient, RedisClientType, RedisModules } from 'redis';
 
 export type RedisClient = RedisClientType<RedisModules, RedisFunctions, RedisScripts>;
 
-const clientInstances: Record<string, RedisClient> = {};
+let clientInstances: Record<string, RedisClient> = {};
+
+export type ReconnectStrategy = RedisSocketCommonOptions['reconnectStrategy'];
+
+export const createReconnectStrategy = (maxReconnectRetries: number): ReconnectStrategy => {
+	return (retries) => {
+		if (retries < maxReconnectRetries) {
+			console.warn('[Redis client] reconnecting...');
+			return 1000;
+		}
+		console.warn('[Redis client] Redis reconnect maximum retries reached.');
+		return false;
+	};
+};
+
+export const onRedisClientError: (...args: unknown[]) => void = (err) => {
+	console.warn('Redis connection error: ', err);
+};
+
+export const onRedisClientReady: (...args: unknown[]) => void = () => {
+	console.log('Redis connected.');
+};
 
 export const connectRedisClient = async (
 	url: string,
@@ -18,23 +40,13 @@ export const connectRedisClient = async (
 	const client = createClient<RedisModules, RedisFunctions, RedisScripts>({
 		url,
 		socket: {
-			reconnectStrategy: (retries) => {
-				if (retries < maxReconnectRetries) {
-					console.warn('[Redis client] reconnecting...');
-					return 1000;
-				}
-				console.warn('[Redis client] Redis reconnect maximum retries reached.');
-				return false;
-			},
+			reconnectStrategy: createReconnectStrategy(maxReconnectRetries),
 		},
 	});
-	client.on('error', function (err) {
-		console.warn('Redis connection error: ', err);
-	});
 
-	client.on('ready', () => {
-		console.log('Redis connected.');
-	});
+	client.on('error', onRedisClientError);
+
+	client.on('ready', onRedisClientReady);
 
 	try {
 		await client.connect();
@@ -43,7 +55,11 @@ export const connectRedisClient = async (
 	} catch (error) {
 		console.warn({ error });
 		console.warn('Cannot connect Redis client.');
-		client.quit();
-		return undefined;
 	}
+
+	return undefined;
+};
+
+export const _clearInstances = () => {
+	clientInstances = {};
 };
