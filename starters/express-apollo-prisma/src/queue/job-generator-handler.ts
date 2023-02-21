@@ -1,9 +1,11 @@
 import { Request, RequestHandler, Response } from 'express';
 import amqplib from 'amqplib';
 
-const AMQP_URL = process.env.AMQP_URL || 'amqp://localhost:5673';
-
 export const createJobGeneratorHandler = (): RequestHandler<Record<string, never>, string> => {
+        const AMQP_URL = process.env.AMQP_URL;
+        if (!AMQP_URL) {
+	        throw new Error(`[Invalid environment] Variable not found: AMQP_URL`);
+        }
 	const queueChannelPromise = createQueueChannel(AMQP_URL);
 
 	return async (req: Request, res: Response) => {
