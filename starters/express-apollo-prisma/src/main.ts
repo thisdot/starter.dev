@@ -7,7 +7,7 @@ import { graphqlServer, createGraphqlServerMiddlewareAsync } from './graphql';
 import * as dotenv from 'dotenv';
 import { connectRedisClient } from './cache/redis';
 import { createHealthcheckHandler } from './healthcheck';
-import { createJobGenerator, createQueueChannel } from './queue/producer';
+import { createJobGeneratorHandler } from './queue/job-generator-handler';
 import { PrismaClient } from '@prisma/client';
 
 const { parsed: ENV } = dotenv.config();
@@ -44,7 +44,6 @@ if (!REDIS_URL) {
 	app.use('/graphql', await createGraphqlServerMiddlewareAsync());
 	const prismaClient = new PrismaClient();
 	app.use('/health', createHealthcheckHandler({ redisClient, prismaClient }));
-	const queueChannel = await createQueueChannel(AMQP_URL);
 	app.post('/example-job', createJobGeneratorHandler());
 
 	// Modified server startup
