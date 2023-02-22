@@ -1,11 +1,9 @@
 import { ApolloServer } from '@apollo/server';
-import { ExpressMiddlewareOptions } from '@apollo/server/dist/esm/express4';
 import { RequestHandler } from 'express';
 import { graphqlServer, createGraphqlServerMiddlewareAsync } from './graphql-server';
-import { ServerContext } from './server-context';
 import { createServerContextMiddlewareOptionsAsync } from './server-context/server-context-middleware-options';
 import { expressMiddleware } from '@apollo/server/express4';
-import { WithRequired } from '@apollo/utils.withrequired';
+import { createMockExpressMiddlewareOptions } from '../mocks/graphql-server';
 
 describe('graphqlServer', () => {
 	it('creates server instance', () => {
@@ -26,23 +24,35 @@ const MOCK_CREATE_SERVER_MIDDLEWARE_OPTIONS =
 
 const MOCK_EXPRESS_MIDDLEWARE = expressMiddleware as jest.Mock;
 
+const MOCK_OPTIONS = createMockExpressMiddlewareOptions();
+const MOCK_REQUEST_HANDLER: jest.MockedFn<RequestHandler> = jest.fn();
+
 describe('createGraphqlServerMiddlewareAsync', () => {
-	const MOCK_OPTIONS =
-		jest.mock<WithRequired<ExpressMiddlewareOptions<ServerContext>, 'context'>>('');
-
-	beforeAll(async () => {
-		MOCK_CREATE_SERVER_MIDDLEWARE_OPTIONS.mockResolvedValue(MOCK_OPTIONS);
-		await createGraphqlServerMiddlewareAsync();
-	});
-
 	describe('when called', () => {
+		let result: RequestHandler;
+
+		beforeAll(async () => {
+			MOCK_CREATE_SERVER_MIDDLEWARE_OPTIONS.mockResolvedValue(MOCK_OPTIONS);
+			MOCK_EXPRESS_MIDDLEWARE.mockResolvedValue(MOCK_REQUEST_HANDLER);
+			result = await createGraphqlServerMiddlewareAsync();
+		});
+
+		afterAll(() => {
+			MOCK_CREATE_SERVER_MIDDLEWARE_OPTIONS.mockReset();
+			MOCK_EXPRESS_MIDDLEWARE.mockReset();
+		});
+
+		it('calls createServerContextMiddlewareOptionsAsync', async () => {
+			expect(MOCK_CREATE_SERVER_MIDDLEWARE_OPTIONS).toHaveBeenCalledTimes(1);
+		});
+
 		it('calls expressMiddleware with server and options', async () => {
 			expect(MOCK_EXPRESS_MIDDLEWARE).toHaveBeenCalledTimes(1);
 			expect(MOCK_EXPRESS_MIDDLEWARE).toHaveBeenCalledWith(graphqlServer, MOCK_OPTIONS);
 		});
 
-		it('calls createServerContextMiddlewareOptionsAsync', async () => {
-			expect(MOCK_CREATE_SERVER_MIDDLEWARE_OPTIONS).toHaveBeenCalledTimes(1);
+		it('returns expected result', () => {
+			expect(result).toBe(MOCK_REQUEST_HANDLER);
 		});
 	});
 });
