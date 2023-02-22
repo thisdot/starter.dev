@@ -1,5 +1,5 @@
-import { Request, RequestHandler, Response } from 'express';
 import amqplib from 'amqplib';
+import { Request, RequestHandler, Response } from 'express';
 
 export const createJobGeneratorHandler = (): RequestHandler<Record<string, never>, string> => {
 	const AMQP_URL = process.env.AMQP_URL;
@@ -28,7 +28,7 @@ export const createJobGeneratorHandler = (): RequestHandler<Record<string, never
 	};
 };
 
-const createQueueChannel = async (amqpUrl: string) => {
+export const createQueueChannel = async (amqpUrl: string) => {
 	const connection = await amqplib.connect(amqpUrl, 'heartbeat=60');
 	const channel = await connection.createChannel();
 	return channel;
