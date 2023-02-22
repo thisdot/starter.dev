@@ -10,7 +10,7 @@ describe('.createJobGeneratorHandler', () => {
 	let res: any;
 	let mockCreateQueueChannel: any;
 	const next = jest.fn();
-	const OLD_ENV = process.env;
+	const ORIGINAL_ENV = process.env;
 
 	beforeAll(() => {
 		req = {
@@ -31,7 +31,7 @@ describe('.createJobGeneratorHandler', () => {
 		process.env = OLD_ENV;
 	});
 
-	describe('when ampqlib works properly', () => {
+	describe('when AMQP server available', () => {
 		beforeAll(() => {
 			mockCreateQueueChannel = jest.fn(() =>
 				Promise.resolve({
@@ -61,13 +61,13 @@ describe('.createJobGeneratorHandler', () => {
 
 	describe('when connection fails', () => {
 		beforeAll(() => {
-			SPY_AMQPLIB_CONNECT.mockRejectedValue(new Error('error'));
+			SPY_AMQPLIB_CONNECT.mockRejectedValue(new Error());
 		});
 
 		afterAll(() => {
 			SPY_AMQPLIB_CONNECT.mockRestore();
 		});
-		it('should return a 500 status when an error occurs', async () => {
+		it('sends expected response', async () => {
 			await createJobGeneratorHandler()(req, res, next);
 
 			expect(res.status).toHaveBeenCalledWith(500);
@@ -86,7 +86,7 @@ describe('.createJobGeneratorHandler', () => {
 
 		it('should throw an error', async () => {
 			expect(await createJobGeneratorHandler).toThrow(
-				`[Invalid environment] Variable not found: AMQP_URL`
+				'[Invalid environment] Variable not found: AMQP_URL' 
 			);
 		});
 	});
