@@ -15,6 +15,7 @@ This starter kit features Express, Typescript API setup
   - [Commands](#commands)
     - [Database and Redis](#database-and-redis)
     - [Seeding](#seeding)
+    - [Updating Schemas and Entities](#updating-schemas-and-entities)
     - [Production build](#production-build)
     - [CORS Cross-Origin Resource Sharing](#cors-cross-origin-resource-sharing)
   - [Project Structure](#project-structure)
@@ -117,9 +118,109 @@ To seed the database, you need to do the following steps:
 2. run `npm run infrastructure:start`
 3. run `npm run db:seed`
 
+### Updating Schemas and Entities
+
+As your application grows you need to add/update your entities.
+
+For example, let's edit your `Technology` entity.
+
+1. Edit your `prisma/schema.prisma` file and add an `authorName` property to your entity
+
+   ```prisma
+    model TechnologyEntity {
+      authorName  String?
+      description String?
+      displayName String  @unique
+      id          Int     @id @default(autoincrement())
+      url         String?
+
+      @@map("technology")
+    }
+   ```
+
+2. Run `npm run prisma:migrate:dev` to generate a migration on Prisma.
+   Then add your migration name.
+   ![Prisma Generate](screenshots/prisma_generate.png)
+
+   This will generate a migration folder under `prisma/migrations`. That alters our database schema.
+   ![authorName migration](screenshots/authorName_migration.png)
+
+3. Update your GraphQL type definitions for the `Technology` entity `src/graphql/schema/technology/technology.typedefs.ts` with the new `authorName` property.
+
+   ```ts
+   import gql from 'graphql-tag';
+
+   export const technologyTypeDefs = gql`
+   	"""
+   	Technology object
+   	"""
+   	type Technology {
+   		"The ID of the Technology"
+   		id: ID!
+   		"The name of the Technology"
+   		displayName: String!
+   		"A brief description of the Technology"
+   		description: String
+   		"The link to the Technology's documentation"
+   		url: String
+   		"The author of the technology"
+   		authorName: String
+   	}
+
+   	type Query {
+   		"Returns a single Technology by ID"
+   		technology(id: ID!): Technology
+   		"Returns a list of Technologies"
+   		technologies: [Technology]!
+   	}
+
+   	input CreateTechnology {
+   		"Technology Name"
+   		displayName: String!
+   		"A brief description of the Technology"
+   		description: String
+   		"The link to the Technology's documentation"
+   		url: String
+   		"The author of the technology"
+   		authorName: String
+   	}
+
+   	input UpdateTechnology {
+   		"Technology Name"
+   		displayName: String
+   		"A brief description of the Technology"
+   		description: String
+   		"The link to the Technology's documentation"
+   		url: String
+   		"The author of the technology"
+   		authorName: String
+   	}
+
+   	"""
+   	Technology mutations
+   	"""
+   	type Mutation {
+   		"Creates a new Technology"
+   		createTechnology(input: CreateTechnology!): Technology!
+   		"Updates a Technology"
+   		updateTechnology(id: ID!, input: UpdateTechnology!): Technology!
+   		"Removes a Technology"
+   		deleteTechnology(id: ID!): Boolean
+   	}
+   `;
+   ```
+
+   You can download the [Apollo GraphQL extension](https://marketplace.visualstudio.com/items?itemName=apollographql.vscode-apollo) that adds syntax highlighting for GraphQL files and gql templates inside JavaScript files.
+
+4. Update our automatically generated code by running `graphql-codegen`. This will generate a new `src/graphql/schema/index.ts` file.
+   ```sh
+   npm run codegen
+   ```
+5. Finally, update your resolvers with updated properties you'd like to be returned by GraphQL.
+
 ### Production build
 
-The `npm run build` command compiles the typescript code into the `/dist` folder and generates a `package.json` file. To use it in production, for example in a docker container, one would copy the contents of the `/dist` folder, and then run `npm install` to have all the dependencies.
+The `npm run build` command compiles the TypeScript code into the `/dist` folder and generates a `package.json` file. To use it in production, for example in a Docker container, one would copy the contents of the `/dist` folder, and then run `npm install` to have all the dependencies.
 
 ### CORS Cross-Origin Resource Sharing
 
