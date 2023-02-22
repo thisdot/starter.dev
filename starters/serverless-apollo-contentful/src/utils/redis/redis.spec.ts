@@ -22,6 +22,10 @@ jest.mock('./redis', () => {
 	};
 });
 
+jest.mock('keyv');
+
+const MOCK_KEYV = Keyv as unknown as jest.Mock;
+
 describe('./redis', () => {
 	afterAll(async () => {
 		const mockedModule = await import('./redis');
@@ -31,7 +35,7 @@ describe('./redis', () => {
 
 	it('exports valid redis client', () => {
 		expect(redisClient).toBeInstanceOf(Keyv);
-		expect(redisClient.opts.uri).toStrictEqual(
+		expect(MOCK_KEYV).toHaveBeenCalledWith(
 			'redis://MOCK_USER:MOCK_PASS@MOCK_HOST:1234'
 		);
 	});
