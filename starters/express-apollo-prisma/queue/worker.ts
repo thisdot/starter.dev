@@ -1,35 +1,40 @@
 import amqplib from 'amqplib';
-const amqpUrl = process.env.AMQP_URL || 'amqp://localhost:5673';
+import * as dotenv from 'dotenv';
 
-async function processMessage(msg: amqplib.ConsumeMessage) {
-	console.log('Job Message:', msg.content.toString());
-	// your code here
-}
+dotenv.config();
 
 (async () => {
-	const connection = await amqplib.connect(amqpUrl, 'heartbeat=60');
+	const AMQP_URL = process.env.AMQP_URL;
+	if (!AMQP_URL) {
+		throw new Error(`[Invalid environment] Variable not found: AMQP_URL`);
+	}
+
+	const AMQP_QUEUE_JOB = process.env.AMQP_QUEUE_JOB;
+	if (!AMQP_QUEUE_JOB) {
+		throw new Error(`[Invalid environment] Variable not found: AMQP_QUEUE_JOB`);
+	}
+
+	const connection = await amqplib.connect(AMQP_URL);
+
 	const channel = await connection.createChannel();
-	channel.prefetch(10);
-	const queue = 'DEMOQUEUE';
-	process.once('SIGINT', async () => {
-		await channel.close();
-		await connection.close();
-		process.exit(0);
+	await channel.assertQueue(AMQP_QUEUE_JOB);
+
+	// Listener
+	channel.consume(AMQP_QUEUE_JOB, (message) => {
+		if (message) {
+			console.log('Recieved:', message.content.toString());
+			channel.ack(message);
+		} else {
+			console.log('Worker cancelled by server');
+		}
 	});
 
-	await channel.assertQueue(queue, { durable: true });
-	await channel.consume(
-		queue,
-		async (msg) => {
-			if (!msg) return;
-			console.log('Processing messages');
-			await processMessage(msg);
-			channel.ack(msg);
-		},
-		{
-			noAck: false,
-			consumerTag: 'demo_queue_worker',
-		}
-	);
-	console.log(' [*] Waiting for messages. To exit press CTRL+C');
+	process.on('SIGINT', async () => {
+		await channel.close();
+		await connection.close();
+		console.log('[AMQP Connection closed]');
+		process.exit(0); // if you don't close yourself this will run forever
+	});
+
+	console.log(`Listening queue: "${AMQP_QUEUE_JOB}" ...`);
 })();
