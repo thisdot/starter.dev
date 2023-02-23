@@ -1,2 +1,2 @@
-export * from './cache-api-wrapper';
+export * from './cache-api-wrapper.d';
 export * from './cache-api-wrapper-factory';
