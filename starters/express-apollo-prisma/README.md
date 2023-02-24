@@ -26,6 +26,7 @@ This starter kit features Express, Typescript API setup
     - [Express](#express)
     - [Apollo Server](#apollo-server)
     - [Prisma](#prisma)
+    - [RabitMQ](#rabitmq)
     - [Caching](#caching)
     - [Testing](#testing)
 
@@ -281,6 +282,43 @@ We use Prisma for the following:
 - [Prisma Migrate](https://www.prisma.io/docs/concepts/components/prisma-migrate) - a declarative data modeling and migration tool.
 
 To learn more about [Prisma](https://www.prisma.io/docs/concepts/overview/prisma-in-your-stack/is-prisma-an-orm)
+
+### RabitMQ
+
+RabbitMQ is an open-source message broker that allows multiple applications to communicate with each other through queues. It's a powerful tool for handling tasks asynchronously and distributing workloads across multiple machines.
+
+RabbitMQ offers several benefits, such as:
+
+1. Scalability: It can handle large volumes of messages and distribute workloads across multiple machines.
+2. Reliability: messages are stored in a durable queue, ensuring that they are not lost in the event of a system failure.
+3. Flexibility: It supports multiple messaging protocols, including AMQP, STOMP, and MQTT, allowing it to integrate with a wide range of systems and applications.
+4. Extensibility: It is highly customizable and can be extended with plugins and custom message-processing logic.
+
+The kit provides an implementation of queueing using RabbitMQ, the most widely deployed open-source message broker that allows multiple applications to communicate with each other through queues.
+
+To start the worker that processes messages in the queue, run the command:
+
+1. `npm run infrastructure:start` - starts the RabbitMQ server (you can skip this if you already ran this command)
+2. `npm run queue:run` - starts the queue worker
+
+This should start a process that listens for messages in our queue and processes them, see the `queue/worker.ts` file to modify it to your needs:
+
+```javascript
+// Listener
+channel.consume(AMQP_QUEUE_JOB, (message) => {
+	// process queue message here
+});
+```
+
+The `src/queue/job-generator-handler.ts` file contains the logic for generating a job and adding it to the queue, the `createJobGeneratorHandler` function creates an Express request handler that accepts a message and adds it to the queue. The `createQueueChannel` function sets up a connection to the RabbitMQ server and returns a channel object, which is used to perform various actions on the queue, such as creating a new queue, binding it to an exchange, and publishing a message to the queue.
+
+To use this implementation of queueing, you can send a `POST` request to the `/example-job` endpoint with a `message` in the request body, and the message will be added to the queue. Once the message is in the queue, it will be processed in the order it was added
+
+```bash
+curl -X POST http://localhost:4001/example-job
+   -H "Content-Type: application/json"
+   -d '{"message": "simple queue message!"}'
+```
 
 ### Caching
 
