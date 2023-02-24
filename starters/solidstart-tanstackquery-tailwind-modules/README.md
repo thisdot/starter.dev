@@ -1,4 +1,4 @@
-# SolidStart
+# SolidStart-TanStackQuery-Tailwind-Modules
 
 This starter kit features **SolidStart**, combined with **TanStack Query**, and **Tailwind CSS**, and **CSS Modules**.
 
