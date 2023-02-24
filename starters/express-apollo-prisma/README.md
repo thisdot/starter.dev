@@ -97,9 +97,10 @@ git clone https://github.com/thisdot/starter.dev.git
 - `npm run format` - Formats code for the entire project.
 - `npm prisma:format` - Updates your database using migrations during development and creates the database if it does not exist.
 - `npm prisma:migrate:reset` - Deletes and recreates the database, or performs a 'soft reset' by removing all data, tables, indexes, and other artifacts.
-- `npm prisma:migrate:dev` - updates your database using migrations during development and creates the database if it does not exist.
+- `npm prisma:migrate:dev` - Updates your database using migrations during development and creates the database if it does not exist.
 - `npm run prisma:generate` - Generates the API schema types into the `src/interfaces/schema.ts` file
 - `npm run prisma:deploy` - Applies all pending migrations, and creates the database if it does not exist. Primarily used in non-development environments.
+- `npm run prisma:studio` - Starts a GUI that allows for easy exploration and manipulation of data.
 
 ### Database and Redis
 
@@ -118,6 +119,7 @@ To seed the database, you need to do the following steps:
 1. create a `.env` file. For the defaults, copy the contents of the `.env.example` file's content into it.
 2. run `npm run infrastructure:start`
 3. run `npm run db:seed`
+4. run `npm run prisma:studio` to view your database.
 
 ### Updating Schemas and Entities
 
@@ -280,6 +282,7 @@ We use Prisma for the following:
 
 - [Prisma Client](https://www.prisma.io/docs/concepts/components/prisma-client) - an auto-generated and type-safe database client for use in your application.
 - [Prisma Migrate](https://www.prisma.io/docs/concepts/components/prisma-migrate) - a declarative data modeling and migration tool.
+- [Prisma Studio](https://www.prisma.io/studio) - the easiest way to explore and manipulate your data in all of your Prisma projects.
 
 To learn more about [Prisma](https://www.prisma.io/docs/concepts/overview/prisma-in-your-stack/is-prisma-an-orm)
 
