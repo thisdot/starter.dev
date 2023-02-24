@@ -5,6 +5,7 @@ export const createMockExpressResponse = (): Response => {
 	const mockedSend = jest.fn();
 	const mockedResponse = {
 		send: mockedSend,
+		sendStatus: jest.fn(),
 		status: jest.fn(() => mockedResponse),
 	} as unknown as Response;
 	return mockedResponse;

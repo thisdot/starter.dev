@@ -15,8 +15,7 @@ export const jobGeneratorHandler: RequestHandler<
 	never,
 	JobGeneratorHandlerRequestBody
 > = async (req, res) => {
-	const body = req.body;
-	const jobMessage = body?.message || DEFAULT_JOB_MESSAGE;
+	const jobMessage = req.body?.message || DEFAULT_JOB_MESSAGE;
 	const success = await generateJob(jobMessage);
 	if (success) {
 		res.sendStatus(204);
