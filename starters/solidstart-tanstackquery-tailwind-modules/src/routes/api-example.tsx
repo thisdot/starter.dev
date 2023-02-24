@@ -5,7 +5,7 @@ import PageFooter from '~/components/PageFooter';
 export default function ApiExample() {
   return (
     <>
-      <PageHeader>Solid Start Tanstack Query Fetch Data from API</PageHeader>
+      <PageHeader>SolidStart Tanstack Query Fetch Data from API</PageHeader>
       <Greeting />
       <PageFooter />
     </>

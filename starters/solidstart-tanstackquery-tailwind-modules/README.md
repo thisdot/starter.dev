@@ -75,7 +75,7 @@ git clone https://github.com/thisdot/starter.dev.git
 - `build` - Builds a production version of the app to deploy
 - `start` - Starts the production build with a local version of adapter
 - `test` - Runs the test suite
-- `storbook` - To showcase the component library
+- `storybook` - To showcase the component library
 - `lint` - Uses eslint to find potential issues in the codebase
 - `lint-fix` - Tries to auto-fix potential issues
 - `format` - Fixes formatting issues in the codebase
