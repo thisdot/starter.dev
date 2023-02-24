@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 import { Query } from '../generated/types';
 import assert from 'assert';
-import { testServerExecuteOperation } from '../../utils/test';
+import { testServerExecuteOperation } from '../../../mocks/graphql-server';
 
 type HelloQuery = Pick<Query, 'hello'>;
 
