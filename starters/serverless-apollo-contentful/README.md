@@ -92,7 +92,7 @@ CONTENTFUL_ENVIRONMENT=master
 2. When that's done, go to **Settings** -> **API keys**
    Click on **Generate personal token** to get the `CONTENTFUL_CONTENT_MANAGEMENT_API_TOKEN` variable
 
-   ![API tokens](https://github.com/thisdot/starter.dev/blob/main/starters/serverless-apollo-contentful/screenshots/api-tokens.png?raw=true)
+   ![API tokens](https://github.com/thisdot/starter.dev/raw/main/starters/serverless-apollo-contentful/screenshots/api-tokens.png)
 
 3. Go to **Settings** -> **General settings** to get the `CONTENTFUL_SPACE_ID`
 
