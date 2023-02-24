@@ -289,13 +289,12 @@ RabbitMQ is an open-source message broker that allows multiple applications to c
 
 RabbitMQ offers several benefits, such as:
 
-1. Scalability: RabbitMQ can handle large volumes of messages and distribute workloads across multiple machines.
-2. Reliability: Messages are stored in a durable queue, ensuring that they are not lost in the event of a system failure.
-3. Flexibility: RabbitMQ supports multiple messaging protocols, including AMQP, STOMP, and MQTT, allowing it to integrate with a wide range of systems and applications.
-4. Extensibility: RabbitMQ is highly customizable and can be extended with plugins and custom message-processing logic.
+1. Scalability: It can handle large volumes of messages and distribute workloads across multiple machines.
+2. Reliability: messages are stored in a durable queue, ensuring that they are not lost in the event of a system failure.
+3. Flexibility: It supports multiple messaging protocols, including AMQP, STOMP, and MQTT, allowing it to integrate with a wide range of systems and applications.
+4. Extensibility: It is highly customizable and can be extended with plugins and custom message-processing logic.
 
-The kit provides an implementation of queueing using RabbitMQ, the most widely deployed open-source message broker that allows multiple applications to communicate
-with each other through queues.
+The kit provides an implementation of queueing using RabbitMQ, the most widely deployed open-source message broker that allows multiple applications to communicate with each other through queues.
 
 To start the worker that processes messages in the queue, run the command:
 
@@ -318,7 +317,7 @@ To use this implementation of queueing, you can send a `POST` request to the `/e
 ```bash
 curl -X POST http://localhost:4001/example-job
    -H "Content-Type: application/json"
-   -d '{"message": ”simple queue message!”}'
+   -d '{"message": "simple queue message!"}'
 ```
 
 ### Caching
