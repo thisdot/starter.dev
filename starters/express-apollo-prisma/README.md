@@ -29,6 +29,7 @@ This starter kit features Express, Typescript API setup
     - [RabitMQ](#rabitmq)
     - [Caching](#caching)
     - [Testing](#testing)
+  - [Deployment](#deployment)
 
 ## Overview
 
@@ -332,3 +333,19 @@ We set up Redis by creating a Redis client with the `createClient` function from
 ### Testing
 
 Testing is set up with [Jest](https://jestjs.io/). You can see some example spec files under `src/graphql/schema/technology`.
+
+## Deployment
+
+To deploy this starter kit to production, you will need to choose a cloud provider or hosting service, such as AWS, Google Cloud Platform, Heroku, or DigitalOcean, to host your application. The exact deployment steps will depend on your chosen provider or service, but generally, the following steps will be involved:
+
+1. Prepare your application for deployment by running any necessary build or compile steps. In this case, you can run the `build` script by running `npm run build` which will transpile TypeScript code to JavaScript.
+   ```sh
+    npm run build
+   ```
+2. Create a production-ready database, cache and queueing infrastructure, by running
+   ```sh
+    npm run infrastructure:start
+   ```
+3. Deploy your application to your chosen provider or service using their deployment tools or services. You can use the start script to start your application in production mode. You may also need to configure any necessary proxy or routing rules to direct incoming traffic to your application.
+
+4. Monitor your application for any issues or errors and adjust your deployment as needed. This may involve configuring load balancers, auto-scaling, or other performance optimization features, depending on your chosen provider or service.
