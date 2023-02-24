@@ -64,7 +64,7 @@ yarn create @this-dot/starter --kit express-apollo-prisma
 
 - Follow the prompts to select the `express-apollo-prisma` starter kit and name your new project.
 - `cd` into your project directory and run `npm install`.
-- Make sure you have docker & docker-compose installed on your machine
+- Make sure you have `docker` & `docker-compose` installed on your machine
 - Create a `.env` file and copy the contents of `.env.example` into it.
 - Run `npm run infrastructure:start` to start the database and the Redis instances
 - Run `npm run start` to start the development server.
@@ -105,13 +105,13 @@ git clone https://github.com/thisdot/starter.dev.git
 
 ### Database and Redis
 
-To start up your API in dev mode with an active database connection, please follow the following steps:
+To start up your API in development mode with an active database connection, please follow the following steps:
 
 1. create a `.env` file. For the defaults, copy the contents of the `.env.example` file's content into it.
 2. run `npm run infrastructure:start`
 3. run `npm run dev`
 
-The above steps will make sure your API connects to the database and Redis instances that get started up with docker. When you finish work, run `npm run infrastructure:stop` to stop your MySQL and Redis containers.
+The above steps will make sure your API connect to the database and Redis instances that get started up with docker. Run `npm run infrastructure:stop` to stop your MySQL, Redis & RabbitMQ containers.
 
 ### Seeding
 
@@ -144,10 +144,14 @@ For example, let's edit your `Technology` entity.
 
 2. Run `npm run prisma:migrate:dev` to generate a migration on Prisma.
    Then add your migration name.
-   ![Prisma Generate](screenshots/prisma_generate.png)
 
-   This will generate a migration folder under `prisma/migrations`. That alters our database schema.
-   ![authorName migration](screenshots/authorName_migration.png)
+  <!-- Reminder to change images adresses once deployed to main to allow them to show up on starter.dev  -->
+
+![Prisma Generate](screenshots/prisma_generate.png)
+
+This will generate a migration folder under `prisma/migrations`. That alters our database schema.
+
+![authorName migration](screenshots/authorName_migration.png)
 
 3. Update your GraphQL type definitions for the `Technology` entity `src/graphql/schema/technology/technology.typedefs.ts` with the new `authorName` property.
 
@@ -216,7 +220,7 @@ For example, let's edit your `Technology` entity.
 
    You can download the [Apollo GraphQL extension](https://marketplace.visualstudio.com/items?itemName=apollographql.vscode-apollo) that adds syntax highlighting for GraphQL files and gql templates inside JavaScript files.
 
-4. Update our automatically generated code by running `graphql-codegen`. This will generate a new `src/graphql/schema/index.ts` file.
+4. Update our automatically generated code by running `npm run codegen`. This will generate a new `src/graphql/schema/index.ts` file.
    ```sh
    npm run codegen
    ```
