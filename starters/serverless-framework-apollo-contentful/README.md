@@ -92,11 +92,11 @@ CONTENTFUL_ENVIRONMENT=master
 2. When that's done, go to **Settings** -> **API keys**
    Click on **Generate personal token** to get the `CONTENTFUL_CONTENT_MANAGEMENT_API_TOKEN` variable
 
-   ![API tokens](https://github.com/thisdot/starter.dev/raw/main/starters/serverless-apollo-contentful/screenshots/api-tokens.png)
+   ![API tokens](https://github.com/thisdot/starter.dev/raw/main/starters/serverless-framework-apollo-contentful/screenshots/api-tokens.png)
 
 3. Go to **Settings** -> **General settings** to get the `CONTENTFUL_SPACE_ID`
 
-   ![Space ID](https://github.com/thisdot/starter.dev/raw/main/starters/serverless-apollo-contentful/screenshots/space-id.png)
+   ![Space ID](https://github.com/thisdot/starter.dev/raw/main/starters/serverless-framework-apollo-contentful/screenshots/space-id.png)
 
    After you've gotten your API TOKEN and Space ID from contentful, modify the `.env` file and replace the `CONTENTFUL_CONTENT_MANAGEMENT_API_TOKEN` and `CONTENTFUL_SPACE_ID` variables.
 
@@ -104,7 +104,7 @@ CONTENTFUL_ENVIRONMENT=master
    it in Contentful. The model has `displayName`, `description` and `url` text fields. The `id` field gets provided by
    Contentful.
 
-   ![content models](https://github.com/thisdot/starter.dev/raw/main/starters/serverless-apollo-contentful/screenshots/content-models.png)
+   ![content models](https://github.com/thisdot/starter.dev/raw/main/starters/serverless-framework-apollo-contentful/screenshots/content-models.png)
 
 The kit uses Redis for caching, so you would also need the credentials for the Redis server.
 
