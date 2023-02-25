@@ -14,6 +14,11 @@ const router = createRouter({
       name: 'counter',
       component: () => import('../views/CounterView.vue'),
     },
+    {
+      path: '/greet',
+      name: 'greet',
+      component: () => import('../views/GreetView.vue'),
+    },
   ],
 });
 

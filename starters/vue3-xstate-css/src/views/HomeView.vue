@@ -6,8 +6,8 @@
       <h1>Vue 3 + XState + CSS</h1>
     </div>
     <div class="home__links">
-      <RouterLink to="/counter">See button example component</RouterLink>
-      <RouterLink to="/fetch">See data fetching example component</RouterLink>
+      <RouterLink to="/counter">See counter example component</RouterLink>
+      <RouterLink to="/greet">See fetch example component</RouterLink>
     </div>
   </main>
 </template>
