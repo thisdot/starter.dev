@@ -1,88 +1,78 @@
-import { describe, expect, test } from 'vitest'
-import { createTestingPinia } from '@pinia/testing'
-import { fireEvent, render, screen } from '../../test/utils'
-import CounterExample from './CounterExample.vue'
+import { describe, expect, test } from 'vitest';
+import { createTestingPinia } from '@pinia/testing';
+import CounterExample from './CounterExample.vue';
+import { fireEvent, render, screen } from '@/test/utils';
 
-describe('<CounterExample />', async () => {
-  test('Should increase by 1 the count when clicking increment button', async () => {
-    // Test Mock
-    createTestingPinia({
-      initialState: {
-        counterStore: {
-          counter: 0
-        }
-      }
-    })
+describe('<CounterExample />', () => {
+	test('Should increase by 1 the count when clicking increment button', async () => {
+		// Test Mock
+		createTestingPinia({
+			initialState: {
+				counterStore: {
+					counter: 0,
+				},
+			},
+		});
 
-    const HelloWorldComponent = {
-      template: CounterExample,
-      setup () {
-        const useFetch = () => {}
-        return useFetch
-      }
-	  }
+		// Act
+		render(CounterExample);
+		const button = screen.getByTestId('increment-button');
+		const countValueCoomponent = screen.getByTestId('count-value');
 
-	  const { debug } = render(HelloWorldComponent)
+		// Assertions
+		expect(countValueCoomponent.textContent).toBe('0');
 
-    // Act
-    render(CounterExample)
-    const button = screen.getByTestId('increment-button')
-    const countValueCoomponent = screen.getByTestId('count-value')
+		await fireEvent.click(button);
+		expect(countValueCoomponent.textContent).toBe('1');
 
-    // Assertions
-    expect(countValueCoomponent.textContent).toBe('0')
+		await fireEvent.click(button);
+		expect(countValueCoomponent.textContent).toBe('2');
+	});
 
-    await fireEvent.click(button)
-    expect(countValueCoomponent.textContent).toBe('1')
+	test('Should decrease by 1 the count when clicking decrement button', async () => {
+		// Test Mock
+		createTestingPinia({
+			initialState: {
+				counterStore: {
+					counter: 5,
+				},
+			},
+		});
 
-    await fireEvent.click(button)
-    expect(countValueCoomponent.textContent).toBe('2')
-  })
+		// Act
+		render(CounterExample);
+		const button = screen.getByTestId('decrement-button');
+		const countValue = screen.getByTestId('count-value');
 
-  test('Should decrease by 1 the count when clicking decrement button', async () => {
-    // Test Mock
-    createTestingPinia({
-      initialState: {
-        counterStore: {
-          counter: 5
-        }
-      }
-    })
+		// Assertions
+		expect(countValue.textContent).toBe('5');
 
-    // Act
-    render(CounterExample)
-    const button = screen.getByTestId('decrement-button')
-    const countValue = screen.getByTestId('count-value')
+		await fireEvent.click(button);
+		expect(countValue.textContent).toBe('4');
 
-    // Assertions
-    expect(countValue.textContent).toBe('5')
+		await fireEvent.click(button);
+		expect(countValue.textContent).toBe('3');
+	});
 
-    await fireEvent.click(button)
-    expect(countValue.textContent).toBe('4')
+	test('Should reset the count when clicking the reset button', async () => {
+		// Test Mock
+		createTestingPinia({
+			initialState: {
+				counterStore: {
+					counter: 5,
+				},
+			},
+		});
 
-    await fireEvent.click(button)
-    expect(countValue.textContent).toBe('3')
-  })
+		// Act
+		render(CounterExample);
+		const button = screen.getByTestId('reset-button');
+		const countValue = screen.getByTestId('count-value');
 
-  test('Should reset the count when clicking the reset button', async () => {
-    // Test Mock
-    createTestingPinia({
-      initialState: {
-        counterStore: {
-          counter: 5
-        }
-      }
-    })
+		// Assertions
+		expect(countValue.textContent).toBe('5');
 
-    // Act
-    render(CounterExample)
-    const button = screen.getByTestId('reset-button')
-    const countValue = screen.getByTestId('count-value')
-
-    // Assertions
-    expect(countValue.textContent).toBe('5')
-
-    await fireEvent.click(button)
-    expect(countValue.textContent).toBe('0')
-  })
-})
+		await fireEvent.click(button);
+		expect(countValue.textContent).toBe('0');
+	});
+});
