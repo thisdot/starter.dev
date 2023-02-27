@@ -13,6 +13,7 @@ This starter kit features Express, Apollo Server and Prisma ORM.
     - [CLI (Recommended)](#cli-recommended)
     - [Manual](#manual)
   - [Built-in Scripts](#built-in-scripts)
+  - [Environment Variables](#environment-variables)
     - [Database and Redis](#database-and-redis)
     - [Seeding](#seeding)
     - [Updating Schemas and Entities](#updating-schemas-and-entities)
@@ -102,6 +103,29 @@ git clone https://github.com/thisdot/starter.dev.git
 - `npm run prisma:generate` - Generates the API schema types into the `src/interfaces/schema.ts` file
 - `npm run prisma:deploy` - Applies all pending migrations, and creates the database if it does not exist. Primarily used in non-development environments.
 - `npm queue:run` - Queue runner script. Runs the queue worker.
+
+## Environment Variables
+
+- `PORT` - The port exposed to connect with the application.
+- `DATABASE_URL` - The database connection URL.
+- `REDIS_URL` - The Redis connection URL
+- `REDIS_CACHE_TTL_SECONDS` - The remaining time(seconds) to live of a key that has a timeout.
+- `DOCKER_MYSQLDB_ROOT_PASSWORD` - The MySQL root user password.
+- `DOCKER_MYSQLDB_DATABASE` - The MySQL database name.
+- `DOCKER_MYSQLDB_PORT_LOCAL` - The MySQL Docker host's TCP port.
+- `DOCKER_MYSQLDB_PORT_CONTAINER` - The MySQL Docker container's TCP port.
+- `DOCKER_REDIS_PASSWORD` - The Redis password.
+- `DOCKER_REDIS_HOST` - The Redis host IP.
+- `DOCKER_REDIS_PORT_LOCAL` - The Redis Docker host's TCP port.
+- `DOCKER_REDIS_PORT_CONTAINER` - The Redis Docker container's TCP port.
+- `AMQP_URL` - The RabbitMQ connection URL.
+- `AMQP_QUEUE_JOB` - The RabbitMQ channel queue name.
+
+We map TCP port `DOCKER_MYSQLDB_PORT_CONTAINER` in the container to port `DOCKER_MYSQLDB_PORT_LOCAL` on the Docker host.
+We also map TCP port `DOCKER_REDIS_PORT_LOCAL` in the container to port `DOCKER_REDIS_PORT_CONTAINER` on the Docker host.
+
+To ensure proper connection to our resources
+For more information on Docker container networks: https://docs.docker.com/config/containers/container-networking/
 
 ### Database and Redis
 
