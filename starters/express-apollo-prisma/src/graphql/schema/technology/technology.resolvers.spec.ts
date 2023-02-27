@@ -7,8 +7,9 @@ import {
 	UpdateTechnology,
 } from '../generated/types';
 import assert from 'assert';
-import { testServerExecuteOperation } from '../../utils/test';
-import { createMockTechnologyDataSource } from '../../utils/test';
+import { testServerExecuteOperation } from '../../../mocks/graphql-server';
+import { createMockTechnologyDataSource } from '../../../mocks/technology-data-source';
+
 import { GraphQLResponse } from '@apollo/server';
 import { ApolloServerErrorCode } from '@apollo/server/errors';
 import { ServerContext } from '../../server-context';

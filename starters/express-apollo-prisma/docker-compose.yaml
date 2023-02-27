@@ -5,7 +5,6 @@ services:
     container_name: mysql
     image: mysql:8.0
     restart: unless-stopped
-    env_file: ./.env
     environment:
       - MYSQL_ROOT_PASSWORD=$DOCKER_MYSQLDB_ROOT_PASSWORD
       - MYSQL_DATABASE=$DOCKER_MYSQLDB_DATABASE
@@ -30,9 +29,10 @@ services:
   rabbitmq:
     image: rabbitmq:3.8-management-alpine
     container_name: 'rabbitmq'
+    restart: unless-stopped
     ports:
-      - 5673:5672
-      - 15673:15672
+      - $DOCKER_RABBIT_MQ_PORT_CLIENT_API_LOCAL:$DOCKER_RABBIT_MQ_PORT_CLIENT_API_CONTAINER
+      - $DOCKER_RABBIT_MQ_PORT_ADMIN_API_LOCAL:$DOCKER_RABBIT_MQ_PORT_ADMIN_API_CONTAINER
     volumes:
       - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
       - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
