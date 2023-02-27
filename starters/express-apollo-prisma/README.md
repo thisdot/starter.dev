@@ -1,6 +1,6 @@
 # express-apollo-prisma starter kit
 
-This starter kit features Express, Apollo Server and Prisma ORM.
+This starter kit features Express, Apollo Server and Prisma.
 
 ## Table of Contents
 
