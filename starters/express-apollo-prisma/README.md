@@ -1,6 +1,6 @@
 # express-apollo-prisma starter kit
 
-This starter kit features Express, Typescript API setup
+This starter kit features Express, Apollo Server and Prisma ORM.
 
 ## Table of Contents
 
