@@ -29,7 +29,6 @@ dotenv.config();
 		}
 	});
 
-	process.stdin.resume();
 	process.on('SIGINT', async () => {
 		await channel.close();
 		await connection.close();
