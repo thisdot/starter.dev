@@ -12,7 +12,7 @@ This starter kit features Express, Typescript API setup
   - [Installation](#installation)
     - [CLI (Recommended)](#cli-recommended)
     - [Manual](#manual)
-  - [Commands](#commands)
+  - [Built-in Scripts](#built-in-scripts)
     - [Database and Redis](#database-and-redis)
     - [Seeding](#seeding)
     - [Updating Schemas and Entities](#updating-schemas-and-entities)
@@ -25,8 +25,8 @@ This starter kit features Express, Typescript API setup
   - [Technologies](#technologies)
     - [Express](#express)
     - [Apollo Server](#apollo-server)
-    - [Prisma](#prisma)
-    - [RabitMQ](#rabitmq)
+    - [ORM](#orm)
+    - [Queueing](#queueing)
     - [Caching](#caching)
     - [Testing](#testing)
   - [Deployment](#deployment)
@@ -85,7 +85,7 @@ git clone https://github.com/thisdot/starter.dev.git
 - Run `npm run start` to start the development server.
 - Open your browser to `http://localhost:4001` to see the API documentation with the existing endpoints.
 
-## Commands
+## Built-in Scripts
 
 - `npm run infrastructure:start` - Starts up a Mysql database and Redis instance for caching
 - `npm run infrastructure:stop` - Stops the running database and Redis docker containers.
@@ -101,7 +101,7 @@ git clone https://github.com/thisdot/starter.dev.git
 - `npm prisma:migrate:dev` - Updates your database using migrations during development and creates the database if it does not exist.
 - `npm run prisma:generate` - Generates the API schema types into the `src/interfaces/schema.ts` file
 - `npm run prisma:deploy` - Applies all pending migrations, and creates the database if it does not exist. Primarily used in non-development environments.
-- `npm run prisma:studio` - Starts a GUI that allows for easy exploration and manipulation of data.
+- `npm queue:run` - Queue runner script. Runs the queue worker.
 
 ### Database and Redis
 
@@ -120,7 +120,6 @@ To seed the database, you need to do the following steps:
 1. create a `.env` file. For the defaults, copy the contents of the `.env.example` file's content into it.
 2. run `npm run infrastructure:start`
 3. run `npm run db:seed`
-4. run `npm run prisma:studio` to view your database.
 
 ### Updating Schemas and Entities
 
@@ -279,9 +278,9 @@ We use the [`expressMiddleware`](https://www.apollographql.com/docs/apollo-serve
 
 The data sources are located in `src/graphql/data-sources`. The data sources of the entities are passed in `src\graphql\server-context\server-context-middleware-options.ts`.
 
-### Prisma
+### ORM
 
-Prisma is a next-generation ORM that makes working with databases easy for application developers and features.
+The kit uses Prisma as TypeScript ORM which makes working with databases easy for application developers and features.
 
 We use Prisma for the following:
 
@@ -291,7 +290,7 @@ We use Prisma for the following:
 
 To learn more about [Prisma](https://www.prisma.io/docs/concepts/overview/prisma-in-your-stack/is-prisma-an-orm)
 
-### RabitMQ
+### Queueing
 
 RabbitMQ is an open-source message broker that allows multiple applications to communicate with each other through queues. It's a powerful tool for handling tasks asynchronously and distributing workloads across multiple machines.
 
