@@ -296,13 +296,6 @@ To learn more about [Prisma](https://www.prisma.io/docs/concepts/overview/prisma
 
 The kit provides an implementation of queueing using RabbitMQ, an open-source message broker that allows multiple applications to communicate with each other through queues. It's a powerful tool for handling tasks asynchronously and distributing workloads across multiple machines.
 
-RabbitMQ offers several benefits, such as:
-
-1. Scalability: It can handle large volumes of messages and distribute workloads across multiple machines.
-2. Reliability: messages are stored in a durable queue, ensuring that they are not lost in the event of a system failure.
-3. Flexibility: It supports multiple messaging protocols, including AMQP, STOMP, and MQTT, allowing it to integrate with a wide range of systems and applications.
-4. Extensibility: It is highly customizable and can be extended with plugins and custom message-processing logic.
-
 To start the worker that processes messages in the queue, run the command:
 
 1. `npm run infrastructure:start` - starts the RabbitMQ server (you can skip this if you already ran this command)
