@@ -14,14 +14,13 @@ import { BaseContext } from '@apollo/server';
 import { GraphQLResolveInfo } from 'graphql';
 import { mockEntry, mockGraphQLResolveInfo } from '../../utils/test/mocks';
 
-
 jest.mock('../../models/TechnologyModel', () => ({
 	TechnologyModel: {
 		getAll: jest.fn(),
 		get: jest.fn(),
 		create: jest.fn(),
 		update: jest.fn(),
-		test: 'YE'
+		test: 'YE',
 	},
 }));
 
@@ -149,10 +148,7 @@ describe('technologyResolvers', () => {
 					let result: Maybe<Maybe<ResolverTypeWrapper<Technology>>[]>;
 
 					beforeAll(async () => {
-						const MOCK_RETURN = [
-							MOCK_ENTRY_1,
-							MOCK_ENTRY_2
-						]
+						const MOCK_RETURN = [MOCK_ENTRY_1, MOCK_ENTRY_2];
 						MOCK_TECHNOLOGY_MODEL_STATIC.getAll.mockResolvedValue(MOCK_RETURN);
 						result = await RESOLVER_FN(
 							MOCK_PARENT_QUERY,
@@ -167,7 +163,9 @@ describe('technologyResolvers', () => {
 					});
 
 					it('calls TechnologyModel.getAll method once', () => {
-						expect(MOCK_TECHNOLOGY_MODEL_STATIC.getAll).toHaveBeenCalledTimes(1);
+						expect(MOCK_TECHNOLOGY_MODEL_STATIC.getAll).toHaveBeenCalledTimes(
+							1
+						);
 					});
 
 					it('returns expected result', () => {
@@ -182,21 +180,25 @@ describe('technologyResolvers', () => {
 
 	describe('.Mutation', () => {
 		describe('.createTechnology', () => {
-			assert(technologyResolvers.Mutation?.createTechnology instanceof Function);
+			assert(
+				technologyResolvers.Mutation?.createTechnology instanceof Function
+			);
 			const RESOLVER_FN = technologyResolvers.Mutation?.createTechnology;
 
-			
 			it('has correct implementation', () => {
 				expect(RESOLVER_FN).toBeDefined();
 				expect(RESOLVER_FN).toBeInstanceOf(Function);
 			});
 
 			describe('when called', () => {
-				const MOCK_CREATE_TECHNOLOGY_ARGS: RequireFields<MutationCreateTechnologyArgs, "displayName"> = {
+				const MOCK_CREATE_TECHNOLOGY_ARGS: RequireFields<
+					MutationCreateTechnologyArgs,
+					'displayName'
+				> = {
 					displayName: 'MOCK_DISPLAY_NAME',
 					description: 'MOCK_DESCRIPTION',
-					url: 'MOCK_URL'
-				}
+					url: 'MOCK_URL',
+				};
 
 				let result: Technology | null;
 
@@ -204,32 +206,41 @@ describe('technologyResolvers', () => {
 					description: 'MOCK_DESCRIPTION_1',
 					displayName: 'MOCK_DISPLAY_NAME_1',
 					id: 'MOCK_ID_1',
-					url: 'MOCK_URL_1'
-				}
+					url: 'MOCK_URL_1',
+				};
 
 				beforeAll(async () => {
 					MOCK_TECHNOLOGY_MODEL_STATIC.create.mockResolvedValue(MOCK_ENTRY_1);
-					result = await RESOLVER_FN(MOCK_PARENT_MUTATION, MOCK_CREATE_TECHNOLOGY_ARGS, MOCK_CONTEXT, MOCK_RESOLVE_INFO);
-				})
-				afterAll( () => {
+					result = await RESOLVER_FN(
+						MOCK_PARENT_MUTATION,
+						MOCK_CREATE_TECHNOLOGY_ARGS,
+						MOCK_CONTEXT,
+						MOCK_RESOLVE_INFO
+					);
+				});
+				afterAll(() => {
 					MOCK_TECHNOLOGY_MODEL_STATIC.create.mockReset();
-				})
+				});
 
 				it('calls TechnologyModel.create method once with expected argument', () => {
 					expect(MOCK_TECHNOLOGY_MODEL_STATIC.create).toHaveBeenCalledTimes(1);
-					expect(MOCK_TECHNOLOGY_MODEL_STATIC.create).toHaveBeenCalledWith(MOCK_CREATE_TECHNOLOGY_ARGS);
-				})
+					expect(MOCK_TECHNOLOGY_MODEL_STATIC.create).toHaveBeenCalledWith(
+						MOCK_CREATE_TECHNOLOGY_ARGS
+					);
+				});
 
 				it('returns expected result', () => {
 					expect(result).toEqual(EXPECTED_RESULT);
-				})
-			})
+				});
+			});
 		});
 	});
 
 	describe('.Mutation', () => {
 		describe('.updateTechnology', () => {
-			assert(technologyResolvers.Mutation?.updateTechnology instanceof Function);
+			assert(
+				technologyResolvers.Mutation?.updateTechnology instanceof Function
+			);
 			const RESOLVER_FN = technologyResolvers.Mutation?.updateTechnology;
 
 			it('has correct implementation', () => {
@@ -238,16 +249,19 @@ describe('technologyResolvers', () => {
 			});
 
 			describe('when called', () => {
-				const MOCK_UPDATED_FIELDS = {					
+				const MOCK_UPDATED_FIELDS = {
 					description: 'MOCK_DESCRIPTION',
 					displayName: 'MOCK_DISPLAY_NAME',
 					url: 'MOCK_URL',
-				}
+				};
 				const MOCK_ID_ARG = 'MOCK_ID';
-				const MOCK_UPDATE_TECHNOLOGY_ARGS: RequireFields<MutationUpdateTechnologyArgs, "id"> = {
-					id: MOCK_ID_ARG, 
-					...MOCK_UPDATED_FIELDS
-				}
+				const MOCK_UPDATE_TECHNOLOGY_ARGS: RequireFields<
+					MutationUpdateTechnologyArgs,
+					'id'
+				> = {
+					id: MOCK_ID_ARG,
+					...MOCK_UPDATED_FIELDS,
+				};
 
 				let result: Technology | null;
 
@@ -255,26 +269,34 @@ describe('technologyResolvers', () => {
 					description: 'MOCK_DESCRIPTION_1',
 					displayName: 'MOCK_DISPLAY_NAME_1',
 					id: 'MOCK_ID_1',
-					url: 'MOCK_URL_1'
-				}
+					url: 'MOCK_URL_1',
+				};
 
 				beforeAll(async () => {
 					MOCK_TECHNOLOGY_MODEL_STATIC.update.mockResolvedValue(MOCK_ENTRY_1);
-					result = await RESOLVER_FN(MOCK_PARENT_MUTATION, MOCK_UPDATE_TECHNOLOGY_ARGS, MOCK_CONTEXT, MOCK_RESOLVE_INFO);
-				})
-				afterAll( () => {
+					result = await RESOLVER_FN(
+						MOCK_PARENT_MUTATION,
+						MOCK_UPDATE_TECHNOLOGY_ARGS,
+						MOCK_CONTEXT,
+						MOCK_RESOLVE_INFO
+					);
+				});
+				afterAll(() => {
 					MOCK_TECHNOLOGY_MODEL_STATIC.update.mockReset();
-				})
+				});
 
 				it('calls TechnologyModel.update method once with expected argument', () => {
 					expect(MOCK_TECHNOLOGY_MODEL_STATIC.update).toHaveBeenCalledTimes(1);
-					expect(MOCK_TECHNOLOGY_MODEL_STATIC.update).toHaveBeenCalledWith(MOCK_ID_ARG, MOCK_UPDATED_FIELDS);
-				})
+					expect(MOCK_TECHNOLOGY_MODEL_STATIC.update).toHaveBeenCalledWith(
+						MOCK_ID_ARG,
+						MOCK_UPDATED_FIELDS
+					);
+				});
 
 				it('returns expected result', () => {
 					expect(result).toEqual(EXPECTED_RESULT);
-				})
-			})
+				});
+			});
 		});
 	});
 });
