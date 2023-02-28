@@ -5,8 +5,7 @@
 	"keywords": [
 		"express",
 		"apollo",
-		"prisma",
-		"graphql"
+		"prisma"
 	],
 	"hasShowcase": false,
 	"license": "MIT",
