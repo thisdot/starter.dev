@@ -8,7 +8,6 @@ const mockSysLink = (): SysLink => ({
 	},
 });
 
-
 export const mockEntry = (id: string, fields: KeyValueMap): Entry => ({
 	sys: {
 		space: mockSysLink(),
