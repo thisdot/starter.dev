@@ -52,16 +52,10 @@ export type MutationupdateTechnologyArgs = {
 
 export type Query = {
 	__typename?: 'Query';
-	/** Simple hello world query that accepts a greeting */
-	hello: Scalars['String'];
 	/** Returns a list of Technologies */
 	technologies: Array<Maybe<Technology>>;
 	/** Returns a single Technology by ID */
 	technology?: Maybe<Technology>;
-};
-
-export type QueryhelloArgs = {
-	greeting: Scalars['String'];
 };
 
 export type QuerytechnologyArgs = {
@@ -224,12 +218,6 @@ export type QueryResolvers<
 	ContextType = any,
 	ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']
 > = {
-	hello?: Resolver<
-		ResolversTypes['String'],
-		ParentType,
-		ContextType,
-		RequireFields<QueryhelloArgs, 'greeting'>
-	>;
 	technologies?: Resolver<Array<Maybe<ResolversTypes['Technology']>>, ParentType, ContextType>;
 	technology?: Resolver<
 		Maybe<ResolversTypes['Technology']>,
