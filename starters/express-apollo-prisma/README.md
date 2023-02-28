@@ -89,7 +89,7 @@ git clone https://github.com/thisdot/starter.dev.git
 ## Built-in Scripts
 
 - `npm run infrastructure:start` - Starts up a Mysql database and Redis instance for caching
-- `npm run infrastructure:stop` - Stops the running database and Redis docker containers.
+- `npm run infrastructure:stop` - Stops the running database and Redis Docker containers.
 - `npm run db:seed` - Allows you to seed the database (See the Seeding section)
 - `npm run dev` - Starts the development server (Needs a running infrastructure first)
 - `npm run build` - Builds the app.
@@ -135,7 +135,7 @@ To start up your API in development mode with an active database connection, ple
 2. run `npm run infrastructure:start`
 3. run `npm run dev`
 
-The above steps will make sure your API connect to the database and Redis instances that get started up with docker. Run `npm run infrastructure:stop` to stop your MySQL, Redis & RabbitMQ containers.
+The above steps will make sure your API connects to the database and Redis instances that get started up with Docker. Run `npm run infrastructure:stop` to stop your MySQL, Redis & RabbitMQ containers.
 
 ### Seeding
 
@@ -186,47 +186,25 @@ This will generate a migration folder under `prisma/migrations`. That alters our
    	Technology object
    	"""
    	type Technology {
-   		"The ID of the Technology"
-   		id: ID!
-   		"The name of the Technology"
-   		displayName: String!
-   		"A brief description of the Technology"
-   		description: String
-   		"The link to the Technology's documentation"
-   		url: String
+   		...
    		"The author of the technology"
    		authorName: String
    	}
-
-   	type Query {
-   		"Returns a single Technology by ID"
-   		technology(id: ID!): Technology
-   		"Returns a list of Technologies"
-   		technologies: [Technology]!
-   	}
-
+   
+    ...
+    
    	input CreateTechnology {
-   		"Technology Name"
-   		displayName: String!
-   		"A brief description of the Technology"
-   		description: String
-   		"The link to the Technology's documentation"
-   		url: String
+   		...
    		"The author of the technology"
    		authorName: String
    	}
-
+   
    	input UpdateTechnology {
-   		"Technology Name"
-   		displayName: String
-   		"A brief description of the Technology"
-   		description: String
-   		"The link to the Technology's documentation"
-   		url: String
+   		...
    		"The author of the technology"
    		authorName: String
    	}
-
+   
    	"""
    	Technology mutations
    	"""
@@ -304,7 +282,7 @@ The data sources are located in `src/graphql/data-sources`. The data sources of 
 
 ### ORM
 
-The kit uses Prisma as TypeScript ORM which makes working with databases easy for application developers and features.
+The kit uses Prisma as a TypeScript ORM for proper data fetch and mutation from the source. It is configured with the following environment variable: DATABASE_URL="mysql://root:root[@localhost:3307/testdb"](https://github.com/localhost:3307/testdb").
 
 We use Prisma for the following:
 
@@ -316,7 +294,7 @@ To learn more about [Prisma](https://www.prisma.io/docs/concepts/overview/prisma
 
 ### Queueing
 
-RabbitMQ is an open-source message broker that allows multiple applications to communicate with each other through queues. It's a powerful tool for handling tasks asynchronously and distributing workloads across multiple machines.
+The kit provides an implementation of queueing using RabbitMQ, an open-source message broker that allows multiple applications to communicate with each other through queues. It's a powerful tool for handling tasks asynchronously and distributing workloads across multiple machines.
 
 RabbitMQ offers several benefits, such as:
 
@@ -324,8 +302,6 @@ RabbitMQ offers several benefits, such as:
 2. Reliability: messages are stored in a durable queue, ensuring that they are not lost in the event of a system failure.
 3. Flexibility: It supports multiple messaging protocols, including AMQP, STOMP, and MQTT, allowing it to integrate with a wide range of systems and applications.
 4. Extensibility: It is highly customizable and can be extended with plugins and custom message-processing logic.
-
-The kit provides an implementation of queueing using RabbitMQ, the most widely deployed open-source message broker that allows multiple applications to communicate with each other through queues.
 
 To start the worker that processes messages in the queue, run the command:
 
