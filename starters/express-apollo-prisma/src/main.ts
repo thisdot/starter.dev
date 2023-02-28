@@ -22,12 +22,24 @@ if (!REDIS_URL) {
 	throw new Error(`[Invalid environment] Variable not found: REDIS_URL`);
 }
 
+let CORS_ALLOWED_ORIGINS: string[] | undefined;
+if (ENV?.CORS_ALLOWED_ORIGINS && ENV?.CORS_ALLOWED_ORIGINS !== '*') {
+	CORS_ALLOWED_ORIGINS = ENV?.CORS_ALLOWED_ORIGINS.split(',');
+}
+
 (async () => {
 	// Required logic for integrating with Express
 	const app = express();
 
 	// Set up common Express middleware
-	app.use('/', cors<cors.CorsRequest>(), bodyParser.json());
+	app.use(
+		cors<cors.CorsRequest>({
+			origin: CORS_ALLOWED_ORIGINS
+				? new RegExp(CORS_ALLOWED_ORIGINS.filter(Boolean).join('|'))
+				: '*',
+		}),
+		bodyParser.json()
+	);
 
 	// Our httpServer handles incoming requests to our Express app.
 	// Below, we tell Apollo Server to "drain" this httpServer,
