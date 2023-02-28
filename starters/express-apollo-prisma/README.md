@@ -57,11 +57,7 @@ This starter kit features Express, Apollo Server and Prisma.
 npm create @this-dot/starter --kit express-apollo-prisma
 ```
 
-or
-
-```bash
-yarn create @this-dot/starter --kit express-apollo-prisma
-```
+Note: Other package managers such as `yarn` or `pnpm` can be used with this kit.
 
 - Follow the prompts to select the `express-apollo-prisma` starter kit and name your new project.
 - `cd` into your project directory and run `npm install`.
@@ -97,12 +93,12 @@ git clone https://github.com/thisdot/starter.dev.git
 - `npm test` - Runs the unit tests.
 - `npm run lint` - Runs ESLint on the project.
 - `npm run format` - Formats code for the entire project.
-- `npm prisma:format` - Updates your database using migrations during development and creates the database if it does not exist.
-- `npm prisma:migrate:reset` - Deletes and recreates the database, or performs a 'soft reset' by removing all data, tables, indexes, and other artifacts.
-- `npm prisma:migrate:dev` - Updates your database using migrations during development and creates the database if it does not exist.
+- `npm run prisma:format` - Updates your database using migrations during development and creates the database if it does not exist.
+- `npm run prisma:migrate:reset` - Deletes and recreates the database, or performs a 'soft reset' by removing all data, tables, indexes, and other artifacts.
+- `npm run prisma:migrate:dev` - Updates your database using migrations during development and creates the database if it does not exist.
 - `npm run prisma:generate` - Generates the API schema types into the `src/interfaces/schema.ts` file
 - `npm run prisma:deploy` - Applies all pending migrations, and creates the database if it does not exist. Primarily used in non-development environments.
-- `npm queue:run` - Queue runner script. Runs the queue worker.
+- `npm run queue:run` - Queue runner script. Runs the queue worker.
 
 ## Environment Variables
 
