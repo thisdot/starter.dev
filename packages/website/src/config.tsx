@@ -40,6 +40,7 @@ import {
   ExpressIcon,
   PostgresIcon,
   TypeOrmIcon,
+  PrismaIcon
 } from './icons';
 
 export interface NavItem {
@@ -78,7 +79,13 @@ export const FOOTER_NAV_ITEMS = HEADER_NAV_ITEMS.filter(
   (x) => x.title !== 'Explore Kits by Tech'
 );
 
-export const TECHNOLOGIES = [
+export const TECHNOLOGIES = [  
+  {
+    key: 'express',
+    name: 'Express.js',
+    tags: ['Framework'],
+    Icon: (props) => <ExpressIcon {...props} />
+  },
   {
     key: 'angular',
     name: 'Angular',
@@ -308,12 +315,6 @@ export const TECHNOLOGIES = [
     Icon: (props) => <DenoIcon {...props} />,
   },
   {
-    key: 'express',
-    name: 'Express.js',
-    tags: ['Framework'],
-    Icon: (props) => <ExpressIcon {...props} />
-  },
-  {
     key: 'typeorm',
     name: 'TypeORM',
     tags: ['Data Management'],
@@ -324,6 +325,12 @@ export const TECHNOLOGIES = [
     name: 'Postgres',
     tags: ['Data Management'],
     Icon: (props) => <PostgresIcon {...props} />
+  },
+  {
+    key: 'prisma',
+    name: 'Prisma',
+    tags: ['Data Management'],
+    Icon: (props) => <PrismaIcon {...props} />
   }
 ];
 

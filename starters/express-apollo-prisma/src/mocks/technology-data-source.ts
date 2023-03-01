@@ -1,5 +1,5 @@
-import { MockProxy, mock } from 'jest-mock-extended';
+import { DeepMockProxy, mockDeep } from 'jest-mock-extended';
 import { TechnologyDataSource } from '../graphql/data-sources';
 
-export const createMockTechnologyDataSource = (): MockProxy<TechnologyDataSource> =>
-	mock<TechnologyDataSource>();
+export const createMockTechnologyDataSource = (): DeepMockProxy<TechnologyDataSource> =>
+	mockDeep<TechnologyDataSource>();

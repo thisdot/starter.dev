@@ -29,7 +29,6 @@ export default {
 	coveragePathIgnorePatterns: [
 		'<rootDir>/main.ts',
 		'<rootDir>/graphql/schema/generated',
-		'<rootDir>/graphql/utils/test',
 		'index.ts',
 		'<rootDir>/mocks',
 		'\\.(d.ts)$',

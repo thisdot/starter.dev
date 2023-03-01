@@ -1,6 +1,5 @@
 dist/
 node_modules/
+.docker-conf/
 
 .env
-package-lock.json
-yarn.lock
