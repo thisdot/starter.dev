@@ -27,7 +27,7 @@ export async function main() {
         starters = Object.entries(starterKitsJSON).map(([name, description]) => ({
           value: name as string,
           title: description as string,
-        }));
+        })).sort((a, b) => a.title.localeCompare(b.title));
       }
     } else {
       throw new Error();
@@ -39,10 +39,11 @@ export async function main() {
 
   const options = await prompts([
     {
-      type: 'select',
+      type: 'autocomplete',
       name: 'kit',
       message: 'Which starter kit would you like to use?',
       choices: starters,
+      suggest: (input, choices) => Promise.resolve(choices.filter(c => c.title.includes(input))),
     },
     {
       type: 'text',
@@ -95,7 +96,7 @@ export async function main() {
   }
 }
 
-async function initNodeProject(packageJsonPath: string, projectDestPath: string, options: prompts.Answers<"name" | "kit">) {
+async function initNodeProject(packageJsonPath: string, projectDestPath: string, options: prompts.Answers<'name' | 'kit'>) {
   const packageJSON = JSON.parse(await fs.readFile(packageJsonPath, 'utf8'));
   packageJSON.name = options.name;
   packageJSON.version = '0.1.0';

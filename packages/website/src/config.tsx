@@ -37,6 +37,7 @@ import {
   QwikIcon,
   SolidJsIcon,
   ChakraIcon,
+  ServerlessIcon,
   DenoIcon,
   ExpressIcon,
   PostgresIcon,
@@ -269,9 +270,21 @@ export const TECHNOLOGIES = [
     Icon: (props) => <RxJsIcon {...props} />,
   },
   {
+    key: 'serverless',
+    name: 'Serverless',
+    tags: ['Infrastructure'],
+    Icon: (props) => <ServerlessIcon {...props} />,
+  },
+  {
+    key: 'apollo-server',
+    name: 'Apollo Server',
+    tags: ['Middleware'],
+    Icon: (props) => <ApolloIcon {...props} />,
+  },
+  {
     key: 'graphql',
     name: 'GraphQL',
-    tags: ['Data Management'],
+    tags: ['API Specification'],
     Icon: (props) => <GraphQLIcon {...props} />,
   },
   {
@@ -288,7 +301,7 @@ export const TECHNOLOGIES = [
   },
   {
     key: 'apollo',
-    name: 'Apollo',
+    name: 'Apollo Client',
     tags: ['Data Management'],
     Icon: (props) => <ApolloIcon {...props} />,
   },
@@ -332,20 +345,20 @@ export const TECHNOLOGIES = [
     key: 'express',
     name: 'Express.js',
     tags: ['Framework'],
-    Icon: (props) => <ExpressIcon {...props} />
+    Icon: (props) => <ExpressIcon {...props} />,
   },
   {
     key: 'typeorm',
     name: 'TypeORM',
     tags: ['Data Management'],
-    Icon: (props) => <TypeOrmIcon {...props} />
+    Icon: (props) => <TypeOrmIcon {...props} />,
   },
   {
     key: 'postgres',
     name: 'Postgres',
     tags: ['Data Management'],
-    Icon: (props) => <PostgresIcon {...props} />
-  }
+    Icon: (props) => <PostgresIcon {...props} />,
+  },
 ];
 
 export const SPONSORS_ICON = [

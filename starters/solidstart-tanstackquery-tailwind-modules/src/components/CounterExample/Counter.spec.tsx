@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { fireEvent, render, screen } from 'solid-testing-library';
+import { fireEvent, render, screen } from '@solidjs/testing-library';
 import CounterExample from './Counter';
 
 describe('CounterExample', () => {

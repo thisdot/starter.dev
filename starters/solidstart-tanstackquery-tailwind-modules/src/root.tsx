@@ -28,7 +28,7 @@ export default function Root() {
     <Html lang="en">
       <Head>
         <Title>
-          Solid Start - Tanstack Query - Tailwind CSS - CSS Modules Kit
+          SolidStart - Tanstack Query - Tailwind CSS - CSS Modules Kit
         </Title>
         <Meta charset="utf-8" />
         <Meta name="viewport" content="width=device-width, initial-scale=1" />
