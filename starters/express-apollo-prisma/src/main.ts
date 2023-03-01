@@ -10,21 +10,21 @@ import { createHealthcheckHandler } from './healthcheck';
 import { jobGeneratorHandler } from './queue/job-generator-handler';
 import { PrismaClient } from '@prisma/client';
 
-const { parsed: ENV } = dotenv.config();
+dotenv.config();
 
-const PORT = Number(ENV?.PORT);
+const PORT = Number(process.env.PORT);
 if (isNaN(PORT)) {
 	throw new Error(`[Invalid environment] Variable not found: PORT`);
 }
 
-const REDIS_URL = ENV?.REDIS_URL;
+const REDIS_URL = process.env.REDIS_URL;
 if (!REDIS_URL) {
 	throw new Error(`[Invalid environment] Variable not found: REDIS_URL`);
 }
 
 let CORS_ALLOWED_ORIGINS: string[] | undefined;
-if (ENV?.CORS_ALLOWED_ORIGINS && ENV?.CORS_ALLOWED_ORIGINS !== '*') {
-	CORS_ALLOWED_ORIGINS = ENV?.CORS_ALLOWED_ORIGINS.split(',');
+if (process.env.CORS_ALLOWED_ORIGINS && process.env.CORS_ALLOWED_ORIGINS !== '*') {
+	CORS_ALLOWED_ORIGINS = process.env.CORS_ALLOWED_ORIGINS.split(',');
 }
 
 (async () => {
