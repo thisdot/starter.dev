@@ -207,39 +207,6 @@
 				"description": null,
 				"fields": [
 					{
-						"name": "hello",
-						"description": "Simple hello world query that accepts a greeting",
-						"args": [
-							{
-								"name": "greeting",
-								"description": null,
-								"type": {
-									"kind": "NON_NULL",
-									"name": null,
-									"ofType": {
-										"kind": "SCALAR",
-										"name": "String",
-										"ofType": null
-									}
-								},
-								"defaultValue": null,
-								"isDeprecated": false,
-								"deprecationReason": null
-							}
-						],
-						"type": {
-							"kind": "NON_NULL",
-							"name": null,
-							"ofType": {
-								"kind": "SCALAR",
-								"name": "String",
-								"ofType": null
-							}
-						},
-						"isDeprecated": false,
-						"deprecationReason": null
-					},
-					{
 						"name": "technologies",
 						"description": "Returns a list of Technologies",
 						"args": [],

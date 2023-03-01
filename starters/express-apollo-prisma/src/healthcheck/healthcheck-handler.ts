@@ -20,7 +20,7 @@ export const createHealthcheckHandler = (
 		};
 
 		const hasFailedCheck = Object.values(result).includes(false);
-		const statusCode = hasFailedCheck ? 500 : 200;
+		const statusCode = hasFailedCheck ? 503 : 200;
 
 		res.status(statusCode).send(result);
 	};

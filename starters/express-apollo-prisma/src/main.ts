@@ -10,16 +10,21 @@ import { createHealthcheckHandler } from './healthcheck';
 import { jobGeneratorHandler } from './queue/job-generator-handler';
 import { PrismaClient } from '@prisma/client';
 
-const { parsed: ENV } = dotenv.config();
+dotenv.config();
 
-const PORT = Number(ENV?.PORT);
+const PORT = Number(process.env.PORT);
 if (isNaN(PORT)) {
 	throw new Error(`[Invalid environment] Variable not found: PORT`);
 }
 
-const REDIS_URL = ENV?.REDIS_URL;
+const REDIS_URL = process.env.REDIS_URL;
 if (!REDIS_URL) {
 	throw new Error(`[Invalid environment] Variable not found: REDIS_URL`);
+}
+
+let CORS_ALLOWED_ORIGINS: string[] | undefined;
+if (process.env.CORS_ALLOWED_ORIGINS && process.env.CORS_ALLOWED_ORIGINS !== '*') {
+	CORS_ALLOWED_ORIGINS = process.env.CORS_ALLOWED_ORIGINS.split(',');
 }
 
 (async () => {
@@ -27,7 +32,14 @@ if (!REDIS_URL) {
 	const app = express();
 
 	// Set up common Express middleware
-	app.use('/', cors<cors.CorsRequest>(), bodyParser.json());
+	app.use(
+		cors<cors.CorsRequest>({
+			origin: CORS_ALLOWED_ORIGINS
+				? new RegExp(CORS_ALLOWED_ORIGINS.filter(Boolean).join('|'))
+				: '*',
+		}),
+		bodyParser.json()
+	);
 
 	// Our httpServer handles incoming requests to our Express app.
 	// Below, we tell Apollo Server to "drain" this httpServer,

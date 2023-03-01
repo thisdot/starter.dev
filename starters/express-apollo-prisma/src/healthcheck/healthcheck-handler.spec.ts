@@ -33,15 +33,15 @@ describe('.healthcheck-handler', () => {
 					'redisClient',
 					{ redisClient: MOCK_REDIS_CLIENT },
 					{ cacheDatabase: true, dataSource: false },
-					500,
+					503,
 				],
 				[
 					'prismaClient',
 					{ prismaClient: MOCK_PRISMA_CLIENT },
 					{ cacheDatabase: false, dataSource: true },
-					500,
+					503,
 				],
-				['both redisClient & prismaClient', {}, { cacheDatabase: false, dataSource: false }, 500],
+				['both redisClient & prismaClient', {}, { cacheDatabase: false, dataSource: false }, 503],
 			];
 
 			describe.each(CASES)('%s', (_, options, healthcheck, expectedStatusCode) => {
@@ -92,17 +92,17 @@ describe('.healthcheck-handler', () => {
 				[
 					'both cachedDatabase & dataSource return false',
 					{ cacheDatabase: false, dataSource: false },
-					500,
+					503,
 				],
 				[
 					'cachedDatabase returns false & dataSource returns true',
 					{ cacheDatabase: false, dataSource: true },
-					500,
+					503,
 				],
 				[
 					'cachedDatabase returns true & dataSource returns false',
 					{ cacheDatabase: true, dataSource: false },
-					500,
+					503,
 				],
 			];
 
