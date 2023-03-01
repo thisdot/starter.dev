@@ -42,10 +42,10 @@ export const Counter = ({ count, setCount }: CountStateParams) => {
         </Text>
       </Flex>
 
-      {counterButtons.map(({ text, setCounterState }, idx) => (
+      {counterButtons.map(({ text, setCounterState }) => (
         <Button
           my={8}
-          key={`${idx}-${text}`}
+          key={text}
           onClick={() => setCount(setCounterState)}
           colorScheme="brand"
           variant="solid"

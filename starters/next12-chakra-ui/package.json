@@ -1,5 +1,5 @@
 {
-  "name": "next12-routing-chakra-ui",
+  "name": "next12-chakra-ui",
   "description": "NextJS 12 and Chakra UI",
   "version": "0.1.0",
   "private": true,
@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.20.5",
-    "@chakra-ui/storybook-addon": "^4.0.14",
+    "@chakra-ui/storybook-addon": "4.0.14",
     "@storybook/addon-a11y": "6.5.13",
     "@storybook/addon-actions": "6.5.13",
     "@storybook/addon-essentials": "6.5.13",
