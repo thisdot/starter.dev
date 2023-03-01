@@ -84,20 +84,22 @@ git clone https://github.com/thisdot/starter.dev.git
 
 ## Built-in Scripts
 
-- `npm run infrastructure:start` - Starts up a Mysql database and Redis instance for caching
-- `npm run infrastructure:stop` - Stops the running database and Redis Docker containers.
-- `npm run db:seed` - Allows you to seed the database (See the Seeding section)
-- `npm run dev` - Starts the development server (Needs a running infrastructure first)
-- `npm run build` - Builds the app.
-- `npm start` - Starts the built app. (Needs a running infrastructure first)
-- `npm test` - Runs the unit tests.
-- `npm run lint` - Runs ESLint on the project.
-- `npm run format` - Formats code for the entire project.
-- `npm run prisma:format` - Updates your database using migrations during development and creates the database if it does not exist.
-- `npm run prisma:migrate:reset` - Deletes and recreates the database, or performs a 'soft reset' by removing all data, tables, indexes, and other artifacts.
-- `npm run prisma:migrate:dev` - Updates your database using migrations during development and creates the database if it does not exist.
-- `npm run prisma:generate` - Generates the API schema types into the `src/interfaces/schema.ts` file
-- `npm run prisma:deploy` - Applies all pending migrations, and creates the database if it does not exist. Primarily used in non-development environments.
+- `npm run infrastructure:start` - Creates and starts all the docker containers for services from Docker Compose configuration (Mysql, Redis, RabbitMQ)
+- `npm run infrastructure:stop` - Stops and removes containers, networks and volumes of all the services created by `npm run infrastructure:start`.
+- `npm run prepare` - Generates Graphql and Prisma Client code.
+- `npm run db:seed` - Populates the database with basic data for validating and using the application in a development environment. (See [Seeding](#seeding))
+- `npm run build` - Compiles the project. Emits files referenced in with the compiler settings from tsconfig.build.json.
+- `npm test` - Prepares and Runs the unit tests.
+- `npm start` - Prepares and Starts the the development server by automatically restarting the node application when file changes in the `src` directory are detected. Best for the first run. (Requires: `npm run infrastructure:start`)
+- `npm run dev:test` - Runs the unit tests.
+- `npm run dev:start` - Starts the development server by automatically restarting the node application when file changes in the `src` directory are detected. (Requires: `npm run infrastructure:start`, `npm run prepare`)
+- `npm run lint` - Identifying and reporting on patterns found in the project code, with the goal of making code more consistent and avoiding bugs.
+- `npm run format` - Formats all files supported by Prettier in the project directory and its subdirectories.
+- `npm run prisma:format` - Formats the Prisma schema file, which includes validating, formatting, and persisting the schema.
+- `npm run prisma:migrate:reset` - Drops and recreates the database, which results in data loss. (For development only)
+- `npm run prisma:migrate:dev` - Updates your database using migrations during development and creates the database if it does not exist. (For development only)
+- `npm run prisma:generate` - Generates Prisma Client code.
+- `npm run prisma:deploy` - Applies all pending migrations, and creates the database if it does not exist. Primarily used in non-development environments. (For production only)
 - `npm run queue:run` - Queue runner script. Runs the queue worker.
 
 ## Environment Variables
@@ -116,6 +118,7 @@ git clone https://github.com/thisdot/starter.dev.git
 - `DOCKER_REDIS_PORT_CONTAINER` - The Redis Docker container's TCP port.
 - `AMQP_URL` - The RabbitMQ connection URL.
 - `AMQP_QUEUE_JOB` - The RabbitMQ channel queue name.
+- `CORS_ALLOWED_ORIGINS` - (Optional) Comma separated Allowed Origins. Default value: '*'. (See [CORS Cross-Origin Resource Sharing](#cors-cross-origin-resource-sharing))
 
 We map TCP port `DOCKER_MYSQLDB_PORT_CONTAINER` in the container to port `DOCKER_MYSQLDB_PORT_LOCAL` on the Docker host.
 We also map TCP port `DOCKER_REDIS_PORT_LOCAL` in the container to port `DOCKER_REDIS_PORT_CONTAINER` on the Docker host.
