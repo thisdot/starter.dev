@@ -1,4 +1,4 @@
-# nextjs12-routing-chakra-ui starter kit
+# nextjs12-chakra-ui starter kit
 
 ## Table of Contents
 
@@ -36,7 +36,7 @@ This Next.js 12 starter kit comes with formatting, linting, example components, 
 ### CLI (Recommended)
 
 ```bash
-npm create @this-dot/starter --kit next12-routing-chakra-ui
+npm create @this-dot/starter -- --kit next12-routing-chakra-ui
 ```
 
 or
@@ -45,20 +45,20 @@ or
 yarn create @this-dot/starter --kit next12-routing-chakra-ui
 ```
 
-- Follow the prompts to select the `next12-routing-chakra-ui` starter kit and name your new project.
+- Follow the prompts to select the `next12-chakra-ui` starter kit and name your new project.
 - `cd` into your project directory and run `yarn install`.
 - Run `yarn run dev` to start the development server.
 - Open your browser to `http://localhost:3000` to see the included example code running.
 
 ### Manual
 
-This requires a download of the entire starter.dev repository and extraction of the `next12-routing-chakra-ui` kit from the starters directory.
+This requires a download of the entire starter.dev repository and extraction of the `next12-chakra-ui` kit from the starters directory.
 
 ```bash
 git clone https://github.com/thisdot/starter.dev.git
 ```
 
-- Copy and rename the `starters/next12-routing-chakra-ui` directory to the name of your new project.
+- Copy and rename the `starters/next12-chakra-ui` directory to the name of your new project.
 - `cd` into your project directory and run `yarn install`.
 - Run `yarn run dev` to start the development server.
 - Open your browser to `http://localhost:3000` to see the included example code running.
