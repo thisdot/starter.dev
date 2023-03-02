@@ -36,13 +36,13 @@ This Next.js 12 starter kit comes with formatting, linting, example components, 
 ### CLI (Recommended)
 
 ```bash
-npm create @this-dot/starter -- --kit next12-routing-chakra-ui
+npm create @this-dot/starter -- --kit next12-chakra-ui
 ```
 
 or
 
 ```bash
-yarn create @this-dot/starter --kit next12-routing-chakra-ui
+yarn create @this-dot/starter --kit next12-chakra-ui
 ```
 
 - Follow the prompts to select the `next12-chakra-ui` starter kit and name your new project.
@@ -92,7 +92,7 @@ The unit tests for the home page can be found in the `__tests__` directory.
 
 This starter kit comes with the `@storybook/addon-a11y` which is used to check for common accessibility errors in your components. When you run `yarn run storybook`, each story will show detailed explanations with suggested fixes if errors are found.
 
-### Chakra UI's Customizable theme
+## Chakra UI's Customizable theme
 
 Inside the `src/pages/_app.tsx` directory, you will find the basic setup for customizing your theme, colors, and font styles using Chakra UI.
 
