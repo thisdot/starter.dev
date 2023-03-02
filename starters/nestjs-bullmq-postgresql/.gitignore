@@ -37,3 +37,4 @@ lerna-debug.log*
 # misc
 .env
 misc
+postgres.db.env
