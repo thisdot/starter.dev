@@ -6,12 +6,12 @@ function responseHelper(body) {
 }
 
 const STARTER_KITS_JSON_URL = 'https://raw.githubusercontent.com/thisdot/starter.dev/main/starter-kits.json';
-const GOOGLE_MEASUREMENT_PROTOCOL_ENDPOINT = (measurement_id, api_secret) => `https://www.google-analytics.com/debug/mp/collect?measurement_id=${measurement_id}&api_secret=${api_secret}`;
+const GOOGLE_MEASUREMENT_PROTOCOL_ENDPOINT = (measurement_id, api_secret) => `https://www.google-analytics.com/mp/collect?measurement_id=${measurement_id}&api_secret=${api_secret}`;
 
 module.exports.handler = async (event) => {
   const MEASUREMENT_ID = process.env.GOOGLE_ANALYTICS_MEASUREMENT_ID;
   const API_SECRET = process.env.GOOGLE_ANALYTICS_API_SECRET;
-  const selectedStarterKit = JSON.parse(event.body || null)?.starterKit;
+  const selectedStarterKit = JSON.parse(event.body || 'null')?.starterKit;
 
   if (!selectedStarterKit) {
     console.log('No kit found');
@@ -49,9 +49,9 @@ module.exports.handler = async (event) => {
     }
   )
 
-  if (trackRequest.ok) {
-    const trackRequestResult = await trackRequest.json();
-    console.log(trackRequestResult);
+  if (!trackRequest.ok) {
+    console.log(`Track request returned with status ${trackRequest.status} - ${trackRequest.statusText}`);
+    return responseHelper(`Track request returned with status ${trackRequest.status} - ${trackRequest.statusText}`);
   }
   return responseHelper('Successful tracking');
 };
