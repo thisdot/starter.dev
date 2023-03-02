@@ -57,7 +57,7 @@ export async function main() {
     process.exit(1);
   }
 
-  trackSelectedKit(options.kit)
+  await trackSelectedKit(options.kit)
 
   const repoPath = `thisdot/starter.dev/starters/${options.kit}`;
   const destPath = path.join(process.cwd(), options.name);
