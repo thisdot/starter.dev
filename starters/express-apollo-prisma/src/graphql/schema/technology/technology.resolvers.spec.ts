@@ -197,11 +197,15 @@ describe('technologyResolvers', () => {
 				});
 
 				it('returns expected error result', async () => {
-					expectSingleErrorResponse(response, {
-						message: 'Technology not found.',
-						path: ['technology'],
-						extensions: { code: ApolloServerErrorCode.PERSISTED_QUERY_NOT_FOUND },
-					});
+					expectSingleErrorResponse(
+						response,
+						{ technology: null },
+						{
+							message: 'Technology not found.',
+							path: ['technology'],
+							extensions: { code: ApolloServerErrorCode.PERSISTED_QUERY_NOT_FOUND },
+						}
+					);
 				});
 			});
 
@@ -226,11 +230,15 @@ describe('technologyResolvers', () => {
 				});
 
 				it('returns expected error result', async () => {
-					expectSingleErrorResponse(response, {
-						message: 'Invalid argument value',
-						path: ['technology'],
-						extensions: { code: ApolloServerErrorCode.BAD_USER_INPUT, argumentName: 'id' },
-					});
+					expectSingleErrorResponse(
+						response,
+						{ technology: null },
+						{
+							message: 'Invalid argument value',
+							path: ['technology'],
+							extensions: { code: ApolloServerErrorCode.BAD_USER_INPUT, argumentName: 'id' },
+						}
+					);
 				});
 			});
 		});
@@ -395,7 +403,7 @@ describe('technologyResolvers', () => {
 				});
 
 				it('returns expected error result', async () => {
-					expectSingleErrorResponse(response, {
+					expectSingleErrorResponse(response, null, {
 						message: 'Invalid argument property value. Display Name cannot be null.',
 						path: ['updateTechnology'],
 						extensions: {
@@ -454,13 +462,12 @@ describe('technologyResolvers', () => {
 
 function expectSingleErrorResponse(
 	response: GraphQLResponse,
+	expectedDataObject: Record<string, unknown> | null,
 	errorMatchObject: Record<string, unknown>
 ) {
 	expect(response.body.kind).toEqual('single');
 	assert(response.body.kind === 'single');
-	expect(response.body.singleResult.data).toEqual({
-		technology: null,
-	});
+	expect(response.body.singleResult.data).toEqual(expectedDataObject);
 	expect(response.body.singleResult.errors).toBeInstanceOf(Array);
 	expect(response.body.singleResult.errors).toHaveLength(1);
 	assert(Array.isArray(response.body.singleResult.errors));
