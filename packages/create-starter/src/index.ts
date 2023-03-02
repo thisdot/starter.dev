@@ -6,6 +6,7 @@ import degit from 'tiged';
 import fetch from 'node-fetch';
 import yargs from 'yargs-parser';
 import { initGitRepo, removeLockFileIfExists, overrideAngularJsonIfExists, fileExists } from './utils';
+import { trackSelectedKit } from './metrics';
 
 const STARTER_KITS_JSON_URL = 'https://raw.githubusercontent.com/thisdot/starter.dev/main/starter-kits.json';
 const EXCLUDED_PACKAGE_JSON_FIELDS = ['hasShowcase'];
@@ -55,6 +56,8 @@ export async function main() {
   if (!options.kit || !options.name) {
     process.exit(1);
   }
+
+  trackSelectedKit(options.kit)
 
   const repoPath = `thisdot/starter.dev/starters/${options.kit}`;
   const destPath = path.join(process.cwd(), options.name);
