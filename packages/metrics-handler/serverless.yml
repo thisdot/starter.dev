@@ -1,0 +1,17 @@
+service: metrics-handler
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+
+plugins:
+  - serverless-plugin-include-dependencies
+
+functions:
+  track:
+    handler: index.handler
+    events:
+      - httpApi:
+          path: /
+          method: post

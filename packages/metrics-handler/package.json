@@ -1,0 +1,16 @@
+{
+  "name": "metrics-handler",
+  "version": "1.0.0",
+  "description": "lambda function to handle metrics tracking",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "invoke": "serverless invoke local -f track -d '{ \"selectedKit\": \"express-typeorm-postgres\"}' -e GOOGLE_MEASUREMENT_ID=G-XXXXXXXXXX -e GOOGLE_API_SECRET=secret_value"
+  },
+  "dependencies": {
+    "node-fetch": "3.3.0"
+  },
+  "devDependencies": {
+    "serverless-plugin-include-dependencies": "^5.0.0"
+  }
+}
