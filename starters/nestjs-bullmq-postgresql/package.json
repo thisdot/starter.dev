@@ -12,6 +12,7 @@
 		"start:dev": "nest start --watch",
 		"start:debug": "nest start --debug --watch",
 		"start:prod": "node dist/main",
+		"start:all": "yarn infrastructure:start && yarn start:dev",
 		"infrastructure:start": "docker-compose up -d",
 		"infrastructure:stop": "docker-compose stop",
 		"lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
