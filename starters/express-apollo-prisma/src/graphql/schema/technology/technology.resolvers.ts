@@ -23,7 +23,7 @@ type ExcludeNullProp<T extends Record<string, unknown>, TKey extends keyof T> = 
 
 export const technologyResolvers: Resolvers<ServerContext> = {
 	Query: {
-		technology: async (parent, { id }, { dataSources: { technologyDataSource } }) => {
+		technology: async (_parent, { id }, { dataSources: { technologyDataSource } }) => {
 			const idNumber = parseTechnologyId(id);
 			const entity = await technologyDataSource.getTechnologyById(idNumber);
 			if (!entity) {
@@ -35,17 +35,17 @@ export const technologyResolvers: Resolvers<ServerContext> = {
 			}
 			return mapTechnology(entity);
 		},
-		technologies: async (parent, args, { dataSources: { technologyDataSource } }) => {
+		technologies: async (_parent, _args, { dataSources: { technologyDataSource } }) => {
 			const entities = await technologyDataSource.getTechnologies();
 			return entities.map(mapTechnology);
 		},
 	},
 	Mutation: {
-		createTechnology: async (parent, { input }, { dataSources }) => {
+		createTechnology: async (_parent, { input }, { dataSources }) => {
 			const entity = await dataSources.technologyDataSource.createTechnology(input);
 			return mapTechnology(entity);
 		},
-		updateTechnology: async (parent, { id, input }, { dataSources }) => {
+		updateTechnology: async (_parent, { id, input }, { dataSources }) => {
 			const idNumber = parseTechnologyId(id);
 			if (input.displayName === null) {
 				throw new GraphQLError(`Invalid argument property value. Display Name cannot be null.`, {
@@ -61,7 +61,7 @@ export const technologyResolvers: Resolvers<ServerContext> = {
 			const entity = await dataSources.technologyDataSource.updateTechnology(idNumber, validated);
 			return mapTechnology(entity);
 		},
-		deleteTechnology: async (parent, { id }, { dataSources }) => {
+		deleteTechnology: async (_parent, { id }, { dataSources }) => {
 			const idNumber = parseTechnologyId(id);
 			const entity = await dataSources.technologyDataSource.deleteTechnology(idNumber);
 			return Boolean(entity);
