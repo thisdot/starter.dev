@@ -45,3 +45,5 @@ export { PostgresIcon } from './PostgresIcon';
 export { TypeOrmIcon } from './TypeOrmIcon';
 export { SolidStartIcon } from './SolidStartIcon';
 export { TanstackIcon } from './TanstackIcon';
+export { ExpoIcon } from './ExpoIcon';
+export { ZustandIcon } from './ZustandIcon';

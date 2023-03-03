@@ -2,6 +2,12 @@
   "name": "expo-zustand-styled-component",
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
+  "keywords": [
+    "expo",
+    "zustand",
+    "styled-components"
+  ],
+  "description": "Expo, Zustand, and Styled Components",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",

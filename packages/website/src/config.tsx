@@ -43,6 +43,8 @@ import {
   TypeOrmIcon,
   SolidStartIcon,
   TanstackIcon,
+  ExpoIcon,
+  ZustandIcon,
 } from './icons';
 
 export interface NavItem {
@@ -338,20 +340,32 @@ export const TECHNOLOGIES = [
     key: 'express',
     name: 'Express.js',
     tags: ['Framework'],
-    Icon: (props) => <ExpressIcon {...props} />
+    Icon: (props) => <ExpressIcon {...props} />,
   },
   {
     key: 'typeorm',
     name: 'TypeORM',
     tags: ['Data Management'],
-    Icon: (props) => <TypeOrmIcon {...props} />
+    Icon: (props) => <TypeOrmIcon {...props} />,
   },
   {
     key: 'postgres',
     name: 'Postgres',
     tags: ['Data Management'],
-    Icon: (props) => <PostgresIcon {...props} />
-  }
+    Icon: (props) => <PostgresIcon {...props} />,
+  },
+  {
+    key: 'expo',
+    name: 'Expo',
+    tags: ['Tooling'],
+    Icon: (props) => <ExpoIcon {...props} />,
+  },
+  {
+    key: 'zustand',
+    name: 'Zustand',
+    tags: ['Data Management'],
+    Icon: (props) => <ZustandIcon {...props} />,
+  },
 ];
 
 export const SPONSORS_ICON = [
