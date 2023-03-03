@@ -42,7 +42,7 @@ Each starter kit should include a couple base examples that demonstrate the impo
 
 ## Adding a starter kit
 
-Starter kits live at `starters/:name` in this repository.
+Starter kits live at `starters/:name` in this repository. After adding a new starter kit please run `yarn generate-starter-kits-json` to update [starter-kits.json](./starter-kits.json) file.
 
 ### Starter kit naming convention
 

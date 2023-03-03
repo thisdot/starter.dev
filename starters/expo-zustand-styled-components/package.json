@@ -1,5 +1,6 @@
 {
   "name": "expo-zustand-styled-component",
+  "description": "Expo (React-Native), Zustand, Styled-Components",
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
