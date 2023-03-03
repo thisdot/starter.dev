@@ -651,6 +651,18 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
+"@kwsites/file-exists@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@kwsites/file-exists/-/file-exists-1.1.1.tgz#ad1efcac13e1987d8dbaf235ef3be5b0d96faa99"
+  integrity sha512-m9/5YGR18lIwxSFDwfE3oA7bWuq9kdau6ugN4H2rJeyhFQZcG9AgSHkQtSD15a8WvTgfz9aikZMrKPHvbpqFiw==
+  dependencies:
+    debug "^4.1.1"
+
+"@kwsites/promise-deferred@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@kwsites/promise-deferred/-/promise-deferred-1.1.1.tgz#8ace5259254426ccef57f3175bc64ed7095ed919"
+  integrity sha512-GaHYm+c0O9MjZRu0ongGBRbinu8gVAMd2UZjji6jVmqKtZluZnptXGWhz1E8j8D2HJ3f/yMxKAUC0b+57wncIw==
+
 "@ljharb/has-package-exports-patterns@^0.0.2":
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/@ljharb/has-package-exports-patterns/-/has-package-exports-patterns-0.0.2.tgz#c1718939b65efa1f45f53686c2fcfa992b9fb68f"
@@ -3099,10 +3111,10 @@ jsonfile@^6.0.1:
     array-includes "^3.1.4"
     object.assign "^4.1.2"
 
-just-pick@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/just-pick/-/just-pick-4.0.1.tgz#cf8571885ef9260c4bd3b4ea4b479f1ef721f797"
-  integrity sha512-8+xh2htMkCqrOzh1hhNF1RYh3WbC6JbdRrA8rPMQcvd/pw2DT5wgIsQKfwh/qwc/CJ0Lev95c1e0jlJHN9T5Gw==
+just-pick@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/just-pick/-/just-pick-4.2.0.tgz#fb82efb385f9bd8152d2cc5edcd6834b186d8e5f"
+  integrity sha512-m6bi0P/gFq5GEQJGYfHFsdod6fogViNIhsKbPBYavqF9SKFfMKPz7kf6ROL2PblkOdaib9vN/wJ7VXhCJre5Hw==
 
 kind-of@^6.0.0, kind-of@^6.0.2:
   version "6.0.3"
@@ -4747,6 +4759,15 @@ signal-exit@^3.0.2, signal-exit@^3.0.7:
   version "3.0.7"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.7.tgz#a9a1767f8af84155114eaabd73f99273c8f59ad9"
   integrity sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==
+
+simple-git@^3.16.1:
+  version "3.16.1"
+  resolved "https://registry.yarnpkg.com/simple-git/-/simple-git-3.16.1.tgz#b67f18cbd3c68bbc4b9177ed49256afe51f12d47"
+  integrity sha512-xzRxMKiy1zEYeHGXgAzvuXffDS0xgsq07Oi4LWEEcVH29vLpcZ2tyQRWyK0NLLlCVaKysZeem5tC1qHEOxsKwA==
+  dependencies:
+    "@kwsites/file-exists" "^1.1.1"
+    "@kwsites/promise-deferred" "^1.1.1"
+    debug "^4.3.4"
 
 sirv@^2.0.2:
   version "2.0.2"
