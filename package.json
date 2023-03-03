@@ -10,7 +10,7 @@
     "start:website": "yarn workspace website preview",
     "dev:website": "yarn workspace website dev",
     "watch:cli": "yarn workspace @this-dot/create-starter watch",
-    "generate-starter-kits": "node scripts/generate-starter-kits.js"
+    "generate-starter-kits": "node scripts/generate-starter-kits-json.js"
   },
   "workspaces": [
     "packages/*"

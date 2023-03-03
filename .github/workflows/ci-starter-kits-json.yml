@@ -10,7 +10,7 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  verify:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -26,4 +26,4 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Validate starter-kits.json
-        run: scripts/validate-starter-kits-json.js
+        run: node scripts/validate-starter-kits-json.js

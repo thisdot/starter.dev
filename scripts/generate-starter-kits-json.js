@@ -1,7 +1,7 @@
-#!/usr/bin/node
 const path = require('path');
 const fs = require('fs/promises');
 const pick = require('just-pick');
+const { getKitDirs, getRepoRootPath } = require('./kits-utils');
 
 
 void main();

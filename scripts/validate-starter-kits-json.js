@@ -1,4 +1,3 @@
-#!/usr/bin/node
 const simpleGit = require('simple-git');
 const path = require('path');
 const repoRoot = path.resolve(__dirname, '..');
