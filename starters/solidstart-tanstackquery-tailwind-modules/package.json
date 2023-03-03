@@ -2,7 +2,7 @@
   "name": "solidstart-tanstackquery-tailwind-modules",
   "version": "0.1.0",
   "private": true,
-  "description": "Solid Start, Tanstack Query and Tailwind CSS with CSS Modules",
+  "description": "Solid Start, TanStack Query and Tailwind CSS with CSS Modules",
   "keywords": [
     "solidstart",
     "tanstack-query",
