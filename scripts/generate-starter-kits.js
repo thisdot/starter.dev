@@ -1,3 +1,4 @@
+#!/usr/bin/node
 const path = require('path');
 const fs = require('fs/promises');
 const pick = require('just-pick');
