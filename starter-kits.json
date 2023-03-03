@@ -5,6 +5,7 @@
   "deno-oak-denodb": "Deno, Oak, and DenoDB",
   "expo-zustand-styled-component": "Expo (React-Native), Zustand, Styled-Components",
   "express-typeorm-postgres": "Express.js, TypeOrm, and PostgreSQL",
+  "next12-chakra-ui": "NextJS 12 and Chakra UI",
   "next12-react-query-tailwind": "NextJS 12, React Query, and TailwindCSS",
   "nuxt2-pinia-tailwind": "Nuxt 2, Pinia and TailwindCSS",
   "qwik-graphql-tailwind": "Qwik, GraphQL, and TailwindCSS",

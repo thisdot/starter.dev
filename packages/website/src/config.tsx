@@ -36,6 +36,7 @@ import {
   PiniaIcon,
   QwikIcon,
   SolidJsIcon,
+  ChakraIcon,
   ServerlessIcon,
   DenoIcon,
   ExpressIcon,
@@ -221,6 +222,12 @@ export const TECHNOLOGIES = [
     Icon: (props) => <BootstrapIcon {...props} />,
   },
   {
+    key: 'chakra-ui',
+    name: 'Chakra UI',
+    tags: ['Styling'],
+    Icon: (props) => <ChakraIcon {...props} />,
+  },
+  {
     key: 'astro',
     name: 'Astro',
     tags: ['Static Site Builder'],
@@ -338,20 +345,20 @@ export const TECHNOLOGIES = [
     key: 'express',
     name: 'Express.js',
     tags: ['Framework'],
-    Icon: (props) => <ExpressIcon {...props} />
+    Icon: (props) => <ExpressIcon {...props} />,
   },
   {
     key: 'typeorm',
     name: 'TypeORM',
     tags: ['Data Management'],
-    Icon: (props) => <TypeOrmIcon {...props} />
+    Icon: (props) => <TypeOrmIcon {...props} />,
   },
   {
     key: 'postgres',
     name: 'Postgres',
     tags: ['Data Management'],
-    Icon: (props) => <PostgresIcon {...props} />
-  }
+    Icon: (props) => <PostgresIcon {...props} />,
+  },
 ];
 
 export const SPONSORS_ICON = [
