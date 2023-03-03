@@ -25,20 +25,16 @@ async function main() {
 async function getKitMetadata(kitDir) {
   const startersPath = path.resolve(getRepoRootPath(), 'starters');
   const kitFullDir = path.resolve(startersPath, kitDir);
-  try {
-    let packageJsonPath = path.join(kitFullDir, 'package.json');
-    await fs.access(packageJsonPath);
-    const fileContentStr = await fs.readFile(packageJsonPath, 'utf-8');
-    const fileContent = JSON.parse(fileContentStr);
-    return pick(fileContent, ['name', 'description']);
-  } catch {}
-  try {
-    let packageJsonPath = path.join(kitFullDir, 'deno.json');
-    await fs.access(packageJsonPath);
-    const fileContentStr = await fs.readFile(packageJsonPath, 'utf8');
-    const fileContent = JSON.parse(fileContentStr);
-    return pick(fileContent, ['name', 'description']);
-  } catch {}
+
+  for (const metadataFile of ['package.json', 'deno.json']) {
+    try {
+      let packageJsonPath = path.join(kitFullDir, metadataFile);
+      await fs.access(packageJsonPath);
+      const fileContentStr = await fs.readFile(packageJsonPath, 'utf-8');
+      const fileContent = JSON.parse(fileContentStr);
+      return pick(fileContent, ['name', 'description']);
+    } catch {}
+  }
 
   const errorMessage = `Could not find package.json or deno.json for kit "${kitDir}".`;
   console.warn(errorMessage)
