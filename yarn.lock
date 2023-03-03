@@ -3099,10 +3099,10 @@ jsonfile@^6.0.1:
     array-includes "^3.1.4"
     object.assign "^4.1.2"
 
-just-pick@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/just-pick/-/just-pick-4.0.1.tgz#cf8571885ef9260c4bd3b4ea4b479f1ef721f797"
-  integrity sha512-8+xh2htMkCqrOzh1hhNF1RYh3WbC6JbdRrA8rPMQcvd/pw2DT5wgIsQKfwh/qwc/CJ0Lev95c1e0jlJHN9T5Gw==
+just-pick@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/just-pick/-/just-pick-4.2.0.tgz#fb82efb385f9bd8152d2cc5edcd6834b186d8e5f"
+  integrity sha512-m6bi0P/gFq5GEQJGYfHFsdod6fogViNIhsKbPBYavqF9SKFfMKPz7kf6ROL2PblkOdaib9vN/wJ7VXhCJre5Hw==
 
 kind-of@^6.0.0, kind-of@^6.0.2:
   version "6.0.3"
