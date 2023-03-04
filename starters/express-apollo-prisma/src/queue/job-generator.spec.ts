@@ -205,20 +205,18 @@ describe('.generateJob', () => {
 						expect(MOCK_AMQP_CONNECT).toHaveBeenCalledWith(MOCK_ENV_AMQP_URL);
 					});
 
-					if (expectedFlow.createsChannel) {
+					expectedFlow.createsChannel &&
 						it('calls Connection.createChannel method once', () => {
 							expect(MOCK_AMQP_CONNECTION.createChannel).toHaveBeenCalledTimes(1);
 						});
-					}
 
-					if (expectedFlow.assertsQueue) {
+					expectedFlow.assertsQueue &&
 						it('calls Channel.assertQueue method once with expected argument', () => {
 							expect(MOCK_AMPQ_CHANNEL.assertQueue).toHaveBeenCalledTimes(1);
 							expect(MOCK_AMPQ_CHANNEL.assertQueue).toHaveBeenCalledWith(MOCK_ENV_AMQP_QUEUE_JOB);
 						});
-					}
 
-					if (expectedFlow.sendsMessageToQueue) {
+					expectedFlow.sendsMessageToQueue &&
 						it('calls Channel.sendToQueue method once with expected arguments', () => {
 							expect(MOCK_AMPQ_CHANNEL.sendToQueue).toHaveBeenCalledTimes(1);
 							const expectedBuffer = Buffer.from(MOCK_MESSAGE);
@@ -230,9 +228,8 @@ describe('.generateJob', () => {
 								}
 							);
 						});
-					}
 
-					if (expectedFlow.logsWarning) {
+					expectedFlow.logsWarning &&
 						it('logs expected warning', () => {
 							expect(SPY_CONSOLE_WARN).toHaveBeenCalledTimes(1);
 							expect(SPY_CONSOLE_WARN).toHaveBeenCalledWith(
@@ -240,19 +237,16 @@ describe('.generateJob', () => {
 								MOCK_INSTANCE_ERROR
 							);
 						});
-					}
 
-					if (expectedFlow.closesChannel) {
+					expectedFlow.closesChannel &&
 						it('closes AMQP channel', () => {
 							expect(MOCK_AMPQ_CHANNEL.close).toHaveBeenCalledTimes(1);
 						});
-					}
 
-					if (expectedFlow.closesConnection) {
+					expectedFlow.closesConnection &&
 						it('closes AMQP connection', () => {
 							expect(MOCK_AMQP_CONNECTION.close).toHaveBeenCalledTimes(1);
 						});
-					}
 
 					it('returns expected result', () => {
 						expect(result).toStrictEqual(expectedResult);
