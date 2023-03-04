@@ -1,4 +1,4 @@
-import { connect } from 'amqplib';
+import { connect, Replies } from 'amqplib';
 import { createMockChannel, createMockConnection } from '../mocks/amqplib';
 import { generateJob } from './job-generator';
 
@@ -8,6 +8,12 @@ const MOCK_ENV_AMQP_QUEUE_JOB = 'MOCK_ENV_AMQP_QUEUE_JOB';
 
 const MOCK_AMQP_CONNECTION = createMockConnection();
 const MOCK_AMPQ_CHANNEL = createMockChannel();
+
+const MOCK_REPLY_ASSERT_QUEUE: Replies.AssertQueue = {
+	queue: 'MOCK_QUEUE',
+	messageCount: 1,
+	consumerCount: 2,
+};
 
 jest.mock('amqplib', () => ({
 	connect: jest.fn(),
@@ -63,273 +69,207 @@ describe('.generateJob', () => {
 		});
 
 		describe('and environment variables set', () => {
-			describe('and AMQP server is unavailable', () => {
-				const MOCK_INSTANCE_ERROR = new Error();
-				let result: boolean;
+			const MOCK_INSTANCE_ERROR = new Error();
 
-				beforeAll(async () => {
-					process.env = {
-						AMQP_URL: MOCK_ENV_AMQP_URL,
-						AMQP_QUEUE_JOB: MOCK_ENV_AMQP_QUEUE_JOB,
-					};
-					MOCK_AMQP_CONNECT.mockRejectedValue(MOCK_INSTANCE_ERROR);
-					result = await generateJob(MOCK_MESSAGE);
-				});
+			type ExpectedFlow = {
+				createsChannel: boolean;
+				assertsQueue: boolean;
+				sendsMessageToQueue: boolean;
+				logsWarning: boolean;
+				closesChannel: boolean;
+				closesConnection: boolean;
+			};
 
-				afterAll(() => {
-					MOCK_AMQP_CONNECT.mockReset();
-					SPY_CONSOLE_WARN.mockClear();
-				});
+			describe.each([
+				[
+					'AMQP server is unavailable',
+					MOCK_INSTANCE_ERROR,
+					MOCK_AMPQ_CHANNEL,
+					MOCK_REPLY_ASSERT_QUEUE,
+					true,
+					{
+						createsChannel: false,
+						assertsQueue: false,
+						sendsMessageToQueue: false,
+						logsWarning: true,
+						closesChannel: false,
+						closesConnection: false,
+					},
+					false,
+				],
+				[
+					'AMQP server is available, but unable to create channel',
+					MOCK_AMQP_CONNECTION,
+					MOCK_INSTANCE_ERROR,
+					MOCK_REPLY_ASSERT_QUEUE,
+					true,
+					{
+						createsChannel: true,
+						assertsQueue: false,
+						sendsMessageToQueue: false,
+						logsWarning: true,
+						closesChannel: false,
+						closesConnection: true,
+					},
+					false,
+				],
+				[
+					'AMQP server is available, channel created, but error occured on asserting queue step',
+					MOCK_AMQP_CONNECTION,
+					MOCK_AMPQ_CHANNEL,
+					MOCK_INSTANCE_ERROR,
+					true,
+					{
+						createsChannel: true,
+						assertsQueue: true,
+						sendsMessageToQueue: false,
+						logsWarning: true,
+						closesChannel: true,
+						closesConnection: true,
+					},
+					false,
+				],
+				[
+					'AMQP server is available, channel created, queue asserted successfully, but message not sent',
+					MOCK_AMQP_CONNECTION,
+					MOCK_AMPQ_CHANNEL,
+					MOCK_REPLY_ASSERT_QUEUE,
+					false,
+					{
+						createsChannel: true,
+						assertsQueue: true,
+						sendsMessageToQueue: true,
+						logsWarning: false,
+						closesChannel: true,
+						closesConnection: true,
+					},
+					false,
+				],
+				[
+					'AMQP server is available, channel created, queue asserted successfully, message sent successfully',
+					MOCK_AMQP_CONNECTION,
+					MOCK_AMPQ_CHANNEL,
+					MOCK_REPLY_ASSERT_QUEUE,
+					true,
+					{
+						createsChannel: true,
+						assertsQueue: true,
+						sendsMessageToQueue: true,
+						logsWarning: false,
+						closesChannel: true,
+						closesConnection: true,
+					},
+					true,
+				],
+			])(
+				'and %s',
+				(
+					_statement,
+					mockAMPQConnectResult,
+					mockConnectionCreateChannelResult,
+					mockChannelAssertQueueResult,
+					mockChannelSendToQueueResult,
+					expectedFlow: ExpectedFlow,
+					expectedResult
+				) => {
+					let result: boolean;
 
-				it('calls amqplib.connect method once with expected argument', () => {
-					expect(MOCK_AMQP_CONNECT).toHaveBeenCalledTimes(1);
-					expect(MOCK_AMQP_CONNECT).toHaveBeenCalledWith(MOCK_ENV_AMQP_URL);
-				});
+					beforeAll(async () => {
+						process.env = {
+							AMQP_URL: MOCK_ENV_AMQP_URL,
+							AMQP_QUEUE_JOB: MOCK_ENV_AMQP_QUEUE_JOB,
+						};
+						mockAwaitedResultValue(MOCK_AMQP_CONNECT, mockAMPQConnectResult);
+						mockAwaitedResultValue(
+							MOCK_AMQP_CONNECTION.createChannel,
+							mockConnectionCreateChannelResult
+						);
+						mockAwaitedResultValue(MOCK_AMPQ_CHANNEL.assertQueue, mockChannelAssertQueueResult);
+						MOCK_AMPQ_CHANNEL.sendToQueue.mockReturnValue(mockChannelSendToQueueResult);
+						result = await generateJob(MOCK_MESSAGE);
+					});
 
-				it('logs expected warning', () => {
-					expect(SPY_CONSOLE_WARN).toHaveBeenCalledTimes(1);
-					expect(SPY_CONSOLE_WARN).toHaveBeenCalledWith(
-						'[Job Generator] Error occured:',
-						MOCK_INSTANCE_ERROR
-					);
-				});
+					afterAll(() => {
+						MOCK_AMQP_CONNECT.mockReset();
+						MOCK_AMQP_CONNECTION.createChannel.mockReset();
+						MOCK_AMPQ_CHANNEL.assertQueue.mockReset();
+						MOCK_AMPQ_CHANNEL.sendToQueue.mockReset();
 
-				it('returns expected result', () => {
-					expect(result).toStrictEqual(false);
-				});
-			});
+						MOCK_AMPQ_CHANNEL.close.mockClear();
+						MOCK_AMQP_CONNECTION.close.mockClear();
+						SPY_CONSOLE_WARN.mockClear();
+					});
 
-			describe('and AMQP server is available, but unable to create channel', () => {
-				const MOCK_INSTANCE_ERROR = new Error();
-				let result: boolean;
+					it('calls amqplib.connect method once with expected argument', () => {
+						expect(MOCK_AMQP_CONNECT).toHaveBeenCalledTimes(1);
+						expect(MOCK_AMQP_CONNECT).toHaveBeenCalledWith(MOCK_ENV_AMQP_URL);
+					});
 
-				beforeAll(async () => {
-					process.env = {
-						AMQP_URL: MOCK_ENV_AMQP_URL,
-						AMQP_QUEUE_JOB: MOCK_ENV_AMQP_QUEUE_JOB,
-					};
-					MOCK_AMQP_CONNECTION.createChannel.mockRejectedValue(MOCK_INSTANCE_ERROR);
-					MOCK_AMQP_CONNECT.mockResolvedValue(MOCK_AMQP_CONNECTION);
-					result = await generateJob(MOCK_MESSAGE);
-				});
+					if (expectedFlow.createsChannel) {
+						it('calls Connection.createChannel method once', () => {
+							expect(MOCK_AMQP_CONNECTION.createChannel).toHaveBeenCalledTimes(1);
+						});
+					}
 
-				afterAll(() => {
-					MOCK_AMQP_CONNECT.mockReset();
-					MOCK_AMQP_CONNECTION.createChannel.mockReset();
-					MOCK_AMQP_CONNECTION.close.mockClear();
-					SPY_CONSOLE_WARN.mockClear();
-				});
+					if (expectedFlow.assertsQueue) {
+						it('calls Channel.assertQueue method once with expected argument', () => {
+							expect(MOCK_AMPQ_CHANNEL.assertQueue).toHaveBeenCalledTimes(1);
+							expect(MOCK_AMPQ_CHANNEL.assertQueue).toHaveBeenCalledWith(MOCK_ENV_AMQP_QUEUE_JOB);
+						});
+					}
 
-				it('calls amqplib.connect method once with expected argument', () => {
-					expect(MOCK_AMQP_CONNECT).toHaveBeenCalledTimes(1);
-					expect(MOCK_AMQP_CONNECT).toHaveBeenCalledWith(MOCK_ENV_AMQP_URL);
-				});
+					if (expectedFlow.sendsMessageToQueue) {
+						it('calls Channel.sendToQueue method once with expected arguments', () => {
+							expect(MOCK_AMPQ_CHANNEL.sendToQueue).toHaveBeenCalledTimes(1);
+							const expectedBuffer = Buffer.from(MOCK_MESSAGE);
+							expect(MOCK_AMPQ_CHANNEL.sendToQueue).toHaveBeenCalledWith(
+								MOCK_ENV_AMQP_QUEUE_JOB,
+								expectedBuffer,
+								{
+									persistent: true,
+								}
+							);
+						});
+					}
 
-				it('calls Connection.createChannel method once', () => {
-					expect(MOCK_AMQP_CONNECTION.createChannel).toHaveBeenCalledTimes(1);
-				});
+					if (expectedFlow.logsWarning) {
+						it('logs expected warning', () => {
+							expect(SPY_CONSOLE_WARN).toHaveBeenCalledTimes(1);
+							expect(SPY_CONSOLE_WARN).toHaveBeenCalledWith(
+								'[Job Generator] Error occured:',
+								MOCK_INSTANCE_ERROR
+							);
+						});
+					}
 
-				it('logs expected warning', () => {
-					expect(SPY_CONSOLE_WARN).toHaveBeenCalledTimes(1);
-					expect(SPY_CONSOLE_WARN).toHaveBeenCalledWith(
-						'[Job Generator] Error occured:',
-						MOCK_INSTANCE_ERROR
-					);
-				});
+					if (expectedFlow.closesChannel) {
+						it('closes AMQP channel', () => {
+							expect(MOCK_AMPQ_CHANNEL.close).toHaveBeenCalledTimes(1);
+						});
+					}
 
-				it('closes AMQP connection', () => {
-					expect(MOCK_AMQP_CONNECTION.close).toHaveBeenCalledTimes(1);
-				});
+					if (expectedFlow.closesConnection) {
+						it('closes AMQP connection', () => {
+							expect(MOCK_AMQP_CONNECTION.close).toHaveBeenCalledTimes(1);
+						});
+					}
 
-				it('returns expected result', () => {
-					expect(result).toStrictEqual(false);
-				});
-			});
-
-			describe('and AMQP server is available, channel created, but error occured on asserting queue step', () => {
-				const MOCK_INSTANCE_ERROR = new Error();
-				let result: boolean;
-
-				beforeAll(async () => {
-					process.env = {
-						AMQP_URL: MOCK_ENV_AMQP_URL,
-						AMQP_QUEUE_JOB: MOCK_ENV_AMQP_QUEUE_JOB,
-					};
-					MOCK_AMQP_CONNECT.mockResolvedValue(MOCK_AMQP_CONNECTION);
-					MOCK_AMQP_CONNECTION.createChannel.mockResolvedValue(MOCK_AMPQ_CHANNEL);
-					MOCK_AMPQ_CHANNEL.assertQueue.mockRejectedValue(MOCK_INSTANCE_ERROR);
-					result = await generateJob(MOCK_MESSAGE);
-				});
-
-				afterAll(() => {
-					MOCK_AMQP_CONNECT.mockReset();
-					MOCK_AMQP_CONNECTION.createChannel.mockReset();
-					MOCK_AMPQ_CHANNEL.assertQueue.mockReset();
-					MOCK_AMPQ_CHANNEL.close.mockClear();
-					MOCK_AMQP_CONNECTION.close.mockClear();
-					SPY_CONSOLE_WARN.mockClear();
-				});
-
-				it('calls amqplib.connect method once with expected argument', () => {
-					expect(MOCK_AMQP_CONNECT).toHaveBeenCalledTimes(1);
-					expect(MOCK_AMQP_CONNECT).toHaveBeenCalledWith(MOCK_ENV_AMQP_URL);
-				});
-
-				it('calls Conenction.createChannel method once', () => {
-					expect(MOCK_AMQP_CONNECTION.createChannel).toHaveBeenCalledTimes(1);
-				});
-
-				it('calls Channel.assertQueue method once with expected argument', () => {
-					expect(MOCK_AMPQ_CHANNEL.assertQueue).toHaveBeenCalledTimes(1);
-					expect(MOCK_AMPQ_CHANNEL.assertQueue).toHaveBeenCalledWith(MOCK_ENV_AMQP_QUEUE_JOB);
-				});
-
-				it('logs expected warning', () => {
-					expect(SPY_CONSOLE_WARN).toHaveBeenCalledTimes(1);
-					expect(SPY_CONSOLE_WARN).toHaveBeenCalledWith(
-						'[Job Generator] Error occured:',
-						MOCK_INSTANCE_ERROR
-					);
-				});
-
-				it('closes AMQP channel', () => {
-					expect(MOCK_AMPQ_CHANNEL.close).toHaveBeenCalledTimes(1);
-				});
-
-				it('closes AMQP connection', () => {
-					expect(MOCK_AMQP_CONNECTION.close).toHaveBeenCalledTimes(1);
-				});
-
-				it('returns expected result', () => {
-					expect(result).toStrictEqual(false);
-				});
-			});
-
-			describe('and AMQP server is available, channel created, queue asserted successfully, but message not sent', () => {
-				let result: boolean;
-
-				beforeAll(async () => {
-					process.env = {
-						AMQP_URL: MOCK_ENV_AMQP_URL,
-						AMQP_QUEUE_JOB: MOCK_ENV_AMQP_QUEUE_JOB,
-					};
-					MOCK_AMPQ_CHANNEL.sendToQueue.mockReturnValue(false);
-					MOCK_AMQP_CONNECT.mockResolvedValue(MOCK_AMQP_CONNECTION);
-					MOCK_AMQP_CONNECTION.createChannel.mockResolvedValue(MOCK_AMPQ_CHANNEL);
-					result = await generateJob(MOCK_MESSAGE);
-				});
-
-				afterAll(() => {
-					MOCK_AMQP_CONNECT.mockReset();
-					MOCK_AMPQ_CHANNEL.sendToQueue.mockReset();
-					MOCK_AMPQ_CHANNEL.assertQueue.mockClear();
-					MOCK_AMQP_CONNECTION.createChannel.mockReset();
-					MOCK_AMPQ_CHANNEL.close.mockClear();
-					MOCK_AMQP_CONNECTION.close.mockClear();
-					SPY_CONSOLE_WARN.mockClear();
-				});
-
-				it('calls amqplib.connect method once with expected argument', () => {
-					expect(MOCK_AMQP_CONNECT).toHaveBeenCalledTimes(1);
-					expect(MOCK_AMQP_CONNECT).toHaveBeenCalledWith(MOCK_ENV_AMQP_URL);
-				});
-
-				it('calls Conenction.createChannel method once', () => {
-					expect(MOCK_AMQP_CONNECTION.createChannel).toHaveBeenCalledTimes(1);
-				});
-
-				it('calls Channel.assertQueue method once with expected argument', () => {
-					expect(MOCK_AMPQ_CHANNEL.assertQueue).toHaveBeenCalledTimes(1);
-					expect(MOCK_AMPQ_CHANNEL.assertQueue).toHaveBeenCalledWith(MOCK_ENV_AMQP_QUEUE_JOB);
-				});
-
-				it('calls Channel.sendToQueue method once with expected arguments', () => {
-					expect(MOCK_AMPQ_CHANNEL.sendToQueue).toHaveBeenCalledTimes(1);
-					const expectedBuffer = Buffer.from(MOCK_MESSAGE);
-					expect(MOCK_AMPQ_CHANNEL.sendToQueue).toHaveBeenCalledWith(
-						MOCK_ENV_AMQP_QUEUE_JOB,
-						expectedBuffer,
-						{
-							persistent: true,
-						}
-					);
-				});
-
-				it('closes AMQP channel', () => {
-					expect(MOCK_AMPQ_CHANNEL.close).toHaveBeenCalledTimes(1);
-				});
-
-				it('closes AMQP connection', () => {
-					expect(MOCK_AMQP_CONNECTION.close).toHaveBeenCalledTimes(1);
-				});
-
-				it('returns expected result', () => {
-					expect(result).toStrictEqual(false);
-				});
-			});
-
-			describe('and AMQP server is available, channel created, queue asserted successfully, message sent successfully', () => {
-				let result: boolean;
-
-				beforeAll(async () => {
-					process.env = {
-						AMQP_URL: MOCK_ENV_AMQP_URL,
-						AMQP_QUEUE_JOB: MOCK_ENV_AMQP_QUEUE_JOB,
-					};
-					MOCK_AMPQ_CHANNEL.sendToQueue.mockReturnValue(true);
-					MOCK_AMQP_CONNECT.mockResolvedValue(MOCK_AMQP_CONNECTION);
-					MOCK_AMQP_CONNECTION.createChannel.mockResolvedValue(MOCK_AMPQ_CHANNEL);
-					result = await generateJob(MOCK_MESSAGE);
-				});
-
-				afterAll(() => {
-					MOCK_AMPQ_CHANNEL.sendToQueue.mockReset();
-					MOCK_AMPQ_CHANNEL.assertQueue.mockClear();
-					MOCK_AMQP_CONNECTION.createChannel.mockReset();
-					MOCK_AMPQ_CHANNEL.close.mockClear();
-					MOCK_AMQP_CONNECTION.close.mockClear();
-					MOCK_AMQP_CONNECT.mockReset();
-					SPY_CONSOLE_WARN.mockClear();
-				});
-
-				it('calls amqplib.connect method once with expected argument', () => {
-					expect(MOCK_AMQP_CONNECT).toHaveBeenCalledTimes(1);
-					expect(MOCK_AMQP_CONNECT).toHaveBeenCalledWith(MOCK_ENV_AMQP_URL);
-				});
-
-				it('calls Conenction.createChannel method once', () => {
-					expect(MOCK_AMQP_CONNECTION.createChannel).toHaveBeenCalledTimes(1);
-				});
-
-				it('calls Channel.assertQueue method once with expected argument', () => {
-					expect(MOCK_AMPQ_CHANNEL.assertQueue).toHaveBeenCalledTimes(1);
-					expect(MOCK_AMPQ_CHANNEL.assertQueue).toHaveBeenCalledWith(MOCK_ENV_AMQP_QUEUE_JOB);
-				});
-
-				it('calls Channel.sendToQueue method once with expected arguments', () => {
-					expect(MOCK_AMPQ_CHANNEL.sendToQueue).toHaveBeenCalledTimes(1);
-					const expectedBuffer = Buffer.from(MOCK_MESSAGE);
-					expect(MOCK_AMPQ_CHANNEL.sendToQueue).toHaveBeenCalledWith(
-						MOCK_ENV_AMQP_QUEUE_JOB,
-						expectedBuffer,
-						{
-							persistent: true,
-						}
-					);
-				});
-
-				it('closes AMQP channel', () => {
-					expect(MOCK_AMPQ_CHANNEL.close).toHaveBeenCalledTimes(1);
-				});
-
-				it('closes AMQP connection', () => {
-					expect(MOCK_AMQP_CONNECTION.close).toHaveBeenCalledTimes(1);
-				});
-
-				it('returns expected result', () => {
-					expect(result).toStrictEqual(true);
-				});
-			});
+					it('returns expected result', () => {
+						expect(result).toStrictEqual(expectedResult);
+					});
+				}
+			);
 		});
 	});
 });
+
+function mockAwaitedResultValue<TMockedFn extends jest.Mock>(
+	mockedFn: TMockedFn,
+	resultValue: Awaited<ReturnType<TMockedFn>> | Error
+) {
+	if (resultValue instanceof Error) {
+		mockedFn.mockRejectedValue(resultValue);
+	} else {
+		mockedFn.mockResolvedValue(resultValue);
+	}
+}
