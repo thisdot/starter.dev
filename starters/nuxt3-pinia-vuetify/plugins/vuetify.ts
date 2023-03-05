@@ -1,10 +1,10 @@
 // plugins/vuetify.js
-import { defineNuxtPlugin } from '#app';
 import { createVuetify } from 'vuetify';
 import { VBtn } from 'vuetify/components/VBtn';
 import { VApp } from 'vuetify/components/VApp';
 
 export const Vuetify = createVuetify({
+	ssr: true,
 	theme: {
 		defaultTheme: 'customTheme',
 		themes: {

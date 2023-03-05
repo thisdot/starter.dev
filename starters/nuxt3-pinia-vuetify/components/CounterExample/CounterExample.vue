@@ -50,7 +50,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useCounterStore } from '~~/store/counterStore';
+import { useCounterStore } from '@/store/counterStore';
 
 const counterState = useCounterStore();
 

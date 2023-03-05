@@ -1,5 +1,4 @@
 import 'vuetify/dist/vuetify.css';
-import { setup } from '@storybook/vue3';
 import { create } from '@storybook/theming';
 import { action } from '@storybook/addon-actions';
 import { app, addDecorator } from '@storybook/vue3';

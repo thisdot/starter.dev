@@ -2,7 +2,7 @@ const path = require('path');
 const { loadConfigFromFile, mergeConfig } = require('vite');
 
 module.exports = {
-	stories: ['../components/**/*.stories.@(js|jsx|ts|tsx)'],
+	stories: [],
 	addons: [
 		'@storybook/addon-essentials',
 		'@storybook/addon-a11y',
@@ -14,8 +14,15 @@ module.exports = {
 	},
 	async viteFinal(config, { configType }) {
 		const { config: userConfig } = await loadConfigFromFile(
-			path.resolve(__dirname, '../vitest.config.ts')
+			path.resolve(__dirname, '../vite.config.ts')
 		);
+
+		config.resolve.alias = {
+			...config.resolve.alias,
+			'@': path.resolve(__dirname, '../'),
+			'~': path.resolve(__dirname, '../'),
+			'~~': path.resolve(__dirname, '../'),
+		};
 
 		return mergeConfig(config, {
 			...userConfig,
