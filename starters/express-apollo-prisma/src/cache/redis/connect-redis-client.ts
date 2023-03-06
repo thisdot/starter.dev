@@ -53,8 +53,7 @@ export const connectRedisClient = async (
 		clientInstances[url] = client;
 		return client;
 	} catch (error) {
-		console.warn({ error });
-		console.warn('Cannot connect Redis client.');
+		console.warn('Cannot connect Redis client.', error);
 	}
 
 	return undefined;
