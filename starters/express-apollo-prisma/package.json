@@ -4,7 +4,7 @@
 	"description": "Express, Apollo and Prisma",
 	"keywords": [
 		"express",
-		"apollo",
+		"apollo-server",
 		"prisma"
 	],
 	"hasShowcase": false,
