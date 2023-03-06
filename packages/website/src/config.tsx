@@ -44,6 +44,8 @@ import {
   TypeOrmIcon,
   SolidStartIcon,
   TanstackIcon,
+  ExpoIcon,
+  ZustandIcon,
 } from './icons';
 
 export interface NavItem {
@@ -358,6 +360,18 @@ export const TECHNOLOGIES = [
     name: 'Postgres',
     tags: ['Data Management'],
     Icon: (props) => <PostgresIcon {...props} />,
+  },
+  {
+    key: 'expo',
+    name: 'Expo',
+    tags: ['Tooling'],
+    Icon: (props) => <ExpoIcon {...props} />,
+  },
+  {
+    key: 'zustand',
+    name: 'Zustand',
+    tags: ['Data Management'],
+    Icon: (props) => <ZustandIcon {...props} />,
   },
 ];
 
