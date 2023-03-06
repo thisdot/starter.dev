@@ -31,6 +31,8 @@ describe('Greeting', () => {
   });
 
   it('should show the mocked greeting', async () => {
-    expect(await wrapper.findByText('Hi Learner from This Dot Labs!')).toBeTruthy();
+    expect(
+      await wrapper.findByText('Hi Learner from This Dot Labs!')
+    ).toBeTruthy();
   });
 });
