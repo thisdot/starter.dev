@@ -254,7 +254,7 @@ describe('RedisCacheAPIWrapper', () => {
 				if (expectedWarningMessage) {
 					it('logs expected warning', () => {
 						expect(MOCK_CONSOLE_WARN).toHaveBeenCalledTimes(1);
-						expect(MOCK_CONSOLE_WARN).toHaveBeenCalledWith('Redis cache unavailable.');
+						expect(MOCK_CONSOLE_WARN).toHaveBeenCalledWith(expectedWarningMessage);
 					});
 				}
 			});
