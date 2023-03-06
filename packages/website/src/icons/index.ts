@@ -38,6 +38,7 @@ export { ShareIcon } from './ShareIcon';
 export { LinkedinIcon } from './LinkedinIcon';
 export { QwikIcon } from './QwikIcon';
 export { SolidJsIcon } from './SolidJsIcon';
+export { ChakraIcon } from './ChakraIcon';
 export { ServerlessIcon } from './ServerlessIcon';
 export { DenoIcon } from './DenoIcon.tsx';
 export { ExpressIcon } from './ExpressIcon';

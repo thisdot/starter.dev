@@ -36,6 +36,7 @@ import {
   PiniaIcon,
   QwikIcon,
   SolidJsIcon,
+  ChakraIcon,
   ServerlessIcon,
   DenoIcon,
   ExpressIcon,
@@ -221,6 +222,12 @@ export const TECHNOLOGIES = [
     name: 'Bootstrap',
     tags: ['Styling'],
     Icon: (props) => <BootstrapIcon {...props} />,
+  },
+  {
+    key: 'chakra-ui',
+    name: 'Chakra UI',
+    tags: ['Styling'],
+    Icon: (props) => <ChakraIcon {...props} />,
   },
   {
     key: 'astro',
