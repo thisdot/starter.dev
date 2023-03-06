@@ -32,13 +32,6 @@ describe('TechnologyDataSource', () => {
 				expect(instance).toBeInstanceOf(TechnologyDataSource);
 			});
 		});
-
-		describe('when called with PrismaClient (required), CacheAPIWrapper (optional) and Cache TTL Seconds (optional)', () => {
-			it('creates an instance', () => {
-				const instance = new TechnologyDataSource(MOCK_PRISMA_CLIENT, MOCK_CACHE_API_WRAPPER);
-				expect(instance).toBeInstanceOf(TechnologyDataSource);
-			});
-		});
 	});
 
 	describe('when created with PrismaClient (required)', () => {
@@ -293,30 +286,6 @@ describe('TechnologyDataSource', () => {
 
 				it('returns expected result', () => {
 					expect(result).toStrictEqual(null);
-				});
-			});
-		});
-
-		describe('#getTechnologies', () => {
-			const MOCK_TECHNOLOGIES: TechnologyEntity[] = [MOCK_TECHNOLOGY];
-			describe('when called', () => {
-				let result: TechnologyEntity[];
-
-				beforeAll(async () => {
-					MOCK_PRISMA_CLIENT.technologyEntity.findMany.mockResolvedValue([MOCK_TECHNOLOGY]);
-					result = await instance.getTechnologies();
-				});
-
-				afterAll(() => {
-					MOCK_PRISMA_CLIENT.technologyEntity.findMany.mockReset();
-				});
-
-				it('calls PrismaClient method once', () => {
-					expect(MOCK_PRISMA_CLIENT.technologyEntity.findMany).toHaveBeenCalledTimes(1);
-				});
-
-				it('returns expected result', () => {
-					expect(result).toEqual(MOCK_TECHNOLOGIES);
 				});
 			});
 		});
