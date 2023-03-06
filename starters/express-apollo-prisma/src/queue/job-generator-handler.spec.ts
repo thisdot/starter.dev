@@ -42,10 +42,12 @@ describe('.jobGeneratorHandler', () => {
 				MOCK_REQUEST.body = originalBody;
 			});
 
-			describe('and job generated', () => {
-				const EXPECTED_STATUS_CODE = 204;
+			describe.each([
+				['job generated', true, 204],
+				['job not generated', false, 506],
+			])('and %s', (_statement, mockGenerateJobResult, expectedStatusCode) => {
 				beforeAll(async () => {
-					MOCK_GENERATE_JOB.mockResolvedValue(true);
+					MOCK_GENERATE_JOB.mockResolvedValue(mockGenerateJobResult);
 					await jobGeneratorHandler(MOCK_REQUEST, MOCK_RESPONSE, MOCK_NEXT_DELEGATE);
 				});
 
@@ -61,30 +63,7 @@ describe('.jobGeneratorHandler', () => {
 
 				it('calls Response.sendStatus method once with expected argument', () => {
 					expect(MOCK_RESPONSE.sendStatus).toHaveBeenCalledTimes(1);
-					expect(MOCK_RESPONSE.sendStatus).toHaveBeenCalledWith(EXPECTED_STATUS_CODE);
-				});
-			});
-
-			describe('and job not generated', () => {
-				const EXPECTED_STATUS_CODE = 506;
-				beforeAll(async () => {
-					MOCK_GENERATE_JOB.mockResolvedValue(false);
-					await jobGeneratorHandler(MOCK_REQUEST, MOCK_RESPONSE, MOCK_NEXT_DELEGATE);
-				});
-
-				afterAll(() => {
-					MOCK_GENERATE_JOB.mockReset();
-					MOCK_RESPONSE.sendStatus.mockClear();
-				});
-
-				it('calls .generateJob with expected argument', () => {
-					expect(MOCK_GENERATE_JOB).toHaveBeenCalledTimes(1);
-					expect(MOCK_GENERATE_JOB).toHaveBeenCalledWith(expectedMessage);
-				});
-
-				it('calls Response.sendStatus method once with expected argument', () => {
-					expect(MOCK_RESPONSE.sendStatus).toHaveBeenCalledTimes(1);
-					expect(MOCK_RESPONSE.sendStatus).toHaveBeenCalledWith(EXPECTED_STATUS_CODE);
+					expect(MOCK_RESPONSE.sendStatus).toHaveBeenCalledWith(expectedStatusCode);
 				});
 			});
 		});
