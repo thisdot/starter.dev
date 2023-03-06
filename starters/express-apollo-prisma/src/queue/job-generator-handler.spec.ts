@@ -13,11 +13,8 @@ jest.mock('./job-generator', () => ({
 const MOCK_GENERATE_JOB = generateJob as jest.MockedFn<typeof generateJob>;
 const MOCK_REQUEST = createMockExpressRequest();
 const MOCK_RESPONSE = createMockExpressResponse();
-const MOCK_RESPONSE_SEND_STATUS = MOCK_RESPONSE.sendStatus as jest.MockedFn<
-	typeof MOCK_RESPONSE.sendStatus
->;
 
-const MOCK_NEXT = jest.fn();
+const MOCK_NEXT_DELEGATE = jest.fn();
 
 describe('.jobGeneratorHandler', () => {
 	describe('when called', () => {
@@ -49,12 +46,12 @@ describe('.jobGeneratorHandler', () => {
 				const EXPECTED_STATUS_CODE = 204;
 				beforeAll(async () => {
 					MOCK_GENERATE_JOB.mockResolvedValue(true);
-					await jobGeneratorHandler(MOCK_REQUEST, MOCK_RESPONSE, MOCK_NEXT);
+					await jobGeneratorHandler(MOCK_REQUEST, MOCK_RESPONSE, MOCK_NEXT_DELEGATE);
 				});
 
 				afterAll(() => {
 					MOCK_GENERATE_JOB.mockReset();
-					MOCK_RESPONSE_SEND_STATUS.mockClear();
+					MOCK_RESPONSE.sendStatus.mockClear();
 				});
 
 				it('calls .generateJob with expected argument', () => {
@@ -63,8 +60,8 @@ describe('.jobGeneratorHandler', () => {
 				});
 
 				it('calls Response.sendStatus method once with expected argument', () => {
-					expect(MOCK_RESPONSE_SEND_STATUS).toHaveBeenCalledTimes(1);
-					expect(MOCK_RESPONSE_SEND_STATUS).toHaveBeenCalledWith(EXPECTED_STATUS_CODE);
+					expect(MOCK_RESPONSE.sendStatus).toHaveBeenCalledTimes(1);
+					expect(MOCK_RESPONSE.sendStatus).toHaveBeenCalledWith(EXPECTED_STATUS_CODE);
 				});
 			});
 
@@ -72,12 +69,12 @@ describe('.jobGeneratorHandler', () => {
 				const EXPECTED_STATUS_CODE = 506;
 				beforeAll(async () => {
 					MOCK_GENERATE_JOB.mockResolvedValue(false);
-					await jobGeneratorHandler(MOCK_REQUEST, MOCK_RESPONSE, MOCK_NEXT);
+					await jobGeneratorHandler(MOCK_REQUEST, MOCK_RESPONSE, MOCK_NEXT_DELEGATE);
 				});
 
 				afterAll(() => {
 					MOCK_GENERATE_JOB.mockReset();
-					MOCK_RESPONSE_SEND_STATUS.mockClear();
+					MOCK_RESPONSE.sendStatus.mockClear();
 				});
 
 				it('calls .generateJob with expected argument', () => {
@@ -86,8 +83,8 @@ describe('.jobGeneratorHandler', () => {
 				});
 
 				it('calls Response.sendStatus method once with expected argument', () => {
-					expect(MOCK_RESPONSE_SEND_STATUS).toHaveBeenCalledTimes(1);
-					expect(MOCK_RESPONSE_SEND_STATUS).toHaveBeenCalledWith(EXPECTED_STATUS_CODE);
+					expect(MOCK_RESPONSE.sendStatus).toHaveBeenCalledTimes(1);
+					expect(MOCK_RESPONSE.sendStatus).toHaveBeenCalledWith(EXPECTED_STATUS_CODE);
 				});
 			});
 		});

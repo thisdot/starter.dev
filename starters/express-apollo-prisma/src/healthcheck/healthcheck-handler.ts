@@ -12,7 +12,7 @@ export type CreateHealthcheckHandlerOptions = {
 
 export const createHealthcheckHandler = (
 	options: CreateHealthcheckHandlerOptions
-): RequestHandler<Record<string, never>, HealthCheckResult> => {
+): RequestHandler => {
 	return async (req: Request, res: Response) => {
 		const result: HealthCheckResult = {
 			cacheDatabase: await getRedisHealth(options.redisClient),
