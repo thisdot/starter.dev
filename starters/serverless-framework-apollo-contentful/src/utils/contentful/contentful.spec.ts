@@ -41,9 +41,7 @@ describe('.getEnviroment', () => {
 		const mockGetSpaceResult = await mockGetSpace.mock.results[0].value;
 		const mockGetEnvironment = mockGetSpaceResult.getEnvironment;
 		expect(mockGetEnvironment).toHaveBeenCalledTimes(1);
-		expect(mockGetEnvironment).toHaveBeenCalledWith(
-			'MOCK_CONTENTFUL_ENVIRONMENT'
-		);
+		expect(mockGetEnvironment).toHaveBeenCalledWith('MOCK_CONTENTFUL_ENVIRONMENT');
 	});
 
 	it('returns expected result', () => {

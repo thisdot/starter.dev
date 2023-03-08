@@ -1,9 +1,4 @@
-import {
-	APIGatewayProxyEvent,
-	Context,
-	Callback,
-	APIGatewayProxyResult,
-} from 'aws-lambda';
+import { APIGatewayProxyEvent, Context, Callback, APIGatewayProxyResult } from 'aws-lambda';
 import { handler, HealthCheckResult } from './healthcheck';
 import { getContentfulHealth } from '../utils/contentful';
 import { getRedisHealth } from '../utils/redis';
@@ -21,26 +16,10 @@ jest.mock('../utils/redis', () => ({
 describe('healthcheck', () => {
 	describe('when called', () => {
 		const CASES: [string, HealthCheckResult, number][] = [
-			[
-				'both cachedDatabase & contentful pass',
-				{ cacheDatabase: true, contentful: true },
-				200,
-			],
-			[
-				'both cachedDatabase & contentful fail',
-				{ cacheDatabase: false, contentful: false },
-				503,
-			],
-			[
-				'cachedDatabase fails & contentful passes',
-				{ cacheDatabase: false, contentful: true },
-				503,
-			],
-			[
-				'cachedDatabase passes & contentful fails',
-				{ cacheDatabase: true, contentful: false },
-				503,
-			],
+			['both cachedDatabase & contentful pass', { cacheDatabase: true, contentful: true }, 200],
+			['both cachedDatabase & contentful fail', { cacheDatabase: false, contentful: false }, 503],
+			['cachedDatabase fails & contentful passes', { cacheDatabase: false, contentful: true }, 503],
+			['cachedDatabase passes & contentful fails', { cacheDatabase: true, contentful: false }, 503],
 		];
 
 		describe.each(CASES)('%s', (_, healthcheck, expectedCode) => {
@@ -56,11 +35,7 @@ describe('healthcheck', () => {
 					contentful: await getContentfulHealth(),
 				};
 
-				subject = await handler(
-					{} as APIGatewayProxyEvent,
-					{} as Context,
-					{} as Callback
-				);
+				subject = await handler({} as APIGatewayProxyEvent, {} as Context, {} as Callback);
 			});
 			it('should return correct status code and correct JSON body', () => {
 				expect(subject?.statusCode).toBe(expectedCode);

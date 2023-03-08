@@ -49,10 +49,8 @@ export class TechnologyModel {
 	) => {
 		const environment = await getEnvironment();
 		const entry = await environment.getEntry(id);
-		entry.fields.displayName['en-US'] =
-			displayName ?? entry.fields.displayName['en-US'];
-		entry.fields.description['en-US'] =
-			description ?? entry.fields.description['en-US'];
+		entry.fields.displayName['en-US'] = displayName ?? entry.fields.displayName['en-US'];
+		entry.fields.description['en-US'] = description ?? entry.fields.description['en-US'];
 		entry.fields.url['en-US'] = url ?? entry.fields.url['en-US'];
 		await entry.update();
 		await entry.publish();

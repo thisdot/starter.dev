@@ -16,14 +16,12 @@ dotenv.config();
 	});
 	await TechnologyModel.create({
 		displayName: 'Node.js',
-		description:
-			'Node.js® is an open-source, cross-platform JavaScript runtime environment.',
+		description: 'Node.js® is an open-source, cross-platform JavaScript runtime environment.',
 		url: 'https://nodejs.framework.dev/',
 	});
 	await TechnologyModel.create({
 		displayName: 'Express',
-		description:
-			'Express is a minimal and flexible Node.js web application framework.',
+		description: 'Express is a minimal and flexible Node.js web application framework.',
 		url: 'https://www.npmjs.com/package/express',
 	});
 

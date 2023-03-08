@@ -29,13 +29,10 @@ type TechnologyModelStaticPartial = Pick<
 	Exclude<keyof typeof TechnologyModel, 'prototype'>
 >;
 type TechnologyModelStaticPartialMock = {
-	[K in keyof TechnologyModelStaticPartial]: jest.MockedFn<
-		TechnologyModelStaticPartial[K]
-	>;
+	[K in keyof TechnologyModelStaticPartial]: jest.MockedFn<TechnologyModelStaticPartial[K]>;
 };
 
-const MOCK_TECHNOLOGY_MODEL_STATIC =
-	TechnologyModel as unknown as TechnologyModelStaticPartialMock;
+const MOCK_TECHNOLOGY_MODEL_STATIC = TechnologyModel as unknown as TechnologyModelStaticPartialMock;
 
 const MOCK_PARENT_QUERY: ResolversParentTypes['Query'] = {};
 const MOCK_PARENT_MUTATION: ResolversParentTypes['Mutation'] = {};
@@ -109,9 +106,7 @@ describe('technologyResolvers', () => {
 
 					it('calls TechnologyModel.get method once with expected argument', () => {
 						expect(MOCK_TECHNOLOGY_MODEL_STATIC.get).toHaveBeenCalledTimes(1);
-						expect(MOCK_TECHNOLOGY_MODEL_STATIC.get).toHaveBeenCalledWith(
-							MOCK_REQUESTED_ID
-						);
+						expect(MOCK_TECHNOLOGY_MODEL_STATIC.get).toHaveBeenCalledWith(MOCK_REQUESTED_ID);
 					});
 
 					it('returns expected result', () => {
@@ -150,12 +145,7 @@ describe('technologyResolvers', () => {
 					beforeAll(async () => {
 						const MOCK_RETURN = [MOCK_ENTRY_1, MOCK_ENTRY_2];
 						MOCK_TECHNOLOGY_MODEL_STATIC.getAll.mockResolvedValue(MOCK_RETURN);
-						result = await RESOLVER_FN(
-							MOCK_PARENT_QUERY,
-							{},
-							MOCK_CONTEXT,
-							MOCK_RESOLVE_INFO
-						);
+						result = await RESOLVER_FN(MOCK_PARENT_QUERY, {}, MOCK_CONTEXT, MOCK_RESOLVE_INFO);
 					});
 
 					afterAll(() => {
@@ -163,9 +153,7 @@ describe('technologyResolvers', () => {
 					});
 
 					it('calls TechnologyModel.getAll method once', () => {
-						expect(MOCK_TECHNOLOGY_MODEL_STATIC.getAll).toHaveBeenCalledTimes(
-							1
-						);
+						expect(MOCK_TECHNOLOGY_MODEL_STATIC.getAll).toHaveBeenCalledTimes(1);
 					});
 
 					it('returns expected result', () => {
@@ -180,9 +168,7 @@ describe('technologyResolvers', () => {
 
 	describe('.Mutation', () => {
 		describe('.createTechnology', () => {
-			assert(
-				technologyResolvers.Mutation?.createTechnology instanceof Function
-			);
+			assert(technologyResolvers.Mutation?.createTechnology instanceof Function);
 			const RESOLVER_FN = technologyResolvers.Mutation?.createTechnology;
 
 			it('has correct implementation', () => {
@@ -238,9 +224,7 @@ describe('technologyResolvers', () => {
 
 	describe('.Mutation', () => {
 		describe('.updateTechnology', () => {
-			assert(
-				technologyResolvers.Mutation?.updateTechnology instanceof Function
-			);
+			assert(technologyResolvers.Mutation?.updateTechnology instanceof Function);
 			const RESOLVER_FN = technologyResolvers.Mutation?.updateTechnology;
 
 			it('has correct implementation', () => {
@@ -255,10 +239,7 @@ describe('technologyResolvers', () => {
 					url: 'MOCK_URL',
 				};
 				const MOCK_ID_ARG = 'MOCK_ID';
-				const MOCK_UPDATE_TECHNOLOGY_ARGS: RequireFields<
-					MutationUpdateTechnologyArgs,
-					'id'
-				> = {
+				const MOCK_UPDATE_TECHNOLOGY_ARGS: RequireFields<MutationUpdateTechnologyArgs, 'id'> = {
 					id: MOCK_ID_ARG,
 					...MOCK_UPDATED_FIELDS,
 				};

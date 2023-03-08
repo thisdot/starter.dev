@@ -15,17 +15,8 @@ export const technologyTypeDefs = gql`
 
 	type Mutation {
 		"Technology: create, read and delete operations"
-		createTechnology(
-			displayName: String!
-			description: String
-			url: String
-		): Technology
-		updateTechnology(
-			id: ID!
-			displayName: String
-			description: String
-			url: String
-		): Technology
+		createTechnology(displayName: String!, description: String, url: String): Technology
+		updateTechnology(id: ID!, displayName: String, description: String, url: String): Technology
 		deleteTechnology(id: ID!): ID
 	}
 `;

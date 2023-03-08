@@ -10,9 +10,7 @@ const client = createClient({
 
 export async function getEnvironment(): Promise<Environment> {
 	const space = await client.getSpace(`${process.env.CONTENTFUL_SPACE_ID}`);
-	const environment = await space.getEnvironment(
-		`${process.env.CONTENTFUL_ENVIRONMENT}`
-	);
+	const environment = await space.getEnvironment(`${process.env.CONTENTFUL_ENVIRONMENT}`);
 
 	return environment;
 }

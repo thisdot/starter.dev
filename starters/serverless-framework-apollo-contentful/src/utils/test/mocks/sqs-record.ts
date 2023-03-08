@@ -1,4 +1,4 @@
-import { SQSRecord, SQSRecordAttributes, SQSEvent } from 'aws-lambda';
+import { SQSEvent, SQSRecord, SQSRecordAttributes } from 'aws-lambda';
 
 const mockSQSRecordAttributes = (messageId: string): SQSRecordAttributes => ({
 	ApproximateReceiveCount: `${messageId}__ApproximateReceiveCount`,
@@ -27,5 +27,5 @@ const mockSQSRecord = (): SQSRecord => {
 export const mockSQSEvent = (mockRecordsCount: number): SQSEvent => ({
 	Records: Array(mockRecordsCount)
 		.fill(undefined)
-		.map((_) => mockSQSRecord()),
+		.map(() => mockSQSRecord()),
 });

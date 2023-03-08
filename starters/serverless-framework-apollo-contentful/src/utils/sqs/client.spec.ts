@@ -21,9 +21,7 @@ describe('.getClient', () => {
 
 	beforeAll(() => {
 		originalEnv = process.env;
-		MOCK_SQS_CLIENT_CONSTRUCTOR.mockReturnValue(
-			EXPECTED_REFERENCE_SQS_CLIENT_INSTANCE
-		);
+		MOCK_SQS_CLIENT_CONSTRUCTOR.mockReturnValue(EXPECTED_REFERENCE_SQS_CLIENT_INSTANCE);
 	});
 
 	afterAll(() => {
@@ -62,9 +60,7 @@ describe('.getClient', () => {
 
 				it('calls SQSClient constructor with expected constructor arguments', () => {
 					expect(MOCK_SQS_CLIENT_CONSTRUCTOR).toHaveBeenCalledTimes(1);
-					expect(MOCK_SQS_CLIENT_CONSTRUCTOR).toHaveBeenCalledWith(
-						EXPECTED_SQS_CLIENT_CONFIG
-					);
+					expect(MOCK_SQS_CLIENT_CONSTRUCTOR).toHaveBeenCalledWith(EXPECTED_SQS_CLIENT_CONFIG);
 				});
 
 				it('returns expected result', () => {
@@ -92,9 +88,7 @@ describe('.getClient', () => {
 
 				it('calls SQSClient constructor with expected constructor arguments', () => {
 					expect(MOCK_SQS_CLIENT_CONSTRUCTOR).toHaveBeenCalledTimes(1);
-					expect(MOCK_SQS_CLIENT_CONSTRUCTOR).toHaveBeenCalledWith(
-						EXPECTED_SQS_CLIENT_CONFIG
-					);
+					expect(MOCK_SQS_CLIENT_CONSTRUCTOR).toHaveBeenCalledWith(EXPECTED_SQS_CLIENT_CONFIG);
 				});
 
 				it('returns expected result', () => {
@@ -118,9 +112,7 @@ describe('.getClient', () => {
 
 			it('calls SQSClient constructor with expected constructor arguments', () => {
 				expect(MOCK_SQS_CLIENT_CONSTRUCTOR).toHaveBeenCalledTimes(1);
-				expect(MOCK_SQS_CLIENT_CONSTRUCTOR).toHaveBeenCalledWith(
-					EXPECTED_SQS_CLIENT_CONFIG
-				);
+				expect(MOCK_SQS_CLIENT_CONSTRUCTOR).toHaveBeenCalledWith(EXPECTED_SQS_CLIENT_CONFIG);
 			});
 
 			it('returns expected result', () => {

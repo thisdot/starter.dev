@@ -9,9 +9,7 @@ describe('TechnologyModel', () => {
 	describe('#getAll', () => {
 		describe('when there are 2 mocked technologies', () => {
 			beforeAll(() => {
-				(
-					getEnvironment as MockedFn<typeof getEnvironment>
-				).mockResolvedValueOnce({
+				(getEnvironment as MockedFn<typeof getEnvironment>).mockResolvedValueOnce({
 					getEntries: () => Promise.resolve({ items: [{}, {}] }),
 				} as Environment);
 			});
@@ -25,9 +23,7 @@ describe('TechnologyModel', () => {
 		});
 		describe('when there are no technologies', () => {
 			beforeAll(() => {
-				(
-					getEnvironment as MockedFn<typeof getEnvironment>
-				).mockResolvedValueOnce({
+				(getEnvironment as MockedFn<typeof getEnvironment>).mockResolvedValueOnce({
 					getEntries: () => Promise.resolve({ items: [] }),
 				} as unknown as Environment);
 			});
@@ -45,9 +41,9 @@ describe('TechnologyModel', () => {
 		describe('when there is a technology with id MOCK', () => {
 			const getEntry = jest.fn().mockResolvedValue({ id: 'MOCK' });
 			beforeAll(() => {
-				(
-					getEnvironment as MockedFn<typeof getEnvironment>
-				).mockResolvedValueOnce({ getEntry } as unknown as Environment);
+				(getEnvironment as MockedFn<typeof getEnvironment>).mockResolvedValueOnce({
+					getEntry,
+				} as unknown as Environment);
 			});
 			afterAll(() => {
 				(getEnvironment as MockedFn<typeof getEnvironment>).mockReset();
@@ -71,9 +67,9 @@ describe('TechnologyModel', () => {
 			let result: Entry;
 
 			beforeAll(async () => {
-				(
-					getEnvironment as MockedFn<typeof getEnvironment>
-				).mockResolvedValueOnce({ createEntry } as unknown as Environment);
+				(getEnvironment as MockedFn<typeof getEnvironment>).mockResolvedValueOnce({
+					createEntry,
+				} as unknown as Environment);
 				result = await TechnologyModel.create({
 					displayName: 'MOCK_NAME',
 					description: 'MOCK_DESCRIPTION',
@@ -109,9 +105,9 @@ describe('TechnologyModel', () => {
 			const getEntry = jest.fn().mockReturnValue(entry);
 
 			beforeAll(async () => {
-				(
-					getEnvironment as MockedFn<typeof getEnvironment>
-				).mockResolvedValueOnce({ getEntry } as unknown as Environment);
+				(getEnvironment as MockedFn<typeof getEnvironment>).mockResolvedValueOnce({
+					getEntry,
+				} as unknown as Environment);
 				await TechnologyModel.update('MOCK_ID', { displayName: 'NEW_NAME' });
 			});
 			afterAll(() => {

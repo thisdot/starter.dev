@@ -12,8 +12,7 @@ jest.mock('./redis', () => {
 		REDIS_PASS: 'MOCK_PASS',
 	};
 	// Require the original module to not be mocked...
-	const originalModule =
-		jest.requireActual<typeof import('./redis')>('./redis');
+	const originalModule = jest.requireActual<typeof import('./redis')>('./redis');
 
 	return {
 		__esModule: true, // Use it when dealing with esModules
@@ -35,8 +34,6 @@ describe('./redis', () => {
 
 	it('exports valid redis client', () => {
 		expect(redisClient).toBeInstanceOf(Keyv);
-		expect(MOCK_KEYV).toHaveBeenCalledWith(
-			'redis://MOCK_USER:MOCK_PASS@MOCK_HOST:1234'
-		);
+		expect(MOCK_KEYV).toHaveBeenCalledWith('redis://MOCK_USER:MOCK_PASS@MOCK_HOST:1234');
 	});
 });
