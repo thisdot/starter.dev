@@ -15,11 +15,16 @@ export const technologyTypeDefs = gql`
 		url: String
 	}
 
+	type TechnologyCollectionPage {
+		totalCount: Int!
+		items: [Technology]!
+	}
+
 	type Query {
 		"Returns a single Technology by ID"
 		technology(id: ID!): Technology
 		"Returns a list of Technologies"
-		technologies: [Technology]!
+		technologies(limit: Int = 5, offset: Int = 0): TechnologyCollectionPage!
 	}
 
 	input CreateTechnology {
