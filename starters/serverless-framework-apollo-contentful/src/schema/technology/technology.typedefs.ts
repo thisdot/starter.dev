@@ -10,7 +10,8 @@ export const technologyTypeDefs = gql`
 
 	type Query {
 		"Technology: GET"
-		technology(id: ID): [Technology]
+		technology(id: ID!): Technology
+		technologies: [Technology]
 	}
 
 	type Mutation {

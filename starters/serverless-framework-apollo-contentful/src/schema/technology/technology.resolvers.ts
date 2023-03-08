@@ -13,13 +13,11 @@ const entryToTechnology = (entry: Entry): Technology => {
 export const technologyResolvers: Resolvers = {
 	Query: {
 		technology: async (_parent, { id }) => {
-			if (id) {
-				const entry = await TechnologyModel.get(id);
-				return [entryToTechnology(entry)];
-			}
-
+			const entry = await TechnologyModel.get(id);
+			return entryToTechnology(entry);
+		},
+		technologies: async () => {
 			const entryList = await TechnologyModel.getAll();
-
 			return entryList.map(entryToTechnology);
 		},
 	},
