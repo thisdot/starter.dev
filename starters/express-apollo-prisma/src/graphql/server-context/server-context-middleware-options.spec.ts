@@ -3,7 +3,7 @@ import { PrismaClient } from '@prisma/client';
 import { TechnologyDataSource } from '../data-sources';
 import { createMockCacheApiWrapper } from '../../mocks/cache-api-wrapper';
 import { createMockPrismaClient } from '../../mocks/prisma-client';
-import { createMockTechnologyDataSource } from '../../mocks/technology-data-source';
+import { createMockTechnologyDataSource } from '../../mocks/technology-entity';
 import { createServerContextMiddlewareOptionsAsync } from './server-context-middleware-options';
 import {
 	ExpressMiddlewareOptions,

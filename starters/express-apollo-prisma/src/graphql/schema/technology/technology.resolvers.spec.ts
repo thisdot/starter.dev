@@ -13,7 +13,7 @@ import { testServerExecuteOperation } from '../../../mocks/graphql-server';
 import {
 	createMockTechnologyDataSource,
 	createMockTechnologyEntityCollectionPage,
-} from '../../../mocks/technology-data-source';
+} from '../../../mocks/technology-entity';
 
 import { GraphQLResponse } from '@apollo/server';
 import { ApolloServerErrorCode } from '@apollo/server/errors';
@@ -21,7 +21,6 @@ import { ServerContext } from '../../server-context';
 
 import { TechnologyEntity } from '@prisma/client';
 import { mapTechnology, mapTechnologyCollectionPage } from '../../mappers';
-import { TechnologyEntityCollectionPage } from '../../data-sources';
 
 type QueryTechnology = Pick<Query, 'technology'>;
 type QueryTechnologies = Pick<Query, 'technologies'>;
