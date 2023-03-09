@@ -41,7 +41,7 @@ module.exports.handler = async (event) => {
       method: 'POST',
       body: JSON.stringify({
         // The client-id is hardcoded to be a valid client id.
-        client_id: '1950771894.1657295956',
+        client_id: '1443243224.1678357674',
         events: [{
           name: 'create_starter',
           params: { selectedStarterKit }
