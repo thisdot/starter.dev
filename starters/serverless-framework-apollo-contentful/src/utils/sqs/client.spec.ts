@@ -70,7 +70,7 @@ describe('.getClient', () => {
 
 			describe('and environment variable SQS_PORT not set', () => {
 				const EXPECTED_SQS_CLIENT_CONFIG: SQSClientConfig = {
-					endpoint: 'http://localhost:undefined',
+					endpoint: 'http://localhost:9324',
 				};
 
 				let result: SQSClient;

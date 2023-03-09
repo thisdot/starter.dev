@@ -1,8 +1,6 @@
-import { Technology } from '../../generated/graphql';
+import { Resolvers, Technology } from '../../generated/graphql';
 import { TechnologyModel } from '../../models/TechnologyModel';
 import { Entry } from 'contentful-management';
-import { IResolvers } from '@graphql-tools/utils';
-import { BaseContext } from '@apollo/server';
 
 const entryToTechnology = (entry: Entry): Technology => {
 	return {
@@ -12,7 +10,7 @@ const entryToTechnology = (entry: Entry): Technology => {
 		url: entry.fields.url['en-US'],
 	};
 };
-export const technologyResolvers: IResolvers<undefined, BaseContext> = {
+export const technologyResolvers: Resolvers = {
 	Query: {
 		technology: async (_parent, { id }) => {
 			const entry = await TechnologyModel.get(id);
@@ -31,8 +29,9 @@ export const technologyResolvers: IResolvers<undefined, BaseContext> = {
 		},
 
 		updateTechnology: async (_parent, { id, fields }) => {
-			const entry = await TechnologyModel.update(id, fields);
+			if (!fields) return entryToTechnology(await TechnologyModel.get(id));
 
+			const entry = await TechnologyModel.update(id, fields);
 			return entryToTechnology(entry);
 		},
 	},

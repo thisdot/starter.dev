@@ -14,7 +14,7 @@ export type SendMessageResult = {
 export const sendMessage = async (message: Message): Promise<SendMessageResult> => {
 	const client = getClient();
 	const queueUrl = await getQueueUrl();
-	console.log('URL', queueUrl);
+
 	const command = new SendMessageCommand({
 		QueueUrl: queueUrl,
 		MessageBody: JSON.stringify(message),

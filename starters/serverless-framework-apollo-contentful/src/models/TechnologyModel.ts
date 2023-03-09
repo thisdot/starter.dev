@@ -1,5 +1,5 @@
 import { getEnvironment } from '../utils/contentful';
-import { MakeOptional } from '../generated/graphql';
+import { TechnologyUpdateFields } from '../generated/graphql';
 
 type fields = {
 	displayName: string;
@@ -45,7 +45,7 @@ export class TechnologyModel {
 
 	public static update = async (
 		id: string,
-		{ displayName, description, url }: MakeOptional<fields, 'displayName'>
+		{ displayName, description, url }: TechnologyUpdateFields
 	) => {
 		const environment = await getEnvironment();
 		const entry = await environment.getEntry(id);

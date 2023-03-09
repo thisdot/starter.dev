@@ -10,9 +10,9 @@ import {
 	ResolverTypeWrapper,
 	Technology,
 } from '../../generated/graphql';
-import { BaseContext } from '@apollo/server';
 import { GraphQLResolveInfo } from 'graphql';
 import { mockEntry, mockGraphQLResolveInfo } from '../../utils/test/mocks';
+import { MyContext } from '../../handlers/graphql';
 
 jest.mock('../../models/TechnologyModel', () => ({
 	TechnologyModel: {
@@ -37,7 +37,7 @@ const MOCK_TECHNOLOGY_MODEL_STATIC = TechnologyModel as unknown as TechnologyMod
 const MOCK_PARENT_QUERY: ResolversParentTypes['Query'] = {};
 const MOCK_PARENT_MUTATION: ResolversParentTypes['Mutation'] = {};
 
-const MOCK_CONTEXT: BaseContext = {};
+const MOCK_CONTEXT: MyContext = { dataSources: { technologies: [] } };
 const MOCK_RESOLVE_INFO: GraphQLResolveInfo = mockGraphQLResolveInfo();
 
 const MOCK_ENTRY_1 = mockEntry('MOCK_ID_1', {
@@ -79,16 +79,14 @@ describe('technologyResolvers', () => {
 				describe('and id exists', () => {
 					const MOCK_REQUESTED_ID = 'MOCK_REQUESTED_ID';
 
-					const EXPECTED_RESULT = [
-						{
-							description: 'MOCK_DESCRIPTION_1',
-							displayName: 'MOCK_DISPLAY_NAME_1',
-							id: 'MOCK_ID_1',
-							url: 'MOCK_URL_1',
-						},
-					];
+					const EXPECTED_RESULT = {
+						description: 'MOCK_DESCRIPTION_1',
+						displayName: 'MOCK_DISPLAY_NAME_1',
+						id: 'MOCK_ID_1',
+						url: 'MOCK_URL_1',
+					};
 
-					let result: Maybe<Maybe<ResolverTypeWrapper<Technology>>[]>;
+					let result: Technology | null;
 
 					beforeAll(async () => {
 						MOCK_TECHNOLOGY_MODEL_STATIC.get.mockResolvedValue(MOCK_ENTRY_1);
@@ -110,19 +108,15 @@ describe('technologyResolvers', () => {
 					});
 
 					it('returns expected result', () => {
-						expect(result).toBeInstanceOf(Array);
-						expect(result).toHaveLength(1);
-
 						expect(result).toEqual(EXPECTED_RESULT);
 					});
 				});
-
-				//TODO: fix implementation
-				// describe('and id does not exist', () => {
-
-				// })
 			});
+		});
 
+		describe('.technologies', () => {
+			assert(technologyResolvers.Query?.technologies instanceof Function);
+			const RESOLVER_FN = technologyResolvers.Query?.technologies;
 			describe('when called without id', () => {
 				describe('and items found: ', () => {
 					const EXPECTED_RESULT = [
@@ -241,7 +235,7 @@ describe('technologyResolvers', () => {
 				const MOCK_ID_ARG = 'MOCK_ID';
 				const MOCK_UPDATE_TECHNOLOGY_ARGS: RequireFields<MutationUpdateTechnologyArgs, 'id'> = {
 					id: MOCK_ID_ARG,
-					...MOCK_UPDATED_FIELDS,
+					fields: MOCK_UPDATED_FIELDS,
 				};
 
 				let result: Technology | null;
@@ -253,29 +247,51 @@ describe('technologyResolvers', () => {
 					url: 'MOCK_URL_1',
 				};
 
-				beforeAll(async () => {
-					MOCK_TECHNOLOGY_MODEL_STATIC.update.mockResolvedValue(MOCK_ENTRY_1);
-					result = await RESOLVER_FN(
-						MOCK_PARENT_MUTATION,
-						MOCK_UPDATE_TECHNOLOGY_ARGS,
-						MOCK_CONTEXT,
-						MOCK_RESOLVE_INFO
-					);
-				});
-				afterAll(() => {
-					MOCK_TECHNOLOGY_MODEL_STATIC.update.mockReset();
+				describe('with fields', () => {
+					beforeAll(async () => {
+						MOCK_TECHNOLOGY_MODEL_STATIC.update.mockResolvedValue(MOCK_ENTRY_1);
+						result = await RESOLVER_FN(
+							MOCK_PARENT_MUTATION,
+							MOCK_UPDATE_TECHNOLOGY_ARGS,
+							MOCK_CONTEXT,
+							MOCK_RESOLVE_INFO
+						);
+					});
+					afterAll(() => {
+						MOCK_TECHNOLOGY_MODEL_STATIC.update.mockReset();
+					});
+
+					it('calls TechnologyModel.update method once with expected argument', () => {
+						expect(MOCK_TECHNOLOGY_MODEL_STATIC.update).toHaveBeenCalledTimes(1);
+						expect(MOCK_TECHNOLOGY_MODEL_STATIC.update).toHaveBeenCalledWith(
+							MOCK_ID_ARG,
+							MOCK_UPDATED_FIELDS
+						);
+					});
+
+					it('returns expected result', () => {
+						expect(result).toEqual(EXPECTED_RESULT);
+					});
 				});
 
-				it('calls TechnologyModel.update method once with expected argument', () => {
-					expect(MOCK_TECHNOLOGY_MODEL_STATIC.update).toHaveBeenCalledTimes(1);
-					expect(MOCK_TECHNOLOGY_MODEL_STATIC.update).toHaveBeenCalledWith(
-						MOCK_ID_ARG,
-						MOCK_UPDATED_FIELDS
-					);
-				});
+				describe('without fields', () => {
+					beforeAll(async () => {
+						MOCK_TECHNOLOGY_MODEL_STATIC.get.mockResolvedValue(MOCK_ENTRY_1);
 
-				it('returns expected result', () => {
-					expect(result).toEqual(EXPECTED_RESULT);
+						result = await RESOLVER_FN(
+							MOCK_PARENT_MUTATION,
+							{ id: MOCK_ID_ARG },
+							MOCK_CONTEXT,
+							MOCK_RESOLVE_INFO
+						);
+					});
+					afterAll(() => {
+						MOCK_TECHNOLOGY_MODEL_STATIC.get.mockReset();
+					});
+
+					it('returns the existing model without mutation', () => {
+						expect(result).toEqual(EXPECTED_RESULT);
+					});
 				});
 			});
 		});
