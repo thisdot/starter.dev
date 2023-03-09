@@ -1,4 +1,4 @@
-function responseHelper(body) {
+function createOkResponse(body) {
   return {
     statusCode: 200,
     body: JSON.stringify(body),
@@ -15,23 +15,24 @@ module.exports.handler = async (event) => {
 
   if (!selectedStarterKit) {
     console.log('No kit found');
-    return responseHelper('No kit found');
+    return createOkResponse('No kit found');
   }
   const starterKitsRequest = await fetch(STARTER_KITS_JSON_URL);
   if (!starterKitsRequest.ok) {
     console.log('Could not fetch starter kits for validation, tracking aborted');
-    return responseHelper('Could not fetch starter kits for validation, tracking aborted')
+    return createOkResponse('Could not fetch starter kits for validation, tracking aborted')
   }
 
   const starterKitsJSON = await starterKitsRequest.json();
-  const starterKits = new Set()
-  if (typeof starterKitsJSON === 'object' && starterKitsJSON !== null) {
-    Object.keys(starterKitsJSON).forEach((kit) => starterKits.add(kit))
-  }
+  const starterKits = new Set(
+    typeof starterKitsJSON === 'object' && starterKitsJSON !== null
+      ? Object.keys(starterKitsJSON)
+      : []
+  )
 
   if (!starterKits.has(selectedStarterKit)) {
     console.log('Invalid starter kit, tracking aborted');
-    return responseHelper('Invalid starter kit, tracking aborted');
+    return createOkResponse('Invalid starter kit, tracking aborted');
   }
 
   const trackRequest = await fetch(
@@ -51,7 +52,7 @@ module.exports.handler = async (event) => {
 
   if (!trackRequest.ok) {
     console.log(`Track request returned with status ${trackRequest.status} - ${trackRequest.statusText}`);
-    return responseHelper(`Track request returned with status ${trackRequest.status} - ${trackRequest.statusText}`);
+    return createOkResponse(`Track request returned with status ${trackRequest.status} - ${trackRequest.statusText}`);
   }
-  return responseHelper('Successful tracking');
+  return createOkResponse('Successful tracking');
 };
