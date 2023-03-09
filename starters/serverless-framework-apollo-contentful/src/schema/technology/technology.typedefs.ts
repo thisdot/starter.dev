@@ -17,7 +17,14 @@ export const technologyTypeDefs = gql`
 	type Mutation {
 		"Technology: create, read and delete operations"
 		createTechnology(displayName: String!, description: String, url: String): Technology
-		updateTechnology(id: ID!, displayName: String, description: String, url: String): Technology
+		updateTechnology(id: ID!, fields: TechnologyUpdateFields): Technology
 		deleteTechnology(id: ID!): ID
+	}
+
+	input TechnologyUpdateFields {
+		"Mutable fields of a technology entity"
+		displayName: String
+		description: String
+		url: String
 	}
 `;

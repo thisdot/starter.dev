@@ -30,7 +30,7 @@ export const technologyResolvers: IResolvers<undefined, BaseContext> = {
 			return entryToTechnology(entry);
 		},
 
-		updateTechnology: async (_parent, { id, ...fields }) => {
+		updateTechnology: async (_parent, { id, fields }) => {
 			const entry = await TechnologyModel.update(id, fields);
 
 			return entryToTechnology(entry);
