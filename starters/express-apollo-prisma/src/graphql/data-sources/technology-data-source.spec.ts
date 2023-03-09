@@ -47,8 +47,15 @@ describe('TechnologyDataSource', () => {
 		],
 	];
 
+	const testMockTechnologyCacheSet = () =>
+		it('calls CacheAPIWrapper.set method once with valid arguments', () => {
+			expect(MOCK_CACHE_API_WRAPPER.cache).toHaveBeenCalledTimes(1);
+			expect(MOCK_CACHE_API_WRAPPER.cache).toHaveBeenCalledWith(MOCK_TECHNOLOGY, 'id');
+		});
+
 	describe('#createTechnology', () => {
 		describe.each(GENERAL_CASES)('%s', (_statement, instance, cacheEnabled) => {
+			const EXPECTED_RESULT_CREATE = MOCK_TECHNOLOGY;
 			let result: TechnologyEntity;
 
 			beforeAll(async () => {
@@ -69,20 +76,18 @@ describe('TechnologyDataSource', () => {
 			});
 
 			if (cacheEnabled) {
-				it('calls CacheAPIWrapper.set method once with valid argument', () => {
-					expect(MOCK_CACHE_API_WRAPPER.cache).toHaveBeenCalledTimes(1);
-					expect(MOCK_CACHE_API_WRAPPER.cache).toHaveBeenCalledWith(MOCK_TECHNOLOGY, 'id');
-				});
+				testMockTechnologyCacheSet();
 			}
 
 			it('returns expected result', () => {
-				expect(result).toEqual(MOCK_TECHNOLOGY);
+				expect(result).toEqual(EXPECTED_RESULT_CREATE);
 			});
 		});
 	});
 
 	describe('#updateTechnology', () => {
 		describe.each(GENERAL_CASES)('%s', (_statement, instance, cacheEnabled) => {
+			const EXPECTED_RESULT_UPDATE = MOCK_TECHNOLOGY;
 			let result: TechnologyEntity;
 
 			beforeAll(async () => {
@@ -105,14 +110,11 @@ describe('TechnologyDataSource', () => {
 			});
 
 			if (cacheEnabled) {
-				it('calls CacheAPIWrapper.set method once with valid arguments', () => {
-					expect(MOCK_CACHE_API_WRAPPER.cache).toHaveBeenCalledTimes(1);
-					expect(MOCK_CACHE_API_WRAPPER.cache).toHaveBeenCalledWith(MOCK_TECHNOLOGY, 'id');
-				});
+				testMockTechnologyCacheSet();
 			}
 
 			it('returns expected result', () => {
-				expect(result).toEqual(MOCK_TECHNOLOGY);
+				expect(result).toEqual(EXPECTED_RESULT_UPDATE);
 			});
 		});
 	});
