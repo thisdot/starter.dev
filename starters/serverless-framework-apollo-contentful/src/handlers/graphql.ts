@@ -1,15 +1,15 @@
 import { ApolloServer, BaseContext } from '@apollo/server';
-import { handlers, startServerAndCreateLambdaHandler } from '@as-integrations/aws-lambda';
+import { startServerAndCreateLambdaHandler } from '@as-integrations/aws-lambda';
 import { KeyvAdapter } from '@apollo/utils.keyvadapter';
 import { resolvers, typeDefs } from '../schema';
 import { redisClient } from '../utils/redis';
-import { Technology } from '../generated/graphql';
+import TechnologyModel from '../models/Technology';
 
 const { REDIS_CACHE_TTL_SECONDS = 900 } = process.env;
 
 export interface MyContext extends BaseContext {
 	dataSources: {
-		technologies: Technology[];
+		technologies: TechnologyModel[];
 	};
 }
 export const apolloServer = new ApolloServer<MyContext>({
@@ -23,18 +23,17 @@ export const apolloServer = new ApolloServer<MyContext>({
 		if (!(error instanceof Error) || typeof error?.message !== 'string') {
 			return formattedError;
 		}
-		return {
-			...formattedError,
-			...JSON.parse(error.message),
-			extensions: undefined,
-		};
+		try {
+			return {
+				...formattedError,
+				...JSON.parse(error.message),
+			};
+		} catch {
+			return formattedError;
+		}
 	},
 });
 
-const createRequestHandler = handlers.createAPIGatewayProxyEventV2RequestHandler;
-export const server = startServerAndCreateLambdaHandler<
-	ReturnType<typeof createRequestHandler>,
-	MyContext
->(apolloServer, createRequestHandler(), {
+export const server = startServerAndCreateLambdaHandler<MyContext>(apolloServer, {
 	context: async () => ({ dataSources: { technologies: [] } }),
 });
