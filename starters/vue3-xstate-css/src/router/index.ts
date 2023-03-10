@@ -18,6 +18,9 @@ const router = createRouter({
       path: '/greet',
       name: 'greet',
       component: () => import('../views/GreetView.vue'),
+      props: {
+        query: 'from This Dot Labs!',
+      },
     },
   ],
 });

@@ -3,7 +3,13 @@ import { useMachine } from '@xstate/vue';
 import HeaderComponent from '@/components/HeaderComponent.vue';
 import { greetMachine } from '@/machines/greetMachine';
 
-const { state } = useMachine(greetMachine, { devTools: true });
+const props = defineProps({
+  query: String,
+});
+
+const { state } = useMachine(greetMachine(props.query || ''), {
+  devTools: true,
+});
 </script>
 
 <template>
