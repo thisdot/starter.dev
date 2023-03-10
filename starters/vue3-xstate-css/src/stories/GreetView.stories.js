@@ -8,8 +8,13 @@ export default {
   },
 };
 
-export const Default = (args) => ({
+const Template = (args) => ({
   components: { GreetView },
-  setup: () => ({ args }),
-  template: '<GreetView />',
+  setup() {
+    return { args };
+  },
+  template: '<GreetView v-bind="args"/>',
 });
+
+export const Default = Template.bind({});
+Default.args = { query: 'from Storybook!' };

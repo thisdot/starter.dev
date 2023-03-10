@@ -1,39 +1,8 @@
 <script setup lang="ts">
-import { createMachine, assign } from 'xstate';
 import { useMachine } from '@xstate/vue';
 import ButtonComponent from '../components/ButtonComponent.vue';
 import HeaderComponent from '../components/HeaderComponent.vue';
-
-const counterMachine = createMachine(
-  {
-    id: 'Counter',
-    predictableActionArguments: true,
-    schema: {
-      context: {} as { count: number },
-      events: {} as { type: 'INC' } | { type: 'DEC' } | { type: 'RESET' },
-    },
-    initial: 'active',
-    context: {
-      count: 0,
-    },
-    states: {
-      active: {
-        on: {
-          INC: { actions: 'increment' },
-          DEC: { actions: 'decrement' },
-          RESET: { actions: 'reset' },
-        },
-      },
-    },
-  },
-  {
-    actions: {
-      increment: assign({ count: (context) => context.count + 1 }),
-      decrement: assign({ count: (context) => context.count - 1 }),
-      reset: assign({ count: (context) => (context.count = 0) }),
-    },
-  }
-);
+import { counterMachine } from '../machines/counterMachine';
 
 const { state, send } = useMachine(counterMachine, { devTools: true });
 </script>
