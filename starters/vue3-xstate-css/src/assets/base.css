@@ -1,10 +1,12 @@
 /* color palette from <https://github.com/vuejs/theme> */
 :root {
   --white: #ffffff;
+  --gray: lightgray;
   --black: #000000;
   --lightBlue: #006cff;
   --mediumBlue: #004fbb;
   --darkBlue: #00347b;
+  --red: lightcoral;
 }
 
 *,
