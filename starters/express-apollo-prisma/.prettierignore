@@ -3,3 +3,6 @@ node_modules/
 coverage/
 prisma/
 .docker-conf/
+
+# unignore
+!prisma/seed.ts

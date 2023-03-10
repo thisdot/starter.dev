@@ -13,11 +13,8 @@ jest.mock('./job-generator', () => ({
 const MOCK_GENERATE_JOB = generateJob as jest.MockedFn<typeof generateJob>;
 const MOCK_REQUEST = createMockExpressRequest();
 const MOCK_RESPONSE = createMockExpressResponse();
-const MOCK_RESPONSE_SEND_STATUS = MOCK_RESPONSE.sendStatus as jest.MockedFn<
-	typeof MOCK_RESPONSE.sendStatus
->;
 
-const MOCK_NEXT = jest.fn();
+const MOCK_NEXT_DELEGATE = jest.fn();
 
 describe('.jobGeneratorHandler', () => {
 	describe('when called', () => {
@@ -45,16 +42,18 @@ describe('.jobGeneratorHandler', () => {
 				MOCK_REQUEST.body = originalBody;
 			});
 
-			describe('and job generated', () => {
-				const EXPECTED_STATUS_CODE = 204;
+			describe.each([
+				['job generated', true, 204],
+				['job not generated', false, 506],
+			])('and %s', (_statement, mockGenerateJobResult, expectedStatusCode) => {
 				beforeAll(async () => {
-					MOCK_GENERATE_JOB.mockResolvedValue(true);
-					await jobGeneratorHandler(MOCK_REQUEST, MOCK_RESPONSE, MOCK_NEXT);
+					MOCK_GENERATE_JOB.mockResolvedValue(mockGenerateJobResult);
+					await jobGeneratorHandler(MOCK_REQUEST, MOCK_RESPONSE, MOCK_NEXT_DELEGATE);
 				});
 
 				afterAll(() => {
 					MOCK_GENERATE_JOB.mockReset();
-					MOCK_RESPONSE_SEND_STATUS.mockClear();
+					MOCK_RESPONSE.sendStatus.mockClear();
 				});
 
 				it('calls .generateJob with expected argument', () => {
@@ -63,31 +62,8 @@ describe('.jobGeneratorHandler', () => {
 				});
 
 				it('calls Response.sendStatus method once with expected argument', () => {
-					expect(MOCK_RESPONSE_SEND_STATUS).toHaveBeenCalledTimes(1);
-					expect(MOCK_RESPONSE_SEND_STATUS).toHaveBeenCalledWith(EXPECTED_STATUS_CODE);
-				});
-			});
-
-			describe('and job not generated', () => {
-				const EXPECTED_STATUS_CODE = 506;
-				beforeAll(async () => {
-					MOCK_GENERATE_JOB.mockResolvedValue(false);
-					await jobGeneratorHandler(MOCK_REQUEST, MOCK_RESPONSE, MOCK_NEXT);
-				});
-
-				afterAll(() => {
-					MOCK_GENERATE_JOB.mockReset();
-					MOCK_RESPONSE_SEND_STATUS.mockClear();
-				});
-
-				it('calls .generateJob with expected argument', () => {
-					expect(MOCK_GENERATE_JOB).toHaveBeenCalledTimes(1);
-					expect(MOCK_GENERATE_JOB).toHaveBeenCalledWith(expectedMessage);
-				});
-
-				it('calls Response.sendStatus method once with expected argument', () => {
-					expect(MOCK_RESPONSE_SEND_STATUS).toHaveBeenCalledTimes(1);
-					expect(MOCK_RESPONSE_SEND_STATUS).toHaveBeenCalledWith(EXPECTED_STATUS_CODE);
+					expect(MOCK_RESPONSE.sendStatus).toHaveBeenCalledTimes(1);
+					expect(MOCK_RESPONSE.sendStatus).toHaveBeenCalledWith(expectedStatusCode);
 				});
 			});
 		});

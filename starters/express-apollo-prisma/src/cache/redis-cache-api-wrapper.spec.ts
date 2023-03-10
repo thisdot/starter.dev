@@ -92,18 +92,33 @@ describe('RedisCacheAPIWrapper', () => {
 		});
 
 		describe('when called', () => {
-			describe('and Redis cache is available', () => {
-				describe('and entity cached', () => {
+			describe.each([
+				[
+					'Redis cache is available and entity cached',
+					MOCK_ENTITY_SERIALIZED,
+					MOCK_ENTITY,
+					undefined,
+				],
+				['Redis cache is available and entity not cached', null, null, undefined],
+				['Redis cache is unvailable', new Error(), null, 'Redis cache unavailable.'],
+			])(
+				'and %s',
+				(_statement, mockRedisClientGetResult, expectedResult, expectedWarningMessage) => {
 					let result: MockEntityType | null;
 
 					beforeAll(async () => {
 						spyComposeRedisKey.mockClear();
-						MOCK_REDIS_CLIENT.get.mockResolvedValue(MOCK_ENTITY_SERIALIZED);
+						if (mockRedisClientGetResult instanceof Error) {
+							MOCK_REDIS_CLIENT.get.mockRejectedValue(mockRedisClientGetResult);
+						} else {
+							MOCK_REDIS_CLIENT.get.mockResolvedValue(mockRedisClientGetResult);
+						}
 						result = await INSTANCE.getCached(MOCK_ENTITY_UNIQUE_KEY);
 					});
 
 					afterAll(() => {
 						MOCK_REDIS_CLIENT.get.mockReset();
+						MOCK_CONSOLE_WARN.mockClear();
 					});
 
 					it('calls #composeRedisKey once with expected argument', () => {
@@ -116,74 +131,17 @@ describe('RedisCacheAPIWrapper', () => {
 						expect(MOCK_REDIS_CLIENT.get).toHaveBeenCalledWith(EXPECTED_ENTITY_CACHE_KEY);
 					});
 
+					if (expectedWarningMessage) {
+						it('logs expected warning', () => {
+							expect(MOCK_CONSOLE_WARN).toHaveBeenCalledTimes(1);
+							expect(MOCK_CONSOLE_WARN).toHaveBeenCalledWith('Redis cache unavailable.');
+						});
+					}
 					it('returns expected result', () => {
-						expect(result).toEqual(MOCK_ENTITY);
+						expect(result).toEqual(expectedResult);
 					});
-				});
-
-				describe('and entity not cached', () => {
-					let result: MockEntityType | null;
-
-					beforeAll(async () => {
-						spyComposeRedisKey.mockClear();
-						MOCK_REDIS_CLIENT.get.mockResolvedValue(null);
-						result = await INSTANCE.getCached(MOCK_ENTITY_UNIQUE_KEY);
-					});
-
-					afterAll(() => {
-						MOCK_REDIS_CLIENT.get.mockReset();
-					});
-
-					it('calls #composeRedisKey once with expected argument', () => {
-						expect(spyComposeRedisKey).toHaveBeenCalledTimes(1);
-						expect(spyComposeRedisKey).toHaveBeenCalledWith(MOCK_ENTITY_UNIQUE_KEY);
-					});
-
-					it('calls RedisClient.get method once with expected arguments', () => {
-						expect(MOCK_REDIS_CLIENT.get).toHaveBeenCalledTimes(1);
-						expect(MOCK_REDIS_CLIENT.get).toHaveBeenCalledWith(EXPECTED_ENTITY_CACHE_KEY);
-					});
-
-					it('returns expected result', () => {
-						expect(result).toEqual(null);
-					});
-				});
-			});
-
-			describe('and Redis cache is unvailable', () => {
-				let result: MockEntityType | null;
-
-				beforeAll(async () => {
-					spyComposeRedisKey.mockClear();
-					MOCK_REDIS_CLIENT.get.mockRejectedValue(new Error());
-
-					result = await INSTANCE.getCached(MOCK_ENTITY_UNIQUE_KEY);
-				});
-
-				afterAll(() => {
-					MOCK_REDIS_CLIENT.get.mockReset();
-					MOCK_CONSOLE_WARN.mockClear();
-				});
-
-				it('calls #composeRedisKey once with expected argument', () => {
-					expect(spyComposeRedisKey).toHaveBeenCalledTimes(1);
-					expect(spyComposeRedisKey).toHaveBeenCalledWith(MOCK_ENTITY_UNIQUE_KEY);
-				});
-
-				it('calls RedisClient.get method once with expected arguments', () => {
-					expect(MOCK_REDIS_CLIENT.get).toHaveBeenCalledTimes(1);
-					expect(MOCK_REDIS_CLIENT.get).toHaveBeenCalledWith(EXPECTED_ENTITY_CACHE_KEY);
-				});
-
-				it('logs expected warning', () => {
-					expect(MOCK_CONSOLE_WARN).toHaveBeenCalledTimes(1);
-					expect(MOCK_CONSOLE_WARN).toHaveBeenCalledWith('Redis cache unavailable.');
-				});
-
-				it('returns expected result', () => {
-					expect(result).toEqual(null);
-				});
-			});
+				}
+			);
 		});
 	});
 
@@ -203,37 +161,17 @@ describe('RedisCacheAPIWrapper', () => {
 		});
 
 		describe('when called', () => {
-			describe('and Redis cache is available', () => {
+			describe.each([
+				['Redis cache is available', 'OK', undefined],
+				['Redis cache is unvailable', new Error(), 'Redis cache unavailable.'],
+			])('and %s', (_statement, mockRedisClientSetResult, expectedWarningMessage) => {
 				beforeAll(async () => {
 					spyComposeRedisKey.mockClear();
-					await INSTANCE.cache(MOCK_ENTITY, 'mockUniqueKey');
-				});
-
-				afterAll(() => {
-					MOCK_REDIS_CLIENT.set.mockReset();
-				});
-
-				it('calls #composeRedisKey once with expected argument', () => {
-					expect(spyComposeRedisKey).toHaveBeenCalledTimes(1);
-					expect(spyComposeRedisKey).toHaveBeenCalledWith(MOCK_ENTITY_UNIQUE_KEY);
-				});
-
-				it('calls RedisClient.set method once with expected arguments', () => {
-					expect(MOCK_REDIS_CLIENT.set).toHaveBeenCalledTimes(1);
-					expect(MOCK_REDIS_CLIENT.set).toHaveBeenCalledWith(
-						EXPECTED_ENTITY_CACHE_KEY,
-						MOCK_ENTITY_SERIALIZED,
-						{
-							EX: 360,
-						}
-					);
-				});
-			});
-
-			describe('and Redis cache is unvailable', () => {
-				beforeAll(async () => {
-					spyComposeRedisKey.mockClear();
-					MOCK_REDIS_CLIENT.set.mockRejectedValue(new Error());
+					if (mockRedisClientSetResult instanceof Error) {
+						MOCK_REDIS_CLIENT.set.mockRejectedValue(mockRedisClientSetResult);
+					} else {
+						MOCK_REDIS_CLIENT.set.mockResolvedValue(mockRedisClientSetResult);
+					}
 					await INSTANCE.cache(MOCK_ENTITY, 'mockUniqueKey');
 				});
 
@@ -258,10 +196,12 @@ describe('RedisCacheAPIWrapper', () => {
 					);
 				});
 
-				it('logs expected warning', () => {
-					expect(MOCK_CONSOLE_WARN).toHaveBeenCalledTimes(1);
-					expect(MOCK_CONSOLE_WARN).toHaveBeenCalledWith('Redis cache unavailable.');
-				});
+				if (expectedWarningMessage) {
+					it('logs expected warning', () => {
+						expect(MOCK_CONSOLE_WARN).toHaveBeenCalledTimes(1);
+						expect(MOCK_CONSOLE_WARN).toHaveBeenCalledWith(expectedWarningMessage);
+					});
+				}
 			});
 		});
 	});
@@ -282,31 +222,17 @@ describe('RedisCacheAPIWrapper', () => {
 		});
 
 		describe('when called', () => {
-			describe('and Redis cache is available', () => {
+			describe.each([
+				['Redis cache is available', 1, undefined],
+				['Redis cache is unavailable', new Error(), 'Redis cache unavailable.'],
+			])('and %s', (_statement, mockRedisClientDelResult, expectedWarningMessage) => {
 				beforeAll(async () => {
 					spyComposeRedisKey.mockClear();
-					await INSTANCE.invalidateCached(MOCK_ENTITY_UNIQUE_KEY);
-				});
-
-				afterAll(() => {
-					MOCK_REDIS_CLIENT.del.mockReset();
-				});
-
-				it('calls #composeRedisKey once with expected argument', () => {
-					expect(spyComposeRedisKey).toHaveBeenCalledTimes(1);
-					expect(spyComposeRedisKey).toHaveBeenCalledWith(MOCK_ENTITY_UNIQUE_KEY);
-				});
-
-				it('calls RedisClient.del method once with expected argument', () => {
-					expect(MOCK_REDIS_CLIENT.del).toHaveBeenCalledTimes(1);
-					expect(MOCK_REDIS_CLIENT.del).toHaveBeenCalledWith(EXPECTED_ENTITY_CACHE_KEY);
-				});
-			});
-
-			describe('and Redis cache is unvailable', () => {
-				beforeAll(async () => {
-					spyComposeRedisKey.mockClear();
-					MOCK_REDIS_CLIENT.del.mockRejectedValue(new Error());
+					if (mockRedisClientDelResult instanceof Error) {
+						MOCK_REDIS_CLIENT.del.mockRejectedValue(mockRedisClientDelResult);
+					} else {
+						MOCK_REDIS_CLIENT.del.mockResolvedValue(mockRedisClientDelResult);
+					}
 					await INSTANCE.invalidateCached(MOCK_ENTITY_UNIQUE_KEY);
 				});
 
@@ -325,10 +251,12 @@ describe('RedisCacheAPIWrapper', () => {
 					expect(MOCK_REDIS_CLIENT.del).toHaveBeenCalledWith(EXPECTED_ENTITY_CACHE_KEY);
 				});
 
-				it('logs expected warning', () => {
-					expect(MOCK_CONSOLE_WARN).toHaveBeenCalledTimes(1);
-					expect(MOCK_CONSOLE_WARN).toHaveBeenCalledWith('Redis cache unavailable.');
-				});
+				if (expectedWarningMessage) {
+					it('logs expected warning', () => {
+						expect(MOCK_CONSOLE_WARN).toHaveBeenCalledTimes(1);
+						expect(MOCK_CONSOLE_WARN).toHaveBeenCalledWith(expectedWarningMessage);
+					});
+				}
 			});
 		});
 	});

@@ -10,7 +10,7 @@ import {
 } from '@apollo/server/dist/esm/externalTypes/graphql';
 import { DocumentNode, TypedQueryDocumentNode } from 'graphql';
 import { graphqlServer } from '../graphql';
-import { createMockTechnologyDataSource } from './technology-data-source';
+import { createMockTechnologyDataSource } from './technology-entity';
 
 export const createMockExpressMiddlewareOptions = (): MockProxy<
 	WithRequired<ExpressMiddlewareOptions<ServerContext>, 'context'>

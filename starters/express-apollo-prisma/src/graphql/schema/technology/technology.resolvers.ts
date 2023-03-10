@@ -2,7 +2,7 @@ import { ServerContext } from '../../server-context/server-context';
 import { Resolvers, UpdateTechnology } from '../generated/types';
 import { ApolloServerErrorCode } from '@apollo/server/errors';
 import { GraphQLError } from 'graphql';
-import { mapTechnology } from '../../mappers';
+import { mapTechnology, mapTechnologyCollectionPage } from '../../mappers';
 
 const parseTechnologyId = (id: string): number => {
 	const idNumber = Number(id);
@@ -23,7 +23,7 @@ type ExcludeNullProp<T extends Record<string, unknown>, TKey extends keyof T> = 
 
 export const technologyResolvers: Resolvers<ServerContext> = {
 	Query: {
-		technology: async (_, { id }, { dataSources: { technologyDataSource } }) => {
+		technology: async (_parent, { id }, { dataSources: { technologyDataSource } }) => {
 			const idNumber = parseTechnologyId(id);
 			const entity = await technologyDataSource.getTechnologyById(idNumber);
 			if (!entity) {
@@ -35,17 +35,17 @@ export const technologyResolvers: Resolvers<ServerContext> = {
 			}
 			return mapTechnology(entity);
 		},
-		technologies: async (_, {}, { dataSources: { technologyDataSource } }) => {
-			const entities = await technologyDataSource.getTechnologies();
-			return entities.map(mapTechnology);
+		technologies: async (_parent, { limit, offset }, { dataSources: { technologyDataSource } }) => {
+			const collectionPage = await technologyDataSource.getTechnologies(limit, offset);
+			return mapTechnologyCollectionPage(collectionPage);
 		},
 	},
 	Mutation: {
-		createTechnology: async (_, { input }, { dataSources }) => {
+		createTechnology: async (_parent, { input }, { dataSources }) => {
 			const entity = await dataSources.technologyDataSource.createTechnology(input);
 			return mapTechnology(entity);
 		},
-		updateTechnology: async (_, { id, input }, { dataSources }) => {
+		updateTechnology: async (_parent, { id, input }, { dataSources }) => {
 			const idNumber = parseTechnologyId(id);
 			if (input.displayName === null) {
 				throw new GraphQLError(`Invalid argument property value. Display Name cannot be null.`, {
@@ -61,7 +61,7 @@ export const technologyResolvers: Resolvers<ServerContext> = {
 			const entity = await dataSources.technologyDataSource.updateTechnology(idNumber, validated);
 			return mapTechnology(entity);
 		},
-		deleteTechnology: async (_, { id }, { dataSources }) => {
+		deleteTechnology: async (_parent, { id }, { dataSources }) => {
 			const idNumber = parseTechnologyId(id);
 			const entity = await dataSources.technologyDataSource.deleteTechnology(idNumber);
 			return Boolean(entity);

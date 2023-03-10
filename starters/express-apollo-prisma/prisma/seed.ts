@@ -1,42 +1,76 @@
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient, Prisma } from '@prisma/client'
 import * as dotenv from 'dotenv';
 
 dotenv.config();
 
 const prisma = new PrismaClient()
 
+const RECORDS: Prisma.TechnologyEntityCreateInput[] = [
+  {
+    displayName: 'Node.js',
+    description: 'JavaScript runtime built on Chrome V8 JavaScript engine',
+    url: 'https://nodejs.org/'
+  },
+  {
+    displayName: 'TypeScript',
+    description: 'Strongly typed programming language that builds on JavaScript, giving you better tooling at any scale',
+    url: 'https://www.typescriptlang.org/'    
+  },  
+  {
+    displayName: 'Nodemon',
+    description: 'Simple monitor utility for use during development of a Node.js app, that will monitor for any changes in your source and automatically restart your server',
+    url: 'https://nodemon.io/'
+  },  
+  {
+    displayName: 'Express',
+    description: 'Fast, unopinionated, minimalist web framework for Node.js',
+    url: 'https://expressjs.com/'
+  },
+  {
+    displayName: 'Apollo GrapQL',
+    description: 'The GraphQL developer platform',
+    url: 'https://www.apollographql.com/'
+  },
+  {
+    displayName: 'Prisma',
+    description: 'Next-generation Node.js and TypeScript ORM',
+    url: 'https://www.prisma.io/'
+  },
+  {
+    displayName: 'Redis',
+    description: 'The open source, in-memory data store used by millions of developers as a database, cache, streaming engine, and message broker',
+    url: 'https://redis.io/'
+  },
+  {
+    displayName: 'RabbitMQ',
+    description: 'Open source message broker',
+    url: 'https://www.rabbitmq.com/'
+  },
+  {
+    displayName: 'Jest',
+    description: 'JavaScript Testing Framework with a focus on simplicity',
+    url: 'https://jestjs.io/'    
+  },
+  {
+    displayName: 'Docker',
+    description: 'Platform designed to help developers build, share, and run modern applications',
+    url: 'https://www.docker.com/'
+  },
+  {
+    displayName: 'Prettier',
+    description: 'Opinionated Code Formatter',
+    url: 'https://prettier.io/'
+  }
+]
+
 async function main() {
-  const expressTech = await prisma.technologyEntity.upsert({
-    where: { displayName: 'Express' },
+  const promises = RECORDS.map(record => prisma.technologyEntity.upsert({
+    where: { displayName: record.displayName },
     update: {},
-    create: {
-      displayName: 'Express',
-      description: 'Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.',
-      url: 'https://expressjs.com/'
-    },
-  })
-
-  const apolloTech = await prisma.technologyEntity.upsert({
-    where: { displayName: 'Apollo GraphQL' },
-    update: {},
-    create: {
-      displayName: 'Apollo GrapQL',
-      description: 'Apollo Graph Platform — unify APIs, microservices, & databases into a graph that you can query with GraphQL.',
-      url: 'https://www.apollographql.com/'
-    },
-  })
-
-  const prismaTech = await prisma.technologyEntity.upsert({
-    where: { displayName: 'Prisma' },
-    update: {},
-    create: {
-      displayName: 'Prisma',
-      description: 'Prisma is a next-generation Node.js and TypeScript ORM for PostgreSQL, MySQL, SQL Server, SQLite, MongoDB, and CockroachDB.',
-      url: 'https://www.prisma.io/'
-    }
-  })
-
-  console.log(`Seeding completed successfully:`, { expressTech, apolloTech, prismaTech })
+    create: record,
+  }));
+  const results = await Promise.all(promises);
+  console.log(`Seeding completed successfully:`, results)
 }
 main()
   .then(async () => {

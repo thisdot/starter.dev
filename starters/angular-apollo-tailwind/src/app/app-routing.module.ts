@@ -5,23 +5,23 @@ import { CounterExampleComponent } from './counter-example/counter-example.compo
 import { FetchExampleComponent } from './fetch-example/fetch-example.component';
 
 const routes: Routes = [
-    {
-        path: '',
-        component: HomeComponent,
-    },
-    {
-        path: 'counter',
-        component: CounterExampleComponent,
-    },
-    {
-        path: 'fetch-example',
-        component: FetchExampleComponent,
-    },
+  {
+    path: '',
+    component: HomeComponent,
+  },
+  {
+    path: 'counter',
+    component: CounterExampleComponent,
+  },
+  {
+    path: 'fetch-example',
+    component: FetchExampleComponent,
+  },
 ];
 
 @NgModule({
-    declarations: [],
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule],
+  declarations: [],
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

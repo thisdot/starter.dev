@@ -26,7 +26,7 @@ type Mutation {
 
 type Query {
 	"Returns a list of Technologies"
-	technologies: [Technology]!
+	technologies(limit: Int = 5, offset: Int = 0): TechnologyCollectionPage!
 	"Returns a single Technology by ID"
 	technology(id: ID!): Technology
 }
@@ -43,6 +43,11 @@ type Technology {
 	id: ID!
 	"The link to the Technology's documentation"
 	url: String
+}
+
+type TechnologyCollectionPage {
+	items: [Technology]!
+	totalCount: Int!
 }
 
 input UpdateTechnology {

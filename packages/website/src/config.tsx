@@ -36,10 +36,14 @@ import {
   PiniaIcon,
   QwikIcon,
   SolidJsIcon,
+  ChakraIcon,
+  ServerlessIcon,
   DenoIcon,
   ExpressIcon,
   PostgresIcon,
   TypeOrmIcon,
+  SolidStartIcon,
+  TanstackIcon,
   PrismaIcon
 } from './icons';
 
@@ -141,6 +145,12 @@ export const TECHNOLOGIES = [
     Icon: (props) => <RemixIcon {...props} />,
   },
   {
+    key: 'solidstart',
+    name: 'Solid Start',
+    tags: ['Framework'],
+    Icon: (props) => <SolidStartIcon {...props} />,
+  },
+  {
     key: 'quasar',
     name: 'Quasar',
     tags: ['Framework'],
@@ -219,6 +229,12 @@ export const TECHNOLOGIES = [
     Icon: (props) => <BootstrapIcon {...props} />,
   },
   {
+    key: 'chakra-ui',
+    name: 'Chakra UI',
+    tags: ['Styling'],
+    Icon: (props) => <ChakraIcon {...props} />,
+  },
+  {
     key: 'astro',
     name: 'Astro',
     tags: ['Static Site Builder'],
@@ -243,6 +259,12 @@ export const TECHNOLOGIES = [
     Icon: (props) => <ReduxIcon {...props} />,
   },
   {
+    key: 'tanstack-query',
+    name: 'Tanstack Query',
+    tags: ['Data Management'],
+    Icon: (props) => <TanstackIcon {...props} />,
+  },
+  {
     key: 'ngrx',
     name: 'NgRx',
     tags: ['Data Management'],
@@ -255,9 +277,21 @@ export const TECHNOLOGIES = [
     Icon: (props) => <RxJsIcon {...props} />,
   },
   {
+    key: 'serverless',
+    name: 'Serverless',
+    tags: ['Infrastructure'],
+    Icon: (props) => <ServerlessIcon {...props} />,
+  },
+  {
+    key: 'apollo-server',
+    name: 'Apollo Server',
+    tags: ['Middleware'],
+    Icon: (props) => <ApolloIcon {...props} />,
+  },
+  {
     key: 'graphql',
     name: 'GraphQL',
-    tags: ['Data Management'],
+    tags: ['API Specification'],
     Icon: (props) => <GraphQLIcon {...props} />,
   },
   {
@@ -274,7 +308,7 @@ export const TECHNOLOGIES = [
   },
   {
     key: 'apollo',
-    name: 'Apollo',
+    name: 'Apollo Client',
     tags: ['Data Management'],
     Icon: (props) => <ApolloIcon {...props} />,
   },
@@ -318,7 +352,7 @@ export const TECHNOLOGIES = [
     key: 'typeorm',
     name: 'TypeORM',
     tags: ['Data Management'],
-    Icon: (props) => <TypeOrmIcon {...props} />
+    Icon: (props) => <TypeOrmIcon {...props} />,
   },
   {
     key: 'postgres',

@@ -1,0 +1,82 @@
+# Welcome to serverless. Read the docs
+# https://serverless.com/framework/docs/
+
+# Serverless.yml is the configuration the CLI
+# uses to deploy your code to your provider of choice
+
+# The `service` block is the name of the service
+service: serverless-framework-apollo-contentful
+
+frameworkVersion: '3'
+
+# The `provider` block defines where your service will be deployed
+provider:
+  name: aws
+  runtime: nodejs16.x
+
+  environment:
+    JOB_QUEUE: DemoJobQueue
+
+# The `functions` block defines what code to deploy
+functions:
+  graphql:
+    handler: src/handlers/graphql.server
+    events:
+      - http:
+          path: graphql
+          method: post
+          cors: true
+      - http:
+          path: graphql
+          method: get
+          cors: true
+  healthcheck:
+    handler: src/handlers/healthcheck.handler
+    events:
+      - http:
+          path: healthcheck
+          method: get
+  sqs-handler:
+    handler: src/handlers/sqs-handler.handler
+    events:
+      - sqs:
+          arn:
+            Fn::GetAtt:
+              - DemoJobQueue
+              - Arn
+  sqs-generate-job:
+    handler: src/handlers/sqs-generate-job.handler
+    events:
+      - http:
+          path: sqs-generate-job
+          method: post
+    iamRoleStatements:
+      - Effect: 'Allow'
+        Action:
+          - 'sqs:SendMessage'
+          - 'sqs:GetQueueUrl'
+        Resource: 'arn:aws:sqs:*:*:*'
+
+custom:
+  serverless-offline-sqs:
+    autoCreate: true
+    apiVersion: '2012-11-05'
+    endpoint: http://0.0.0.0:9324
+    region: 'us-east-1'
+    accessKeyId: root
+    secretAccessKey: root
+
+resources:
+  Resources:
+    DemoJobQueue:
+      Type: AWS::SQS::Queue
+      Properties:
+        QueueName: DemoJobQueue
+
+plugins:
+  - serverless-offline-sqs
+  - serverless-offline
+  - serverless-plugin-typescript
+  - serverless-dotenv-plugin
+
+useDotenv: true
