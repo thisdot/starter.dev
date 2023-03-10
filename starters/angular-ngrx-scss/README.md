@@ -101,6 +101,6 @@ git clone https://github.com/thisdot/starter.dev.git
 
 ## Demo Implementation
 
-[Repository](https://github.com/thisdot/starter.dev-showcases/tree/main/angular-ngrx-scss)
+[Repository](https://github.com/thisdot/starter.dev-github-showcases/tree/main/angular-ngrx-scss)
 
 The demo application re-implements some of GitHub's pages and functionality. It uses the OAuth credentials in GitHub to authenticate users with their GitHub accounts and uses Angular services and NgRx to fetch data from the GitHub API. Check out the link above to learn more or check out the demo!
