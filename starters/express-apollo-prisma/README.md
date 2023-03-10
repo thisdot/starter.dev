@@ -84,9 +84,9 @@ git clone https://github.com/thisdot/starter.dev.git
 
 ## Built-in Scripts
 
-- `npm run infrastructure:start` - Creates and starts all the docker containers for services from Docker Compose configuration (Mysql, Redis, RabbitMQ).
+- `npm run infrastructure:start` - Creates and starts all the Docker containers for services from Docker Compose configuration (MySQL, Redis, RabbitMQ).
 - `npm run infrastructure:stop` - Stops and removes containers, networks and volumes of all the services created by `npm run infrastructure:start`.
-- `npm run prepare` - Generates Graphql and Prisma Client code.
+- `npm run prepare` - Generates GraphQL and Prisma Client code.
 - `npm run db:seed` - Populates the database with basic data for validating and using the application in a development environment (see [Seeding](#seeding)).
 - `npm run build` - Compiles the project. Emits files referenced in with the compiler settings from tsconfig.build.json.
 - `npm test` - Prepares and Runs the unit tests.
@@ -243,19 +243,18 @@ In order to restrict origin URLs that can access your API, you need to add a lis
 ### Folder structure
 
 ```text
-- **/prisma/** - holds prisma migration files and schema.
+- **/prisma/** - holds Prisma migrations and schema.
 - **/src
-  - /graphql - holds graphql-related files.
-    - /data-sources/** - holds a Datasource file for each model.
-    - /mappers/** - holds a mappers for particular models.
-    - /schema/** - holds a directory for each GraphQL Module. Each module needs a `resolver`, `typedef` and optionally  a test.
-    - /server-context/** - holds server-context types and middleware.
-    - /utils/** - holds related utilities required in graphql connection.
-  - /redis/** - holds redis connection files.
-  - main.ts - bootstraps Express application with Apollo Server.
+  - /graphql - holds GraphQL-related files.
+    - /data-sources/** - holds data sources per model.
+    - /mappers/** - holds mappers per model.
+    - /schema/** - holds GraphQL schema type definitions and resolvers.
+    - /server-context/** - holds server-context types and middleware factory methods.    
+  - /redis/** - holds Redis-related functionality.
+  - main.ts - bootstraps an entire server.
 ```
 
-### GraphQL Moodules
+### GraphQL Modules
 
 This pattern follows the single responsibility principle since each file has one purpose. For example, the .resolvers.ts files handle data for all resolvers with the functionality related to data fetching for your query. The .spec.ts files handle all the unit tests for the resolvers. The .typedefs.ts files handle all the types for GraphQL.
 
