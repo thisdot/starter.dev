@@ -363,6 +363,18 @@ export const TECHNOLOGIES = [
     Icon: (props) => <PostgresIcon {...props} />
   },
   {
+    key: 'expo',
+    name: 'Expo',
+    tags: ['Tooling'],
+    Icon: (props) => <ExpoIcon {...props} />,
+  },
+  {
+    key: 'zustand',
+    name: 'Zustand',
+    tags: ['Data Management'],
+    Icon: (props) => <ZustandIcon {...props} />,
+  },
+  {
     key: 'prisma',
     name: 'Prisma',
     tags: ['Data Management'],
