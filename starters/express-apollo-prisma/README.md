@@ -96,7 +96,7 @@ git clone https://github.com/thisdot/starter.dev.git
 - `npm run lint` - Identifying and reporting on patterns found in the project code, to make the code more consistent and avoid bugs.
 - `npm run format` - Formats all files supported by Prettier in the project directory and its subdirectories.
 - `npm run prisma:format` - Formats the Prisma schema file, which includes validating, formatting, and persisting the schema.
-- `npm run prisma:migrate:reset` - Drops and recreates the database, which results in data loss. (For development only).
+- `npm run prisma:migrate:reset` - Drops and recreates the database, which results in data loss (for development only).
 - `npm run prisma:migrate:dev` - Updates your database using migrations during development and creates the database if it does not exist (for development only).
 - `npm run prisma:generate` - Generates Prisma Client code.
 - `npm run prisma:deploy` - Applies all pending migrations, and creates the database if it does not exist. Primarily used in non-development environments (for production only).
