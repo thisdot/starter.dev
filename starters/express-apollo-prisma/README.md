@@ -17,6 +17,7 @@ This starter kit features Express, Apollo Server and Prisma.
     - [Database and Redis](#database-and-redis)
     - [Seeding](#seeding)
     - [Updating Schemas and Entities](#updating-schemas-and-entities)
+    - [Pagination](#Pagination)
     - [Production build](#production-build)
     - [CORS Cross-Origin Resource Sharing](#cors-cross-origin-resource-sharing)
   - [Project Structure](#project-structure)
@@ -225,6 +226,22 @@ This will generate a migration folder under `prisma/migrations`. That alters our
    ```
 5. Finally, update your resolvers with updated properties you'd like to be returned by GraphQL.
 
+### Pagination
+
+There is a `technologies` query in `technology.typedefs.ts` file. The query uses offset pagination for querying results. It is a place for configuring the pagination defaults. Current defaults: 
+- limit: 5
+- offset: 0
+
+```sh
+	...
+  type Query {
+		...
+		"Returns a list of Technologies"
+		technologies(limit: Int = 5, offset: Int = 0): TechnologyCollectionPage!
+	}
+  ...
+```
+
 ### Production build
 
 The `npm run build` command compiles the TypeScript code into the `/dist` folder and generates a `package.json` file. To use it in production, for example in a Docker container, one would copy the contents of the `/dist` folder, and then run `npm install` to have all the dependencies.
@@ -267,7 +284,7 @@ This pattern follows the single responsibility principle since each file has one
 
 ### Express
 
-The ExpressJS API starts at the `main.ts` file. The `bootstrapApp()` method uses the `expressMiddleware` function from `@apollo/server` to create Graphql endpoints.
+The ExpressJS API starts at the `main.ts` file.
 
 ### Apollo Server
 
