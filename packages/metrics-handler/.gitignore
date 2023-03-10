@@ -1,0 +1,17 @@
+# package directories
+node_modules
+jspm_packages
+
+#.env
+.env
+
+# Serverless directories
+.serverless
+.esbuild
+
+# IDEs
+.vscode
+.idea
+
+# OS
+.DS_Store

@@ -1,0 +1,52 @@
+service: metrics-handler
+frameworkVersion: '3'
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  profile: starterdev
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'us-east-1'}
+  timeout: 29
+  httpApi:
+    cors: true
+  environment:
+    GOOGLE_ANALYTICS_API_SECRET: ${env:GOOGLE_ANALYTICS_API_SECRET}
+    GOOGLE_ANALYTICS_MEASUREMENT_ID: ${env:GOOGLE_ANALYTICS_MEASUREMENT_ID}
+  iam:
+    role:
+      statements:
+        - Effect: 'Allow'
+          Resource: 'arn:aws:lambda:*:*:*'
+          Action:
+            - lambda:InvokeFunction
+  tracing:
+    apiGateway: true
+    lambda: true
+
+plugins:
+  - serverless-esbuild
+  - serverless-offline
+
+custom:
+  esbuild:
+    packager: 'yarn'
+    bundle: true
+    minify: true
+    sourcemap: true
+  serverless-offline:
+    reloadHandler: true
+
+package:
+  individually: true
+  patterns: ['index.js', '!node_modules/**']
+  excludeDevDependencies: true
+
+functions:
+  track:
+    handler: index.handler
+    events:
+      - httpApi:
+          path: /track
+          method: post

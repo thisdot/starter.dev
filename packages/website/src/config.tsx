@@ -44,6 +44,8 @@ import {
   TypeOrmIcon,
   SolidStartIcon,
   TanstackIcon,
+  ExpoIcon,
+  ZustandIcon,
   PrismaIcon
 } from './icons';
 
