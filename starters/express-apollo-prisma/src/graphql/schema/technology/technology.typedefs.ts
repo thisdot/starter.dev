@@ -15,11 +15,19 @@ export const technologyTypeDefs = gql`
 		url: String
 	}
 
+	"""
+	A page of technology items
+	"""
 	type TechnologyCollectionPage {
+		"Identifies the total count of technology records in data source"
 		totalCount: Int!
+		"A list of records of the requested page"
 		items: [Technology]!
 	}
 
+	"""
+	Technology queries
+	"""
 	type Query {
 		"Returns a single Technology by ID"
 		technology(id: ID!): Technology
