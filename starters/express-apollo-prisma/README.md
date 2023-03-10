@@ -61,9 +61,9 @@ Note: Other package managers such as `yarn` or `pnpm` can be used with this kit.
 
 - Follow the prompts to select the `express-apollo-prisma` starter kit and name your new project.
 - `cd` into your project directory and run `npm install`.
-- Make sure you have `docker` & `docker-compose` installed on your machine
+- Make sure you have `docker` & `docker-compose` installed on your machine.
 - Create a `.env` file and copy the contents of `.env.example` into it.
-- Run `npm run infrastructure:start` to start the database and the Redis instances
+- Run `npm run infrastructure:start` to start the database and the Redis instances.
 - Run `npm run start` to start the development server.
 - Open your browser to `http://localhost:4001` to see the API documentation with the existing endpoints.
 
@@ -74,11 +74,11 @@ git clone https://github.com/thisdot/starter.dev.git
 ```
 
 - Copy and rename the `starters/express-apollo-prisma` directory to the name of your new project.
-- Make sure you have docker & docker-compose installed on your machine
+- Make sure you have docker & docker-compose installed on your machine.
 - `cd` into your project directory and run `npm install`.
-- Make sure you have docker & docker-compose installed on your machine
+- Make sure you have docker & docker-compose installed on your machine.
 - Create a `.env` file and copy the contents of `.env.example` into it.
-- Run `npm run infrastructure:start` to start the database and the Redis instances
+- Run `npm run infrastructure:start` to start the database and the Redis instances.
 - Run `npm run start` to start the development server.
 - Open your browser to `http://localhost:4001` to see the API documentation with the existing endpoints.
 
@@ -106,7 +106,7 @@ git clone https://github.com/thisdot/starter.dev.git
 
 - `PORT` - The port exposed to connect with the application.
 - `DATABASE_URL` - The database connection URL.
-- `REDIS_URL` - The Redis connection URL
+- `REDIS_URL` - The Redis connection URL.
 - `REDIS_CACHE_TTL_SECONDS` - The remaining time(seconds) to live of a key that has a timeout.
 - `DOCKER_MYSQLDB_ROOT_PASSWORD` - The MySQL root user password.
 - `DOCKER_MYSQLDB_DATABASE` - The MySQL database name.
@@ -131,8 +131,8 @@ For more information on Docker container networks: https://docs.docker.com/confi
 To start up your API in development mode with an active database connection, please follow the following steps:
 
 1. create a `.env` file. For the defaults, copy the contents of the `.env.example` file's content into it.
-2. run `npm run infrastructure:start`
-3. run `npm run dev`
+2. run `npm run infrastructure:start`.
+3. run `npm run dev`.
 
 The above steps will make sure your API connects to the database and Redis instances that get started up with Docker. Run `npm run infrastructure:stop` to stop your MySQL, Redis & RabbitMQ containers.
 
@@ -141,8 +141,8 @@ The above steps will make sure your API connects to the database and Redis insta
 To seed the database, you need to do the following steps:
 
 1. create a `.env` file. For the defaults, copy the contents of the `.env.example` file's content into it.
-2. run `npm run infrastructure:start`
-3. run `npm run db:seed`
+2. run `npm run infrastructure:start`.
+3. run `npm run db:seed`.
 
 ### Updating Schemas and Entities
 
@@ -249,10 +249,10 @@ In order to restrict origin URLs that can access your API, you need to add a lis
     - /data-sources/** - holds a Datasource file for each model.
     - /mappers/** - holds a mappers for particular models.
     - /schema/** - holds a directory for each GraphQL Module. Each module needs a `resolver`, `typedef` and optionally  a test.
-    - /server-context/** - holds server-context types and middleware
-    - /utils/** - holds related utilities required in graphql connection
-  - /redis/** - holds redis connection files
-  - main.ts - bootstraps Express application with Apollo Server
+    - /server-context/** - holds server-context types and middleware.
+    - /utils/** - holds related utilities required in graphql connection.
+  - /redis/** - holds redis connection files.
+  - main.ts - bootstraps Express application with Apollo Server.
 ```
 
 ### GraphQL Moodules
@@ -289,7 +289,7 @@ We use Prisma for the following:
 - [Prisma Migrate](https://www.prisma.io/docs/concepts/components/prisma-migrate) - a declarative data modeling and migration tool.
 - [Prisma Studio](https://www.prisma.io/studio) - the easiest way to explore and manipulate your data in all of your Prisma projects.
 
-To learn more about [Prisma](https://www.prisma.io/docs/concepts/overview/prisma-in-your-stack/is-prisma-an-orm)
+Learn more about [Prisma](https://www.prisma.io/docs/concepts/overview/prisma-in-your-stack/is-prisma-an-orm).
 
 ### Queueing
 
@@ -297,8 +297,8 @@ The kit provides an implementation of queueing using RabbitMQ, an open-source me
 
 To start the worker that processes messages in the queue, run the command:
 
-1. `npm run infrastructure:start` - starts the RabbitMQ server (you can skip this if you already ran this command)
-2. `npm run queue:run` - starts the queue worker
+1. `npm run infrastructure:start` - starts the RabbitMQ server (you can skip this if you already ran this command).
+2. `npm run queue:run` - starts the queue worker.
 
 This should start a process that listens for messages in our queue and processes them, see the `queue/worker.ts` file to modify it to your needs:
 
@@ -311,7 +311,7 @@ channel.consume(AMQP_QUEUE_JOB, (message) => {
 
 The `src/queue/job-generator-handler.ts` file contains the logic for generating a job and adding it to the queue, the `createJobGeneratorHandler` function creates an Express request handler that accepts a message and adds it to the queue. The `createQueueChannel` function sets up a connection to the RabbitMQ server and returns a channel object, which is used to perform various actions on the queue, such as creating a new queue, binding it to an exchange, and publishing a message to the queue.
 
-To use this implementation of queueing, you can send a `POST` request to the `/example-job` endpoint with a `message` in the request body, and the message will be added to the queue. Once the message is in the queue, it will be processed in the order it was added
+To use this implementation of queueing, you can send a `POST` request to the `/example-job` endpoint with a `message` in the request body, and the message will be added to the queue. Once the message is in the queue, it will be processed in the order it was added:
 
 ```bash
 curl -X POST http://localhost:4001/example-job
@@ -333,11 +333,11 @@ Testing is set up with [Jest](https://jestjs.io/). You can see some example spec
 
 To deploy this starter kit to production, you will need to choose a cloud provider or hosting service, such as AWS, Google Cloud Platform, Heroku, or DigitalOcean, to host your application. The exact deployment steps will depend on your chosen provider or service, but generally, the following steps will be involved:
 
-1. Prepare your application for deployment by running any necessary build or compile steps. In this case, you can run the `build` script by running `npm run build` which will transpile TypeScript code to JavaScript.
+1. Prepare your application for deployment by running any necessary build or compile steps. In this case, you can run the `build` script by running `npm run build` which will transpile TypeScript code to JavaScript:
    ```sh
     npm run build
    ```
-2. Create a production-ready database, cache and queueing infrastructure, by running
+2. Create a production-ready database, cache and queueing infrastructure, by running:
    ```sh
     npm run infrastructure:start
    ```
