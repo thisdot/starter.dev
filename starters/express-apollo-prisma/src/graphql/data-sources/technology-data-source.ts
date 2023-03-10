@@ -3,6 +3,11 @@ import { CacheAPIWrapper } from '../../cache';
 
 type TechnologyEntityId = TechnologyEntity['id'];
 
+export type TechnologyEntityCollectionPage = {
+	totalCount: number;
+	items: TechnologyEntity[];
+};
+
 export class TechnologyDataSource {
 	constructor(
 		private prismaClient: PrismaClient,
@@ -25,8 +30,18 @@ export class TechnologyDataSource {
 		return entity;
 	}
 
-	async getTechnologies(): Promise<TechnologyEntity[]> {
-		return await this.prismaClient.technologyEntity.findMany();
+	async getTechnologies(limit: number, offset: number): Promise<TechnologyEntityCollectionPage> {
+		const [totalCount, items] = await this.prismaClient.$transaction([
+			this.prismaClient.technologyEntity.count(),
+			this.prismaClient.technologyEntity.findMany({
+				take: limit,
+				skip: offset,
+			}),
+		]);
+		return {
+			totalCount,
+			items,
+		};
 	}
 
 	async createTechnology(data: Prisma.TechnologyEntityCreateInput): Promise<TechnologyEntity> {

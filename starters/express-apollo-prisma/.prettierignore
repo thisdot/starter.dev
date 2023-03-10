@@ -2,3 +2,6 @@ dist/
 node_modules/
 coverage/
 prisma/
+
+# unignore
+!prisma/seed.ts

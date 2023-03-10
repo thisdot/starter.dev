@@ -53,9 +53,14 @@ export type MutationupdateTechnologyArgs = {
 export type Query = {
 	__typename?: 'Query';
 	/** Returns a list of Technologies */
-	technologies: Array<Maybe<Technology>>;
+	technologies: TechnologyCollectionPage;
 	/** Returns a single Technology by ID */
 	technology?: Maybe<Technology>;
+};
+
+export type QuerytechnologiesArgs = {
+	limit?: InputMaybe<Scalars['Int']>;
+	offset?: InputMaybe<Scalars['Int']>;
 };
 
 export type QuerytechnologyArgs = {
@@ -73,6 +78,12 @@ export type Technology = {
 	id: Scalars['ID'];
 	/** The link to the Technology's documentation */
 	url?: Maybe<Scalars['String']>;
+};
+
+export type TechnologyCollectionPage = {
+	__typename?: 'TechnologyCollectionPage';
+	items: Array<Maybe<Technology>>;
+	totalCount: Scalars['Int'];
 };
 
 export type UpdateTechnology = {
@@ -171,10 +182,12 @@ export type ResolversTypes = {
 	Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
 	CreateTechnology: CreateTechnology;
 	ID: ResolverTypeWrapper<Scalars['ID']>;
+	Int: ResolverTypeWrapper<Scalars['Int']>;
 	Mutation: ResolverTypeWrapper<{}>;
 	Query: ResolverTypeWrapper<{}>;
 	String: ResolverTypeWrapper<Scalars['String']>;
 	Technology: ResolverTypeWrapper<Technology>;
+	TechnologyCollectionPage: ResolverTypeWrapper<TechnologyCollectionPage>;
 	UpdateTechnology: UpdateTechnology;
 };
 
@@ -183,10 +196,12 @@ export type ResolversParentTypes = {
 	Boolean: Scalars['Boolean'];
 	CreateTechnology: CreateTechnology;
 	ID: Scalars['ID'];
+	Int: Scalars['Int'];
 	Mutation: {};
 	Query: {};
 	String: Scalars['String'];
 	Technology: Technology;
+	TechnologyCollectionPage: TechnologyCollectionPage;
 	UpdateTechnology: UpdateTechnology;
 };
 
@@ -218,7 +233,12 @@ export type QueryResolvers<
 	ContextType = any,
 	ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']
 > = {
-	technologies?: Resolver<Array<Maybe<ResolversTypes['Technology']>>, ParentType, ContextType>;
+	technologies?: Resolver<
+		ResolversTypes['TechnologyCollectionPage'],
+		ParentType,
+		ContextType,
+		RequireFields<QuerytechnologiesArgs, 'limit' | 'offset'>
+	>;
 	technology?: Resolver<
 		Maybe<ResolversTypes['Technology']>,
 		ParentType,
@@ -238,8 +258,18 @@ export type TechnologyResolvers<
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
+export type TechnologyCollectionPageResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['TechnologyCollectionPage'] = ResolversParentTypes['TechnologyCollectionPage']
+> = {
+	items?: Resolver<Array<Maybe<ResolversTypes['Technology']>>, ParentType, ContextType>;
+	totalCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
 export type Resolvers<ContextType = any> = {
 	Mutation?: MutationResolvers<ContextType>;
 	Query?: QueryResolvers<ContextType>;
 	Technology?: TechnologyResolvers<ContextType>;
+	TechnologyCollectionPage?: TechnologyCollectionPageResolvers<ContextType>;
 };
