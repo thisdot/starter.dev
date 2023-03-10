@@ -74,9 +74,8 @@ git clone https://github.com/thisdot/starter.dev.git
 ```
 
 - Copy and rename the `starters/express-apollo-prisma` directory to the name of your new project.
-- Make sure you have docker & docker-compose installed on your machine.
+- Make sure you have Docker & Docker Compose installed on your machine.
 - `cd` into your project directory and run `npm install`.
-- Make sure you have docker & docker-compose installed on your machine.
 - Create a `.env` file and copy the contents of `.env.example` into it.
 - Run `npm run infrastructure:start` to start the database and the Redis instances.
 - Run `npm run start` to start the development server.
@@ -140,9 +139,9 @@ The above steps will make sure your API connects to the database and Redis insta
 
 To seed the database, you need to do the following steps:
 
-1. create a `.env` file. For the defaults, copy the contents of the `.env.example` file's content into it.
-2. run `npm run infrastructure:start`.
-3. run `npm run db:seed`.
+1. Create a `.env` file. For the defaults, copy the contents of the `.env.example` file into it.
+2. Run the command: `npm run infrastructure:start`.
+3. Run the command: `npm run db:seed`.
 
 ### Updating Schemas and Entities
 
@@ -256,7 +255,7 @@ In order to restrict origin URLs that can access your API, you need to add a lis
 
 ### GraphQL Modules
 
-This pattern follows the single responsibility principle since each file has one purpose. For example, the .resolvers.ts files handle data for all resolvers with the functionality related to data fetching for your query. The .spec.ts files handle all the unit tests for the resolvers. The .typedefs.ts files handle all the types for GraphQL.
+This pattern follows the single responsibility principle since each file has one purpose. For example, the `*.resolvers.ts` files handle data for all resolvers with the functionality related to data fetching for your query. The `*.spec.ts` files handle all the unit tests for the resolvers. The `*.typedefs.ts` files handle all the types for GraphQL.
 
 #### Example GraphQL Module
 
@@ -280,19 +279,18 @@ The data sources are located in `src/graphql/data-sources`. The data sources of 
 
 ### ORM
 
-The kit uses Prisma as a TypeScript ORM for proper data fetch and mutation from the source. It is configured with the following environment variable: DATABASE_URL="mysql://root:root[@localhost:3307/testdb"](https://github.com/localhost:3307/testdb").
+The kit uses Prisma as a TypeScript ORM for proper data fetch and mutation from the source. It is configured with the following environment variable: `DATABASE_URL="mysql://root:root@localhost:3307/testdb"`.
 
 We use Prisma for the following:
 
 - [Prisma Client](https://www.prisma.io/docs/concepts/components/prisma-client) - an auto-generated and type-safe database client for use in your application.
 - [Prisma Migrate](https://www.prisma.io/docs/concepts/components/prisma-migrate) - a declarative data modeling and migration tool.
-- [Prisma Studio](https://www.prisma.io/studio) - the easiest way to explore and manipulate your data in all of your Prisma projects.
 
 Learn more about [Prisma](https://www.prisma.io/docs/concepts/overview/prisma-in-your-stack/is-prisma-an-orm).
 
 ### Queueing
 
-The kit provides an implementation of queueing using RabbitMQ, an open-source message broker that allows multiple applications to communicate with each other through queues. It's a powerful tool for handling tasks asynchronously and distributing workloads across multiple machines.
+The kit provides an implementation of queueing using RabbitMQ, an open-source message broker that allows multiple applications or services to communicate with each other through queues. It's a powerful tool for handling tasks asynchronously and distributing workloads across multiple machines.
 
 To start the worker that processes messages in the queue, run the command:
 
@@ -308,7 +306,7 @@ channel.consume(AMQP_QUEUE_JOB, (message) => {
 });
 ```
 
-The `src/queue/job-generator-handler.ts` file contains the logic for generating a job and adding it to the queue, the `createJobGeneratorHandler` function creates an Express request handler that accepts a message and adds it to the queue. The `createQueueChannel` function sets up a connection to the RabbitMQ server and returns a channel object, which is used to perform various actions on the queue, such as creating a new queue, binding it to an exchange, and publishing a message to the queue.
+The `src/queue/job-generator-handler.ts` file contains the logic for generating a job and adding it to the queue for processing, the `jobGeneratorHandler` function is an Express request handler that accepts a message and adds it to the queue.
 
 To use this implementation of queueing, you can send a `POST` request to the `/example-job` endpoint with a `message` in the request body, and the message will be added to the queue. Once the message is in the queue, it will be processed in the order it was added:
 
