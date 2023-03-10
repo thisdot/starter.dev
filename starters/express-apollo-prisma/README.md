@@ -17,6 +17,7 @@ This starter kit features Express, Apollo Server and Prisma.
     - [Database and Redis](#database-and-redis)
     - [Seeding](#seeding)
     - [Updating Schemas and Entities](#updating-schemas-and-entities)
+    - [Pagination](#Pagination)
     - [Production build](#production-build)
     - [CORS Cross-Origin Resource Sharing](#cors-cross-origin-resource-sharing)
   - [Project Structure](#project-structure)
