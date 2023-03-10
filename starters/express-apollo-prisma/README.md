@@ -88,7 +88,7 @@ git clone https://github.com/thisdot/starter.dev.git
 - `npm run prepare` - Generates GraphQL and Prisma Client code.
 - `npm run db:seed` - Populates the database with basic data for validating and using the application in a development environment (see [Seeding](#seeding)).
 - `npm run build` - Compiles the project. Emits files referenced in with the compiler settings from tsconfig.build.json.
-- `npm test` - Prepares and Runs the unit tests.
+- `npm test` - Prepares and runs the unit tests.
 - `npm start` - Prepares and starts the development server by automatically restarting the node application when file changes in the `src` directory are detected. Best for the first run (requires: `npm run infrastructure:start`).
 - `npm run dev:test` - Runs the unit tests.
 - `npm run dev:start` - Starts the development server by automatically restarting the node application when a file changes in the `src` directory are detected (requires: `npm run infrastructure:start`, `npm run prepare`).
