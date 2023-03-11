@@ -38,7 +38,7 @@ export default defineComponent({
     const message = useAsync(async () => {
       try {
         const response = await $axios.get<string>(
-          'https://api.starter.dev/hello?greeting=from This Dot Labs!'
+          'https://api.starter.dev/.netlify/functions/server/hello?greeting=from This Dot Labs!'
         );
         return response.data;
       } catch {

@@ -37,7 +37,7 @@ This starter kit features Create React App, RxJS and styled-components.
 
 ### Example Components
 
-- React 'hello world' API endpoint `https://api.starter.dev/hello` with corresponding mock located in `src/components/RXJS-Example/RXJS-Example.test.tsx`.
+- React 'hello world' API endpoint `https://api.starter.dev/.netlify/functions/server/hello` with corresponding mock located in `src/components/RXJS-Example/RXJS-Example.test.tsx`.
 - Greeting component `src/components/RXJS-Example/RXJS-Example.test.tsx` that uses `rxjs/fetch` to fetch data from the example hello endpoint.
 - An example Counter component `src/components/Counter/Counter.tsx`
 - Both example components have co-located tests and stories.
