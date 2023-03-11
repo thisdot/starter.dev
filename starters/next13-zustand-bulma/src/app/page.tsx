@@ -1,4 +1,5 @@
 import { Inter } from '@next/font/google';
+import Link from 'next/link';
 
 const inter = Inter({ subsets: ['latin'] });
 import styles from './page.module.css';
@@ -10,10 +11,10 @@ export default function Home() {
         <h1 className={styles.heading}>Next.js 13 App with Zustand and Bulma</h1>
         <ul className={styles.list}>
           <li>
-            <a href="/counter">See Counter example component</a>
+            <Link href="/counter">See Counter example component</Link>
           </li>
           <li>
-            <a href="/api-example">See Fetch example component</a>
+            <Link href="/api-example">See Fetch example component</Link>
           </li>
         </ul>
       </header>
