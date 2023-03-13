@@ -16,11 +16,11 @@ jobs:
     strategy:
       matrix:
         node-version: [18.x]
-      defaults:
-        run:
-          working-directory: 'packages/metrics-handler'
+    defaults:
+      run:
+        working-directory: 'packages/metrics-handler'
 
-      steps:
+    steps:
       - uses: actions/checkout@v2
 
       - name: Use Node.js ${{ matrix.node-version }}
