@@ -8,7 +8,7 @@ import { catchError, map, Observable } from 'rxjs';
 export class FetchExampleService {
   fetchMessage(greeting?: string): Observable<string> {
     return this.http
-      .get(`https://api.starter.dev/hello?greeting=${greeting}`, {
+      .get(`https://api.starter.dev/.netlify/functions/server/hello?greeting=${greeting}`, {
         responseType: 'text',
       })
       .pipe(
