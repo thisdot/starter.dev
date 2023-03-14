@@ -3,7 +3,7 @@ import { isOffline } from './is-offline';
 
 export const getClient = (): SQSClient => {
 	let cachedClient: SQSClient | null = null;
-	const SQS_PORT = process.env.SQS_PORT;
+	const SQS_PORT = process.env.SQS_PORT || 9324;
 
 	if (cachedClient) {
 		return cachedClient;

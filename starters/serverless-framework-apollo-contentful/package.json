@@ -1,7 +1,7 @@
 {
 	"name": "serverless-framework-apollo-contentful",
 	"version": "1.0.0",
-	"description": "AWS Serverless, GraphQL Apollo Server, and Contentful CMS",
+	"description": "Serverless, GraphQL Apollo Server, and Contentful CMS",
 	"main": "src/handlers/graphql.ts",
 	"scripts": {
 		"dev": "sls offline start",
@@ -18,7 +18,7 @@
 	"keywords": [
 		"serverless",
 		"apollo-server",
-		"graphql"
+		"contentful"
 	],
 	"hasShowcase": false,
 	"author": "This Dot Labs",
@@ -26,12 +26,12 @@
 	"dependencies": {
 		"@apollo/server": "4.3.0",
 		"@apollo/utils.keyvadapter": "2.0.0",
-		"@as-integrations/aws-lambda": "1.1.0",
+		"@as-integrations/aws-lambda": "1.2.1",
 		"@aws-sdk/client-sqs": "3.259.0",
+		"@keyv/redis": "2.5.4",
 		"aws-sdk": "2.1306.0",
 		"contentful-management": "10.26.0",
 		"graphql": "16.6.0",
-		"@keyv/redis": "2.5.4",
 		"graphql-tag": "2.12.6",
 		"keyv": "4.5.2",
 		"serverless": "3.26.0",

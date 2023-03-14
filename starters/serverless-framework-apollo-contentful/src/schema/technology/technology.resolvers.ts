@@ -1,39 +1,37 @@
 import { Resolvers, Technology } from '../../generated/graphql';
-import { TechnologyModel } from '../../models/TechnologyModel';
-import { Entry } from 'contentful-management';
+import { create, getAll, getById } from '../../models/Technology';
+import { GraphQLError } from 'graphql/error';
 
-const entryToTechnology = (entry: Entry): Technology => {
-	return {
-		id: entry.sys.id,
-		displayName: entry.fields.displayName['en-US'],
-		description: entry.fields.description['en-US'],
-		url: entry.fields.url['en-US'],
-	};
-};
 export const technologyResolvers: Resolvers = {
 	Query: {
 		technology: async (_parent, { id }) => {
-			if (id) {
-				const entry = await TechnologyModel.get(id);
-				return [entryToTechnology(entry)];
-			}
-
-			const entryList = await TechnologyModel.getAll();
-
-			return entryList.map(entryToTechnology);
+			return getById(id) as Promise<Technology>;
+		},
+		technologies: async () => {
+			return getAll() as Promise<Technology[]>;
 		},
 	},
 	Mutation: {
 		createTechnology: async (_parent, fields) => {
-			const entry = await TechnologyModel.create(fields);
-
-			return entryToTechnology(entry);
+			return create(fields) as Promise<Technology>;
 		},
 
-		updateTechnology: async (_parent, { id, ...fields }) => {
-			const entry = await TechnologyModel.update(id, fields);
+		updateTechnology: async (_parent, { id, fields }) => {
+			const technology = await getById(id);
+			if (!fields) return technology;
+			if ('displayName' in fields && fields.displayName != null) {
+				throw new GraphQLError('Field "displayName" cannot be null');
+			}
 
-			return entryToTechnology(entry);
+			await technology.update(fields);
+			return technology as Technology;
+		},
+
+		deleteTechnology: async (_parent, { id }) => {
+			const technology = await getById(id);
+			await technology.delete();
+
+			return id;
 		},
 	},
 };
