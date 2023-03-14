@@ -7,8 +7,8 @@ export const technologyResolvers: Resolvers = {
 		technology: async (_parent, { id }) => {
 			return getById(id) as Promise<Technology>;
 		},
-		technologies: async () => {
-			return getAll() as Promise<Technology[]>;
+		technologies: async (_parent, { limit, offset }) => {
+			return getAll(limit, offset) as Promise<Technology[]>;
 		},
 	},
 	Mutation: {
