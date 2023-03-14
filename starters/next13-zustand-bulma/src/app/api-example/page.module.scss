@@ -1,0 +1,6 @@
+// you can use `@/base-styles` to access variables and mixins
+@use '@/base-styles' as styles;
+
+.heading {
+  border-bottom: 4px styles.$primary solid;
+}
