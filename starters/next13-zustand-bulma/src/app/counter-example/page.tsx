@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import Link from 'next/link';
+import { Counter } from '@/components/Counter';
 import styles from './page.module.scss';
 
 // Static metadata
@@ -19,7 +20,9 @@ export default function CounterPage() {
         >
           Increment, Decrement and Reset Button Example
         </h1>
-        <div className="block px-5">{/* Add Counter Component Here */}</div>
+        <div className="block">
+          <Counter />
+        </div>
         <div className="block is-size-5">
           <Link className="is-underlined" href="/">
             Return Home

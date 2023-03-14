@@ -1,5 +1,5 @@
 // Add Bulma Variables + Overrides
-@import '@/base-styles';
+@import '../base-styles.scss';
 // Add Bulma Base Global Styles
 // these base styles cannot be imported into (S)CSS-Modules
 // so they must be imported as global styles here
