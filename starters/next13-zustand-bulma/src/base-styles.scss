@@ -1,0 +1,33 @@
+@charset "utf-8";
+
+// You can define/import your global SASS variables / helpers / mixins here
+$some-var: 1100px;
+
+// You can override Bulma variables, before importing Bulma below
+// (https://bulma.io/documentation/customize/variables)
+// ...such as overriding Bulma colors with your brand colors
+$blue: hsl(221, 83%, 53%);
+$white: hsl(0, 0%, 100%);
+
+// We override Bulma font variables here so that the Next.js font helper works
+$family-sans-serif: inherit;
+// $family-monospace: inherit;
+// $family-primary: inherit;
+// $family-secondary: inherit;
+// $family-code: inherit;
+
+// override Bulma "Derived variables" (https://bulma.io/documentation/customize/variables/#derived-variables)
+$primary: $blue;
+$link: $blue;
+
+// Update some of Bulma's component variables
+$body-background-color: $white;
+$body-size: 16px;
+
+@import '~bulma/sass/components/_all';
+@import '~bulma/sass/elements/_all';
+@import '~bulma/sass/form/_all';
+@import '~bulma/sass/grid/_all';
+@import '~bulma/sass/helpers/_all';
+@import '~bulma/sass/layout/_all';
+@import '~bulma/sass/utilities/_all';

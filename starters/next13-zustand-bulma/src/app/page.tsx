@@ -1,23 +1,28 @@
-import { Inter } from '@next/font/google';
+import styles from './page.module.scss';
 import Link from 'next/link';
-
-const inter = Inter({ subsets: ['latin'] });
-import styles from './page.module.css';
 
 export default function Home() {
   return (
-    <main className={styles.main}>
+    <main className="container section">
       <header className={styles.header}>
-        <h1 className={styles.heading}>Next.js 13 App with Zustand and Bulma</h1>
-        <ul className={styles.list}>
+        <h1 className="is-size-4 has-text-centered has-text-weight-bold">
+          Next.js 13 App with Zustand and Bulma
+        </h1>
+      </header>
+      <div className="list is-size-5 has-text-centered">
+        <ul>
           <li>
-            <Link href="/counter">See Counter example component</Link>
+            <Link className="is-underlined" href="/counter-example">
+              See Counter example component
+            </Link>
           </li>
           <li>
-            <Link href="/api-example">See Fetch example component</Link>
+            <Link className="is-underlined" href="/api-example">
+              See Fetch example component
+            </Link>
           </li>
         </ul>
-      </header>
+      </div>
     </main>
   );
 }
