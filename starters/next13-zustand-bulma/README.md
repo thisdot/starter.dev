@@ -1,38 +1,117 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# next13-zustand-bulma Starter Kit
+
+This starter kit features [**Next.js 13+**](https://beta.nextjs.org/docs) (with the `appDir` and server components), [**Zustand**](https://zustand-demo.pmnd.rs/) for client-side state management, and [**Bulma**](https://bulma.io/) for styling.
+
+##### How to use this Starter Kit:
+
+```bash
+npm create @this-dot/starter -- --kit next13-zustand-bulma
+```
+
+<sub>(use any of `npm` / `yarn` / `pnpm`)</sub>
+
+_[(...or use one of our alternative setup instructions)](./SETUP.md)_
+
+<details>
+<summary>&nbsp;&nbsp;<b>Table of Contents</b></summary>
+
+- [next13-zustand-bulma starter kit](#next13-zustand-bulma-starter-kit)
+  - [Tech Stack](#tech-stack)
+    - [Included Tooling](#included-tooling)
+  - [Getting Started](#getting-started)
+  - [Available Commands](#available-commands)
+  - [Project Details](#project-details)
+    - [Kit Organization / Architecture](#kit-organization--architecture)
+    - [Styling and Theme](#styling-and-theme)
+    - [Font Loading](#font-loading)
+    - [Colocation in directories](#colocation-in-directories)
+  - [Demo Implementation](#demo-implementation)
+  - [Deployment](#deployment)
+
+</details>
+
+## Tech Stack
+
+- [Next.js v13.x](https://nextjs.org)
+- [React v18.x](https://reactjs.org)
+- [Zustand v4.x](https://zustand-demo.pmnd.rs/)
+- [Bulma](https://bulma.io/)
+
+#### Included Tooling
+
+- [Jest](https://jestjs.io/) - Test runner
+- [TypeScript v4](https://www.typescriptlang.org/) - Type checking
+- [Storybook v7](https://storybook.js.org/) - Component sandbox and docs
+- [ESLint](https://eslint.org/) - Code linting
+- [Prettier](https://prettier.io/) - Code formatting
 
 ## Getting Started
 
-First, run the development server:
+- start by [creating a new Starter Kit](./SETUP.md) project
+- `cd` into your project directory and run `npm install`.
+- Run `npm run dev` to start the development server.
+- Open your browser to `http://localhost:3000` to see the included example code running.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+## Available Commands
+
+- `npm run dev` - Starts the development server.
+- `npm run test` - Runs the unit tests.
+- `npm run storybook` - Starts the Storybook UI.
+- `npm run lint` - Runs ESLint on the project.
+- `npm run format` - Formats code for the entire project
+
+## Project Details
+
+### Kit Organization / Architecture
+
+This Kit uses new Next13 features, such as [`AppDir` router](https://beta.nextjs.org/docs/routing/fundamentals#the-app-directory) and [server components](https://beta.nextjs.org/docs/rendering/server-and-client-components).
+
+We've chose to split out a `components` directory for interactive UI components, and a `store` directory for the Zustand stores used for both global and some component state management.
+
+This allows us to keep the `app` directory focused on routing, layouts, and loading data, while passing that data to the more interactive components with more complex needs.
+
+### Styling and Theme
+
+The project uses [Bulma](https://bulma.io/) as the main styling framework. Bulma offers a way to "theme" their components and utility classes by overriding their default SASS variables.
+
+Overrides are done in the `base-styles.scss` file, which is imported in the `src/app/global.scss` file. Bulma components and utility classes can be added to components as needed as they are included in the `global.scss` file, which in turn is imported in the root layout.
+
+You should import the `base-styles.scss` file in any component `*.module.scss` file, as per the example in `app/counter-example.page.tsx` to have access to the [Bulma variables](https://bulma.io/documentation/customize/variables/) for color and spacing in your component.
+
+Bulma is added to Storybook using the [`@storybok/addon-styling` package](https://storybook.js.org/addons/@storybook/addon-styling) which is the recommended way to add unsupported style frameworks to Storybook.
+
+There is some code included to prevent Storybook's `Source` component from picking up styles from the Bulma `tag` component class. The explanation and solution can be found in [this pr](https://github.com/thisdot/starter.dev/pull/1186).
+
+### Font Loading
+
+It takes advantage of the new [`next/font` package](https://beta.nextjs.org/docs/optimizing/fonts) for optimal font loading, and uses the [`@storybook/addon-styling` package](https://storybook.js.org/addons/@storybook/addon-styling), to provide the same font loading functionality to Storybook.
+
+### Colocation in directories
+
+Sometimes called "feature folders", or "modlets", this kit follows the convention of grouping related files together in a directory regardless of filetype or extension. This makes it easier to find related files, and makes it easier to move files around without breaking imports. We also use the `index.ts` file to export some of the modules in the directory, so that we can import them from the directory path instead of the individual files: this is sometimes called a "Barrel" file.
+
+```
+- UserRepos.test.tsx - Unit tests for the UserRepos component
+- UserRepos.stories.tsx - Storybook UI for the UserRepos component
+- UserRepos.mocks.tsx - Mock response for the UserRepos query
+- UserRepos.query.tsx - GraphQL query for the UserRepos component
+- UserRepos.data.tsx - Data fetching component for the UserRepos component
+- UserRepos.view.tsx - View component for the UserRepos component
+- UserRepos.module.css - CSS module for UserRepos component
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Demo Implementation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+[Live Demo](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+[Repository](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+The demo for this starter kit is a partial implementation of some GitHub functionality. It uses the `!!TBD!!` library to authenticate users with their GitHub accounts and uses the GitHub `!!GraphQL/REST!! API` to fetch data from the GitHub API.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Check out the link above to learn more or check out the demo!
 
-## Learn More
+## Deployment
 
-To learn more about Next.js, take a look at the following resources:
+The `build` command creates a working Next.js 13 app, so you can deploy it to any hosting provider that supports Next.js.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Deploying to [Vercel](https://vercel.com) or [Netlify](https://www.netlify.com) is as easy as hooking up your repository to the service and let the service auto detect the next app and configure it for you.
