@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useMachine } from '@xstate/vue';
-import HeaderComponent from '@/components/HeaderComponent.vue';
-import { greetMachine } from '@/machines/greetMachine';
+import HeaderComponent from '../components/HeaderComponent.vue';
+import { greetMachine } from '../machines/greetMachine';
 
 const props = defineProps({
   query: String,

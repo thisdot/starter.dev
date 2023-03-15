@@ -7,7 +7,7 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules/
+node_modules/*
 package-lock.json
 .DS_Store
 dist
@@ -15,8 +15,10 @@ dist-ssr
 coverage
 *.local
 
-/cypress/videos/
-/cypress/screenshots/
+cypress/videos/*
+cypress/screenshots/*
+cypress/downloads/*
+storybook-static/*
 
 # Editor directories and files
 .vscode/*

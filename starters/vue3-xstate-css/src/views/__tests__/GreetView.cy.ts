@@ -1,4 +1,3 @@
-import { fetchGreeting } from '@/utils/fetchGreeting';
 import GreetView from '../GreetView.vue';
 
 describe('<GreetView />', () => {
@@ -35,6 +34,3 @@ describe('<GreetView />', () => {
     );
   });
 });
-
-// think what I need to do is move the service call that makes the fetch request from the machine and into GreetView as a method.
-// then stub the method to return a rejected promise, and provide that stub to the intercept call

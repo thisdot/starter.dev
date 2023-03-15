@@ -5,9 +5,7 @@
     "src/**/*",
     "src/**/*.vue",
     "cypress/support/component.*",
-    "cypress/support/commands.ts",
-    "Header.stories.js",
-    "src/stories/CounterView.stories.js"
+    "cypress/support/commands.ts"
   ],
   "exclude": ["src/stories/**"],
   "compilerOptions": {
