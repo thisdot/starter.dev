@@ -1,5 +1,5 @@
 import { createMachine, assign } from 'xstate';
-import { fetchGreeting } from '@/utils/fetchGreeting';
+import { fetchGreeting } from '../utils/fetchGreeting';
 
 export const greetMachine = (query: string) => {
   return createMachine(
