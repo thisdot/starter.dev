@@ -14,5 +14,27 @@ const config: StorybookConfig = {
   docs: {
     autodocs: 'tag',
   },
+  /* This is a little hack to fix the issue with Bulma's tag
+   component from the `tag` class being picked up by storybooks
+   `Source` component and messing with the styles.
+  */
+  previewHead: (head) => `
+  ${head}
+  <style>
+    pre.prismjs .tag {
+      align-items: initial;
+      background-color: initial;
+      border-radius: initial;
+      display: initial;
+      font-size: initial;
+      height: initial;
+      justify-content: initial;
+      line-height: initial;
+      padding-left: initial;
+      padding-right: initial;
+      white-space: initial;
+    }
+  </style>
+`,
 };
 export default config;
