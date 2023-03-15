@@ -1,4 +1,4 @@
-import { Props } from "./types";
+import { Props } from './types';
 
 export function ReactIcon({ className, size = 48 }: Props) {
   return (
