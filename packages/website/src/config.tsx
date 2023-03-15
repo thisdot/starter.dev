@@ -46,7 +46,7 @@ import {
   TanstackIcon,
   ExpoIcon,
   ZustandIcon,
-  ContentfulIcon
+  ContentfulIcon,
 } from './icons';
 
 export interface NavItem {
@@ -246,7 +246,7 @@ export const TECHNOLOGIES = [
     key: 'contentful',
     name: 'Contentful',
     tags: ['Data Management'],
-    Icon: ContentfulIcon
+    Icon: ContentfulIcon,
   },
   {
     key: 'react-query',

@@ -1,4 +1,4 @@
-import { Props } from "./types";
+import { Props } from './types';
 
 export function NuxtIcon({ size = 48, className }: Props) {
   return (

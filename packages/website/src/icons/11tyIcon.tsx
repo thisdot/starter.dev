@@ -1,4 +1,4 @@
-import { Props } from "./types";
+import { Props } from './types';
 
 export function EleventyIcon({ size = 48, className }: Props) {
   return (

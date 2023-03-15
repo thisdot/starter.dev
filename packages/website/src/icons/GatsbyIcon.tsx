@@ -1,4 +1,4 @@
-import { Props } from "./types";
+import { Props } from './types';
 
 export function GatsbyIcon({ size = 48, className }: Props) {
   return (
