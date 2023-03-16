@@ -75,15 +75,7 @@ git clone https://github.com/thisdot/starter.dev.git
 - `build` - Builds a production version of the app to deploy
 - `start` - Starts the production build with a local version of adapter
 - `test` - Runs the test suite
-- `storbook` - To showcase the component library
+- `storybook` - To showcase the component library
 - `lint` - Uses eslint to find potential issues in the codebase
 - `lint-fix` - Tries to auto-fix potential issues
 - `format` - Fixes formatting issues in the codebase
-
-<!-- ## Demo Implementation -->
-
-<!-- [Repository](https://github.com/thisdot/starter.dev-github-showcases/tree/main/solidstart-tanstackquery-tailwind-modules)
-
-[Live demo](https://solidstart-tanstackquery-tailwind-modules.starter.dev/)
-
-The demo application re-implements some of GitHub's pages and functionality. It uses the OAuth credentials in GitHub to authenticate users with their GitHub accounts and uses window.fetch() to fetch data from the GitHub API. Check out the link above to learn more or check out the demo! -->

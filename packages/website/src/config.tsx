@@ -7,11 +7,14 @@ import {
   BlitzIcon,
   BootstrapIcon,
   BulmaIcon,
+  ChakraIcon,
+  ContentfulIcon,
   CSSModuleIcon,
   DenoIcon,
   DiscordIcon,
   ElementUIIcon,
   EleventyIcon,
+  ExpoIcon,
   ExpressIcon,
   GatsbyIcon,
   GraphQLIcon,
@@ -33,6 +36,7 @@ import {
   RxJsIcon,
   SaaSIcon,
   SCIcon,
+  ServerlessIcon,
   SolidJsIcon,
   SolidStartIcon,
   SvelteIcon,
@@ -222,6 +226,12 @@ export const TECHNOLOGIES = [
     Icon: (props) => <BootstrapIcon {...props} />,
   },
   {
+    key: 'chakra-ui',
+    name: 'Chakra UI',
+    tags: ['Styling'],
+    Icon: (props) => <ChakraIcon {...props} />,
+  },
+  {
     key: 'astro',
     name: 'Astro',
     tags: ['Static Site Builder'],
@@ -232,6 +242,12 @@ export const TECHNOLOGIES = [
     name: '11ty',
     tags: ['Static Site Builder'],
     Icon: (props) => <EleventyIcon {...props} />,
+  },
+  {
+    key: 'contentful',
+    name: 'Contentful',
+    tags: ['Data Management'],
+    Icon: ContentfulIcon,
   },
   {
     key: 'react-query',
@@ -264,9 +280,21 @@ export const TECHNOLOGIES = [
     Icon: (props) => <RxJsIcon {...props} />,
   },
   {
+    key: 'serverless',
+    name: 'Serverless',
+    tags: ['Infrastructure'],
+    Icon: (props) => <ServerlessIcon {...props} />,
+  },
+  {
+    key: 'apollo-server',
+    name: 'Apollo Server',
+    tags: ['Middleware'],
+    Icon: (props) => <ApolloIcon {...props} />,
+  },
+  {
     key: 'graphql',
     name: 'GraphQL',
-    tags: ['Data Management'],
+    tags: ['API Specification'],
     Icon: (props) => <GraphQLIcon {...props} />,
   },
   {
@@ -283,7 +311,7 @@ export const TECHNOLOGIES = [
   },
   {
     key: 'apollo',
-    name: 'Apollo',
+    name: 'Apollo Client',
     tags: ['Data Management'],
     Icon: (props) => <ApolloIcon {...props} />,
   },
@@ -340,6 +368,12 @@ export const TECHNOLOGIES = [
     name: 'Postgres',
     tags: ['Data Management'],
     Icon: (props) => <PostgresIcon {...props} />,
+  },
+  {
+    key: 'expo',
+    name: 'Expo',
+    tags: ['Tooling'],
+    Icon: (props) => <ExpoIcon {...props} />,
   },
   {
     key: 'zustand',
