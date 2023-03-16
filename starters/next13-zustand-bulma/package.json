@@ -2,6 +2,11 @@
   "name": "next13-zustand-bulma",
   "version": "0.1.0",
   "private": true,
+  "keywords": [
+    "next",
+    "zustand",
+    "bulma"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
