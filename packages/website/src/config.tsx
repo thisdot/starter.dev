@@ -47,6 +47,7 @@ import {
   ExpoIcon,
   ZustandIcon,
   PrismaIcon
+  ContentfulIcon,
 } from './icons';
 
 export interface NavItem {
@@ -247,6 +248,12 @@ export const TECHNOLOGIES = [
     name: '11ty',
     tags: ['Static Site Builder'],
     Icon: (props) => <EleventyIcon {...props} />,
+  },
+  {
+    key: 'contentful',
+    name: 'Contentful',
+    tags: ['Data Management'],
+    Icon: ContentfulIcon,
   },
   {
     key: 'react-query',

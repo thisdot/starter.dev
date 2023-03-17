@@ -41,41 +41,45 @@ const sections = technologies.reduce((acc, tech) => {
         >
           <nav>
             <ul>
-              {Object.keys(sections).map((name) => (
-                <li>
-                  <a
-                    href={`#${generateHeaderAnchor(name)}`}
-                    class="t-dark dark:dark-t-light block py-2 px-4 hover:text-blue-500 dark:hover:dark-link text-xl font-sm my-4 border-r-2 border-transparent dark:hover:border-[#95DFFF] hover:border-brand-500 header-link"
-                  >
-                    {name}
-                  </a>
-                </li>
-              ))}
+              {
+                Object.keys(sections).map((name) => (
+                  <li>
+                    <a
+                      href={`#${generateHeaderAnchor(name)}`}
+                      class="t-dark dark:dark-t-light block py-2 px-4 hover:text-blue-500 dark:hover:dark-link text-xl font-sm my-4 border-r-2 border-transparent dark:hover:border-[#95DFFF] hover:border-brand-500 header-link"
+                    >
+                      {name}
+                    </a>
+                  </li>
+                ))
+              }
             </ul>
           </nav>
         </div>
       </aside>
       <div class="col-span-12 lg:col-span-9 p-2 my-b-10 max-w-screen-2xl">
-        {Object.entries(sections).map(([name, technologies]) => (
-          <div class="my-2 p-4">
-            <h2
-              id={`${generateHeaderAnchor(name)}`}
-              class="heading-6 t-dark dark:dark-t-light my-6"
-            >
-              {name}
-            </h2>
-            <div class="flex flex-wrap items-center justify-start gap-x-4">
-              {technologies.map((tech) => (
-                <a
-                  href={`/kits-by-tool/${tech.key}`}
-                  class="group inline-block my-2"
-                >
-                  <TechItem {...tech} />
-                </a>
-              ))}
+        {
+          Object.entries(sections).map(([name, technologies]) => (
+            <div class="my-2 p-4">
+              <h2
+                id={`${generateHeaderAnchor(name)}`}
+                class="heading-6 t-dark dark:dark-t-light my-6"
+              >
+                {name}
+              </h2>
+              <div class="flex flex-wrap items-center justify-start gap-x-4">
+                {technologies.map((tech) => (
+                  <a
+                    href={`/kits-by-tool/${tech.key}`}
+                    class="group inline-block my-2"
+                  >
+                    <TechItem {...tech} />
+                  </a>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        }
         <div class="t-dark dark:dark-t-light p-4">
           <Contributors />
         </div>

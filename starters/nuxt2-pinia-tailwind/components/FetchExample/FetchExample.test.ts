@@ -37,9 +37,12 @@ describe('<FetchExample />', () => {
   it('Should display error message', async () => {
     // Arrange
     mswServer.use(
-      rest.get('https://api.starter.dev/hello', (_, res, ctx) => {
-        return res(ctx.status(500));
-      })
+      rest.get(
+        'https://api.starter.dev/.netlify/functions/server/hello',
+        (_, res, ctx) => {
+          return res(ctx.status(500));
+        }
+      )
     );
 
     const componentOptions = {

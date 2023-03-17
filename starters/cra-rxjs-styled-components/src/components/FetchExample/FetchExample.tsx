@@ -5,7 +5,7 @@ import {
   HomeLinkDiv,
   ReturnHomeLink,
   Message,
-  Loader
+  Loader,
 } from './FetchExample.styles';
 import { useState, useEffect } from 'react';
 import { fromFetch } from 'rxjs/fetch';
@@ -15,9 +15,11 @@ export const FetchExample = () => {
   const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
     const subscription = fromFetch(
-      'https://api.starter.dev/hello?greeting=from This Dot Labs!'
+      'https://api.starter.dev/.netlify/functions/server/hello?greeting=from This Dot Labs!'
     ).subscribe((response) => response.text().then((data) => setMessage(data)));
-      setTimeout(() => {setLoading(false)  }, 2000);
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
     return () => subscription.unsubscribe();
   }, []);
 

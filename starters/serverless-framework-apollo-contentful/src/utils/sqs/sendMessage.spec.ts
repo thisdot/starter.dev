@@ -1,7 +1,4 @@
-import {
-	SendMessageCommand,
-	SendMessageCommandOutput,
-} from '@aws-sdk/client-sqs';
+import { SendMessageCommand, SendMessageCommandOutput } from '@aws-sdk/client-sqs';
 import { ResponseMetadata } from '@aws-sdk/types/dist-types';
 import { Message, sendMessage, SendMessageResult } from './sendMessage';
 import { getClient } from './client';

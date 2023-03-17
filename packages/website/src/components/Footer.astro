@@ -8,20 +8,28 @@ const year = new Date().getFullYear();
     class="flex flex-col gap-4 md:flex-row items-center justify-between max-w-screen-2xl mx-auto"
   >
     <nav class="flex md:flex-row flex-col gap-4 md:space-x-10">
-      {FOOTER_NAV_ITEMS.map(({ href, title, isExternal }) => (
-        <a
-          href={href}
-          target={isExternal ? '_blank' : '_self'}
-          class="t hover:text-slate-900 dark:dark-t hover:dark:dark-t"
-        >
-          {title}
-        </a>
-      ))}
+      {
+        FOOTER_NAV_ITEMS.map(({ href, title, isExternal }) => (
+          <a
+            href={href}
+            target={isExternal ? '_blank' : '_self'}
+            class="t hover:text-slate-900 dark:dark-t hover:dark:dark-t"
+          >
+            {title}
+          </a>
+        ))
+      }
     </nav>
     <div>
-      <a href="https://www.netlify.com"> <img src="https://www.netlify.com/v3/img/components/netlify-light.svg" alt="Deploys by Netlify" /> </a>
+      <a href="https://www.netlify.com">
+        <img
+          src="https://www.netlify.com/v3/img/components/netlify-light.svg"
+          alt="Deploys by Netlify"
+        />
+      </a>
     </div>
-    <span class="t dark:text-gray-300">© {year}.
+    <span class="t dark:text-gray-300"
+      >© {year}.
       <a target="_blank" href="https://www.thisdot.co/">This Dot Labs</a>
     </span>
   </div>

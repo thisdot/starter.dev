@@ -24,7 +24,9 @@ it("returns a string result for the starter REST API", () => {
   const onResponse = jest.fn();
   const onError = jest.fn();
 
-  return fetch("https://api.starter.dev/hello?greeting=from This Dot Labs!")
+  return fetch(
+    "https://api.starter.dev/.netlify/functions/server/hello?greeting=from This Dot Labs!"
+  )
     .then(onResponse)
     .catch(onError)
     .finally(() => {

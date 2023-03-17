@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Link from "next/link";
-import { Greeting } from "../components/Greeting/Greeting";
+import { Greeting } from "../components/greeting/Greeting";
 import { Heading, Center } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 
