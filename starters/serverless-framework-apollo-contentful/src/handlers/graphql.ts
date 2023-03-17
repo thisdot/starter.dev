@@ -20,18 +20,24 @@ export const apolloServer = new ApolloServer<MyContext>({
 		ttl: Number(REDIS_CACHE_TTL_SECONDS),
 	},
 	formatError: (formattedError, error) => {
-		if (!(error instanceof Error) || typeof error?.message !== 'string') {
-			return formattedError;
-		}
+		if (!(error instanceof Error)) return formattedError;
+
+		let message;
 		try {
-			return {
-				...formattedError,
-				...JSON.parse(error.message),
-			};
+			message = JSON.parse(error.message);
 		} catch {
-			return formattedError;
+			message = error.message;
 		}
+
+		console.log(process.env.NODE_ENV);
+
+		if (process.env.NODE_ENV !== 'production') {
+			return { ...formattedError, message };
+		}
+
+		return { message: message.message || message };
 	},
+	introspection: process.env.NODE_ENV !== 'production',
 });
 
 export const server = startServerAndCreateLambdaHandler<MyContext>(apolloServer, {
