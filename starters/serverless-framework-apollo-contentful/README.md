@@ -245,8 +245,8 @@ The `.typedefs.ts` files handle all the types for GraphQL.
 
 ### ES6 module models
 
-Using class models is a code smell in serverless infrastructures. By splitting the logic in stand-alone functions that 
-are exported from their own modules, we can create smaller bundle sizes. Read more on this in 
+Using class models is a code smell in serverless infrastructures. By splitting the logic in stand-alone functions that
+are exported from their own modules, we can create smaller bundle sizes. Read more on this in
 [Dustin Goodman's article on the topic](https://medium.com/@dustinsgoodman/resolving-serverless-webpack-issues-efae729e0619).
 
 ## Technologies
