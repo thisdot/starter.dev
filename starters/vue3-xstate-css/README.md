@@ -1,68 +1,88 @@
-# vue3-xstate-css
+# Vue 3, XState, and CSS Starter Kit
 
-This template should help get you started developing with Vue 3 in Vite.
+## Table of contents
 
-## Recommended IDE Setup
+<!-- links to each section when done -->
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Overview
 
-## Type Support for `.vue` Imports in TS
+### Core Tech Stack
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+- [Vue 3](https://vuejs.org/)
+- [XState](https://xstate.js.org/)
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+For styling, this kit uses CSS directly. Since we're making use of Vue's single file component structure, we've set our styles to be scoped to each component.
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+This kit is also set up to show the XState visualizer when run locally, to help you see what your state machines look like and how they work.
 
-## Customize configuration
+### Included Tooling
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+- [Vite](https://vitejs.dev/) - build / bundle tool
+- [Vue Router](https://router.vuejs.org/) - navigation
+- [Cypress](https://docs.cypress.io/guides/component-testing/overview) - component / unit testing
+- [Storybook](https://storybook.js.org/) - documents component designs
+- [ESLint](https://eslint.org/) - code consistency and best practices
+- [Prettier](https://prettier.io/) - code formatting
 
-## Project Setup
+### Type Support for `.vue` Imports in TS
 
-```sh
-npm install
-```
+This project is setup to handle TypeScript files. However, TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
 
-### Compile and Hot-Reload for Development
+## Installation
 
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
+### CLI (Recommended)
 
 ```sh
-npm run build
+npm create @this-dot/starter -- --kit vue3-xstate-css
 ```
 
-### Run Headed Component Tests with [Cypress Component Testing](https://on.cypress.io/component)
+or
 
 ```sh
-npm run test:unit:dev # or `npm run test:unit` for headless testing
+yarn create @this-dot/starter --kit vue3-xstate-css
 ```
 
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
+- Follow the prompts to select the vue3-xstate-css starter kit and name your new project.
+- `cd` into your project directory and run `npm install` or `yarn` to install the dependencies.
+- Run `npm run dev` or `yarn dev` to start the development server.
+- Open your browser to <http://localhost:5173> to see the included example code running. This will also launch the XState inspector for you.
+
+### Manual
 
 ```sh
-npm run test:e2e:dev
+git clone https://github.com/thisdot/starter.dev.git
 ```
 
-This runs the end-to-end tests against the Vite development server.
-It is much faster than the production build.
+- Copy and rename the starters/vue3-xstate-css directory to the name of your new project.
+- `cd` into your project directory and run `npm install` or `yarn` to install the dependencies.
+- Run `npm run dev` or `yarn dev` to start the development server.
+- Open your browser to <http://localhost:5173> to see the included example code running. This will also launch the XState inspector for you.
 
-But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
+## Available commands
 
-```sh
-npm run build
-npm run test:e2e
-```
+`npm run dev` - starts the local development server
 
-### Lint with [ESLint](https://eslint.org/)
+`npm run build-only` - handles compiling and minifying your files
+`npm run type-check` - type checks your files
+`npm run build` - combines the previous two commands to type-check your files then compile and minify them for production
 
-```sh
-npm run lint
-```
+`npm run preview` - will run the site locally based on your production built files
+
+`npm run test:unit` - runs Cypress component tests in a headless state, as they would run in a CI environment
+`npm run test:unit:dev` - runs Cypress component tests in a headed state, so you can walk through individual tests
+
+`npm run lint` - checks your files for common coding errors
+`npm run format` - formats all of your files
+
+`npm run storybook` - runs Storybook locally
+`npm run build-storybook` - builds a version of your Storybook stories that you can host somewhere
+
+## Kit Organization / Architecture
+
+<!-- a little bit about what the examples are meant to showcase and how the project in general is organized. No specific tree listing, just general idea. any key points about why things were done certain ways should go here. -->
+<!-- Project Structure - directory structure to help understand how to extend it -->
+<!-- Tech specifics including key details of each tech like config / customizations / important decisions / how to extend the app -->
+
+## Deployment
+
+<!-- instructions for how to deploy this somewhere -->
