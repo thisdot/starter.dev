@@ -50,6 +50,7 @@ export type MutationupdateTechnologyArgs = {
 	input: UpdateTechnology;
 };
 
+/** Technology queries */
 export type Query = {
 	__typename?: 'Query';
 	/** Returns a list of Technologies */
@@ -58,11 +59,13 @@ export type Query = {
 	technology?: Maybe<Technology>;
 };
 
+/** Technology queries */
 export type QuerytechnologiesArgs = {
 	limit?: InputMaybe<Scalars['Int']>;
 	offset?: InputMaybe<Scalars['Int']>;
 };
 
+/** Technology queries */
 export type QuerytechnologyArgs = {
 	id: Scalars['ID'];
 };
@@ -80,9 +83,12 @@ export type Technology = {
 	url?: Maybe<Scalars['String']>;
 };
 
+/** A page of technology items */
 export type TechnologyCollectionPage = {
 	__typename?: 'TechnologyCollectionPage';
+	/** A list of records of the requested page */
 	items: Array<Maybe<Technology>>;
+	/** Identifies the total count of technology records in data source */
 	totalCount: Scalars['Int'];
 };
 

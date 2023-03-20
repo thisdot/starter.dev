@@ -214,7 +214,7 @@
 			{
 				"kind": "OBJECT",
 				"name": "Query",
-				"description": null,
+				"description": "Technology queries",
 				"fields": [
 					{
 						"name": "technologies",
@@ -372,11 +372,11 @@
 			{
 				"kind": "OBJECT",
 				"name": "TechnologyCollectionPage",
-				"description": null,
+				"description": "A page of technology items",
 				"fields": [
 					{
 						"name": "items",
-						"description": null,
+						"description": "A list of records of the requested page",
 						"args": [],
 						"type": {
 							"kind": "NON_NULL",
@@ -396,7 +396,7 @@
 					},
 					{
 						"name": "totalCount",
-						"description": null,
+						"description": "Identifies the total count of technology records in data source",
 						"args": [],
 						"type": {
 							"kind": "NON_NULL",

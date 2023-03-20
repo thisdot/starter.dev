@@ -216,17 +216,20 @@ type Mutation {
 `;
 ```
 
-   You can download the [Apollo GraphQL extension](https://marketplace.visualstudio.com/items?itemName=apollographql.vscode-apollo) that adds syntax highlighting for GraphQL files and gql templates inside JavaScript files.
+You can download the [Apollo GraphQL extension](https://marketplace.visualstudio.com/items?itemName=apollographql.vscode-apollo) that adds syntax highlighting for GraphQL files and gql templates inside JavaScript files.
 
 4. Update our automatically generated code by running `npm run codegen`. This will generate a new `src/graphql/schema/index.ts` file.
+
 ```sh
 npm run codegen
 ```
+
 5. Finally, update your resolvers with updated properties you'd like to be returned by GraphQL.
 
 ### Pagination
 
-There is a `technologies` query in `technology.typedefs.ts` file. The query uses offset pagination for querying results. It is a place for configuring the pagination defaults. Current defaults: 
+There is a `technologies` query in `technology.typedefs.ts` file. The query uses offset pagination for querying results. It is a place for configuring the pagination defaults. Current defaults:
+
 - limit: 5
 - offset: 0
 
@@ -263,7 +266,7 @@ In order to restrict origin URLs that can access your API, you need to add a lis
     - /data-sources/** - holds data sources per model.
     - /mappers/** - holds mappers per model.
     - /schema/** - holds GraphQL schema type definitions and resolvers.
-    - /server-context/** - holds server-context types and middleware factory methods.    
+    - /server-context/** - holds server-context types and middleware factory methods.
   - /redis/** - holds Redis-related functionality.
   - main.ts - bootstraps an entire server.
 ```
@@ -346,13 +349,17 @@ Testing is set up with [Jest](https://jestjs.io/). You can see some example spec
 To deploy this starter kit to production, you will need to choose a cloud provider or hosting service, such as AWS, Google Cloud Platform, Heroku, or DigitalOcean, to host your application. The exact deployment steps will depend on your chosen provider or service, but generally, the following steps will be involved:
 
 1. Prepare your application for deployment by running any necessary build or compile steps. In this case, you can run the `build` script by running `npm run build` which will transpile TypeScript code to JavaScript:
+
 ```bash
 npm run build
 ```
+
 2. Create a production-ready database, cache and queueing infrastructure, by running:
+
 ```bash
 npm run infrastructure:start
 ```
+
 3. Deploy your application to your chosen provider or service using their deployment tools or services. You can use the start script to start your application in production mode. You may also need to configure any necessary proxy or routing rules to direct incoming traffic to your application.
 
 4. Monitor your application for any issues or errors and adjust your deployment as needed. This may involve configuring load balancers, auto-scaling, or other performance optimization features, depending on your chosen provider or service.

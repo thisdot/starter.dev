@@ -24,6 +24,9 @@ type Mutation {
 	updateTechnology(id: ID!, input: UpdateTechnology!): Technology!
 }
 
+"""
+Technology queries
+"""
 type Query {
 	"Returns a list of Technologies"
 	technologies(limit: Int = 5, offset: Int = 0): TechnologyCollectionPage!
@@ -45,8 +48,13 @@ type Technology {
 	url: String
 }
 
+"""
+A page of technology items
+"""
 type TechnologyCollectionPage {
+	"A list of records of the requested page"
 	items: [Technology]!
+	"Identifies the total count of technology records in data source"
 	totalCount: Int!
 }
 
