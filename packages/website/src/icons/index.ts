@@ -48,4 +48,5 @@ export { SolidStartIcon } from './SolidStartIcon';
 export { TanstackIcon } from './TanstackIcon';
 export { ExpoIcon } from './ExpoIcon';
 export { ZustandIcon } from './ZustandIcon';
+export { PrismaIcon } from './PrismaIcon';
 export { ContentfulIcon } from './Contentful';

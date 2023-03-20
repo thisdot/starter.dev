@@ -1,0 +1,68 @@
+schema {
+	query: Query
+	mutation: Mutation
+}
+
+input CreateTechnology {
+	"A brief description of the Technology"
+	description: String
+	"Technology Name"
+	displayName: String!
+	"The link to the Technology's documentation"
+	url: String
+}
+
+"""
+Technology mutations
+"""
+type Mutation {
+	"Creates a new Technology"
+	createTechnology(input: CreateTechnology!): Technology!
+	"Removes a Technology"
+	deleteTechnology(id: ID!): Boolean
+	"Updates a Technology"
+	updateTechnology(id: ID!, input: UpdateTechnology!): Technology!
+}
+
+"""
+Technology queries
+"""
+type Query {
+	"Returns a list of Technologies"
+	technologies(limit: Int = 5, offset: Int = 0): TechnologyCollectionPage!
+	"Returns a single Technology by ID"
+	technology(id: ID!): Technology
+}
+
+"""
+Technology object
+"""
+type Technology {
+	"A brief description of the Technology"
+	description: String
+	"The name of the Technology"
+	displayName: String!
+	"The ID of the Technology"
+	id: ID!
+	"The link to the Technology's documentation"
+	url: String
+}
+
+"""
+A page of technology items
+"""
+type TechnologyCollectionPage {
+	"A list of records of the requested page"
+	items: [Technology]!
+	"Identifies the total count of technology records in data source"
+	totalCount: Int!
+}
+
+input UpdateTechnology {
+	"A brief description of the Technology"
+	description: String
+	"Technology Name"
+	displayName: String
+	"The link to the Technology's documentation"
+	url: String
+}

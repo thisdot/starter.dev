@@ -4,6 +4,7 @@
   "cra-rxjs-styled-components": "Create React App, RxJS and Styled Components",
   "deno-oak-denodb": "Deno, Oak, and DenoDB",
   "expo-zustand-styled-component": "Expo, Zustand, and Styled Components",
+  "express-apollo-prisma": "Express.js, Apollo Server, and Prisma",
   "express-typeorm-postgres": "Express.js, TypeOrm, and PostgreSQL",
   "next12-chakra-ui": "NextJS 12 and Chakra UI",
   "next12-react-query-tailwind": "NextJS 12, React Query, and TailwindCSS",

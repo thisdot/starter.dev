@@ -46,6 +46,7 @@ import {
   TanstackIcon,
   ExpoIcon,
   ZustandIcon,
+  PrismaIcon,
   ContentfulIcon,
 } from './icons';
 
@@ -86,6 +87,12 @@ export const FOOTER_NAV_ITEMS = HEADER_NAV_ITEMS.filter(
 );
 
 export const TECHNOLOGIES = [
+  {
+    key: 'express',
+    name: 'Express.js',
+    tags: ['Framework'],
+    Icon: (props) => <ExpressIcon {...props} />
+  },
   {
     key: 'angular',
     name: 'Angular',
@@ -351,12 +358,6 @@ export const TECHNOLOGIES = [
     Icon: (props) => <DenoIcon {...props} />,
   },
   {
-    key: 'express',
-    name: 'Express.js',
-    tags: ['Framework'],
-    Icon: (props) => <ExpressIcon {...props} />,
-  },
-  {
     key: 'typeorm',
     name: 'TypeORM',
     tags: ['Data Management'],
@@ -366,7 +367,7 @@ export const TECHNOLOGIES = [
     key: 'postgres',
     name: 'Postgres',
     tags: ['Data Management'],
-    Icon: (props) => <PostgresIcon {...props} />,
+    Icon: (props) => <PostgresIcon {...props} />
   },
   {
     key: 'expo',
@@ -380,6 +381,12 @@ export const TECHNOLOGIES = [
     tags: ['Data Management'],
     Icon: (props) => <ZustandIcon {...props} />,
   },
+  {
+    key: 'prisma',
+    name: 'Prisma',
+    tags: ['Data Management'],
+    Icon: (props) => <PrismaIcon {...props} />
+  }
 ];
 
 export const SPONSORS_ICON = [
