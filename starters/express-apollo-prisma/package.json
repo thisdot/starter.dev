@@ -1,7 +1,7 @@
 {
 	"name": "express-apollo-prisma",
 	"version": "0.0.1",
-	"description": "Express, Apollo and Prisma",
+	"description": "Express.js, Apollo Server, and Prisma",
 	"keywords": [
 		"express",
 		"apollo-server",
