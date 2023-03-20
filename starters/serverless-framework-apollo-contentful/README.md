@@ -205,8 +205,8 @@ The `serverless.yml` file contains the configuration for the Serverless Framewor
 To use this implementation of queueing, you can send a `POST` request to the `/sqs-generate-job` endpoint with a `message` in the request body, and the message will be added to the queue. Once the message is in the queue, it will be processed in the order it was added
 
 ```bash
-curl -X POST http://localhost:3000/dev/sqs-generate-job
-   -H "Content-Type: application/json"
+curl -X POST http://localhost:3000/dev/sqs-generate-job \
+   -H "Content-Type: application/json" \
    -d '{"message": "simple queue message!"}'
 ```
 
@@ -237,11 +237,17 @@ The `.typedefs.ts` files handle all the types for GraphQL.
 ### Example directory
 
 ```
-- TechnologyModel.ts - Model for the Technology entity
+- TechnologyModel - Model for the Technology entity
 - technologies.resolvers.ts - Resolvers for the Technology entity
 - technologies.spec.ts - Unit tests for the Technology entity
 - technologies.typedefs.ts - Type definitions for the Technology entity
 ```
+
+### ES6 module models
+
+Using class models is a code smell in serverless infrastructures. By splitting the logic in stand-alone functions that
+are exported from their own modules, we can create smaller bundle sizes. Read more on this in
+[Dustin Goodman's article on the topic](https://medium.com/@dustinsgoodman/resolving-serverless-webpack-issues-efae729e0619).
 
 ## Technologies
 
