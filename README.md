@@ -42,7 +42,7 @@ Each starter kit should include a couple base examples that demonstrate the impo
 
 ## Adding a starter kit
 
-Starter kits live at `starters/:name` in this repository.
+Starter kits live at `starters/:name` in this repository. After adding a new starter kit please run `yarn generate-starter-kits-json` to update [starter-kits.json](./starter-kits.json) file.
 
 ### Starter kit naming convention
 
@@ -69,3 +69,5 @@ Currently to add your starter kit to be an available option on the starter.dev C
 ### Starter kit README files
 
 We are still working on defining a general structure and format for starter kit readme files. These are particularly important because the starter kit page on the website is based on the readme files. See: [next12-react-query-tailwind readme content #17](https://github.com/thisdot/starter.dev/pull/17)
+
+**WARNING**: Please do not add any comments to the README files. Comments in the markdown will cause the website builds to fail.

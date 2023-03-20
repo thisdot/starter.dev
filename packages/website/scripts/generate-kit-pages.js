@@ -2,25 +2,9 @@ const path = require('path');
 const fs = require('fs/promises');
 const pick = require('just-pick');
 const rimraf = require('rimraf');
+const { getRepoRootPath, getKitDirs } = require('../../../scripts/kits-utils');
 
 const KIT_PAGE_RELATIVE_LAYOUT_PATH = '../../layouts/KitLayout.astro';
-
-function getRepoRootPath() {
-  return path.resolve(__dirname, '../../../');
-}
-
-async function getKitDirs() {
-  const startersPath = path.resolve(getRepoRootPath(), 'starters');
-  const dirItems = await fs.readdir(startersPath);
-  const kitDirs = [];
-  for (const item of dirItems) {
-    const stats = await fs.stat(startersPath + '/' + item);
-    if (stats.isDirectory() && item.charAt(0) !== '.') {
-      kitDirs.push(item);
-    }
-  }
-  return kitDirs;
-}
 
 function convertToFrontmatter(obj) {
   return Object.entries(obj)

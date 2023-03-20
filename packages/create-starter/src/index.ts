@@ -6,6 +6,7 @@ import degit from 'tiged';
 import fetch from 'node-fetch';
 import yargs from 'yargs-parser';
 import { initGitRepo, removeLockFileIfExists, overrideAngularJsonIfExists, fileExists } from './utils';
+import { trackSelectedKit } from './metrics';
 
 const STARTER_KITS_JSON_URL = 'https://raw.githubusercontent.com/thisdot/starter.dev/main/starter-kits.json';
 const EXCLUDED_PACKAGE_JSON_FIELDS = ['hasShowcase'];
@@ -27,7 +28,7 @@ export async function main() {
         starters = Object.entries(starterKitsJSON).map(([name, description]) => ({
           value: name as string,
           title: description as string,
-        }));
+        })).sort((a, b) => a.title.localeCompare(b.title));
       }
     } else {
       throw new Error();
@@ -39,10 +40,11 @@ export async function main() {
 
   const options = await prompts([
     {
-      type: 'select',
+      type: 'autocomplete',
       name: 'kit',
       message: 'Which starter kit would you like to use?',
       choices: starters,
+      suggest: (input, choices) => Promise.resolve(choices.filter(c => c.title.includes(input))),
     },
     {
       type: 'text',
@@ -55,6 +57,20 @@ export async function main() {
     process.exit(1);
   }
 
+  const [createSelectedKitResult] = await Promise.allSettled([
+    createStarter(options),
+    trackSelectedKit(options.kit)
+  ])
+
+  if (createSelectedKitResult.status === 'rejected') {
+    const err = createSelectedKitResult.reason;
+    console.error(red(err instanceof Error ? err.message : `Creating starter kit failed`));
+    process.exit(1);
+  }
+
+}
+
+async function createStarter(options: prompts.Answers<'name' | 'kit'>): Promise<void> {
   const repoPath = `thisdot/starter.dev/starters/${options.kit}`;
   const destPath = path.join(process.cwd(), options.name);
 
@@ -69,8 +85,11 @@ export async function main() {
     console.log(`${green(`>`)} ${gray(`Downloading starter kit...`)}`);
     await emitter.clone(destPath);
   } catch (err: unknown) {
-    console.error(red(err instanceof Error ? err.message : 'Failed to download starter kit'));
-    process.exit(1);
+    if (err instanceof Error) {
+      throw err;
+    } else {
+      throw new Error('Failed to download starter kit');
+    }
   }
 
   try {
@@ -90,12 +109,11 @@ export async function main() {
       console.log(` ${bold(cyan('npm install'))} (or pnpm install, yarn, etc)`);
     }
   } catch (err: unknown) {
-    console.error(red('Failed to initialize the starter kit. This probably means that you provided an invalid kit name.'));
-    process.exit(1);
+    throw new Error('Failed to initialize the starter kit. This probably means that you provided an invalid kit name.')
   }
 }
 
-async function initNodeProject(packageJsonPath: string, projectDestPath: string, options: prompts.Answers<"name" | "kit">) {
+async function initNodeProject(packageJsonPath: string, projectDestPath: string, options: prompts.Answers<'name' | 'kit'>) {
   const packageJSON = JSON.parse(await fs.readFile(packageJsonPath, 'utf8'));
   packageJSON.name = options.name;
   packageJSON.version = '0.1.0';

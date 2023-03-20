@@ -26,12 +26,26 @@ const crumbs = [
       <div
         class="flex flex-wrap items-center justify-start space-x-3 space-y-3 p-4"
       >
-        {technologies.map((tech, i) => (
-            <span class={cn('hidden text-3xl text-gray-300 font-light', i > 0 && 'lg:inline')}>/</span>
-            <a href={`/kits-by-tool/${tech.key}`} class="group inline-block my-2">
-              <TechItem {...tech} />
-            </a>
-          ))}
+        {
+          technologies.map((tech, i) => (
+            <>
+              <span
+                class={cn(
+                  'hidden text-3xl text-gray-300 font-light',
+                  i > 0 && 'lg:inline'
+                )}
+              >
+                /
+              </span>
+              <a
+                href={`/kits-by-tool/${tech.key}`}
+                class="group inline-block my-2"
+              >
+                <TechItem {...tech} />
+              </a>
+            </>
+          ))
+        }
       </div>
       <div
         class="py-4 px-8 space-x-4 border-t border-gray-400 dark:border-gray-700"

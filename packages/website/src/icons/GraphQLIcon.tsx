@@ -1,4 +1,4 @@
-import { Props } from "./types";
+import { Props } from './types';
 
 export function GraphQLIcon({ size = 48, className }: Props) {
   return (

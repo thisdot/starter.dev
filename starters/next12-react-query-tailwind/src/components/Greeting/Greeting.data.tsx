@@ -10,7 +10,7 @@ export function Greeting() {
     ['hello'],
     async () => {
       const response = await fetch(
-        'https://api.starter.dev/hello?greeting=from This Dot Labs!'
+        'https://api.starter.dev/.netlify/functions/server/hello?greeting=from This Dot Labs!'
       );
       if (!response.ok) {
         const bodyText = await response.text();
