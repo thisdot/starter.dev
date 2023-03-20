@@ -152,78 +152,76 @@ For example, let's edit your `Technology` entity.
 
 1. Edit your `prisma/schema.prisma` file and add an `authorName` property to your entity
 
-   ```prisma
-    model TechnologyEntity {
-      authorName  String?
-      description String?
-      displayName String  @unique
-      id          Int     @id @default(autoincrement())
-      url         String?
+```prisma
+model TechnologyEntity {
+  authorName  String?
+  description String?
+  displayName String  @unique
+  id          Int     @id @default(autoincrement())
+  url         String?
 
-      @@map("technology")
-    }
-   ```
+  @@map("technology")
+}
+```
 
 2. Run `npm run prisma:migrate:dev` to generate a migration on Prisma.
    Then add your migration name.
 
-  <!-- Reminder to change images adresses once deployed to main to allow them to show up on starter.dev  -->
-
-![Prisma Generate](screenshots/prisma_generate.png)
+![Prisma Generate](https://github.com/thisdot/starter.dev/raw/main/starters/express-apollo-prisma/screenshots/prisma_generate.png)
 
 This will generate a migration folder under `prisma/migrations`. That alters our database schema.
 
-![authorName migration](screenshots/authorName_migration.png)
+![authorName migration](https://github.com/thisdot/starter.dev/raw/main/starters/express-apollo-prisma/screenshots/authorName_migration.png)
 
 3. Update your GraphQL type definitions for the `Technology` entity `src/graphql/schema/technology/technology.typedefs.ts` with the new `authorName` property.
 
-   ```ts
-   import gql from 'graphql-tag';
+```ts
+import gql from 'graphql-tag';
 
-   export const technologyTypeDefs = gql`
-   	"""
-   	Technology object
-   	"""
-   	type Technology {
-   		...
-   		"The author of the technology"
-   		authorName: String
-   	}
-   
-    ...
-    
-   	input CreateTechnology {
-   		...
-   		"The author of the technology"
-   		authorName: String
-   	}
-   
-   	input UpdateTechnology {
-   		...
-   		"The author of the technology"
-   		authorName: String
-   	}
-   
-   	"""
-   	Technology mutations
-   	"""
-   	type Mutation {
-   		"Creates a new Technology"
-   		createTechnology(input: CreateTechnology!): Technology!
-   		"Updates a Technology"
-   		updateTechnology(id: ID!, input: UpdateTechnology!): Technology!
-   		"Removes a Technology"
-   		deleteTechnology(id: ID!): Boolean
-   	}
-   `;
-   ```
+export const technologyTypeDefs = gql`
+"""
+Technology object
+"""
+type Technology {
+	...
+	"The author of the technology"
+	authorName: String
+}
+
+...
+
+input CreateTechnology {
+	...
+	"The author of the technology"
+	authorName: String
+}
+
+input UpdateTechnology {
+	...
+	"The author of the technology"
+	authorName: String
+}
+
+"""
+Technology mutations
+"""
+type Mutation {
+	"Creates a new Technology"
+	createTechnology(input: CreateTechnology!): Technology!
+	"Updates a Technology"
+	updateTechnology(id: ID!, input: UpdateTechnology!): Technology!
+	"Removes a Technology"
+	deleteTechnology(id: ID!): Boolean
+}
+`;
+```
 
    You can download the [Apollo GraphQL extension](https://marketplace.visualstudio.com/items?itemName=apollographql.vscode-apollo) that adds syntax highlighting for GraphQL files and gql templates inside JavaScript files.
 
 4. Update our automatically generated code by running `npm run codegen`. This will generate a new `src/graphql/schema/index.ts` file.
-   ```sh
-   npm run codegen
-   ```
+```sh
+npm run codegen
+```
 5. Finally, update your resolvers with updated properties you'd like to be returned by GraphQL.
 
 ### Pagination
@@ -232,7 +230,7 @@ There is a `technologies` query in `technology.typedefs.ts` file. The query uses
 - limit: 5
 - offset: 0
 
-```sh
+```graphql
 	...
   type Query {
 		...
@@ -258,7 +256,7 @@ In order to restrict origin URLs that can access your API, you need to add a lis
 
 ### Folder structure
 
-```text
+```
 - **/prisma/** - holds Prisma migrations and schema.
 - **/src
   - /graphql - holds GraphQL-related files.
@@ -348,13 +346,13 @@ Testing is set up with [Jest](https://jestjs.io/). You can see some example spec
 To deploy this starter kit to production, you will need to choose a cloud provider or hosting service, such as AWS, Google Cloud Platform, Heroku, or DigitalOcean, to host your application. The exact deployment steps will depend on your chosen provider or service, but generally, the following steps will be involved:
 
 1. Prepare your application for deployment by running any necessary build or compile steps. In this case, you can run the `build` script by running `npm run build` which will transpile TypeScript code to JavaScript:
-   ```sh
-    npm run build
-   ```
+```bash
+npm run build
+```
 2. Create a production-ready database, cache and queueing infrastructure, by running:
-   ```sh
-    npm run infrastructure:start
-   ```
+```bash
+npm run infrastructure:start
+```
 3. Deploy your application to your chosen provider or service using their deployment tools or services. You can use the start script to start your application in production mode. You may also need to configure any necessary proxy or routing rules to direct incoming traffic to your application.
 
 4. Monitor your application for any issues or errors and adjust your deployment as needed. This may involve configuring load balancers, auto-scaling, or other performance optimization features, depending on your chosen provider or service.

@@ -46,7 +46,7 @@ import {
   TanstackIcon,
   ExpoIcon,
   ZustandIcon,
-  PrismaIcon
+  PrismaIcon,
   ContentfulIcon,
 } from './icons';
 
@@ -86,7 +86,7 @@ export const FOOTER_NAV_ITEMS = HEADER_NAV_ITEMS.filter(
   (x) => x.title !== 'Explore Kits by Tech'
 );
 
-export const TECHNOLOGIES = [  
+export const TECHNOLOGIES = [
   {
     key: 'express',
     name: 'Express.js',
