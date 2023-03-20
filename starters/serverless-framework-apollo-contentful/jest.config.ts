@@ -13,6 +13,9 @@ const config: JestConfigWithTsJest = {
 		'/mocks/',
 		'/index.ts',
 		'/index.js',
+		'.typedefs.ts',
+		'/src/utils/redis/redis.ts',
+		'/src/handlers/graphql.ts',
 	],
 	transform: {
 		'\\.[jt]sx?$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.spec.json' }],

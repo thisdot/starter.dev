@@ -46,6 +46,7 @@ pnpm create @this-dot/starter --kit serverless-framework-apollo-contentful
 
 - Follow the prompts to select the `serverless-framework-apollo-contentful` starter kit and name your new project.
 - `cd` into your project directory and run `npm install`.
+- Configure your setup using [environment variables](#environment-variables).
 - Docker is used to run Redis in the kit. Start up the Docker container with:
 
 ```shell
@@ -71,7 +72,7 @@ git clone https://github.com/thisdot/starter.dev.git
 
 ### Environment variables
 
-Copy the contents of the file `.env.example` into a new `.env` file.
+The kit can be configured using environment variables. The easiest way to get started it to copy the contents of the file `.env.example` into a new `.env` file.
 
 ```bash
 cp .env.example .env
@@ -85,7 +86,7 @@ CONTENTFUL_SPACE_ID=xxx
 CONTENTFUL_ENVIRONMENT=master
 ```
 
-#### Steps to setup Contentful
+#### Steps to set up Contentful
 
 1. Once you're signed in to Contentful create a space
 
@@ -201,7 +202,6 @@ The `isOffline` function is a utility function that checks whether the functions
 
 The `serverless.yml` file contains the configuration for the Serverless Framework, which specifies the service name, runtime, functions to deploy, and the events that trigger them. The configuration also includes IAM role statements that allow the `APIGatewayProxyHandler` in `sqs-generate-job` function to send messages to the `DemoJobQueue` queue. Additionally, it sets up a local SQS server via the `serverless-offline-sqs` plugin for development and testing purposes.
 
-
 To use this implementation of queueing, you can send a `POST` request to the `/sqs-generate-job` endpoint with a `message` in the request body, and the message will be added to the queue. Once the message is in the queue, it will be processed in the order it was added
 
 ```bash
@@ -209,7 +209,6 @@ curl -X POST http://localhost:3000/dev/sqs-generate-job
    -H "Content-Type: application/json"
    -d '{"message": "simple queue message!"}'
 ```
-
 
 ### Testing
 

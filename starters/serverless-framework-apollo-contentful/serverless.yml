@@ -8,6 +8,13 @@
 service: serverless-framework-apollo-contentful
 
 frameworkVersion: '3'
+useDotenv: true
+
+plugins:
+  - serverless-offline-sqs
+  - serverless-offline
+  - serverless-plugin-typescript
+  - serverless-dotenv-plugin
 
 # The `provider` block defines where your service will be deployed
 provider:
@@ -16,6 +23,16 @@ provider:
 
   environment:
     JOB_QUEUE: DemoJobQueue
+
+
+custom:
+  serverless-offline-sqs:
+    autoCreate: true
+    apiVersion: '2012-11-05'
+    endpoint: "http://127.0.0.1:${env:SQS_PORT,9324}"
+    region: 'us-east-1'
+    accessKeyId: root
+    secretAccessKey: root
 
 # The `functions` block defines what code to deploy
 functions:
@@ -50,21 +67,6 @@ functions:
       - http:
           path: sqs-generate-job
           method: post
-    iamRoleStatements:
-      - Effect: 'Allow'
-        Action:
-          - 'sqs:SendMessage'
-          - 'sqs:GetQueueUrl'
-        Resource: 'arn:aws:sqs:*:*:*'
-
-custom:
-  serverless-offline-sqs:
-    autoCreate: true
-    apiVersion: '2012-11-05'
-    endpoint: http://0.0.0.0:9324
-    region: 'us-east-1'
-    accessKeyId: root
-    secretAccessKey: root
 
 resources:
   Resources:
@@ -72,11 +74,3 @@ resources:
       Type: AWS::SQS::Queue
       Properties:
         QueueName: DemoJobQueue
-
-plugins:
-  - serverless-offline-sqs
-  - serverless-offline
-  - serverless-plugin-typescript
-  - serverless-dotenv-plugin
-
-useDotenv: true

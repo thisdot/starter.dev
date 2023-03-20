@@ -1,4 +1,4 @@
-import { Props } from "./types";
+import { Props } from './types';
 
 export function ReactQueryIcon({ className, size = 48 }: Props) {
   return (
