@@ -17,12 +17,12 @@ This starter kit features Express, Apollo Server and Prisma.
     - [Database and Redis](#database-and-redis)
     - [Seeding](#seeding)
     - [Updating Schemas and Entities](#updating-schemas-and-entities)
-    - [Pagination](#Pagination)
+    - [Pagination](#pagination)
     - [Production build](#production-build)
     - [CORS Cross-Origin Resource Sharing](#cors-cross-origin-resource-sharing)
   - [Project Structure](#project-structure)
     - [Folder structure](#folder-structure)
-    - [GraphQL Moodules](#graphql-moodules)
+    - [GraphQL Modules](#graphql-modules)
       - [Example GraphQL Module](#example-graphql-module)
   - [Technologies](#technologies)
     - [Express](#express)
@@ -64,7 +64,7 @@ Note: Other package managers such as `yarn` or `pnpm` can be used with this kit.
 - `cd` into your project directory and run `npm install`.
 - Make sure you have `docker` & `docker-compose` installed on your machine.
 - Create a `.env` file and copy the contents of `.env.example` into it.
-- Run `npm run infrastructure:start` to start the database and the Redis instances.
+- Run `npm run infrastructure:up` to start the database and the Redis instances.
 - Run `npm run start` to start the development server.
 - Open your browser to `http://localhost:4001` to see the API documentation with the existing endpoints.
 
@@ -78,21 +78,22 @@ git clone https://github.com/thisdot/starter.dev.git
 - Make sure you have Docker & Docker Compose installed on your machine.
 - `cd` into your project directory and run `npm install`.
 - Create a `.env` file and copy the contents of `.env.example` into it.
-- Run `npm run infrastructure:start` to start the database and the Redis instances.
+- Run `npm run infrastructure:up` to start the database and the Redis instances.
 - Run `npm run start` to start the development server.
 - Open your browser to `http://localhost:4001` to see the API documentation with the existing endpoints.
 
 ## Built-in Scripts
 
-- `npm run infrastructure:start` - Creates and starts all the Docker containers for services from Docker Compose configuration (MySQL, Redis, RabbitMQ).
-- `npm run infrastructure:stop` - Stops and removes containers, networks and volumes of all the services created by `npm run infrastructure:start`.
+- `npm run infrastructure:up` - Creates and starts all the Docker containers for services from Docker Compose configuration (MySQL, Redis, RabbitMQ).
+- `npm run infrastructure:pause` - Stops running containers without removing them. They can be started again with `npm run infrastructure:up`.
+- `npm run infrastructure:down` - Stops and removes containers, networks and volumes of all the services created by `npm run infrastructure:up`.
 - `npm run prepare` - Generates GraphQL and Prisma Client code.
 - `npm run db:seed` - Populates the database with basic data for validating and using the application in a development environment (see [Seeding](#seeding)).
 - `npm run build` - Compiles the project. Emits files referenced in with the compiler settings from tsconfig.build.json.
 - `npm test` - Prepares and runs the unit tests.
-- `npm start` - Prepares and starts the development server by automatically restarting the node application when file changes in the `src` directory are detected. Best for the first run (requires: `npm run infrastructure:start`).
+- `npm start` - Prepares and starts the development server by automatically restarting the node application when file changes in the `src` directory are detected. Best for the first run (requires: `npm run infrastructure:up`).
 - `npm run dev:test` - Runs the unit tests.
-- `npm run dev:start` - Starts the development server by automatically restarting the node application when a file changes in the `src` directory are detected (requires: `npm run infrastructure:start`, `npm run prepare`).
+- `npm run dev:start` - Starts the development server by automatically restarting the node application when a file changes in the `src` directory are detected (requires: `npm run infrastructure:up`, `npm run prepare`).
 - `npm run lint` - Identifying and reporting on patterns found in the project code, to make the code more consistent and avoid bugs.
 - `npm run format` - Formats all files supported by Prettier in the project directory and its subdirectories.
 - `npm run prisma:format` - Formats the Prisma schema file, which includes validating, formatting, and persisting the schema.
@@ -131,17 +132,17 @@ For more information on Docker container networks: https://docs.docker.com/confi
 To start up your API in development mode with an active database connection, please follow the following steps:
 
 1. create a `.env` file. For the defaults, copy the contents of the `.env.example` file's content into it.
-2. run `npm run infrastructure:start`.
+2. run `npm run infrastructure:up`.
 3. run `npm run dev`.
 
-The above steps will make sure your API connects to the database and Redis instances that get started up with Docker. Run `npm run infrastructure:stop` to stop your MySQL, Redis & RabbitMQ containers.
+The above steps will make sure your API connects to the database and Redis instances that get started up with Docker. Run `npm run infrastructure:down` to stop your MySQL, Redis & RabbitMQ containers.
 
 ### Seeding
 
 To seed the database, you need to do the following steps:
 
 1. Create a `.env` file. For the defaults, copy the contents of the `.env.example` file into it.
-2. Run the command: `npm run infrastructure:start`.
+2. Run the command: `npm run infrastructure:up`.
 3. Run the command: `npm run db:seed`.
 
 ### Updating Schemas and Entities
@@ -312,7 +313,7 @@ The kit provides an implementation of queueing using RabbitMQ, an open-source me
 
 To start the worker that processes messages in the queue, run the command:
 
-1. `npm run infrastructure:start` - starts the RabbitMQ server (you can skip this if you already ran this command).
+1. `npm run infrastructure:up` - starts the RabbitMQ server (you can skip this if you already ran this command).
 2. `npm run queue:run` - starts the queue worker.
 
 This should start a process that listens for messages in our queue and processes them, see the `queue/worker.ts` file to modify it to your needs:
@@ -357,7 +358,7 @@ npm run build
 2. Create a production-ready database, cache and queueing infrastructure, by running:
 
 ```bash
-npm run infrastructure:start
+npm run infrastructure:up
 ```
 
 3. Deploy your application to your chosen provider or service using their deployment tools or services. You can use the start script to start your application in production mode. You may also need to configure any necessary proxy or routing rules to direct incoming traffic to your application.

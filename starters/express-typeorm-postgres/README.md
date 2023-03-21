@@ -5,28 +5,28 @@ This starter kit features Express, Typescript API setup
 ## Table of Contents
 
 - [express-typeorm-postgres starter kit](#express-typeorm-postgres-starter-kit)
-	- [Table of Contents](#table-of-contents)
-	- [Overview](#overview)
-		- [Tech Stack](#tech-stack)
-		- [Included Tooling](#included-tooling)
-	- [Installation](#installation)
-		- [CLI (Recommended)](#cli-recommended)
-		- [Manual](#manual)
-	- [Commands](#commands)
-	- [Example Controllers](#example-controllers)
-	- [Database and Redis](#database-and-redis)
-		- [Seeding](#seeding)
-		- [Reset infrastructure](#reset-infrastructure)
-		- [Production build](#production-build)
-		- [CORS Cross-Origin Resource Sharing](#cors-cross-origin-resource-sharing)
-	- [Kit Organization / Architecture](#kit-organization--architecture)
-		- [Folder structure](#folder-structure)
-		- [Express](#express)
-		- [TypeOrm](#typeorm)
-		- [Caching](#caching)
-		- [Queue](#queue)
-		- [Testing](#testing)
-		- [API documentation and Schema generation](#api-documentation-and-schema-generation)
+  - [Table of Contents](#table-of-contents)
+  - [Overview](#overview)
+    - [Tech Stack](#tech-stack)
+    - [Included Tooling](#included-tooling)
+  - [Installation](#installation)
+    - [CLI (Recommended)](#cli-recommended)
+    - [Manual](#manual)
+  - [Commands](#commands)
+  - [Example Controllers](#example-controllers)
+  - [Database and Redis](#database-and-redis)
+    - [Seeding](#seeding)
+    - [Reset infrastructure](#reset-infrastructure)
+    - [Production build](#production-build)
+    - [CORS Cross-Origin Resource Sharing](#cors-cross-origin-resource-sharing)
+  - [Kit Organization / Architecture](#kit-organization--architecture)
+    - [Folder structure](#folder-structure)
+    - [Express](#express)
+    - [TypeOrm](#typeorm)
+    - [Caching](#caching)
+    - [Queue](#queue)
+    - [Testing](#testing)
+    - [API documentation and Schema generation](#api-documentation-and-schema-generation)
 
 ## Overview
 
@@ -63,7 +63,7 @@ yarn create @this-dot/starter --kit express-typeorm-postgres
 - `cd` into your project directory and run `npm install`.
 - Make sure you have docker & docker-compose installed on your machine
 - Create a `.env` file and copy the contents of `.env.example` into it.
-- Run `npm run infrastructure:start` to start the database and the redis instances
+- Run `npm run infrastructure:up` to start the database and the redis instances
 - Run `npm run dev` to start the development server.
 - Open your browser to `http://localhost:3333/docs` to see the API documentation with the existing endpoints.
 
@@ -78,14 +78,15 @@ git clone https://github.com/thisdot/starter.dev.git
 - `cd` into your project directory and run `npm install`.
 - Make sure you have docker & docker-compose installed on your machine
 - Create a `.env` file and copy the contents of `.env.example` into it.
-- Run `npm run infrastructure:start` to start the database and the redis instances
+- Run `npm run infrastructure:up` to start the database and the redis instances
 - Run `npm run dev` to start the development server.
 - Open your browser to `http://localhost:3333/docs` to see the API documentation with the existing endpoints.
 
 ## Commands
 
-- `npm run infrastructure:start` - Starts up a postgres database and two redis instances for caching
-- `npm run infrastructure:stop` - Stops the running database and redis docker containers.
+- `npm run infrastructure:up` - Starts up a postgres database and two redis instances for caching
+- `npm run infrastructure:pause` - Stops running containers without removing them. They can be started again with `npm run infrastructure:up`.
+- `npm run infrastructure:down` - Stops the running database and redis docker containers.
 - `npm run db:seed` - Allows you to seed the database (See the Seeding section)
 - `npm run dev` - Starts the development server (Needs a running infrastructure first)
 - `npm run build` - Builds the app.
@@ -106,10 +107,10 @@ The handlers have caching enabled using the [cachified](https://www.npmjs.com/pa
 In order to start up your API in dev mode with an active database connection, please follow the following steps:
 
 1. create a `.env` file. For the defaults, copy the contents of the `.env.example` file's content into it.
-2. run `npm run infrastructure:start`
+2. run `npm run infrastructure:up`
 3. run `npm run dev`
 
-The above steps will make sure your API connects to the database and redis instances that gets started up with docker. When you finish work, run `npm run infrastructure:stop` to stop your database and redis containers.
+The above steps will make sure your API connects to the database and redis instances that gets started up with docker. When you finish work, run `npm run infrastructure:down` to stop your database and redis containers.
 
 ### Seeding
 
@@ -118,12 +119,12 @@ In the `src/db/run-seeders.ts` file, we provide a script to seed the database wi
 In order to seed the database, you need to do the following steps:
 
 1. create a `.env` file. For the defaults, copy the contents of the `.env.example` file's content into it.
-2. run `npm run infrastructure:start`
+2. run `npm run infrastructure:up`
 3. run `npm run db:seed`
 
 ### Reset infrastructure
 
-If you for some reason need to clear the contents of your database and you want to reinitialise it, delete the `misc/pg_data` folder and delete the postgres docker container. After that the next `infrastructure:start` command will start up as it would the first time.
+If you for some reason need to clear the contents of your database and you want to reinitialise it, delete the `misc/pg_data` folder and delete the postgres docker container. After that the next `infrastructure:up` command will start up as it would the first time.
 
 If you would like to clear your redis cache and reinitialise it, delete the `misc/cache_conf` and the `misc/cache_data` folders and delete the cache docker container.
 
@@ -202,4 +203,3 @@ In order to for this middleware to be able to generate all the data, make sure y
 When you run the development server, you can find the generated Swagger API documentation page under `localhost:3333/docs`. Please note, that if you don't want to expose this documentation in production, make sure you set the `NODE_ENV` environment variable to `production`.
 
 If you'd like to generate a schema typescript file, run `npm run generate:schema` that will place a `schema.ts` file under the `src/interfaces` folder. This schema will be generated based on the existing `swagger_v3.json` file.
-
