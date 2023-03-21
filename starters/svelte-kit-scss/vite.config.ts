@@ -18,7 +18,7 @@ const config: UserConfig & { test: VitestConfig['test'] } = {
     setupFiles: ['./setupTests.ts'],
     // Exclude files in c8
     coverage: {
-      exclude: ['setupTest.ts'],
+      exclude: ['setupTest.ts', '**/spec.ts', '**/test.ts'],
     },
     deps: {
       // Put Svelte component here, e.g., inline: [/svelte-multiselect/, /msw/]
