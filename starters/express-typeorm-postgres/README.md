@@ -86,7 +86,7 @@ git clone https://github.com/thisdot/starter.dev.git
 
 - `npm run infrastructure:up` - Starts up a postgres database and two redis instances for caching
 - `npm run infrastructure:pause` - Stops running containers without removing them. They can be started again with `npm run infrastructure:up`.
-- `npm run infrastructure:down` - Stops the running database and redis docker containers.
+- `npm run infrastructure:down` - Stops and removes containers, networks and volumes of all the services created by `npm run infrastructure:up`.
 - `npm run db:seed` - Allows you to seed the database (See the Seeding section)
 - `npm run dev` - Starts the development server (Needs a running infrastructure first)
 - `npm run build` - Builds the app.

@@ -19,7 +19,7 @@
 		"dev": "concurrently --raw -n \"tsc,server\" -s \"last\" -c \"magenta,yellow\" \"npm run build:watch\" \"npm run start\"",
 		"infrastructure:up": "docker compose up -d",
 		"infrastructure:pause": "docker compose stop",
-		"infrastructure:down": "docker compose down --remove-orphans",
+		"infrastructure:down": "docker compose down --remove-orphans --volumes",
 		"db:seed": "ts-node src/db/run-seeders.ts",
 		"lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
 		"format": "prettier --write \"src/**/*.ts\"",

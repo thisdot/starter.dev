@@ -128,7 +128,7 @@ These are the defaults and should work seamlessly if you have Redis running alre
 - `npm run format` - Formats code for the entire project.
 - `npm run infrastructure:up` - Starts up an ElasticMQ instance for Queueing and Redis instance for caching.
 - `npm run infrastructure:pause` - Stops running containers without removing them. They can be started again with `npm run infrastructure:up`.
-- `npm run infrastructure:down` - Stops the running ElasticMQ and Redis Docker containers.
+- `npm run infrastructure:down` - Stops and removes containers, networks and volumes of all the services created by `npm run infrastructure:up`.
 - `npm run lint` - Runs ESLint on the project.
 - `npm run test` - Runs the unit tests.
 - `npm run ts:check` - Run type checking.

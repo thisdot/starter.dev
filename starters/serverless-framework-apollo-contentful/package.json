@@ -9,7 +9,7 @@
 		"lint": "eslint . --ext .ts",
 		"infrastructure:up": "docker compose up -d",
 		"infrastructure:pause": "docker compose stop",
-		"infrastructure:down": "docker compose down --remove-orphans",
+		"infrastructure:down": "docker compose down --remove-orphans --volumes",
 		"deploy": "sls deploy",
 		"format": "prettier --write \"**/*.{ts,js,json,md}\"",
 		"ts:check": "tsc --noEmit",
