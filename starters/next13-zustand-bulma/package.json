@@ -1,5 +1,7 @@
 {
   "name": "next13-zustand-bulma",
+  "description": "NextJS 13, Zustand, and Bulma",
+  "hasShowcase": false,
   "version": "0.1.0",
   "private": true,
   "keywords": [
