@@ -11,7 +11,7 @@
   "nuxt2-pinia-tailwind": "Nuxt 2, Pinia and TailwindCSS",
   "qwik-graphql-tailwind": "Qwik, GraphQL, and TailwindCSS",
   "remix-gql-tailwind": "Remix, GQL and TailwindCSS",
-  "serverless-framework-apollo-contentful": "Serverless, Apollo Server, and Contentful CMS",
+  "serverless-framework-apollo-contentful": "Serverless Framework, Apollo Server, and Contentful CMS",
   "solidjs-tailwind": "SolidJS and TailwindCSS",
   "solidstart-tanstackquery-tailwind-modules": "Solid Start, TanStack Query and Tailwind CSS with CSS Modules",
   "svelte-kit-scss": "SvelteKit and SCSS",
