@@ -10,59 +10,55 @@ npm create @this-dot/starter -- --kit next13-zustand-bulma
 
 <sub>(use any of `npm` / `yarn` / `pnpm`)</sub>
 
-_[(...or use one of our alternative setup instructions)](./SETUP.md)_
-
-<details>
-<summary>&nbsp;&nbsp;<b>Table of Contents</b></summary>
-
-- [next13-zustand-bulma starter kit](#next13-zustand-bulma-starter-kit)
-  - [Tech Stack](#tech-stack)
-    - [Included Tooling](#included-tooling)
-  - [Getting Started](#getting-started)
-  - [Available Commands](#available-commands)
-  - [Project Details](#project-details)
-    - [Kit Organization / Architecture](#kit-organization--architecture)
-    - [Styling and Theme](#styling-and-theme)
-    - [Font Loading](#font-loading)
-    - [Colocation in directories](#colocation-in-directories)
-  - [Demo Implementation](#demo-implementation)
-  - [Deployment](#deployment)
-
-</details>
+_[(...or use one of our alternative setup instructions)](link-to-wiki-page)_
 
 ## Tech Stack
 
-- [Next.js v13.x](https://nextjs.org)
-- [React v18.x](https://reactjs.org)
-- [Zustand v4.x](https://zustand-demo.pmnd.rs/)
-- [Bulma](https://bulma.io/)
+- [Next.js v13.x](https://nextjs.org) - full-stack web application framework built on React
+- [Zustand v4.x](https://zustand-demo.pmnd.rs/) - state-management solution
+- [Bulma](https://bulma.io/) - styling framework built with Sass
 
 #### Included Tooling
 
+- [React v18.x](https://reactjs.org) - component framework (included with Next.js)
+- [Typescript v4](https://www.typescriptlang.org/) - Type checking
+- [Sass](https://sass-lang.com/guide) - CSS preproccesor
 - [Jest](https://jestjs.io/) - Test runner
-- [TypeScript v4](https://www.typescriptlang.org/) - Type checking
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) - utility functions for testing React components
 - [Storybook v7](https://storybook.js.org/) - Component sandbox and docs
 - [ESLint](https://eslint.org/) - Code linting
 - [Prettier](https://prettier.io/) - Code formatting
 
 ## Getting Started
 
-- start by [creating a new Starter Kit](./SETUP.md) project
+#### Prerequisites
+
+- [Node.js 16.8](https://nodejs.org/) or later installed
+- An experimental state of mind
+
+#### Development
+
+- start by [creating a new Starter Kit](link-to-wiki-page) project
 - `cd` into your project directory and run `npm install`.
 - Run `npm run dev` to start the development server.
 - Open your browser to `http://localhost:3000` to see the included example code running.
 
 ## Available Commands
 
-- `npm run dev` - Starts the development server.
-- `npm run test` - Runs the unit tests.
-- `npm run storybook` - Starts the Storybook UI.
-- `npm run lint` - Runs ESLint on the project.
-- `npm run format` - Formats code for the entire project
+- `npm run dev` - starts application in development mode.
+- `npm run build` - builds the application for production usage
+- `npm run start` - start a production server for the application
+- `npm run lint` - runs ESLint on the project.
+- `npm run format` - formats code for the entire project
+- `npm run test` - runs the unit tests.
+- `npm run storybook` - starts the Storybook UI.
+- `npm run build-storybook` - build Storybook as a static web application
 
 ## Project Details
 
 ### Kit Organization / Architecture
+
+> **Note**: The Next.js App Router, which this starter kit uses, is currently in beta and we do not recommend using it in production.
 
 This Kit uses new Next13 features, such as [`AppDir` router](https://beta.nextjs.org/docs/routing/fundamentals#the-app-directory) and [server components](https://beta.nextjs.org/docs/rendering/server-and-client-components).
 
@@ -94,21 +90,10 @@ Sometimes called "feature folders", or "modlets", this kit follows the conventio
 - UserRepos.test.tsx - Unit tests for the UserRepos component
 - UserRepos.stories.tsx - Storybook UI for the UserRepos component
 - UserRepos.mocks.tsx - Mock response for the UserRepos query
-- UserRepos.query.tsx - GraphQL query for the UserRepos component
 - UserRepos.data.tsx - Data fetching component for the UserRepos component
-- UserRepos.view.tsx - View component for the UserRepos component
+- UserRepos.tsx - UserRepos React component
 - UserRepos.module.css - CSS module for UserRepos component
 ```
-
-## Demo Implementation
-
-[Live Demo](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
-
-[Repository](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
-
-The demo for this starter kit is a partial implementation of some GitHub functionality. It uses the `!!TBD!!` library to authenticate users with their GitHub accounts and uses the GitHub `!!GraphQL/REST!! API` to fetch data from the GitHub API.
-
-Check out the link above to learn more or check out the demo!
 
 ## Deployment
 
