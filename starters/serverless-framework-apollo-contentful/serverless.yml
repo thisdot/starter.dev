@@ -47,6 +47,8 @@ functions:
           path: graphql
           method: get
           cors: true
+    environment:
+      SLS_STAGE: ${sls:stage}
   healthcheck:
     handler: src/handlers/healthcheck.handler
     events:
