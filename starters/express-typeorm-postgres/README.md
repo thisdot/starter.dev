@@ -126,10 +126,6 @@ In order to seed the database, you need to do the following steps:
 
 If you for some reason need to clear the contents of your database and you want to reinitialise it, run `infrastructure:down`. After that, the next `infrastructure:up` command will start up as it would the first time.
 
-If you would like to clear your Redis cache and reinitialise it, delete the `misc/cache_conf` and the `misc/cache_data` folders and delete the cache docker container.
-
-If you would like to clear your Redis queue and reinitialise it, delete the `misc/queue_conf` and the `misc/queue_data` folders and delete the queue docker container.
-
 ### Production build
 
 The `npm run build` command compiles the typescript code into the `/dist` folder and generates a `package.json` file. To use it in production, for example in a docker container, one would copy the contents of the `/dist` folder, and then run `npm install` to have all the dependencies.
