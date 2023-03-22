@@ -28,8 +28,9 @@
 		"prisma:generate": "prisma generate",
 		"prisma:deploy": "prisma migrate deploy",
 		"db:seed": "ts-node prisma/seed.ts",
-		"infrastructure:start": "docker compose up -d",
-		"infrastructure:stop": "docker compose down",
+		"infrastructure:up": "docker compose up -d",
+		"infrastructure:pause": "docker compose stop",
+		"infrastructure:down": "docker compose down --remove-orphans --volumes",
 		"queue:run": "ts-node queue/worker.ts"
 	},
 	"author": "",

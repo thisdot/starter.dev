@@ -50,7 +50,7 @@ pnpm create @this-dot/starter --kit serverless-framework-apollo-contentful
 - Docker is used to run Redis in the kit. Start up the Docker container with:
 
 ```shell
-npm run infrastructure:start
+npm run infrastructure:up
 ```
 
 - Run `npm run dev` to start the development server.
@@ -126,8 +126,9 @@ These are the defaults and should work seamlessly if you have Redis running alre
 - `npm run deploy` - Deploys your application on `AWS Lambda`.
 - `npm run dev` - Starts the development server.
 - `npm run format` - Formats code for the entire project.
-- `npm run infrastructure:start` - Starts up an ElasticMQ instance for Queueing and Redis instance for caching.
-- `npm run infrastructure:stop` - Stops the running ElasticMQ and Redis Docker containers.
+- `npm run infrastructure:up` - Starts up an ElasticMQ instance for Queueing and Redis instance for caching.
+- `npm run infrastructure:pause` - Stops running containers without removing them. They can be started again with `npm run infrastructure:up`.
+- `npm run infrastructure:down` - Stops and removes containers, networks and volumes of all the services created by `npm run infrastructure:up`.
 - `npm run lint` - Runs ESLint on the project.
 - `npm run test` - Runs the unit tests.
 - `npm run ts:check` - Run type checking.
@@ -287,7 +288,7 @@ We set up Redis by creating a Redis client with the [`KeyV`](https://github.com/
 SQS uses Docker to process queues locally. Start up the container with:
 
 ```shell
-   yarn infrastructure:start
+   yarn infrastructure:up
 ```
 
 ## Deployment

@@ -5,7 +5,7 @@ services:
     ports:
       - '5432:5432'
     volumes:
-      - ./misc/pg_data:/var/lib/postgresql/data
+      - database:/var/lib/postgresql/data
     env_file:
       - ./postgres.db.env
 
@@ -15,7 +15,7 @@ services:
     ports:
       - '6379:6379'
     volumes:
-      - ./misc/cache_data:/var/lib/redis
+      - cache:/var/lib/redis
       - ./misc/cache_conf:/usr/local/etc/redis/redis.conf
     environment:
       - REDIS_REPLICATION_MODE=master
@@ -26,7 +26,11 @@ services:
     ports:
       - '6479:6379'
     volumes:
-      - ./misc/queue_data:/var/lib/redis
+      - queue:/var/lib/redis
       - ./misc/queue_conf:/usr/local/etc/redis/redis.conf
     environment:
       - REDIS_REPLICATION_MODE=master
+volumes:
+  database:
+  cache:
+  queue:

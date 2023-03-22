@@ -34,7 +34,7 @@ services:
       - $DOCKER_RABBIT_MQ_PORT_CLIENT_API_LOCAL:$DOCKER_RABBIT_MQ_PORT_CLIENT_API_CONTAINER
       - $DOCKER_RABBIT_MQ_PORT_ADMIN_API_LOCAL:$DOCKER_RABBIT_MQ_PORT_ADMIN_API_CONTAINER
     volumes:
-      - ./.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+      - queue:/var/lib/rabbitmq/
       - ./.docker-conf/rabbitmq/log/:/var/log/rabbitmq
     networks:
       - rabbitmq_nodejs
@@ -43,3 +43,4 @@ networks:
     driver: bridge
 volumes:
   db:
+  queue:

@@ -5,28 +5,28 @@ This starter kit features Express, Typescript API setup
 ## Table of Contents
 
 - [express-typeorm-postgres starter kit](#express-typeorm-postgres-starter-kit)
-	- [Table of Contents](#table-of-contents)
-	- [Overview](#overview)
-		- [Tech Stack](#tech-stack)
-		- [Included Tooling](#included-tooling)
-	- [Installation](#installation)
-		- [CLI (Recommended)](#cli-recommended)
-		- [Manual](#manual)
-	- [Commands](#commands)
-	- [Example Controllers](#example-controllers)
-	- [Database and Redis](#database-and-redis)
-		- [Seeding](#seeding)
-		- [Reset infrastructure](#reset-infrastructure)
-		- [Production build](#production-build)
-		- [CORS Cross-Origin Resource Sharing](#cors-cross-origin-resource-sharing)
-	- [Kit Organization / Architecture](#kit-organization--architecture)
-		- [Folder structure](#folder-structure)
-		- [Express](#express)
-		- [TypeOrm](#typeorm)
-		- [Caching](#caching)
-		- [Queue](#queue)
-		- [Testing](#testing)
-		- [API documentation and Schema generation](#api-documentation-and-schema-generation)
+  - [Table of Contents](#table-of-contents)
+  - [Overview](#overview)
+    - [Tech Stack](#tech-stack)
+    - [Included Tooling](#included-tooling)
+  - [Installation](#installation)
+    - [CLI (Recommended)](#cli-recommended)
+    - [Manual](#manual)
+  - [Commands](#commands)
+  - [Example Controllers](#example-controllers)
+  - [Database and Redis](#database-and-redis)
+    - [Seeding](#seeding)
+    - [Reset infrastructure](#reset-infrastructure)
+    - [Production build](#production-build)
+    - [CORS Cross-Origin Resource Sharing](#cors-cross-origin-resource-sharing)
+  - [Kit Organization / Architecture](#kit-organization--architecture)
+    - [Folder structure](#folder-structure)
+    - [Express](#express)
+    - [TypeOrm](#typeorm)
+    - [Caching](#caching)
+    - [Queue](#queue)
+    - [Testing](#testing)
+    - [API documentation and Schema generation](#api-documentation-and-schema-generation)
 
 ## Overview
 
@@ -63,7 +63,7 @@ yarn create @this-dot/starter --kit express-typeorm-postgres
 - `cd` into your project directory and run `npm install`.
 - Make sure you have docker & docker-compose installed on your machine
 - Create a `.env` file and copy the contents of `.env.example` into it.
-- Run `npm run infrastructure:start` to start the database and the redis instances
+- Run `npm run infrastructure:up` to start the database and the Redis instances
 - Run `npm run dev` to start the development server.
 - Open your browser to `http://localhost:3333/docs` to see the API documentation with the existing endpoints.
 
@@ -78,14 +78,15 @@ git clone https://github.com/thisdot/starter.dev.git
 - `cd` into your project directory and run `npm install`.
 - Make sure you have docker & docker-compose installed on your machine
 - Create a `.env` file and copy the contents of `.env.example` into it.
-- Run `npm run infrastructure:start` to start the database and the redis instances
+- Run `npm run infrastructure:up` to start the database and the Redis instances
 - Run `npm run dev` to start the development server.
 - Open your browser to `http://localhost:3333/docs` to see the API documentation with the existing endpoints.
 
 ## Commands
 
-- `npm run infrastructure:start` - Starts up a postgres database and two redis instances for caching
-- `npm run infrastructure:stop` - Stops the running database and redis docker containers.
+- `npm run infrastructure:up` - Starts up a Postgres database and two Redis instances for caching
+- `npm run infrastructure:pause` - Stops running containers without removing them. They can be started again with `npm run infrastructure:up`.
+- `npm run infrastructure:down` - Stops and removes containers, networks and volumes of all the services created by `npm run infrastructure:up`.
 - `npm run db:seed` - Allows you to seed the database (See the Seeding section)
 - `npm run dev` - Starts the development server (Needs a running infrastructure first)
 - `npm run build` - Builds the app.
@@ -99,17 +100,17 @@ git clone https://github.com/thisdot/starter.dev.git
 
 The starter contains an example CRUD implementation for technologies. You can find the controller and its handlers under the `/src/modules/technology/` folder.
 
-The handlers have caching enabled using the [cachified](https://www.npmjs.com/package/cachified) package. It uses redis under the hood. For more information on these endpoints, see the code, or check out the `localhost:3333/docs` after you start up your development server.
+The handlers have caching enabled using the [cachified](https://www.npmjs.com/package/cachified) package. It uses Redis under the hood. For more information on these endpoints, see the code, or check out the `localhost:3333/docs` after you start up your development server.
 
 ## Database and Redis
 
 In order to start up your API in dev mode with an active database connection, please follow the following steps:
 
 1. create a `.env` file. For the defaults, copy the contents of the `.env.example` file's content into it.
-2. run `npm run infrastructure:start`
+2. run `npm run infrastructure:up`
 3. run `npm run dev`
 
-The above steps will make sure your API connects to the database and redis instances that gets started up with docker. When you finish work, run `npm run infrastructure:stop` to stop your database and redis containers.
+The above steps will make sure your API connects to the database and Redis instances that gets started up with docker. When you finish work, run `npm run infrastructure:down` to stop your database and Redis containers.
 
 ### Seeding
 
@@ -118,16 +119,12 @@ In the `src/db/run-seeders.ts` file, we provide a script to seed the database wi
 In order to seed the database, you need to do the following steps:
 
 1. create a `.env` file. For the defaults, copy the contents of the `.env.example` file's content into it.
-2. run `npm run infrastructure:start`
+2. run `npm run infrastructure:up`
 3. run `npm run db:seed`
 
 ### Reset infrastructure
 
-If you for some reason need to clear the contents of your database and you want to reinitialise it, delete the `misc/pg_data` folder and delete the postgres docker container. After that the next `infrastructure:start` command will start up as it would the first time.
-
-If you would like to clear your redis cache and reinitialise it, delete the `misc/cache_conf` and the `misc/cache_data` folders and delete the cache docker container.
-
-If you would like to clear your redis queue and reinitialise it, delete the `misc/queue_conf` and the `misc/queue_data` folders and delete the queue docker container.
+If you for some reason need to clear the contents of your database and you want to reinitialise it, run `infrastructure:down`. After that, the next `infrastructure:up` command will start up as it would the first time.
 
 ### Production build
 
@@ -159,9 +156,9 @@ In order to restrict origins urls that can access your api, you need to add a li
 - tools
 ```
 
-The `misc` folder contains sub-folders for the infrastructure docker containers. When you start up your infrastructure, the sub-folders get mounted to the redis and postgres docker containers. This allows persisting data during development and lets developers to quickly get rid of database contents and reinitalise their infrastructure.
+The `misc` folder contains sub-folders for the infrastructure docker containers. When you start up your infrastructure, the sub-folders get mounted to the Redis and Postgres docker containers. This allows persisting data during development and lets developers to quickly get rid of database contents and reinitalise their infrastructure.
 
-The `src` folder contains everything that is related to API development. The `cache`, `db` and `queue` folders contain everything that has to do with connecting to the redis and postgres containers. The `constants`, `utils` and `interfaces` folders contain logic, types and variables that are / can be shared across the codebase. The `middlewares` folder contains custom and/or customised middlewares for the application.
+The `src` folder contains everything that is related to API development. The `cache`, `db` and `queue` folders contain everything that has to do with connecting to the Redis and Postgres containers. The `constants`, `utils` and `interfaces` folders contain logic, types and variables that are / can be shared across the codebase. The `middlewares` folder contains custom and/or customised middlewares for the application.
 
 The `src/modules` folder contains the controllers, route handlers and services separated in feature related directories. Every feature directory should contain logic related to that particular feature.
 
@@ -181,11 +178,11 @@ You can create your own Entities using the tools provided by TypeOrm. For more i
 
 ### Caching
 
-Caching is set up with the [cachified](https://www.npmjs.com/package/cachified) library. It utilises redis in the background for caching. Under the `cache` folder you can find the redis client connection and the two functions that are used for caching and invalidating. See the `useCache` and the `clearCacheEntry` methods used in the example CRUD handlers, under `src/modules/technology/handlers`.
+Caching is set up with the [cachified](https://www.npmjs.com/package/cachified) library. It utilises Redis in the background for caching. Under the `cache` folder you can find the Redis client connection and the two functions that are used for caching and invalidating. See the `useCache` and the `clearCacheEntry` methods used in the example CRUD handlers, under `src/modules/technology/handlers`.
 
 ### Queue
 
-The queue is set up using [BullMQ](https://www.npmjs.com/package/bullmq) with a redis instance separate from the cache redis instance. You can find how it is set up under the `src/queue` folder.
+The queue is set up using [BullMQ](https://www.npmjs.com/package/bullmq) with a Redis instance separate from the cache Redis instance. You can find how it is set up under the `src/queue` folder.
 
 We set it up to utilise processing in a separate thread. You can trigger the queue by sending a `POST` request to `localhost:3333/queue` with a request body of your choice. You can customise the queue and the job processors as you see fit, for more information on how to do it, please refer to the [BullMQ documentation](https://docs.bullmq.io/).
 
@@ -202,4 +199,3 @@ In order to for this middleware to be able to generate all the data, make sure y
 When you run the development server, you can find the generated Swagger API documentation page under `localhost:3333/docs`. Please note, that if you don't want to expose this documentation in production, make sure you set the `NODE_ENV` environment variable to `production`.
 
 If you'd like to generate a schema typescript file, run `npm run generate:schema` that will place a `schema.ts` file under the `src/interfaces` folder. This schema will be generated based on the existing `swagger_v3.json` file.
-
