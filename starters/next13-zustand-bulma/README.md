@@ -21,7 +21,7 @@ _[(...or use one of our alternative setup instructions)](link-to-wiki-page)_
 #### Included Tooling
 
 - [React v18.x](https://reactjs.org) - component framework (included with Next.js)
-- [Typescript v4](https://www.typescriptlang.org/) - Type checking
+- [TypeScript v4](https://www.typescriptlang.org/) - Type checking
 - [Sass](https://sass-lang.com/guide) - CSS preproccesor
 - [Jest](https://jestjs.io/) - Test runner
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) - utility functions for testing React components
