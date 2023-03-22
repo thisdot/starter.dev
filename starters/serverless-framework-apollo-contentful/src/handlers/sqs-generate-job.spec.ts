@@ -4,7 +4,9 @@ import { sendMessage } from '../utils/sqs';
 
 import { mockAWSLambdaHandlerContext } from '../utils/test/mocks';
 
-let MOCK_API_EVENT: APIGatewayProxyEvent;
+const MOCK_API_EVENT: APIGatewayProxyEvent = {
+	body: JSON.stringify({ message: 'Hello World!' }),
+} as unknown as APIGatewayProxyEvent;
 const MOCK_CONTEXT = mockAWSLambdaHandlerContext();
 const MOCK_CALLBACK = jest.fn();
 const MOCK_SEND_MESSAGE = sendMessage as jest.Mock;

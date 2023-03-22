@@ -4,18 +4,35 @@ import { Entry } from 'contentful-management';
 jest.mock('../../utils/contentful');
 
 describe('TechnologyModel', () => {
+	const entry = {
+		publish: jest.fn(),
+		update: jest.fn(),
+		isDraft: () => false,
+		fields: {
+			displayName: { 'en-US': 'OLD_NAME' },
+			description: { 'en-US': 'MOCK_DESCRIPTION' },
+			url: { 'en-US': 'MOCK_URL' },
+		},
+	};
+
+	describe('fields', () => {
+		const model = new TechnologyModel({
+			...entry,
+			fields: { ...entry.fields },
+		} as unknown as Entry);
+
+		it('sets a description', () => {
+			model.description = 'MOCK_UPDATED_DESCRIPTION';
+			expect(model.description).toBe('MOCK_UPDATED_DESCRIPTION');
+		});
+		it('sets an url', () => {
+			model.url = 'MOCK_UPDATED_URL';
+			expect(model.url).toBe('MOCK_UPDATED_URL');
+		});
+	});
+
 	describe('.update', () => {
 		describe('when passed new display name', () => {
-			const entry = {
-				publish: jest.fn(),
-				update: jest.fn(),
-				isDraft: () => false,
-				fields: {
-					displayName: { 'en-US': 'OLD_NAME' },
-					description: { 'en-US': 'MOCK_DESCRIPTION' },
-					url: { 'en-US': 'MOCK_URL' },
-				},
-			};
 			entry.publish.mockImplementation(() => entry);
 			entry.update.mockImplementation(() => entry);
 			const technology = new TechnologyModel(entry as unknown as Entry);
