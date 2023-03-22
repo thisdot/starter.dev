@@ -7,6 +7,7 @@
   "express-typeorm-postgres": "Express.js, TypeOrm, and PostgreSQL",
   "next12-chakra-ui": "NextJS 12 and Chakra UI",
   "next12-react-query-tailwind": "NextJS 12, React Query, and TailwindCSS",
+  "next13-zustand-bulma": "NextJS 13, Zustand, and Bulma",
   "nuxt2-pinia-tailwind": "Nuxt 2, Pinia and TailwindCSS",
   "qwik-graphql-tailwind": "Qwik, GraphQL, and TailwindCSS",
   "remix-gql-tailwind": "Remix, GQL and TailwindCSS",
@@ -14,6 +15,5 @@
   "solidjs-tailwind": "SolidJS and TailwindCSS",
   "solidstart-tanstackquery-tailwind-modules": "Solid Start, TanStack Query and Tailwind CSS with CSS Modules",
   "svelte-kit-scss": "SvelteKit and SCSS",
-  "vue3-apollo-quasar": "Vue3, Apollo, and Quasar",
-  "next13-zustand-bulma": "NextJS 13, Zustand, and Bulma"
+  "vue3-apollo-quasar": "Vue3, Apollo, and Quasar"
 }
