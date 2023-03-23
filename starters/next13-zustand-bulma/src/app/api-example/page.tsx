@@ -1,13 +1,26 @@
 import styles from './page.module.scss';
 import clsx from 'clsx';
 import Link from 'next/link';
+import { Greeting } from '@/components/Greeting';
 
 // Static metadata
 export const metadata = {
   title: 'API Example',
 };
 
-export default function ApiExamplePage() {
+type Props = {
+  searchParams?: {
+    [key: string]: string | string[] | undefined;
+  };
+}
+
+export default function ApiExamplePage({ searchParams }: Props) {
+  let greeting = searchParams?.greeting;
+
+  if (Array.isArray(greeting)) {
+    greeting = greeting.join(', ');
+  }
+
   return (
     <main className="container section">
       <div className="has-text-centered">
@@ -19,7 +32,10 @@ export default function ApiExamplePage() {
         >
           API Example: Fetch Data using API route
         </h1>
-        <div className="block px-5">{/* Add Greeting Component Here */}</div>
+        <div className="block px-5">
+          {/* @ts-expect-error Async Server Component - please read: https://beta.nextjs.org/docs/data-fetching/fetching#asyncawait-in-server-components for more info */}
+          <Greeting greeting={greeting}/>
+        </div>
         <div className="block is-size-5">
           <Link className="is-underlined" href="/">
             Return Home
