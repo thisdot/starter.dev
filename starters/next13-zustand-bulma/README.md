@@ -10,7 +10,7 @@ npm create @this-dot/starter -- --kit next13-zustand-bulma
 
 <sub>(use any of `npm` / `yarn` / `pnpm`)</sub>
 
-_[(...or use one of our alternative setup instructions)](link-to-wiki-page)_
+_[(...or use one of our alternative setup instructions)](https://github.com/thisdot/starter.dev/wiki/Setup:-next13%E2%80%93zustand%E2%80%93bulma)_
 
 ## Tech Stack
 
@@ -38,7 +38,7 @@ _[(...or use one of our alternative setup instructions)](link-to-wiki-page)_
 
 #### Development
 
-- start by [creating a new Starter Kit](link-to-wiki-page) project
+- start by [creating a new Starter Kit](https://github.com/thisdot/starter.dev/wiki/Setup:-next13%E2%80%93zustand%E2%80%93bulma) project
 - `cd` into your project directory and run `npm install`.
 - Run `npm run dev` to start the development server.
 - Open your browser to `http://localhost:3000` to see the included example code running.
