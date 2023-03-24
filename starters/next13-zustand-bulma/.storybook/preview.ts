@@ -1,6 +1,9 @@
 import type { Preview } from '@storybook/react';
-import { withFontDecorator } from './with-font-decorator';
+import { Open_Sans } from 'next/font/google';
+import { withBodyClass } from './with-body-class';
 import '@/app/globals.scss';
+
+const opensans = Open_Sans({ subsets: ['latin'], weight: 'variable' });
 
 const preview: Preview = {
   parameters: {
@@ -14,9 +17,10 @@ const preview: Preview = {
         date: /Date$/,
       },
     },
+    bodyClass: opensans.className,
   },
 };
 
-export const decorators = [withFontDecorator];
+export const decorators = [withBodyClass];
 
 export default preview;
