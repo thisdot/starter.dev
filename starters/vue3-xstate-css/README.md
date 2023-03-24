@@ -85,9 +85,9 @@ The main folder you'll interact with is the `src` folder. This is split into a f
 - `machines`: to hold our state machines
 - `router`: routing configuration
 - `stories`: Storybook stories
+- `tests`: Cypress component tests
 - `utils`: any reusable helper functions you might need to create
 - `views`: the actual "views" or pages you assemble, which will combine pieces from all the previous folders
-- `views/__tests__`: Cypress tests for our assembled views
 
 ### Using XState
 

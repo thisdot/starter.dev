@@ -1,4 +1,4 @@
-import CounterView from '../CounterView.vue';
+import CounterView from '../views/CounterView.vue';
 
 describe('<CounterView />', () => {
   it('renders', () => {

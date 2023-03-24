@@ -1,4 +1,4 @@
-import GreetView from '../GreetView.vue';
+import GreetView from '../views/GreetView.vue';
 
 describe('<GreetView />', () => {
   it('renders', () => {
