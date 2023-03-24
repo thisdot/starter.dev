@@ -46,6 +46,8 @@ import {
   TanstackIcon,
   ExpoIcon,
   ZustandIcon,
+  XstateIcon,
+  CssIcon,
 } from './icons';
 
 export interface NavItem {
@@ -372,6 +374,18 @@ export const TECHNOLOGIES = [
     name: 'Zustand',
     tags: ['Data Management'],
     Icon: (props) => <ZustandIcon {...props} />,
+  },
+  {
+    key: 'xstate',
+    name: 'XState',
+    tags: ['Data Management'],
+    Icon: (props) => <XstateIcon {...props} />,
+  },
+  {
+    key: 'css',
+    name: 'CSS',
+    tags: ['Styling'],
+    Icon: (props) => <CssIcon {...props} />,
   },
 ];
 

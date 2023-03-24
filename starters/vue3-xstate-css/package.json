@@ -1,6 +1,13 @@
 {
   "name": "vue3-xstate-css",
   "version": "0.0.0",
+  "description": "Vue 3, XState, and CSS",
+  "keywords": [
+    "vue",
+    "xstate",
+    "css"
+  ],
+  "hasShowcase": false,
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check build-only",
