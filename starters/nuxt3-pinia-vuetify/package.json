@@ -16,32 +16,35 @@
 		"test:watch": "vitest --reporter verbose --globals"
 	},
 	"devDependencies": {
-		"@nuxt/test-utils-edge": "3.2.3-rc.0-27944210.3a832ba",
+		"@nuxt/test-utils-edge": "3.3.2-27992199.dc5982d9",
 		"@nuxtjs/eslint-config-typescript": "12.0.0",
-		"@pinia/testing": "0.0.14",
+		"@pinia/testing": "0.0.15",
 		"@storybook/addon-a11y": "6.5.16",
-		"@storybook/addon-essentials": "^6.4.22",
+		"@storybook/addon-essentials": "6.5.16",
 		"@storybook/addon-postcss": "2.0.0",
-		"@storybook/builder-vite": "^0.1.37",
+		"@storybook/builder-vite": "0.4.2",
 		"@storybook/vue3": "6.5.16",
-		"@testing-library/vue": "6.6.1",
-		"@typescript-eslint/eslint-plugin": "5.52.0",
-		"@vitejs/plugin-vue": "4.0.0",
-		"@vitest/coverage-c8": "0.28.5",
-		"@vitest/ui": "0.28.5",
-		"eslint": "8.34.0",
-		"eslint-config-prettier": "^8.6.0",
-		"jsdom": "^21.1.0",
-		"nuxt": "3.2.2",
-		"prettier": "2.8.4",
-		"sass": "1.58.3",
-		"storybook-dark-mode": "2.0.6",
-		"typescript": "4.9.5",
-		"vitest": "0.28.5",
-		"vue-eslint-parser": "^9.1.0"
+		"@testing-library/vue": "7.0.0",
+		"@typescript-eslint/eslint-plugin": "5.56.0",
+		"@vitejs/plugin-vue": "4.1.0",
+		"@vitest/coverage-c8": "0.29.7",
+		"@vitest/ui": "0.29.7",
+		"eslint": "8.36.0",
+		"eslint-config-prettier": "8.8.0",
+		"jsdom": "21.1.1",
+		"nuxt": "3.3.1",
+		"prettier": "2.8.7",
+		"sass": "1.60.0",
+		"storybook-dark-mode": "2.1.1",
+		"typescript": "5.0.2",
+		"vitest": "0.29.7",
+		"vue-eslint-parser": "9.1.0"
 	},
 	"dependencies": {
-		"@pinia/nuxt": "0.4.6",
-		"vuetify": "3.1.5"
+		"@pinia/nuxt": "0.4.7",
+		"vuetify": "3.1.11"
+	},
+	"overrides": {
+		"vue": "latest"
 	}
 }
