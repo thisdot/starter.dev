@@ -19,7 +19,7 @@ export const technologyResolvers: Resolvers = {
 		updateTechnology: async (_parent, { id, fields }) => {
 			const technology = await getById(id);
 			if (!fields) return technology;
-			if ('displayName' in fields && fields.displayName != null) {
+			if ('displayName' in fields && fields.displayName == null) {
 				throw new GraphQLError('Field "displayName" cannot be null');
 			}
 

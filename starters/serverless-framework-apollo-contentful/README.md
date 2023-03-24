@@ -173,6 +173,12 @@ How to run migrations:
 
 [Learn more on migrations](https://www.contentful.com/developers/docs/tutorials/cli/scripting-migrations/)
 
+#### Demo content
+
+This kit comes with two demo migrations, the first one will add the base setup for our demo Technology model to Contentful. The second one changes the model so one can use the slug editor in Contentful's web interface.
+
+To test our migrations, run `01-*` before `02-*`. When developing your own application, remove the demo migrations and build your own. By prefixing the migration filenames with a number, one can ensure the migrations are ran in the correct order.
+
 ### Seeding
 
 To pre-populate the data within contentful we implement seeding scripts which are located in `scripts/seed`.

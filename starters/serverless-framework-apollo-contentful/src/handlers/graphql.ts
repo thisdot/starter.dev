@@ -29,15 +29,13 @@ export const apolloServer = new ApolloServer<MyContext>({
 			message = error.message;
 		}
 
-		console.log(process.env.NODE_ENV);
-
-		if (process.env.NODE_ENV !== 'production') {
+		if (process.env.SLS_STAGE !== 'prod') {
 			return { ...formattedError, message };
 		}
 
 		return { message: message.message || message };
 	},
-	introspection: process.env.NODE_ENV !== 'production',
+	introspection: process.env.SLS_STAGE !== 'prod',
 });
 
 export const server = startServerAndCreateLambdaHandler<MyContext>(apolloServer, {

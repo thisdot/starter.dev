@@ -246,7 +246,7 @@ describe('technologyResolvers', () => {
 					});
 				});
 
-				describe('with a displayName', () => {
+				describe('with a displayName null', () => {
 					beforeAll(() => {
 						MOCK_GET_BY_ID.mockResolvedValue(MOCK_TECHNOLOGY_1);
 					});
@@ -258,7 +258,7 @@ describe('technologyResolvers', () => {
 						await expect(
 							RESOLVER_FN(
 								MOCK_PARENT_MUTATION,
-								{ id: 'MOCK_ID', fields: { displayName: 'MOCK_DISPLAY_NAME' } },
+								{ id: 'MOCK_ID', fields: { displayName: null } },
 								MOCK_CONTEXT,
 								MOCK_RESOLVE_INFO
 							)
