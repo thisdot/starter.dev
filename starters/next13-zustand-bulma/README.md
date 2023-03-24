@@ -2,6 +2,8 @@
 
 This starter kit features [**Next.js 13+**](https://beta.nextjs.org/docs) (with the `appDir` and server components), [**Zustand**](https://zustand-demo.pmnd.rs/) for client-side state management, and [**Bulma**](https://bulma.io/) for styling.
 
+> **Note**: Our api example do not have unit tests nor Storybook stories, this is due to the fact that we are using server components. Storybook does not support them yet, and for unit tests, we do not have an official or recommended way to test server components. We are working on it, and will update this starter kit when we have a solution.
+
 ##### How to use this Starter Kit:
 
 ```bash
@@ -65,8 +67,6 @@ This Kit uses new Next13 features, such as [`AppDir` router](https://beta.nextjs
 We've chose to split out a `components` directory for interactive UI components, and a `store` directory for the Zustand stores used for both global and some component state management.
 
 This allows us to keep the `app` directory focused on routing, layouts, and loading data, while passing that data to the more interactive components with more complex needs.
-
-Our api example do not have unit tests nor Storybook stories, this is due to the fact that we are using server components. Storybook does not support them yet, and for unit tests, we do not have an official or recommended way to test server components. We are working on it, and will update this starter kit when we have a solution.
 
 ### Styling and Theme
 

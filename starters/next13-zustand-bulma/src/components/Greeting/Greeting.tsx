@@ -19,8 +19,8 @@ type Props = {
   greeting?: string;
 };
 
-export async function Greeting({ greeting }: Props) {
-  const message = await getMessage(greeting ?? 'from This Dot Labs!');
+export async function Greeting({ greeting = 'from This Dot Labs!' }: Props) {
+  const message = await getMessage(greeting);
 
   return (
     <div className="level is-size-4">

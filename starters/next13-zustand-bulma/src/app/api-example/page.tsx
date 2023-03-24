@@ -2,6 +2,7 @@ import styles from './page.module.scss';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { Greeting } from '@/components/Greeting';
+import { Suspense } from 'react';
 
 // Static metadata
 export const metadata = {
@@ -12,7 +13,7 @@ type Props = {
   searchParams?: {
     [key: string]: string | string[] | undefined;
   };
-}
+};
 
 export default function ApiExamplePage({ searchParams }: Props) {
   let greeting = searchParams?.greeting;
@@ -32,9 +33,27 @@ export default function ApiExamplePage({ searchParams }: Props) {
         >
           API Example: Fetch Data using API route
         </h1>
-        <div className="block px-5">
-          {/* @ts-expect-error Async Server Component - please read: https://beta.nextjs.org/docs/data-fetching/fetching#asyncawait-in-server-components for more info */}
-          <Greeting greeting={greeting}/>
+        <div className="block px-5 is-relative">
+          <Suspense fallback={<span className={styles.loader}></span>}>
+            {/* @ts-expect-error Async Server Component - please read: https://beta.nextjs.org/docs/data-fetching/fetching#asyncawait-in-server-components for more info */}
+            <Greeting greeting={greeting} />
+            {
+              // show link if greeting is not default
+              !greeting ? (
+                <Link
+                  className="is-underlined"
+                  href={{
+                    pathname: '/api-example',
+                    query: {
+                      greeting: 'young padawan!',
+                    },
+                  }}
+                >
+                  Try out a different greeting changing the URL!
+                </Link>
+              ) : null
+            }
+          </Suspense>
         </div>
         <div className="block is-size-5">
           <Link className="is-underlined" href="/">
