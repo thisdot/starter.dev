@@ -1,4 +1,4 @@
-import { Props } from "./types";
+import { Props } from './types';
 
 export function GitHubIcon({ size = '16', className }: Props) {
   return (

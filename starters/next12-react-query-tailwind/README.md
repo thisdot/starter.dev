@@ -89,6 +89,6 @@ Mock Service Worker makes it easy to write tests or stories for Components or fi
 
 ## Demo Implementation
 
-[Repository](https://github.com/thisdot/starter.dev-github-showcases/tree/main/next12-react-query-tailwind)
+[Repository](https://github.com/thisdot/starter.dev-github-showcases/tree/main/next-react-query-tailwind)
 
 The demo for this starter kit is a partial implementation of some GitHub functionality. It uses the NextAuth library to authenticate users with their GitHub accounts and uses the GitHub GraphQL API with codegen and React Query to fetch data from the GitHub API. Check out the link above to learn more or check out the demo!

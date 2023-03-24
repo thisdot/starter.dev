@@ -12,7 +12,12 @@ const cachifiedCache = redisCacheAdapter(cacheRedisClient);
 
 export async function useCache<Value>(key: string, cb: GetFreshValue<Value>): Promise<Value> {
 	if (!CACHE_HEALTH.isConnected) {
-		return cb();
+		return cb({
+			metadata: {
+				createdTime: Date.now(),
+			},
+			background: false,
+		});
 	}
 
 	return cachified<Value>({

@@ -9,9 +9,14 @@
     "start:cli": "yarn workspace @this-dot/create-starter start",
     "start:website": "yarn workspace website preview",
     "dev:website": "yarn workspace website dev",
-    "watch:cli": "yarn workspace @this-dot/create-starter watch"
+    "watch:cli": "yarn workspace @this-dot/create-starter watch",
+    "generate-starter-kits-json": "node scripts/generate-starter-kits-json.js"
   },
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "devDependencies": {
+    "just-pick": "^4.2.0",
+    "simple-git": "^3.16.1"
+  }
 }
