@@ -18,7 +18,7 @@ export const technologyTypeDefs = gql`
 	"""
 	A page of technology items
 	"""
-	type TechnologyCollectionPage {
+	type Collection {
 		"Identifies the total count of technology records in data source"
 		totalCount: Int!
 		"A list of records of the requested page"
@@ -32,7 +32,7 @@ export const technologyTypeDefs = gql`
 		"Returns a single Technology by ID"
 		technology(id: ID!): Technology
 		"Returns a list of Technologies"
-		technologies(limit: Int = 5, offset: Int = 0): TechnologyCollectionPage!
+		technologies(limit: Int = 5, offset: Int = 0): Collection!
 	}
 
 	input CreateTechnology {

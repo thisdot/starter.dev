@@ -13,10 +13,9 @@
 	"scripts": {
 		"codegen": "graphql-codegen && npm run format:codegen",
 		"prepare": "npm run prisma:generate && npm run codegen",
-		"test": "npm run prepare && jest",
+		"test": "jest",
 		"start": "npm run prepare && prisma migrate dev && nodemon",
-		"dev:test": "jest",
-		"dev:start": "nodemon",
+		"dev": "nodemon",
 		"build": "npm run prepare && tsc --project tsconfig.build.json",
 		"lint": "eslint \"src/**/*.ts\"",
 		"lint:fix": "npm run lint --fix",
