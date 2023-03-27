@@ -76,13 +76,13 @@ Overrides are done in the `base-styles.scss` file, which is imported in the `src
 
 You should import the `base-styles.scss` file in any component `*.module.scss` file, as per the example in `app/counter-example.page.tsx` to have access to the [Bulma variables](https://bulma.io/documentation/customize/variables/) for color and spacing in your component.
 
-Bulma is added to Storybook using the [`@storybok/addon-styling` package](https://storybook.js.org/addons/@storybook/addon-styling) which is the recommended way to add unsupported style frameworks to Storybook.
+Bulma is added to Storybook by importing the `@/app/globals.scss' file in the `preview.js` file.
 
-There is some code included to prevent Storybook's `Source` component from picking up styles from the Bulma `tag` component class. The explanation and solution can be found in [this pr](https://github.com/thisdot/starter.dev/pull/1186).
+_A little hack_: There is some code included to prevent Storybook's `Source` component from picking up styles from the Bulma `tag` component class. The explanation and solution can be found in [this pr](https://github.com/thisdot/starter.dev/pull/1186).
 
 ### Font Loading
 
-It takes advantage of the new [`next/font` package](https://beta.nextjs.org/docs/optimizing/fonts) for optimal font loading, and uses the [`@storybook/addon-styling` package](https://storybook.js.org/addons/@storybook/addon-styling), to provide the same font loading functionality to Storybook.
+It takes advantage of the new [`next/font` package](https://beta.nextjs.org/docs/optimizing/fonts) for optimal font loading, and uses a small `withBodyClass` decorator to add the font class to the body, mimicking the same behaviour done in the `app/layout.tsx` in the Storybook preview.
 
 ### Colocation in directories
 
