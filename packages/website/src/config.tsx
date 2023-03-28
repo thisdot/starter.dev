@@ -137,6 +137,12 @@ export const TECHNOLOGIES = [
     Icon: (props) => <NuxtIcon {...props} />,
   },
   {
+    key: 'nuxt 3',
+    name: 'NuxtJS 3',
+    tags: ['Framework'],
+    Icon: (props) => <NuxtIcon {...props} />,
+  },
+  {
     key: 'nuxt',
     name: 'NuxtJS',
     tags: ['Framework'],
