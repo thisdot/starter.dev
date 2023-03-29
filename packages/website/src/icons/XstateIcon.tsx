@@ -1,6 +1,6 @@
 import { Props } from './types';
 
-export function XstateIcon({ size = 264, className }: Props) {
+export function XstateIcon({ size = 274, className }: Props) {
   return (
     <svg
       width={size}

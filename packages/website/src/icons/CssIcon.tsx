@@ -3,8 +3,8 @@ import { Props } from './types';
 export function CssIcon({ size = 800, className }: Props) {
   return (
     <svg
-      width={`${size}px`}
-      height={`${size}px`}
+      width={size}
+      height={size}
       viewBox="0 0 24 24"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
