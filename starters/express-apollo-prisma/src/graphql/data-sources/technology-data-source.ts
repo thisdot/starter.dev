@@ -5,7 +5,7 @@ type TechnologyEntityId = TechnologyEntity['id'];
 
 export type TechnologyEntityCollectionPage = {
 	totalCount: number;
-	items: TechnologyEntity[];
+	edges: TechnologyEntity[];
 };
 
 export class TechnologyDataSource {
@@ -31,7 +31,7 @@ export class TechnologyDataSource {
 	}
 
 	async getTechnologies(limit: number, offset: number): Promise<TechnologyEntityCollectionPage> {
-		const [totalCount, items] = await this.prismaClient.$transaction([
+		const [totalCount, edges] = await this.prismaClient.$transaction([
 			this.prismaClient.technologyEntity.count(),
 			this.prismaClient.technologyEntity.findMany({
 				take: limit,
@@ -40,7 +40,7 @@ export class TechnologyDataSource {
 		]);
 		return {
 			totalCount,
-			items,
+			edges,
 		};
 	}
 
