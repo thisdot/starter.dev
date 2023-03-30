@@ -9,7 +9,8 @@ export type TechnologyEntityCollection = {
 	edges: TechnologyEntity[];
 	pageInfo: {
 		hasNextPage: boolean;
-		endCursor: number | undefined | null;
+		startCursor?: number;
+		endCursor?: number;
 	};
 };
 
@@ -50,16 +51,19 @@ export class TechnologyDataSource {
 			}),
 		]);
 
+		const startCursor = edges.length > 0 ? edges[0].id : undefined;
 		const endCursor = edges.length > 0 ? edges[edges.length - 1].id : undefined;
 		const hasNextPage =
 			(await this.prismaClient.technologyEntity.count({
 				where: { id: { gt: endCursor } },
 			})) > 0;
+		console.log(startCursor);
 		return {
 			totalCount,
 			edges,
 			pageInfo: {
 				hasNextPage,
+				startCursor,
 				endCursor,
 			},
 		};

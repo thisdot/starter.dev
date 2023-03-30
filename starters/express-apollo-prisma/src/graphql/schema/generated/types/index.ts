@@ -53,10 +53,12 @@ export type MutationupdateTechnologyArgs = {
 /** Pagination Information */
 export type PaginationInformation = {
 	__typename?: 'PaginationInformation';
-	/** Next page cursor */
+	/** Last cursor in page */
 	endCursor?: Maybe<Scalars['Int']>;
-	/** If there is an existing page after */
+	/** Shows if there is a page after */
 	hasNextPage?: Maybe<Scalars['Boolean']>;
+	/** First cursor in page */
+	startCursor?: Maybe<Scalars['Int']>;
 };
 
 /** Technology queries */
@@ -254,6 +256,7 @@ export type PaginationInformationResolvers<
 > = {
 	endCursor?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
 	hasNextPage?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
+	startCursor?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 

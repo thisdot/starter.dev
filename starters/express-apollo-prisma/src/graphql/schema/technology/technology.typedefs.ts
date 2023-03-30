@@ -19,9 +19,11 @@ export const technologyTypeDefs = gql`
 	Pagination Information
 	"""
 	type PaginationInformation {
-		"If there is an existing page after"
+		"Shows if there is a page after"
 		hasNextPage: Boolean
-		"Next page cursor"
+		"First cursor in page"
+		startCursor: Int
+		"Last cursor in page"
 		endCursor: Int
 	}
 

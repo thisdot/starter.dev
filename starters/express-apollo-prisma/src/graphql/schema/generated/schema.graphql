@@ -28,10 +28,12 @@ type Mutation {
 Pagination Information
 """
 type PaginationInformation {
-	"Next page cursor"
+	"Last cursor in page"
 	endCursor: Int
-	"If there is an existing page after"
+	"Shows if there is a page after"
 	hasNextPage: Boolean
+	"First cursor in page"
+	startCursor: Int
 }
 
 """

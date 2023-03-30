@@ -218,7 +218,7 @@
 				"fields": [
 					{
 						"name": "endCursor",
-						"description": "Next page cursor",
+						"description": "Last cursor in page",
 						"args": [],
 						"type": {
 							"kind": "SCALAR",
@@ -230,11 +230,23 @@
 					},
 					{
 						"name": "hasNextPage",
-						"description": "If there is an existing page after",
+						"description": "Shows if there is a page after",
 						"args": [],
 						"type": {
 							"kind": "SCALAR",
 							"name": "Boolean",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "startCursor",
+						"description": "First cursor in page",
+						"args": [],
+						"type": {
+							"kind": "SCALAR",
+							"name": "Int",
 							"ofType": null
 						},
 						"isDeprecated": false,
