@@ -106,7 +106,7 @@ git clone https://github.com/thisdot/starter.dev.git
 ## Environment Variables
 
 - `PORT` - The port exposed to connect with the application.
-- `DATABASE_URL` - Connector for Prisma to run the migrations
+- `DB_URL` - Connector for Prisma to run the migrations (our example will build the correct URL from the other variables)
 - `DB_USER` - User to use on the MySQL server
 - `DB_PASS` - Password for both the user and root user
 - `DB_DATABASE` - Name of the database in MySQL
@@ -291,7 +291,7 @@ The data sources are located in `src/graphql/data-sources`. The data sources of 
 
 ### ORM
 
-The kit uses Prisma as a TypeScript ORM for proper data fetch and mutation from the source. It is configured with the `DATABASE_URL` environment variable.
+The kit uses Prisma as a TypeScript ORM for proper data fetch and mutation from the source. It is configured with the `DB_URL` environment variable.
 
 We use Prisma for the following:
 

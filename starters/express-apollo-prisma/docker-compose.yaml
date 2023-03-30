@@ -6,6 +6,7 @@ services:
     restart: unless-stopped
     environment:
       - MYSQL_PASSWORD=${DB_PASSWORD:-demopass}
+      - MYSQL_USER=${DB_USER:-demo}
       - MYSQL_ROOT_PASSWORD=${DB_PASSWORD:-demopass}
       - MYSQL_DATABASE=${DB_DATABASE:-demodb}
     ports:

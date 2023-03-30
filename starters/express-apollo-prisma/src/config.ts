@@ -28,7 +28,7 @@ export const REDIS_CACHE_TTL_SECONDS = process.env.REDIS_CACHE_TTL_SECONDS
 // Database configuration
 export const DB_PORT = process.env.DB_PORT ? Number(process.env.DB_PORT) : 3306;
 export const DB_DATABASE = process.env.DB_DATABASE || 'demodb';
-export const DB_PASSWORD = process.env.DB_DATABASE || 'demopass';
+export const DB_PASSWORD = process.env.DB_PASSWORD || 'demopass';
 export const DB_USER = process.env.DB_USER || 'demo';
 
 export const PRISMA_CONFIG: Prisma.PrismaClientOptions = {
