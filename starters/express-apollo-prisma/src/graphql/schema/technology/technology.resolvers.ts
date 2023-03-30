@@ -2,7 +2,7 @@ import { ServerContext } from '../../server-context/server-context';
 import { Resolvers, UpdateTechnology } from '../generated/types';
 import { ApolloServerErrorCode } from '@apollo/server/errors';
 import { GraphQLError } from 'graphql';
-import { mapTechnology, mapTechnologyCollectionPage } from '../../mappers';
+import { mapTechnology, mapTechnologyCollection } from '../../mappers';
 
 const parseTechnologyId = (id: string): number => {
 	const idNumber = Number(id);
@@ -37,7 +37,7 @@ export const technologyResolvers: Resolvers<ServerContext> = {
 		},
 		technologies: async (_parent, { limit, offset }, { dataSources: { technologyDataSource } }) => {
 			const collectionPage = await technologyDataSource.getTechnologies(limit, offset);
-			return mapTechnologyCollectionPage(collectionPage);
+			return mapTechnologyCollection(collectionPage);
 		},
 	},
 	Mutation: {

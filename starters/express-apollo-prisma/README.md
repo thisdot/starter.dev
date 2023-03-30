@@ -239,7 +239,7 @@ There is a `technologies` query in `technology.typedefs.ts` file. The query uses
   type Query {
 		...
 		"Returns a list of Technologies"
-		technologies(limit: Int = 5, offset: Int = 0): TechnologyCollectionPage!
+		technologies(limit: Int = 5, offset: Int = 0): TechnologyCollection!
 	}
   ...
 ```

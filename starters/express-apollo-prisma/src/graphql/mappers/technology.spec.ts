@@ -1,6 +1,6 @@
-import { mapTechnology, mapTechnologyCollectionPage } from './technology';
+import { mapTechnology, mapTechnologyCollection } from './technology';
 import { TechnologyEntity } from '@prisma/client';
-import { Technology, TechnologyCollectionPage } from '../schema/generated/types';
+import { Technology, TechnologyCollection } from '../schema/generated/types';
 import { createMockTechnologyEntityCollectionPage } from '../../mocks/technology-entity';
 import { createMockTechnology } from '../../mocks/technology';
 
@@ -44,19 +44,19 @@ describe('.mapTechnology', () => {
 	});
 });
 
-describe('.mapTechnologyCollectionPage', () => {
+describe('.mapTechnologyCollection', () => {
 	describe('when called with arguments', () => {
 		const MOCK_TECHNOLOGY_ENTITY_COLLECTION_PAGE = createMockTechnologyEntityCollectionPage(3, 11);
 		const MOCK_TECHNOLOGY = createMockTechnology();
-		const EXPECTED_RESULT: TechnologyCollectionPage = {
+		const EXPECTED_RESULT: TechnologyCollection = {
 			totalCount: 11,
 			edges: Array(3).fill(MOCK_TECHNOLOGY),
 		};
-		let result: TechnologyCollectionPage;
+		let result: TechnologyCollection;
 
 		beforeAll(() => {
 			SPY_MAP_TECHNOLOGY.mockReturnValue(MOCK_TECHNOLOGY);
-			result = mapTechnologyCollectionPage(MOCK_TECHNOLOGY_ENTITY_COLLECTION_PAGE);
+			result = mapTechnologyCollection(MOCK_TECHNOLOGY_ENTITY_COLLECTION_PAGE);
 		});
 
 		afterAll(() => {

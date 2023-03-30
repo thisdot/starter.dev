@@ -6,7 +6,7 @@ import {
 	CreateTechnology,
 	UpdateTechnology,
 	QuerytechnologiesArgs,
-	TechnologyCollectionPage,
+	TechnologyCollection,
 } from '../generated/types';
 import assert from 'assert';
 import { testServerExecuteOperation } from '../../../mocks/graphql-server';
@@ -20,7 +20,7 @@ import { ApolloServerErrorCode } from '@apollo/server/errors';
 import { ServerContext } from '../../server-context';
 
 import { TechnologyEntity } from '@prisma/client';
-import { mapTechnology, mapTechnologyCollectionPage } from '../../mappers';
+import { mapTechnology, mapTechnologyCollection } from '../../mappers';
 
 type QueryTechnology = Pick<Query, 'technology'>;
 type QueryTechnologies = Pick<Query, 'technologies'>;
@@ -145,11 +145,11 @@ jest.mock('../../mappers/technology', () => ({
 		description: 'MOCK_TECHNOLOGY_DESCRIPTION',
 		url: 'MOCK_TECHNOLOGY_URL',
 	}),
-	mapTechnologyCollectionPage: jest.fn(),
+	mapTechnologyCollection: jest.fn(),
 }));
 const MOCK_MAP_TECHNOLOGY = mapTechnology as jest.Mock<Technology, [TechnologyEntity]>;
-const MOCK_MAP_TECHNOLOGY_COLLECTION_PAGE = mapTechnologyCollectionPage as jest.MockedFn<
-	typeof mapTechnologyCollectionPage
+const MOCK_MAP_TECHNOLOGY_COLLECTION = mapTechnologyCollection as jest.MockedFn<
+	typeof mapTechnologyCollection
 >;
 
 describe('technologyResolvers', () => {
@@ -277,7 +277,7 @@ describe('technologyResolvers', () => {
 
 		describe('.technologies', () => {
 			describe('when called', () => {
-				const MOCK_RESULT_TECHNOLOGY_COLLECTION_PAGE: TechnologyCollectionPage = {
+				const MOCK_RESULT_TECHNOLOGY_COLLECTION: TechnologyCollection = {
 					totalCount: 987,
 					edges: [
 						{
@@ -320,9 +320,7 @@ describe('technologyResolvers', () => {
 
 						beforeAll(async () => {
 							MOCK_TECHNOLOGY_DATASOURCE.getTechnologies.mockResolvedValue(mockCollectionPage);
-							MOCK_MAP_TECHNOLOGY_COLLECTION_PAGE.mockReturnValue(
-								MOCK_RESULT_TECHNOLOGY_COLLECTION_PAGE
-							);
+							MOCK_MAP_TECHNOLOGY_COLLECTION.mockReturnValue(MOCK_RESULT_TECHNOLOGY_COLLECTION);
 							response = await testServerExecuteOperation<QueryTechnologies>(
 								{
 									query: mockQuery,
@@ -334,7 +332,7 @@ describe('technologyResolvers', () => {
 
 						afterAll(() => {
 							MOCK_TECHNOLOGY_DATASOURCE.getTechnologies.mockReset();
-							MOCK_MAP_TECHNOLOGY_COLLECTION_PAGE.mockReset();
+							MOCK_MAP_TECHNOLOGY_COLLECTION.mockReset();
 						});
 
 						it('calls TechnologyDataSource getTechnologies method once', () => {
@@ -346,8 +344,8 @@ describe('technologyResolvers', () => {
 						});
 
 						it('calls mapTechnology mapper function for each technology entity', () => {
-							expect(MOCK_MAP_TECHNOLOGY_COLLECTION_PAGE).toHaveBeenCalledTimes(1);
-							expect(MOCK_MAP_TECHNOLOGY_COLLECTION_PAGE).toHaveBeenCalledWith(mockCollectionPage);
+							expect(MOCK_MAP_TECHNOLOGY_COLLECTION).toHaveBeenCalledTimes(1);
+							expect(MOCK_MAP_TECHNOLOGY_COLLECTION).toHaveBeenCalledWith(mockCollectionPage);
 						});
 
 						it('returns expected result', async () => {
@@ -355,7 +353,7 @@ describe('technologyResolvers', () => {
 							assert(response.body.kind === 'single');
 							expect(response.body.singleResult.errors).toBeUndefined();
 							expect(response.body.singleResult.data).toEqual({
-								technologies: MOCK_RESULT_TECHNOLOGY_COLLECTION_PAGE,
+								technologies: MOCK_RESULT_TECHNOLOGY_COLLECTION,
 							});
 						});
 					}
