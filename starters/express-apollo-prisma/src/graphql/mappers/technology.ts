@@ -16,5 +16,6 @@ export const mapTechnologyCollection = (
 	return {
 		totalCount: entityCollectionPage.totalCount,
 		edges: entityCollectionPage.edges.map(mapTechnology),
+		pageInfo: entityCollectionPage.pageInfo,
 	};
 };

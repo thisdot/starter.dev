@@ -16,6 +16,16 @@ export const technologyTypeDefs = gql`
 	}
 
 	"""
+	Pagination Information
+	"""
+	type PaginationInformation {
+		"If there is an existing page after"
+		hasNextPage: Boolean
+		"Next page cursor"
+		endCursor: Int
+	}
+
+	"""
 	A collection of technologies
 	"""
 	type TechnologyCollection {
@@ -23,6 +33,8 @@ export const technologyTypeDefs = gql`
 		totalCount: Int!
 		"A list of records of the requested page"
 		edges: [Technology]!
+		"Pagination Information"
+		pageInfo: PaginationInformation
 	}
 
 	"""
@@ -32,7 +44,7 @@ export const technologyTypeDefs = gql`
 		"Returns a single Technology by ID"
 		technology(id: ID!): Technology
 		"Returns a list of Technologies"
-		technologies(limit: Int = 5, offset: Int = 0): TechnologyCollection!
+		technologies(first: Int!, after: Int): TechnologyCollection!
 	}
 
 	input CreateTechnology {

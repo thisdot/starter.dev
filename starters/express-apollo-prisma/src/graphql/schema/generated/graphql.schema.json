@@ -213,6 +213,41 @@
 			},
 			{
 				"kind": "OBJECT",
+				"name": "PaginationInformation",
+				"description": "Pagination Information",
+				"fields": [
+					{
+						"name": "endCursor",
+						"description": "Next page cursor",
+						"args": [],
+						"type": {
+							"kind": "SCALAR",
+							"name": "Int",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "hasNextPage",
+						"description": "If there is an existing page after",
+						"args": [],
+						"type": {
+							"kind": "SCALAR",
+							"name": "Boolean",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"inputFields": null,
+				"interfaces": [],
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
 				"name": "Query",
 				"description": "Technology queries",
 				"fields": [
@@ -221,26 +256,30 @@
 						"description": "Returns a list of Technologies",
 						"args": [
 							{
-								"name": "limit",
+								"name": "after",
 								"description": null,
 								"type": {
 									"kind": "SCALAR",
 									"name": "Int",
 									"ofType": null
 								},
-								"defaultValue": "5",
+								"defaultValue": null,
 								"isDeprecated": false,
 								"deprecationReason": null
 							},
 							{
-								"name": "offset",
+								"name": "first",
 								"description": null,
 								"type": {
-									"kind": "SCALAR",
-									"name": "Int",
-									"ofType": null
+									"kind": "NON_NULL",
+									"name": null,
+									"ofType": {
+										"kind": "SCALAR",
+										"name": "Int",
+										"ofType": null
+									}
 								},
-								"defaultValue": "0",
+								"defaultValue": null,
 								"isDeprecated": false,
 								"deprecationReason": null
 							}
@@ -390,6 +429,18 @@
 									"ofType": null
 								}
 							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "pageInfo",
+						"description": "Pagination Information",
+						"args": [],
+						"type": {
+							"kind": "OBJECT",
+							"name": "PaginationInformation",
+							"ofType": null
 						},
 						"isDeprecated": false,
 						"deprecationReason": null

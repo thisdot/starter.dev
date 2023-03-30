@@ -50,6 +50,15 @@ export type MutationupdateTechnologyArgs = {
 	input: UpdateTechnology;
 };
 
+/** Pagination Information */
+export type PaginationInformation = {
+	__typename?: 'PaginationInformation';
+	/** Next page cursor */
+	endCursor?: Maybe<Scalars['Int']>;
+	/** If there is an existing page after */
+	hasNextPage?: Maybe<Scalars['Boolean']>;
+};
+
 /** Technology queries */
 export type Query = {
 	__typename?: 'Query';
@@ -61,8 +70,8 @@ export type Query = {
 
 /** Technology queries */
 export type QuerytechnologiesArgs = {
-	limit?: InputMaybe<Scalars['Int']>;
-	offset?: InputMaybe<Scalars['Int']>;
+	after?: InputMaybe<Scalars['Int']>;
+	first: Scalars['Int'];
 };
 
 /** Technology queries */
@@ -88,6 +97,8 @@ export type TechnologyCollection = {
 	__typename?: 'TechnologyCollection';
 	/** A list of records of the requested page */
 	edges: Array<Maybe<Technology>>;
+	/** Pagination Information */
+	pageInfo?: Maybe<PaginationInformation>;
 	/** Identifies the total count of technology records in data source */
 	totalCount: Scalars['Int'];
 };
@@ -190,6 +201,7 @@ export type ResolversTypes = {
 	ID: ResolverTypeWrapper<Scalars['ID']>;
 	Int: ResolverTypeWrapper<Scalars['Int']>;
 	Mutation: ResolverTypeWrapper<{}>;
+	PaginationInformation: ResolverTypeWrapper<PaginationInformation>;
 	Query: ResolverTypeWrapper<{}>;
 	String: ResolverTypeWrapper<Scalars['String']>;
 	Technology: ResolverTypeWrapper<Technology>;
@@ -204,6 +216,7 @@ export type ResolversParentTypes = {
 	ID: Scalars['ID'];
 	Int: Scalars['Int'];
 	Mutation: {};
+	PaginationInformation: PaginationInformation;
 	Query: {};
 	String: Scalars['String'];
 	Technology: Technology;
@@ -235,6 +248,15 @@ export type MutationResolvers<
 	>;
 };
 
+export type PaginationInformationResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['PaginationInformation'] = ResolversParentTypes['PaginationInformation']
+> = {
+	endCursor?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+	hasNextPage?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
+	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
 export type QueryResolvers<
 	ContextType = any,
 	ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']
@@ -243,7 +265,7 @@ export type QueryResolvers<
 		ResolversTypes['TechnologyCollection'],
 		ParentType,
 		ContextType,
-		RequireFields<QuerytechnologiesArgs, 'limit' | 'offset'>
+		RequireFields<QuerytechnologiesArgs, 'first'>
 	>;
 	technology?: Resolver<
 		Maybe<ResolversTypes['Technology']>,
@@ -269,12 +291,14 @@ export type TechnologyCollectionResolvers<
 	ParentType extends ResolversParentTypes['TechnologyCollection'] = ResolversParentTypes['TechnologyCollection']
 > = {
 	edges?: Resolver<Array<Maybe<ResolversTypes['Technology']>>, ParentType, ContextType>;
+	pageInfo?: Resolver<Maybe<ResolversTypes['PaginationInformation']>, ParentType, ContextType>;
 	totalCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
 export type Resolvers<ContextType = any> = {
 	Mutation?: MutationResolvers<ContextType>;
+	PaginationInformation?: PaginationInformationResolvers<ContextType>;
 	Query?: QueryResolvers<ContextType>;
 	Technology?: TechnologyResolvers<ContextType>;
 	TechnologyCollection?: TechnologyCollectionResolvers<ContextType>;

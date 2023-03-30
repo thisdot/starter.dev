@@ -1,11 +1,16 @@
 import { PrismaClient, Prisma, TechnologyEntity } from '@prisma/client';
 import { CacheAPIWrapper } from '../../cache';
+import { InputMaybe } from '../schema/generated/types';
 
 type TechnologyEntityId = TechnologyEntity['id'];
 
 export type TechnologyEntityCollection = {
 	totalCount: number;
 	edges: TechnologyEntity[];
+	pageInfo: {
+		hasNextPage: boolean;
+		endCursor: number | undefined | null;
+	};
 };
 
 export class TechnologyDataSource {
@@ -30,17 +35,33 @@ export class TechnologyDataSource {
 		return entity;
 	}
 
-	async getTechnologies(limit: number, offset: number): Promise<TechnologyEntityCollection> {
+	async getTechnologies(
+		first: number, // the number of items to return in a page
+		after?: InputMaybe<number> | undefined // the cursor to start the next page from
+	): Promise<TechnologyEntityCollection> {
+		const where: Prisma.TechnologyEntityWhereInput = after ? { id: { gt: after } } : {};
+
 		const [totalCount, edges] = await this.prismaClient.$transaction([
 			this.prismaClient.technologyEntity.count(),
 			this.prismaClient.technologyEntity.findMany({
-				take: limit,
-				skip: offset,
+				where,
+				take: first,
+				orderBy: { id: 'asc' },
 			}),
 		]);
+
+		const endCursor = edges.length > 0 ? edges[edges.length - 1].id : undefined;
+		const hasNextPage =
+			(await this.prismaClient.technologyEntity.count({
+				where: { id: { gt: endCursor } },
+			})) > 0;
 		return {
 			totalCount,
 			edges,
+			pageInfo: {
+				hasNextPage,
+				endCursor,
+			},
 		};
 	}
 

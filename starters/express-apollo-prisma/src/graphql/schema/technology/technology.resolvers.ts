@@ -35,8 +35,8 @@ export const technologyResolvers: Resolvers<ServerContext> = {
 			}
 			return mapTechnology(entity);
 		},
-		technologies: async (_parent, { limit, offset }, { dataSources: { technologyDataSource } }) => {
-			const collectionPage = await technologyDataSource.getTechnologies(limit, offset);
+		technologies: async (_parent, { first, after }, { dataSources: { technologyDataSource } }) => {
+			const collectionPage = await technologyDataSource.getTechnologies(first, after);
 			return mapTechnologyCollection(collectionPage);
 		},
 	},

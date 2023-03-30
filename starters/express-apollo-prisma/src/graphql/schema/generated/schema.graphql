@@ -25,11 +25,21 @@ type Mutation {
 }
 
 """
+Pagination Information
+"""
+type PaginationInformation {
+	"Next page cursor"
+	endCursor: Int
+	"If there is an existing page after"
+	hasNextPage: Boolean
+}
+
+"""
 Technology queries
 """
 type Query {
 	"Returns a list of Technologies"
-	technologies(limit: Int = 5, offset: Int = 0): TechnologyCollection!
+	technologies(after: Int, first: Int!): TechnologyCollection!
 	"Returns a single Technology by ID"
 	technology(id: ID!): Technology
 }
@@ -54,6 +64,8 @@ A collection of technologies
 type TechnologyCollection {
 	"A list of records of the requested page"
 	edges: [Technology]!
+	"Pagination Information"
+	pageInfo: PaginationInformation
 	"Identifies the total count of technology records in data source"
 	totalCount: Int!
 }
