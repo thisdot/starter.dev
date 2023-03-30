@@ -83,7 +83,7 @@ export type Technology = {
 	url?: Maybe<Scalars['String']>;
 };
 
-/** A page of technology edges */
+/** A collection of technologies */
 export type TechnologyCollection = {
 	__typename?: 'TechnologyCollection';
 	/** A list of records of the requested page */

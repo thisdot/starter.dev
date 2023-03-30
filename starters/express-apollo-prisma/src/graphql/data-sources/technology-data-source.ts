@@ -3,7 +3,7 @@ import { CacheAPIWrapper } from '../../cache';
 
 type TechnologyEntityId = TechnologyEntity['id'];
 
-export type TechnologyEntityCollectionPage = {
+export type TechnologyEntityCollection = {
 	totalCount: number;
 	edges: TechnologyEntity[];
 };
@@ -30,7 +30,7 @@ export class TechnologyDataSource {
 		return entity;
 	}
 
-	async getTechnologies(limit: number, offset: number): Promise<TechnologyEntityCollectionPage> {
+	async getTechnologies(limit: number, offset: number): Promise<TechnologyEntityCollection> {
 		const [totalCount, edges] = await this.prismaClient.$transaction([
 			this.prismaClient.technologyEntity.count(),
 			this.prismaClient.technologyEntity.findMany({

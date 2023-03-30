@@ -49,7 +49,7 @@ type Technology {
 }
 
 """
-A page of technology edges
+A collection of technologies
 """
 type TechnologyCollection {
 	"A list of records of the requested page"

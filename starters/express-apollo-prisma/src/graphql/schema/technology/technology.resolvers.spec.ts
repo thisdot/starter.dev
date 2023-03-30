@@ -12,7 +12,7 @@ import assert from 'assert';
 import { testServerExecuteOperation } from '../../../mocks/graphql-server';
 import {
 	createMockTechnologyDataSource,
-	createMockTechnologyEntityCollectionPage,
+	createMockTechnologyEntityCollection,
 } from '../../../mocks/technology-entity';
 
 import { GraphQLResponse } from '@apollo/server';
@@ -294,7 +294,7 @@ describe('technologyResolvers', () => {
 						'with default pagination arguments',
 						MOCK_QUERY_TECHNOLOGIES_PAGINATION_DEFAULT,
 						MOCK_VARIABLES_TECHNOLOGIES_PAGINATION_DEFAULT,
-						createMockTechnologyEntityCollectionPage(5, 30),
+						createMockTechnologyEntityCollection(5, 30),
 						5,
 						0,
 					],
@@ -302,7 +302,7 @@ describe('technologyResolvers', () => {
 						'with custom pagination arguments',
 						MOCK_QUERY_TECHNOLOGIES_PAGINATION_CUSTOM,
 						MOCK_VARIABLES_TECHNOLOGIES_PAGINATION_CUSTOM,
-						createMockTechnologyEntityCollectionPage(10, 50),
+						createMockTechnologyEntityCollection(10, 50),
 						Number(MOCK_VARIABLES_TECHNOLOGIES_PAGINATION_CUSTOM.limit),
 						Number(MOCK_VARIABLES_TECHNOLOGIES_PAGINATION_CUSTOM.offset),
 					],

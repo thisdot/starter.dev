@@ -1,4 +1,4 @@
-import { TechnologyDataSource, TechnologyEntityCollectionPage } from './technology-data-source';
+import { TechnologyDataSource, TechnologyEntityCollection } from './technology-data-source';
 import { PrismaClient, TechnologyEntity } from '@prisma/client';
 import { DeepMockProxy } from 'jest-mock-extended';
 import { createMockPrismaClient } from '../../mocks/prisma-client';
@@ -313,12 +313,12 @@ describe('TechnologyDataSource', () => {
 			const MOCK_RESULT_TOTAL_COUNT = 3;
 			const MOCK_TECHNOLOGIES: TechnologyEntity[] = [MOCK_TECHNOLOGY];
 
-			const EXPECTED_RESULT: TechnologyEntityCollectionPage = {
+			const EXPECTED_RESULT: TechnologyEntityCollection = {
 				totalCount: MOCK_RESULT_TOTAL_COUNT,
 				edges: MOCK_TECHNOLOGIES,
 			};
 
-			let result: TechnologyEntityCollectionPage;
+			let result: TechnologyEntityCollection;
 
 			beforeAll(async () => {
 				MOCK_PRISMA_CLIENT.$transaction.mockResolvedValue([

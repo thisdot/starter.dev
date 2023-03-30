@@ -1,7 +1,7 @@
 import { mapTechnology, mapTechnologyCollection } from './technology';
 import { TechnologyEntity } from '@prisma/client';
 import { Technology, TechnologyCollection } from '../schema/generated/types';
-import { createMockTechnologyEntityCollectionPage } from '../../mocks/technology-entity';
+import { createMockTechnologyEntityCollection } from '../../mocks/technology-entity';
 import { createMockTechnology } from '../../mocks/technology';
 
 jest.mock('./technology', () => {
@@ -46,7 +46,7 @@ describe('.mapTechnology', () => {
 
 describe('.mapTechnologyCollection', () => {
 	describe('when called with arguments', () => {
-		const MOCK_TECHNOLOGY_ENTITY_COLLECTION_PAGE = createMockTechnologyEntityCollectionPage(3, 11);
+		const MOCK_TECHNOLOGY_ENTITY_COLLECTION_PAGE = createMockTechnologyEntityCollection(3, 11);
 		const MOCK_TECHNOLOGY = createMockTechnology();
 		const EXPECTED_RESULT: TechnologyCollection = {
 			totalCount: 11,
