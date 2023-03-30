@@ -4,28 +4,11 @@ import http from 'http';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import { graphqlServer, createGraphqlServerMiddlewareAsync } from './graphql';
-import * as dotenv from 'dotenv';
 import { connectRedisClient } from './cache/redis';
 import { createHealthcheckHandler } from './healthcheck';
 import { jobGeneratorHandler } from './queue/job-generator-handler';
 import { PrismaClient } from '@prisma/client';
-
-dotenv.config();
-
-const PORT = Number(process.env.PORT);
-if (isNaN(PORT)) {
-	throw new Error(`[Invalid environment] Variable not found: PORT`);
-}
-
-const REDIS_URL = process.env.REDIS_URL;
-if (!REDIS_URL) {
-	throw new Error(`[Invalid environment] Variable not found: REDIS_URL`);
-}
-
-let CORS_ALLOWED_ORIGINS: string[] | undefined;
-if (process.env.CORS_ALLOWED_ORIGINS && process.env.CORS_ALLOWED_ORIGINS !== '*') {
-	CORS_ALLOWED_ORIGINS = process.env.CORS_ALLOWED_ORIGINS.split(',');
-}
+import { CORS_ALLOWED_ORIGINS, PORT, PRISMA_CONFIG, REDIS_URL } from './config';
 
 (async () => {
 	// Required logic for integrating with Express
@@ -54,7 +37,7 @@ if (process.env.CORS_ALLOWED_ORIGINS && process.env.CORS_ALLOWED_ORIGINS !== '*'
 
 	// Set up server-related Express middleware
 	app.use('/graphql', await createGraphqlServerMiddlewareAsync());
-	const prismaClient = new PrismaClient();
+	const prismaClient = new PrismaClient(PRISMA_CONFIG);
 	app.use('/health', createHealthcheckHandler({ redisClient, prismaClient }));
 	app.post('/example-job', jobGeneratorHandler);
 

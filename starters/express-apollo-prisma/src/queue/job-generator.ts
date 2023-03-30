@@ -1,16 +1,8 @@
 import { Connection, Channel, connect } from 'amqplib';
+import { AMQP_QUEUE_JOB, AMQP_URL } from '../config';
 
 export const generateJob = async (message: string): Promise<boolean> => {
 	let success: boolean;
-	const AMQP_URL = process.env.AMQP_URL;
-	if (!AMQP_URL) {
-		throw new Error('[Invalid environment] Variable not found: AMQP_URL');
-	}
-
-	const AMQP_QUEUE_JOB = process.env.AMQP_QUEUE_JOB;
-	if (!AMQP_QUEUE_JOB) {
-		throw new Error('[Invalid environment] Variable not found: AMQP_QUEUE_JOB');
-	}
 
 	let connection: Connection | undefined;
 	let channel: Channel | undefined;

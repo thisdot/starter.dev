@@ -2,45 +2,35 @@ version: '3.8'
 
 services:
   mysql:
-    container_name: mysql
     image: mysql:8.0
     restart: unless-stopped
     environment:
-      - MYSQL_ROOT_PASSWORD=$DOCKER_MYSQLDB_ROOT_PASSWORD
-      - MYSQL_DATABASE=$DOCKER_MYSQLDB_DATABASE
+      - MYSQL_PASSWORD=${DB_PASSWORD:-demopass}
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD:-demopass}
+      - MYSQL_DATABASE=${DB_DATABASE:-demodb}
     ports:
-      - $DOCKER_MYSQLDB_PORT_LOCAL:$DOCKER_MYSQLDB_PORT_CONTAINER
+      - '${DB_PORT:-3306}:3306'
     volumes:
       - db:/var/lib/mysql
+
   redis:
-    container_name: redis
-    image: 'redis:7.0-alpine'
+    image: redis:7.0-alpine
     restart: unless-stopped
-    env_file: ./.env
     command:
       - --loglevel warning
-      - --requirepass "$DOCKER_REDIS_PASSWORD"
+      - --requirepass ${REDIS_PASSWORD:-redi$$pass}
     ports:
-      - $DOCKER_REDIS_PORT_LOCAL:$DOCKER_REDIS_PORT_CONTAINER
-    environment:
-      - REDIS_REPLICATION_MODE=master
-    depends_on:
-      - mysql
+      - '${REDIS_PORT:-6379}:6379'
+
   rabbitmq:
     image: rabbitmq:3.8-management-alpine
-    container_name: 'rabbitmq'
     restart: unless-stopped
     ports:
-      - $DOCKER_RABBIT_MQ_PORT_CLIENT_API_LOCAL:$DOCKER_RABBIT_MQ_PORT_CLIENT_API_CONTAINER
-      - $DOCKER_RABBIT_MQ_PORT_ADMIN_API_LOCAL:$DOCKER_RABBIT_MQ_PORT_ADMIN_API_CONTAINER
+      - '${RABBIT_MQ_PORT_CLIENT:-5672}:5672'
+      - '${RABBIT_MQ_PORT_ADMIN:-15672}:15672'
     volumes:
       - queue:/var/lib/rabbitmq/
-      - ./.docker-conf/rabbitmq/log/:/var/log/rabbitmq
-    networks:
-      - rabbitmq_nodejs
-networks:
-  rabbitmq_nodejs:
-    driver: bridge
+
 volumes:
   db:
   queue:

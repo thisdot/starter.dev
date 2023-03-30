@@ -30,7 +30,7 @@
 		"infrastructure:up": "docker compose up -d",
 		"infrastructure:pause": "docker compose stop",
 		"infrastructure:down": "docker compose down --remove-orphans --volumes",
-		"queue:run": "ts-node queue/worker.ts"
+		"queue:run": "ts-node src/queue/worker.ts"
 	},
 	"author": "",
 	"devDependencies": {

@@ -1,19 +1,10 @@
 import amqplib from 'amqplib';
 import * as dotenv from 'dotenv';
+import { AMQP_QUEUE_JOB, AMQP_URL } from '../config';
 
 dotenv.config();
 
 (async () => {
-	const AMQP_URL = process.env.AMQP_URL;
-	if (!AMQP_URL) {
-		throw new Error(`[Invalid environment] Variable not found: AMQP_URL`);
-	}
-
-	const AMQP_QUEUE_JOB = process.env.AMQP_QUEUE_JOB;
-	if (!AMQP_QUEUE_JOB) {
-		throw new Error(`[Invalid environment] Variable not found: AMQP_QUEUE_JOB`);
-	}
-
 	const connection = await amqplib.connect(AMQP_URL);
 
 	const channel = await connection.createChannel();

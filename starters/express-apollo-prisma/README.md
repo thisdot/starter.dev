@@ -106,26 +106,19 @@ git clone https://github.com/thisdot/starter.dev.git
 ## Environment Variables
 
 - `PORT` - The port exposed to connect with the application.
-- `DATABASE_URL` - The database connection URL.
-- `REDIS_URL` - The Redis connection URL.
+- `DATABASE_URL` - Connector for Prisma to run the migrations
+- `DB_USER` - User to use on the MySQL server
+- `DB_PASS` - Password for both the user and root user
+- `DB_DATABASE` - Name of the database in MySQL
+- `DB_PORT` - Which port to run the MySQL server on
+- `REDIS_USER` - User to use on the Redis server (can be left blank)
+- `REDIS_PASSWORD` - Password to authenticate Redis
+- `REDIS_HOST` - Host Redis is running on
+- `REDIS_PORT` - Which port to run the Redis server on
 - `REDIS_CACHE_TTL_SECONDS` - The remaining time(seconds) to live of a key that has a timeout.
-- `DOCKER_MYSQLDB_ROOT_PASSWORD` - The MySQL root user password.
-- `DOCKER_MYSQLDB_DATABASE` - The MySQL database name.
-- `DOCKER_MYSQLDB_PORT_LOCAL` - The MySQL Docker host's TCP port.
-- `DOCKER_MYSQLDB_PORT_CONTAINER` - The MySQL Docker container's TCP port.
-- `DOCKER_REDIS_PASSWORD` - The Redis password.
-- `DOCKER_REDIS_HOST` - The Redis host IP.
-- `DOCKER_REDIS_PORT_LOCAL` - The Redis Docker host's TCP port.
-- `DOCKER_REDIS_PORT_CONTAINER` - The Redis Docker container's TCP port.
 - `AMQP_URL` - The RabbitMQ connection URL.
 - `AMQP_QUEUE_JOB` - The RabbitMQ channel queue name.
 - `CORS_ALLOWED_ORIGINS` - (Optional) Comma separated Allowed Origins. Default value: '\*'. (See [CORS Cross-Origin Resource Sharing](#cors-cross-origin-resource-sharing))
-
-We map TCP port `DOCKER_MYSQLDB_PORT_CONTAINER` in the container to port `DOCKER_MYSQLDB_PORT_LOCAL` on the Docker host.
-We also map TCP port `DOCKER_REDIS_PORT_LOCAL` in the container to port `DOCKER_REDIS_PORT_CONTAINER` on the Docker host.
-
-To ensure proper connection to our resources
-For more information on Docker container networks: https://docs.docker.com/config/containers/container-networking/
 
 ### Database and Redis
 
@@ -298,7 +291,7 @@ The data sources are located in `src/graphql/data-sources`. The data sources of 
 
 ### ORM
 
-The kit uses Prisma as a TypeScript ORM for proper data fetch and mutation from the source. It is configured with the following environment variable: `DATABASE_URL="mysql://root:root@localhost:3307/testdb"`.
+The kit uses Prisma as a TypeScript ORM for proper data fetch and mutation from the source. It is configured with the `DATABASE_URL` environment variable.
 
 We use Prisma for the following:
 
