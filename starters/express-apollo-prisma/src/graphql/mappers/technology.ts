@@ -1,6 +1,6 @@
 import { TechnologyEntity } from '@prisma/client';
 import { TechnologyEntityCollection } from '../data-sources';
-import { Technology, TechnologyCollection, TechnologyNode } from '../schema/generated/types';
+import { Technology, TechnologyCollection } from '../schema/generated/types';
 
 export const mapTechnology = (entity: TechnologyEntity): Technology => ({
 	__typename: 'Technology',

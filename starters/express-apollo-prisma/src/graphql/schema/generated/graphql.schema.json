@@ -213,7 +213,7 @@
 			},
 			{
 				"kind": "OBJECT",
-				"name": "PaginationInformation",
+				"name": "PageInformation",
 				"description": "Pagination Information",
 				"fields": [
 					{
@@ -474,7 +474,7 @@
 							"name": null,
 							"ofType": {
 								"kind": "OBJECT",
-								"name": "PaginationInformation",
+								"name": "PageInformation",
 								"ofType": null
 							}
 						},

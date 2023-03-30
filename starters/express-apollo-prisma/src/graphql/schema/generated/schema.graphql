@@ -27,7 +27,7 @@ type Mutation {
 """
 Pagination Information
 """
-type PaginationInformation {
+type PageInformation {
 	"Last cursor in page"
 	endCursor: Int
 	"Shows if there is a page after"
@@ -69,7 +69,7 @@ type TechnologyCollection {
 	"A list of records of the requested page"
 	edges: [TechnologyNode]!
 	"Pagination Information"
-	pageInfo: PaginationInformation!
+	pageInfo: PageInformation!
 	"Identifies the total count of technology records in data source"
 	totalCount: Int!
 }

@@ -28,7 +28,7 @@ export const technologyTypeDefs = gql`
 	"""
 	Pagination Information
 	"""
-	type PaginationInformation {
+	type PageInformation {
 		"Shows if there is a page after"
 		hasNextPage: Boolean!
 		"Shows if there is a page before"
@@ -48,7 +48,7 @@ export const technologyTypeDefs = gql`
 		"A list of records of the requested page"
 		edges: [TechnologyNode]!
 		"Pagination Information"
-		pageInfo: PaginationInformation!
+		pageInfo: PageInformation!
 	}
 
 	"""

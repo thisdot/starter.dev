@@ -22,5 +22,13 @@ export const createMockTechnologyEntityCollection = (
 	totalCount: number
 ): TechnologyEntityCollection => ({
 	totalCount,
-	edges: Array(edgesCount).fill(null).map(createMockTechnologyEntity),
+	edges: Array(edgesCount)
+		.fill(null)
+		.map(() => {
+			const technology = createMockTechnologyEntity();
+			return {
+				node: technology,
+				cursor: technology.id,
+			};
+		}),
 });
