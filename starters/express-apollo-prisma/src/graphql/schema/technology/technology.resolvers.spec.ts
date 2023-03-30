@@ -53,7 +53,7 @@ const MOCK_QUERY_TECHNOLOGY = gql`
 const MOCK_QUERY_TECHNOLOGIES_PAGINATION_DEFAULT = gql`
 	query TechnologiesQueryPaginationArgumentsDefualt {
 		technologies {
-			items {
+			edges {
 				description
 				displayName
 				id
@@ -69,7 +69,7 @@ const MOCK_VARIABLES_TECHNOLOGIES_PAGINATION_DEFAULT: QuerytechnologiesArgs = {}
 const MOCK_QUERY_TECHNOLOGIES_PAGINATION_CUSTOM = gql`
 	query TechnologiesQueryPaginationArgumentsCustom($limit: Int, $offset: Int) {
 		technologies(limit: $limit, offset: $offset) {
-			items {
+			edges {
 				description
 				displayName
 				id
@@ -279,7 +279,7 @@ describe('technologyResolvers', () => {
 			describe('when called', () => {
 				const MOCK_RESULT_TECHNOLOGY_COLLECTION_PAGE: TechnologyCollectionPage = {
 					totalCount: 987,
-					items: [
+					edges: [
 						{
 							displayName: 'MOCK_DISPLAY_NAME_RESULT',
 							description: 'MOCK_DESCRIPTION_RESULT',

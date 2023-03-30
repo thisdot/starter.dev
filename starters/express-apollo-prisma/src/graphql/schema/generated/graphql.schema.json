@@ -250,7 +250,7 @@
 							"name": null,
 							"ofType": {
 								"kind": "OBJECT",
-								"name": "TechnologyCollectionPage",
+								"name": "TechnologyCollection",
 								"ofType": null
 							}
 						},
@@ -371,11 +371,11 @@
 			},
 			{
 				"kind": "OBJECT",
-				"name": "TechnologyCollectionPage",
-				"description": "A page of technology items",
+				"name": "TechnologyCollection",
+				"description": "A page of technology edges",
 				"fields": [
 					{
-						"name": "items",
+						"name": "edges",
 						"description": "A list of records of the requested page",
 						"args": [],
 						"type": {

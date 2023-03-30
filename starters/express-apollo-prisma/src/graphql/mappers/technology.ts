@@ -15,6 +15,6 @@ export const mapTechnologyCollectionPage = (
 ): TechnologyCollectionPage => {
 	return {
 		totalCount: entityCollectionPage.totalCount,
-		items: entityCollectionPage.items.map(mapTechnology),
+		edges: entityCollectionPage.edges.map(mapTechnology),
 	};
 };

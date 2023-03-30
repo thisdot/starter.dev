@@ -50,7 +50,7 @@ describe('.mapTechnologyCollectionPage', () => {
 		const MOCK_TECHNOLOGY = createMockTechnology();
 		const EXPECTED_RESULT: TechnologyCollectionPage = {
 			totalCount: 11,
-			items: Array(3).fill(MOCK_TECHNOLOGY),
+			edges: Array(3).fill(MOCK_TECHNOLOGY),
 		};
 		let result: TechnologyCollectionPage;
 

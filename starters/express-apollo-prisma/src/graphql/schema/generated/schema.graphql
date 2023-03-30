@@ -29,7 +29,7 @@ Technology queries
 """
 type Query {
 	"Returns a list of Technologies"
-	technologies(limit: Int = 5, offset: Int = 0): TechnologyCollectionPage!
+	technologies(limit: Int = 5, offset: Int = 0): TechnologyCollection!
 	"Returns a single Technology by ID"
 	technology(id: ID!): Technology
 }
@@ -49,11 +49,11 @@ type Technology {
 }
 
 """
-A page of technology items
+A page of technology edges
 """
-type TechnologyCollectionPage {
+type TechnologyCollection {
 	"A list of records of the requested page"
-	items: [Technology]!
+	edges: [Technology]!
 	"Identifies the total count of technology records in data source"
 	totalCount: Int!
 }

@@ -315,7 +315,7 @@ describe('TechnologyDataSource', () => {
 
 			const EXPECTED_RESULT: TechnologyEntityCollectionPage = {
 				totalCount: MOCK_RESULT_TOTAL_COUNT,
-				items: MOCK_TECHNOLOGIES,
+				edges: MOCK_TECHNOLOGIES,
 			};
 
 			let result: TechnologyEntityCollectionPage;

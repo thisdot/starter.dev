@@ -16,7 +16,7 @@ export const technologyTypeDefs = gql`
 	}
 
 	"""
-	A page of technology items
+	A page of technology edges
 	"""
 	type TechnologyCollection {
 		"Identifies the total count of technology records in data source"

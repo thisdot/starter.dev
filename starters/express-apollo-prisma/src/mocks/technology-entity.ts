@@ -18,9 +18,9 @@ const createMockTechnologyEntity = (): TechnologyEntity => {
 };
 
 export const createMockTechnologyEntityCollectionPage = (
-	itemsCount: number,
+	edgesCount: number,
 	totalCount: number
 ): TechnologyEntityCollectionPage => ({
 	totalCount,
-	items: Array(itemsCount).fill(null).map(createMockTechnologyEntity),
+	edges: Array(edgesCount).fill(null).map(createMockTechnologyEntity),
 });
