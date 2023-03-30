@@ -57,7 +57,7 @@ export class TechnologyDataSource {
 			(await this.prismaClient.technologyEntity.count({
 				where: { id: { gt: endCursor } },
 			})) > 0;
-		console.log(startCursor);
+
 		return {
 			totalCount,
 			edges,
