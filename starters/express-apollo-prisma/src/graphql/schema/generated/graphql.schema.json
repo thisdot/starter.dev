@@ -233,9 +233,29 @@
 						"description": "Shows if there is a page after",
 						"args": [],
 						"type": {
-							"kind": "SCALAR",
-							"name": "Boolean",
-							"ofType": null
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "Boolean",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "hasPreviousPage",
+						"description": "Shows if there is a page before",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "Boolean",
+								"ofType": null
+							}
 						},
 						"isDeprecated": false,
 						"deprecationReason": null
@@ -437,7 +457,7 @@
 								"name": null,
 								"ofType": {
 									"kind": "OBJECT",
-									"name": "Technology",
+									"name": "TechnologyNode",
 									"ofType": null
 								}
 							}
@@ -450,9 +470,13 @@
 						"description": "Pagination Information",
 						"args": [],
 						"type": {
-							"kind": "OBJECT",
-							"name": "PaginationInformation",
-							"ofType": null
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "OBJECT",
+								"name": "PaginationInformation",
+								"ofType": null
+							}
 						},
 						"isDeprecated": false,
 						"deprecationReason": null
@@ -467,6 +491,49 @@
 							"ofType": {
 								"kind": "SCALAR",
 								"name": "Int",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"inputFields": null,
+				"interfaces": [],
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "TechnologyNode",
+				"description": "Pagination Technology Node",
+				"fields": [
+					{
+						"name": "cursor",
+						"description": "Current Cursor for Entity Node",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "Int",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "node",
+						"description": "Technology Entity Node",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "OBJECT",
+								"name": "Technology",
 								"ofType": null
 							}
 						},

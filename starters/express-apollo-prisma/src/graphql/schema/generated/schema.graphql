@@ -31,7 +31,9 @@ type PaginationInformation {
 	"Last cursor in page"
 	endCursor: Int
 	"Shows if there is a page after"
-	hasNextPage: Boolean
+	hasNextPage: Boolean!
+	"Shows if there is a page before"
+	hasPreviousPage: Boolean!
 	"First cursor in page"
 	startCursor: Int
 }
@@ -65,11 +67,21 @@ A collection of technologies
 """
 type TechnologyCollection {
 	"A list of records of the requested page"
-	edges: [Technology]!
+	edges: [TechnologyNode]!
 	"Pagination Information"
-	pageInfo: PaginationInformation
+	pageInfo: PaginationInformation!
 	"Identifies the total count of technology records in data source"
 	totalCount: Int!
+}
+
+"""
+Pagination Technology Node
+"""
+type TechnologyNode {
+	"Current Cursor for Entity Node"
+	cursor: Int!
+	"Technology Entity Node"
+	node: Technology!
 }
 
 input UpdateTechnology {

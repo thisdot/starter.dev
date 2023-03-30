@@ -16,11 +16,23 @@ export const technologyTypeDefs = gql`
 	}
 
 	"""
+	Pagination Technology Node
+	"""
+	type TechnologyNode {
+		"Current Cursor for Entity Node"
+		cursor: Int!
+		"Technology Entity Node"
+		node: Technology!
+	}
+
+	"""
 	Pagination Information
 	"""
 	type PaginationInformation {
 		"Shows if there is a page after"
-		hasNextPage: Boolean
+		hasNextPage: Boolean!
+		"Shows if there is a page before"
+		hasPreviousPage: Boolean!
 		"First cursor in page"
 		startCursor: Int
 		"Last cursor in page"
@@ -34,9 +46,9 @@ export const technologyTypeDefs = gql`
 		"Identifies the total count of technology records in data source"
 		totalCount: Int!
 		"A list of records of the requested page"
-		edges: [Technology]!
+		edges: [TechnologyNode]!
 		"Pagination Information"
-		pageInfo: PaginationInformation
+		pageInfo: PaginationInformation!
 	}
 
 	"""

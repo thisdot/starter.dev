@@ -4,14 +4,20 @@ import { InputMaybe } from '../schema/generated/types';
 
 type TechnologyEntityId = TechnologyEntity['id'];
 
+type TechnologyNode = {
+	cursor: TechnologyEntityId;
+	node: TechnologyEntity;
+};
+
 export type TechnologyEntityCollection = {
 	totalCount: number;
-	edges: TechnologyEntity[];
 	pageInfo: {
 		hasNextPage: boolean;
-		startCursor?: number;
-		endCursor?: number;
+		hasPreviousPage: boolean;
+		startCursor?: TechnologyEntityId;
+		endCursor?: TechnologyEntityId;
 	};
+	edges: TechnologyNode[];
 };
 
 export class TechnologyDataSource {
@@ -42,7 +48,7 @@ export class TechnologyDataSource {
 	): Promise<TechnologyEntityCollection> {
 		const where: Prisma.TechnologyEntityWhereInput = after ? { id: { gt: after } } : {};
 
-		const [totalCount, edges] = await this.prismaClient.$transaction([
+		const [totalCount, items] = await this.prismaClient.$transaction([
 			this.prismaClient.technologyEntity.count(),
 			this.prismaClient.technologyEntity.findMany({
 				where,
@@ -51,18 +57,29 @@ export class TechnologyDataSource {
 			}),
 		]);
 
-		const startCursor = edges.length > 0 ? edges[0].id : undefined;
-		const endCursor = edges.length > 0 ? edges[edges.length - 1].id : undefined;
+		const startCursor = items.length > 0 ? items[0].id : undefined;
+		const endCursor = items.length > 0 ? items[items.length - 1].id : undefined;
 		const hasNextPage =
 			(await this.prismaClient.technologyEntity.count({
 				where: { id: { gt: endCursor } },
 			})) > 0;
+
+		const hasPreviousPage =
+			(await this.prismaClient.technologyEntity.count({
+				where: { id: { lt: items[0].id } },
+			})) > 0;
+
+		const edges = items.map((node) => ({
+			cursor: node.id,
+			node,
+		}));
 
 		return {
 			totalCount,
 			edges,
 			pageInfo: {
 				hasNextPage,
+				hasPreviousPage,
 				startCursor,
 				endCursor,
 			},
