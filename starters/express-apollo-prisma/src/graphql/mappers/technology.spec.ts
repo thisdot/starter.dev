@@ -2,7 +2,8 @@ import { mapTechnology, mapTechnologyCollection } from './technology';
 import { TechnologyEntity } from '@prisma/client';
 import { Technology, TechnologyCollection } from '../schema/generated/types';
 import { createMockTechnologyEntityCollection } from '../../mocks/technology-entity';
-import { createMockTechnology } from '../../mocks/technology';
+import { createMockTechnologyCollectionResult } from '../../mocks/technology';
+import { PageInformation } from '../data-sources';
 
 jest.mock('./technology', () => {
 	const originalModule = jest.requireActual<typeof import('./technology')>('./technology');
@@ -13,12 +14,6 @@ jest.mock('./technology', () => {
 		mapTechnology: jest.spyOn(originalModule, 'mapTechnology'),
 	};
 });
-
-const SPY_MAP_TECHNOLOGY = mapTechnology as unknown as jest.SpyInstance<
-	Technology,
-	[entity: TechnologyEntity],
-	unknown
->;
 
 describe('.mapTechnology', () => {
 	describe('when called', () => {
@@ -46,21 +41,31 @@ describe('.mapTechnology', () => {
 
 describe('.mapTechnologyCollection', () => {
 	describe('when called with arguments', () => {
-		const MOCK_TECHNOLOGY_ENTITY_COLLECTION_PAGE = createMockTechnologyEntityCollection(3, 11);
-		const MOCK_TECHNOLOGY = createMockTechnology();
-		const EXPECTED_RESULT: TechnologyCollection = {
-			totalCount: 11,
-			edges: Array(3).fill(MOCK_TECHNOLOGY),
+		const MOCK_TOTAL_COUNT = 11;
+		const MOCK_FIRST_INPUT = 3;
+		const MOCK_PAGE_INFO: PageInformation = {
+			hasNextPage: true,
+			hasPreviousPage: false,
+			startCursor: 1,
+			endCursor: 3,
 		};
+
+		const MOCK_TECHNOLOGY_ENTITY_COLLECTION_PAGE = createMockTechnologyEntityCollection(
+			MOCK_FIRST_INPUT,
+			MOCK_TOTAL_COUNT,
+			MOCK_PAGE_INFO
+		);
+
+		const EXPECTED_RESULT = createMockTechnologyCollectionResult(
+			MOCK_TOTAL_COUNT,
+			MOCK_FIRST_INPUT,
+			MOCK_PAGE_INFO
+		);
+
 		let result: TechnologyCollection;
 
 		beforeAll(() => {
-			SPY_MAP_TECHNOLOGY.mockReturnValue(MOCK_TECHNOLOGY);
 			result = mapTechnologyCollection(MOCK_TECHNOLOGY_ENTITY_COLLECTION_PAGE);
-		});
-
-		afterAll(() => {
-			SPY_MAP_TECHNOLOGY.mockRestore();
 		});
 
 		it('returns expected result', () => {

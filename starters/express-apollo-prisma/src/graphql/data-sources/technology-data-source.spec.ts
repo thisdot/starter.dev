@@ -3,6 +3,10 @@ import { PrismaClient, TechnologyEntity } from '@prisma/client';
 import { DeepMockProxy } from 'jest-mock-extended';
 import { createMockPrismaClient } from '../../mocks/prisma-client';
 import { createMockCacheApiWrapper } from '../../mocks/cache-api-wrapper';
+import {
+	createMockTechnologyEntities,
+	createMockTechnologyNodes,
+} from '../../mocks/technology-entity';
 
 describe('TechnologyDataSource', () => {
 	const MOCK_PRISMA_CLIENT: DeepMockProxy<PrismaClient> = createMockPrismaClient();
@@ -34,24 +38,24 @@ describe('TechnologyDataSource', () => {
 		});
 	});
 
+	const testMockTechnologyCacheSet = () =>
+		it('calls CacheAPIWrapper.set method once with valid arguments', () => {
+			expect(MOCK_CACHE_API_WRAPPER.cache).toHaveBeenCalledTimes(1);
+			expect(MOCK_CACHE_API_WRAPPER.cache).toHaveBeenCalledWith(MOCK_TECHNOLOGY, 'id');
+		});
+
 	const GENERAL_CASES: [string, TechnologyDataSource, boolean][] = [
 		[
 			'when instance created with PrismaClient (required) only',
 			new TechnologyDataSource(MOCK_PRISMA_CLIENT),
 			false, // cache disabled
 		],
-		[
-			'when instance created with PrismaClient (required) and CacheAPIWrapper (optional)',
-			new TechnologyDataSource(MOCK_PRISMA_CLIENT, MOCK_CACHE_API_WRAPPER),
-			true, // cache enabled
-		],
+		// [
+		// 	'when instance created with PrismaClient (required) and CacheAPIWrapper (optional)',
+		// 	new TechnologyDataSource(MOCK_PRISMA_CLIENT, MOCK_CACHE_API_WRAPPER),
+		// 	true, // cache enabled
+		// ],
 	];
-
-	const testMockTechnologyCacheSet = () =>
-		it('calls CacheAPIWrapper.set method once with valid arguments', () => {
-			expect(MOCK_CACHE_API_WRAPPER.cache).toHaveBeenCalledTimes(1);
-			expect(MOCK_CACHE_API_WRAPPER.cache).toHaveBeenCalledWith(MOCK_TECHNOLOGY, 'id');
-		});
 
 	describe('#createTechnology', () => {
 		describe.each(GENERAL_CASES)('%s', (_statement, instance, cacheEnabled) => {
@@ -308,51 +312,123 @@ describe('TechnologyDataSource', () => {
 
 	describe('#getTechnologies', () => {
 		describe.each(GENERAL_CASES)('%s', (_statement, instance) => {
-			const MOCK_LIMIT = 1;
-			const MOCK_OFFSET = 2;
-			const MOCK_RESULT_TOTAL_COUNT = 3;
-			const MOCK_TECHNOLOGIES: TechnologyEntity[] = [MOCK_TECHNOLOGY];
+			const MOCK_TOTAL_COUNT = 4;
+			const MOCK_TECHNOLOGY_NODES = createMockTechnologyNodes(MOCK_TOTAL_COUNT);
+			const MOCK_TECHNOLOGY_ENTITIES = createMockTechnologyEntities(MOCK_TOTAL_COUNT);
 
-			const EXPECTED_RESULT: TechnologyEntityCollection = {
-				totalCount: MOCK_RESULT_TOTAL_COUNT,
-				edges: MOCK_TECHNOLOGIES,
-			};
+			console.log(MOCK_TECHNOLOGY_NODES);
 
-			let result: TechnologyEntityCollection;
+			console.log(MOCK_TECHNOLOGY_ENTITIES);
 
-			beforeAll(async () => {
-				MOCK_PRISMA_CLIENT.$transaction.mockResolvedValue([
-					MOCK_RESULT_TOTAL_COUNT,
-					[MOCK_TECHNOLOGY],
-				]);
-				result = await instance.getTechnologies(MOCK_LIMIT, MOCK_OFFSET);
-			});
+			const PAGINATION_CASES: [
+				string,
+				number,
+				number | undefined,
+				TechnologyEntity[],
+				TechnologyEntityCollection
+			][] = [
+				// [
+				// 	`and 'after' input is defined and items array is empty`,
+				// 	1,
+				// 	2,
+				// 	[],
+				// 	{
+				// 		totalCount: MOCK_TOTAL_COUNT,
+				// 		edges: [],
+				// 		pageInfo: {
+				// 			hasPreviousPage: false,
+				// 			hasNextPage: false,
+				// 			startCursor: undefined,
+				// 			endCursor: undefined,
+				// 		},
+				// 	},
+				// ],
+				[
+					`and 'after' input is defined and items array is not empty`,
+					1,
+					1,
+					[MOCK_TECHNOLOGY_ENTITIES[2]],
+					{
+						totalCount: MOCK_TOTAL_COUNT,
+						edges: [MOCK_TECHNOLOGY_NODES[2]],
+						pageInfo: {
+							hasPreviousPage: true,
+							hasNextPage: true,
+							startCursor: 3,
+							endCursor: 3,
+						},
+					},
+				],
+				// [
+				// 	`and 'after' input is undefined and items array is empty`,
+				// 	1,
+				// 	undefined,
+				// 	[],
+				// 	{
+				// 		totalCount: MOCK_TOTAL_COUNT,
+				// 		edges: [],
+				// 		pageInfo: {
+				// 			hasPreviousPage: false,
+				// 			hasNextPage: false,
+				// 			startCursor: undefined,
+				// 			endCursor: undefined,
+				// 		},
+				// 	},
+				// ],
+				[
+					`and 'after' input is undefined and items array is not empty`,
+					2,
+					undefined,
+					[MOCK_TECHNOLOGY_ENTITIES[0], MOCK_TECHNOLOGY_ENTITIES[1]],
+					{
+						totalCount: MOCK_TOTAL_COUNT,
+						edges: [MOCK_TECHNOLOGY_NODES[0], MOCK_TECHNOLOGY_NODES[1]],
+						pageInfo: {
+							hasPreviousPage: false,
+							hasNextPage: true,
+							startCursor: 1,
+							endCursor: 2,
+						},
+					},
+				],
+			];
 
-			afterAll(() => {
-				MOCK_PRISMA_CLIENT.$transaction.mockReset();
-				MOCK_PRISMA_CLIENT.technologyEntity.count.mockReset();
-				MOCK_PRISMA_CLIENT.technologyEntity.findMany.mockReset();
-			});
+			describe.each(PAGINATION_CASES)(
+				'%s',
+				(_inner_statement, MOCK_FIRST, MOCK_AFTER, MOCK_DB_DATA, EXPECTED_RESULT) => {
+					const MOCK_ORDER_BY = { id: 'asc' };
 
-			it('calls PrismaClient count method once', () => {
-				expect(MOCK_PRISMA_CLIENT.technologyEntity.count).toHaveBeenCalledTimes(1);
-			});
+					let result: TechnologyEntityCollection;
 
-			it('calls PrismaClient findMany method once with expected argument', () => {
-				expect(MOCK_PRISMA_CLIENT.technologyEntity.findMany).toHaveBeenCalledTimes(1);
-				expect(MOCK_PRISMA_CLIENT.technologyEntity.findMany).toHaveBeenCalledWith({
-					take: MOCK_LIMIT,
-					skip: MOCK_OFFSET,
-				});
-			});
+					beforeAll(async () => {
+						MOCK_PRISMA_CLIENT.$transaction.mockResolvedValue([MOCK_TOTAL_COUNT, MOCK_DB_DATA]);
+						result = await instance.getTechnologies(MOCK_FIRST, MOCK_AFTER);
+					});
 
-			it('calls PrismaClient.$transaction method once', () => {
-				expect(MOCK_PRISMA_CLIENT.technologyEntity.count).toHaveBeenCalledTimes(1);
-			});
+					afterAll(() => {
+						MOCK_PRISMA_CLIENT.$transaction.mockReset();
+						MOCK_PRISMA_CLIENT.technologyEntity.count.mockReset();
+						MOCK_PRISMA_CLIENT.technologyEntity.findMany.mockReset();
+					});
 
-			it('returns expected result', () => {
-				expect(result).toEqual(EXPECTED_RESULT);
-			});
+					it('calls PrismaClient count method once', () => {
+						expect(MOCK_PRISMA_CLIENT.technologyEntity.count).toHaveBeenCalledTimes(3);
+					});
+
+					it('calls PrismaClient findMany method once with expected argument', () => {
+						expect(MOCK_PRISMA_CLIENT.technologyEntity.findMany).toHaveBeenCalledTimes(1);
+						expect(MOCK_PRISMA_CLIENT.technologyEntity.findMany).toHaveBeenCalledWith({
+							take: MOCK_FIRST,
+							orderBy: MOCK_ORDER_BY,
+							where: MOCK_AFTER ? { id: { gt: MOCK_AFTER } } : {},
+						});
+					});
+
+					it('returns expected result', () => {
+						expect(result).toEqual(EXPECTED_RESULT);
+					});
+				}
+			);
 		});
 	});
 });

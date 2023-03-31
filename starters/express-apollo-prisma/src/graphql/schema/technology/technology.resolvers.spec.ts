@@ -21,6 +21,7 @@ import { ServerContext } from '../../server-context';
 
 import { TechnologyEntity } from '@prisma/client';
 import { mapTechnology, mapTechnologyCollection } from '../../mappers';
+import { PageInformation } from '../../data-sources';
 
 type QueryTechnology = Pick<Query, 'technology'>;
 type QueryTechnologies = Pick<Query, 'technologies'>;
@@ -53,13 +54,22 @@ const MOCK_QUERY_TECHNOLOGY = gql`
 const MOCK_QUERY_TECHNOLOGIES_PAGINATION_DEFAULT = gql`
 	query TechnologiesQueryPaginationArgumentsDefualt {
 		technologies {
-			edges {
-				description
-				displayName
-				id
-				url
-			}
 			totalCount
+			edges {
+				node {
+					id
+					displayName
+					description
+					url
+				}
+				cursor
+			}
+			pageInfo {
+				startCursor
+				endCursor
+				hasNextPage
+				hasPreviousPage
+			}
 		}
 	}
 `;
@@ -67,21 +77,30 @@ const MOCK_QUERY_TECHNOLOGIES_PAGINATION_DEFAULT = gql`
 const MOCK_VARIABLES_TECHNOLOGIES_PAGINATION_DEFAULT: QuerytechnologiesArgs = {};
 
 const MOCK_QUERY_TECHNOLOGIES_PAGINATION_CUSTOM = gql`
-	query TechnologiesQueryPaginationArgumentsCustom($limit: Int, $offset: Int) {
-		technologies(limit: $limit, offset: $offset) {
-			edges {
-				description
-				displayName
-				id
-				url
-			}
+	query Technologies($first: Int!, $after: Int) {
+		technologies(first: $first, after: $after) {
 			totalCount
+			edges {
+				node {
+					id
+					displayName
+					description
+					url
+				}
+				cursor
+			}
+			pageInfo {
+				startCursor
+				endCursor
+				hasNextPage
+				hasPreviousPage
+			}
 		}
 	}
 `;
 const MOCK_VARIABLES_TECHNOLOGIES_PAGINATION_CUSTOM: QuerytechnologiesArgs = {
-	limit: 10,
-	offset: 20,
+	first: 1,
+	after: 3,
 };
 
 const MOCK_TECHNOLOGY_DATASOURCE = createMockTechnologyDataSource();
@@ -277,16 +296,27 @@ describe('technologyResolvers', () => {
 
 		describe('.technologies', () => {
 			describe('when called', () => {
+				const MOCK_RESULT_PAGE_INFO: PageInformation = {
+					hasNextPage: true,
+					hasPreviousPage: false,
+					startCursor: 1,
+					endCursor: 3,
+				};
+
 				const MOCK_RESULT_TECHNOLOGY_COLLECTION: TechnologyCollection = {
 					totalCount: 987,
 					edges: [
 						{
-							displayName: 'MOCK_DISPLAY_NAME_RESULT',
-							description: 'MOCK_DESCRIPTION_RESULT',
-							id: 'MOCK_ID_RESULT',
-							url: 'MOCK_URL_RESULT',
+							node: {
+								displayName: 'MOCK_DISPLAY_NAME_RESULT',
+								description: 'MOCK_DESCRIPTION_RESULT',
+								id: 'MOCK_ID_RESULT',
+								url: 'MOCK_URL_RESULT',
+							},
+							cursor: 1,
 						},
 					],
+					pageInfo: MOCK_RESULT_PAGE_INFO,
 				};
 
 				describe.each([
@@ -294,17 +324,17 @@ describe('technologyResolvers', () => {
 						'with default pagination arguments',
 						MOCK_QUERY_TECHNOLOGIES_PAGINATION_DEFAULT,
 						MOCK_VARIABLES_TECHNOLOGIES_PAGINATION_DEFAULT,
-						createMockTechnologyEntityCollection(5, 30),
+						createMockTechnologyEntityCollection(5, 30, MOCK_RESULT_PAGE_INFO),
 						5,
-						0,
+						undefined,
 					],
 					[
 						'with custom pagination arguments',
 						MOCK_QUERY_TECHNOLOGIES_PAGINATION_CUSTOM,
 						MOCK_VARIABLES_TECHNOLOGIES_PAGINATION_CUSTOM,
-						createMockTechnologyEntityCollection(10, 50),
-						Number(MOCK_VARIABLES_TECHNOLOGIES_PAGINATION_CUSTOM.limit),
-						Number(MOCK_VARIABLES_TECHNOLOGIES_PAGINATION_CUSTOM.offset),
+						createMockTechnologyEntityCollection(10, 50, MOCK_RESULT_PAGE_INFO),
+						Number(MOCK_VARIABLES_TECHNOLOGIES_PAGINATION_CUSTOM.first),
+						Number(MOCK_VARIABLES_TECHNOLOGIES_PAGINATION_CUSTOM.after),
 					],
 				])(
 					'%s',
@@ -313,8 +343,8 @@ describe('technologyResolvers', () => {
 						mockQuery,
 						mockVariables,
 						mockCollectionPage,
-						expectedLimit,
-						expectedOffset
+						expectedFirst,
+						expectedAfter
 					) => {
 						let response: GraphQLResponse<QueryTechnologies>;
 
@@ -338,8 +368,8 @@ describe('technologyResolvers', () => {
 						it('calls TechnologyDataSource getTechnologies method once', () => {
 							expect(MOCK_TECHNOLOGY_DATASOURCE.getTechnologies).toHaveBeenCalledTimes(1);
 							expect(MOCK_TECHNOLOGY_DATASOURCE.getTechnologies).toHaveBeenCalledWith(
-								expectedLimit,
-								expectedOffset
+								expectedFirst,
+								expectedAfter
 							);
 						});
 
@@ -352,6 +382,7 @@ describe('technologyResolvers', () => {
 							expect(response.body.kind).toEqual('single');
 							assert(response.body.kind === 'single');
 							expect(response.body.singleResult.errors).toBeUndefined();
+
 							expect(response.body.singleResult.data).toEqual({
 								technologies: MOCK_RESULT_TECHNOLOGY_COLLECTION,
 							});

@@ -1,14 +1,20 @@
 import { TechnologyEntity } from '@prisma/client';
 import { DeepMockProxy, mockDeep } from 'jest-mock-extended';
-import { TechnologyDataSource, TechnologyEntityCollection } from '../graphql/data-sources';
+import {
+	PageInformation,
+	TechnologyDataSource,
+	TechnologyEntityCollection,
+	TechnologyNode,
+} from '../graphql/data-sources';
 
 export const createMockTechnologyDataSource = (): DeepMockProxy<TechnologyDataSource> =>
 	mockDeep<TechnologyDataSource>();
 
-let technologyEntityIdCount = 0;
+let technologyEntityIdCount = 1;
+let alternateTechnologyEntityIdCount = 1;
 
-const createMockTechnologyEntity = (): TechnologyEntity => {
-	const id = technologyEntityIdCount++;
+const createMockTechnologyEntity = (idCount?: number): TechnologyEntity => {
+	const id = idCount ? idCount++ : technologyEntityIdCount++;
 	return {
 		description: `MOCK_DESCRIPTION_${id}`,
 		displayName: `MOCK_DISPLAY_NAME_${id}`,
@@ -19,9 +25,11 @@ const createMockTechnologyEntity = (): TechnologyEntity => {
 
 export const createMockTechnologyEntityCollection = (
 	edgesCount: number,
-	totalCount: number
+	totalCount: number,
+	pageInfo: PageInformation
 ): TechnologyEntityCollection => ({
 	totalCount,
+	pageInfo,
 	edges: Array(edgesCount)
 		.fill(null)
 		.map(() => {
@@ -32,3 +40,19 @@ export const createMockTechnologyEntityCollection = (
 			};
 		}),
 });
+
+export const createMockTechnologyEntities = (totalCount: number): TechnologyEntity[] => {
+	return Array(totalCount).fill(null).map(createMockTechnologyEntity);
+};
+
+export const createMockTechnologyNodes = (totalCount: number): TechnologyNode[] => {
+	return Array(totalCount)
+		.fill(null)
+		.map(() => {
+			const technology = createMockTechnologyEntity(alternateTechnologyEntityIdCount++);
+			return {
+				node: technology,
+				cursor: technology.id,
+			};
+		});
+};

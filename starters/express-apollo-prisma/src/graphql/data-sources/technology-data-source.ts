@@ -4,19 +4,21 @@ import { InputMaybe } from '../schema/generated/types';
 
 type TechnologyEntityId = TechnologyEntity['id'];
 
-type TechnologyNode = {
+export type TechnologyNode = {
 	cursor: TechnologyEntityId;
 	node: TechnologyEntity;
 };
 
+export type PageInformation = {
+	hasNextPage: boolean;
+	hasPreviousPage: boolean;
+	startCursor?: TechnologyEntityId;
+	endCursor?: TechnologyEntityId;
+};
+
 export type TechnologyEntityCollection = {
 	totalCount: number;
-	pageInfo: {
-		hasNextPage: boolean;
-		hasPreviousPage: boolean;
-		startCursor?: TechnologyEntityId;
-		endCursor?: TechnologyEntityId;
-	};
+	pageInfo: PageInformation;
 	edges: TechnologyNode[];
 };
 
@@ -59,6 +61,7 @@ export class TechnologyDataSource {
 
 		const startCursor = items.length > 0 ? items[0].id : undefined;
 		const endCursor = items.length > 0 ? items[items.length - 1].id : undefined;
+
 		const hasNextPage =
 			(await this.prismaClient.technologyEntity.count({
 				where: { id: { gt: endCursor } },
@@ -66,13 +69,15 @@ export class TechnologyDataSource {
 
 		const hasPreviousPage =
 			(await this.prismaClient.technologyEntity.count({
-				where: { id: { lt: items[0].id } },
+				where: { id: { lt: items[0] ? items[0].id : undefined } },
 			})) > 0;
 
 		const edges = items.map((node) => ({
 			cursor: node.id,
 			node,
 		}));
+
+		console.log(hasNextPage, hasPreviousPage);
 
 		return {
 			totalCount,

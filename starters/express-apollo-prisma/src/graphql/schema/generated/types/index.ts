@@ -75,7 +75,7 @@ export type Query = {
 /** Technology queries */
 export type QuerytechnologiesArgs = {
 	after?: InputMaybe<Scalars['Int']>;
-	first: Scalars['Int'];
+	first?: InputMaybe<Scalars['Int']>;
 };
 
 /** Technology queries */

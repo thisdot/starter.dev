@@ -43,7 +43,7 @@ Technology queries
 """
 type Query {
 	"Returns a list of Technologies"
-	technologies(after: Int, first: Int!): TechnologyCollection!
+	technologies(after: Int, first: Int = 5): TechnologyCollection!
 	"Returns a single Technology by ID"
 	technology(id: ID!): Technology
 }

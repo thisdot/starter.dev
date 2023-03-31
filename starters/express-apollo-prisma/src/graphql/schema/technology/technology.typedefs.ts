@@ -58,7 +58,7 @@ export const technologyTypeDefs = gql`
 		"Returns a single Technology by ID"
 		technology(id: ID!): Technology
 		"Returns a list of Technologies"
-		technologies(first: Int!, after: Int): TechnologyCollection!
+		technologies(first: Int = 5, after: Int): TechnologyCollection!
 	}
 
 	input CreateTechnology {
