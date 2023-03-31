@@ -10,15 +10,7 @@ npm create @this-dot/starter -- --kit vue3-xstate-css
 
 <sub>(use any of `npm` / `yarn` / `pnpm`)</sub>
 
-If you'd prefer manual installation, you can follow this process:
-
-> Note: The command below clones the entire repository, including other starter kits.
-
-```sh
-git clone https://github.com/thisdot/starter.dev.git
-```
-
-Copy and rename the "starters/vue3-xstate-css" directory to the name of your new project.
+For more setup options, check out our [setup instructions in the wiki](https://github.com/thisdot/starter.dev/wiki/Setup-Instructions).
 
 ## Tech Stack
 
