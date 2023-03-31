@@ -45,7 +45,7 @@ Once you've generated your new starter kit following the instructions above:
 
 - `cd` into your project directory and run `npm install` to install the dependencies.
 - Run `npm run dev` to start the development server.
-- Click the <http://localhost:5173> link from within your terminal. This will open that link in a tab to view the application, and also launch the XState inspector for you in a second tab.
+- Click the [http://localhost:5173] link from within your terminal. This will open that link in a tab to view the application, and also launch the XState inspector for you in a second tab.
 
 ## Available commands
 

@@ -93,7 +93,7 @@ export const TECHNOLOGIES = [
     key: 'express',
     name: 'Express.js',
     tags: ['Framework'],
-    Icon: (props) => <ExpressIcon {...props} />
+    Icon: (props) => <ExpressIcon {...props} />,
   },
   {
     key: 'angular',
@@ -369,7 +369,7 @@ export const TECHNOLOGIES = [
     key: 'postgres',
     name: 'Postgres',
     tags: ['Data Management'],
-    Icon: (props) => <PostgresIcon {...props} />
+    Icon: (props) => <PostgresIcon {...props} />,
   },
   {
     key: 'expo',
@@ -387,8 +387,8 @@ export const TECHNOLOGIES = [
     key: 'prisma',
     name: 'Prisma',
     tags: ['Data Management'],
-    Icon: (props) => <PrismaIcon {...props} />
-  }
+    Icon: (props) => <PrismaIcon {...props} />,
+  },
   {
     key: 'xstate',
     name: 'XState',
