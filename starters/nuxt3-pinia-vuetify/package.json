@@ -19,8 +19,6 @@
 		"lint:prettier": "prettier --check .",
 		"lint": "yarn lint:js && yarn lint:prettier",
 		"lintfix": "prettier --write --list-different . && yarn lint:js --fix",
-		"storybook": "start-storybook -p 6006",
-		"build:storybook": "STORYBOOK_BASE_HREF=storybook build-storybook",
 		"test": "vitest --run --reporter verbose --globals",
 		"test:watch": "vitest --reporter verbose --globals"
 	},
@@ -28,11 +26,6 @@
 		"@nuxt/test-utils-edge": "3.3.2-27992199.dc5982d9",
 		"@nuxtjs/eslint-config-typescript": "12.0.0",
 		"@pinia/testing": "0.0.15",
-		"@storybook/addon-a11y": "6.5.16",
-		"@storybook/addon-essentials": "6.5.16",
-		"@storybook/addon-postcss": "2.0.0",
-		"@storybook/builder-vite": "0.4.2",
-		"@storybook/vue3": "6.5.16",
 		"@testing-library/vue": "7.0.0",
 		"@typescript-eslint/eslint-plugin": "5.56.0",
 		"@vitejs/plugin-vue": "4.1.0",
@@ -44,7 +37,6 @@
 		"nuxt": "3.3.1",
 		"prettier": "2.8.7",
 		"sass": "1.60.0",
-		"storybook-dark-mode": "2.1.1",
 		"typescript": "5.0.2",
 		"vitest": "0.29.7",
 		"vue-eslint-parser": "9.1.0"
