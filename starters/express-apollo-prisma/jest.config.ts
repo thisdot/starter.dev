@@ -32,6 +32,7 @@ export default {
 		'index.ts',
 		'<rootDir>/mocks',
 		'<rootDir>/config.ts',
+		'<rootDir>/queue/worker.ts',
 		'\\.(d.ts)$',
 	],
 

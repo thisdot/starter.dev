@@ -1,8 +1,5 @@
 import amqplib from 'amqplib';
-import * as dotenv from 'dotenv';
 import { AMQP_QUEUE_JOB, AMQP_URL } from '../config';
-
-dotenv.config();
 
 (async () => {
 	const connection = await amqplib.connect(AMQP_URL);
