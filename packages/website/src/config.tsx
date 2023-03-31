@@ -48,6 +48,8 @@ import {
   ZustandIcon,
   PrismaIcon,
   ContentfulIcon,
+  XstateIcon,
+  CssIcon,
 } from './icons';
 
 export interface NavItem {
@@ -387,6 +389,18 @@ export const TECHNOLOGIES = [
     tags: ['Data Management'],
     Icon: (props) => <PrismaIcon {...props} />
   }
+  {
+    key: 'xstate',
+    name: 'XState',
+    tags: ['Data Management'],
+    Icon: (props) => <XstateIcon {...props} />,
+  },
+  {
+    key: 'css',
+    name: 'CSS',
+    tags: ['Styling'],
+    Icon: (props) => <CssIcon {...props} />,
+  },
 ];
 
 export const SPONSORS_ICON = [
