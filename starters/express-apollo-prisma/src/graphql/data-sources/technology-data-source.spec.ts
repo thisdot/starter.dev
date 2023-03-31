@@ -3,10 +3,6 @@ import { PrismaClient, TechnologyEntity } from '@prisma/client';
 import { DeepMockProxy } from 'jest-mock-extended';
 import { createMockPrismaClient } from '../../mocks/prisma-client';
 import { createMockCacheApiWrapper } from '../../mocks/cache-api-wrapper';
-import {
-	createMockTechnologyEntities,
-	createMockTechnologyNodes,
-} from '../../mocks/technology-entity';
 
 describe('TechnologyDataSource', () => {
 	const MOCK_PRISMA_CLIENT: DeepMockProxy<PrismaClient> = createMockPrismaClient();
@@ -50,11 +46,11 @@ describe('TechnologyDataSource', () => {
 			new TechnologyDataSource(MOCK_PRISMA_CLIENT),
 			false, // cache disabled
 		],
-		// [
-		// 	'when instance created with PrismaClient (required) and CacheAPIWrapper (optional)',
-		// 	new TechnologyDataSource(MOCK_PRISMA_CLIENT, MOCK_CACHE_API_WRAPPER),
-		// 	true, // cache enabled
-		// ],
+		[
+			'when instance created with PrismaClient (required) and CacheAPIWrapper (optional)',
+			new TechnologyDataSource(MOCK_PRISMA_CLIENT, MOCK_CACHE_API_WRAPPER),
+			true, // cache enabled
+		],
 	];
 
 	describe('#createTechnology', () => {
@@ -312,39 +308,87 @@ describe('TechnologyDataSource', () => {
 
 	describe('#getTechnologies', () => {
 		describe.each(GENERAL_CASES)('%s', (_statement, instance) => {
-			const MOCK_TOTAL_COUNT = 4;
-			const MOCK_TECHNOLOGY_NODES = createMockTechnologyNodes(MOCK_TOTAL_COUNT);
-			const MOCK_TECHNOLOGY_ENTITIES = createMockTechnologyEntities(MOCK_TOTAL_COUNT);
+			const MOCK_TOTAL_COUNT = 3;
 
-			console.log(MOCK_TECHNOLOGY_NODES);
+			const MOCK_TECHNOLOGY_NODES = [
+				{
+					node: {
+						description: 'MOCK_DESCRIPTION_1',
+						displayName: 'MOCK_DISPLAY_NAME_1',
+						id: 1,
+						url: 'MOCK_URL_1',
+					},
+					cursor: 1,
+				},
+				{
+					node: {
+						description: 'MOCK_DESCRIPTION_2',
+						displayName: 'MOCK_DISPLAY_NAME_2',
+						id: 2,
+						url: 'MOCK_URL_2',
+					},
+					cursor: 2,
+				},
+				{
+					node: {
+						description: 'MOCK_DESCRIPTION_3',
+						displayName: 'MOCK_DISPLAY_NAME_3',
+						id: 3,
+						url: 'MOCK_URL_3',
+					},
+					cursor: 3,
+				},
+			];
 
-			console.log(MOCK_TECHNOLOGY_ENTITIES);
+			const MOCK_TECHNOLOGY_ENTITIES = [
+				{
+					description: 'MOCK_DESCRIPTION_1',
+					displayName: 'MOCK_DISPLAY_NAME_1',
+					id: 1,
+					url: 'MOCK_URL_1',
+				},
+				{
+					description: 'MOCK_DESCRIPTION_2',
+					displayName: 'MOCK_DISPLAY_NAME_2',
+					id: 2,
+					url: 'MOCK_URL_2',
+				},
+				{
+					description: 'MOCK_DESCRIPTION_3',
+					displayName: 'MOCK_DISPLAY_NAME_3',
+					id: 3,
+					url: 'MOCK_URL_3',
+				},
+			];
 
 			const PAGINATION_CASES: [
 				string,
 				number,
 				number | undefined,
+				number,
 				TechnologyEntity[],
 				TechnologyEntityCollection
 			][] = [
-				// [
-				// 	`and 'after' input is defined and items array is empty`,
-				// 	1,
-				// 	2,
-				// 	[],
-				// 	{
-				// 		totalCount: MOCK_TOTAL_COUNT,
-				// 		edges: [],
-				// 		pageInfo: {
-				// 			hasPreviousPage: false,
-				// 			hasNextPage: false,
-				// 			startCursor: undefined,
-				// 			endCursor: undefined,
-				// 		},
-				// 	},
-				// ],
+				[
+					`and 'after' input is defined and items array is empty`,
+					1,
+					2,
+					0,
+					[],
+					{
+						totalCount: MOCK_TOTAL_COUNT,
+						edges: [],
+						pageInfo: {
+							hasPreviousPage: false,
+							hasNextPage: false,
+							startCursor: undefined,
+							endCursor: undefined,
+						},
+					},
+				],
 				[
 					`and 'after' input is defined and items array is not empty`,
+					1,
 					1,
 					1,
 					[MOCK_TECHNOLOGY_ENTITIES[2]],
@@ -359,32 +403,34 @@ describe('TechnologyDataSource', () => {
 						},
 					},
 				],
-				// [
-				// 	`and 'after' input is undefined and items array is empty`,
-				// 	1,
-				// 	undefined,
-				// 	[],
-				// 	{
-				// 		totalCount: MOCK_TOTAL_COUNT,
-				// 		edges: [],
-				// 		pageInfo: {
-				// 			hasPreviousPage: false,
-				// 			hasNextPage: false,
-				// 			startCursor: undefined,
-				// 			endCursor: undefined,
-				// 		},
-				// 	},
-				// ],
+				[
+					`and 'after' input is undefined and items array is empty`,
+					1,
+					undefined,
+					0,
+					[],
+					{
+						totalCount: MOCK_TOTAL_COUNT,
+						edges: [],
+						pageInfo: {
+							hasPreviousPage: false,
+							hasNextPage: false,
+							startCursor: undefined,
+							endCursor: undefined,
+						},
+					},
+				],
 				[
 					`and 'after' input is undefined and items array is not empty`,
 					2,
 					undefined,
+					1,
 					[MOCK_TECHNOLOGY_ENTITIES[0], MOCK_TECHNOLOGY_ENTITIES[1]],
 					{
 						totalCount: MOCK_TOTAL_COUNT,
 						edges: [MOCK_TECHNOLOGY_NODES[0], MOCK_TECHNOLOGY_NODES[1]],
 						pageInfo: {
-							hasPreviousPage: false,
+							hasPreviousPage: true,
 							hasNextPage: true,
 							startCursor: 1,
 							endCursor: 2,
@@ -395,13 +441,21 @@ describe('TechnologyDataSource', () => {
 
 			describe.each(PAGINATION_CASES)(
 				'%s',
-				(_inner_statement, MOCK_FIRST, MOCK_AFTER, MOCK_DB_DATA, EXPECTED_RESULT) => {
+				(
+					_inner_statement,
+					MOCK_FIRST,
+					MOCK_AFTER,
+					MOCK_RESOLVED_COUNT,
+					MOCK_DB_DATA,
+					EXPECTED_RESULT
+				) => {
 					const MOCK_ORDER_BY = { id: 'asc' };
 
 					let result: TechnologyEntityCollection;
 
 					beforeAll(async () => {
 						MOCK_PRISMA_CLIENT.$transaction.mockResolvedValue([MOCK_TOTAL_COUNT, MOCK_DB_DATA]);
+						MOCK_PRISMA_CLIENT.technologyEntity.count.mockResolvedValue(MOCK_RESOLVED_COUNT);
 						result = await instance.getTechnologies(MOCK_FIRST, MOCK_AFTER);
 					});
 

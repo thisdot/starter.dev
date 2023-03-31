@@ -77,8 +77,6 @@ export class TechnologyDataSource {
 			node,
 		}));
 
-		console.log(hasNextPage, hasPreviousPage);
-
 		return {
 			totalCount,
 			edges,
