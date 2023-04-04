@@ -31,6 +31,7 @@
 					data-testid="decrement-button"
 					class="ma-2 bg-primary"
 					variant="tonal"
+					:disabled="counterState.counter === 0"
 					@click="decreaseCount"
 				>
 					decrement
@@ -54,15 +55,8 @@ import { useCounterStore } from '@/store/counterStore';
 
 const counterState = useCounterStore();
 
-const increaseCount = () => {
-	counterState.counter++;
-};
-
-const decreaseCount = () => {
-	if (counterState.counter) {
-		counterState.counter--;
-	}
-};
+const increaseCount = () => counterState.counter++;
+const decreaseCount = () => counterState.counter--;
 
 const resetCount = counterState.$reset.bind(counterState);
 </script>
