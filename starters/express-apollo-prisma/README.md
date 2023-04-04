@@ -28,10 +28,12 @@ This starter kit features Express, Apollo Server and Prisma.
     - [Express](#express)
     - [Apollo Server](#apollo-server)
     - [ORM](#orm)
+      - [How to use kit with MongoDB](#how-to-use-kit-with-mongodb)
     - [Queueing](#queueing)
     - [Caching](#caching)
     - [Testing](#testing)
   - [Deployment](#deployment)
+  - [Build a Production Scale app with Express-Apollo-Prisma kit](#build-a-production-scale-app-with-express-apollo-prisma-kit)
 
 ## Overview
 
@@ -300,6 +302,55 @@ We use Prisma for the following:
 
 Learn more about [Prisma](https://www.prisma.io/docs/concepts/overview/prisma-in-your-stack/is-prisma-an-orm).
 
+#### How to use kit with MongoDB
+
+1. Set up a MongoDB account via the following tutorial: [Create MongoDB Account](https://www.mongodb.com/docs/guides/atlas/account/).
+2. Set up MongoDB cluster. [Create Cluster](https://www.mongodb.com/docs/guides/atlas/cluster/)
+3. Set up MongoDB User. [Create User](https://www.mongodb.com/docs/guides/atlas/db-user/)
+4. Get the [MongoDB Connection URI](https://www.mongodb.com/docs/guides/atlas/connection-string/).
+5. Replace the `<user>`, `<password>` and `<database>` to your `DB_URL` in your `.env` with the username, password and database you created.
+   ```
+    DB_URL="mongodb+srv://<username>:<password>@app.random.mongodb.net/database?retryWrites=true&w=majority"
+   ```
+6. Replace the `DB_USER`, `DB_PASSWORD` and `DB_DATABASE` in your `.env` with the username, password and database you created.
+7. Edit the datasource in `prisma/schema.prisma`.
+
+   ```prisma
+    datasource db {
+      provider = "mongodb"
+      url      = env("DATABASE_URL")
+    }
+   ```
+
+8. Edit the `PRISMA_CONFIG` in `src/config.ts` to:
+
+   ```ts
+   export const PRISMA_CONFIG: Prisma.PrismaClientOptions = {
+   	datasources: {
+   		db: {
+   			url: `mongodb+srv://${DB_USER}:${DB_PASSWORD}@app.random.mongodb.net/${DB_DATABASE}?retryWrites=true&w=majority`,
+   		},
+   	},
+   };
+   ```
+
+9. Finally update your `src/healthcheck/datasource-healthcheck.ts` to check the mongodb connection.
+
+   ```ts
+   import { PrismaClient } from '@prisma/client';
+
+   export const getDataSourceHealth = async (prismaClient?: PrismaClient) => {
+   	try {
+   		const prismaClientPingResult = await prismaClient?.$runCommandRaw({
+   			ping: 1,
+   		});
+   		return prismaClientPingResult?.ok == 1;
+   	} catch {
+   		return false;
+   	}
+   };
+   ```
+
 ### Queueing
 
 The kit provides an implementation of queueing using RabbitMQ, an open-source message broker that allows multiple applications or services to communicate with each other through queues. It's a powerful tool for handling tasks asynchronously and distributing workloads across multiple machines.
@@ -357,3 +408,7 @@ npm run infrastructure:up
 3. Deploy your application to your chosen provider or service using their deployment tools or services. You can use the start script to start your application in production mode. You may also need to configure any necessary proxy or routing rules to direct incoming traffic to your application.
 
 4. Monitor your application for any issues or errors and adjust your deployment as needed. This may involve configuring load balancers, auto-scaling, or other performance optimization features, depending on your chosen provider or service.
+
+## Build a Production Scale app with Express-Apollo-Prisma kit
+
+Learn how to build a Production Scale app with Express-Apollo-Prisma kit in this [article](https://www.thisdot.co/blog/building-a-production-scale-app-with-the-express-apollo-prisma-starter-kit). We will cover what's included in the kit, how to set it up, and how to use the provided tools to create a scalable web application. We will also discuss how to extend the starter kit to add features like authentication. Finally, we will look at how to use the provided tools to ensure that your application is well-maintained and efficient
