@@ -2,6 +2,7 @@
 import { createVuetify } from 'vuetify';
 import { VBtn } from 'vuetify/components/VBtn';
 import { VApp } from 'vuetify/components/VApp';
+import { VProgressCircular } from 'vuetify/components/VProgressCircular';
 
 export const Vuetify = createVuetify({
 	ssr: true,
@@ -19,6 +20,7 @@ export const Vuetify = createVuetify({
 	components: {
 		VBtn,
 		VApp,
+		VProgressCircular,
 	},
 });
 

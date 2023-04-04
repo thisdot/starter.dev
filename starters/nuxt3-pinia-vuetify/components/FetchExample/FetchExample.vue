@@ -10,24 +10,39 @@
 
 		<div class="d-flex flex-row justify-center align-center mt-5 mb-10 text-h6">
 			<p>Message:</p>
-			<p class="ml-5 font-weight-bold" data-testid="message-value">
-				{{ message }}
-			</p>
+			<div class="ml-5 font-weight-bold">
+				<v-progress-circular v-if="loading" indeterminate></v-progress-circular>
+
+				<p v-else-if="error">
+					<span class="text-red-600">Error: </span>
+					An error occurred while fetching data.
+				</p>
+
+				<p v-else data-testid="message-value">
+					{{ data }}
+				</p>
+			</div>
 		</div>
 	</div>
 </template>
 
 <script lang="ts" setup>
-const message = ref('loading...');
-
-try {
-	const { data } = await useFetch<string>(
-		'https://api.starter.dev/hello?greeting=from This Dot Labs!'
-	);
-	message.value = data.value ?? 'Failed to fetch';
-} catch (e) {
-	message.value = 'Failed to fetch';
-}
+const greeting = 'from This Dot Labs!';
+const {
+	data,
+	pending: loading,
+	error,
+} = await useLazyFetch<string>(
+	`https://api.starter.dev/.netlify/functionds/server/hello?greeting=${greeting}`
+);
+watch(
+	() => error,
+	(error) => {
+		if (error.value) {
+			error.value.message = 'An error occurred while fetching data.';
+		}
+	}
+);
 </script>
 
 <style lang="scss" scoped>
