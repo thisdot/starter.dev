@@ -49,6 +49,7 @@ import {
   PrismaIcon,
   ContentfulIcon,
   VuetifyIcon,
+  Nuxt3Icon,
 } from './icons';
 
 export interface NavItem {
@@ -140,7 +141,7 @@ export const TECHNOLOGIES = [
     key: 'nuxt 3',
     name: 'NuxtJS 3',
     tags: ['Framework'],
-    Icon: (props) => <NuxtIcon {...props} />,
+    Icon: (props) => <Nuxt3Icon {...props} />,
   },
   {
     key: 'nuxt',
@@ -363,6 +364,12 @@ export const TECHNOLOGIES = [
     name: 'DenoDB',
     tags: ['Data Management'],
     Icon: (props) => <DenoIcon {...props} />,
+  },
+  {
+    key: 'express',
+    name: 'Express.js',
+    tags: ['Framework'],
+    Icon: (props) => <ExpressIcon {...props} />,
   },
   {
     key: 'typeorm',
