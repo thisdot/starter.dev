@@ -4,7 +4,7 @@ import { InputMaybe } from '../schema/generated/types';
 
 type TechnologyEntityId = TechnologyEntity['id'];
 
-export type TechnologyNode = {
+export type TechnologyEdge = {
 	cursor: TechnologyEntityId;
 	node: TechnologyEntity;
 };
@@ -19,7 +19,7 @@ export type PageInformation = {
 export type TechnologyEntityCollection = {
 	totalCount: number;
 	pageInfo: PageInformation;
-	edges: TechnologyNode[];
+	edges: TechnologyEdge[];
 };
 
 export class TechnologyDataSource {

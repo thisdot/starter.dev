@@ -16,7 +16,7 @@ export const mapTechnologyCollection = (
 	return {
 		totalCount: entityCollectionPage.totalCount,
 		edges: entityCollectionPage.edges.map((entity) => ({
-			__typename: 'TechnologyNode',
+			__typename: 'TechnologyEdge',
 			node: mapTechnology(entity.node),
 			cursor: entity.cursor,
 		})),

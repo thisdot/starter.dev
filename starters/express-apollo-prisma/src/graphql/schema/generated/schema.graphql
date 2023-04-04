@@ -67,7 +67,7 @@ A collection of technologies
 """
 type TechnologyCollection {
 	"A list of records of the requested page"
-	edges: [TechnologyNode]!
+	edges: [TechnologyEdge]!
 	"Pagination Information"
 	pageInfo: PageInformation!
 	"Identifies the total count of technology records in data source"
@@ -77,7 +77,7 @@ type TechnologyCollection {
 """
 Pagination Technology Node
 """
-type TechnologyNode {
+type TechnologyEdge {
 	"Current Cursor for Entity Node"
 	cursor: Int!
 	"Technology Entity Node"

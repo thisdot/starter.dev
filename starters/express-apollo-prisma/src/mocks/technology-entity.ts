@@ -4,7 +4,7 @@ import {
 	PageInformation,
 	TechnologyDataSource,
 	TechnologyEntityCollection,
-	TechnologyNode,
+	TechnologyEdge,
 } from '../graphql/data-sources';
 
 export const createMockTechnologyDataSource = (): DeepMockProxy<TechnologyDataSource> =>
@@ -45,7 +45,7 @@ export const createMockTechnologyEntities = (totalCount: number): TechnologyEnti
 	return Array(totalCount).fill(null).map(createMockTechnologyEntity);
 };
 
-export const createMockTechnologyNodes = (totalCount: number): TechnologyNode[] => {
+export const createMockTechnologyEdges = (totalCount: number): TechnologyEdge[] => {
 	return Array(totalCount)
 		.fill(null)
 		.map(() => {

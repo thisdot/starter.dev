@@ -453,7 +453,7 @@
 								"name": null,
 								"ofType": {
 									"kind": "OBJECT",
-									"name": "TechnologyNode",
+									"name": "TechnologyEdge",
 									"ofType": null
 								}
 							}
@@ -501,7 +501,7 @@
 			},
 			{
 				"kind": "OBJECT",
-				"name": "TechnologyNode",
+				"name": "TechnologyEdge",
 				"description": "Pagination Technology Node",
 				"fields": [
 					{

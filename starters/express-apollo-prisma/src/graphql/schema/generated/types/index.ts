@@ -100,7 +100,7 @@ export type Technology = {
 export type TechnologyCollection = {
 	__typename?: 'TechnologyCollection';
 	/** A list of records of the requested page */
-	edges: Array<Maybe<TechnologyNode>>;
+	edges: Array<Maybe<TechnologyEdge>>;
 	/** Pagination Information */
 	pageInfo: PageInformation;
 	/** Identifies the total count of technology records in data source */
@@ -108,8 +108,8 @@ export type TechnologyCollection = {
 };
 
 /** Pagination Technology Node */
-export type TechnologyNode = {
-	__typename?: 'TechnologyNode';
+export type TechnologyEdge = {
+	__typename?: 'TechnologyEdge';
 	/** Current Cursor for Entity Node */
 	cursor: Scalars['Int'];
 	/** Technology Entity Node */
@@ -219,7 +219,7 @@ export type ResolversTypes = {
 	String: ResolverTypeWrapper<Scalars['String']>;
 	Technology: ResolverTypeWrapper<Technology>;
 	TechnologyCollection: ResolverTypeWrapper<TechnologyCollection>;
-	TechnologyNode: ResolverTypeWrapper<TechnologyNode>;
+	TechnologyEdge: ResolverTypeWrapper<TechnologyEdge>;
 	UpdateTechnology: UpdateTechnology;
 };
 
@@ -235,7 +235,7 @@ export type ResolversParentTypes = {
 	String: Scalars['String'];
 	Technology: Technology;
 	TechnologyCollection: TechnologyCollection;
-	TechnologyNode: TechnologyNode;
+	TechnologyEdge: TechnologyEdge;
 	UpdateTechnology: UpdateTechnology;
 };
 
@@ -307,15 +307,15 @@ export type TechnologyCollectionResolvers<
 	ContextType = any,
 	ParentType extends ResolversParentTypes['TechnologyCollection'] = ResolversParentTypes['TechnologyCollection']
 > = {
-	edges?: Resolver<Array<Maybe<ResolversTypes['TechnologyNode']>>, ParentType, ContextType>;
+	edges?: Resolver<Array<Maybe<ResolversTypes['TechnologyEdge']>>, ParentType, ContextType>;
 	pageInfo?: Resolver<ResolversTypes['PageInformation'], ParentType, ContextType>;
 	totalCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type TechnologyNodeResolvers<
+export type TechnologyEdgeResolvers<
 	ContextType = any,
-	ParentType extends ResolversParentTypes['TechnologyNode'] = ResolversParentTypes['TechnologyNode']
+	ParentType extends ResolversParentTypes['TechnologyEdge'] = ResolversParentTypes['TechnologyEdge']
 > = {
 	cursor?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
 	node?: Resolver<ResolversTypes['Technology'], ParentType, ContextType>;
@@ -328,5 +328,5 @@ export type Resolvers<ContextType = any> = {
 	Query?: QueryResolvers<ContextType>;
 	Technology?: TechnologyResolvers<ContextType>;
 	TechnologyCollection?: TechnologyCollectionResolvers<ContextType>;
-	TechnologyNode?: TechnologyNodeResolvers<ContextType>;
+	TechnologyEdge?: TechnologyEdgeResolvers<ContextType>;
 };

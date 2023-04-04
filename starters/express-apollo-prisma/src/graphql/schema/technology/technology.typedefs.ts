@@ -18,7 +18,7 @@ export const technologyTypeDefs = gql`
 	"""
 	Pagination Technology Node
 	"""
-	type TechnologyNode {
+	type TechnologyEdge {
 		"Current Cursor for Entity Node"
 		cursor: Int!
 		"Technology Entity Node"
@@ -46,7 +46,7 @@ export const technologyTypeDefs = gql`
 		"Identifies the total count of technology records in data source"
 		totalCount: Int!
 		"A list of records of the requested page"
-		edges: [TechnologyNode]!
+		edges: [TechnologyEdge]!
 		"Pagination Information"
 		pageInfo: PageInformation!
 	}

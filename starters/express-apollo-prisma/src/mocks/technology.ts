@@ -26,7 +26,7 @@ export const createMockTechnologyCollectionResult = (
 			.map(() => {
 				const MOCK_TECHNOLOGY = createMockTechnology();
 				return {
-					__typename: 'TechnologyNode',
+					__typename: 'TechnologyEdge',
 					node: MOCK_TECHNOLOGY,
 					cursor: Number(MOCK_TECHNOLOGY.id),
 				};
