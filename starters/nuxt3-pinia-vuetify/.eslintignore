@@ -1,0 +1,7 @@
+/coverage/
+storybook-static/
+jest.config.js
+babel.config.js
+jest.setup.js
+__tests__
+/node_modules/

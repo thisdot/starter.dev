@@ -1,0 +1,15 @@
+{
+	"root": true,
+	"parser": "vue-eslint-parser",
+	"extends": [
+		"eslint:recommended",
+		"plugin:vue/essential",
+		"plugin:vue/vue3-recommended",
+		"plugin:@typescript-eslint/recommended",
+		"@nuxtjs/eslint-config-typescript",
+		"prettier"
+	],
+	"plugins": [],
+	// add your custom rules here
+	"rules": {}
+}
