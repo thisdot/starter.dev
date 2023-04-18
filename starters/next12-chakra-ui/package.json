@@ -9,7 +9,7 @@
     "chakra-ui"
   ],
   "scripts": {
-    "dev": "next dev",
+    "dev": "NODE_OPTIONS='--inspect' next dev",
     "test": "jest",
     "build": "next build",
     "start": "next start",
