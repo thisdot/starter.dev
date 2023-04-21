@@ -325,7 +325,7 @@ channel.consume(AMQP_QUEUE_JOB, (message) => {
 });
 ```
 
-The `src/queue/job-generator-handler.ts` file contains the logic for generating a job and adding it to the queue for processing, the `jobGeneratorHandler` function is an Express request handler that accepts a message and adds it to the queue.
+The `src/endpoints/job-generator/job-generator-handler.ts` file contains the logic for generating a job and adding it to the queue for processing, the `jobGeneratorHandler` function is an Express request handler that accepts a message and adds it to the queue.
 
 To use this implementation of queueing, you can send a `POST` request to the `/example-job` endpoint with a `message` in the request body, and the message will be added to the queue. Once the message is in the queue, it will be processed in the order it was added:
 

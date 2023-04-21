@@ -16,7 +16,7 @@
 		"test": "npm run prepare && jest",
 		"start": "npm run prepare && prisma migrate dev && nodemon",
 		"dev:test": "jest",
-		"dev:start": "nodemon",
+		"dev": "nodemon",
 		"build": "npm run prepare && tsc --project tsconfig.build.json",
 		"lint": "eslint \"src/**/*.ts\"",
 		"lint:fix": "npm run lint --fix",

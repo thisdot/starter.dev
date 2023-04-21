@@ -6,10 +6,10 @@ import { createMockPrismaClient } from '../../mocks/prisma-client';
 import { createMockRedisClient } from '../../mocks/redis-client';
 import { createMockExpressRequest, createMockExpressResponse } from '../../mocks/express';
 
-jest.mock('./datasource-healthcheck', () => ({
+jest.mock('./datasource', () => ({
 	getDataSourceHealth: jest.fn(),
 }));
-jest.mock('./redis-healthcheck', () => ({
+jest.mock('./redis', () => ({
 	getRedisHealth: jest.fn(),
 }));
 

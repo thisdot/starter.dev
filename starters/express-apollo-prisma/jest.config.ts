@@ -28,7 +28,9 @@ export default {
 	// An array of regexp pattern strings used to skip coverage collection
 	coveragePathIgnorePatterns: [
 		'<rootDir>/main.ts',
-		'<rootDir>/graphql/schema/generated',
+		'<rootDir>/lib/db/seed.ts',
+		'<rootDir>/endpoints/job-generator/worker.ts',
+		'<rootDir>/endpoints/graphql/schema/generated',
 		'index.ts',
 		'<rootDir>/mocks',
 		'\\.(d.ts)$',

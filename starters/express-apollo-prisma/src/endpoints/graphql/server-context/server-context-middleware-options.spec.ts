@@ -19,7 +19,7 @@ jest.mock('@prisma/client', () => ({
 const MOCK_PRISMA_CLIENT_CONSTRUCTOR = PrismaClient as jest.Mock<PrismaClient>;
 const MOCK_INSTANCE_PRISMA_CLIENT = createMockPrismaClient();
 
-jest.mock('../../cache', () => ({
+jest.mock('../../../lib/cache', () => ({
 	createCacheAPIWrapperAsync: jest.fn(),
 }));
 const MOCK_CREATE_CACHE_API_WRAPPER_ASYNC = createCacheAPIWrapperAsync as jest.MockedFn<
