@@ -6,7 +6,7 @@ import { inspect } from '@xstate/inspect';
 import './assets/main.css';
 
 inspect({
-  iframe: false,
+	iframe: false,
 });
 
 const app = createApp(App);

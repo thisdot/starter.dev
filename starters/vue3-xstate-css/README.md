@@ -45,7 +45,7 @@ Once you've generated your new starter kit following the instructions above:
 
 - `cd` into your project directory and run `npm install` to install the dependencies.
 - Run `npm run dev` to start the development server.
-- Click the [http://localhost:5173] link from within your terminal. This will open that link in a tab to view the application, and also launch the XState inspector for you in a second tab.
+- Click the [http://localhost:5173](http://localhost:5173) link from within your terminal. This will open that link in a tab to view the application, and also launch the XState inspector for you in a second tab.
 
 ## Available commands
 
@@ -115,30 +115,30 @@ The first object is always present, and specifies the name of our machine, it's 
 import { createMachine } from 'xstate';
 
 const lightMachine = createMachine({
-  // Machine identifier
-  id: 'light',
+	// Machine identifier
+	id: 'light',
 
-  // Initial state
-  initial: 'green',
+	// Initial state
+	initial: 'green',
 
-  // Local context for entire machine
-  context: {
-    elapsed: 0,
-    direction: 'east',
-  },
+	// Local context for entire machine
+	context: {
+		elapsed: 0,
+		direction: 'east',
+	},
 
-  // State definitions
-  states: {
-    green: {
-      /* ... */
-    },
-    yellow: {
-      /* ... */
-    },
-    red: {
-      /* ... */
-    },
-  },
+	// State definitions
+	states: {
+		green: {
+			/* ... */
+		},
+		yellow: {
+			/* ... */
+		},
+		red: {
+			/* ... */
+		},
+	},
 });
 ```
 
@@ -146,30 +146,30 @@ Eventually our states will need to define actions, services, or guards. These ca
 
 ```js
 const lightMachine = createMachine(
-  {
-    id: 'light',
-    initial: 'green',
-    states: {
-      green: {
-        // action referenced via string
-        entry: 'alertGreen',
-      },
-    },
-  },
-  {
-    actions: {
-      // action implementation
-      alertGreen: (context, event) => {
-        alert('Green!');
-      },
-    },
-    guards: {
-      /* ... */
-    },
-    services: {
-      /* ... */
-    },
-  }
+	{
+		id: 'light',
+		initial: 'green',
+		states: {
+			green: {
+				// action referenced via string
+				entry: 'alertGreen',
+			},
+		},
+	},
+	{
+		actions: {
+			// action implementation
+			alertGreen: (context, event) => {
+				alert('Green!');
+			},
+		},
+		guards: {
+			/* ... */
+		},
+		services: {
+			/* ... */
+		},
+	}
 );
 ```
 

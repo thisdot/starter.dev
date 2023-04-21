@@ -1,19 +1,19 @@
 @import './base.css';
 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+	max-width: 1280px;
+	margin: 0 auto;
+	padding: 2rem;
+	font-weight: normal;
 }
 
 a {
-  color: var(--mediumBlue);
-  font-size: 1.2rem;
-  margin-bottom: 1%;
+	color: var(--mediumBlue);
+	font-size: 1.2rem;
+	margin-bottom: 1%;
 }
 
 a:hover {
-  color: var(--darkBlue);
-  text-decoration-thickness: 2px;
+	color: var(--darkBlue);
+	text-decoration-thickness: 2px;
 }

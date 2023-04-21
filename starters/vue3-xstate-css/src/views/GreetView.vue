@@ -4,75 +4,85 @@ import HeaderComponent from '../components/HeaderComponent.vue';
 import { greetMachine } from '../machines/greetMachine';
 
 const props = defineProps({
-  query: String,
+	query: String,
 });
 
 const { state } = useMachine(greetMachine(props.query || ''), {
-  devTools: true,
+	devTools: true,
 });
 </script>
 
 <template>
-  <main>
-    <HeaderComponent> Fetch Data from API </HeaderComponent>
-    <section class="fetch__section">
-      <p class="fetch__section-title">Message:</p>
-      <div class="fetch__section-result" data-cy="message-result">
-        <div
-          v-if="state.value === 'loading'"
-          class="fetch__section-loader"
-        ></div>
-        <p v-if="state.value === 'failure'" class="fetch__section-message-fail">
-          {{ state.context.error }}
-        </p>
-        <p v-else class="fetch__section-message-success">
-          {{ state.context.message }}
-        </p>
-      </div>
-    </section>
-    <div class="fetch__home-link">
-      <RouterLink to="/">Return Home</RouterLink>
-    </div>
-  </main>
+	<main>
+		<HeaderComponent> Fetch Data from API </HeaderComponent>
+		<section class="fetch__section">
+			<p class="fetch__section-title">Message:</p>
+			<div class="fetch__section-result" data-cy="message-result">
+				<div
+					v-if="state.value === 'loading'"
+					class="fetch__section-loader"
+				></div>
+				<p v-if="state.value === 'failure'" class="fetch__section-message-fail">
+					{{ state.context.error }}
+				</p>
+				<p v-else class="fetch__section-message-success">
+					{{ state.context.message }}
+				</p>
+			</div>
+		</section>
+		<div class="fetch__home-link">
+			<RouterLink to="/">Return Home</RouterLink>
+		</div>
+	</main>
 </template>
 
 <style scoped>
 .fetch__section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 90%;
-  margin: 3% auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 90%;
+	margin: 3% auto;
 }
 
 .fetch__section p {
-  font-size: 1.3rem;
+	font-size: 1.3rem;
 }
 
 .fetch__section-title {
-  width: 8rem;
-  text-align: center;
-  font-weight: bold;
+	width: 8rem;
+	text-align: center;
+	font-weight: bold;
 }
 
 .fetch__section-result {
-  width: 20rem;
+	width: 20rem;
 }
 
 .fetch__section-message-fail {
-  background-color: var(--red);
-  padding: 0.5% 2%;
-  border-radius: 3px;
+	background-color: var(--red);
+	padding: 0.5% 2%;
+	border-radius: 3px;
 }
 
 .fetch__section-loader {
-  background-color: var(--gray);
-  height: 1.7rem;
-  border-radius: 3px;
+	background-color: var(--gray);
+	height: 1.7rem;
+	border-radius: 3px;
 }
 
 .fetch__home-link {
-  margin-top: 2%;
-  text-align: center;
+	margin-top: 2%;
+	text-align: center;
+}
+
+@media screen and (max-width: 700px) {
+	.fetch__section {
+		flex-direction: column;
+	}
+
+	.fetch__section p {
+		text-align: center;
+	}
 }
 </style>

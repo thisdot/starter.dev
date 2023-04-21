@@ -1,20 +1,28 @@
 <script setup lang="ts"></script>
 
 <template>
-  <button>
-    <slot />
-  </button>
+	<button>
+		<slot />
+	</button>
 </template>
 
 <style scoped>
 button {
-  width: 9.5rem;
-  background: var(--lightBlue);
-  color: var(--white);
-  font-weight: bold;
-  font-size: 1.05rem;
-  padding: 1% 2%;
-  border-radius: 3px;
-  border-color: var(--lightBlue);
+	width: 9.5rem;
+	background: var(--lightBlue);
+	color: var(--white);
+	font-weight: bold;
+	font-size: 1.05rem;
+	padding: 1% 2%;
+	border-radius: 3px;
+	border-color: var(--lightBlue);
+}
+
+@media screen and (max-width: 700px) {
+	button {
+		width: 12.5rem;
+		margin: 2%;
+		padding: 3%;
+	}
 }
 </style>
