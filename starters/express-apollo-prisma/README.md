@@ -263,14 +263,25 @@ In order to restrict origin URLs that can access your API, you need to add a lis
 ```
 - **/prisma/** - holds Prisma migrations and schema.
 - **/src
-  - /graphql - holds GraphQL-related files.
-    - /data-sources/** - holds data sources per model.
-    - /mappers/** - holds mappers per model.
-    - /schema/** - holds GraphQL schema type definitions and resolvers.
-    - /server-context/** - holds server-context types and middleware factory methods.
-  - /redis/** - holds Redis-related functionality.
-  - main.ts - bootstraps an entire server.
+  - /endpoints - organizes the server's various endpoints.
+    - /graphql - holds GraphQL-related files.
+      - /data-sources/** - holds data sources per model.
+      - /mappers/** - holds mappers per model.
+      - /schema/** - holds GraphQL schema type definitions and resolvers.
+      - /server-context/** - holds server-context types and middleware factory methods.
+    - /health/** - contains health check related files for monitoring server status.
+    - /job-generator/** - holds files for implementating queueing using RabbitMQ.
+  - /lib -
+    - /cache/** - holds cache-related functionality.
+    - /db - holds prisma-related files.
+      - migrations/** - holds prisma auto-generated migration files.
+      - schema.prisma - holds prisma database models and configuration.
+      - seed.ts - holds database seeding configuration.
+  - /mocks/** - holds mock data files for testing purposes with predefined data.
+  - main.ts - bootstraps the entire server.
 ```
+
+This file structure approach emphasizes modularity and separation of concerns. By categorizing files based on their functionality, it becomes easier to understand, maintain, and scale the project. Having separate folders for endpoints, data sources, mappers, and schema definitions improves code organization and readability. The addition of a `lib` directory for utility functions and helpers also promotes code reusability.
 
 ### GraphQL Modules
 
