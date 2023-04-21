@@ -3,7 +3,7 @@ import { RequestHandler } from 'express';
 import { graphqlServer, createGraphqlServerMiddlewareAsync } from './graphql-server';
 import { createServerContextMiddlewareOptionsAsync } from './server-context/server-context-middleware-options';
 import { expressMiddleware } from '@apollo/server/express4';
-import { createMockExpressMiddlewareOptions } from '../mocks/graphql-server';
+import { createMockExpressMiddlewareOptions } from '../../mocks/graphql-server';
 
 describe('graphqlServer', () => {
 	it('creates server instance', () => {

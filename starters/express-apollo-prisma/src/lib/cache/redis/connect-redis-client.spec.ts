@@ -9,7 +9,7 @@ import {
 } from './connect-redis-client';
 import { createClient } from 'redis';
 import assert from 'assert';
-import { createMockRedisClient } from '../../mocks/redis-client';
+import { createMockRedisClient } from '../../../mocks/redis-client';
 
 jest.mock('redis', () => ({
 	createClient: jest.fn(),

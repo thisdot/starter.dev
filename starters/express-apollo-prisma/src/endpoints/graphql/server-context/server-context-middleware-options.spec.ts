@@ -1,9 +1,9 @@
-import { createCacheAPIWrapperAsync } from '../../cache';
+import { createCacheAPIWrapperAsync } from '../../../lib/cache';
 import { PrismaClient } from '@prisma/client';
 import { TechnologyDataSource } from '../data-sources';
-import { createMockCacheApiWrapper } from '../../mocks/cache-api-wrapper';
-import { createMockPrismaClient } from '../../mocks/prisma-client';
-import { createMockTechnologyDataSource } from '../../mocks/technology-entity';
+import { createMockCacheApiWrapper } from '../../../mocks/cache-api-wrapper';
+import { createMockPrismaClient } from '../../../mocks/prisma-client';
+import { createMockTechnologyDataSource } from '../../../mocks/technology-entity';
 import { createServerContextMiddlewareOptionsAsync } from './server-context-middleware-options';
 import {
 	ExpressMiddlewareOptions,
@@ -11,7 +11,7 @@ import {
 } from '@apollo/server/dist/esm/express4';
 import { WithRequired } from '@apollo/utils.withrequired';
 import { ServerContext } from './server-context';
-import { createMockExpressRequest, createMockExpressResponse } from '../../mocks/express';
+import { createMockExpressRequest, createMockExpressResponse } from '../../../mocks/express';
 
 jest.mock('@prisma/client', () => ({
 	PrismaClient: jest.fn(),

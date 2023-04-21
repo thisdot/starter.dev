@@ -3,7 +3,7 @@ import { ExpressMiddlewareOptions } from '@apollo/server/express4';
 import { WithRequired } from '@apollo/utils.withrequired';
 import { TechnologyDataSource } from '../data-sources';
 import { PrismaClient, TechnologyEntity } from '@prisma/client';
-import { createCacheAPIWrapperAsync } from '../../cache';
+import { createCacheAPIWrapperAsync } from '../../../lib/cache';
 
 export const createServerContextMiddlewareOptionsAsync = async (): Promise<
 	WithRequired<ExpressMiddlewareOptions<ServerContext>, 'context'>

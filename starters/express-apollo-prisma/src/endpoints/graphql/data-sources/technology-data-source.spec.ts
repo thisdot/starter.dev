@@ -1,8 +1,8 @@
 import { TechnologyDataSource, TechnologyEntityCollectionPage } from './technology-data-source';
 import { PrismaClient, TechnologyEntity } from '@prisma/client';
 import { DeepMockProxy } from 'jest-mock-extended';
-import { createMockPrismaClient } from '../../mocks/prisma-client';
-import { createMockCacheApiWrapper } from '../../mocks/cache-api-wrapper';
+import { createMockPrismaClient } from '../../../mocks/prisma-client';
+import { createMockCacheApiWrapper } from '../../../mocks/cache-api-wrapper';
 
 describe('TechnologyDataSource', () => {
 	const MOCK_PRISMA_CLIENT: DeepMockProxy<PrismaClient> = createMockPrismaClient();

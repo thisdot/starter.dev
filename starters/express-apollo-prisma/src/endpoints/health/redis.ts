@@ -1,4 +1,4 @@
-import { RedisClient } from '../cache/redis';
+import { RedisClient } from '../../lib/cache/redis';
 
 export const getRedisHealth = async (redisClient?: RedisClient) => {
 	try {

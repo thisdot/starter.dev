@@ -1,5 +1,5 @@
 import { mock, MockProxy } from 'jest-mock-extended';
-import { CacheAPIWrapper } from '../cache';
+import { CacheAPIWrapper } from '../lib/cache';
 
 export const createMockCacheApiWrapper = <
 	TEntity extends { [k: string]: number | string | null },

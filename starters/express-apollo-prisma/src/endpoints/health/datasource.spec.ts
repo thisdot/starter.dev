@@ -1,5 +1,5 @@
-import { createMockPrismaClient } from '../mocks/prisma-client';
-import { getDataSourceHealth } from './datasource-healthcheck';
+import { createMockPrismaClient } from '../../mocks/prisma-client';
+import { getDataSourceHealth } from './datasource';
 
 describe('.getDataSourceHealth', () => {
 	describe('when called without prismaCleint', () => {

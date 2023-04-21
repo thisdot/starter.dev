@@ -1,4 +1,4 @@
-import { createMockExpressRequest, createMockExpressResponse } from '../mocks/express';
+import { createMockExpressRequest, createMockExpressResponse } from '../../mocks/express';
 import { generateJob } from './job-generator';
 import {
 	DEFAULT_JOB_MESSAGE,

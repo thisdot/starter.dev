@@ -1,9 +1,9 @@
 import { Request, RequestHandler, Response } from 'express';
-import { RedisClient } from '../cache/redis';
+import { RedisClient } from '../../lib/cache/redis';
 import { HealthCheckResult } from './healthcheck-result';
 import { PrismaClient } from '@prisma/client';
-import { getRedisHealth } from './redis-healthcheck';
-import { getDataSourceHealth } from './datasource-healthcheck';
+import { getRedisHealth } from './redis';
+import { getDataSourceHealth } from './datasource';
 
 export type CreateHealthcheckHandlerOptions = {
 	redisClient?: RedisClient;

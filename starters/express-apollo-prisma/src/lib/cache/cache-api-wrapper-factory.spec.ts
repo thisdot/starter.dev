@@ -1,5 +1,5 @@
-import { createMockCacheApiWrapper } from '../mocks/cache-api-wrapper';
-import { createMockRedisClient } from '../mocks/redis-client';
+import { createMockCacheApiWrapper } from '../../mocks/cache-api-wrapper';
+import { createMockRedisClient } from '../../mocks/redis-client';
 import { CacheAPIWrapper } from './cache-api-wrapper';
 import { createCacheAPIWrapperAsync } from './cache-api-wrapper-factory';
 import { connectRedisClient } from './redis';

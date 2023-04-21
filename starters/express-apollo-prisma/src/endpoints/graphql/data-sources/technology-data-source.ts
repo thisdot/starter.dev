@@ -1,5 +1,5 @@
 import { PrismaClient, Prisma, TechnologyEntity } from '@prisma/client';
-import { CacheAPIWrapper } from '../../cache';
+import { CacheAPIWrapper } from '../../../lib/cache';
 
 type TechnologyEntityId = TechnologyEntity['id'];
 

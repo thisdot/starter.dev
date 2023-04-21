@@ -1,8 +1,8 @@
 import { mapTechnology, mapTechnologyCollectionPage } from './technology';
 import { TechnologyEntity } from '@prisma/client';
 import { Technology, TechnologyCollectionPage } from '../schema/generated/types';
-import { createMockTechnologyEntityCollectionPage } from '../../mocks/technology-entity';
-import { createMockTechnology } from '../../mocks/technology';
+import { createMockTechnologyEntityCollectionPage } from '../../../mocks/technology-entity';
+import { createMockTechnology } from '../../../mocks/technology';
 
 jest.mock('./technology', () => {
 	const originalModule = jest.requireActual<typeof import('./technology')>('./technology');

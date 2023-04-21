@@ -1,10 +1,10 @@
-import { createHealthcheckHandler, CreateHealthcheckHandlerOptions } from './healthcheck-handler';
-import { getDataSourceHealth } from './datasource-healthcheck';
-import { getRedisHealth } from './redis-healthcheck';
+import { createHealthcheckHandler, CreateHealthcheckHandlerOptions } from './handler';
+import { getDataSourceHealth } from './datasource';
+import { getRedisHealth } from './redis';
 import { HealthCheckResult } from './healthcheck-result';
-import { createMockPrismaClient } from '../mocks/prisma-client';
-import { createMockRedisClient } from '../mocks/redis-client';
-import { createMockExpressRequest, createMockExpressResponse } from '../mocks/express';
+import { createMockPrismaClient } from '../../mocks/prisma-client';
+import { createMockRedisClient } from '../../mocks/redis-client';
+import { createMockExpressRequest, createMockExpressResponse } from '../../mocks/express';
 
 jest.mock('./datasource-healthcheck', () => ({
 	getDataSourceHealth: jest.fn(),

@@ -9,11 +9,11 @@ import {
 	TechnologyCollectionPage,
 } from '../generated/types';
 import assert from 'assert';
-import { testServerExecuteOperation } from '../../../mocks/graphql-server';
+import { testServerExecuteOperation } from '../../../../mocks/graphql-server';
 import {
 	createMockTechnologyDataSource,
 	createMockTechnologyEntityCollectionPage,
-} from '../../../mocks/technology-entity';
+} from '../../../../mocks/technology-entity';
 
 import { GraphQLResponse } from '@apollo/server';
 import { ApolloServerErrorCode } from '@apollo/server/errors';

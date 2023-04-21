@@ -1,4 +1,4 @@
-import { createMockRedisClient } from '../mocks/redis-client';
+import { createMockRedisClient } from '../../mocks/redis-client';
 import { RedisCacheAPIWrapper } from './redis-cache-api-wrapper';
 
 const MOCK_REDIS_CLIENT = createMockRedisClient();

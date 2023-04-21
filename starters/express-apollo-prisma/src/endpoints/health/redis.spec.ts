@@ -1,5 +1,5 @@
-import { createMockRedisClient } from '../mocks/redis-client';
-import { getRedisHealth } from './redis-healthcheck';
+import { createMockRedisClient } from '../../mocks/redis-client';
+import { getRedisHealth } from './redis';
 
 describe('.getRedisHealth', () => {
 	describe('when called without redisClient', () => {

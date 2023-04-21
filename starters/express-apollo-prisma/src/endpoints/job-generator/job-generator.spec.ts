@@ -1,5 +1,5 @@
 import { connect, Replies } from 'amqplib';
-import { createMockChannel, createMockConnection } from '../mocks/amqplib';
+import { createMockChannel, createMockConnection } from '../../mocks/amqplib';
 import { generateJob } from './job-generator';
 
 const MOCK_MESSAGE = 'MOCK_MESSAGE';
