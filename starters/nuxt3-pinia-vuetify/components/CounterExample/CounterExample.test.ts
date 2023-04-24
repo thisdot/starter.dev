@@ -1,7 +1,7 @@
 import { describe, expect, test } from 'vitest';
 import { createTestingPinia } from '@pinia/testing';
 import CounterExample from './CounterExample.vue';
-import { fireEvent, render, screen } from '@/test/utils';
+import { fireEvent, render, screen } from '../../test/utils';
 
 describe('<CounterExample />', () => {
 	test('Should increase by 1 the count when clicking increment button', async () => {
@@ -17,16 +17,16 @@ describe('<CounterExample />', () => {
 		// Act
 		render(CounterExample);
 		const button = screen.getByTestId('increment-button');
-		const countValueCoomponent = screen.getByTestId('count-value');
+		const countValueComponent = screen.getByTestId('count-value');
 
 		// Assertions
-		expect(countValueCoomponent.textContent).toBe('0');
+		expect(countValueComponent.textContent).toBe('0');
 
 		await fireEvent.click(button);
-		expect(countValueCoomponent.textContent).toBe('1');
+		expect(countValueComponent.textContent).toBe('1');
 
 		await fireEvent.click(button);
-		expect(countValueCoomponent.textContent).toBe('2');
+		expect(countValueComponent.textContent).toBe('2');
 	});
 
 	test('Should decrease by 1 the count when clicking decrement button', async () => {
@@ -34,7 +34,7 @@ describe('<CounterExample />', () => {
 		createTestingPinia({
 			initialState: {
 				counterStore: {
-					counter: 5,
+					counter: 0,
 				},
 			},
 		});
@@ -42,16 +42,16 @@ describe('<CounterExample />', () => {
 		// Act
 		render(CounterExample);
 		const button = screen.getByTestId('decrement-button');
-		const countValue = screen.getByTestId('count-value');
+		const countValueComponent = screen.getByTestId('count-value');
 
 		// Assertions
-		expect(countValue.textContent).toBe('5');
+		expect(countValueComponent.textContent).toBe('0');
 
 		await fireEvent.click(button);
-		expect(countValue.textContent).toBe('4');
+		expect(countValueComponent.textContent).toBe('-1');
 
 		await fireEvent.click(button);
-		expect(countValue.textContent).toBe('3');
+		expect(countValueComponent.textContent).toBe('-2');
 	});
 
 	test('Should reset the count when clicking the reset button', async () => {
@@ -59,20 +59,27 @@ describe('<CounterExample />', () => {
 		createTestingPinia({
 			initialState: {
 				counterStore: {
-					counter: 5,
+					counter: 0,
 				},
 			},
 		});
 
 		// Act
 		render(CounterExample);
-		const button = screen.getByTestId('reset-button');
-		const countValue = screen.getByTestId('count-value');
+		const resetButton = screen.getByTestId('reset-button');
+		const decrementButton = screen.getByTestId('decrement-button');
+		const countValueComponent = screen.getByTestId('count-value');
 
 		// Assertions
-		expect(countValue.textContent).toBe('5');
+		expect(countValueComponent.textContent).toBe('0');
 
-		await fireEvent.click(button);
-		expect(countValue.textContent).toBe('0');
+		await fireEvent.click(decrementButton);
+		expect(countValueComponent.textContent).toBe('-1');
+
+		await fireEvent.click(decrementButton);
+		expect(countValueComponent.textContent).toBe('-2');
+
+		await fireEvent.click(resetButton);
+		expect(countValueComponent.textContent).toBe('0');
 	});
 });
