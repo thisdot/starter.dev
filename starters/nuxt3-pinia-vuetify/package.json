@@ -30,7 +30,7 @@
 		"@testing-library/user-event": "^14.4.3",
 		"@testing-library/vue": "7.0.0",
 		"@typescript-eslint/eslint-plugin": "5.56.0",
-		"@vitejs/plugin-vue": "4.1.0",
+		"@vitejs/plugin-vue": "^4.1.0",
 		"@vitest/coverage-c8": "0.29.7",
 		"@vitest/ui": "0.29.7",
 		"eslint": "8.36.0",
