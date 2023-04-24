@@ -1,10 +1,14 @@
 import { connect, Replies } from 'amqplib';
 import { createMockChannel, createMockConnection } from '../mocks/amqplib';
 import { generateJob } from './job-generator';
+import { AMQP_QUEUE_JOB as MOCK_AMQP_QUEUE_JOB, AMQP_URL as MOCK_AMQP_URL } from '../config';
+
+jest.mock('../config', () => ({
+	AMQP_QUEUE_JOB: 'MOCK_ENV_AMQP_QUEUE_JOB',
+	AMQP_URL: 'MOCK_AMQP_URL',
+}));
 
 const MOCK_MESSAGE = 'MOCK_MESSAGE';
-const MOCK_ENV_AMQP_URL = 'MOCK_AMQP_URL';
-const MOCK_ENV_AMQP_QUEUE_JOB = 'MOCK_ENV_AMQP_QUEUE_JOB';
 
 const MOCK_AMQP_CONNECTION = createMockConnection();
 const MOCK_AMPQ_CHANNEL = createMockChannel();
@@ -23,52 +27,16 @@ const MOCK_AMQP_CONNECT = connect as jest.MockedFn<typeof connect>;
 const SPY_CONSOLE_WARN = jest.spyOn(console, 'warn');
 
 describe('.generateJob', () => {
-	const OROGINAL_ENV = process.env;
 	beforeAll(() => {
 		SPY_CONSOLE_WARN.mockImplementation(jest.fn());
 	});
 
 	afterAll(() => {
 		SPY_CONSOLE_WARN.mockRestore();
-		process.env = OROGINAL_ENV;
 	});
 
 	describe('when called with message', () => {
-		describe('and environment variable AMQP_URL not set', () => {
-			const REPRODUCER_FN = async () => {
-				await generateJob(MOCK_MESSAGE);
-			};
-
-			beforeAll(async () => {
-				process.env = {};
-			});
-
-			it('throws expected error', async () => {
-				await expect(REPRODUCER_FN).rejects.toThrowError(
-					'[Invalid environment] Variable not found: AMQP_URL'
-				);
-			});
-		});
-
-		describe('and environment variable AMQP_QUEUE_JOB not set', () => {
-			const REPRODUCER_FN = async () => {
-				await generateJob(MOCK_MESSAGE);
-			};
-
-			beforeAll(() => {
-				process.env = {
-					AMQP_URL: MOCK_ENV_AMQP_URL,
-				};
-			});
-
-			it('throws expected error', async () => {
-				await expect(REPRODUCER_FN).rejects.toThrowError(
-					'[Invalid environment] Variable not found: AMQP_QUEUE_JOB'
-				);
-			});
-		});
-
-		describe('and environment variables set', () => {
+		describe('and correctly configured', () => {
 			const MOCK_INSTANCE_ERROR = new Error();
 
 			type ExpectedFlow = {
@@ -175,10 +143,6 @@ describe('.generateJob', () => {
 					let result: boolean;
 
 					beforeAll(async () => {
-						process.env = {
-							AMQP_URL: MOCK_ENV_AMQP_URL,
-							AMQP_QUEUE_JOB: MOCK_ENV_AMQP_QUEUE_JOB,
-						};
 						mockAwaitedResultValue(MOCK_AMQP_CONNECT, mockAMPQConnectResult);
 						mockAwaitedResultValue(
 							MOCK_AMQP_CONNECTION.createChannel,
@@ -202,7 +166,7 @@ describe('.generateJob', () => {
 
 					it('calls amqplib.connect method once with expected argument', () => {
 						expect(MOCK_AMQP_CONNECT).toHaveBeenCalledTimes(1);
-						expect(MOCK_AMQP_CONNECT).toHaveBeenCalledWith(MOCK_ENV_AMQP_URL);
+						expect(MOCK_AMQP_CONNECT).toHaveBeenCalledWith(MOCK_AMQP_URL);
 					});
 
 					expectedFlow.createsChannel &&
@@ -213,7 +177,7 @@ describe('.generateJob', () => {
 					expectedFlow.assertsQueue &&
 						it('calls Channel.assertQueue method once with expected argument', () => {
 							expect(MOCK_AMPQ_CHANNEL.assertQueue).toHaveBeenCalledTimes(1);
-							expect(MOCK_AMPQ_CHANNEL.assertQueue).toHaveBeenCalledWith(MOCK_ENV_AMQP_QUEUE_JOB);
+							expect(MOCK_AMPQ_CHANNEL.assertQueue).toHaveBeenCalledWith(MOCK_AMQP_QUEUE_JOB);
 						});
 
 					expectedFlow.sendsMessageToQueue &&
@@ -221,7 +185,7 @@ describe('.generateJob', () => {
 							expect(MOCK_AMPQ_CHANNEL.sendToQueue).toHaveBeenCalledTimes(1);
 							const expectedBuffer = Buffer.from(MOCK_MESSAGE);
 							expect(MOCK_AMPQ_CHANNEL.sendToQueue).toHaveBeenCalledWith(
-								MOCK_ENV_AMQP_QUEUE_JOB,
+								MOCK_AMQP_QUEUE_JOB,
 								expectedBuffer,
 								{
 									persistent: true,

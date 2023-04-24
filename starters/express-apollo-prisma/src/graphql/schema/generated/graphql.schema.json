@@ -213,6 +213,73 @@
 			},
 			{
 				"kind": "OBJECT",
+				"name": "PageInformation",
+				"description": "Pagination Information",
+				"fields": [
+					{
+						"name": "endCursor",
+						"description": "Last cursor in page",
+						"args": [],
+						"type": {
+							"kind": "SCALAR",
+							"name": "Int",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "hasNextPage",
+						"description": "Shows if there is a page after",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "Boolean",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "hasPreviousPage",
+						"description": "Shows if there is a page before",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "Boolean",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "startCursor",
+						"description": "First cursor in page",
+						"args": [],
+						"type": {
+							"kind": "SCALAR",
+							"name": "Int",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"inputFields": null,
+				"interfaces": [],
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
 				"name": "Query",
 				"description": "Technology queries",
 				"fields": [
@@ -221,7 +288,19 @@
 						"description": "Returns a list of Technologies",
 						"args": [
 							{
-								"name": "limit",
+								"name": "after",
+								"description": null,
+								"type": {
+									"kind": "SCALAR",
+									"name": "Int",
+									"ofType": null
+								},
+								"defaultValue": null,
+								"isDeprecated": false,
+								"deprecationReason": null
+							},
+							{
+								"name": "first",
 								"description": null,
 								"type": {
 									"kind": "SCALAR",
@@ -231,18 +310,6 @@
 								"defaultValue": "5",
 								"isDeprecated": false,
 								"deprecationReason": null
-							},
-							{
-								"name": "offset",
-								"description": null,
-								"type": {
-									"kind": "SCALAR",
-									"name": "Int",
-									"ofType": null
-								},
-								"defaultValue": "0",
-								"isDeprecated": false,
-								"deprecationReason": null
 							}
 						],
 						"type": {
@@ -250,7 +317,7 @@
 							"name": null,
 							"ofType": {
 								"kind": "OBJECT",
-								"name": "TechnologyCollectionPage",
+								"name": "TechnologyCollection",
 								"ofType": null
 							}
 						},
@@ -371,11 +438,11 @@
 			},
 			{
 				"kind": "OBJECT",
-				"name": "TechnologyCollectionPage",
-				"description": "A page of technology items",
+				"name": "TechnologyCollection",
+				"description": "A collection of technologies",
 				"fields": [
 					{
-						"name": "items",
+						"name": "edges",
 						"description": "A list of records of the requested page",
 						"args": [],
 						"type": {
@@ -386,9 +453,25 @@
 								"name": null,
 								"ofType": {
 									"kind": "OBJECT",
-									"name": "Technology",
+									"name": "TechnologyEdge",
 									"ofType": null
 								}
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "pageInfo",
+						"description": "Pagination Information",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "OBJECT",
+								"name": "PageInformation",
+								"ofType": null
 							}
 						},
 						"isDeprecated": false,
@@ -404,6 +487,49 @@
 							"ofType": {
 								"kind": "SCALAR",
 								"name": "Int",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"inputFields": null,
+				"interfaces": [],
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "TechnologyEdge",
+				"description": "Pagination Technology Node",
+				"fields": [
+					{
+						"name": "cursor",
+						"description": "Current Cursor for Entity Node",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "Int",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "node",
+						"description": "Technology Entity Node",
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "OBJECT",
+								"name": "Technology",
 								"ofType": null
 							}
 						},

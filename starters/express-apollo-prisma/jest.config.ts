@@ -31,6 +31,8 @@ export default {
 		'<rootDir>/graphql/schema/generated',
 		'index.ts',
 		'<rootDir>/mocks',
+		'<rootDir>/config.ts',
+		'<rootDir>/queue/worker.ts',
 		'\\.(d.ts)$',
 	],
 

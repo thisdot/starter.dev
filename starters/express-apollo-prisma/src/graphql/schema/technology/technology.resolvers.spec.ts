@@ -6,13 +6,13 @@ import {
 	CreateTechnology,
 	UpdateTechnology,
 	QuerytechnologiesArgs,
-	TechnologyCollectionPage,
+	TechnologyCollection,
 } from '../generated/types';
 import assert from 'assert';
 import { testServerExecuteOperation } from '../../../mocks/graphql-server';
 import {
 	createMockTechnologyDataSource,
-	createMockTechnologyEntityCollectionPage,
+	createMockTechnologyEntityCollection,
 } from '../../../mocks/technology-entity';
 
 import { GraphQLResponse } from '@apollo/server';
@@ -20,7 +20,8 @@ import { ApolloServerErrorCode } from '@apollo/server/errors';
 import { ServerContext } from '../../server-context';
 
 import { TechnologyEntity } from '@prisma/client';
-import { mapTechnology, mapTechnologyCollectionPage } from '../../mappers';
+import { mapTechnology, mapTechnologyCollection } from '../../mappers';
+import { PageInformation } from '../../data-sources';
 
 type QueryTechnology = Pick<Query, 'technology'>;
 type QueryTechnologies = Pick<Query, 'technologies'>;
@@ -53,13 +54,22 @@ const MOCK_QUERY_TECHNOLOGY = gql`
 const MOCK_QUERY_TECHNOLOGIES_PAGINATION_DEFAULT = gql`
 	query TechnologiesQueryPaginationArgumentsDefualt {
 		technologies {
-			items {
-				description
-				displayName
-				id
-				url
-			}
 			totalCount
+			edges {
+				node {
+					id
+					displayName
+					description
+					url
+				}
+				cursor
+			}
+			pageInfo {
+				startCursor
+				endCursor
+				hasNextPage
+				hasPreviousPage
+			}
 		}
 	}
 `;
@@ -67,21 +77,30 @@ const MOCK_QUERY_TECHNOLOGIES_PAGINATION_DEFAULT = gql`
 const MOCK_VARIABLES_TECHNOLOGIES_PAGINATION_DEFAULT: QuerytechnologiesArgs = {};
 
 const MOCK_QUERY_TECHNOLOGIES_PAGINATION_CUSTOM = gql`
-	query TechnologiesQueryPaginationArgumentsCustom($limit: Int, $offset: Int) {
-		technologies(limit: $limit, offset: $offset) {
-			items {
-				description
-				displayName
-				id
-				url
-			}
+	query Technologies($first: Int!, $after: Int) {
+		technologies(first: $first, after: $after) {
 			totalCount
+			edges {
+				node {
+					id
+					displayName
+					description
+					url
+				}
+				cursor
+			}
+			pageInfo {
+				startCursor
+				endCursor
+				hasNextPage
+				hasPreviousPage
+			}
 		}
 	}
 `;
 const MOCK_VARIABLES_TECHNOLOGIES_PAGINATION_CUSTOM: QuerytechnologiesArgs = {
-	limit: 10,
-	offset: 20,
+	first: 1,
+	after: 3,
 };
 
 const MOCK_TECHNOLOGY_DATASOURCE = createMockTechnologyDataSource();
@@ -145,11 +164,11 @@ jest.mock('../../mappers/technology', () => ({
 		description: 'MOCK_TECHNOLOGY_DESCRIPTION',
 		url: 'MOCK_TECHNOLOGY_URL',
 	}),
-	mapTechnologyCollectionPage: jest.fn(),
+	mapTechnologyCollection: jest.fn(),
 }));
 const MOCK_MAP_TECHNOLOGY = mapTechnology as jest.Mock<Technology, [TechnologyEntity]>;
-const MOCK_MAP_TECHNOLOGY_COLLECTION_PAGE = mapTechnologyCollectionPage as jest.MockedFn<
-	typeof mapTechnologyCollectionPage
+const MOCK_MAP_TECHNOLOGY_COLLECTION = mapTechnologyCollection as jest.MockedFn<
+	typeof mapTechnologyCollection
 >;
 
 describe('technologyResolvers', () => {
@@ -277,16 +296,27 @@ describe('technologyResolvers', () => {
 
 		describe('.technologies', () => {
 			describe('when called', () => {
-				const MOCK_RESULT_TECHNOLOGY_COLLECTION_PAGE: TechnologyCollectionPage = {
+				const MOCK_RESULT_PAGE_INFO: PageInformation = {
+					hasNextPage: true,
+					hasPreviousPage: false,
+					startCursor: 1,
+					endCursor: 3,
+				};
+
+				const MOCK_RESULT_TECHNOLOGY_COLLECTION: TechnologyCollection = {
 					totalCount: 987,
-					items: [
+					edges: [
 						{
-							displayName: 'MOCK_DISPLAY_NAME_RESULT',
-							description: 'MOCK_DESCRIPTION_RESULT',
-							id: 'MOCK_ID_RESULT',
-							url: 'MOCK_URL_RESULT',
+							node: {
+								displayName: 'MOCK_DISPLAY_NAME_RESULT',
+								description: 'MOCK_DESCRIPTION_RESULT',
+								id: 'MOCK_ID_RESULT',
+								url: 'MOCK_URL_RESULT',
+							},
+							cursor: 1,
 						},
 					],
+					pageInfo: MOCK_RESULT_PAGE_INFO,
 				};
 
 				describe.each([
@@ -294,17 +324,17 @@ describe('technologyResolvers', () => {
 						'with default pagination arguments',
 						MOCK_QUERY_TECHNOLOGIES_PAGINATION_DEFAULT,
 						MOCK_VARIABLES_TECHNOLOGIES_PAGINATION_DEFAULT,
-						createMockTechnologyEntityCollectionPage(5, 30),
+						createMockTechnologyEntityCollection(5, 30, MOCK_RESULT_PAGE_INFO),
 						5,
-						0,
+						undefined,
 					],
 					[
 						'with custom pagination arguments',
 						MOCK_QUERY_TECHNOLOGIES_PAGINATION_CUSTOM,
 						MOCK_VARIABLES_TECHNOLOGIES_PAGINATION_CUSTOM,
-						createMockTechnologyEntityCollectionPage(10, 50),
-						Number(MOCK_VARIABLES_TECHNOLOGIES_PAGINATION_CUSTOM.limit),
-						Number(MOCK_VARIABLES_TECHNOLOGIES_PAGINATION_CUSTOM.offset),
+						createMockTechnologyEntityCollection(10, 50, MOCK_RESULT_PAGE_INFO),
+						Number(MOCK_VARIABLES_TECHNOLOGIES_PAGINATION_CUSTOM.first),
+						Number(MOCK_VARIABLES_TECHNOLOGIES_PAGINATION_CUSTOM.after),
 					],
 				])(
 					'%s',
@@ -313,16 +343,14 @@ describe('technologyResolvers', () => {
 						mockQuery,
 						mockVariables,
 						mockCollectionPage,
-						expectedLimit,
-						expectedOffset
+						expectedFirst,
+						expectedAfter
 					) => {
 						let response: GraphQLResponse<QueryTechnologies>;
 
 						beforeAll(async () => {
 							MOCK_TECHNOLOGY_DATASOURCE.getTechnologies.mockResolvedValue(mockCollectionPage);
-							MOCK_MAP_TECHNOLOGY_COLLECTION_PAGE.mockReturnValue(
-								MOCK_RESULT_TECHNOLOGY_COLLECTION_PAGE
-							);
+							MOCK_MAP_TECHNOLOGY_COLLECTION.mockReturnValue(MOCK_RESULT_TECHNOLOGY_COLLECTION);
 							response = await testServerExecuteOperation<QueryTechnologies>(
 								{
 									query: mockQuery,
@@ -334,28 +362,29 @@ describe('technologyResolvers', () => {
 
 						afterAll(() => {
 							MOCK_TECHNOLOGY_DATASOURCE.getTechnologies.mockReset();
-							MOCK_MAP_TECHNOLOGY_COLLECTION_PAGE.mockReset();
+							MOCK_MAP_TECHNOLOGY_COLLECTION.mockReset();
 						});
 
 						it('calls TechnologyDataSource getTechnologies method once', () => {
 							expect(MOCK_TECHNOLOGY_DATASOURCE.getTechnologies).toHaveBeenCalledTimes(1);
 							expect(MOCK_TECHNOLOGY_DATASOURCE.getTechnologies).toHaveBeenCalledWith(
-								expectedLimit,
-								expectedOffset
+								expectedFirst,
+								expectedAfter
 							);
 						});
 
 						it('calls mapTechnology mapper function for each technology entity', () => {
-							expect(MOCK_MAP_TECHNOLOGY_COLLECTION_PAGE).toHaveBeenCalledTimes(1);
-							expect(MOCK_MAP_TECHNOLOGY_COLLECTION_PAGE).toHaveBeenCalledWith(mockCollectionPage);
+							expect(MOCK_MAP_TECHNOLOGY_COLLECTION).toHaveBeenCalledTimes(1);
+							expect(MOCK_MAP_TECHNOLOGY_COLLECTION).toHaveBeenCalledWith(mockCollectionPage);
 						});
 
 						it('returns expected result', async () => {
 							expect(response.body.kind).toEqual('single');
 							assert(response.body.kind === 'single');
 							expect(response.body.singleResult.errors).toBeUndefined();
+
 							expect(response.body.singleResult.data).toEqual({
-								technologies: MOCK_RESULT_TECHNOLOGY_COLLECTION_PAGE,
+								technologies: MOCK_RESULT_TECHNOLOGY_COLLECTION,
 							});
 						});
 					}

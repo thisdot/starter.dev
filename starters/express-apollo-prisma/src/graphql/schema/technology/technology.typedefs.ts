@@ -16,13 +16,39 @@ export const technologyTypeDefs = gql`
 	}
 
 	"""
-	A page of technology items
+	Pagination Technology Node
 	"""
-	type TechnologyCollectionPage {
+	type TechnologyEdge {
+		"Current Cursor for Entity Node"
+		cursor: Int!
+		"Technology Entity Node"
+		node: Technology!
+	}
+
+	"""
+	Pagination Information
+	"""
+	type PageInformation {
+		"Shows if there is a page after"
+		hasNextPage: Boolean!
+		"Shows if there is a page before"
+		hasPreviousPage: Boolean!
+		"First cursor in page"
+		startCursor: Int
+		"Last cursor in page"
+		endCursor: Int
+	}
+
+	"""
+	A collection of technologies
+	"""
+	type TechnologyCollection {
 		"Identifies the total count of technology records in data source"
 		totalCount: Int!
 		"A list of records of the requested page"
-		items: [Technology]!
+		edges: [TechnologyEdge]!
+		"Pagination Information"
+		pageInfo: PageInformation!
 	}
 
 	"""
@@ -32,7 +58,7 @@ export const technologyTypeDefs = gql`
 		"Returns a single Technology by ID"
 		technology(id: ID!): Technology
 		"Returns a list of Technologies"
-		technologies(limit: Int = 5, offset: Int = 0): TechnologyCollectionPage!
+		technologies(first: Int = 5, after: Int): TechnologyCollection!
 	}
 
 	input CreateTechnology {

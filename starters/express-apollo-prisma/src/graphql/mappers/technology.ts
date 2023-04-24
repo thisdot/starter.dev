@@ -1,6 +1,6 @@
 import { TechnologyEntity } from '@prisma/client';
-import { TechnologyEntityCollectionPage } from '../data-sources';
-import { Technology, TechnologyCollectionPage } from '../schema/generated/types';
+import { TechnologyEntityCollection } from '../data-sources';
+import { Technology, TechnologyCollection } from '../schema/generated/types';
 
 export const mapTechnology = (entity: TechnologyEntity): Technology => ({
 	__typename: 'Technology',
@@ -10,11 +10,16 @@ export const mapTechnology = (entity: TechnologyEntity): Technology => ({
 	url: entity.url,
 });
 
-export const mapTechnologyCollectionPage = (
-	entityCollectionPage: TechnologyEntityCollectionPage
-): TechnologyCollectionPage => {
+export const mapTechnologyCollection = (
+	entityCollectionPage: TechnologyEntityCollection
+): TechnologyCollection => {
 	return {
 		totalCount: entityCollectionPage.totalCount,
-		items: entityCollectionPage.items.map(mapTechnology),
+		edges: entityCollectionPage.edges.map((entity) => ({
+			__typename: 'TechnologyEdge',
+			node: mapTechnology(entity.node),
+			cursor: entity.cursor,
+		})),
+		pageInfo: entityCollectionPage.pageInfo,
 	};
 };

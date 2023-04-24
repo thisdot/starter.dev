@@ -13,10 +13,9 @@
 	"scripts": {
 		"codegen": "graphql-codegen && npm run format:codegen",
 		"prepare": "npm run prisma:generate && npm run codegen",
-		"test": "npm run prepare && jest",
+		"test": "jest",
 		"start": "npm run prepare && prisma migrate dev && nodemon",
-		"dev:test": "jest",
-		"dev:start": "nodemon",
+		"dev": "nodemon",
 		"build": "npm run prepare && tsc --project tsconfig.build.json",
 		"lint": "eslint \"src/**/*.ts\"",
 		"lint:fix": "npm run lint --fix",
@@ -31,7 +30,7 @@
 		"infrastructure:up": "docker compose up -d",
 		"infrastructure:pause": "docker compose stop",
 		"infrastructure:down": "docker compose down --remove-orphans --volumes",
-		"queue:run": "ts-node queue/worker.ts"
+		"queue:run": "ts-node src/queue/worker.ts"
 	},
 	"author": "",
 	"devDependencies": {

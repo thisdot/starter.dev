@@ -1,14 +1,20 @@
 import { TechnologyEntity } from '@prisma/client';
 import { DeepMockProxy, mockDeep } from 'jest-mock-extended';
-import { TechnologyDataSource, TechnologyEntityCollectionPage } from '../graphql/data-sources';
+import {
+	PageInformation,
+	TechnologyDataSource,
+	TechnologyEntityCollection,
+	TechnologyEdge,
+} from '../graphql/data-sources';
 
 export const createMockTechnologyDataSource = (): DeepMockProxy<TechnologyDataSource> =>
 	mockDeep<TechnologyDataSource>();
 
-let technologyEntityIdCount = 0;
+let technologyEntityIdCount = 1;
+let alternateTechnologyEntityIdCount = 1;
 
-const createMockTechnologyEntity = (): TechnologyEntity => {
-	const id = technologyEntityIdCount++;
+const createMockTechnologyEntity = (idCount?: number): TechnologyEntity => {
+	const id = idCount ? idCount++ : technologyEntityIdCount++;
 	return {
 		description: `MOCK_DESCRIPTION_${id}`,
 		displayName: `MOCK_DISPLAY_NAME_${id}`,
@@ -17,10 +23,36 @@ const createMockTechnologyEntity = (): TechnologyEntity => {
 	};
 };
 
-export const createMockTechnologyEntityCollectionPage = (
-	itemsCount: number,
-	totalCount: number
-): TechnologyEntityCollectionPage => ({
+export const createMockTechnologyEntityCollection = (
+	edgesCount: number,
+	totalCount: number,
+	pageInfo: PageInformation
+): TechnologyEntityCollection => ({
 	totalCount,
-	items: Array(itemsCount).fill(null).map(createMockTechnologyEntity),
+	pageInfo,
+	edges: Array(edgesCount)
+		.fill(null)
+		.map(() => {
+			const technology = createMockTechnologyEntity();
+			return {
+				node: technology,
+				cursor: technology.id,
+			};
+		}),
 });
+
+export const createMockTechnologyEntities = (totalCount: number): TechnologyEntity[] => {
+	return Array(totalCount).fill(null).map(createMockTechnologyEntity);
+};
+
+export const createMockTechnologyEdges = (totalCount: number): TechnologyEdge[] => {
+	return Array(totalCount)
+		.fill(null)
+		.map(() => {
+			const technology = createMockTechnologyEntity(alternateTechnologyEntityIdCount++);
+			return {
+				node: technology,
+				cursor: technology.id,
+			};
+		});
+};

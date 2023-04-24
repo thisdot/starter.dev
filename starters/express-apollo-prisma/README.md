@@ -28,10 +28,12 @@ This starter kit features Express, Apollo Server and Prisma.
     - [Express](#express)
     - [Apollo Server](#apollo-server)
     - [ORM](#orm)
+      - [How to use kit with MongoDB](#how-to-use-kit-with-mongodb)
     - [Queueing](#queueing)
     - [Caching](#caching)
     - [Testing](#testing)
   - [Deployment](#deployment)
+  - [Build a Production Scale app with Express-Apollo-Prisma kit](#build-a-production-scale-app-with-express-apollo-prisma-kit)
 
 ## Overview
 
@@ -106,26 +108,19 @@ git clone https://github.com/thisdot/starter.dev.git
 ## Environment Variables
 
 - `PORT` - The port exposed to connect with the application.
-- `DATABASE_URL` - The database connection URL.
-- `REDIS_URL` - The Redis connection URL.
+- `DB_URL` - Connector for Prisma to run the migrations (our example will build the correct URL from the other variables)
+- `DB_USER` - User to use on the MySQL server
+- `DB_PASS` - Password for both the user and root user
+- `DB_DATABASE` - Name of the database in MySQL
+- `DB_PORT` - Which port to run the MySQL server on
+- `REDIS_USER` - User to use on the Redis server (can be left blank)
+- `REDIS_PASSWORD` - Password to authenticate Redis
+- `REDIS_HOST` - Host Redis is running on
+- `REDIS_PORT` - Which port to run the Redis server on
 - `REDIS_CACHE_TTL_SECONDS` - The remaining time(seconds) to live of a key that has a timeout.
-- `DOCKER_MYSQLDB_ROOT_PASSWORD` - The MySQL root user password.
-- `DOCKER_MYSQLDB_DATABASE` - The MySQL database name.
-- `DOCKER_MYSQLDB_PORT_LOCAL` - The MySQL Docker host's TCP port.
-- `DOCKER_MYSQLDB_PORT_CONTAINER` - The MySQL Docker container's TCP port.
-- `DOCKER_REDIS_PASSWORD` - The Redis password.
-- `DOCKER_REDIS_HOST` - The Redis host IP.
-- `DOCKER_REDIS_PORT_LOCAL` - The Redis Docker host's TCP port.
-- `DOCKER_REDIS_PORT_CONTAINER` - The Redis Docker container's TCP port.
 - `AMQP_URL` - The RabbitMQ connection URL.
 - `AMQP_QUEUE_JOB` - The RabbitMQ channel queue name.
 - `CORS_ALLOWED_ORIGINS` - (Optional) Comma separated Allowed Origins. Default value: '\*'. (See [CORS Cross-Origin Resource Sharing](#cors-cross-origin-resource-sharing))
-
-We map TCP port `DOCKER_MYSQLDB_PORT_CONTAINER` in the container to port `DOCKER_MYSQLDB_PORT_LOCAL` on the Docker host.
-We also map TCP port `DOCKER_REDIS_PORT_LOCAL` in the container to port `DOCKER_REDIS_PORT_CONTAINER` on the Docker host.
-
-To ensure proper connection to our resources
-For more information on Docker container networks: https://docs.docker.com/config/containers/container-networking/
 
 ### Database and Redis
 
@@ -239,7 +234,7 @@ There is a `technologies` query in `technology.typedefs.ts` file. The query uses
   type Query {
 		...
 		"Returns a list of Technologies"
-		technologies(limit: Int = 5, offset: Int = 0): TechnologyCollectionPage!
+		technologies(limit: Int = 5, offset: Int = 0): TechnologyCollection!
 	}
   ...
 ```
@@ -298,7 +293,7 @@ The data sources are located in `src/graphql/data-sources`. The data sources of 
 
 ### ORM
 
-The kit uses Prisma as a TypeScript ORM for proper data fetch and mutation from the source. It is configured with the following environment variable: `DATABASE_URL="mysql://root:root@localhost:3307/testdb"`.
+The kit uses Prisma as a TypeScript ORM for proper data fetch and mutation from the source. It is configured with the `DB_URL` environment variable.
 
 We use Prisma for the following:
 
@@ -306,6 +301,55 @@ We use Prisma for the following:
 - [Prisma Migrate](https://www.prisma.io/docs/concepts/components/prisma-migrate) - a declarative data modeling and migration tool.
 
 Learn more about [Prisma](https://www.prisma.io/docs/concepts/overview/prisma-in-your-stack/is-prisma-an-orm).
+
+#### How to use kit with MongoDB
+
+1. Set up a MongoDB account via the following tutorial: [Create MongoDB Account](https://www.mongodb.com/docs/guides/atlas/account/).
+2. Set up MongoDB cluster. [Create Cluster](https://www.mongodb.com/docs/guides/atlas/cluster/)
+3. Set up MongoDB User. [Create User](https://www.mongodb.com/docs/guides/atlas/db-user/)
+4. Get the [MongoDB Connection URI](https://www.mongodb.com/docs/guides/atlas/connection-string/).
+5. Replace the `<user>`, `<password>` and `<database>` to your `DB_URL` in your `.env` with the username, password and database you created.
+   ```
+    DB_URL="mongodb+srv://<username>:<password>@app.random.mongodb.net/database?retryWrites=true&w=majority"
+   ```
+6. Replace the `DB_USER`, `DB_PASSWORD` and `DB_DATABASE` in your `.env` with the username, password and database you created.
+7. Edit the datasource in `prisma/schema.prisma`.
+
+   ```prisma
+    datasource db {
+      provider = "mongodb"
+      url      = env("DATABASE_URL")
+    }
+   ```
+
+8. Edit the `PRISMA_CONFIG` in `src/config.ts` to:
+
+   ```ts
+   export const PRISMA_CONFIG: Prisma.PrismaClientOptions = {
+   	datasources: {
+   		db: {
+   			url: `mongodb+srv://${DB_USER}:${DB_PASSWORD}@app.random.mongodb.net/${DB_DATABASE}?retryWrites=true&w=majority`,
+   		},
+   	},
+   };
+   ```
+
+9. Finally update your `src/healthcheck/datasource-healthcheck.ts` to check the mongodb connection.
+
+   ```ts
+   import { PrismaClient } from '@prisma/client';
+
+   export const getDataSourceHealth = async (prismaClient?: PrismaClient) => {
+   	try {
+   		const prismaClientPingResult = await prismaClient?.$runCommandRaw({
+   			ping: 1,
+   		});
+   		return prismaClientPingResult?.ok == 1;
+   	} catch {
+   		return false;
+   	}
+   };
+   ```
 
 ### Queueing
 
@@ -364,3 +408,7 @@ npm run infrastructure:up
 3. Deploy your application to your chosen provider or service using their deployment tools or services. You can use the start script to start your application in production mode. You may also need to configure any necessary proxy or routing rules to direct incoming traffic to your application.
 
 4. Monitor your application for any issues or errors and adjust your deployment as needed. This may involve configuring load balancers, auto-scaling, or other performance optimization features, depending on your chosen provider or service.
+
+## Build a Production Scale app with Express-Apollo-Prisma kit
+
+Learn how to build a Production Scale app with Express-Apollo-Prisma kit in this [article](https://www.thisdot.co/blog/building-a-production-scale-app-with-the-express-apollo-prisma-starter-kit). We will cover what's included in the kit, how to set it up, and how to use the provided tools to create a scalable web application. We will also discuss how to extend the starter kit to add features like authentication. Finally, we will look at how to use the provided tools to ensure that your application is well-maintained and efficient
