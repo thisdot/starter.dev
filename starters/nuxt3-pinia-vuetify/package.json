@@ -19,20 +19,13 @@
 		"lint:js": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore .",
 		"lint:prettier": "prettier --check .",
 		"lint": "run-s lint:js lint:prettier",
-		"lintfix": "prettier --write --list-different . && npm run lint:js --fix",
-		"test": "vitest --run --reporter verbose --globals",
-		"test:watch": "vitest --reporter verbose --globals"
+		"lintfix": "prettier --write --list-different . && npm run lint:js --fix"
 	},
 	"devDependencies": {
-		"@nuxt/test-utils-edge": "3.3.2-27992199.dc5982d9",
 		"@nuxtjs/eslint-config-typescript": "12.0.0",
 		"@pinia/testing": "0.0.15",
-		"@testing-library/user-event": "^14.4.3",
-		"@testing-library/vue": "7.0.0",
 		"@typescript-eslint/eslint-plugin": "5.56.0",
 		"@vitejs/plugin-vue": "4.1.0",
-		"@vitest/coverage-c8": "0.29.7",
-		"@vitest/ui": "0.29.7",
 		"eslint": "8.36.0",
 		"eslint-config-prettier": "8.8.0",
 		"jsdom": "21.1.1",
@@ -41,7 +34,6 @@
 		"prettier": "2.8.7",
 		"sass": "1.60.0",
 		"typescript": "5.0.2",
-		"vitest": "0.29.7",
 		"vue-eslint-parser": "9.1.0"
 	},
 	"dependencies": {

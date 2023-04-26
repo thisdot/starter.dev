@@ -1,3 +1,27 @@
+<script lang="ts" setup>
+const route = useRoute();
+const greeting = ref(route.query.greeting ?? 'from This Dot Labs!');
+
+const {
+	data,
+	pending: loading,
+	error,
+} = await useLazyFetch<string>(
+	() =>
+		`https://api.starter.dev/.netlify/functions/server/hello?greeting=${greeting.value}`,
+	{
+		watch: [greeting],
+	}
+);
+
+watch(
+	() => route.query.greeting,
+	() => {
+		greeting.value = route.query.greeting ?? 'from This Dot Labs!';
+	}
+);
+</script>
+
 <template>
 	<div
 		class="fetch-example-box d-flex flex-column justify-center align-center mt-5"
@@ -43,30 +67,6 @@
 		</nuxt-link>
 	</div>
 </template>
-
-<script lang="ts" setup>
-const route = useRoute();
-const greeting = ref(route.query.greeting ?? 'from This Dot Labs!');
-
-const {
-	data,
-	pending: loading,
-	error,
-} = await useLazyFetch<string>(
-	() =>
-		`https://api.starter.dev/.netlify/functions/server/hello?greeting=${greeting.value}`,
-	{
-		watch: [greeting],
-	}
-);
-
-watch(
-	() => route.query.greeting,
-	() => {
-		greeting.value = route.query.greeting ?? 'from This Dot Labs!';
-	}
-);
-</script>
 
 <style lang="scss" scoped>
 .fetch-example-box {

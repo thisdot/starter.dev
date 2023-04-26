@@ -1,3 +1,14 @@
+<script lang="ts" setup>
+import { useCounterStore } from '@/store/counterStore';
+
+const counterState = useCounterStore();
+
+const increaseCount = () => counterState.counter++;
+const decreaseCount = () => counterState.counter--;
+
+const resetCount = counterState.$reset.bind(counterState);
+</script>
+
 <template>
 	<div
 		class="counter-example-box d-flex flex-column justify-center align-center mt-5"
@@ -49,17 +60,6 @@
 		</div>
 	</div>
 </template>
-
-<script lang="ts" setup>
-import { useCounterStore } from '@/store/counterStore';
-
-const counterState = useCounterStore();
-
-const increaseCount = () => counterState.counter++;
-const decreaseCount = () => counterState.counter--;
-
-const resetCount = counterState.$reset.bind(counterState);
-</script>
 
 <style lang="scss" scoped>
 .counter-example-box {
