@@ -1,5 +1,77 @@
+<script lang="ts" setup>
+const route = useRoute();
+const greeting = ref(route.query.greeting ?? 'from This Dot Labs!');
+
+const {
+	data,
+	pending: loading,
+	error,
+} = await useLazyFetch<string>(
+	() =>
+		`https://api.starter.dev/.netlify/functions/server/hello?greeting=${greeting.value}`,
+	{
+		watch: [greeting],
+	}
+);
+
+watch(
+	() => route.query.greeting,
+	() => {
+		greeting.value = route.query.greeting ?? 'from This Dot Labs!';
+	}
+);
+</script>
+
 <template>
-	<div>
-		Fetch component works
+	<div
+		class="fetch-example-box d-flex flex-column justify-center align-center mt-5"
+	>
+		<div
+			class="fetch-example-box__header border-b-4 border-blue-600 mb-4 text-center"
+		>
+			<h4 class="text-h5 font-weight-bold">Fetch Data From API</h4>
+		</div>
+
+		<div class="d-flex flex-row justify-center align-center mt-5 mb-10 text-h6">
+			<p v-if="!error">Message:</p>
+			<div class="ml-5 font-weight-bold">
+				<v-progress-circular v-if="loading" indeterminate></v-progress-circular>
+
+				<v-alert
+					v-else-if="error"
+					type="error"
+					title="Error"
+					:text="error.message"
+					variant="tonal"
+				>
+				</v-alert>
+
+				<p v-else data-testid="message-value">
+					{{ data }}
+				</p>
+			</div>
+		</div>
+
+		<nuxt-link
+			v-if="!route.query.greeting"
+			:to="{
+				path: '/greet',
+				query: {
+					greeting: 'young padawan',
+				},
+			}"
+			class="text-subtitle-1 text-blue-darken-2"
+		>
+			Try out a different greeting by adding a query param! (e.g.
+			?greeting=Hello)
+		</nuxt-link>
 	</div>
 </template>
+
+<style lang="scss" scoped>
+.fetch-example-box {
+	&__header {
+		border-bottom: 4px solid rgb(var(--v-theme-primary));
+	}
+}
+</style>
