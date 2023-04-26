@@ -1,7 +1,7 @@
 import { ExpressMiddlewareOptions } from '@apollo/server/dist/esm/express4';
 import { WithRequired } from '@apollo/utils.withrequired';
 import { mock, MockProxy } from 'jest-mock-extended';
-import { ServerContext } from '../graphql/server-context';
+import { ServerContext } from '../endpoints/graphql/server-context';
 import {
 	ExecuteOperationOptions,
 	GraphQLRequest,
@@ -9,7 +9,7 @@ import {
 	VariableValues,
 } from '@apollo/server/dist/esm/externalTypes/graphql';
 import { DocumentNode, TypedQueryDocumentNode } from 'graphql';
-import { graphqlServer } from '../graphql';
+import { graphqlServer } from '../endpoints/graphql';
 import { createMockTechnologyDataSource } from './technology-entity';
 
 export const createMockExpressMiddlewareOptions = (): MockProxy<

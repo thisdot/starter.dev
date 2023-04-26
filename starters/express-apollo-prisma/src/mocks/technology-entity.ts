@@ -1,6 +1,9 @@
 import { TechnologyEntity } from '@prisma/client';
 import { DeepMockProxy, mockDeep } from 'jest-mock-extended';
-import { TechnologyDataSource, TechnologyEntityCollectionPage } from '../graphql/data-sources';
+import {
+	TechnologyDataSource,
+	TechnologyEntityCollectionPage,
+} from '../endpoints/graphql/data-sources';
 
 export const createMockTechnologyDataSource = (): DeepMockProxy<TechnologyDataSource> =>
 	mockDeep<TechnologyDataSource>();

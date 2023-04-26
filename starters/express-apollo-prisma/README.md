@@ -174,7 +174,7 @@ This will generate a migration folder under `prisma/migrations`. That alters our
 
 ![authorName migration](https://github.com/thisdot/starter.dev/raw/main/starters/express-apollo-prisma/screenshots/authorName_migration.png)
 
-3. Update your GraphQL type definitions for the `Technology` entity `src/graphql/schema/technology/technology.typedefs.ts` with the new `authorName` property.
+3. Update your GraphQL type definitions for the `Technology` entity `src/endpoints/graphql/schema/technology/technology.typedefs.ts` with the new `authorName` property.
 
 ```ts
 import gql from 'graphql-tag';
@@ -219,7 +219,7 @@ type Mutation {
 
 You can download the [Apollo GraphQL extension](https://marketplace.visualstudio.com/items?itemName=apollographql.vscode-apollo) that adds syntax highlighting for GraphQL files and gql templates inside JavaScript files.
 
-4. Update our automatically generated code by running `npm run codegen`. This will generate a new `src/graphql/schema/index.ts` file.
+4. Update our automatically generated code by running `npm run codegen`. This will generate a new `src/endpoints/graphql/schema/index.ts` file.
 
 ```sh
 npm run codegen
@@ -263,14 +263,25 @@ In order to restrict origin URLs that can access your API, you need to add a lis
 ```
 - **/prisma/** - holds Prisma migrations and schema.
 - **/src
-  - /graphql - holds GraphQL-related files.
-    - /data-sources/** - holds data sources per model.
-    - /mappers/** - holds mappers per model.
-    - /schema/** - holds GraphQL schema type definitions and resolvers.
-    - /server-context/** - holds server-context types and middleware factory methods.
-  - /redis/** - holds Redis-related functionality.
-  - main.ts - bootstraps an entire server.
+  - /endpoints - organizes the server's various endpoints.
+    - /graphql - holds GraphQL-related files.
+      - /data-sources/** - holds data sources per model.
+      - /mappers/** - holds mappers per model.
+      - /schema/** - holds GraphQL schema type definitions and resolvers.
+      - /server-context/** - holds server-context types and middleware factory methods.
+    - /health/** - contains health check related files for monitoring server status.
+    - /job-generator/** - holds files for implementating queueing using RabbitMQ.
+  - /lib -
+    - /cache/** - holds cache-related functionality.
+    - /db - holds prisma-related files.
+      - migrations/** - holds prisma auto-generated migration files.
+      - schema.prisma - holds prisma database models and configuration.
+      - seed.ts - holds database seeding configuration.
+  - /mocks/** - holds mock data files for testing purposes with predefined data.
+  - main.ts - bootstraps the entire server.
 ```
+
+This file structure approach emphasizes modularity and separation of concerns. By categorizing files based on their functionality, it becomes easier to understand, maintain, and scale the project. Having separate folders for endpoints, data sources, mappers, and schema definitions improves code organization and readability. The addition of a `lib` directory for utility functions and helpers also promotes code reusability.
 
 ### GraphQL Modules
 
@@ -294,7 +305,7 @@ Apollo Server is an open-source, spec-compliant GraphQL server that's compatible
 
 We use the [`expressMiddleware`](https://www.apollographql.com/docs/apollo-server/api/express-middleware#expressmiddleware) function from `@apollo/server` to enable you to attach Apollo Server to an Express server. We also recommend using [`ApolloServerPluginDrainHttpServer`](https://www.apollographql.com/docs/apollo-server/api/plugin/drain-http-server) plugin to ensure your server gracefully shuts down.
 
-The data sources are located in `src/graphql/data-sources`. The data sources of the entities are passed in `src\graphql\server-context\server-context-middleware-options.ts`.
+The data sources are located in `src/endpoints/graphql/data-sources`. The data sources of the entities are passed in `src\graphql\server-context\server-context-middleware-options.ts`.
 
 ### ORM
 
@@ -325,7 +336,7 @@ channel.consume(AMQP_QUEUE_JOB, (message) => {
 });
 ```
 
-The `src/queue/job-generator-handler.ts` file contains the logic for generating a job and adding it to the queue for processing, the `jobGeneratorHandler` function is an Express request handler that accepts a message and adds it to the queue.
+The `src/endpoints/job-generator/job-generator-handler.ts` file contains the logic for generating a job and adding it to the queue for processing, the `jobGeneratorHandler` function is an Express request handler that accepts a message and adds it to the queue.
 
 To use this implementation of queueing, you can send a `POST` request to the `/example-job` endpoint with a `message` in the request body, and the message will be added to the queue. Once the message is in the queue, it will be processed in the order it was added:
 
@@ -343,7 +354,7 @@ We set up Redis by creating a Redis client with the `createClient` function from
 
 ### Testing
 
-Testing is set up with [Jest](https://jestjs.io/). You can see some example spec files under `src/graphql/schema/technology`.
+Testing is set up with [Jest](https://jestjs.io/). You can see some example spec files under `src/endpoints/graphql/schema/technology`.
 
 ## Deployment
 
