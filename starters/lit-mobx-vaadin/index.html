@@ -24,14 +24,6 @@
   <body>
     <starter-app></starter-app>
 
-    <script>
-      // Workaround an issue where Mobx v6 expects process.env to be available
-      // on the global object.
-      if (!window.process) {
-        window.process = { env: {} };
-      }
-    </script>
-
     <script
       type="module"
       src="./out-tsc/src/components/starter-app.js"

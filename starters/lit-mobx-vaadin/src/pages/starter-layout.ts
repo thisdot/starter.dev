@@ -1,6 +1,8 @@
 import { LitElement, html, css } from 'lit';
 import { customElement } from 'lit/decorators.js';
 
+import '@vaadin/app-layout';
+
 @customElement('starter-layout')
 export class StarterLayout extends LitElement {
   static styles = [

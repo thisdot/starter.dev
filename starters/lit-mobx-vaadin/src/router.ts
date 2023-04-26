@@ -1,9 +1,9 @@
 import { Route, Router } from '@vaadin/router';
 
-import './components/starter-layout.js';
-import './components/home/starter-home.js';
-import './components/counter-example/starter-counter.js';
-import './components/fetch-example/starter-fetch.js';
+import './pages/starter-layout.js';
+import './pages/home/starter-home.js';
+import './pages/counter-example/starter-counter.js';
+import './pages/fetch-example/starter-fetch.js';
 
 const routes: Route[] = [
   {

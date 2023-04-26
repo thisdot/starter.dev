@@ -1,5 +1,5 @@
 import { html, TemplateResult } from 'lit';
-import '../src/components/starter-app.js';
+import '../src/pages/starter-app.js';
 
 export default {
   title: 'StarterApp',
