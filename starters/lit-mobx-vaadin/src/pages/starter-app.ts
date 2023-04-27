@@ -6,13 +6,12 @@ import { router } from '../router.js';
 export class StarterApp extends LitElement {
   @query('#outlet', true) private outlet!: HTMLDivElement;
 
-  static styles = css``;
-
   firstUpdated() {
     router.setOutlet(this.outlet);
   }
 
   render() {
-    return html`<div id="outlet"></div>`;
+    return html`
+      <div id="outlet"></div>`;
   }
 }
