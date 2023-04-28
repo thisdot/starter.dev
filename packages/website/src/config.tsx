@@ -366,12 +366,6 @@ export const TECHNOLOGIES = [
     Icon: (props) => <DenoIcon {...props} />,
   },
   {
-    key: 'express',
-    name: 'Express.js',
-    tags: ['Framework'],
-    Icon: (props) => <ExpressIcon {...props} />,
-  },
-  {
     key: 'typeorm',
     name: 'TypeORM',
     tags: ['Data Management'],
