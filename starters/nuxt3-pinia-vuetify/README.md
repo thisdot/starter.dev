@@ -17,7 +17,7 @@ This starter kit features **Nuxt.js 3**, **Pinia**, and **Vuetify**.
 
 ### Tech Stack
 
-- [Nuxt.js v3.x](https://nuxtjs.org/)
+- [Nuxt.js v3.x](https://nuxt.com/)
 - [Vue v3.x](https://vuejs.org/)
 - [Pinia v2.x](https://pinia.vuejs.org/)
 - [Vuetify](https://vuetifyjs.com/)
@@ -27,7 +27,7 @@ This starter kit features **Nuxt.js 3**, **Pinia**, and **Vuetify**.
 - [Typescript](https://www.typescriptlang.org/) - Type checking
 - [ESLint](https://eslint.org/) - Code linting
 
-> **Note**: We didn't include Storybook in this starter kit because it is not yet compatible with Nuxt.js 3. We will add it back in when it is. Likewise we didn't include tests because the testing story for Nuxt.js 3 is still being worked out and are not production ready.
+> **Note**: We didn't include Storybook in this starter kit because it is not yet compatible with Nuxt.js 3. We will add it back in when it is. Likewise we didn't include tests because the testing story for Nuxt.js 3 is still being worked out and it's not production ready.
 
 ### Example Code
 
