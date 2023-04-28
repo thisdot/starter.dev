@@ -4,7 +4,6 @@ import { fromRollup } from '@web/dev-server-rollup';
 const replace = fromRollup(rollupReplace);
 
 export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
-  open: '/',
   watch: true,
 
   /** Resolve bare module imports */

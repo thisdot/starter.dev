@@ -12,6 +12,17 @@
       {
         "ignorePackages": true
       }
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/*.spec.ts",
+          "playwright.config.ts",
+          "web-dev-server.config.mjs",
+          ".storybook/**/*.{js,mjs}"
+        ]
+      }
     ]
   }
 }
