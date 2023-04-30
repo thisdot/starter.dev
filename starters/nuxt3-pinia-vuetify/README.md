@@ -1,6 +1,6 @@
 # nuxt3-pinia-vuetify starter kit
 
-This starter kit features **Nuxt.js 3**, **Pinia** for client-side state management, and **Vuetify**. for styling
+This starter kit features **Nuxt.js 3**, **Pinia** for client-side state management, and **Vuetify** for styling.
 
 ##### How to use this Starter Kit:
 
@@ -19,7 +19,7 @@ npm create @this-dot/starter -- --kit nuxt3-pinia-vuetify
 #### Included Tooling
 
 - [Vue v3.x](https://vuejs.org/)
-- [Typescript](https://www.typescriptlang.org/) - Type checking
+- [TypeScript](https://www.typescriptlang.org/) - Type checking
 - [Sass](https://sass-lang.com/guide) - CSS preproccesor
 - [ESLint](https://eslint.org/) - Code linting
 - [Prettier](https://prettier.io/) - Code formatting
@@ -34,7 +34,7 @@ npm create @this-dot/starter -- --kit nuxt3-pinia-vuetify
 
 #### Development
 
-- start by [creating a new Starter Kit](link-to-wiki-page) project
+- start by [creating a new Starter Kit](https://starter.dev/) project
 - `cd` into your project directory and run `npm install`.
 - Run `npm run dev` to start the development server.
 - Open your browser to `http://localhost:3000` to see the included example code running.
