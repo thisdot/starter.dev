@@ -1,4 +1,5 @@
 import { html, TemplateResult } from 'lit';
+
 import '../src/pages/starter-app.js';
 
 export default {
@@ -21,16 +22,12 @@ interface ArgTypes {
 }
 
 const Template: Story<ArgTypes> = ({
-  title,
   backgroundColor = 'white',
 }: ArgTypes) => html`
   <starter-app
     style="--starter-app-background-color: ${backgroundColor}"
-    .title=${title}
   ></starter-app>
 `;
 
 export const App = Template.bind({});
-App.args = {
-  title: 'My app',
-};
+App.args = {};

@@ -4,6 +4,7 @@ import html from '@web/rollup-plugin-html';
 import { importMetaAssets } from '@web/rollup-plugin-import-meta-assets';
 import esbuild from 'rollup-plugin-esbuild';
 import { generateSW } from 'rollup-plugin-workbox';
+import replace from '@rollup/plugin-replace';
 import path from 'path';
 
 export default {
@@ -26,11 +27,15 @@ export default {
     }),
     /** Resolve bare module imports */
     nodeResolve(),
+    replace({
+      preventAssignment: true,
+      'process.env.NODE_ENV': JSON.stringify('production'),
+    }),
     /** Minify JS, compile JS to a lower language target */
     esbuild({
       minify: true,
       target: ['chrome64', 'firefox67', 'safari11.1'],
-    }),    
+    }),
     /** Bundle assets references via import.meta.url */
     importMetaAssets(),
     /** Minify html and css tagged template literals */
