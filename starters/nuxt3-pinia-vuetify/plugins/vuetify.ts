@@ -1,31 +1,25 @@
 // plugins/vuetify.js
 import { createVuetify } from 'vuetify';
-import { VBtn } from 'vuetify/components/VBtn';
-import { VApp } from 'vuetify/components/VApp';
-import { VProgressCircular } from 'vuetify/components/VProgressCircular';
-import { VAlert } from 'vuetify/components/VAlert';
+import * as components from 'vuetify/components';
+import * as directives from 'vuetify/directives';
 
-export const Vuetify = createVuetify({
-	ssr: true,
-	theme: {
-		defaultTheme: 'customTheme',
-		themes: {
-			customTheme: {
-				dark: false,
-				colors: {
-					primary: '#3B82F6',
+export default defineNuxtPlugin((nuxtApp) => {
+	const Vuetify = createVuetify({
+		ssr: true,
+		theme: {
+			defaultTheme: 'customTheme',
+			themes: {
+				customTheme: {
+					dark: false,
+					colors: {
+						primary: '#3B82F6',
+					},
 				},
 			},
 		},
-	},
-	components: {
-		VBtn,
-		VApp,
-		VProgressCircular,
-		VAlert,
-	},
-});
+		components,
+		directives,
+	});
 
-export default defineNuxtPlugin((nuxtApp) => {
 	nuxtApp.vueApp.use(Vuetify);
 });
