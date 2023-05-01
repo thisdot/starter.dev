@@ -13,9 +13,9 @@ useHead({
 <template>
 	<main class="w-50">
 		<header class="bg-blue-darken-2 pa-4 text-center rounded mb-5">
-			<h2 class="font-weight-bold text-white">
+			<h1 class="text-h5 font-weight-bold text-white">
 				Nuxt 3, Pinia and Vuetify Starter kit
-			</h2>
+			</h1>
 		</header>
 		<div class="d-flex flex-column justify-center align-center mt-4">
 			<NuxtLink to="/counter" class="text-subtitle-1 text-blue-darken-2">
