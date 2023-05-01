@@ -18,7 +18,11 @@
   "dependencies": {
     "@adobe/lit-mobx": "^2.2.0",
     "@vaadin/app-layout": "^24.0.3",
+    "@vaadin/button": "^24.0.3",
+    "@vaadin/horizontal-layout": "^24.0.3",
     "@vaadin/router": "^1.7.5",
+    "@vaadin/vaadin-themable-mixin": "^24.0.3",
+    "@vaadin/vertical-layout": "^24.0.3",
     "lit": "^2.0.2",
     "mobx": "^6.9.0"
   },
@@ -51,10 +55,6 @@
     "rollup-plugin-workbox": "^6.2.0",
     "tslib": "^2.3.1",
     "typescript": "^4.5.2"
-  },
-  "prettier": {
-    "singleQuote": true,
-    "arrowParens": "avoid"
   },
   "husky": {
     "hooks": {

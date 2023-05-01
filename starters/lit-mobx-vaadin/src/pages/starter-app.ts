@@ -1,4 +1,4 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html } from 'lit';
 import { customElement, query } from 'lit/decorators.js';
 import { router } from '../router.js';
 
@@ -6,13 +6,12 @@ import { router } from '../router.js';
 export class StarterApp extends LitElement {
   @query('#outlet', true) private outlet!: HTMLDivElement;
 
-  static styles = css``;
-
   firstUpdated() {
     router.setOutlet(this.outlet);
   }
 
   render() {
-    return html`<div id="outlet"></div>`;
+    return html`
+      <div id="outlet"></div>`;
   }
 }

@@ -1,21 +1,18 @@
-import { html, css } from 'lit';
+import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import { MobxLitElement } from '@adobe/lit-mobx';
-import { starterState } from '../../state.js';
+import { PageMixin } from '../page.mixin.js';
+
+import "../../components/counter/counter.js";
+import "../../components/vaadin-vertical-layout/vaadin-vertical-layout.js";
 
 @customElement('starter-counter')
-export class StarterCounter extends MobxLitElement {
-  protected state = starterState;
-
-  static styles = [
-    css`
-      :host {
-        display: block;
-      }
-    `,
-  ];
-
+export class StarterCounter extends PageMixin(LitElement) {
   render() {
-    return html`<h1>Counter Page</h1>`;
+    return html`
+      <vaadin-vertical-layout theme="padding center">
+        <h1>Increment, Decrement and Reset Button Example</h1>
+        <td-counter></td-counter>
+      </vaadin-vertical-layout>
+    `;
   }
 }
