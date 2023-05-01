@@ -23,18 +23,16 @@ watch(
 </script>
 
 <template>
-	<div
-		class="fetch-example-box d-flex flex-column justify-center align-center mt-5"
-	>
+	<div class="fetch-example-box w-50">
 		<div
 			class="fetch-example-box__header border-b-4 border-blue-600 mb-4 text-center"
 		>
-			<h4 class="text-h5 font-weight-bold">Fetch Data From API</h4>
+			<h4 class="text-h4 font-weight-bold py-4">Nuxt 3 Fetch Data From API</h4>
 		</div>
 
-		<div class="d-flex flex-row justify-center align-center mt-5 mb-10 text-h6">
+		<div class="d-flex flex-row justify-center align-center mb-10 text-h6">
 			<p v-if="!error">Message:</p>
-			<div class="ml-5 font-weight-bold">
+			<div class="ml-2 font-weight-bold">
 				<v-progress-circular v-if="loading" indeterminate></v-progress-circular>
 
 				<v-alert
@@ -60,7 +58,7 @@ watch(
 					greeting: 'young padawan',
 				},
 			}"
-			class="text-subtitle-1 text-blue-darken-2"
+			class="text-subtitle-1 text-blue-darken-2 d-flex flex-column justify-center align-center"
 		>
 			Try out a different greeting by adding a query param! (e.g.
 			?greeting=Hello)
