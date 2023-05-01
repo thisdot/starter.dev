@@ -1,4 +1,4 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html } from 'lit';
 import { customElement, query } from 'lit/decorators.js';
 import { router } from '../router.js';
 

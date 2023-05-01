@@ -15,7 +15,18 @@
         margin: 0;
         padding: 0;
         font-family: sans-serif;
-        background-color: #ededed;
+      }
+
+      :root {
+        --td-background-color: #ededed;
+        --td-primary-color: #1d4ed8;
+        --td-primary-contrast-color: #ededed;
+        --td-text-color: #1d1d1d;
+      }
+
+      body {
+        background-color: var(--td-background-color, #ededed);
+        color: var(--td-text-color, #1d1d1d)
       }
     </style>
     <title>Lit-Mobx-Vaadin starter.dev</title>
