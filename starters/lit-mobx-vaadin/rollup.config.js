@@ -29,7 +29,7 @@ export default {
     nodeResolve(),
     replace({
       preventAssignment: true,
-      'process.env.NODE_ENV': JSON.stringify('development'),
+      'process.env.NODE_ENV': JSON.stringify('production'),
     }),
     /** Minify JS, compile JS to a lower language target */
     esbuild({
