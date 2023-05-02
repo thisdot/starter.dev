@@ -1,18 +1,13 @@
-import { LitElement, css, html } from 'lit';
+import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import { PageMixin } from '../page.mixin.js';
 
-import "../../components/vaadin-vertical-layout/vaadin-vertical-layout.js";
+import '../../components/vaadin-vertical-layout/vaadin-vertical-layout.js';
 
 @customElement('starter-home')
 export class StarterHome extends PageMixin(LitElement) {
+  static styles = [PageMixin(LitElement).styles ?? []];
 
-  static styles = [
-    PageMixin(LitElement).styles ?? [],
-    css`
-      border-bottom: 0;
-    `
-  ]
   render() {
     return html`
       <vaadin-vertical-layout theme="padding center">
