@@ -6,13 +6,13 @@ In order to safely track generated events, we need a handler function that has a
 
 1. Install the packages
 
-    `yarn install`
+   `yarn install`
 
 2. Set up your .env file
 
-    `cp .env.example .env`
-    For valid environment variables, please reach out to the project coordinator.
+   `cp .env.example .env`
+   For valid environment variables, please reach out to the project coordinator.
 
 3. You can start up the handler function locally by running
 
-    `npm run dev`.
+   `npm run dev`.
