@@ -6,8 +6,6 @@ on:
       - main
     paths:
       - 'packages/metrics-handler/**'
-  workflow_dispatch:
-
 
 jobs:
   deploy:
@@ -21,14 +19,14 @@ jobs:
         working-directory: 'packages/metrics-handler'
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
-          cache-dependency-path: packages/metircs-handler/yarn.lock
+          cache-dependency-path: packages/metrics-handler/yarn.lock
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
