@@ -15,14 +15,46 @@ export class StarterFetch extends MobxLitElement {
         display: block;
       }
 
-      p {
+      .loader {
+        min-width: 300px;
+        border-radius: 0.375rem;
+        border-width: 2px;
         font-size: 1.2rem;
+        margin: 1em 0;
+
+        background-color: #d1d5db;
+        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+
+      .loader::before {
+        content: '\\00a0 ';
+      }
+
+      .fetch {
+        font-size: 1.2rem;
+        margin: 1em 0;
+      }
+
+      @keyframes pulse {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+        100% {
+          opacity: 1;
+        }
       }
     `,
   ];
 
   render() {
-    return html`<p class="fetch">Message: ${this.state.fetchMessage}</p>`;
+    return html`
+      ${this.state.fetchMessage
+        ? html`<p class="fetch">Message: ${this.state.fetchMessage}</p>`
+        : html`<div class="loader"></div>`}
+    `;
   }
 
   connectedCallback() {
