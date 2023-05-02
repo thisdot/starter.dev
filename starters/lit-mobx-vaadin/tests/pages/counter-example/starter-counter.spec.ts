@@ -7,22 +7,22 @@ test.beforeEach(async ({ page }) => {
 test('be able to increment', async ({ page }) => {
   await page.getByRole('button', { name: 'Increment' }).click();
 
-  await expect(page.getByText(/^Count: [0-9]+$/)).toHaveText('Count: 1');
+  await expect(page.getByText('Count: 1')).toBeVisible();
 });
 
 test('be able to decrement', async ({ page }) => {
   await page.getByRole('button', { name: 'Decrement' }).click();
 
-  await expect(page.getByText(/^Count: -[0-9]+$/)).toHaveText('Count: -1');
+  await expect(page.getByText('Count: -1')).toBeVisible();
 });
 
 test('be able to reset', async ({ page }) => {
   await page.getByRole('button', { name: 'Increment' }).click();
   await page.getByRole('button', { name: 'Increment' }).click();
 
-  await expect(page.getByText(/^Count: [0-9]+$/)).toHaveText('Count: 2');
+  await expect(page.getByText('Count: 2')).toBeVisible();
 
   await page.getByRole('button', { name: 'Reset' }).click();
 
-  await expect(page.getByText(/^Count: [0-9]+$/)).toHaveText('Count: 0');
+  await expect(page.getByText('Count: 0')).toBeVisible();
 });
