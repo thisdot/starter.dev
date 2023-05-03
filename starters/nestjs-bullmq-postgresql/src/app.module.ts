@@ -1,10 +1,22 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { SequelizeModule } from '@nestjs/sequelize';
+import 'dotenv/config';
+import { Dialect } from 'sequelize';
+import { TechnologyModule } from './technology/technology.module';
 
 @Module({
-	imports: [],
-	controllers: [AppController],
-	providers: [AppService],
+	imports: [
+		SequelizeModule.forRoot({
+			dialect: process.env.dialect as Dialect,
+			host: process.env.host,
+			port: Number(process.env.port),
+			username: process.env.username,
+			password: process.env.password,
+			database: process.env.database,
+			autoLoadModels: true,
+			synchronize: true,
+		}),
+		TechnologyModule,
+	],
 })
 export class AppModule {}
