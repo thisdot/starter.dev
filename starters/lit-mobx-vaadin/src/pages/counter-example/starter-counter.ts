@@ -1,12 +1,15 @@
 import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import { PageMixin } from '../page.mixin.js';
+import { starterState } from '../../state.js';
 
 import '../../components/counter/counter.js';
 import '../../components/vaadin-vertical-layout/vaadin-vertical-layout.js';
 
 @customElement('starter-counter')
 export class StarterCounter extends PageMixin(LitElement) {
+  protected state = starterState;
+
   render() {
     return html`
       <vaadin-vertical-layout theme="padding center">
@@ -19,5 +22,11 @@ export class StarterCounter extends PageMixin(LitElement) {
         </nav>
       </vaadin-vertical-layout>
     `;
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+
+    this.state.resetCount();
   }
 }

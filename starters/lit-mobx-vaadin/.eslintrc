@@ -3,7 +3,6 @@
   "extends": ["@open-wc", "prettier"],
   "plugins": ["@typescript-eslint"],
   "rules": {
-    "class-methods-use-this": "off",
     "no-console": ["error", { "allow": ["info", "warn", "error"] }],
     "no-unused-vars": "off",
     "wc/guard-super-call": "off",

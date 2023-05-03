@@ -1,13 +1,9 @@
-import { MobxLitElement } from '@adobe/lit-mobx';
-import { PropertyValueMap, css, html } from 'lit';
-import { customElement } from 'lit/decorators.js';
-import { starterState } from '../../state.js';
-
-const FETCH_API_URL = 'https://api.starter.dev/.netlify/functions/server/hello';
+import { LitElement, css, html } from 'lit';
+import { customElement, property } from 'lit/decorators.js';
 
 @customElement('td-fetch')
-export class StarterFetch extends MobxLitElement {
-  protected state = starterState;
+export class StarterFetch extends LitElement {
+  @property({ type: String }) message = '';
 
   static styles = [
     css`
@@ -51,37 +47,9 @@ export class StarterFetch extends MobxLitElement {
 
   render() {
     return html`
-      ${this.state.fetchMessage
-        ? html`<p class="fetch">Message: ${this.state.fetchMessage}</p>`
+      ${this.message
+        ? html`<p class="fetch">Message: ${this.message}</p>`
         : html`<div class="loader"></div>`}
     `;
-  }
-
-  connectedCallback() {
-    super.connectedCallback();
-
-    this.state.setFetchMessage('');
-  }
-
-  firstUpdated(
-    changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>,
-  ) {
-    super.firstUpdated(changedProperties);
-
-    this.fetchMessage('lit-mobx-vaadin starter.dev!').then(message => {
-      this.state.setFetchMessage(message);
-    });
-  }
-
-  private async fetchMessage(greeting: string): Promise<string> {
-    try {
-      const response = await fetch(
-        `${FETCH_API_URL}?${new URLSearchParams({ greeting })}`,
-      );
-      return response.text();
-    } catch (error) {
-      console.error(error);
-      return 'Sorry, something went wrong. Please try again.';
-    }
   }
 }
