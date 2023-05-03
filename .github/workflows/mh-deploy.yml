@@ -38,7 +38,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
         run: |
-          serverless config credentials --provider aws --profile starterdev --key $AWS_ACCESS_KEY --secret $AWS_SECRET_KEY
+          serverless config credentials --provider aws --profile starterdev --key $AWS_ACCESS_KEY_ID --secret $AWS_SECRET_ACCESS_KEY
 
       - name: Deploy
         env:

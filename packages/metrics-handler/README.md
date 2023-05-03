@@ -11,6 +11,7 @@ In order to safely track generated events, we need a handler function that has a
 2. Set up your .env file
 
    `cp .env.example .env`
+
    For valid environment variables, please reach out to the project coordinator.
 
 3. You can start up the handler function locally by running
