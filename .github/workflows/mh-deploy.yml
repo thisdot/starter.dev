@@ -34,14 +34,14 @@ jobs:
         run: npm i -g serverless@3
 
       - name: Configure credentials
-        run: |
-          serverless config credentials --provider aws --profile starterdev --key $AWS_ACCESS_KEY --secret $AWS_SECRET_KEY
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
+        run: |
+          serverless config credentials --provider aws --profile starterdev --key $AWS_ACCESS_KEY --secret $AWS_SECRET_KEY
 
       - name: Deploy
-        run: serverless deploy --stage production --region us-east-1
         env:
           GOOGLE_ANALYTICS_API_SECRET: ${{ secrets.GOOGLE_ANALYTICS_API_SECRET }}
           GOOGLE_ANALYTICS_MEASUREMENT_ID: ${{ secrets.GOOGLE_ANALYTICS_MEASUREMENT_ID }}
+        run: serverless deploy --stage production --region us-east-1

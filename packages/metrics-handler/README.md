@@ -15,4 +15,4 @@ In order to safely track generated events, we need a handler function that has a
 
 3. You can start up the handler function locally by running
 
-   `npm run dev`.
+   `npm run dev`
