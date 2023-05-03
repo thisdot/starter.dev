@@ -36,9 +36,13 @@ export class StarterFetch extends PageMixin(MobxLitElement) {
   ) {
     super.firstUpdated(changedProperties);
 
-    fetchMessage('lit-mobx-vaadin starter.dev!').then(message => {
-      console.info(message);
-      this.state.setFetchMessage(message);
-    });
+    fetchMessage('lit-mobx-vaadin starter.dev!')
+      .then(message => {
+        this.state.setFetchMessage(message);
+      })
+      .catch(error => {
+        console.error(error);
+        return 'Sorry, something went wrong. Please try again.';
+      });
   }
 }
