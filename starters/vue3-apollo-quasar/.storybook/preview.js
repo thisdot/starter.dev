@@ -10,15 +10,8 @@ import '@quasar/extras/animate/fadeOutRight.css';
 import 'quasar/dist/quasar.css';
 import { app } from '@storybook/vue3';
 import { Quasar } from 'quasar';
-import { createPinia } from 'pinia';
 
-const pinia = createPinia();
-
-// This is also where you would setup things such as pinia for storybook
-
-app
-.use(Quasar, {})
-.use(pinia);
+app.use(Quasar, {});
 
 export const parameters = {
   actions: {

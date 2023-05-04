@@ -1,0 +1,47 @@
+name: Deploy metrics-handler (main)
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'packages/metrics-handler/**'
+
+jobs:
+  deploy:
+    name: deploy
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    defaults:
+      run:
+        working-directory: 'packages/metrics-handler'
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Install Serverless
+        run: npm i -g serverless@3
+
+      - name: Configure credentials
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
+        run: |
+          serverless config credentials --provider aws --profile starterdev --key $AWS_ACCESS_KEY_ID --secret $AWS_SECRET_ACCESS_KEY
+
+      - name: Deploy
+        env:
+          GOOGLE_ANALYTICS_API_SECRET: ${{ secrets.GOOGLE_ANALYTICS_API_SECRET }}
+          GOOGLE_ANALYTICS_MEASUREMENT_ID: ${{ secrets.GOOGLE_ANALYTICS_MEASUREMENT_ID }}
+        run: serverless deploy --stage production --region us-east-1

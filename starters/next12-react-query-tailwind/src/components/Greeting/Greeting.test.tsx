@@ -21,9 +21,12 @@ describe('Greeting', () => {
   describe('positive flow', () => {
     beforeAll(() => {
       server = setupServer(
-        rest.get('https://api.starter.dev/hello', (_, res, ctx) => {
-          return res(ctx.text(MOCK_MESSAGE_HELLO));
-        })
+        rest.get(
+          'https://api.starter.dev/.netlify/functions/server/hello',
+          (_, res, ctx) => {
+            return res(ctx.text(MOCK_MESSAGE_HELLO));
+          }
+        )
       );
       server.listen();
     });
@@ -62,8 +65,10 @@ describe('Greeting', () => {
 
     it('should show an error message if the API call response contains a message in the body.', async () => {
       server = setupServer(
-        rest.get('https://api.starter.dev/hello', (_, res, ctx) =>
-          res(ctx.status(400), ctx.json({ message: MOCK_MESSAGE_ERROR }))
+        rest.get(
+          'https://api.starter.dev/.netlify/functions/server/hello',
+          (_, res, ctx) =>
+            res(ctx.status(400), ctx.json({ message: MOCK_MESSAGE_ERROR }))
         )
       );
       server.listen();
@@ -81,8 +86,9 @@ describe('Greeting', () => {
 
     it('should show an error message if the API call response does not contain a message in the body.', async () => {
       server = setupServer(
-        rest.get('https://api.starter.dev/hello', (_, res, ctx) =>
-          res(ctx.status(404))
+        rest.get(
+          'https://api.starter.dev/.netlify/functions/server/hello',
+          (_, res, ctx) => res(ctx.status(404))
         )
       );
       server.listen();

@@ -40,7 +40,7 @@
     "@ngrx/store-devtools": "13.2.0",
     "rxjs": "7.8.0",
     "tslib": "2.5.0",
-    "zone.js": "0.12.0"
+    "zone.js": "0.11.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "13.3.10",

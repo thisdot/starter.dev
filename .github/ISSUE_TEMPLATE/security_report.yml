@@ -1,0 +1,24 @@
+name: Secuirty Report
+description: A template for registering security issues.
+title: '[SECURITY]: '
+labels: security
+body:
+  - type: markdown
+    attributes:
+      value: Thank you for taking the time to file a security report. We appreciate your feedback and contributions to this repository. However, before submitting, please make sure you can fill out all the details below in the template. If your issue is a "how to" or feature enhancement discussion, please go to the discussions tab and submit there instead.
+  - type: input
+    attributes:
+      label: What kit and version does this issue pertain to?
+      description: 'For example: next12-react-query-tailwind@0.1.0'
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Identified Issue
+      description: What is the security issue that needs to be addressed?
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Additional Information
+      description: Any additional information you think might be helpful to resolve your issue.

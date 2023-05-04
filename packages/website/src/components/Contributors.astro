@@ -9,7 +9,9 @@ const contributors = Array.isArray(contributorsData) ? contributorsData : [];
   <div
     class="grid grid-cols-5 dark:bg-gray-800 dark:border-gray-700 mt-16 border border-solid border-gray-400 rounded-lg items-center"
   >
-    <div class="px-12 pt-12 mb-4 col-span-5 lg:col-span-2 lg:text-left text-center">
+    <div
+      class="px-12 pt-12 mb-4 col-span-5 lg:col-span-2 lg:text-left text-center"
+    >
       <h1 class="heading-3 mb-8">Build faster together</h1>
       <p class="mb-8 dark:dark-t text-sm">
         starter.dev aims to help developers spend more time building features
@@ -33,23 +35,27 @@ const contributors = Array.isArray(contributorsData) ? contributorsData : [];
         alt="technology list"
       />
     </div>
-    <div class="col-span-5 px-12 py-4 bg-gray-100 border-t border-gray-400 dark:bg-gray-700 dark:border-gray-700">
+    <div
+      class="col-span-5 px-12 py-4 bg-gray-100 border-t border-gray-400 dark:bg-gray-700 dark:border-gray-700"
+    >
       <ul>
-        {contributors.map((contributor) => (
-          <li class="inline-block mr-4">
-            <a
-              href={contributor.html_url}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                class="rounded-full w-10 h-10"
-                src={contributor.avatar_url}
-                alt={contributor.login}
-              />
-            </a>
-          </li>
-        ))}
+        {
+          contributors.map((contributor) => (
+            <li class="inline-block mr-4">
+              <a
+                href={contributor.html_url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  class="rounded-full w-10 h-10"
+                  src={contributor.avatar_url}
+                  alt={contributor.login}
+                />
+              </a>
+            </li>
+          ))
+        }
       </ul>
     </div>
   </div>

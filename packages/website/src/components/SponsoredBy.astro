@@ -8,10 +8,12 @@ import TechIcon from './TechIcon.astro';
 >
   <div class="heading-5 lg:mr-8 text-center">Sponsored by</div>
   <div class="flex lg:justify-between grow lg:flex-row flex-col">
-    {SPONSORS_ICON.map(({ Icon }) => (
-      <div class="-mt-6">
-        <TechIcon Icon={Icon} />
-      </div>
-    ))}
+    {
+      SPONSORS_ICON.map(({ Icon }) => (
+        <div class="-mt-6">
+          <TechIcon Icon={Icon} />
+        </div>
+      ))
+    }
   </div>
 </div>

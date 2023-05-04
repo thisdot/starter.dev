@@ -37,7 +37,7 @@ This starter kit features Create React App, RxJS and styled-components.
 
 ### Example Components
 
-- React 'hello world' API endpoint `https://api.starter.dev/hello` with corresponding mock located in `src/components/RXJS-Example/RXJS-Example.test.tsx`.
+- React 'hello world' API endpoint `https://api.starter.dev/.netlify/functions/server/hello` with corresponding mock located in `src/components/RXJS-Example/RXJS-Example.test.tsx`.
 - Greeting component `src/components/RXJS-Example/RXJS-Example.test.tsx` that uses `rxjs/fetch` to fetch data from the example hello endpoint.
 - An example Counter component `src/components/Counter/Counter.tsx`
 - Both example components have co-located tests and stories.
@@ -121,6 +121,6 @@ The demo components included in the starter.kit are co-located with the tests an
 
 ## Demo Implementation
 
-[Repository](https://github.com/thisdot/starter.dev-showcases/tree/main/cra-rxjs-styled-components)
+[Repository](https://github.com/thisdot/starter.dev-github-showcases/tree/main/cra-rxjs-styled-components)
 
 The demo application re-implements some of GitHub's pages and functionality. It uses the OAuth credentials in GitHub to authenticate users with their GitHub accounts and uses RxJS to fetch data from the GitHub API. Check out the link above to learn more or check out the demo!

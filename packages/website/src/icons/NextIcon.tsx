@@ -1,4 +1,4 @@
-import { Props } from "./types";
+import { Props } from './types';
 
 export function NextIcon({ className, size = 48 }: Props) {
   return (

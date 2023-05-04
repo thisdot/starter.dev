@@ -1,6 +1,6 @@
 {
   "name": "svelte-kit-scss",
-  "description": "Create SvelteKit app with SCSS",
+  "description": "SvelteKit and SCSS",
   "keywords": [
     "svelte-kit",
     "sass"

@@ -36,12 +36,18 @@ import {
   PiniaIcon,
   QwikIcon,
   SolidJsIcon,
+  ChakraIcon,
+  ServerlessIcon,
   DenoIcon,
   ExpressIcon,
   PostgresIcon,
   TypeOrmIcon,
   SolidStartIcon,
   TanstackIcon,
+  ExpoIcon,
+  ZustandIcon,
+  PrismaIcon,
+  ContentfulIcon,
 } from './icons';
 
 export interface NavItem {
@@ -81,6 +87,12 @@ export const FOOTER_NAV_ITEMS = HEADER_NAV_ITEMS.filter(
 );
 
 export const TECHNOLOGIES = [
+  {
+    key: 'express',
+    name: 'Express.js',
+    tags: ['Framework'],
+    Icon: (props) => <ExpressIcon {...props} />
+  },
   {
     key: 'angular',
     name: 'Angular',
@@ -220,6 +232,12 @@ export const TECHNOLOGIES = [
     Icon: (props) => <BootstrapIcon {...props} />,
   },
   {
+    key: 'chakra-ui',
+    name: 'Chakra UI',
+    tags: ['Styling'],
+    Icon: (props) => <ChakraIcon {...props} />,
+  },
+  {
     key: 'astro',
     name: 'Astro',
     tags: ['Static Site Builder'],
@@ -230,6 +248,12 @@ export const TECHNOLOGIES = [
     name: '11ty',
     tags: ['Static Site Builder'],
     Icon: (props) => <EleventyIcon {...props} />,
+  },
+  {
+    key: 'contentful',
+    name: 'Contentful',
+    tags: ['Data Management'],
+    Icon: ContentfulIcon,
   },
   {
     key: 'react-query',
@@ -262,9 +286,21 @@ export const TECHNOLOGIES = [
     Icon: (props) => <RxJsIcon {...props} />,
   },
   {
+    key: 'serverless',
+    name: 'Serverless',
+    tags: ['Infrastructure'],
+    Icon: (props) => <ServerlessIcon {...props} />,
+  },
+  {
+    key: 'apollo-server',
+    name: 'Apollo Server',
+    tags: ['Middleware'],
+    Icon: (props) => <ApolloIcon {...props} />,
+  },
+  {
     key: 'graphql',
     name: 'GraphQL',
-    tags: ['Data Management'],
+    tags: ['API Specification'],
     Icon: (props) => <GraphQLIcon {...props} />,
   },
   {
@@ -281,7 +317,7 @@ export const TECHNOLOGIES = [
   },
   {
     key: 'apollo',
-    name: 'Apollo',
+    name: 'Apollo Client',
     tags: ['Data Management'],
     Icon: (props) => <ApolloIcon {...props} />,
   },
@@ -322,22 +358,34 @@ export const TECHNOLOGIES = [
     Icon: (props) => <DenoIcon {...props} />,
   },
   {
-    key: 'express',
-    name: 'Express.js',
-    tags: ['Framework'],
-    Icon: (props) => <ExpressIcon {...props} />
-  },
-  {
     key: 'typeorm',
     name: 'TypeORM',
     tags: ['Data Management'],
-    Icon: (props) => <TypeOrmIcon {...props} />
+    Icon: (props) => <TypeOrmIcon {...props} />,
   },
   {
     key: 'postgres',
     name: 'Postgres',
     tags: ['Data Management'],
     Icon: (props) => <PostgresIcon {...props} />
+  },
+  {
+    key: 'expo',
+    name: 'Expo',
+    tags: ['Tooling'],
+    Icon: (props) => <ExpoIcon {...props} />,
+  },
+  {
+    key: 'zustand',
+    name: 'Zustand',
+    tags: ['Data Management'],
+    Icon: (props) => <ZustandIcon {...props} />,
+  },
+  {
+    key: 'prisma',
+    name: 'Prisma',
+    tags: ['Data Management'],
+    Icon: (props) => <PrismaIcon {...props} />
   }
 ];
 
