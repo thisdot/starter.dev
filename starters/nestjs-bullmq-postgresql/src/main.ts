@@ -3,7 +3,7 @@ import { AppModule } from './app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import 'dotenv/config';
 
-async function bootstrap() {
+(async function bootstrap() {
 	const config = new DocumentBuilder()
 		.setTitle('NestJS, Bull MQ and PostgreSQL starter kit API')
 		.setDescription('NestJS starter kit API with CRUD functionality')
@@ -18,5 +18,4 @@ async function bootstrap() {
 	});
 
 	await app.listen(3000);
-}
-bootstrap();
+})();
