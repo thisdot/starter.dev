@@ -1,7 +1,7 @@
 {
 	"name": "nestjs-bullmq-postgresql",
 	"version": "0.0.1",
-	"description": "This is the NestJS, BullMQ, and PostgreSQL starter kit.",
+	"description": "NestJS, BullMQ, and PostgreSQL",
 	"author": "",
 	"private": true,
 	"license": "UNLICENSED",
