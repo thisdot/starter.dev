@@ -17,16 +17,9 @@
         font-family: sans-serif;
       }
 
-      :root {
-        --td-background-color: #ededed;
-        --td-primary-color: #1d4ed8;
-        --td-primary-contrast-color: #ededed;
-        --td-text-color: #1d1d1d;
-      }
-
       body {
-        background-color: var(--td-background-color, #ededed);
-        color: var(--td-text-color, #1d1d1d)
+        background-color: #ededed;
+        color: #1d1d1d;
       }
     </style>
     <title>Lit-Mobx-Vaadin starter.dev</title>
@@ -35,9 +28,6 @@
   <body>
     <starter-app></starter-app>
 
-    <script
-      type="module"
-      src="./out-tsc/src/components/starter-app.js"
-    ></script>
+    <script type="module" src="./out-tsc/src/pages/starter-app.js"></script>
   </body>
 </html>

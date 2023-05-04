@@ -3,7 +3,9 @@
   "extends": ["@open-wc", "prettier"],
   "plugins": ["@typescript-eslint"],
   "rules": {
+    "no-console": ["error", { "allow": ["info", "warn", "error"] }],
     "no-unused-vars": "off",
+    "wc/guard-super-call": "off",
     "@typescript-eslint/no-unused-vars": ["error"],
     "import/no-unresolved": "off",
     "import/extensions": [

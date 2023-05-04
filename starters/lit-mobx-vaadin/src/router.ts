@@ -19,7 +19,7 @@ const routes: Route[] = [
         component: 'starter-counter',
       },
       {
-        path: 'fetch-example',
+        path: 'api-example',
         component: 'starter-fetch',
       },
     ],
