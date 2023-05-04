@@ -42,7 +42,9 @@ export class StarterFetch extends PageMixin(MobxLitElement) {
       })
       .catch(error => {
         console.error(error);
-        return 'Sorry, something went wrong. Please try again.';
+        this.state.setFetchMessage(
+          'Sorry, something went wrong. Please try again.',
+        );
       });
   }
 }

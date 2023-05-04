@@ -6,10 +6,6 @@ export const PageMixin = <T extends Constructor<LitElement>>(superClass: T) =>
   class extends superClass {
     static styles = [
       css`
-        :host {
-          --primary-color: #1e50d7;
-        }
-
         ul {
           padding: 0;
           list-style: none;
@@ -26,25 +22,21 @@ export const PageMixin = <T extends Constructor<LitElement>>(superClass: T) =>
           font-size: 2rem;
           font-weight: 700;
           text-align: center;
-          border-bottom: 5px solid var(--primary-color);
+          border-bottom: 5px solid var(--td-primary-color);
         }
 
         a {
-          --link-color: var(--primary-color);
-          --link-focus-color: #1e50c3;
-          --link-visited-color: #4623eb;
-
-          color: var(--link-color);
+          color: var(--td-link-color);
         }
 
         a:visited {
-          --link-color: var(--link-visited-color);
+          --td-link-color: var(--td-link-visited-color);
         }
 
         a:hover,
         a:active,
         a:focus {
-          --link-color: var(--link-focus-color);
+          --td-link-color: var(--td-link-focus-color);
         }
       `,
     ];
