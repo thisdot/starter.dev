@@ -8,4 +8,4 @@ export default {
 
 const Template = (args) => <CounterExample {...args} />;
 
-export const CounterExamle = Template.bind({});
+export const Counter = Template.bind({});
