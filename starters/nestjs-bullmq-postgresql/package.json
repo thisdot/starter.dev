@@ -1,10 +1,16 @@
 {
 	"name": "nestjs-bullmq-postgresql",
 	"version": "0.0.1",
-	"description": "",
+	"description": "This is the NestJS, BullMQ, and PostgreSQL starter kit.",
 	"author": "",
 	"private": true,
 	"license": "UNLICENSED",
+	"keywords": [
+		"nest",
+		"postgres",
+		"bullmq"
+	],
+	"hasShowcase": false,
 	"scripts": {
 		"build": "nest build",
 		"format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
