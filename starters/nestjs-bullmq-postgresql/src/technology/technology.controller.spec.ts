@@ -25,17 +25,17 @@ describe('TechnologyController Unit Tests', () => {
 		spyService = app.get<TechnologyService>(TechnologyService);
 	});
 
-	it('calling create technologies method', () => {
+	it('calling create technologies method', async () => {
 		const dto = new CreateTechnologyDto();
-		technologyController.create(dto);
+		await technologyController.create(dto);
 
 		expect(technologyController.create(dto)).not.toEqual(null);
 		expect(spyService.create).toHaveBeenCalled();
 		expect(spyService.create).toHaveBeenCalledWith(dto);
 	});
 
-	it('calling findAll technologies method', () => {
-		technologyController.findAll();
+	it('calling findAll technologies method', async () => {
+		await technologyController.findAll();
 		expect(spyService.findAll).toHaveBeenCalled();
 	});
 });
