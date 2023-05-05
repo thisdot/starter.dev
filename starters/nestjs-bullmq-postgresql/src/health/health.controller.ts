@@ -9,7 +9,7 @@ export class HealthController {
 	@HealthCheck()
 	check() {
 		return this.health.check([
-			() => this.http.pingCheck('health check', 'http://localhost:3000/health'),
+			() => this.http.pingCheck('starter.dev main site', 'https://starter.dev/'),
 		]);
 	}
 }
