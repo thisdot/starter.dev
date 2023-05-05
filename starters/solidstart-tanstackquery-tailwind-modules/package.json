@@ -66,10 +66,10 @@
     "whatwg-fetch": "3.6.2"
   },
   "dependencies": {
-    "@solidjs/meta": "0.28.2",
-    "@solidjs/router": "0.7.0",
-    "solid-js": "1.6.11",
-    "solid-start": "0.2.21",
+    "@solidjs/meta": "0.28.4",
+    "@solidjs/router": "0.8.2",
+    "solid-js": "1.7.4",
+    "solid-start": "0.2.26",
     "undici": "5.20.0"
   },
   "engines": {
