@@ -3,6 +3,7 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import 'dotenv/config';
 import { Dialect } from 'sequelize';
 import { TechnologyModule } from './technology/technology.module';
+import { HealthModule } from './health/health.module';
 
 @Module({
 	imports: [
@@ -17,6 +18,7 @@ import { TechnologyModule } from './technology/technology.module';
 			synchronize: true,
 		}),
 		TechnologyModule,
+		HealthModule,
 	],
 })
 export class AppModule {}
