@@ -8,26 +8,24 @@ const { state, send } = useMachine(counterMachine, { devTools: true });
 </script>
 
 <template>
-	<main>
-		<HeaderComponent>
-			Increment, Decrement and Reset Button Examples
-		</HeaderComponent>
-		<section class="counter__section">
-			<p data-cy="count">Count: {{ state.context.count }}</p>
-			<ButtonComponent @click="send('INC')" data-cy="inc-button">
-				Increment
-			</ButtonComponent>
-			<ButtonComponent @click="send('DEC')" data-cy="dec-button">
-				Decrement
-			</ButtonComponent>
-			<ButtonComponent @click="send('RESET')" data-cy="res-button">
-				Reset
-			</ButtonComponent>
-		</section>
-		<div class="counter__home-link">
-			<RouterLink to="/">Return Home</RouterLink>
-		</div>
-	</main>
+	<HeaderComponent>
+		Increment, Decrement and Reset Button Examples
+	</HeaderComponent>
+	<section class="counter__section">
+		<p data-cy="count">Count: {{ state.context.count }}</p>
+		<ButtonComponent @click="send('INC')" data-cy="inc-button">
+			Increment
+		</ButtonComponent>
+		<ButtonComponent @click="send('DEC')" data-cy="dec-button">
+			Decrement
+		</ButtonComponent>
+		<ButtonComponent @click="send('RESET')" data-cy="res-button">
+			Reset
+		</ButtonComponent>
+	</section>
+	<div class="counter__home-link">
+		<RouterLink to="/">Return Home</RouterLink>
+	</div>
 </template>
 
 <style scoped>
@@ -35,21 +33,21 @@ const { state, send } = useMachine(counterMachine, { devTools: true });
 	display: flex;
 	align-items: center;
 	justify-content: space-evenly;
-	margin: 4% auto;
+	margin: 2em auto;
 }
 
 p {
-	font-weight: bold;
+	font-weight: 600;
 	font-size: 1.5rem;
 	flex-basis: 9.5rem;
 }
 
 .counter__home-link {
-	margin-top: 2%;
+	margin-top: 0.5em;
 	text-align: center;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 768px) {
 	.counter__section {
 		flex-direction: column;
 	}

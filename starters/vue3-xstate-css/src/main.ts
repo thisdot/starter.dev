@@ -11,6 +11,8 @@ inspect({
 
 const app = createApp(App);
 
+app.provide('query', 'from This Dot Labs!');
+
 app.use(router);
 
 app.mount('#app');

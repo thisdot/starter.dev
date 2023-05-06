@@ -1,39 +1,33 @@
 <script setup lang="ts">
+import { inject } from 'vue';
 import { useMachine } from '@xstate/vue';
 import HeaderComponent from '../components/HeaderComponent.vue';
 import { greetMachine } from '../machines/greetMachine';
 
-const props = defineProps({
-	query: String,
-});
+const providedQuery = inject('query', '');
 
-const { state } = useMachine(greetMachine(props.query || ''), {
+const { state } = useMachine(greetMachine(providedQuery), {
 	devTools: true,
 });
 </script>
 
 <template>
-	<main>
-		<HeaderComponent> Fetch Data from API </HeaderComponent>
-		<section class="fetch__section">
-			<p class="fetch__section-title">Message:</p>
-			<div class="fetch__section-result" data-cy="message-result">
-				<div
-					v-if="state.value === 'loading'"
-					class="fetch__section-loader"
-				></div>
-				<p v-if="state.value === 'failure'" class="fetch__section-message-fail">
-					{{ state.context.error }}
-				</p>
-				<p v-else class="fetch__section-message-success">
-					{{ state.context.message }}
-				</p>
-			</div>
-		</section>
-		<div class="fetch__home-link">
-			<RouterLink to="/">Return Home</RouterLink>
+	<HeaderComponent> Fetch Data from API </HeaderComponent>
+	<section class="fetch__section">
+		<p class="fetch__section-title">Message:</p>
+		<div class="fetch__section-result" data-cy="message-result">
+			<div v-if="state.value === 'loading'" class="fetch__section-loader"></div>
+			<p v-if="state.value === 'failure'" class="fetch__section-message-fail">
+				{{ state.context.error }}
+			</p>
+			<p v-else class="fetch__section-message-success">
+				{{ state.context.message }}
+			</p>
 		</div>
-	</main>
+	</section>
+	<div class="fetch__home-link">
+		<RouterLink to="/">Return Home</RouterLink>
+	</div>
 </template>
 
 <style scoped>
@@ -76,7 +70,7 @@ const { state } = useMachine(greetMachine(props.query || ''), {
 	text-align: center;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 600px) {
 	.fetch__section {
 		flex-direction: column;
 	}

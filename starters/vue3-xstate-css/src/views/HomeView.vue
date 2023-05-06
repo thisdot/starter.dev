@@ -1,15 +1,13 @@
 <script setup lang="ts"></script>
 
 <template>
-	<main>
-		<div class="home__title">
-			<h1>Vue 3 + XState + CSS</h1>
-		</div>
-		<div class="home__links">
-			<RouterLink to="/counter">See counter example component</RouterLink>
-			<RouterLink to="/greet">See fetch example component</RouterLink>
-		</div>
-	</main>
+	<div class="home__title">
+		<h1>Vue 3 + XState + CSS</h1>
+	</div>
+	<nav class="home__links">
+		<RouterLink to="/counter">See counter example component</RouterLink>
+		<RouterLink to="/greet">See fetch example component</RouterLink>
+	</nav>
 </template>
 
 <style scoped>
