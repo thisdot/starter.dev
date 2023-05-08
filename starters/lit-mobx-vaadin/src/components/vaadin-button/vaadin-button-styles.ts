@@ -1,6 +1,9 @@
 import '@vaadin/button/theme/lumo/vaadin-button-styles.js';
 
-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+import {
+  css,
+  registerStyles,
+} from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 const button = css`
   :host([theme~='primary']) {

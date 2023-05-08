@@ -6,7 +6,7 @@ export class StarterState {
   fetchMessage = '';
 
   constructor() {
-    makeAutoObservable(this)
+    makeAutoObservable(this);
   }
 
   incrementCount() {
