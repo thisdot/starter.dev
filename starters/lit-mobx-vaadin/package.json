@@ -1,6 +1,6 @@
 {
-  "name": "starter-app",
-  "description": "Webcomponent starter-app following open-wc recommendations",
+  "name": "lit-mobx-vaadin",
+  "description": "LitElement, Mobx, and Vaadin",
   "license": "MIT",
   "author": "starter-app",
   "version": "0.0.0",
