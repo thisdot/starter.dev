@@ -1,9 +1,12 @@
 {
   "name": "lit-mobx-vaadin",
   "description": "LitElement, Mobx, and Vaadin",
-  "license": "MIT",
-  "author": "starter-app",
-  "version": "0.0.0",
+  "keywords": [
+    "litelement",
+    "mobx",
+    "vaadin"
+  ],
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "lint": "eslint --ext .ts,.html . --ignore-path .gitignore && prettier \"**/*.ts\" --check --ignore-path .gitignore",

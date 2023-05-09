@@ -48,6 +48,9 @@ import {
   ZustandIcon,
   PrismaIcon,
   ContentfulIcon,
+  LitElementIcon,
+  MobxIcon,
+  VaadinIcon,
 } from './icons';
 
 export interface NavItem {
@@ -91,7 +94,7 @@ export const TECHNOLOGIES = [
     key: 'express',
     name: 'Express.js',
     tags: ['Framework'],
-    Icon: (props) => <ExpressIcon {...props} />
+    Icon: (props) => <ExpressIcon {...props} />,
   },
   {
     key: 'angular',
@@ -367,7 +370,7 @@ export const TECHNOLOGIES = [
     key: 'postgres',
     name: 'Postgres',
     tags: ['Data Management'],
-    Icon: (props) => <PostgresIcon {...props} />
+    Icon: (props) => <PostgresIcon {...props} />,
   },
   {
     key: 'expo',
@@ -385,8 +388,26 @@ export const TECHNOLOGIES = [
     key: 'prisma',
     name: 'Prisma',
     tags: ['Data Management'],
-    Icon: (props) => <PrismaIcon {...props} />
-  }
+    Icon: (props) => <PrismaIcon {...props} />,
+  },
+  {
+    key: 'litelement',
+    name: 'LitElement',
+    tags: ['Core UI'],
+    Icon: (props) => <LitElementIcon {...props} />,
+  },
+  {
+    key: 'mobx',
+    name: 'Mobx',
+    tags: ['Data Management'],
+    Icon: (props) => <MobxIcon {...props} />,
+  },
+  {
+    key: 'vaadin',
+    name: 'Vaadin',
+    tags: ['Framework'],
+    Icon: (props) => <VaadinIcon {...props} />,
+  },
 ];
 
 export const SPONSORS_ICON = [

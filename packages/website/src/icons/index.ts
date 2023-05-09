@@ -50,3 +50,6 @@ export { ExpoIcon } from './ExpoIcon';
 export { ZustandIcon } from './ZustandIcon';
 export { PrismaIcon } from './PrismaIcon';
 export { ContentfulIcon } from './Contentful';
+export { LitElementIcon } from './LitElementIcon';
+export { MobxIcon } from './MobxIcon';
+export { VaadinIcon } from './VaadinIcon';
