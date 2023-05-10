@@ -1,6 +1,6 @@
 ## Lit-Mobx-Vaadin Starter Kit
 
-This starter kit features LitElement, Mobx and Vaadin elements.
+This starter kit features Lit, Mobx and Vaadin elements.
 
 ## Table of Contents
 
@@ -17,9 +17,9 @@ This starter kit features LitElement, Mobx and Vaadin elements.
 
 ### Tech Stack
 
-- [LitElement](link) - JavaScript framework for writing web components
-- [Mobx](link) - State management library
-- [Vaadin](link) - Routing and UI components
+- [Lit](https://lit.dev/) - JavaScript framework for writing web components
+- [Mobx](https://mobx.js.org/) - State management library
+- [Vaadin](https://vaadin.com/components) - Routing and UI components
 
 ### Included Tooling
 

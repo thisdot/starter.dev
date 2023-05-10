@@ -6,7 +6,7 @@
   "expo-zustand-styled-component": "Expo, Zustand, and Styled Components",
   "express-apollo-prisma": "Express.js, Apollo Server, and Prisma",
   "express-typeorm-postgres": "Express.js, TypeOrm, and PostgreSQL",
-  "lit-mobx-vaadin": "LitElement, Mobx, and Vaadin",
+  "lit-mobx-vaadin": "Lit, Mobx, and Vaadin",
   "next12-chakra-ui": "NextJS 12 and Chakra UI",
   "next12-react-query-tailwind": "NextJS 12, React Query, and TailwindCSS",
   "nuxt2-pinia-tailwind": "Nuxt 2, Pinia and TailwindCSS",

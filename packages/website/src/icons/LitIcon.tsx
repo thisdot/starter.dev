@@ -1,4 +1,4 @@
-export function LitElementIcon({ size = 48, className }: Props) {
+export function LitIcon({ size = 48, className }: Props) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

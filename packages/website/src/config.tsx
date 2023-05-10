@@ -48,7 +48,7 @@ import {
   ZustandIcon,
   PrismaIcon,
   ContentfulIcon,
-  LitElementIcon,
+  LitIcon,
   MobxIcon,
   VaadinIcon,
 } from './icons';
@@ -391,10 +391,10 @@ export const TECHNOLOGIES = [
     Icon: (props) => <PrismaIcon {...props} />,
   },
   {
-    key: 'litelement',
-    name: 'LitElement',
+    key: 'lit',
+    name: 'Lit',
     tags: ['Core UI'],
-    Icon: (props) => <LitElementIcon {...props} />,
+    Icon: (props) => <LitIcon {...props} />,
   },
   {
     key: 'mobx',

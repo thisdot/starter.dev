@@ -1,8 +1,8 @@
 {
   "name": "lit-mobx-vaadin",
-  "description": "LitElement, Mobx, and Vaadin",
+  "description": "Lit, Mobx, and Vaadin",
   "keywords": [
-    "litelement",
+    "lit",
     "mobx",
     "vaadin"
   ],
