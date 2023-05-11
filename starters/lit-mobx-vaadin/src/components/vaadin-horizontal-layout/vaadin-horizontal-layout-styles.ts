@@ -1,6 +1,9 @@
 import '@vaadin/horizontal-layout/theme/lumo/vaadin-horizontal-layout-styles.js';
 
-import { css, registerStyles } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+import {
+  css,
+  registerStyles,
+} from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 
 const horizontalLayout = css`
   :host([theme~='center']) {
@@ -12,4 +15,6 @@ const horizontalLayout = css`
   }
 `;
 
-registerStyles('vaadin-horizontal-layout', horizontalLayout, { moduleId: 'td-horizontal-layout' });
+registerStyles('vaadin-horizontal-layout', horizontalLayout, {
+  moduleId: 'td-horizontal-layout',
+});
