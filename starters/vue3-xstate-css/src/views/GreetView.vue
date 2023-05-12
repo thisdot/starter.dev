@@ -4,6 +4,7 @@ import { useMachine } from '@xstate/vue';
 import HeaderComponent from '../components/HeaderComponent.vue';
 import { greetMachine } from '../machines/greetMachine';
 
+// the empty string here sets the default value to inject - so if we're not provided with a value, it will use an empty string
 const providedQuery = inject('query', '');
 
 const { state } = useMachine(greetMachine(providedQuery), {

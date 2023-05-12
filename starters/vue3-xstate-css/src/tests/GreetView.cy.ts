@@ -2,11 +2,17 @@ import GreetView from '../views/GreetView.vue';
 
 describe('<GreetView />', () => {
 	it('renders', () => {
-		cy.mount(GreetView, { props: { query: 'from This Dot Labs!' } });
+		cy.mount(GreetView, {});
 	});
 
 	it('should display a message with my greeting when I pass in a greeting', () => {
-		cy.mount(GreetView, { props: { query: 'from Cypress!' } });
+		cy.mount(GreetView, {
+			global: {
+				provide: {
+					query: 'from Cypress!',
+				},
+			},
+		});
 		cy.get('[data-cy=message-result]').should(
 			'contain.text',
 			'Hello, from Cypress!'
@@ -14,7 +20,13 @@ describe('<GreetView />', () => {
 	});
 
 	it('should display a default message when no greeting is passed', () => {
-		cy.mount(GreetView, { props: { query: '' } });
+		cy.mount(GreetView, {
+			global: {
+				provide: {
+					query: '',
+				},
+			},
+		});
 		cy.get('[data-cy=message-result]').should('contain.text', 'Hello, there');
 	});
 
@@ -27,7 +39,13 @@ describe('<GreetView />', () => {
 				req.destroy();
 			}
 		);
-		cy.mount(GreetView, { props: { query: 'from Cypress!' } });
+		cy.mount(GreetView, {
+			global: {
+				provide: {
+					query: 'from Cypress!',
+				},
+			},
+		});
 		cy.get('[data-cy=message-result]').should(
 			'contain.text',
 			'Failed to fetch'

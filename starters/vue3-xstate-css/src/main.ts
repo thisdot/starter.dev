@@ -11,6 +11,7 @@ inspect({
 
 const app = createApp(App);
 
+// we're making use of the provide functionality of Vue 3 to give our app this query value for the greet example
 app.provide('query', 'from This Dot Labs!');
 
 app.use(router);

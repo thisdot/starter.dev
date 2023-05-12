@@ -1,6 +1,5 @@
-export const fetchGreeting = (message: string) => {
-	console.log(message);
+export const fetchGreeting = async (message: string) => {
 	const encodedMessage = encodeURIComponent(message);
 	const endpoint = `https://api.starter.dev/.netlify/functions/server/hello?greeting=${encodedMessage}`;
-	return fetch(endpoint).then((result) => result.text());
+	return await fetch(endpoint).then((result) => result.text());
 };

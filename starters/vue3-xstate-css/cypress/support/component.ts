@@ -13,31 +13,23 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 
-// Import commands.js using ES2015 syntax:
+import { mount } from 'cypress/vue';
 import './commands';
-
-// Alternatively you can use CommonJS syntax:
-// require('./commands')
-
-// Import global styles
 import '@/assets/main.css';
 
-import { mount } from 'cypress/vue';
+type MountParams = Parameters<typeof mount>;
+type OptionsParam = MountParams[1];
 
-// Augment the Cypress namespace to include type definitions for
-// your custom command.
-// Alternatively, can be defined in cypress/support/component.d.ts
-// with a <reference path="./component" /> at the top of your spec.
-/* eslint-disable @typescript-eslint/no-namespace */
 declare global {
-  namespace Cypress {
-    interface Chainable {
-      mount: typeof mount;
-    }
-  }
+	namespace Cypress {
+		interface Chainable {
+			mount(component: any, options?: OptionsParam): Chainable<any>;
+		}
+	}
 }
 
-Cypress.Commands.add('mount', mount);
-
-// Example use:
-// cy.mount(MyComponent)
+Cypress.Commands.add('mount', (component, options) => {
+	options.global = options.global || {};
+	options.global.provide = options.global.provide || {};
+	return mount(component, options);
+});
