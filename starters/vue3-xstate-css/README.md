@@ -185,6 +185,8 @@ You can see an example of this with the `GreetView` component. We needed a way t
 
 The only specific setup thing we needed to do to enable component testing was to add the `mount` command to Cypress. They have packages available for multiple common frameworks which will provide the functionality for you - all we have to do is go into our `cypress/support/component.ts` file, import the `mount` function, and then tell Cypress to add that command. This lets us mount our individual components so we can then run our Cypress tests directly on that component.
 
+To enable our tests to also be able to access our provided value in the `GreetView` component, we've customized the provided `mount` function so that we provide an initial value. Then, for each test that needs to mount the component, we can either provide it with nothing (thus allowing our default value to be tested) or give it a custom message just for our tests to ensure everything works as expected.
+
 That `cypress/support/component.ts` file is also where you'll import any global styles your components might need.
 
 ## Deployment
