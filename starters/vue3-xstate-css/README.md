@@ -95,12 +95,6 @@ In [the introduction to state machines documentation](https://xstate.js.org/docs
 
 We use the context to store information that might change as we go through different states. In our greetMachine, we use the context to store the query we're sending, the message we get back, and any potential error text we get back. Since the items here are arbitrary and can change as our machine moves through it's states, we store these in the context object.
 
-#### Passing props to a machine
-
-We can pass props to our machines, if we have initial data we need to provide them from our components. The greeting example in this kit does just this - we're setting an initial prop when we navigate to the example page (this is set in the router's index file), and then in our `GreetView.vue` file we're defining the prop we expect and passing it to our machine.
-
-The `greetMachine` is then set similar to a standard JS function to accept a parameter that it can then use within the machine (in this case we're setting it as our default "query" value and passing it to our fetch service).
-
 #### TS Support in Machines
 
 XState offers us a `schema` option in our machines to allow us to type our state charts. We can use this to help strongly type our context and events. This will give us better tips when using our machine and help ensure we know what types of values we're expecting when we use them.
@@ -182,6 +176,10 @@ You'll see the option `predictableActionArguments: true` within our machines. Th
 ### Vue 3 Benefits
 
 Since we're using Vue 3, we're able to make use of the composition API. This means we can use the `setup` option in our component's script tags, which lets us define our variables and functions in a style that looks a bit more like standard JS. With this method, we don't have to have an object that defines all of the values our component can use - it allows us to use standard variables and functions which can be used directly in our templates.
+
+Another benefit of using Vue 3 is getting to work with the new provide and inject functions. These allow us to set up our own dependency system, so instead of having to deal with prop drilling and passing values along components that don't need them, we can provide that value in a parent component and then inject it into the component that needs it, bypassing all the others.
+
+You can see an example of this with the `GreetView` component. We needed a way to provide an initial query value, but didn't want to have to set up a prop within the router or drill it down through the home component. So we set up the `provide` function in the `main.ts` file, which makes it globally available in our app to any component that needs it. The `provide` function takes two arguments, a key and a value. Then, our `GreetView` component can inject that value and make use of it. We're also able to set a default value in case the provided key doesn't have a value.
 
 ### Cypress Testing
 
