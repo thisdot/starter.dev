@@ -1,15 +1,13 @@
 import { Controller, Get } from '@nestjs/common';
-import { HealthCheckService, HttpHealthIndicator, HealthCheck } from '@nestjs/terminus';
+import { HealthCheckService, HealthCheck, SequelizeHealthIndicator } from '@nestjs/terminus';
 
 @Controller('health')
 export class HealthController {
-	constructor(private health: HealthCheckService, private http: HttpHealthIndicator) {}
+	constructor(private health: HealthCheckService, private db: SequelizeHealthIndicator) {}
 
 	@Get()
 	@HealthCheck()
-	check() {
-		return this.health.check([
-			() => this.http.pingCheck('starter.dev main site', 'https://starter.dev/'),
-		]);
+	checkHealth() {
+		return this.health.check([() => this.db.pingCheck('sequelize')]);
 	}
 }
