@@ -22,6 +22,7 @@
           "**/*.spec.ts",
           "playwright.config.ts",
           "web-dev-server.config.mjs",
+          "web-test-runner.config.mjs",
           ".storybook/**/*.{js,mjs}"
         ]
       }
