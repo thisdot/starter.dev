@@ -23,7 +23,8 @@
           "playwright.config.ts",
           "web-dev-server.config.mjs",
           "web-test-runner.config.mjs",
-          ".storybook/**/*.{js,mjs}"
+          ".storybook/**/*.{js,mjs}",
+          "rollup.config.js"
         ]
       }
     ]

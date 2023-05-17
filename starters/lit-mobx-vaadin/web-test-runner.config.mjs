@@ -1,6 +1,7 @@
 import rollupReplace from '@rollup/plugin-replace';
 import { fromRollup } from '@web/dev-server-rollup';
 import { playwrightLauncher } from '@web/test-runner-playwright';
+
 const replace = fromRollup(rollupReplace);
 
 const filteredLogs = ['Running in dev mode', 'lit-html is in dev mode'];
