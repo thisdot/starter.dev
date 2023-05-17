@@ -1,13 +1,15 @@
-import nodeResolve from '@rollup/plugin-node-resolve';
 import babel from '@rollup/plugin-babel';
-import html from '@web/rollup-plugin-html';
+import nodeResolve from '@rollup/plugin-node-resolve';
+import replace from '@rollup/plugin-replace';
+import { rollupPluginHTML as html } from '@web/rollup-plugin-html';
 import { importMetaAssets } from '@web/rollup-plugin-import-meta-assets';
+import path from 'path';
 import esbuild from 'rollup-plugin-esbuild';
 import { generateSW } from 'rollup-plugin-workbox';
-import replace from '@rollup/plugin-replace';
-import path from 'path';
 
+/** @type {import("rollup").RollupOptions} */
 export default {
+  strictDeprecations: true,
   input: 'index.html',
   output: {
     entryFileNames: '[hash].js',
@@ -40,9 +42,10 @@ export default {
     importMetaAssets(),
     /** Minify html and css tagged template literals */
     babel({
+      babelHelpers: 'bundled',
       plugins: [
         [
-          require.resolve('babel-plugin-template-html-minifier'),
+          'template-html-minifier',
           {
             modules: { lit: ['html', { name: 'css', encapsulation: 'style' }] },
             failOnError: false,
