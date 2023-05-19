@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 import { useCounterStore } from '@/store/counterStore';
 
-const counterState = useCounterStore();
+const counterStore = useCounterStore();
 
-const increaseCount = () => counterState.counter++;
-const decreaseCount = () => counterState.counter--;
+const incrementCount = () => counterStore.counter++;
+const decrementCount = () => counterStore.counter--;
 
-const resetCount = counterState.$reset.bind(counterState);
+const resetCount = counterStore.$reset.bind(counterStore);
 </script>
 
 <template>
@@ -22,12 +22,12 @@ const resetCount = counterState.$reset.bind(counterState);
 		<div class="d-flex flex-row justify-space-evenly align-center py-5">
 			<p class="text-h5 mr-5 font-weight-bold">
 				Count:
-				<span>{{ counterState.counter }}</span>
+				<span>{{ counterStore.counter }}</span>
 			</p>
 			<v-btn
 				class="ma-2 bg-primary font-weight-bold"
 				variant="tonal"
-				@click="increaseCount"
+				@click="incrementCount"
 			>
 				increment
 			</v-btn>
@@ -35,8 +35,8 @@ const resetCount = counterState.$reset.bind(counterState);
 			<v-btn
 				class="ma-2 bg-primary font-weight-bold"
 				variant="tonal"
-				:disabled="counterState.counter === 0"
-				@click="decreaseCount"
+				:disabled="counterStore.counter === 0"
+				@click="decrementCount"
 			>
 				decrement
 			</v-btn>

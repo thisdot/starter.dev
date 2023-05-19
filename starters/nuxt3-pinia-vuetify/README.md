@@ -24,7 +24,9 @@ npm create @this-dot/starter -- --kit nuxt3-pinia-vuetify
 - [ESLint](https://eslint.org/) - Code linting
 - [Prettier](https://prettier.io/) - Code formatting
 
-> **Note**: We didn't include Storybook in this starter kit because it is not yet compatible with Nuxt.js 3. We will add it back in when it is. Likewise we didn't include tests because the testing story for Nuxt.js 3 is still being worked out and it's not production ready.
+## A note about testing
+
+We didn't include Storybook in this starter kit because it is not yet compatible with Nuxt.js 3. We will add it back in when it is. Likewise, we didn't include tests because the testing story for Nuxt.js 3 is still being worked out and it's not production ready.
 
 ## Getting Started
 
@@ -55,7 +57,7 @@ npm create @this-dot/starter -- --kit nuxt3-pinia-vuetify
 
 ### Kit Organization / Architecture
 
-We've chose to split out a `components` directory for interactive UI components, and a `store` directory for the Pinia stores used for both global and some component state management.
+We've chosen to split out a `components` directory for interactive UI components, and a `store` directory for the Pinia stores used for both global and some component state management.
 
 In this `nuxt3-pinia-vuetify` kit you will find the `CounterExample` and `FetchExample` directories in the components folder.
 
