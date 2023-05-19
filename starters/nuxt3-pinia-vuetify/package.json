@@ -16,7 +16,7 @@
 		"generate": "nuxt generate",
 		"preview": "nuxt preview",
 		"postinstall": "nuxt prepare",
-		"lint:js": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore .",
+		"lint": "eslint --ext \".ts,.vue\" --ignore-path .gitignore .",
 		"lint:prettier": "prettier --check .",
 		"lint": "run-s lint:js lint:prettier",
 		"lint:fix": "prettier --write --list-different . && npm run lint:js --fix"
