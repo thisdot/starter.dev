@@ -35,7 +35,6 @@ const resetCount = counterStore.$reset.bind(counterStore);
 			<v-btn
 				class="ma-2 bg-primary font-weight-bold"
 				variant="tonal"
-				:disabled="counterStore.counter === 0"
 				@click="decrementCount"
 			>
 				decrement
