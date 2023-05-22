@@ -55,7 +55,7 @@ watch(
 			:to="{
 				path: '/greet',
 				query: {
-					greeting: 'young padawan',
+					greeting: 'young padawan', ???
 				},
 			}"
 			class="text-subtitle-1 text-blue-darken-2 d-flex flex-column justify-center align-center"
