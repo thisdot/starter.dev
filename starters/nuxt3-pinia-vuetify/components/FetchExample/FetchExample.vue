@@ -49,20 +49,6 @@ watch(
 				</p>
 			</div>
 		</div>
-
-		<nuxt-link
-			v-if="!route.query.greeting"
-			:to="{
-				path: '/greet',
-				query: {
-					greeting: 'young padawan', ???
-				},
-			}"
-			class="text-subtitle-1 text-blue-darken-2 d-flex flex-column justify-center align-center"
-		>
-			Try out a different greeting by adding a query param! (e.g.
-			?greeting=Hello)
-		</nuxt-link>
 	</div>
 </template>
 
