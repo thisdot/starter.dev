@@ -18,7 +18,6 @@
 		"postinstall": "nuxt prepare",
 		"lint": "eslint --ext \".ts,.vue\" --ignore-path .gitignore .",
 		"lint:prettier": "prettier --check .",
-		"lint": "run-s lint:js lint:prettier",
 		"lint:fix": "prettier --write --list-different . && npm run lint:js --fix"
 	},
 	"devDependencies": {
@@ -41,6 +40,6 @@
 		"vuetify": "3.1.11"
 	},
 	"overrides": {
-		"vue": "latest"
+		"vue": "3.3.4"
 	}
 }
