@@ -12,9 +12,10 @@
 
 <style scoped>
 .home__title {
-	width: 80%;
-	padding: 1% 2%;
-	margin: 0 auto 5%;
+	width: 60rem;
+	max-width: 90%;
+	padding: 0.75em 0.25em;
+	margin: 0 auto 4em;
 	border-radius: 4px;
 	background: var(--lightBlue);
 }

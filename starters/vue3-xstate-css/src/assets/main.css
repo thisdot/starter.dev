@@ -9,8 +9,8 @@
 
 a {
 	color: var(--mediumBlue);
-	font-size: 1.2rem;
-	margin-bottom: 1%;
+	font-size: 1.25rem;
+	margin-bottom: 0.75em;
 }
 
 a:hover {

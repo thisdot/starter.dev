@@ -36,12 +36,11 @@ const { state } = useMachine(greetMachine(providedQuery), {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 90%;
-	margin: 3% auto;
+	margin: 2em auto;
 }
 
 .fetch__section p {
-	font-size: 1.3rem;
+	font-size: 1.25rem;
 }
 
 .fetch__section-title {
@@ -56,18 +55,18 @@ const { state } = useMachine(greetMachine(providedQuery), {
 
 .fetch__section-message-fail {
 	background-color: var(--red);
-	padding: 0.5% 2%;
-	border-radius: 3px;
+	padding: 0.25em 0.5em;
+	border-radius: 4px;
 }
 
 .fetch__section-loader {
 	background-color: var(--gray);
 	height: 1.7rem;
-	border-radius: 3px;
+	border-radius: 4px;
 }
 
 .fetch__home-link {
-	margin-top: 2%;
+	margin-top: 0.5em;
 	text-align: center;
 }
 

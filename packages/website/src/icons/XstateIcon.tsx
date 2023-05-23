@@ -14,11 +14,11 @@ export function XstateIcon({ size = 274, className }: Props) {
         <g id="Layer_6">
           <path
             d="M55.8,10.4L55.8,10.4h19.5L55.6,44.6l0,0C49.6,33.9,49.7,20.9,55.8,10.4z"
-            fill="var(--fill, black)"
+            fill="black"
           />
           <polygon
             points="75.4,88.1 30.5,10.4 11,10.4 33.4,49.3 11,88.1 30.5,88.1 43.2,66.2 55.8,88.1"
-            fill="var(--fill, black)"
+            fill="black"
           />
         </g>
         <g className="st0">
@@ -32,19 +32,19 @@ export function XstateIcon({ size = 274, className }: Props) {
           />
           <path
             d="M135.5,34.2h-10.9v-5.5h27.8v5.5h-10.9v35.5h-6V34.2z"
-            fill="var(--fill, black)"
+            fill="black"
           />
           <path
             d="M180.9,60.5h-15.1l-3.1,9.2h-6.4l14.4-41h5l14.4,41H184L180.9,60.5z M179.2,55l-5.7-17.9h-0.1L167.6,55H179.2z"
-            fill="var(--fill, black)"
+            fill="black"
           />
           <path
             d="M205.4,34.2h-10.9v-5.5h27.8v5.5h-10.9v35.5h-6V34.2z"
-            fill="var(--fill, black)"
+            fill="black"
           />
           <path
             d="M234.2,28.7h25.4v5.8h-19.4v11.7h16.5v5.5h-16.5v12.1h19.4v5.8h-25.4V28.7z"
-            fill="var(--fill, black)"
+            fill="black"
           />
         </g>
       </g>

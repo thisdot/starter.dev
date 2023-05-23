@@ -11,6 +11,6 @@ h1 {
 	font-weight: bold;
 	text-align: center;
 	border-bottom: 3px solid var(--lightBlue);
-	padding-bottom: 1%;
+	padding-bottom: 0.5em;
 }
 </style>
