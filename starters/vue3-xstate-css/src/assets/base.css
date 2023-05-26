@@ -1,0 +1,32 @@
+:root {
+	--white: #ffffff;
+	--gray: lightgray;
+	--black: #000000;
+	--lightBlue: #006cff;
+	--mediumBlue: #004fbb;
+	--darkBlue: #00347b;
+	--red: lightcoral;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	position: relative;
+	font-weight: normal;
+}
+
+body {
+	min-height: 100vh;
+	color: var(--black);
+	background: var(--white);
+	transition: color 0.5s, background-color 0.5s;
+	line-height: 1.6;
+	font-family: Roboto, Ubuntu, 'Fira Sans', 'Droid Sans', sans-serif;
+	font-size: 16px;
+	letter-spacing: 0.05rem;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}

@@ -15,5 +15,6 @@
   "solidjs-tailwind": "SolidJS and TailwindCSS",
   "solidstart-tanstackquery-tailwind-modules": "Solid Start, TanStack Query and Tailwind CSS with CSS Modules",
   "svelte-kit-scss": "SvelteKit and SCSS",
-  "vue3-apollo-quasar": "Vue3, Apollo, and Quasar"
+  "vue3-apollo-quasar": "Vue3, Apollo, and Quasar",
+  "vue3-xstate-css": "Vue 3, XState, and CSS"
 }
