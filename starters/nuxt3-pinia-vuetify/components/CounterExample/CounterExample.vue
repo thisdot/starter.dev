@@ -3,6 +3,8 @@ import { useCounterStore } from '@/store/counterStore';
 
 const counterStore = useCounterStore();
 
+const counter = computed(() => counterStore.counter);
+
 const incrementCount = () => counterStore.counter++;
 const decrementCount = () => counterStore.counter--;
 
@@ -22,7 +24,7 @@ const resetCount = counterStore.$reset.bind(counterStore);
 		<div class="d-flex flex-row justify-space-evenly align-center py-5">
 			<p class="text-h5 mr-5 font-weight-bold">
 				Count:
-				<span>{{ counterStore.counter }}</span>
+				<span>{{ counter }}</span>
 			</p>
 			<v-btn
 				class="ma-2 bg-primary font-weight-bold"

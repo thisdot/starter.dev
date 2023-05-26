@@ -13,4 +13,9 @@ export default defineNuxtConfig({
 			'process.env.DEBUG': false,
 		},
 	},
-});
+	runtimeConfig: {
+		public: {
+			baseUrl: process.env.BASE_URL || '/',
+		}
+	}
+})

@@ -1,5 +1,8 @@
 <script lang="ts" setup>
 const Route = useRoute();
+const {
+	public: { baseUrl },
+} = useRuntimeConfig();
 </script>
 
 <template>
@@ -9,8 +12,8 @@ const Route = useRoute();
 		<NuxtPage />
 
 		<NuxtLink
-			v-if="Route.path !== '/'"
-			to="/"
+			v-if="Route.path !== baseUrl"
+			:to="baseUrl"
 			class="text-h6 text-primary mt-3"
 		>
 			Return Home
