@@ -27,7 +27,7 @@ import 'dotenv/config';
 		BullModule.registerQueue({
 			name: 'queue',
 			connection: {
-				host: '127.0.0.1',
+				host: 'localhost',
 				port: 6380,
 			},
 		}),
