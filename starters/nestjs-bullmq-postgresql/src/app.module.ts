@@ -3,6 +3,7 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { BullModule } from '@nestjs/bullmq';
 import { Dialect } from 'sequelize';
 import { TechnologyModule } from './technology/technology.module';
+import { HealthModule } from './health/health.module';
 import 'dotenv/config';
 
 @Module({
@@ -31,6 +32,7 @@ import 'dotenv/config';
 			},
 		}),
 		TechnologyModule,
+		HealthModule,
 	],
 })
 export class AppModule {}
