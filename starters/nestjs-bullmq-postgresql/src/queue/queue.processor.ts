@@ -2,13 +2,13 @@ import { OnWorkerEvent, Processor, WorkerHost } from '@nestjs/bullmq';
 import { Job } from 'bullmq';
 
 @Processor('queue')
-class TestProcessor extends WorkerHost {
+class QueueProcessor extends WorkerHost {
 	async process(job: Job<any, any, string>): Promise<any> {
-		// do some stuff
+		console.log(`Processing job ${job}`);
 	}
 
 	@OnWorkerEvent('completed')
 	onCompleted() {
-		// do some stuff
+		console.log('Job Completed');
 	}
 }
