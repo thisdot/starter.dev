@@ -28,7 +28,7 @@ declare global {
 	}
 }
 
-Cypress.Commands.add('mount', (component, options) => {
+Cypress.Commands.add('mount', (component, options = {}) => {
 	options.global = options.global || {};
 	options.global.provide = options.global.provide || {};
 	return mount(component, options);

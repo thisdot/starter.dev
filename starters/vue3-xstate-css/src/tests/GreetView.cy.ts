@@ -2,7 +2,7 @@ import GreetView from '../views/GreetView.vue';
 
 describe('<GreetView />', () => {
 	it('renders', () => {
-		cy.mount(GreetView, {});
+		cy.mount(GreetView);
 	});
 
 	it('should display a message with my greeting when I pass in a greeting', () => {
