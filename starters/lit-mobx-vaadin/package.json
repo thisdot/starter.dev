@@ -1,6 +1,7 @@
 {
   "name": "lit-mobx-vaadin",
   "description": "Lit, Mobx, and Vaadin",
+  "hasShowcase": false,
   "keywords": [
     "lit",
     "mobx",
