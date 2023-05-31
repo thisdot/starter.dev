@@ -4,25 +4,25 @@ import { fromRollup } from '@web/dev-server-rollup';
 const replace = fromRollup(rollupReplace);
 
 export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
-  watch: true,
+	watch: true,
 
-  /** Resolve bare module imports */
-  nodeResolve: {
-    exportConditions: ['browser', 'development'],
-  },
+	/** Resolve bare module imports */
+	nodeResolve: {
+		exportConditions: ['browser', 'development'],
+	},
 
-  /** Compile JS for older browsers. Requires @web/dev-server-esbuild plugin */
-  // esbuildTarget: 'auto'
+	/** Compile JS for older browsers. Requires @web/dev-server-esbuild plugin */
+	// esbuildTarget: 'auto'
 
-  /** Set appIndex to enable SPA routing */
-  appIndex: './index.html',
+	/** Set appIndex to enable SPA routing */
+	appIndex: './index.html',
 
-  plugins: [
-    replace({
-      preventAssignment: true,
-      'process.env.NODE_ENV': JSON.stringify('development'),
-    }),
-  ],
+	plugins: [
+		replace({
+			preventAssignment: true,
+			'process.env.NODE_ENV': JSON.stringify('development'),
+		}),
+	],
 
-  // See documentation for all available options
+	// See documentation for all available options
 });

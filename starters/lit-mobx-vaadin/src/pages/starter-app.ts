@@ -5,15 +5,15 @@ import { theme } from '../styles/theme.js';
 
 @customElement('starter-app')
 export class StarterApp extends LitElement {
-  @query('#outlet', true) private outlet!: HTMLDivElement;
+	@query('#outlet', true) private outlet!: HTMLDivElement;
 
-  static styles = [theme];
+	static styles = [theme];
 
-  firstUpdated() {
-    router.setOutlet(this.outlet);
-  }
+	firstUpdated() {
+		router.setOutlet(this.outlet);
+	}
 
-  render() {
-    return html`<div id="outlet"></div>`;
-  }
+	render() {
+		return html`<div id="outlet"></div>`;
+	}
 }

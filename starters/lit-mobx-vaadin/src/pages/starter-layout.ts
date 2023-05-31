@@ -5,11 +5,11 @@ import '@vaadin/app-layout';
 
 @customElement('starter-layout')
 export class StarterLayout extends LitElement {
-  render() {
-    return html`
-      <vaadin-app-layout>
-        <slot></slot>
-      </vaadin-app-layout>
-    `;
-  }
+	render() {
+		return html`
+			<vaadin-app-layout>
+				<slot></slot>
+			</vaadin-app-layout>
+		`;
+	}
 }

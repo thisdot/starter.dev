@@ -9,42 +9,42 @@ import '../../components/fetch/fetch.js';
 
 @customElement('starter-fetch')
 export class StarterFetch extends PageMixin(MobxLitElement) {
-  protected state = starterState;
+	protected state = starterState;
 
-  render() {
-    return html`
-      <vaadin-vertical-layout theme="padding center">
-        <h1>Fetch Data from API</h1>
-        <td-fetch message="${this.state.fetchMessage}"></td-fetch>
-        <nav>
-          <ul>
-            <li><a href="/">Return Home</a></li>
-          </ul>
-        </nav>
-      </vaadin-vertical-layout>
-    `;
-  }
+	render() {
+		return html`
+			<vaadin-vertical-layout theme="padding center">
+				<h1>Fetch Data from API</h1>
+				<td-fetch message="${this.state.fetchMessage}"></td-fetch>
+				<nav>
+					<ul>
+						<li><a href="/">Return Home</a></li>
+					</ul>
+				</nav>
+			</vaadin-vertical-layout>
+		`;
+	}
 
-  connectedCallback() {
-    super.connectedCallback();
+	connectedCallback() {
+		super.connectedCallback();
 
-    this.state.setFetchMessage('');
-  }
+		this.state.setFetchMessage('');
+	}
 
-  firstUpdated(
-    changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>,
-  ) {
-    super.firstUpdated(changedProperties);
+	firstUpdated(
+		changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>,
+	) {
+		super.firstUpdated(changedProperties);
 
-    fetchMessage('lit-mobx-vaadin starter.dev!')
-      .then(message => {
-        this.state.setFetchMessage(message);
-      })
-      .catch(error => {
-        console.error(error);
-        this.state.setFetchMessage(
-          'Sorry, something went wrong. Please try again.',
-        );
-      });
-  }
+		fetchMessage('lit-mobx-vaadin starter.dev!')
+			.then(message => {
+				this.state.setFetchMessage(message);
+			})
+			.catch(error => {
+				console.error(error);
+				this.state.setFetchMessage(
+					'Sorry, something went wrong. Please try again.',
+				);
+			});
+	}
 }

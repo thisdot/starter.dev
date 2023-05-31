@@ -6,24 +6,24 @@ import './pages/home/starter-home.js';
 import './pages/starter-layout.js';
 
 const routes: Route[] = [
-  {
-    path: '',
-    component: 'starter-layout',
-    children: [
-      {
-        path: '',
-        component: 'starter-home',
-      },
-      {
-        path: 'counter',
-        component: 'starter-counter',
-      },
-      {
-        path: 'api-example',
-        component: 'starter-fetch',
-      },
-    ],
-  },
+	{
+		path: '',
+		component: 'starter-layout',
+		children: [
+			{
+				path: '',
+				component: 'starter-home',
+			},
+			{
+				path: 'counter',
+				component: 'starter-counter',
+			},
+			{
+				path: 'api-example',
+				component: 'starter-fetch',
+			},
+		],
+	},
 ];
 
 export const router = new Router(null);

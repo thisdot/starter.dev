@@ -1,29 +1,29 @@
 import { makeAutoObservable } from 'mobx';
 
 export class StarterState {
-  count = 0;
+	count = 0;
 
-  fetchMessage = '';
+	fetchMessage = '';
 
-  constructor() {
-    makeAutoObservable(this);
-  }
+	constructor() {
+		makeAutoObservable(this);
+	}
 
-  incrementCount() {
-    this.count += 1;
-  }
+	incrementCount() {
+		this.count += 1;
+	}
 
-  decrementCount() {
-    this.count -= 1;
-  }
+	decrementCount() {
+		this.count -= 1;
+	}
 
-  resetCount() {
-    this.count = 0;
-  }
+	resetCount() {
+		this.count = 0;
+	}
 
-  setFetchMessage(fetchMessage: string) {
-    this.fetchMessage = fetchMessage;
-  }
+	setFetchMessage(fetchMessage: string) {
+		this.fetchMessage = fetchMessage;
+	}
 }
 
 export const starterState = new StarterState();
