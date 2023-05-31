@@ -16,7 +16,7 @@ export class StarterHome extends PageMixin(LitElement) {
 							<a href="/counter">See Counter example component</a>
 						</li>
 						<li>
-							<a href="/api-example">See Fetch example component</a>
+							<a href="/greet">See Fetch example component</a>
 						</li>
 					</ul>
 				</nav>

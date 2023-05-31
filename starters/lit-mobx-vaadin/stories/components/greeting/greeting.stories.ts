@@ -1,10 +1,10 @@
 import { html, TemplateResult } from 'lit';
 
-import '../../../src/components/fetch/fetch.js';
+import '../../../src/components/greeting/greeting.js';
 
 export default {
-	title: 'Fetch',
-	component: 'td-fetch',
+	title: 'Greeting',
+	component: 'td-greeting',
 	argTypes: {
 		message: {
 			table: {
@@ -28,7 +28,7 @@ interface ArgTypes {
 }
 
 const Template: Story<ArgTypes> = ({ message = 'Example Message' }) =>
-	html`<td-fetch message="${message}"></td-fetch>`;
+	html`<td-greeting message="${message}"></td-greeting>`;
 
-export const Fetch = Template.bind({});
-Fetch.args = {};
+export const Greeting = Template.bind({});
+Greeting.args = {};

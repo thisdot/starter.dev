@@ -20,5 +20,5 @@ test('has page links', async ({ page }) => {
 
 	await expect(
 		page.getByRole('link', { name: 'See Fetch example component' }),
-	).toHaveAttribute('href', '/api-example');
+	).toHaveAttribute('href', '/greet');
 });

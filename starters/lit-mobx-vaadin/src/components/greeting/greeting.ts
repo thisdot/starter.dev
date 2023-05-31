@@ -1,7 +1,7 @@
 import { LitElement, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
-@customElement('td-fetch')
+@customElement('td-greeting')
 export class StarterFetch extends LitElement {
 	@property({ type: String }) message = '';
 

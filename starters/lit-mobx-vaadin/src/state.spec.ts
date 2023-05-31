@@ -31,17 +31,17 @@ describe('state', () => {
 		});
 	});
 
-	describe('fetch message', () => {
+	describe('greeting message', () => {
 		it('initial state', async () => {
 			const state = new StarterState();
-			expect(state.fetchMessage).to.equal('');
+			expect(state.greetingMessage).to.equal('');
 		});
 
-		it('setFetchMessage', async () => {
+		it('setGreetingMessage', async () => {
 			const state = new StarterState();
-			expect(state.fetchMessage).to.equal('');
-			state.setFetchMessage('Hello');
-			expect(state.fetchMessage).to.equal('Hello');
+			expect(state.greetingMessage).to.equal('');
+			state.setGreetingMessage('Hello');
+			expect(state.greetingMessage).to.equal('Hello');
 		});
 	});
 

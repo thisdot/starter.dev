@@ -3,7 +3,7 @@ import { makeAutoObservable } from 'mobx';
 export class StarterState {
 	count = 0;
 
-	fetchMessage = '';
+	greetingMessage = '';
 
 	constructor() {
 		makeAutoObservable(this);
@@ -21,8 +21,8 @@ export class StarterState {
 		this.count = 0;
 	}
 
-	setFetchMessage(fetchMessage: string) {
-		this.fetchMessage = fetchMessage;
+	setGreetingMessage(greetingMessage: string) {
+		this.greetingMessage = greetingMessage;
 	}
 }
 

@@ -1,18 +1,18 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import './fetch.js';
-import type { StarterFetch } from './fetch.js';
+import './greeting.js';
+import type { StarterFetch } from './greeting.js';
 
 describe('StarterFetch', () => {
 	it('defaults to loading state', async () => {
-		const el: StarterFetch = await fixture(html` <td-fetch></td-fetch> `);
+		const el: StarterFetch = await fixture(html` <td-greeting></td-greeting> `);
 
 		expect(el.shadowRoot?.querySelectorAll('.loader')).to.have.length(1);
 	});
 
 	it('shows loading state if message is undefined', async () => {
 		const el: StarterFetch = await fixture(html`
-			<td-fetch .message=${undefined}></td-fetch>
+			<td-greeting .message=${undefined}></td-greeting>
 		`);
 
 		expect(el.shadowRoot?.querySelectorAll('.loader')).to.have.length(1);
@@ -20,7 +20,7 @@ describe('StarterFetch', () => {
 
 	it('shows loading state if message is null', async () => {
 		const el: StarterFetch = await fixture(html`
-			<td-fetch .message=${null}></td-fetch>
+			<td-greeting .message=${null}></td-greeting>
 		`);
 
 		expect(el.shadowRoot?.querySelectorAll('.loader')).to.have.length(1);
@@ -28,7 +28,7 @@ describe('StarterFetch', () => {
 
 	it('shows loading state if message is empty string', async () => {
 		const el: StarterFetch = await fixture(html`
-			<td-fetch .message=${''}></td-fetch>
+			<td-greeting .message=${''}></td-greeting>
 		`);
 
 		expect(el.shadowRoot?.querySelectorAll('.loader')).to.have.length(1);
@@ -38,7 +38,7 @@ describe('StarterFetch', () => {
 		const msg = 'Hello World';
 		const displayMessage = `Message: ${msg}`;
 		const el: StarterFetch = await fixture(html`
-			<td-fetch .message=${msg}></td-fetch>
+			<td-greeting .message=${msg}></td-greeting>
 		`);
 
 		const allNodes = el.shadowRoot?.querySelectorAll('*') || [];

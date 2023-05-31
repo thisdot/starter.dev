@@ -1,8 +1,8 @@
 import { Route, Router } from '@vaadin/router';
 
-import './pages/counter-example/starter-counter.js';
-import './pages/fetch-example/starter-fetch.js';
-import './pages/home/starter-home.js';
+import './pages/counter/counter.js';
+import './pages/greeting/greeting.js';
+import './pages/home/home.js';
 import './pages/starter-layout.js';
 
 const routes: Route[] = [
@@ -19,8 +19,8 @@ const routes: Route[] = [
 				component: 'starter-counter',
 			},
 			{
-				path: 'api-example',
-				component: 'starter-fetch',
+				path: 'greet',
+				component: 'starter-greeting',
 			},
 		],
 	},
