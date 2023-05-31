@@ -9,5 +9,7 @@ export const theme = css`
 		--td-link-color: var(--td-primary-color);
 		--td-link-focus-color: #1e50c3;
 		--td-link-visited-color: #4623eb;
+		--td-error-background: #fee2e1;
+		--td-error-color: #ef4645;
 	}
 `;

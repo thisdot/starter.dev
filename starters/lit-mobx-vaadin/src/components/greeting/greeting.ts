@@ -2,7 +2,7 @@ import { LitElement, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
 @customElement('td-greeting')
-export class StarterFetch extends LitElement {
+export class Greeting extends LitElement {
 	@property({ type: String }) message = '';
 
 	static styles = [

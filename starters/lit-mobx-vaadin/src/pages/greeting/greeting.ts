@@ -1,5 +1,5 @@
 import { html, PropertyValueMap } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { customElement, state } from 'lit/decorators.js';
 import { MobxLitElement } from '@adobe/lit-mobx';
 import { PageMixin } from '../page.mixin.js';
 import { starterState } from '../../state.js';
@@ -8,14 +8,17 @@ import { fetchMessage } from '../../api/fetch.js';
 import '../../components/greeting/greeting.js';
 
 @customElement('starter-greeting')
-export class StarterFetch extends PageMixin(MobxLitElement) {
+export class StarterGreeting extends PageMixin(MobxLitElement) {
 	protected state = starterState;
+
+	@state()
+	protected error = false;
 
 	render() {
 		return html`
 			<vaadin-vertical-layout theme="padding center">
 				<h1>Fetch Data from API</h1>
-				<td-greeting message="${this.state.greetingMessage}"></td-greeting>
+				${!this.error ? html`<td-greeting message="${this.state.greetingMessage}"></td-greeting>`:html`<td-error>Failed to fetch<td-error>`}
 				<nav>
 					<ul>
 						<li><a href="/">Return Home</a></li>

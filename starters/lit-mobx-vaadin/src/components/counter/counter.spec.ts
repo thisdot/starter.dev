@@ -2,28 +2,28 @@ import { elementUpdated, expect, fixture, html } from '@open-wc/testing';
 
 import { starterState } from '../../state.js';
 import './counter.js';
-import type { StarterCounter } from './counter.js';
+import type { Counter } from './counter.js';
 
-describe('StarterCounter', () => {
+describe('Counter', () => {
 	beforeEach(() => {
 		starterState.count = 0;
 	});
 
 	it('has required elements 3 buttons and 1 span', async () => {
-		const el: StarterCounter = await fixture(html` <td-counter></td-counter> `);
+		const el: Counter = await fixture(html` <td-counter></td-counter> `);
 
 		expect(el.shadowRoot?.querySelectorAll('span')).to.have.length(1);
 		expect(el.shadowRoot?.querySelectorAll('vaadin-button')).to.have.length(3);
 	});
 
 	it('is shows a count with default value 0', async () => {
-		const el: StarterCounter = await fixture(html` <td-counter></td-counter> `);
+		const el: Counter = await fixture(html` <td-counter></td-counter> `);
 
 		expect(el.shadowRoot?.querySelector('span')).to.have.text('Count: 0');
 	});
 
 	it('it increases count value when increment button is clicked', async () => {
-		const el: StarterCounter = await fixture(html` <td-counter></td-counter> `);
+		const el: Counter = await fixture(html` <td-counter></td-counter> `);
 
 		const span = el.shadowRoot?.querySelector('span');
 		expect(span).to.have.text('Count: 0');
@@ -45,7 +45,7 @@ describe('StarterCounter', () => {
 	});
 
 	it('it decreases count value when decrement button is clicked', async () => {
-		const el: StarterCounter = await fixture(html` <td-counter></td-counter> `);
+		const el: Counter = await fixture(html` <td-counter></td-counter> `);
 
 		const span = el.shadowRoot?.querySelector('span');
 		expect(span).to.have.text('Count: 0');
@@ -67,7 +67,7 @@ describe('StarterCounter', () => {
 	});
 
 	it('it resets count value when reset button is clicked', async () => {
-		const el: StarterCounter = await fixture(html` <td-counter></td-counter> `);
+		const el: Counter = await fixture(html` <td-counter></td-counter> `);
 
 		const span = el.shadowRoot?.querySelector('span');
 		expect(span).to.have.text('Count: 0');

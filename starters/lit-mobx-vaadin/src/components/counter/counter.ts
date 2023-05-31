@@ -7,7 +7,7 @@ import '../vaadin-button/vaadin-button.js';
 import '../vaadin-horizontal-layout/vaadin-horizontal-layout.js';
 
 @customElement('td-counter')
-export class StarterCounter extends MobxLitElement {
+export class Counter extends MobxLitElement {
 	protected state = starterState;
 
 	render() {

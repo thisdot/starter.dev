@@ -16,7 +16,6 @@ export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
 
 	/** Set appIndex to enable SPA routing */
 	appIndex: './index.html',
-
 	plugins: [
 		replace({
 			preventAssignment: true,
