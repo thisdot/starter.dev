@@ -24,8 +24,6 @@ export class Error extends LitElement {
 	];
 
 	render() {
-		return html`
-			<p class="error">${this.message}</p>
-		`;
+		return html` <p class="error">${this.message}</p> `;
 	}
 }
