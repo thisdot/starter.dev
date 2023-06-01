@@ -16,24 +16,27 @@
 		"test": "npm run prepare && jest",
 		"start": "npm run prepare && prisma migrate dev && nodemon",
 		"dev:test": "jest",
-		"dev:start": "nodemon",
+		"dev": "nodemon",
 		"build": "npm run prepare && tsc --project tsconfig.build.json",
 		"lint": "eslint \"src/**/*.ts\"",
 		"lint:fix": "npm run lint --fix",
 		"format": "prettier --write . && npm run prisma:format",
-		"format:codegen": "prettier --write \"src/graphql/schema/generated/**/*\"",
+		"format:codegen": "prettier --write \"src/endpoints/graphql/schema/generated/**/*\"",
 		"prisma:format": "prisma format",
 		"prisma:migrate:reset": "prisma migrate reset",
 		"prisma:migrate:dev": "prisma migrate dev",
 		"prisma:generate": "prisma generate",
 		"prisma:deploy": "prisma migrate deploy",
-		"db:seed": "ts-node prisma/seed.ts",
+		"db:seed": "ts-node src/lib/db/seed.ts",
 		"infrastructure:up": "docker compose up -d",
 		"infrastructure:pause": "docker compose stop",
 		"infrastructure:down": "docker compose down --remove-orphans --volumes",
-		"queue:run": "ts-node queue/worker.ts"
+		"queue:run": "ts-node src/endpoints/job-generator/worker.ts"
 	},
 	"author": "",
+	"prisma": {
+		"schema": "src/lib/db/schema.prisma"
+	},
 	"devDependencies": {
 		"@apollo/utils.withrequired": "2.0.0",
 		"@graphql-codegen/cli": "2.16.4",

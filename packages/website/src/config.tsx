@@ -50,6 +50,8 @@ import {
   ContentfulIcon,
   VuetifyIcon,
   Nuxt3Icon,
+  XstateIcon,
+  CssIcon,
 } from './icons';
 
 export interface NavItem {
@@ -400,6 +402,18 @@ export const TECHNOLOGIES = [
     name: 'Vuetify',
     tags: ['Styling'],
     Icon: (props) => <VuetifyIcon {...props} />,
+  },
+  {
+    key: 'xstate',
+    name: 'XState',
+    tags: ['Data Management'],
+    Icon: (props) => <XstateIcon {...props} />,
+  },
+  {
+    key: 'css',
+    name: 'CSS',
+    tags: ['Styling'],
+    Icon: (props) => <CssIcon {...props} />,
   },
 ];
 

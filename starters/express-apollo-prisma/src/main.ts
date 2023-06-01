@@ -3,11 +3,11 @@ import express from 'express';
 import http from 'http';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import { graphqlServer, createGraphqlServerMiddlewareAsync } from './graphql';
+import { graphqlServer, createGraphqlServerMiddlewareAsync } from './endpoints/graphql';
 import * as dotenv from 'dotenv';
-import { connectRedisClient } from './cache/redis';
-import { createHealthcheckHandler } from './healthcheck';
-import { jobGeneratorHandler } from './queue/job-generator-handler';
+import { connectRedisClient } from './lib/cache/redis';
+import { createHealthcheckHandler } from './endpoints/health';
+import { jobGeneratorHandler } from './endpoints/job-generator/job-generator-handler';
 import { PrismaClient } from '@prisma/client';
 
 dotenv.config();

@@ -1,4 +1,4 @@
-import { Technology } from '../graphql/schema/generated/types';
+import { Technology } from '../endpoints/graphql/schema/generated/types';
 
 let technologyIdCount = 0;
 export const createMockTechnology = (): Technology => {

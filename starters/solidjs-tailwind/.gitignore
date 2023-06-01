@@ -1,5 +1,24 @@
-node_modules
 dist
+.solid
+.output
+.vercel
+.netlify
+netlify
 
-# .vscode
+# dependencies
+/node_modules
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+*.launch
+.settings/
 .vscode/*
+
+# Temp
+gitignore
+
+# System Files
+.DS_Store
+Thumbs.db
