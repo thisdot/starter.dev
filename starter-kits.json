@@ -9,6 +9,7 @@
   "next12-chakra-ui": "NextJS 12 and Chakra UI",
   "next12-react-query-tailwind": "NextJS 12, React Query, and TailwindCSS",
   "nuxt2-pinia-tailwind": "Nuxt 2, Pinia and TailwindCSS",
+  "nuxt3-pinia-vuetify": "Nuxt 3, Pinia and Vuetify",
   "qwik-graphql-tailwind": "Qwik, GraphQL, and TailwindCSS",
   "remix-gql-tailwind": "Remix, GQL and TailwindCSS",
   "serverless-framework-apollo-contentful": "Serverless Framework, Apollo Server, and Contentful CMS",

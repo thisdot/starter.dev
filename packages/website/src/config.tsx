@@ -48,6 +48,8 @@ import {
   ZustandIcon,
   PrismaIcon,
   ContentfulIcon,
+  VuetifyIcon,
+  Nuxt3Icon,
   XstateIcon,
   CssIcon,
 } from './icons';
@@ -136,6 +138,12 @@ export const TECHNOLOGIES = [
     name: 'NuxtJS 2',
     tags: ['Framework'],
     Icon: (props) => <NuxtIcon {...props} />,
+  },
+  {
+    key: 'nuxt 3',
+    name: 'NuxtJS 3',
+    tags: ['Framework'],
+    Icon: (props) => <Nuxt3Icon {...props} />,
   },
   {
     key: 'nuxt',
@@ -388,6 +396,12 @@ export const TECHNOLOGIES = [
     name: 'Prisma',
     tags: ['Data Management'],
     Icon: (props) => <PrismaIcon {...props} />,
+  },
+  {
+    key: 'vuetify',
+    name: 'Vuetify',
+    tags: ['Styling'],
+    Icon: (props) => <VuetifyIcon {...props} />,
   },
   {
     key: 'xstate',
