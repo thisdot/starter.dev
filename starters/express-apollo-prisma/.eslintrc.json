@@ -11,5 +11,5 @@
 		"sourceType": "module"
 	},
 	"rules": {},
-	"ignorePatterns": ["src/graphql/schema/generated/**/*"]
+	"ignorePatterns": ["src/endpoints/graphql/schema/generated/**/*"]
 }

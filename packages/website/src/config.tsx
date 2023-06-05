@@ -48,6 +48,8 @@ import {
   ZustandIcon,
   PrismaIcon,
   ContentfulIcon,
+  XstateIcon,
+  CssIcon,
   LitIcon,
   MobxIcon,
   VaadinIcon,
@@ -391,6 +393,12 @@ export const TECHNOLOGIES = [
     Icon: (props) => <PrismaIcon {...props} />,
   },
   {
+    key: 'css',
+    name: 'CSS',
+    tags: ['Styling'],
+    Icon: (props) => <CssIcon {...props} />,
+  },
+  {
     key: 'lit',
     name: 'Lit',
     tags: ['Core UI'],
@@ -407,6 +415,10 @@ export const TECHNOLOGIES = [
     name: 'Vaadin',
     tags: ['Framework'],
     Icon: (props) => <VaadinIcon {...props} />,
+    key: 'xstate',
+    name: 'XState',
+    tags: ['Data Management'],
+    Icon: (props) => <XstateIcon {...props} />,
   },
 ];
 
