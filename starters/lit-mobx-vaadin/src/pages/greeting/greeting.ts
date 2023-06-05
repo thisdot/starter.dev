@@ -7,6 +7,7 @@ import { starterState } from '../../state.js';
 import { PageMixin } from '../page.mixin.js';
 
 import '../../components/greeting/greeting.js';
+import '../../components/error-message/error-message.js';
 
 @customElement('starter-greeting')
 export class StarterGreeting
@@ -28,7 +29,9 @@ export class StarterGreeting
 					? html`<td-greeting
 							message="${this.state.greetingMessage}"
 					  ></td-greeting>`
-					: html`<td-error>Failed to fetch<td-error></td-error></td-error>`}
+					: html`<td-error-message
+							message="Failed to fetch"
+					  ></td-error-message>`}
 				<nav>
 					<ul>
 						<li><a href="/">Return Home</a></li>
@@ -59,11 +62,8 @@ export class StarterGreeting
 			.then(message => {
 				this.state.setGreetingMessage(message);
 			})
-			.catch(error => {
-				console.error(error);
-				this.state.setGreetingMessage(
-					'Sorry, something went wrong. Please try again.',
-				);
+			.catch(() => {
+				this.error = true;
 			});
 	}
 }

@@ -1,10 +1,10 @@
 import { html, TemplateResult } from 'lit';
 
-import '../../../src/components/error/error.js';
+import '../../../src/components/error-message/error-message.js';
 
 export default {
-	title: 'Error',
-	component: 'td-error',
+	title: 'Error message',
+	component: 'td-error-message',
 	argTypes: {
 		message: {
 			table: {
@@ -28,7 +28,7 @@ interface ArgTypes {
 }
 
 const Template: Story<ArgTypes> = ({ message = 'Example Error Message' }) =>
-	html`<td-error message="${message}"></td-error>`;
+	html`<td-error-message message=${message}></td-error-message>`;
 
-export const Error = Template.bind({});
-Error.args = {};
+export const ErrorMessage = Template.bind({});
+ErrorMessage.args = {};

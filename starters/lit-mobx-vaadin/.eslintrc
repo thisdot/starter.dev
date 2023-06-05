@@ -21,9 +21,9 @@
 				"devDependencies": [
 					"**/*.spec.ts",
 					"playwright.config.ts",
-					"web-dev-server.config.mjs",
-					"web-test-runner.config.mjs",
-					".storybook/**/*.{js,mjs}",
+					"web-dev-server.config.js",
+					"web-test-runner.config.js",
+					".storybook/**/*.{js,mjs,cjs}",
 					"rollup.config.js"
 				]
 			}

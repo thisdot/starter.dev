@@ -1,8 +1,8 @@
 import { LitElement, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
-@customElement('td-error')
-export class Error extends LitElement {
+@customElement('td-error-message')
+export class ErrorMessage extends LitElement {
 	@property({ type: String }) message = '';
 
 	static styles = [
