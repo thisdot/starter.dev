@@ -415,6 +415,8 @@ export const TECHNOLOGIES = [
     name: 'Vaadin',
     tags: ['Framework'],
     Icon: (props) => <VaadinIcon {...props} />,
+  },
+  {
     key: 'xstate',
     name: 'XState',
     tags: ['Data Management'],
