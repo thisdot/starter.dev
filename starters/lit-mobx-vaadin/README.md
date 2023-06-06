@@ -29,6 +29,13 @@ This starter kit features Lit, Mobx and Vaadin elements.
 - [ESLint](https://eslint.org/) - Code linting
 - [Prettier](https://prettier.io/) - Code formatting
 
+## Getting Started
+
+### Prerequisites
+* Node.js 16.8 or later installed
+
+
+
 ### Example Components
 
 In the `starters/lit-mobx-vaadin/src` directory you will find a few directories organizing the project. Files are organized in directories under `src` as such:
@@ -38,10 +45,8 @@ In the `starters/lit-mobx-vaadin/src` directory you will find a few directories 
 - `pages` - contains page components that are rendered when certain routes are visited
 - `styles` - contains stylsheets used by multiple components
 
-## Installation
-
-### CLI (Recommended)
-
+### Development
+- Clone the starter kit
 ```bash
 npm create @this-dot/starter -- --kit lit-mobx-vaadin
 ```
@@ -57,23 +62,29 @@ yarn create @this-dot/starter --kit lit-mobx-vaadin
 - Run `yarn start` to start the development server.
 - Open your browser to `http://localhost:8000` to see the included example code running.
 
-### Manual
-
-```bash
-git clone https://github.com/thisdot/starter.dev.git
-```
-
-- Copy and rename the `starters/lit-mobx-vaadin` directory to the name of your new project.
-- `cd` into your project directory and run `yarn`.
-- Run `yarn start` to start the development server.
-- Open your browser to `http://localhost:8000` to see the included example code running.
-
-## Commands
+## Available Commands
 
 - `yarn start` or `yarn dev` runs your app for development, reloading on file changes
 - `yarn start:build` runs your app after it has been built using the build command
 - `yarn build` builds your app and outputs it in your `dist` directory
 - `yarn test` runs your test suite with Web Test Runner
+- `yarn test:integration` runs your test suite with Playwright
 - `yarn storybook` - Starts the Storybook UI.
-- `yarn lint` runs the linter for your project
+- `yarn storybook:build` - build Storybook as a static web application
+- `yarn lint` - runs the linter for your project
 - `yarn prettier` - Formats code for the entire project.
+- `yarn analyze` - generate manifest for web components
+
+## Project Details
+### Kit Organization / Architecture
+Routing for this kit is handling by [Vaadin Router](https://github.com/vaadin/router)
+
+UI Components are located inside the `src/components` folder. The extended/overriden Vaadin components have their own dedicated folder. Make sure to import these components from this folder and not directly from the installed module.
+
+Pages are located inside `src/pages`. Each one represents a route. These pages have some shared styles defined in the `PageMixin`. This mixin can be extended if shared functionality between pages is required.
+
+### Styling and Theme
+The project uses Vaadin Components as the main component framework. Usage of CSS variables is encouraged for theming. The default "Lumo" theme has been extended with some custom variables.
+
+## Deployment
+The `build` command creates a working app using web components, so you can deploy it to any hosting provider that supports a static site.
