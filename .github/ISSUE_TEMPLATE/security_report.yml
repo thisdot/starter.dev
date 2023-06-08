@@ -1,4 +1,4 @@
-name: Secuirty Report
+name: Security Report
 description: A template for registering security issues.
 title: '[SECURITY]: '
 labels: security
