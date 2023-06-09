@@ -46,7 +46,7 @@ npm create @this-dot/starter -- --kit deno-oak-denodb
 or
 
 ```shell
-yarn create @this-dot/starter -- --kit deno-oak-denodb
+yarn create @this-dot/starter --kit deno-oak-denodb
 ```
 
 - Follow the prompt to name your new project.
