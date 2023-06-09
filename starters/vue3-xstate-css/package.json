@@ -1,15 +1,19 @@
 {
 	"name": "vue3-xstate-css",
 	"version": "0.0.0",
-	"description": "Vue 3, XState, and CSS",
+	"description": "Vue3, XState, and CSS",
 	"keywords": [
 		"vue",
 		"xstate",
 		"css"
 	],
 	"hasShowcase": false,
+	"engines": {
+		"node": "16.18"
+	},
 	"scripts": {
 		"dev": "vite",
+		"dev:debug": "VITE_DEV_MODE='debug' vite",
 		"build": "run-p type-check build-only",
 		"preview": "vite preview",
 		"test:unit": "cypress run --component",
