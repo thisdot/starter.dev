@@ -48,7 +48,7 @@ Once you've generated your new starter kit following the instructions above:
 ## Available commands
 
 - `npm run dev` starts the local development server
-- `npm run dev:debug` starts the local dev server and launches the xstate visualizer
+- `npm run dev:debug` starts the local dev server and launches the XState visualizer
 
 - `npm run build-only` handles compiling and minifying your files
 - `npm run type-check` type checks your files
