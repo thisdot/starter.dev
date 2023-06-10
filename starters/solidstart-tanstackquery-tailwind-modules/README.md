@@ -50,7 +50,7 @@ This README is written with npm in mind but you can use other manager runners (y
 ### CLI (Recommended)
 
 ```bash
-npm create @this-dot/starter --kit solidstart-tanstackquery-tailwind-modules
+npm create @this-dot/starter -- --kit solidstart-tanstackquery-tailwind-modules
 ```
 
 - Follow the prompts to select the solidstart-tanstackquery-tailwind-modules starter kit and name your new project.
