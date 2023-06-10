@@ -17,5 +17,5 @@ import 'dotenv/config';
 		origin: process.env.origins_urls ? process.env.origins_urls.split(',') : false,
 	});
 
-	await app.listen(3000);
+	await app.listen(process.env.localhost_port || 3000);
 })();

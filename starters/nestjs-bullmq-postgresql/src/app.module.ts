@@ -10,7 +10,7 @@ import { HealthModule } from './health/health.module';
 		SequelizeModule.forRoot({
 			dialect: process.env.dialect as Dialect,
 			host: process.env.host,
-			port: Number(process.env.port),
+			port: Number(process.env.database_port),
 			username: process.env.username,
 			password: process.env.password,
 			database: process.env.database,
