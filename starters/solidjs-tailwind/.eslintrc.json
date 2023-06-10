@@ -1,9 +1,19 @@
 {
   "root": true,
-  "extends": ["eslint:recommended", "plugin:solid/recommended"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:solid/recommended",
+    "plugin:storybook/recommended"
+  ],
   "parser": "@typescript-eslint/parser",
-  "plugins": ["unused-imports", "solid"],
-  "rules":  {
+  "plugins": [
+    "unused-imports",
+    "solid"
+  ],
+  "env": {
+    "node": true
+  },
+  "rules": {
     "no-unused-vars": "off",
     "unused-imports/no-unused-imports": "error",
     "unused-imports/no-unused-vars": [
@@ -14,6 +24,7 @@
         "args": "after-used",
         "argsIgnorePattern": "^_"
       }
-    ]
+    ],
+    "no-console": "error"
   }
 }

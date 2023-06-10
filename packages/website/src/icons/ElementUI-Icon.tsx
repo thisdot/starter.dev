@@ -1,4 +1,4 @@
-import { Props } from "./types";
+import { Props } from './types';
 
 export function ElementUIIcon({ size = 48, className }: Props) {
   return (

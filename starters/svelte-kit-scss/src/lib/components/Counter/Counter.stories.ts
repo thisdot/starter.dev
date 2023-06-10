@@ -1,17 +1,20 @@
+import type { Meta, StoryObj } from '@storybook/svelte';
+
 import Counter from './Counter.svelte';
 
-export default {
+// More on how to set up stories at: https://storybook.js.org/docs/7.0/svelte/writing-stories/introduction
+const meta = {
   title: 'Example/Counter',
   component: Counter,
   parameters: {
-    // More on Story layout: https://storybook.js.org/docs/svelte/configure/story-layout
     layout: 'fullscreen',
   },
+} satisfies Meta<Counter>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+// More on writing stories with args: https://storybook.js.org/docs/7.0/svelte/writing-stories/args
+export const Primary: Story = {
+  args: {},
 };
-
-const Template = () => ({
-  Component: Counter,
-});
-
-// More on args: https://storybook.js.org/docs/svelte/writing-stories/args
-export const Primary = Template.bind({});

@@ -1,6 +1,6 @@
 {
   "name": "@this-dot/create-starter",
-  "version": "0.1.3",
+  "version": "0.1.7",
   "description": "A CLI script for generating starter.dev kits",
   "exports": {
     ".": "./create-starter.mjs"
@@ -47,9 +47,9 @@
   },
   "dependencies": {
     "kleur": "^4.1.4",
-    "node-fetch": "^3.2.4",
+    "node-fetch": "^3.2.10",
     "prompts": "^2.4.2",
-    "tiged": "^2.12.0",
+    "tiged": "^2.12.3",
     "yargs-parser": "^21.1.1"
   }
 }

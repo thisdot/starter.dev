@@ -22,7 +22,7 @@ describe('<FetchExample />', () => {
       stubs: {
         NuxtLink: true,
       },
-    }
+    };
 
     // Act
     render(FetchExample, componentOptions);
@@ -37,12 +37,15 @@ describe('<FetchExample />', () => {
   it('Should display error message', async () => {
     // Arrange
     mswServer.use(
-      rest.get('https://api.starter.dev/hello', (_, res, ctx) => {
-        return res(ctx.status(500));
-      })
+      rest.get(
+        'https://api.starter.dev/.netlify/functions/server/hello',
+        (_, res, ctx) => {
+          return res(ctx.status(500));
+        }
+      )
     );
 
-    const componentOptions = { 
+    const componentOptions = {
       mocks: {
         $nuxt: {
           context: {
@@ -53,7 +56,7 @@ describe('<FetchExample />', () => {
       stubs: {
         NuxtLink: true,
       },
-    }
+    };
 
     // Act
     render(FetchExample, componentOptions);
@@ -78,10 +81,10 @@ describe('<FetchExample />', () => {
       stubs: {
         NuxtLink: true,
       },
-    }
-    
+    };
+
     // Act
-    render(FetchExample,componentOptions);
+    render(FetchExample, componentOptions);
 
     const messageSkeleton = screen.getByTestId('message-skeleton');
 

@@ -1,3 +1,4 @@
+import { Router } from '@solidjs/router';
 import { Greeting } from '.';
 
 export default {
@@ -7,14 +8,21 @@ export default {
   parameters: {
     mockData: [
       {
-        url: 'https://api.starter.dev/hello?greeting=',
+        url: 'https://api.starter.dev/.netlify/functions/server/hello?greeting=',
         method: 'GET',
         status: 200,
-        response: () => 'Hi storybook user!',
+        response: () => 'Hi storybook user,',
         delay: 1000,
       },
     ],
   },
+
 };
 
-export const FetchExample = (args) => <Greeting {...args} />;
+const Template = (args) => (
+  <Router>
+    <Greeting {...args} />
+  </Router>
+);
+
+export const FetchExample = Template.bind({});

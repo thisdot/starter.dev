@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from 'solid-testing-library';
+import { fireEvent, render, screen } from '@solidjs/testing-library';
 import { describe, expect, it } from 'vitest';
 import { CounterExample } from '.';
 
@@ -15,5 +15,17 @@ describe('CounterExample', () => {
     fireEvent.click(button);
     const countText = await screen.getByText('Count: 1');
     expect(countText).toBeVisible();
+  });
+
+  it('should mount and decrement', async () => {
+    await render(() => <CounterExample />);
+    const button = await screen.getByText('Decrement');
+    expect(button).toBeVisible();
+    fireEvent.click(button);
+    const countText = await screen.getByText('Count: 0');
+    expect(countText).toBeVisible();
+    fireEvent.click(button);
+    const countTextNegative = await screen.getByText('Count: -1');
+    expect(countTextNegative).toBeVisible();
   });
 });

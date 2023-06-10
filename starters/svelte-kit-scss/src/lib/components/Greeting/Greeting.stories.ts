@@ -1,20 +1,22 @@
+import type { Meta, StoryObj } from '@storybook/svelte';
+
 import Greeting from './Greeting.svelte';
 
-export default {
-  component: Greeting,
+// More on how to set up stories at: https://storybook.js.org/docs/7.0/svelte/writing-stories/introduction
+const meta = {
   title: 'Example/Greeting',
-  excludeStories: /.*Data$/,
-  argTypes: {
-    message: 'from Storybook',
+  component: Greeting,
+  parameters: {
+    layout: 'fullscreen',
   },
-};
+} satisfies Meta<Greeting>;
 
-const Template = ({ ...args }) => ({
-  Component: Greeting,
-  props: args,
-});
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
-Default.args = {
-  message: 'from Storybook',
+// More on writing stories with args: https://storybook.js.org/docs/7.0/svelte/writing-stories/args
+export const Primary: Story = {
+  args: {
+    message: 'from ThisDot Labs',
+  },
 };

@@ -2,8 +2,10 @@ import Counter from '$lib/components/Counter/Counter.svelte';
 import { fireEvent, render, screen } from '@testing-library/svelte';
 
 describe('Counter Component', () => {
-  beforeEach(() => {
+  beforeEach(async () => {
     render(Counter);
+    const resetButton = screen.getByText('Reset');
+    await fireEvent.click(resetButton);
   });
 
   it('should render the component', () => {

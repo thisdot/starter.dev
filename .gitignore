@@ -21,10 +21,12 @@ build
 # storybook
 documentation.json
 
+# IDEs and editors
+.idea/
+
 # misc
 .DS_Store
 *.pem
-.vscode
 
 # debug
 npm-debug.log*
@@ -39,3 +41,6 @@ yarn-error.log*
 .env.production.local
 
 dist/
+
+# nuxt
+.nuxt/

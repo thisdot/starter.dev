@@ -21,7 +21,7 @@
   }
 
   .show {
-    display: none !important
+    display: none !important;
   }
 
   /* Text colors */
@@ -87,5 +87,11 @@
   /* Links */
   .dark-link {
     @apply text-[#95DFFF];
+  }
+
+  /* OVERRIDES */
+  .kit-page .prose :where(code):not(:where([class~='not-prose'] *)):after,
+  .kit-page .prose :where(code):not(:where([class~='not-prose'] *)):before {
+    content: '';
   }
 }

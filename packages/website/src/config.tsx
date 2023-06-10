@@ -36,6 +36,22 @@ import {
   PiniaIcon,
   QwikIcon,
   SolidJsIcon,
+  ChakraIcon,
+  ServerlessIcon,
+  DenoIcon,
+  ExpressIcon,
+  PostgresIcon,
+  TypeOrmIcon,
+  SolidStartIcon,
+  TanstackIcon,
+  ExpoIcon,
+  ZustandIcon,
+  PrismaIcon,
+  ContentfulIcon,
+  VuetifyIcon,
+  Nuxt3Icon,
+  XstateIcon,
+  CssIcon,
 } from './icons';
 
 export interface NavItem {
@@ -76,6 +92,12 @@ export const FOOTER_NAV_ITEMS = HEADER_NAV_ITEMS.filter(
 
 export const TECHNOLOGIES = [
   {
+    key: 'express',
+    name: 'Express.js',
+    tags: ['Framework'],
+    Icon: (props) => <ExpressIcon {...props} />,
+  },
+  {
     key: 'angular',
     name: 'Angular',
     tags: ['Core UI'],
@@ -99,9 +121,9 @@ export const TECHNOLOGIES = [
     tags: ['Core UI'],
     Icon: (props) => <VueIcon {...props} />,
   },
-   {
+  {
     key: 'solidjs',
-    name: 'SolidJs',
+    name: 'SolidJS',
     tags: ['Core UI'],
     Icon: (props) => <SolidJsIcon {...props} />,
   },
@@ -118,6 +140,12 @@ export const TECHNOLOGIES = [
     Icon: (props) => <NuxtIcon {...props} />,
   },
   {
+    key: 'nuxt 3',
+    name: 'NuxtJS 3',
+    tags: ['Framework'],
+    Icon: (props) => <Nuxt3Icon {...props} />,
+  },
+  {
     key: 'nuxt',
     name: 'NuxtJS',
     tags: ['Framework'],
@@ -128,6 +156,12 @@ export const TECHNOLOGIES = [
     name: 'Remix',
     tags: ['Framework'],
     Icon: (props) => <RemixIcon {...props} />,
+  },
+  {
+    key: 'solidstart',
+    name: 'Solid Start',
+    tags: ['Framework'],
+    Icon: (props) => <SolidStartIcon {...props} />,
   },
   {
     key: 'quasar',
@@ -208,6 +242,12 @@ export const TECHNOLOGIES = [
     Icon: (props) => <BootstrapIcon {...props} />,
   },
   {
+    key: 'chakra-ui',
+    name: 'Chakra UI',
+    tags: ['Styling'],
+    Icon: (props) => <ChakraIcon {...props} />,
+  },
+  {
     key: 'astro',
     name: 'Astro',
     tags: ['Static Site Builder'],
@@ -218,6 +258,12 @@ export const TECHNOLOGIES = [
     name: '11ty',
     tags: ['Static Site Builder'],
     Icon: (props) => <EleventyIcon {...props} />,
+  },
+  {
+    key: 'contentful',
+    name: 'Contentful',
+    tags: ['Data Management'],
+    Icon: ContentfulIcon,
   },
   {
     key: 'react-query',
@@ -232,6 +278,12 @@ export const TECHNOLOGIES = [
     Icon: (props) => <ReduxIcon {...props} />,
   },
   {
+    key: 'tanstack-query',
+    name: 'Tanstack Query',
+    tags: ['Data Management'],
+    Icon: (props) => <TanstackIcon {...props} />,
+  },
+  {
     key: 'ngrx',
     name: 'NgRx',
     tags: ['Data Management'],
@@ -244,9 +296,21 @@ export const TECHNOLOGIES = [
     Icon: (props) => <RxJsIcon {...props} />,
   },
   {
+    key: 'serverless',
+    name: 'Serverless',
+    tags: ['Infrastructure'],
+    Icon: (props) => <ServerlessIcon {...props} />,
+  },
+  {
+    key: 'apollo-server',
+    name: 'Apollo Server',
+    tags: ['Middleware'],
+    Icon: (props) => <ApolloIcon {...props} />,
+  },
+  {
     key: 'graphql',
     name: 'GraphQL',
-    tags: ['Data Management'],
+    tags: ['API Specification'],
     Icon: (props) => <GraphQLIcon {...props} />,
   },
   {
@@ -263,7 +327,7 @@ export const TECHNOLOGIES = [
   },
   {
     key: 'apollo',
-    name: 'Apollo',
+    name: 'Apollo Client',
     tags: ['Data Management'],
     Icon: (props) => <ApolloIcon {...props} />,
   },
@@ -284,6 +348,72 @@ export const TECHNOLOGIES = [
     name: 'Pinia',
     tags: ['Data Management'],
     Icon: (props) => <PiniaIcon {...props} />,
+  },
+  {
+    key: 'deno',
+    name: 'Deno',
+    tags: ['Framework'],
+    Icon: (props) => <DenoIcon {...props} />,
+  },
+  {
+    key: 'oak',
+    name: 'Oak',
+    tags: ['Framework'],
+    Icon: (props) => <DenoIcon {...props} />,
+  },
+  {
+    key: 'denodb',
+    name: 'DenoDB',
+    tags: ['Data Management'],
+    Icon: (props) => <DenoIcon {...props} />,
+  },
+  {
+    key: 'typeorm',
+    name: 'TypeORM',
+    tags: ['Data Management'],
+    Icon: (props) => <TypeOrmIcon {...props} />,
+  },
+  {
+    key: 'postgres',
+    name: 'Postgres',
+    tags: ['Data Management'],
+    Icon: (props) => <PostgresIcon {...props} />,
+  },
+  {
+    key: 'expo',
+    name: 'Expo',
+    tags: ['Tooling'],
+    Icon: (props) => <ExpoIcon {...props} />,
+  },
+  {
+    key: 'zustand',
+    name: 'Zustand',
+    tags: ['Data Management'],
+    Icon: (props) => <ZustandIcon {...props} />,
+  },
+  {
+    key: 'prisma',
+    name: 'Prisma',
+    tags: ['Data Management'],
+    Icon: (props) => <PrismaIcon {...props} />,
+  },
+  {
+    key: 'vuetify',
+    name: 'Vuetify',
+    tags: ['Styling'],
+    Icon: (props) => <VuetifyIcon {...props} />,
+  },
+  {
+    key: 'xstate',
+    name: 'XState',
+    tags: ['Data Management'],
+    Icon: (props) => <XstateIcon {...props} />,
+  },
+  {
+    key: 'css',
+    name: 'CSS',
+    tags: ['Styling'],
+    Icon: (props) => <CssIcon {...props} />,
   },
 ];
 

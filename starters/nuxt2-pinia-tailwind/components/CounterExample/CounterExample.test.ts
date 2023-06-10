@@ -16,7 +16,7 @@ describe('<CounterExample />', () => {
       stubs: {
         NuxtLink: true,
       },
-    }
+    };
 
     // Act
     render(CounterExample, componentOptions);
@@ -46,8 +46,7 @@ describe('<CounterExample />', () => {
       stubs: {
         NuxtLink: true,
       },
-    }
-
+    };
 
     // Act
     render(CounterExample, componentOptions);
@@ -77,8 +76,8 @@ describe('<CounterExample />', () => {
       stubs: {
         NuxtLink: true,
       },
-    }
-    
+    };
+
     // Act
     render(CounterExample, componentOptions);
     const button = screen.getByTestId('reset-button');

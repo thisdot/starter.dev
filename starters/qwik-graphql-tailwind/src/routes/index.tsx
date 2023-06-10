@@ -1,31 +1,26 @@
 import { component$ } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
 import { Link } from '@builder.io/qwik-city';
-import * as styles from './homepage.classNames';
+import { APP_TITLE } from '~/utils/constants';
 
 export default component$(() => {
   return (
-    <div className={styles.container}>
-      <h1 className={styles.h1Text}>Welcome to Qwik⚡️starter kit</h1>
-
-      <ul className={styles.ul}>
-        <li className={styles.li}>
-          Check out the{' '}
-          <Link href="/counter" className={styles.link}>
-            Counter button example component
-          </Link>
-        </li>
-        <li className={styles.li}>
-          Check out the{' '}
-          <Link href="./data-fetching" className={styles.link}>
-            Data fetching example
-          </Link>
-        </li>
-      </ul>
-    </div>
+    <>
+      <header class="mx-auto flex w-full items-center justify-center bg-blue-500 p-4 text-lg text-white lg:w-[75%]">
+        Qwik, GraphQL and Tailwind CSS Starter kit
+      </header>
+      <div class="flex flex-col items-center gap-2 text-base text-blue-800 underline">
+        <Link href="/counter-example" class="transition-colors delay-100 hover:text-blue-500">
+          See Counter example component
+        </Link>
+        <Link href="./data-fetching" class="transition-colors delay-100 hover:text-blue-500">
+          See Fetch example component
+        </Link>
+      </div>
+    </>
   );
 });
 
 export const head: DocumentHead = {
-  title: 'Welcome to Qwik Starter Kit',
+  title: APP_TITLE,
 };
