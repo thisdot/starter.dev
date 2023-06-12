@@ -25,11 +25,13 @@
 		"test:e2e": "jest --config ./test/jest-e2e.json"
 	},
 	"dependencies": {
+		"@nestjs/bullmq": "1.1.0",
 		"@nestjs/common": "9.0.0",
 		"@nestjs/core": "9.0.0",
 		"@nestjs/platform-express": "9.0.0",
 		"@nestjs/sequelize": "9.0.0",
 		"@nestjs/swagger": "6.3.0",
+		"bullmq": "3.13.4",
 		"dotenv": "16.0.3",
 		"pg": "8.9.0",
 		"pg-hstore": "2.3.4",

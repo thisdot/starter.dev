@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
-import 'dotenv/config';
+import { BullModule } from '@nestjs/bullmq';
 import { Dialect } from 'sequelize';
 import { TechnologyModule } from './technology/technology.module';
 import { HealthModule } from './health/health.module';
+import 'dotenv/config';
 
 @Module({
 	imports: [
@@ -16,6 +17,19 @@ import { HealthModule } from './health/health.module';
 			database: process.env.database,
 			autoLoadModels: true,
 			synchronize: true,
+		}),
+		BullModule.forRoot({
+			connection: {
+				host: 'localhost',
+				port: 6379,
+			},
+		}),
+		BullModule.registerQueue({
+			name: 'queue',
+			connection: {
+				host: 'localhost',
+				port: 6380,
+			},
 		}),
 		TechnologyModule,
 		HealthModule,
