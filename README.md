@@ -9,7 +9,41 @@ This is a monorepo for the [starter.dev](https://starter.dev/) project.
 
 ## How to run the scaffolding script
 
-In the command line, run `npx @this-dot/create-starter` and you will see the list of available starter kits. Select the kit you are interested in and name your new project. Once the installation is complete, `cd` into your new project and install the dependencies(`npm install`, `yarn`, etc.) Now you are ready to get started with your brand new project.
+In the command line, run `npx @this-dot/create-starter` to start the _interactive_ mode and see the list of available starter kits.
+
+You can also choose to use NPM or Yarn instead.
+
+```sh
+npm create @this-dot/starter
+```
+
+```sh
+yarn create @this-dot/starter
+```
+
+From the list of starter kits, select the kit you are interested in and name your new project. Once the installation is complete, `cd` into your new project and install the dependencies(`npm install`, `yarn`, etc.) Now you are ready to get started with your brand new project.
+
+### Using the starter CLI with command line arguments
+
+If you are already know which kit you want to you use, you can use can specify the kit name and name your new project in one command.
+
+For example:
+
+```sh
+# npm 6.x
+npm create @this-dot/starter --name my-project --kit angular-apollo-tailwind
+
+# npm 7+, extra double-dash is needed:
+npm create @this-dot/starter -- --name my-project --kit angular-apollo-tailwind
+
+# yarn
+yarn create @this-dot/starter --name my-project --kit angular-apollo-tailwind
+```
+
+| Name     | Description                   |
+| :------- | :---------------------------- |
+| `--kit`  | Specifies the kit name        |
+| `--name` | Specify your new project name |
 
 ## Starter kit essentials
 
@@ -17,7 +51,7 @@ Starter kits should include a set of frameworks, libraries, and essential toolin
 
 ### Frameworks and libraries
 
-Starter kits should include some core libraries and technologies that a new project will need. These pieces should come configured according to best practices and be ready to use togther as a unit.
+Starter kits should include some core libraries and technologies that a new project will need. These pieces should come configured according to best practices and be ready to use together as a unit.
 
 - Framework?: (Next, Nuxt, SvelteKit, Remix, etc)
 - Core UI: (React, Vue, Angular, etc)
