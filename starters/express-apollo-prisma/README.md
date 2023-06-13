@@ -55,7 +55,13 @@ This starter kit features Express, Apollo Server and Prisma.
 ### CLI (Recommended)
 
 ```bash
-npm create @this-dot/starter --kit express-apollo-prisma
+npm create @this-dot/starter -- --kit express-apollo-prisma
+```
+
+or
+
+```bash
+yarn create @this-dot/starter --kit express-apollo-prisma
 ```
 
 Note: Other package managers such as `yarn` or `pnpm` can be used with this kit.

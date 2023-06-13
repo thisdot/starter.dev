@@ -50,7 +50,7 @@ This starter kit features Express, Typescript API setup
 ### CLI (Recommended)
 
 ```bash
-npm create @this-dot/starter --kit express-typeorm-postgres
+npm create @this-dot/starter -- --kit express-typeorm-postgres
 ```
 
 or

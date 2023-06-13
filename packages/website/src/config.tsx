@@ -49,6 +49,10 @@ import {
   PrismaIcon,
   ContentfulIcon,
   NestJsIcon,
+  VuetifyIcon,
+  Nuxt3Icon,
+  XstateIcon,
+  CssIcon,
 } from './icons';
 
 export interface NavItem {
@@ -141,6 +145,12 @@ export const TECHNOLOGIES = [
     name: 'NuxtJS 2',
     tags: ['Framework'],
     Icon: (props) => <NuxtIcon {...props} />,
+  },
+  {
+    key: 'nuxt 3',
+    name: 'NuxtJS 3',
+    tags: ['Framework'],
+    Icon: (props) => <Nuxt3Icon {...props} />,
   },
   {
     key: 'nuxt',
@@ -393,6 +403,24 @@ export const TECHNOLOGIES = [
     name: 'Prisma',
     tags: ['Data Management'],
     Icon: (props) => <PrismaIcon {...props} />,
+  },
+  {
+    key: 'vuetify',
+    name: 'Vuetify',
+    tags: ['Styling'],
+    Icon: (props) => <VuetifyIcon {...props} />,
+  },
+  {
+    key: 'xstate',
+    name: 'XState',
+    tags: ['Data Management'],
+    Icon: (props) => <XstateIcon {...props} />,
+  },
+  {
+    key: 'css',
+    name: 'CSS',
+    tags: ['Styling'],
+    Icon: (props) => <CssIcon {...props} />,
   },
 ];
 

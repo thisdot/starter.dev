@@ -12,7 +12,7 @@ const GOOGLE_MEASUREMENT_PROTOCOL_ENDPOINT = (measurement_id, api_secret) =>
 module.exports.handler = async (event) => {
   const MEASUREMENT_ID = process.env.GOOGLE_ANALYTICS_MEASUREMENT_ID;
   const API_SECRET = process.env.GOOGLE_ANALYTICS_API_SECRET;
-  const selectedStarterKit = JSON.parse(event.body || 'null')?.starterKit;
+  const selectedStarterKit = JSON.parse(event.body || 'null')?.selectedKit;
 
   if (!selectedStarterKit) {
     console.log('No kit found');

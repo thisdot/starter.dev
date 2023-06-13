@@ -1,0 +1,19 @@
+@import './base.css';
+
+#app {
+	max-width: 1280px;
+	margin: 0 auto;
+	padding: 2rem;
+	font-weight: normal;
+}
+
+a {
+	color: var(--mediumBlue);
+	font-size: 1.25rem;
+	margin-bottom: 0.75em;
+}
+
+a:hover {
+	color: var(--darkBlue);
+	text-decoration-thickness: 2px;
+}

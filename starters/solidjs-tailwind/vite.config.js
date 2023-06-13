@@ -13,13 +13,13 @@ export default defineConfig({
   },
   test: {
     globals: true,
-    environment: "jsdom",
+    environment: 'jsdom',
     setupFiles: './setupVitest.js',
     deps: {
       inline: [/solid-js/, /solid-testing-library/],
     },
   },
-   resolve: {
-     conditions: ['development', 'browser'],
-   },
+  resolve: {
+    conditions: ['development', 'browser'],
+  },
 });

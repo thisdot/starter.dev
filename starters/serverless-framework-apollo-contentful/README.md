@@ -29,7 +29,7 @@ This starter kit features **Serverless**, **GraphQL**, **Apollo Server**, and **
 ### CLI (Recommended)
 
 ```bash
-npm create @this-dot/starter --kit serverless-framework-apollo-contentful
+npm create @this-dot/starter -- --kit serverless-framework-apollo-contentful
 ```
 
 or
