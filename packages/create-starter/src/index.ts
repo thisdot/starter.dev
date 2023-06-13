@@ -25,10 +25,12 @@ export async function main() {
     if (res.ok) {
       const starterKitsJSON = await res.json();
       if (typeof starterKitsJSON === 'object' && starterKitsJSON !== null) {
-        starters = Object.entries(starterKitsJSON).map(([name, description]) => ({
-          value: name as string,
-          title: description as string,
-        })).sort((a, b) => a.title.localeCompare(b.title));
+        starters = Object.entries(starterKitsJSON)
+          .map(([name, description]) => ({
+            value: name as string,
+            title: description as string,
+          }))
+          .sort((a, b) => a.title.localeCompare(b.title));
       }
     } else {
       throw new Error();
@@ -44,7 +46,7 @@ export async function main() {
       name: 'kit',
       message: 'Which starter kit would you like to use?',
       choices: starters,
-      suggest: (input, choices) => Promise.resolve(choices.filter(c => c.title.includes(input))),
+      suggest: (input, choices) => Promise.resolve(choices.filter((c) => c.title.toLowerCase().includes(input.toLowerCase()))),
     },
     {
       type: 'text',
@@ -57,17 +59,13 @@ export async function main() {
     process.exit(1);
   }
 
-  const [createSelectedKitResult] = await Promise.allSettled([
-    createStarter(options),
-    trackSelectedKit(options.kit)
-  ])
+  const [createSelectedKitResult] = await Promise.allSettled([createStarter(options), trackSelectedKit(options.kit)]);
 
   if (createSelectedKitResult.status === 'rejected') {
     const err = createSelectedKitResult.reason;
     console.error(red(err instanceof Error ? err.message : `Creating starter kit failed`));
     process.exit(1);
   }
-
 }
 
 async function createStarter(options: prompts.Answers<'name' | 'kit'>): Promise<void> {
@@ -109,7 +107,7 @@ async function createStarter(options: prompts.Answers<'name' | 'kit'>): Promise<
       console.log(` ${bold(cyan('npm install'))} (or pnpm install, yarn, etc)`);
     }
   } catch (err: unknown) {
-    throw new Error('Failed to initialize the starter kit. This probably means that you provided an invalid kit name.')
+    throw new Error('Failed to initialize the starter kit. This probably means that you provided an invalid kit name.');
   }
 }
 
@@ -130,5 +128,3 @@ async function initNodeProject(packageJsonPath: string, projectDestPath: string,
     console.info(gray(`> ${bold('Note:')} Failed to update package.json. You may need to do this manually.`));
   }
 }
-
-
