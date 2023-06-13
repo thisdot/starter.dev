@@ -5,7 +5,7 @@ import prompts, { Choice } from 'prompts';
 import degit from 'tiged';
 import fetch from 'node-fetch';
 import yargs from 'yargs-parser';
-import { initGitRepo, removeLockFileIfExists, overrideAngularJsonIfExists, fileExists } from './utils';
+import { initGitRepo, initCommit, removeLockFileIfExists, overrideAngularJsonIfExists, fileExists } from './utils';
 import { trackSelectedKit } from './metrics';
 
 const STARTER_KITS_JSON_URL = 'https://raw.githubusercontent.com/thisdot/starter.dev/main/starter-kits.json';
@@ -108,6 +108,7 @@ async function createStarter(options: prompts.Answers<'name' | 'kit' | 'packageM
     }
 
     await initGitRepo(destPath);
+    await initCommit(destPath, packageManager);
     console.log(bold(green('✔') + ' Done!'));
     console.log('\nNext steps:');
     console.log(` ${bold(cyan(`cd ${options.name}`))}`);
