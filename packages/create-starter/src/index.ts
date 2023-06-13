@@ -5,7 +5,7 @@ import prompts, { Choice } from 'prompts';
 import degit from 'tiged';
 import fetch from 'node-fetch';
 import yargs from 'yargs-parser';
-import { initGitRepo, initCommit, removeLockFileIfExists, overrideAngularJsonIfExists, fileExists } from './utils';
+import { initGitRepo, removeLockFileIfExists, overrideAngularJsonIfExists, fileExists } from './utils';
 import { trackSelectedKit } from './metrics';
 
 const STARTER_KITS_JSON_URL = 'https://raw.githubusercontent.com/thisdot/starter.dev/main/starter-kits.json';
@@ -50,16 +50,16 @@ export async function main() {
       suggest: (input, choices) => Promise.resolve(choices.filter((c) => c.title.includes(input))),
     },
     {
+      type: 'text',
+      name: 'name',
+      message: 'What is the name of your project?',
+    },
+    {
       type: 'autocomplete',
       name: 'packageManager',
       message: 'Which package manager would you like to use?',
       choices: PACKAGE_MANAGERS.map((pm) => ({ title: pm, value: pm })),
       suggest: (input, choices) => Promise.resolve(choices.filter((c) => c.title.includes(input))),
-    },
-    {
-      type: 'text',
-      name: 'name',
-      message: 'What is the name of your project?',
     },
   ]);
 
@@ -107,14 +107,19 @@ async function createStarter(options: prompts.Answers<'name' | 'kit' | 'packageM
       await initNodeProject(packageJsonPath, destPath, options);
     }
 
-    await initGitRepo(destPath);
-    await initCommit(destPath, packageManager);
+    await initGitRepo(destPath, packageManager);
     console.log(bold(green('✔') + ' Done!'));
     console.log('\nNext steps:');
     console.log(` ${bold(cyan(`cd ${options.name}`))}`);
 
     if (packageJsonExists) {
-      console.log(` ${bold(cyan(`${packageManager} install`))}`);
+      switch (packageManager) {
+        case 'yarn':
+          console.log(`${bold(cyan(`${packageManager} dev`))}`);
+          break;
+        default:
+          console.log(`${bold(cyan(`${packageManager} start`))}`);
+      }
     }
   } catch (err: unknown) {
     throw new Error('Failed to initialize the starter kit. This probably means that you provided an invalid kit name.');
