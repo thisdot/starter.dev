@@ -46,7 +46,7 @@ export async function main() {
       name: 'kit',
       message: 'Which starter kit would you like to use?',
       choices: starters,
-      suggest: (input, choices) => Promise.resolve(choices.filter((c) => c.title.includes(input))),
+      suggest: (input, choices) => Promise.resolve(choices.filter((c) => c.title.toLowerCase().includes(input.toLowerCase()))),
     },
     {
       type: 'text',
@@ -68,6 +68,7 @@ export async function main() {
   if (!options.kit || !options.name || !packageOptions) {
     process.exit(1);
   }
+
 
   const [createSelectedKitResult] = await Promise.allSettled([createStarter(options, packageOptions), trackSelectedKit(options.kit)]);
 
