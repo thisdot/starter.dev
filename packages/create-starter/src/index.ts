@@ -10,7 +10,6 @@ import { trackSelectedKit } from './metrics';
 
 const STARTER_KITS_JSON_URL = 'https://raw.githubusercontent.com/thisdot/starter.dev/main/starter-kits.json';
 const EXCLUDED_PACKAGE_JSON_FIELDS = ['hasShowcase'];
-const PACKAGE_MANAGERS: string[] = ['npm', 'pnpm', 'yarn'];
 
 export async function main() {
   console.log(`\n${bold('Welcome to starter.dev!')} ${gray('(create-starter)')}`);
@@ -54,20 +53,23 @@ export async function main() {
       name: 'name',
       message: 'What is the name of your project?',
     },
+  ]);
+
+  const packageOptions = await prompts([
     {
       type: 'autocomplete',
       name: 'packageManager',
       message: 'Which package manager would you like to use?',
-      choices: PACKAGE_MANAGERS.map((pm) => ({ title: pm, value: pm })),
+      choices: packageSelection(options.kit).map((pm) => ({ title: pm, value: pm })),
       suggest: (input, choices) => Promise.resolve(choices.filter((c) => c.title.includes(input))),
     },
   ]);
 
-  if (!options.kit || !options.name || !options.packageManager) {
+  if (!options.kit || !options.name || !packageOptions) {
     process.exit(1);
   }
 
-  const [createSelectedKitResult] = await Promise.allSettled([createStarter(options), trackSelectedKit(options.kit)]);
+  const [createSelectedKitResult] = await Promise.allSettled([createStarter(options, packageOptions), trackSelectedKit(options.kit)]);
 
   if (createSelectedKitResult.status === 'rejected') {
     const err = createSelectedKitResult.reason;
@@ -76,10 +78,25 @@ export async function main() {
   }
 }
 
-async function createStarter(options: prompts.Answers<'name' | 'kit' | 'packageManager'>): Promise<void> {
+function packageSelection(selection: string): Array<string> {
+  let packageOptions;
+  switch (selection) {
+    case 'deno-oak-denodb':
+      packageOptions = ['deno'];
+      break;
+    default:
+      packageOptions = ['npm', 'pnpm', 'yarn'];
+  }
+  return packageOptions;
+}
+
+async function createStarter(options: prompts.Answers<'name' | 'kit'>, packageOptions: prompts.Answers<'packageManager'>): Promise<void> {
   const repoPath = `thisdot/starter.dev/starters/${options.kit}`;
   const destPath = path.join(process.cwd(), options.name);
-  const packageManager = options.packageManager;
+  const packageManager = packageOptions.packageManager;
+  const kit = options.kit;
+
+  console.log('packageManager', packageManager);
 
   const emitter = degit(repoPath, {
     cache: false,
@@ -107,6 +124,22 @@ async function createStarter(options: prompts.Answers<'name' | 'kit' | 'packageM
       await initNodeProject(packageJsonPath, destPath, options);
     }
 
+    const packageCommand = `https://raw.githubusercontent.com/thisdot/starter.dev/main/starters/${kit}/${packageManager === 'deno' ? 'deno' : 'package'}.json`;
+    const res = await fetch(packageCommand);
+    let packageJSON;
+
+    if (res.ok) {
+      packageJSON = await res.json();
+      console.log('packageJSON', packageJSON);
+      console.log('scripts', packageJSON?.scripts?.dev); //with angular this is undefined
+      console.log('scripts', packageJSON?.scripts?.start); //with angular this returns a value
+    } else {
+      throw new Error();
+    }
+    // need to resolve ts error
+    const startAction = packageJSON?.scripts?.dev !== undefined ? 'dev' : 'start';
+
+    // based off of packageManager we will need to tweak the install
     await initGitRepo(destPath, packageManager);
     console.log(bold(green('✔') + ' Done!'));
     console.log('\nNext steps:');
@@ -114,11 +147,12 @@ async function createStarter(options: prompts.Answers<'name' | 'kit' | 'packageM
 
     if (packageJsonExists) {
       switch (packageManager) {
-        case 'yarn':
-          console.log(`${bold(cyan(`${packageManager} dev`))}`);
+        // need to add special steps
+        case 'deno':
+          console.log(`${bold(cyan(`${packageManager} `))}`);
           break;
         default:
-          console.log(`${bold(cyan(`${packageManager} start`))}`);
+          console.log(`${bold(cyan(`${packageManager} ${startAction}`))}`);
       }
     }
   } catch (err: unknown) {
