@@ -11,6 +11,13 @@ import { trackSelectedKit } from './metrics';
 const STARTER_KITS_JSON_URL = 'https://raw.githubusercontent.com/thisdot/starter.dev/main/starter-kits.json';
 const EXCLUDED_PACKAGE_JSON_FIELDS = ['hasShowcase'];
 
+type Package = {
+  scripts: {
+    dev: string;
+    start: string;
+  };
+};
+
 export async function main() {
   console.log(`\n${bold('Welcome to starter.dev!')} ${gray('(create-starter)')}`);
 
@@ -69,7 +76,6 @@ export async function main() {
     process.exit(1);
   }
 
-
   const [createSelectedKitResult] = await Promise.allSettled([createStarter(options, packageOptions), trackSelectedKit(options.kit)]);
 
   if (createSelectedKitResult.status === 'rejected') {
@@ -127,34 +133,30 @@ async function createStarter(options: prompts.Answers<'name' | 'kit'>, packageOp
 
     const packageCommand = `https://raw.githubusercontent.com/thisdot/starter.dev/main/starters/${kit}/${packageManager === 'deno' ? 'deno' : 'package'}.json`;
     const res = await fetch(packageCommand);
-    let packageJSON;
+    let packageJSON: Package;
 
     if (res.ok) {
-      packageJSON = await res.json();
-      console.log('packageJSON', packageJSON);
-      console.log('scripts', packageJSON?.scripts?.dev); //with angular this is undefined
-      console.log('scripts', packageJSON?.scripts?.start); //with angular this returns a value
+      packageJSON = (await res.json()) as Package;
     } else {
       throw new Error();
     }
-    // need to resolve ts error
+
     const startAction = packageJSON?.scripts?.dev !== undefined ? 'dev' : 'start';
 
-    // based off of packageManager we will need to tweak the install
     await initGitRepo(destPath, packageManager);
     console.log(bold(green('✔') + ' Done!'));
     console.log('\nNext steps:');
     console.log(` ${bold(cyan(`cd ${options.name}`))}`);
 
     if (packageJsonExists) {
-      switch (packageManager) {
-        // need to add special steps
-        case 'deno':
-          console.log(`${bold(cyan(`${packageManager} `))}`);
-          break;
-        default:
-          console.log(`${bold(cyan(`${packageManager} ${startAction}`))}`);
-      }
+      console.log(` ${bold(cyan(`${packageManager} ${startAction}`))}`);
+    } else if (packageManager === 'deno') {
+      console.log(` ${bold(cyan('Make sure you have Docker & docker-compose installed on your machine'))}`);
+      console.log(` ${bold(cyan('Create a .env file and copy the contents of .env.example into it'))}`);
+      console.log(` ${bold(cyan('Run deno task start-db to start the local PostgreSQL and Redis'))}`);
+      console.log(` ${bold(cyan('Run deno task start-web to start the development server'))}`);
+      console.log(` ${bold(cyan('Open your browser to http://localhost:3333/health to see the API running'))}`);
+      console.log(` ${bold(cyan('Proceed to the Seeding chapter to seed the database with some sample data'))}`);
     }
   } catch (err: unknown) {
     throw new Error('Failed to initialize the starter kit. This probably means that you provided an invalid kit name.');
