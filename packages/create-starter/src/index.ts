@@ -103,8 +103,6 @@ async function createStarter(options: prompts.Answers<'name' | 'kit'>, packageOp
   const packageManager = packageOptions.packageManager;
   const kit = options.kit;
 
-  console.log('packageManager', packageManager);
-
   const emitter = degit(repoPath, {
     cache: false,
     force: true,
