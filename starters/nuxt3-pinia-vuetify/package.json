@@ -16,9 +16,9 @@
 		"generate": "nuxt generate",
 		"preview": "nuxt preview",
 		"postinstall": "nuxt prepare",
-		"lint": "eslint --ext \".ts,.vue\" --ignore-path .gitignore .",
-		"lint:prettier": "prettier --check .",
-		"lint:fix": "prettier --write --list-different . && npm run lint:js --fix"
+		"lint": "eslint --ext \".ts,.vue\" --ignore-path .gitignore . --fix",
+		"format:check": "prettier --check .",
+		"format:write": "prettier --write --list-different ."
 	},
 	"devDependencies": {
 		"@nuxtjs/eslint-config-typescript": "12.0.0",
