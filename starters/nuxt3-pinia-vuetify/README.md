@@ -74,7 +74,7 @@ The file begins by importing the `createVuetify` function from the `Vuetify` lib
 
 Within the defined Nuxt plugin, the `createVuetify` function is invoked, establishing a Vuetify configuration object. Notably, server-side rendering (SSR) is enabled by setting `ssr: true` which boosts the performance and SEO of your application.
 
-In terms of theming, a `customTheme` is defined with a primary color of `#3B82F6`. This theme is set as the `defaultTheme`. Remember, theming can be expanded to add more color specifications and other themes, following the same pattern.
+In terms of theming, a `customTheme` is defined with a primary color of `#3B82F6`. This theme is set as the `defaultTheme`. Remember, theming can be expanded to add more color specifications and other themes, following the same pattern. To learn more: [Layouts and theming in Vuetify 3](https://www.thisdot.co/blog/layouts-and-theming-in-vuetify-3/).
 
 Post-configuration, all components and directives are passed to the `createVuetify` function, ensuring that they're accessible throughout the application.
 
