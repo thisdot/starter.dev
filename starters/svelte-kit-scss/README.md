@@ -2,20 +2,6 @@
 
 This starter kit features **SvelteKit** and **SCSS**
 
-## Table of Contents
-
-- [svelte-kit-scss Starter Kit](#svelte-kit-scss-starter-kit)
-  - [Table of Contents](#table-of-contents)
-  - [Overview](#overview)
-    - [Tech Stack](#tech-stack)
-    - [Included Tooling](#included-tooling)
-  - [Installation](#installation)
-    - [CLI (Recommended)](#cli-recommended)
-    - [Manual](#manual)
-  - [Commands](#commands)
-  - [Architecture Decisions](#architecture-decisions)
-  - [Demo Implementation](#demo-implementation)
-
 ## Overview
 
 ### Tech Stack

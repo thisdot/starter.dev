@@ -7,7 +7,7 @@
     "graphql",
     "tailwind"
   ],
-  "hasShowcase": true,
+  "hasShowcase": false,
   "private": true,
   "sideEffects": false,
   "engines": {

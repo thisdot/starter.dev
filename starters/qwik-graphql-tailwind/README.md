@@ -2,18 +2,6 @@
 
 This starter kit features **Qwik**, **GraphQL** and **Tailwind CSS**.
 
-## Table of Contents
-
-- [Overview](#overview)
-  - [Tech Stack](#tech-stack)
-  - [Included Tooling](#included-tooling)
-  - [Example Components](#example-components)
-- [Installation](#installation)
-  - [CLI](#cli-recommended)
-  - [Manual](#manual)
-- [Commands](#commands)
-- [Demo Implementation](#demo-implementation)
-
 ## Overview
 
 ### Tech Stack

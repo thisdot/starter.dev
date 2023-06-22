@@ -2,19 +2,6 @@
 
 This starter kit features SolidJS combined with Tailwind CSS.
 
-## Table of Contents
-
-- [Overview](#overview)
-  - [Tech Stack](#tech-stack)
-  - [Included Tooling](#included-tooling)
-  - [Architectural Decisions](#architectural-decisions)
-  - [Example Components](#example-components)
-- [Installation](#installation)
-  - [CLI](#cli)
-  - [Manual](#manual)
-- [Commands](#commands)
-- [Demo Implementation](#demo-implementation)
-
 ## Overview
 
 This starter kit features two of the hottest frameworks in the JavaScript and CSS ecosystems. SolidJS is a new framework built on top of the React API and offers a leaner and more performant alternative to React. Tailwind CSS is a utility-first CSS framework that offers a lot of flexibility and is easy to use. It is also very performant and offers a lot of customization options. This starter kit combines both frameworks to offer a lean and performant setup.

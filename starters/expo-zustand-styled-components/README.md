@@ -2,19 +2,6 @@
 
 This starter kit features **Expo**, combined with **Zustand**, and **Styled-components**
 
-- [expo-zustand-styled-components starter kit](#expo-zustand-styled-components-starter-kit)
-  - [Table of Contents](#table-of-contents)
-  - [Overview](#overview)
-    - [Tech Stack](#tech-stack)
-    - [Included Tooling](#included-tooling)
-    - [Example Components](#example-components)
-  - [Installation](#installation)
-    - [CLI (Recommended)](#cli-recommended)
-    - [Manual](#manual)
-  - [Commands](#commands)
-  - [Kit Organization / Architecture](#kit-organization--architecture)
-  - [Demo Implementation](#demo-implementation)
-
 ## Overview
 
 ### Tech Stack
@@ -103,5 +90,7 @@ The demo components included in the starter.kit are co-located with the tests. I
 ## Demo Implementation
 
 [Repository](https://github.com/thisdot/starter.dev-github-showcases/tree/main/expo-zustand-styled-components)
+
+[Live Application](https://expo-zustand-styled-components.starter.dev/)
 
 The demo application re-implements some of GitHub's pages and functionality. It uses the OAuth credentials in GitHub to authenticate users with their GitHub accounts and uses RxJS to fetch data from the GitHub API. Check out the link above to learn more or check out the demo!
