@@ -11,7 +11,6 @@ import KitShowcases from '../components/KitShowcases.astro';
 import Footer from '../components/Footer.astro';
 import { parseKit } from '../lib/parseKits';
 const { content, headings } = Astro.props;
-console.log('content', content)
 const path = Astro.url.pathname;
 const kit = parseKit(content);
 ---
