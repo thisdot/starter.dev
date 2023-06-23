@@ -125,4 +125,5 @@ See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-
 ## Demo Implementation
 
 [Repository](https://github.com/thisdot/starter.dev-github-showcases/tree/main/vue3-apollo-quasar)
+
 [Live Application](https://vue3-apollo-quasar.starter.dev/)
