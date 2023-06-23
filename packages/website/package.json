@@ -10,8 +10,8 @@
     "format": "yarn prettier -w .",
     "lint": "eslint ./src",
     "kitgen": "node ./scripts/generate-kit-pages.js",
-    "predev": "npm run kitgen",
-    "prebuild": "npm run kitgen"
+    "predev": "yarn kitgen",
+    "prebuild": "yarn kitgen"
   },
   "devDependencies": {
     "@astrojs/mdx": "^0.13.0",
