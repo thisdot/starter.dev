@@ -1,0 +1,57 @@
+---
+import { ArrowRightIcon } from '../icons/heroicons';
+const { showcases, hasShowcase } = Astro.props;
+console.log('showcases', showcases);
+---
+
+{hasShowcase ?
+<div id="showcase-section" class="py-24 max-w-screen-2xl mx-auto">
+  <h1 class="heading-1 font-medium mb-8">
+    See kits in action via our showcases
+  </h1>
+  <div
+    class="not-prose flex flex-col md:flex-row flex-wrap gap-4"
+  >
+    {
+      showcases.map(({ name, repo, app, Icon }) => (
+        <div class="border dark:bg-gray-800 group-hover:bg-blue-500 border-gray-200 dark:border-gray-700 rounded-xl items-center font-medium text-sm line-height: 1.25rem t-dark dark:dark-t-light p-4 max-w-[198px] max-h-[177px]">
+          <div class="flex items-center pb-4">
+            <div class="justify-center p-1.5 border dark:bg-gray-800 group-hover:bg-blue-500 border-gray-200 dark:border-gray-700 rounded-xl flex items-center font-medium justify-start min-w-[48px] min-h-[48px]">
+              <Icon className="inline w-6 h-6 mb-px" />
+            </div>
+            <div class="mx-4">
+              <p class="font-sm t-dark dark:dark-t-light group-hover:text-white leading-snug">
+                {name}
+              </p>
+            </div>
+          </div>
+          <hr class="pb-4 t-dark dark:border-gray-700" />
+          <div class="font-medium text-base line-height: 1.25rem pb-3">
+            <a
+              href={repo}
+              class="link text-sm dark:dark-link hover:underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Repository
+              <ArrowRightIcon className="inline w-4 h-4 ml-2" />
+            </a>
+          </div>
+          {app !== '' ?
+          <div class="font-medium text-base line-height: 1.25rem pb-4">
+            <a
+              href={app}
+              class="link text-sm dark:dark-link hover:underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Live Application
+              <ArrowRightIcon className="inline w-4 h-4 ml-2" />
+            </a>
+          </div> : ''}
+        </div>
+      ))
+    }
+  </div>
+</div>
+: ''}

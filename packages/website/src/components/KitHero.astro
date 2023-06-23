@@ -2,10 +2,9 @@
 import cn from 'clsx';
 import Breadcrumbs from './Breadcrumbs.astro';
 import KitActionLinks from './KitActionLinks.astro';
-import TechItem from './TechItem.astro';
-
+import TechIcon from './TechIcon.astro';
 const { technologies, name, hasShowcase } = Astro.props;
-
+console.log('tech', technologies)
 const crumbs = [
   {
     href: '/',
@@ -35,13 +34,12 @@ const crumbs = [
                   i > 0 && 'lg:inline'
                 )}
               >
-                /
               </span>
               <a
                 href={`/kits-by-tool/${tech.key}`}
                 class="group inline-block my-2"
               >
-                <TechItem {...tech} />
+              <TechIcon {...tech} />
               </a>
             </>
           ))

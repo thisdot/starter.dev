@@ -22,9 +22,7 @@ const { name, hasShowcase, inline } = Astro.props;
       hasShowcase && (
         <a
           class="link text-sm dark:dark-link"
-          href={`${SHOWCASE_REPO_URL}/tree/main/${name}`}
-          target="_blank"
-          rel="noopener noreferrer"
+          href='#showcase-section'
         >
           <>
             <BriefcaseIcon className="h-3.5 w-3.5 inline ml-0.5 mb-[2px]" />

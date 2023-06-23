@@ -6,7 +6,10 @@
   "keywords": [
     "expo",
     "zustand",
-    "styled-components"
+    "styled-components",
+    "jest",
+    "typescript",
+    "react-navigation"
   ],
   "hasShowcase": true,
   "scripts": {

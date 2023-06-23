@@ -75,7 +75,13 @@
   },
   "keywords": [
     "solidjs",
-    "tailwind"
+    "tailwind",
+    "typescript",
+    "vite",
+    "storybook",
+    "mock-service-worker",
+    "react",
+    "vitest"
   ],
   "pnpm": {
     "peerDependencyRules": {

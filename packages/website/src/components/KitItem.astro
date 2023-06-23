@@ -9,19 +9,11 @@ const technologyStubsCount = kit.technologies.length < 3 ? (3 - kit.technologies
 <div
   class="bg dark:bg-gray-800 border border-gray-400 dark:border-gray-700 rounded-lg group hover:bg-brand-500 hover:dark:bg-brand-500 transition-colors overflow-hidden"
 >
-  <div class="px-4 py-6 space-y-4">
-    {kit.technologies.map(({ name, Icon, tags }) => (
-      <div class="flex items-center space-x-6">
+<h2 class="text-2xl px-8 pt-6 t-light dark:dark-t group-hover:text-white">{kit.name}</h2>
+  <div class="grid grid-cols-3 pt-2 pb-6 space-y-4 justify-items-center items-end">
+    {kit.technologies.map(({  Icon }) => (
+      <div class="">
         { Icon && <TechIcon {Icon} />}
-        <div>
-          <div class="heading-6 t-dark dark:dark-t-light group-hover:text-white">{name}</div>
-          <div class="t-light dark:dark-t text-sm group-hover:text-gray-100">{tags.join(', ')}</div>
-        </div>
-      </div>
-    ))}
-    {Array(technologyStubsCount).fill().map(() => (
-      <div class="flex items-center space-x-6">
-        <div class="h-20"></div>
       </div>
     ))}
   </div>

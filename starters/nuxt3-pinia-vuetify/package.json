@@ -5,7 +5,9 @@
 	"keywords": [
 		"nuxt 3",
 		"pinia",
-		"vuetify"
+		"vuetify",
+		"typescript",
+		"sass"
 	],
 	"hasShowcase": false,
 	"private": true,

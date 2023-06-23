@@ -6,7 +6,11 @@
   "hasShowcase": false,
   "keywords": [
     "next",
-    "chakra-ui"
+    "chakra-ui",
+    "storybook",
+    "typescript",
+    "jest",
+    "emotion"
   ],
   "scripts": {
     "dev": "NODE_OPTIONS='--inspect' next dev",

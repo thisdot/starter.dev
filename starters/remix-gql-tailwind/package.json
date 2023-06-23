@@ -5,7 +5,11 @@
   "keywords": [
     "remix",
     "graphql",
-    "tailwind"
+    "tailwind",
+    "storybook",
+    "jest",
+    "typescript",
+    "vite"
   ],
   "hasShowcase": false,
   "private": true,
