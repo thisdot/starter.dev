@@ -1,8 +1,8 @@
-# nextjs12-chakra-ui starter kit
+# nextjs-chakra-ui starter kit
 
 ## Overview
 
-This Next.js 12 starter kit comes with formatting, linting, example components, testing and styling. Here is the complete list of technologies and tooling used in this kit:
+This Next.js starter kit comes with formatting, linting, example components, testing and styling. Here is the complete list of technologies and tooling used in this kit:
 
 - [Next.js 12](https://nextjs.org/blog/next-12)
 - [Chakra UI](https://chakra-ui.com/)
@@ -17,29 +17,29 @@ This Next.js 12 starter kit comes with formatting, linting, example components, 
 ### CLI (Recommended)
 
 ```bash
-npm create @this-dot/starter -- --kit next12-chakra-ui
+npm create @this-dot/starter -- --kit next-chakra-ui
 ```
 
 or
 
 ```bash
-yarn create @this-dot/starter --kit next12-chakra-ui
+yarn create @this-dot/starter --kit next-chakra-ui
 ```
 
-- Follow the prompts to select the `next12-chakra-ui` starter kit and name your new project.
+- Follow the prompts to select the `next-chakra-ui` starter kit and name your new project.
 - `cd` into your project directory and run `yarn install`.
 - Run `yarn run dev` to start the development server.
 - Open your browser to `http://localhost:3000` to see the included example code running.
 
 ### Manual
 
-This requires a download of the entire starter.dev repository and extraction of the `next12-chakra-ui` kit from the starters directory.
+This requires a download of the entire starter.dev repository and extraction of the `next-chakra-ui` kit from the starters directory.
 
 ```bash
 git clone https://github.com/thisdot/starter.dev.git
 ```
 
-- Copy and rename the `starters/next12-chakra-ui` directory to the name of your new project.
+- Copy and rename the `starters/next-chakra-ui` directory to the name of your new project.
 - `cd` into your project directory and run `yarn install`.
 - Run `yarn run dev` to start the development server.
 - Open your browser to `http://localhost:3000` to see the included example code running.
