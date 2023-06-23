@@ -2,32 +2,6 @@
 
 This starter kit features Express, Typescript API setup
 
-## Table of Contents
-
-- [express-typeorm-postgres starter kit](#express-typeorm-postgres-starter-kit)
-  - [Table of Contents](#table-of-contents)
-  - [Overview](#overview)
-    - [Tech Stack](#tech-stack)
-    - [Included Tooling](#included-tooling)
-  - [Installation](#installation)
-    - [CLI (Recommended)](#cli-recommended)
-    - [Manual](#manual)
-  - [Commands](#commands)
-  - [Example Controllers](#example-controllers)
-  - [Database and Redis](#database-and-redis)
-    - [Seeding](#seeding)
-    - [Reset infrastructure](#reset-infrastructure)
-    - [Production build](#production-build)
-    - [CORS Cross-Origin Resource Sharing](#cors-cross-origin-resource-sharing)
-  - [Kit Organization / Architecture](#kit-organization--architecture)
-    - [Folder structure](#folder-structure)
-    - [Express](#express)
-    - [TypeOrm](#typeorm)
-    - [Caching](#caching)
-    - [Queue](#queue)
-    - [Testing](#testing)
-    - [API documentation and Schema generation](#api-documentation-and-schema-generation)
-
 ## Overview
 
 ### Tech Stack

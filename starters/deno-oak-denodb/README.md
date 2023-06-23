@@ -1,29 +1,5 @@
 # deno-oak-denodb starter kit
 
-## Table of contents
-
-* [Overview](#overview)
-* [Installation](#installation)
-	+ [CLI (Recommended)](#cli-recommended)
-	+ [Manual](#manual)
-	+ [Database setup](#database-setup)
-	+ [Seeding](#seeding)
-* [Available commands](#available-commands)
-	+ [Tasks](#tasks)
-	+ [Formatting and linting](#formatting-and-linting)
-	+ [Testing](#testing)
-	+ [Keeping integrity through lock file](#keeping-integrity-through-lock-file)
-	+ [Generating documentation](#generating-documentation)
-	+ [Generating TypeScript files from GraphQL schema](#generating-typescript-files-from-graphql-schema)
-* [Using the GraphQL API](#using-the-graphql-api)
-* [CORS configuration](#cors-configuration)
-* [Kit organization / architecture](#kit-organization--architecture)
-	+ [Default API routes](#default-api-routes)
-	+ [Expanding further](#expanding-further)
-		- [Authentication](#authentication)
-		- [Templating](#templating)
-* [Deployment](#deployment)
-
 ## Overview
 
 This starter kit can be used for scaffolding an all-Deno based backend. It uses the following technologies:

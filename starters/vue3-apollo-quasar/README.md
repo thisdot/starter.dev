@@ -2,18 +2,6 @@
 
 This starter kit features Vue 3, Quasar and Apollo.
 
-## Table of Contents
-
-- [Overview](#overview)
-  - [Tech Stack](#tech-stack)
-  - [Included Tooling](#included-tooling)
-  - [Example Components](#example-components)
-- [Installation](#installation)
-  - [CLI](#cli)
-  - [Manual](#manual)
-- [Commands](#commands)
-- [Demo Implementation](#demo-implementation)
-
 ## Overview
 
 ### Tech Stack
@@ -136,5 +124,6 @@ See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-
 
 ## Demo Implementation
 
-[Repository](https://github.com/thisdot/starter.dev/tree/main/starters/vue3-apollo-quasar)
-[Live Application](https://vue3-ts-quasar.starter.dev/)
+[Repository](https://github.com/thisdot/starter.dev-github-showcases/tree/main/vue3-apollo-quasar)
+
+[Live Application](https://vue3-apollo-quasar.starter.dev/)

@@ -8,6 +8,7 @@
     "zustand",
     "styled-components"
   ],
+  "hasShowcase": true,
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",

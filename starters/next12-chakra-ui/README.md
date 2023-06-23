@@ -1,24 +1,5 @@
 # nextjs12-chakra-ui starter kit
 
-## Table of Contents
-
-- [Overview](#overview)
-- [Installation](#installation)
-  - [CLI (Recommended)](#cli-recommended)
-  - [Manual](#manual)
-- [Commands](#commands)
-- [State management](#state-management)
-- [Testing](#testing)
-  - [Unit testing](#unit-testing)
-  - [Storybook's Accessibility testing](#storybooks-accessibility-testing)
-- [Chakra UI's Customizable theme](#chakra-uis-customizable-theme)
-- [Example Components](#example-components)
-  - [API routes example](#api-routes-example)
-  - [Counter Example](#counter-example)
-  - [Fetch example](#fetch-example)
-- [Kit Organization / Architecture](#kit-organization--architecture)
-- [How to deploy your project](#how-to-deploy-your-project)
-
 ## Overview
 
 This Next.js 12 starter kit comes with formatting, linting, example components, testing and styling. Here is the complete list of technologies and tooling used in this kit:
