@@ -4,18 +4,18 @@ const { app, repo, name } = Astro.props;
 let showcase;
 
 if (app !== undefined) {
-  showcase = app
+  showcase = app;
 } else {
-  showcase = repo
+  showcase = repo;
 }
 ---
 
 <a
-href={showcase}
-class="link text-sm dark:dark-link hover:underline"
-target="_blank"
-rel="noopener noreferrer"
+  href={showcase}
+  class="link text-sm dark:dark-link hover:underline"
+  target="_blank"
+  rel="noopener noreferrer"
 >
-{name}
-<ArrowRightIcon className="inline w-4 h-4 ml-2" />
+  {name}
+  <ArrowRightIcon className="inline w-4 h-4 ml-2" />
 </a>

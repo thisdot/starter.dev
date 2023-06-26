@@ -1,5 +1,5 @@
 ---
-import ShowcaseLinks from './ShowcaseLinks.astro'
+import ShowcaseLinks from './ShowcaseLinks.astro';
 const { showcases, hasShowcase } = Astro.props;
 ---
 
@@ -23,12 +23,10 @@ const { showcases, hasShowcase } = Astro.props;
               </div>
             </div>
             <hr class="pb-4 t-dark dark:border-gray-700" />
-            <ShowcaseLinks app={app} repo={repo}/>
+            <ShowcaseLinks app={app} repo={repo} />
           </div>
         ))}
       </div>
     </div>
-  ) : (
-    null
-  )
+  ) : null
 }

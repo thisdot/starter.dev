@@ -4,12 +4,12 @@ const { app, repo } = Astro.props;
 ---
 
 <div class="font-medium text-base line-height: 1.25rem pb-3">
-  <ShowcaseLink repo={repo} name="Repository"/>
+  <ShowcaseLink repo={repo} name="Repository" />
 </div>
-{app !== '' ? (
-  <div class="font-medium text-base line-height: 1.25rem pb-4">
-    <ShowcaseLink repo={app} name="Live Application"/>
-  </div>
-) : (
-  null
-)}
+{
+  app !== '' ? (
+    <div class="font-medium text-base line-height: 1.25rem pb-4">
+      <ShowcaseLink repo={app} name="Live Application" />
+    </div>
+  ) : null
+}
