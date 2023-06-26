@@ -1,11 +1,11 @@
 ---
-import { ArrowRightIcon } from '../icons/heroicons';
+import ShowcaseLinks from './ShowcaseLinks.astro'
 const { showcases, hasShowcase } = Astro.props;
 ---
 
 {
   hasShowcase ? (
-    <div id="showcase-section" class="py-24 max-w-screen-2xl mx-auto">
+    <div id="showcase-section" class="pt-24 max-w-screen-2xl mx-auto">
       <h1 class="heading-1 font-medium mb-8">
         See kits in action via our showcases
       </h1>
@@ -23,37 +23,12 @@ const { showcases, hasShowcase } = Astro.props;
               </div>
             </div>
             <hr class="pb-4 t-dark dark:border-gray-700" />
-            <div class="font-medium text-base line-height: 1.25rem pb-3">
-              <a
-                href={repo}
-                class="link text-sm dark:dark-link hover:underline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Repository
-                <ArrowRightIcon className="inline w-4 h-4 ml-2" />
-              </a>
-            </div>
-            {app !== '' ? (
-              <div class="font-medium text-base line-height: 1.25rem pb-4">
-                <a
-                  href={app}
-                  class="link text-sm dark:dark-link hover:underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Live Application
-                  <ArrowRightIcon className="inline w-4 h-4 ml-2" />
-                </a>
-              </div>
-            ) : (
-              ''
-            )}
+            <ShowcaseLinks app={app} repo={repo}/>
           </div>
         ))}
       </div>
     </div>
   ) : (
-    ''
+    null
   )
 }

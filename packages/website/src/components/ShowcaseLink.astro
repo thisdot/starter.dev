@@ -1,0 +1,21 @@
+---
+import { ArrowRightIcon } from '../icons/heroicons';
+const { app, repo, name } = Astro.props;
+let showcase;
+console.log('showcaseLink app', app)
+if (app !== undefined) {
+  showcase = app
+} else {
+  showcase = repo
+}
+---
+
+<a
+href={showcase}
+class="link text-sm dark:dark-link hover:underline"
+target="_blank"
+rel="noopener noreferrer"
+>
+{name}
+<ArrowRightIcon className="inline w-4 h-4 ml-2" />
+</a>

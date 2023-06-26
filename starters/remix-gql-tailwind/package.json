@@ -11,7 +11,7 @@
     "typescript",
     "vite"
   ],
-  "hasShowcase": false,
+  "hasShowcase": true,
   "private": true,
   "sideEffects": false,
   "engines": {

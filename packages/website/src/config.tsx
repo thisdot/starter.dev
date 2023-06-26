@@ -571,7 +571,7 @@ export const SHOWCASES = [
     Icon: (props) => <GitHubIcon {...props} />,
   },
   {
-    id: 'nuxt-pinia-tailwind',
+    id: 'nuxt2-pinia-tailwind',
     name: 'Github Showcase',
     repo: 'https://github.com/thisdot/starter.dev-github-showcases/tree/main/nuxt-pinia-tailwind',
     app: '',

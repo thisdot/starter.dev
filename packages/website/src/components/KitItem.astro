@@ -1,40 +1,19 @@
 ---
-import { ArrowRightIcon } from '../icons/heroicons';
 import TechIcon from './TechIcon.astro';
-import { GitHubIcon } from '../icons/GitHubIcon.tsx';
 const { kit } = Astro.props;
-const technologyStubsCount = kit.technologies.length < 3 ? (3 - kit.technologies.length) : 0;
+// grid align-center
+// grid-rows-4
 ---
 
 <div
-  class="bg dark:bg-gray-800 border border-gray-400 dark:border-gray-700 rounded-lg group hover:bg-brand-500 hover:dark:bg-brand-500 transition-colors overflow-hidden"
+  class=" bg dark:bg-gray-800 border border-gray-400 dark:border-gray-700 rounded-lg group hover:bg-brand-500 hover:dark:bg-brand-500 transition-colors overflow-hidden max-w-[419px] max-h-[541px]"
 >
-<h2 class="text-2xl px-8 pt-6 t-light dark:dark-t group-hover:text-white">{kit.name}</h2>
-  <div class="grid grid-cols-3 pt-2 pb-6 space-y-4 justify-items-center items-end">
+<h2 class="text-2xl px-8 pt-6 t-light dark:dark-t group-hover:text-white min-h-[100px]">{kit.name}</h2>
+  <div class="grid grid-cols-3 grid-rows-4 pt-2 pb-6 space-y-4 justify-items-center items-end">
     {kit.technologies.map(({  Icon }) => (
-      <div class="">
+      <div>
         { Icon && <TechIcon {Icon} />}
       </div>
     ))}
-  </div>
-  <div
-    class="px-4 py-2.5 flex items-center border-t dark:border-gray-700 border-gray-200 dark:bg-gray-800 group-hover:bg-brand-600 group-hover:border-brand-600"
-  >
-    <a
-      href={`/kits/${kit.name}`}
-      class="inline-flex items-center justify-center t-light dark:dark-t group-hover:text-white font-medium"
-    >
-      View Kit  <ArrowRightIcon className="inline w-4 h-4 ml-2" />
-    </a>
-    <a
-      href={`https://github.com/thisdot/starter.dev/tree/main/starters/${kit.name}`}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="inline-flex items-center ml-auto justify-center py-2.5 px-4 rounded-lg border border-gray-400 dark:border-white group-hover:border-white group-hover:bg-brand-500"
-      ><GitHubIcon
-        size={22}
-        className="t-light dark:text-gray-100 group-hover:text-white"
-      /></a
-    >
   </div>
 </div>

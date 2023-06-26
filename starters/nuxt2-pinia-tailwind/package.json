@@ -11,7 +11,7 @@
     "axios",
     "mock-service-worker"
   ],
-  "hasShowcase": false,
+  "hasShowcase": true,
   "private": true,
   "engines": {
     "node": ">= 16.0 <18.0"
@@ -51,6 +51,7 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "7.19.1",
+    "@babel/plugin-proposal-private-property-in-object": "^7.19.1",
     "@commitlint/cli": "15.0.0",
     "@commitlint/config-conventional": "15.0.0",
     "@nuxt/postcss8": "1.1.3",
