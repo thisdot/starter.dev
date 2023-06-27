@@ -52,7 +52,7 @@ module.exports = {
         sm: ['16px', '1.28'],
         base: ['18px', '1.32'],
         lg: ['20px', '1.22'],
-        xl: ['1.375rem', '2']
+        // xl: ['1.375rem', '2']
       },
       gridTemplateColumns: {
         'avail-kits': 'repeat(3, 100px)',
