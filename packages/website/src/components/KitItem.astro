@@ -2,13 +2,14 @@
 import TechIcon from './TechIcon.astro';
 const { kit } = Astro.props;
 // m-auto
+// lg:grid-cols-avail-kits
 ---
 
 <div
-  class=" grid lg:m-auto justify-items-center bg dark:bg-gray-800 border border-gray-400 dark:border-gray-700 rounded-lg group group-hover:bg-brand-500 group-hover:dark:bg-brand-500 transition-colors overflow-hidden px-4"
+  class="grid justify-items-center bg dark:bg-gray-800 border border-gray-400 dark:border-gray-700 rounded-lg group group-hover:bg-brand-500 group-hover:dark:bg-brand-500 transition-colors overflow-hidden px-4"
 >
 <h2 class="text-xl pt-6 t-light dark:dark-t group-hover:text-white max-w-[275px]">{kit.name}</h2>
-  <div class="grid grid-cols-3 gap-x-4 lg:grid-cols-avail-kits grid-rows-4 pt-2 pb-6 space-y-4 justify-items-center items-end">
+  <div class="grid grid-cols-3 gap-x-4 grid-rows-4 lg:px-6 pt-2 pb-4 space-y-4 justify-items-center items-end">
     {kit.technologies.map(({  Icon }) => (
       <div>
         { Icon && <TechIcon {Icon} />}
