@@ -10,7 +10,7 @@
     "storybook",
     "typescript"
   ],
-  "hasShowcase": true,
+  "hasShowcase": false,
   "private": true,
   "engines": {
     "node": ">= 16.0"

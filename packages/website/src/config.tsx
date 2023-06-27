@@ -542,6 +542,8 @@ export const SHOWCASES = [
     app: '',
     Icon: (props) => <GitHubIcon {...props} />,
   },
+  // The angular-ngrx-scss showcase is currently not finished
+  // so this is set as false in that starters package.json
   {
     id: 'angular-ngrx-scss',
     name: 'Github Showcase',
