@@ -536,7 +536,7 @@ export const TECHNOLOGIES = [
 
 export const SHOWCASES = [
   {
-    id: 'angular-apollo-tailwind',
+    kit: 'angular-apollo-tailwind',
     name: 'Github Showcase',
     repo: 'https://github.com/thisdot/starter.dev-github-showcases/tree/main/angular-apollo-tailwind',
     app: '',
@@ -545,84 +545,88 @@ export const SHOWCASES = [
   // The angular-ngrx-scss showcase is currently not finished
   // so this is set as false in that starters package.json
   {
-    id: 'angular-ngrx-scss',
+    kit: 'angular-ngrx-scss',
     name: 'Github Showcase',
     repo: 'https://github.com/thisdot/starter.dev-github-showcases/tree/main/angular-ngrx-scss',
     app: '',
     Icon: (props) => <GitHubIcon {...props} />,
   },
   {
-    id: 'cra-rxjs-styled-components',
+    kit: 'cra-rxjs-styled-components',
     name: 'Github Showcase',
     repo: 'https://github.com/thisdot/starter.dev-github-showcases/tree/main/cra-rxjs-styled-components',
     app: '',
     Icon: (props) => <GitHubIcon {...props} />,
   },
   {
-    id: 'expo-zustand-styled-components',
+    kit: 'expo-zustand-styled-components',
     name: 'Github Showcase',
     repo: 'https://github.com/thisdot/starter.dev-github-showcases/tree/main/expo-zustand-styled-components',
     app: '',
     Icon: (props) => <GitHubIcon {...props} />,
   },
   {
-    id: 'next-react-query-tailwind',
+    kit: 'next-react-query-tailwind',
     name: 'Github Showcase',
     repo: 'https://github.com/thisdot/starter.dev-github-showcases/tree/main/next-react-query-tailwind',
     app: '',
     Icon: (props) => <GitHubIcon {...props} />,
   },
+  // The nuxt2-pinia-tailwind showcase is currently not finished
+  // so this is set as false in that starters package.json
   {
-    id: 'nuxt2-pinia-tailwind',
+    kit: 'nuxt2-pinia-tailwind',
     name: 'Github Showcase',
     repo: 'https://github.com/thisdot/starter.dev-github-showcases/tree/main/nuxt-pinia-tailwind',
     app: '',
     Icon: (props) => <GitHubIcon {...props} />,
   },
   {
-    id: 'qwik-graphql-tailwind',
+    kit: 'qwik-graphql-tailwind',
     name: 'Github Showcase',
     repo: 'https://github.com/thisdot/starter.dev-github-showcases/tree/main/qwik-graphql-tailwind',
     app: '',
     Icon: (props) => <GitHubIcon {...props} />,
   },
+  // The remix-gql-tailwind showcase is currently broken
+  // so this is set as false in that starters package.json
   {
-    id: 'remix-gql-tailwind',
+    kit: 'remix-gql-tailwind',
     name: 'Github Showcase',
     repo: 'https://github.com/thisdot/starter.dev-github-showcases/tree/main/remix-gql-tailwind',
     app: '',
     Icon: (props) => <GitHubIcon {...props} />,
   },
   {
-    id: 'solidjs-tailwind',
+    kit: 'solidjs-tailwind',
     name: 'Github Showcase',
     repo: 'https://github.com/thisdot/starter.dev-github-showcases/tree/main/solidjs-tailwind',
     app: '',
     Icon: (props) => <GitHubIcon {...props} />,
   },
   {
-    id: 'solidstart-tanstackquery-tailwind-modules',
+    kit: 'solidstart-tanstackquery-tailwind-modules',
     name: 'Github Showcase',
     repo: 'https://github.com/thisdot/starter.dev-github-showcases/tree/main/solidstart-tanstackquery-tailwind-modules',
     app: '',
     Icon: (props) => <GitHubIcon {...props} />,
   },
   {
-    id: 'svelte-kit-scss',
+    kit: 'svelte-kit-scss',
     name: 'Github Showcase',
     repo: 'https://github.com/thisdot/starter.dev-github-showcases/tree/main/svelte-kit-scss',
     app: '',
     Icon: (props) => <GitHubIcon {...props} />,
   },
   {
-    id: 'svelte-kit-scss',
+    kit: 'svelte-kit-scss',
     name: '7 GUIs Showcase',
     repo: 'https://github.com/thisdot/starter.dev-7guis-showcases',
     app: '',
     Icon: (props) => <BriefcaseIcon {...props} />,
   },
   {
-    id: 'vue3-apollo-quasar',
+    kit: 'vue3-apollo-quasar',
     name: 'Github Showcase',
     repo: 'https://github.com/thisdot/starter.dev-github-showcases/tree/main/vue3-apollo-quasar',
     app: '',

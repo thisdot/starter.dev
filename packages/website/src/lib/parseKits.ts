@@ -23,7 +23,7 @@ export function parseKit(kit: MarkdownContent) {
     'hasShowcase',
   ]);
   const showcases = SHOWCASES.filter((showcase) => {
-    return showcase.id === kitObject.name;
+    return showcase.kit === kitObject.name;
   });
 
   return {

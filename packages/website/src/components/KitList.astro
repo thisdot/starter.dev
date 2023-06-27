@@ -1,9 +1,10 @@
 ---
 import KitItem from './KitItem.astro';
 const { kits } = Astro.props;
+// [&:nth-child(1n)]:m-auto odd:m-auto
 ---
 
-<div class="px-4 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
+<div class="md:px-20 lg:px-16 justify-items-center grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-y-6">
   {
     kits.map((kit) => (
       <div class="col-span-1">

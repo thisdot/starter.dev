@@ -11,7 +11,7 @@
     "axios",
     "mock-service-worker"
   ],
-  "hasShowcase": true,
+  "hasShowcase": false,
   "private": true,
   "engines": {
     "node": ">= 16.0 <18.0"
