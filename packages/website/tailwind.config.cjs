@@ -55,7 +55,7 @@ module.exports = {
       },
       gridTemplateColumns: {
         'avail-kits': 'repeat(3, 100px)',
-      }
+      },
     },
   },
   plugins: [require('@tailwindcss/typography')],
