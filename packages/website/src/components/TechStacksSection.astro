@@ -3,7 +3,6 @@ import KitList from './KitList.astro';
 import { parseKits } from '../lib/parseKits';
 const items = await Astro.glob('../pages/kits/*.mdx');
 const kits = parseKits(items);
-// max-w-screen-2xl
 ---
 
 <div class="py-8">
