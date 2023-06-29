@@ -7,6 +7,14 @@
     "pinia",
     "tailwind"
   ],
+  "showcase": [
+    {
+      "kit": "nuxt2-pinia-tailwind",
+      "name": "Github Showcase",
+      "repo": "https://github.com/thisdot/starter.dev-github-showcases/tree/main/nuxt-pinia-tailwind",
+      "app": "https://nuxt-pinia-tailwind.starter.dev"
+    }
+  ],
   "hasShowcase": false,
   "private": true,
   "engines": {

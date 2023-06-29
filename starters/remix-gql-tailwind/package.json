@@ -7,6 +7,14 @@
     "graphql",
     "tailwind"
   ],
+  "showcase": [
+    {
+      "kit": "remix-gql-tailwind",
+      "name": "Github Showcase",
+      "repo": "https://github.com/thisdot/starter.dev-github-showcases/tree/main/remix-gql-tailwind",
+      "app": ""
+    }
+  ],
   "hasShowcase": false,
   "private": true,
   "sideEffects": false,

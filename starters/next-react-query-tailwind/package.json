@@ -8,6 +8,14 @@
   ],
   "version": "0.1.1",
   "private": true,
+  "showcase": [
+    {
+      "kit": "next-react-query-tailwind",
+      "name": "Github Showcase",
+      "repo": "https://github.com/thisdot/starter.dev-github-showcases/tree/main/next-react-query-tailwind",
+      "app": "https://next-react-query-tailwind.starter.dev"
+    }
+  ],
   "hasShowcase": true,
   "engines": {
     "node": ">=16.0 <18.0.0"

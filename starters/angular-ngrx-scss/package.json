@@ -7,6 +7,14 @@
     "ngrx",
     "sass"
   ],
+  "showcase": [
+    {
+      "kit": "angular-ngrx-scss",
+      "name": "Github Showcase",
+      "repo": "https://github.com/thisdot/starter.dev-github-showcases/tree/main/angular-ngrx-scss",
+      "app": "https://angular-ngrx-scss.starter.dev"
+    }
+  ],
   "hasShowcase": false,
   "private": true,
   "engines": {

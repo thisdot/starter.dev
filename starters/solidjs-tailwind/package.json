@@ -2,6 +2,14 @@
   "name": "solidjs-tailwind",
   "version": "0.1.0",
   "private": true,
+  "showcase": [
+    {
+      "kit": "solidjs-tailwind",
+      "name": "Github Showcase",
+      "repo": "https://github.com/thisdot/starter.dev-github-showcases/tree/main/solidjs-tailwind",
+      "app": "https://solidjs-tailwind.starter.dev"
+    }
+  ],
   "hasShowcase": true,
   "description": "SolidJS and TailwindCSS",
   "contributors": [

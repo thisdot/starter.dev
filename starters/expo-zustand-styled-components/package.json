@@ -8,6 +8,14 @@
     "zustand",
     "styled-components"
   ],
+  "showcase": [
+    {
+      "kit": "expo-zustand-styled-components",
+      "name": "Github Showcase",
+      "repo": "https://github.com/thisdot/starter.dev-github-showcases/tree/main/expo-zustand-styled-components",
+      "app": ""
+    }
+  ],
   "hasShowcase": true,
   "scripts": {
     "start": "expo start",

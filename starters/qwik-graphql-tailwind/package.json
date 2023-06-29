@@ -7,6 +7,14 @@
     "tailwind"
   ],
   "version": "0.0.1",
+  "showcase": [
+    {
+      "kit": "qwik-graphql-tailwind",
+      "name": "Github Showcase",
+      "repo": "https://github.com/thisdot/starter.dev-github-showcases/tree/main/qwik-graphql-tailwind",
+      "app": "https://qwik-graphql-tailwind.starter.dev"
+    }
+  ],
   "hasShowcase": true,
   "engines": {
     "node": ">=15.0.0"

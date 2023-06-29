@@ -7,6 +7,14 @@
     "apollo",
     "tailwind"
   ],
+  "showcase": [
+    {
+      "kit": "angular-apollo-tailwind",
+      "name": "Github Showcase",
+      "repo": "https://github.com/thisdot/starter.dev-github-showcases/tree/main/angular-apollo-tailwind",
+      "app": "https://angular-apollo-tailwind.starter.dev/"
+    }
+  ],
   "hasShowcase": true,
   "private": true,
   "engines": {

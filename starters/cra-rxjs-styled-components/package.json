@@ -7,6 +7,14 @@
     "rxjs",
     "styled-components"
   ],
+  "showcase": [
+    {
+      "kit": "cra-rxjs-styled-components",
+      "name": "Github Showcase",
+      "repo": "https://github.com/thisdot/starter.dev-github-showcases/tree/main/cra-rxjs-styled-components",
+      "app": "https://cra-rxjs-styled-components.starter.dev"
+    }
+  ],
   "hasShowcase": true,
   "private": true,
   "engines": {
