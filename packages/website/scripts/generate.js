@@ -106,7 +106,6 @@ async function generate(kit, genPath) {
         pickData = {
           ...pick(data, ['showcase']),
         };
-        // console.log(pickData);
         Object.entries(pickData).map(([key, value]) => {
           value.map((item) => {
             showcases.push(item);
