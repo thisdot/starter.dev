@@ -32,9 +32,7 @@ async function createDeleteFiles(kit, PagesPath) {
         : 'showcasegen: deleting existing showcase file'
     );
     rimraf(
-      kit
-        ? `${PagesPath}/*.md,${PagesPath}/*.mdx`
-        : `${PagesPath}/*`,
+      kit ? `${PagesPath}/*.md,${PagesPath}/*.mdx` : `${PagesPath}/*`,
       async (err) => {
         if (err) {
           console.error(err);
