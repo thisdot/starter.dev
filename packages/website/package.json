@@ -11,8 +11,8 @@
     "lint": "eslint ./src",
     "kitgen": "node ./scripts/generate-kit-pages.js",
     "showcasegen": "node ./scripts/generate-showcases.js",
-    "predev": "yarn kitgen",
-    "prebuild": "yarn kitgen"
+    "predev": "yarn kitgen && yarn showcasegen",
+    "prebuild": "yarn kitgen && yarn showcasegen"
   },
   "devDependencies": {
     "@astrojs/mdx": "^0.13.0",

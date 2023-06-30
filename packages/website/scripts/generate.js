@@ -23,16 +23,16 @@ ${frontmatter}
 ${markdown}`;
 }
 
-async function createDeleteFiles(kit, PagesPath) {
+async function createDeleteFiles(isKit, PagesPath) {
   try {
     const handle = await fs.opendir(PagesPath);
     console.info(
-      kit
+      isKit
         ? 'kitgen: deleting existing kit pages'
         : 'showcasegen: deleting existing showcase file'
     );
     rimraf(
-      kit ? `${PagesPath}/*.md,${PagesPath}/*.mdx` : `${PagesPath}/*`,
+      isKit ? `${PagesPath}/*.md,${PagesPath}/*.mdx` : `${PagesPath}/*`,
       async (err) => {
         if (err) {
           console.error(err);
@@ -43,7 +43,7 @@ async function createDeleteFiles(kit, PagesPath) {
   } catch (err) {
     if (err && err.code === 'ENOENT') {
       console.info(
-        kit
+        isKit
           ? 'kitgen: creating kit pages directory'
           : 'showcasegen: creating showcase file'
       );
@@ -52,10 +52,10 @@ async function createDeleteFiles(kit, PagesPath) {
   }
 }
 
-async function generate(kit, genPath) {
+async function generate(isKit, genPath) {
   const repoPath = getRepoRootPath();
   const PagesPath = path.join(repoPath, genPath);
-  await createDeleteFiles(kit, PagesPath);
+  await createDeleteFiles(isKit, PagesPath);
 
   const kitDirs = await getKitDirs();
   const showcases = [];
@@ -64,7 +64,7 @@ async function generate(kit, genPath) {
   let PagePath;
 
   console.info(
-    kit ? 'kitgen: generating kit pages' : 'showcasegen: generating showcases'
+    isKit ? 'kitgen: generating kit pages' : 'showcasegen: generating showcases'
   );
   for (const dir of kitDirs) {
     const kitPath = path.join(repoPath, 'starters', dir);
@@ -83,7 +83,7 @@ async function generate(kit, genPath) {
       const json = await fs.readFile(path.join(kitPath, infoFile), 'utf-8');
       const data = JSON.parse(json);
 
-      if (kit) {
+      if (isKit) {
         pickData = {
           ...pick(data, [
             'name',
@@ -119,12 +119,12 @@ async function generate(kit, genPath) {
 
       await fs.writeFile(
         PagePath,
-        kit ? formattedMarkdown : JSON.stringify(showcases),
+        isKit ? formattedMarkdown : JSON.stringify(showcases),
         'utf-8'
       );
     } catch (err) {
       console.error(
-        kit
+        isKit
           ? `KITGEN: failed to write kit page for ${dir}: ${err.message}`
           : `SHOWCASEGEN: failed to write showcase page: ${err.message}`
       );
