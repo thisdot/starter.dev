@@ -8,7 +8,7 @@ const { kit } = Astro.props;
 >
 <h2 class="text-lg justify-self-start ml-2 lg:ml-6 pt-6 t-dark dark:dark-t group-hover:text-white">{kit.name}</h2>
   <div class="grid grid-cols-4 gap-x-4 grid-rows-3 lg:px-6 pt-2 pb-4 space-y-4 justify-items-center items-end">
-    {kit.technologies.map(({  Icon }) => (
+    {kit.technologies.map(({ Icon }) => (
       <div>
         { Icon && <TechIcon {Icon} />}
       </div>

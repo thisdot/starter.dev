@@ -39,6 +39,7 @@ import {
   ChakraIcon,
   ServerlessIcon,
   DenoIcon,
+  DenoDBIcon,
   ExpressIcon,
   PostgresIcon,
   TypeOrmIcon,
@@ -371,16 +372,10 @@ export const TECHNOLOGIES = [
     Icon: (props) => <DenoIcon {...props} />,
   },
   {
-    key: 'oak',
-    name: 'Oak',
-    tags: ['Framework'],
-    Icon: (props) => <DenoIcon {...props} />,
-  },
-  {
     key: 'denodb',
     name: 'DenoDB',
     tags: ['Data Management'],
-    Icon: (props) => <DenoIcon {...props} />,
+    Icon: (props) => <DenoDBIcon {...props} />,
   },
   {
     key: 'typeorm',

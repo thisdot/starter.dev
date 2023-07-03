@@ -41,6 +41,7 @@ export { SolidJsIcon } from './SolidJsIcon';
 export { ChakraIcon } from './ChakraIcon';
 export { ServerlessIcon } from './ServerlessIcon';
 export { DenoIcon } from './DenoIcon';
+export { DenoDBIcon } from './DenoDBIcon';
 export { ExpressIcon } from './ExpressIcon';
 export { PostgresIcon } from './PostgresIcon';
 export { TypeOrmIcon } from './TypeOrmIcon';
