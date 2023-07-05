@@ -7,7 +7,7 @@ export function TanstackIcon({ className }: Props) {
       xmlns="http://www.w3.org/2000/svg"
       x="0px"
       y="0px"
-      width="80%"
+      width="62%"
       viewBox="0 0 175 175"
       enableBackground="new 0 0 160 160"
       className={className}
