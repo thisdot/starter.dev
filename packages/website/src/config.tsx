@@ -433,7 +433,7 @@ export const TECHNOLOGIES = [
   },
   {
     key: 'typescript',
-    name: 'Typescript',
+    name: 'TypeScript',
     tags: ['Tooling'],
     Icon: (props) => <TypescriptIcon {...props} />,
   },
