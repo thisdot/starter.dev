@@ -11,9 +11,13 @@ export function parseKit(kit: MarkdownContent) {
   // TODO: improve this
   const kitData = 'astro' in kit ? kit : kit.frontmatter;
   const keywords = kitData.keywords?.split(',') || [];
-  const technologies = TECHNOLOGIES.filter((tech) => {
-    return keywords.includes(tech.key);
-  });
+  // techstack is created this way to follow the order of the keywords, so the main items show first.
+  // needs the undefined filter in case some items (like oak) don't exist in TECHNOLOGIES
+  const technologies = keywords
+    .map((keyword) => {
+      return TECHNOLOGIES.find((tech) => tech.key === keyword);
+    })
+    .filter((tech) => tech !== undefined);
   const kitObject = pick(kitData, [
     'name',
     'version',
