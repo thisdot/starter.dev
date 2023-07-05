@@ -614,13 +614,6 @@ export const SHOWCASES = [
     Icon: (props) => <GitHubIcon {...props} />,
   },
   {
-    kit: 'svelte-kit-scss',
-    name: '7 GUIs Showcase',
-    repo: 'https://github.com/thisdot/starter.dev-7guis-showcases',
-    app: 'https://svelte-kit-scss-7guis.starter.dev/',
-    Icon: (props) => <BriefcaseIcon {...props} />,
-  },
-  {
     kit: 'vue3-apollo-quasar',
     name: 'GitHub Showcase',
     repo: 'https://github.com/thisdot/starter.dev-github-showcases/tree/main/vue3-apollo-quasar',
