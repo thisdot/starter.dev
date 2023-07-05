@@ -1,14 +1,13 @@
 ---
 import cn from 'clsx';
 import { BriefcaseIcon } from '../icons/heroicons';
-import { GitHubIcon } from '../icons/GitHubIcon.tsx';
-import { ShareIcon } from '../icons/ShareIcon.tsx';
-import { REPO_URL, SHOWCASE_REPO_URL } from '../config.tsx';
+import { GitHubIcon } from '../icons/GitHubIcon';
+import { REPO_URL } from '../config';
 import { ShareDropdown } from './ShareDropdown';
 const { name, hasShowcase, inline } = Astro.props;
 ---
 
-<div class="flex flex-row items-center max-w-screen-2xl mx-auto">
+<div class="flex flex-row items-center justify-center max-w-screen-2xl mx-auto">
   <div class=" hidden lg:block invisible lg:visible lg:space-x-4 ">
     <ShareDropdown kitname={name} client:only />
     <a
@@ -17,11 +16,11 @@ const { name, hasShowcase, inline } = Astro.props;
       href={`${REPO_URL}/discussions`}>Have a question?</a
     >
   </div>
-  <div class="lg:ml-auto">
+  <div class="lg:ml-auto flex flex-wrap justify-center items-center">
     {
       hasShowcase && (
         <a
-          class="btn link text-sm dark:dark-link mt-3"
+          class="btn link text-sm dark:dark-link mt-3 mb-auto"
           href="#showcase-section"
         >
           <>
