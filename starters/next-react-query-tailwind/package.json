@@ -4,7 +4,11 @@
   "keywords": [
     "next",
     "react-query",
-    "tailwind"
+    "tailwind",
+    "storybook",
+    "jest",
+    "typescript",
+    "mock-service-worker"
   ],
   "version": "0.1.1",
   "private": true,

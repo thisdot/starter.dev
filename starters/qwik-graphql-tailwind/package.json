@@ -4,7 +4,12 @@
   "keywords": [
     "qwik",
     "graphql",
-    "tailwind"
+    "tailwind",
+    "storybook",
+    "typescript",
+    "vite",
+    "qwik-city",
+    "vitest"
   ],
   "version": "0.0.1",
   "hasShowcase": true,

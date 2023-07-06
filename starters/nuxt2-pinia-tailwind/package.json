@@ -5,7 +5,11 @@
   "keywords": [
     "nuxt 2",
     "pinia",
-    "tailwind"
+    "tailwind",
+    "vue",
+    "jest",
+    "axios",
+    "mock-service-worker"
   ],
   "hasShowcase": false,
   "private": true,
@@ -47,6 +51,7 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "7.19.1",
+    "@babel/plugin-proposal-private-property-in-object": "^7.19.1",
     "@commitlint/cli": "15.0.0",
     "@commitlint/config-conventional": "15.0.0",
     "@nuxt/postcss8": "1.1.3",

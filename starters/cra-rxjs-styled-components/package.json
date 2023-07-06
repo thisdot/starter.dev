@@ -5,7 +5,11 @@
   "keywords": [
     "react",
     "rxjs",
-    "styled-components"
+    "styled-components",
+    "mock-service-worker",
+    "storybook",
+    "typescript",
+    "create-react-app"
   ],
   "hasShowcase": true,
   "private": true,

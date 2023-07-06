@@ -19,7 +19,11 @@
 	"keywords": [
 		"serverless",
 		"apollo-server",
-		"contentful"
+		"contentful",
+		"jest",
+		"typescript",
+		"redis",
+		"aws-sqs"
 	],
 	"hasShowcase": false,
 	"author": "This Dot Labs",
