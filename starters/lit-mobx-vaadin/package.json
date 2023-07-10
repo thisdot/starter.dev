@@ -10,8 +10,8 @@
 	"version": "0.1.0",
 	"type": "module",
 	"scripts": {
-		"lint": "eslint --ext .ts,.html . --ignore-path .gitignore && prettier \"**/*.ts\" --check --ignore-path .gitignore",
-		"prettier": "eslint --ext .ts,.html . --fix --ignore-path .gitignore && prettier \"**/*.ts\" --write --ignore-path .gitignore",
+		"format:check": "eslint --ext .ts,.html . --ignore-path .gitignore && prettier \"**/*.ts\" --check --ignore-path .gitignore",
+		"formaat:write": "eslint --ext .ts,.html . --fix --ignore-path .gitignore && prettier \"**/*.ts\" --write --ignore-path .gitignore",
 		"storybook": "tsc && npm run analyze -- --exclude dist && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"wds -c .storybook/server.js\"",
 		"storybook:build": "tsc && npm run analyze -- --exclude dist && build-storybook",
 		"test": "tsc && wtr --coverage",
