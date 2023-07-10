@@ -3,11 +3,17 @@
   "description": "SvelteKit and SCSS",
   "keywords": [
     "svelte-kit",
-    "sass"
+    "sass",
+    "playwright",
+    "storybook",
+    "vite",
+    "typescript",
+    "vitest",
+    "svelte"
   ],
   "private": true,
   "version": "0.1.0",
-  "hasShowcase": false,
+  "hasShowcase": true,
   "scripts": {
     "start": "vite dev --open",
     "dev": "vite dev",

@@ -2,17 +2,6 @@
 
 This starter kit features **Nuxt.js 2**, **Pinia**, and **Tailwind CSS**.
 
-## Table of Contents
-
-- [Overview](#overview)
-  - [Tech Stack](#tech-stack)
-  - [Included Tooling](#included-tooling)
-  - [Example Code](#example-code)
-- [Installation](#installation)
-  - [CLI (Recommended)](#cli-recommended)
-  - [Manual](#manual)
-- [Commands](#commands)
-
 ## Overview
 
 ### Tech Stack

@@ -16,6 +16,7 @@ button {
 	padding: 0.5em 0.25em;
 	border-radius: 4px;
 	border-color: var(--lightBlue);
+	cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {

@@ -5,7 +5,12 @@
 	"keywords": [
 		"express",
 		"typeorm",
-		"postgres"
+		"postgres",
+		"redis",
+		"jest",
+		"typescript",
+		"swagger",
+		"bullmq"
 	],
 	"hasShowcase": false,
 	"license": "MIT",

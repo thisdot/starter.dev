@@ -2,22 +2,6 @@
 
 This starter kit features Create React App, RxJS and styled-components.
 
-## Table of Contents
-
-- [cra-rxjs-styled-components starter kit](#cra-rxjs-styled-components-starter-kit)
-  - [Table of Contents](#table-of-contents)
-  - [Overview](#overview)
-    - [Tech Stack](#tech-stack)
-    - [Included Tooling](#included-tooling)
-    - [Example Components](#example-components)
-  - [Installation](#installation)
-    - [CLI (Recommended)](#cli-recommended)
-    - [Manual](#manual)
-  - [Commands](#commands)
-  - [Kit Organization / Architecture](#kit-organization--architecture)
-    - [Example directory](#example-directory)
-  - [Demo Implementation](#demo-implementation)
-
 ## Overview
 
 ### Tech Stack
@@ -122,5 +106,7 @@ The demo components included in the starter.kit are co-located with the tests an
 ## Demo Implementation
 
 [Repository](https://github.com/thisdot/starter.dev-github-showcases/tree/main/cra-rxjs-styled-components)
+
+[Live Application](https://cra-rxjs-styled-components.starter.dev/)
 
 The demo application re-implements some of GitHub's pages and functionality. It uses the OAuth credentials in GitHub to authenticate users with their GitHub accounts and uses RxJS to fetch data from the GitHub API. Check out the link above to learn more or check out the demo!

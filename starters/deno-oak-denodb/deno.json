@@ -2,11 +2,7 @@
 	"name": "deno-oak-denodb",
 	"version": "0.0.1",
 	"description": "Deno, Oak, and DenoDB",
-	"keywords": [
-		"deno",
-		"oak",
-		"denodb"
-	],
+	"keywords": ["deno", "oak", "denodb", "graphql", "redis", "postgres"],
 	"hasShowcase": false,
 	"tasks": {
 		"start-db": "docker compose up -d",
@@ -21,32 +17,17 @@
 	},
 	"lint": {
 		"files": {
-			"include": [
-				"./src"
-			]
+			"include": ["./src"]
 		},
 		"rules": {
-			"tags": [
-				"recommended"
-			],
-			"include": [
-				"no-external-import",
-				"no-const-assign",
-				"explicit-function-return-type",
-				"camelcase",
-				"explicit-module-boundary-types",
-				"default-param-last"
-			],
-			"exclude": [
-				"no-explicit-any"
-			]
+			"tags": ["recommended"],
+			"include": ["no-external-import", "no-const-assign", "explicit-function-return-type", "camelcase", "explicit-module-boundary-types", "default-param-last"],
+			"exclude": ["no-explicit-any"]
 		}
 	},
 	"fmt": {
 		"files": {
-			"include": [
-				"./src"
-			]
+			"include": ["./src"]
 		},
 		"options": {
 			"useTabs": true,

@@ -5,7 +5,10 @@
   "keywords": [
     "angular",
     "ngrx",
-    "sass"
+    "sass",
+    "rxjs",
+    "storybook",
+    "typescript"
   ],
   "hasShowcase": false,
   "private": true,

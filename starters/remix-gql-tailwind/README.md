@@ -2,19 +2,6 @@
 
 This starter kit features **Remix**, **GraphQL**, and **Tailwind CSS**.
 
-## Table of Contents
-
-- [Overview](#overview)
-  - [Tech Stack](#tech-stack)
-  - [Included Tooling](#included-tooling)
-  - [Kit Organization / Architecture](#kit-organization-architecture)
-  - [Example Components](#example-components)
-- [Installation](#installation)
-  - [CLI](#cli)
-  - [Manual](#manual)
-- [Commands](#commands)
-- [Demo Implementation](#demo-implementation)
-
 ## Overview
 
 ### Tech Stack

@@ -11,6 +11,13 @@ import { trackSelectedKit } from './metrics';
 const STARTER_KITS_JSON_URL = 'https://raw.githubusercontent.com/thisdot/starter.dev/main/starter-kits.json';
 const EXCLUDED_PACKAGE_JSON_FIELDS = ['hasShowcase'];
 
+type Package = {
+  scripts: {
+    dev: string;
+    start: string;
+  };
+};
+
 export async function main() {
   console.log(`\n${bold('Welcome to starter.dev!')} ${gray('(create-starter)')}`);
 
@@ -25,10 +32,12 @@ export async function main() {
     if (res.ok) {
       const starterKitsJSON = await res.json();
       if (typeof starterKitsJSON === 'object' && starterKitsJSON !== null) {
-        starters = Object.entries(starterKitsJSON).map(([name, description]) => ({
-          value: name as string,
-          title: description as string,
-        })).sort((a, b) => a.title.localeCompare(b.title));
+        starters = Object.entries(starterKitsJSON)
+          .map(([name, description]) => ({
+            value: name as string,
+            title: description as string,
+          }))
+          .sort((a, b) => a.title.localeCompare(b.title));
       }
     } else {
       throw new Error();
@@ -44,7 +53,7 @@ export async function main() {
       name: 'kit',
       message: 'Which starter kit would you like to use?',
       choices: starters,
-      suggest: (input, choices) => Promise.resolve(choices.filter(c => c.title.includes(input))),
+      suggest: (input, choices) => Promise.resolve(choices.filter((c) => c.title.toLowerCase().includes(input.toLowerCase()))),
     },
     {
       type: 'text',
@@ -53,26 +62,46 @@ export async function main() {
     },
   ]);
 
-  if (!options.kit || !options.name) {
+  const packageOptions = await prompts([
+    {
+      type: 'autocomplete',
+      name: 'packageManager',
+      message: 'Which package manager would you like to use?',
+      choices: packageSelection(options.kit).map((pm) => ({ title: pm, value: pm })),
+      suggest: (input, choices) => Promise.resolve(choices.filter((c) => c.title.includes(input))),
+    },
+  ]);
+
+  if (!options.kit || !options.name || !packageOptions) {
     process.exit(1);
   }
 
-  const [createSelectedKitResult] = await Promise.allSettled([
-    createStarter(options),
-    trackSelectedKit(options.kit)
-  ])
+  const [createSelectedKitResult] = await Promise.allSettled([createStarter(options, packageOptions), trackSelectedKit(options.kit)]);
 
   if (createSelectedKitResult.status === 'rejected') {
     const err = createSelectedKitResult.reason;
     console.error(red(err instanceof Error ? err.message : `Creating starter kit failed`));
     process.exit(1);
   }
-
 }
 
-async function createStarter(options: prompts.Answers<'name' | 'kit'>): Promise<void> {
+function packageSelection(selection: string): Array<string> {
+  let packageOptions;
+  switch (selection) {
+    case 'deno-oak-denodb':
+      packageOptions = ['deno'];
+      break;
+    default:
+      packageOptions = ['npm', 'pnpm', 'yarn'];
+  }
+  return packageOptions;
+}
+
+async function createStarter(options: prompts.Answers<'name' | 'kit'>, packageOptions: prompts.Answers<'packageManager'>): Promise<void> {
   const repoPath = `thisdot/starter.dev/starters/${options.kit}`;
   const destPath = path.join(process.cwd(), options.name);
+  const packageManager = packageOptions.packageManager;
+  const kit = options.kit;
 
   const emitter = degit(repoPath, {
     cache: false,
@@ -100,16 +129,35 @@ async function createStarter(options: prompts.Answers<'name' | 'kit'>): Promise<
       await initNodeProject(packageJsonPath, destPath, options);
     }
 
-    await initGitRepo(destPath);
+    const packageCommand = `https://raw.githubusercontent.com/thisdot/starter.dev/main/starters/${kit}/${packageManager === 'deno' ? 'deno' : 'package'}.json`;
+    const res = await fetch(packageCommand);
+    let packageJSON: Package;
+
+    if (res.ok) {
+      packageJSON = (await res.json()) as Package;
+    } else {
+      throw new Error();
+    }
+
+    const startAction = packageJSON?.scripts?.dev !== undefined ? 'dev' : 'start';
+
+    await initGitRepo(destPath, packageManager);
     console.log(bold(green('✔') + ' Done!'));
     console.log('\nNext steps:');
     console.log(` ${bold(cyan(`cd ${options.name}`))}`);
 
     if (packageJsonExists) {
-      console.log(` ${bold(cyan('npm install'))} (or pnpm install, yarn, etc)`);
+      console.log(` ${bold(cyan(`${packageManager} ${startAction}`))}`);
+    } else if (packageManager === 'deno') {
+      console.log(` ${bold(cyan('Make sure you have Docker & docker-compose installed on your machine'))}`);
+      console.log(` ${bold(cyan('Create a .env file and copy the contents of .env.example into it'))}`);
+      console.log(` ${bold(cyan('Run deno task start-db to start the local PostgreSQL and Redis'))}`);
+      console.log(` ${bold(cyan('Run deno task start-web to start the development server'))}`);
+      console.log(` ${bold(cyan('Open your browser to http://localhost:3333/health to see the API running'))}`);
+      console.log(` ${bold(cyan('Proceed to the Seeding chapter to seed the database with some sample data'))}`);
     }
   } catch (err: unknown) {
-    throw new Error('Failed to initialize the starter kit. This probably means that you provided an invalid kit name.')
+    throw new Error('Failed to initialize the starter kit. This probably means that you provided an invalid kit name.');
   }
 }
 
@@ -130,5 +178,3 @@ async function initNodeProject(packageJsonPath: string, projectDestPath: string,
     console.info(gray(`> ${bold('Note:')} Failed to update package.json. You may need to do this manually.`));
   }
 }
-
-

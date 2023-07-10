@@ -5,7 +5,10 @@
 	"keywords": [
 		"express",
 		"apollo-server",
-		"prisma"
+		"prisma",
+		"typescript",
+		"redis",
+		"graphql"
 	],
 	"hasShowcase": false,
 	"license": "MIT",

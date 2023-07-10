@@ -1,0 +1,31 @@
+---
+import ShowcaseLinks from './ShowcaseLinks.astro';
+const { showcases, hasShowcase } = Astro.props;
+---
+
+{
+  hasShowcase ? (
+    <div id="showcase-section" class="pt-24 max-w-screen-2xl mx-auto scroll-mt-20">
+      <h1 class="heading-1 font-medium mb-8">
+        See kits in action via our showcases
+      </h1>
+      <div class="not-prose flex flex-col sm:col-span-1 md:flex-row flex-wrap gap-4">
+        {showcases.map(({ name, repo, app, Icon }) => (
+          <div class="border bg-gray-100 dark:bg-gray-800 group-hover:bg-blue-500 border-gray-400 dark:border-gray-700 rounded-xl items-center t-dark dark:dark-t-light p-4 ">
+            <div class="flex items-center pb-4">
+              <div class="justify-center p-1.5 border dark:bg-gray-800 group-hover:bg-blue-500 border-gray-400 dark:border-gray-700 rounded-xl flex items-center font-medium justify-start min-w-[48px] min-h-[48px]">
+                <Icon className="inline w-6 h-6 mb-px" />
+              </div>
+              <div class="mx-4">
+                <p class="text-base t-dark dark:dark-t-light group-hover:text-white leading-snug">
+                  {name}
+                </p>
+              </div>
+            </div>
+            <ShowcaseLinks app={app} repo={repo} />
+          </div>
+        ))}
+      </div>
+    </div>
+  ) : null
+}

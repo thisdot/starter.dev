@@ -5,7 +5,11 @@
   "keywords": [
     "angular",
     "apollo",
-    "tailwind"
+    "tailwind",
+    "rxjs",
+    "storybook",
+    "typescript",
+    "graphql"
   ],
   "hasShowcase": true,
   "private": true,

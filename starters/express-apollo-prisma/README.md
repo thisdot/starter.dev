@@ -2,37 +2,6 @@
 
 This starter kit features Express, Apollo Server and Prisma.
 
-## Table of Contents
-
-- [express-apollo-prisma starter kit](#express-apollo-prisma-starter-kit)
-  - [Table of Contents](#table-of-contents)
-  - [Overview](#overview)
-    - [Tech Stack](#tech-stack)
-    - [Included Tooling](#included-tooling)
-  - [Installation](#installation)
-    - [CLI (Recommended)](#cli-recommended)
-    - [Manual](#manual)
-  - [Built-in Scripts](#built-in-scripts)
-  - [Environment Variables](#environment-variables)
-    - [Database and Redis](#database-and-redis)
-    - [Seeding](#seeding)
-    - [Updating Schemas and Entities](#updating-schemas-and-entities)
-    - [Pagination](#pagination)
-    - [Production build](#production-build)
-    - [CORS Cross-Origin Resource Sharing](#cors-cross-origin-resource-sharing)
-  - [Project Structure](#project-structure)
-    - [Folder structure](#folder-structure)
-    - [GraphQL Modules](#graphql-modules)
-      - [Example GraphQL Module](#example-graphql-module)
-  - [Technologies](#technologies)
-    - [Express](#express)
-    - [Apollo Server](#apollo-server)
-    - [ORM](#orm)
-    - [Queueing](#queueing)
-    - [Caching](#caching)
-    - [Testing](#testing)
-  - [Deployment](#deployment)
-
 ## Overview
 
 ### Tech Stack
@@ -55,7 +24,13 @@ This starter kit features Express, Apollo Server and Prisma.
 ### CLI (Recommended)
 
 ```bash
-npm create @this-dot/starter --kit express-apollo-prisma
+npm create @this-dot/starter -- --kit express-apollo-prisma
+```
+
+or
+
+```bash
+yarn create @this-dot/starter --kit express-apollo-prisma
 ```
 
 Note: Other package managers such as `yarn` or `pnpm` can be used with this kit.

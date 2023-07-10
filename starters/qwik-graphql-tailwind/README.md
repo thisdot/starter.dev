@@ -2,18 +2,6 @@
 
 This starter kit features **Qwik**, **GraphQL** and **Tailwind CSS**.
 
-## Table of Contents
-
-- [Overview](#overview)
-  - [Tech Stack](#tech-stack)
-  - [Included Tooling](#included-tooling)
-  - [Example Components](#example-components)
-- [Installation](#installation)
-  - [CLI](#cli-recommended)
-  - [Manual](#manual)
-- [Commands](#commands)
-- [Demo Implementation](#demo-implementation)
-
 ## Overview
 
 ### Tech Stack
@@ -97,5 +85,6 @@ git clone https://github.com/thisdot/starter.dev.git
 
 [Repository](https://github.com/thisdot/starter.dev-github-showcases/tree/main/qwik-graphql-tailwind)
 
-The demo application re-implements some of GitHub's pages and functionality. It uses the OAuth credentials in GitHub to authenticate users with their GitHub accounts and uses QraphQL to fetch data from the GitHub API. Check out the link above to learn more or check out the demo!
+[Live Application](https://qwik-graphql-tailwind.starter.dev/)
 
+The demo application tries to implement some of GitHub's pages and functionality. It uses the OAuth credentials in GitHub to authenticate users with their GitHub accounts and uses svelte's fetch api to fetch data from the GitHub API. Check out the link above to learn more or check out the demo!

@@ -2,19 +2,6 @@
 
 This starter kit features Angular 13, NgRx and SCSS.
 
-## Table of Contents
-
-- [Overview](#overview)
-  - [Tech Stack](#tech-stack)
-  - [Included Tooling](#included-tooling)
-  - [Architectural Decisions](#architectural-decisions)
-  - [Example Components](#example-components)
-- [Installation](#installation)
-  - [CLI](#cli-recommended)
-  - [Manual](#manual)
-- [Commands](#commands)
-- [Demo Implementation](#demo-implementation)
-
 ## Overview
 
 ### Tech Stack

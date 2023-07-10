@@ -5,9 +5,12 @@ import { inspect } from '@xstate/inspect';
 
 import './assets/main.css';
 
-inspect({
-	iframe: false,
-});
+const devMode = import.meta.env.VITE_DEV_MODE;
+if (devMode === 'debug') {
+	inspect({
+		iframe: false,
+	});
+}
 
 const app = createApp(App);
 
