@@ -3,11 +3,11 @@ import { GitHubIcon, BriefcaseIcon } from '../icons';
 function getIcon(icon) {
   let Icon;
   switch (icon) {
-    case 'GUI':
-      Icon = <BriefcaseIcon className="inline w-6 h-6 mb-px" />;
+    case 'GitHub':
+      Icon = <GitHubIcon className="inline w-6 h-6 mb-px" />;
       break;
     default:
-      Icon = <GitHubIcon className="inline w-6 h-6 mb-px" />;
+      Icon = <BriefcaseIcon className="inline w-6 h-6 mb-px" />;
   }
 
   return Icon;
