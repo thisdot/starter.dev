@@ -5,11 +5,11 @@ const { Icon, variant = 'base' } = Astro.props;
 const sizeMap = {
   base: {
     size: 48,
-    container: 'w-20 h-20 bg-white dark:bg-gray-900',
+    container: 'w-20 h-20 bg-gray-100 dark:bg-gray-900',
   },
   lg: {
     size: 64,
-    container: 'w-28 h-28 bg-white dark:bg-gray-800',
+    container: 'w-28 h-28 bg-gray-100 dark:bg-gray-800',
   },
 };
 
@@ -18,7 +18,7 @@ const size = sizeMap[variant];
 
 <span
   class={cn(
-    'inline-flex items-center justify-center rounded-xl border border-gray-100 bg-white dark:bg-white dark:border-gray-600 group-hover:border-white dark:group-hover:bg-white',
+    'inline-flex items-center justify-center rounded-xl border border-gray-200 bg-gray-100 dark:bg-white dark:border-gray-600 group-hover:border-white dark:group-hover:bg-white',
     size.container
   )}
 >

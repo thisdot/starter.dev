@@ -5,7 +5,11 @@
   "keywords": [
     "nuxt 2",
     "pinia",
-    "tailwind"
+    "tailwind",
+    "vue",
+    "jest",
+    "axios",
+    "mock-service-worker"
   ],
   "showcase": [
     {

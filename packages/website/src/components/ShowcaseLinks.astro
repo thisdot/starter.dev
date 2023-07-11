@@ -1,0 +1,15 @@
+---
+import ShowcaseLink from './ShowcaseLink.astro';
+const { app, repo } = Astro.props;
+---
+
+<div class="pb-3">
+  <ShowcaseLink repo={repo} name="Repository" />
+</div>
+{
+  app !== '' ? (
+    <div class="pb-4">
+      <ShowcaseLink repo={app} name="Live Application" />
+    </div>
+  ) : null
+}

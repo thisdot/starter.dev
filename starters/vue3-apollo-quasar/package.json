@@ -5,7 +5,11 @@
   "keywords": [
     "vue",
     "apollo",
-    "quasar"
+    "quasar",
+    "storybook",
+    "typescript",
+    "jest",
+    "sass"
   ],
   "showcase": [
     {

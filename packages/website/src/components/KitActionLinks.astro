@@ -1,15 +1,14 @@
 ---
 import cn from 'clsx';
 import { BriefcaseIcon } from '../icons/heroicons';
-import { GitHubIcon } from '../icons/GitHubIcon.tsx';
-import { ShareIcon } from '../icons/ShareIcon.tsx';
-import { REPO_URL, SHOWCASE_REPO_URL } from '../config.tsx';
+import { GitHubIcon } from '../icons/GitHubIcon';
+import { REPO_URL } from '../config';
 import { ShareDropdown } from './ShareDropdown';
 const { name, hasShowcase, inline } = Astro.props;
 ---
 
-<div class="flex flex-row items-center max-w-screen-2xl mx-auto">
-  <div class="space-x-4 invisible lg:visible">
+<div class="flex flex-row items-center justify-center max-w-screen-2xl mx-auto">
+  <div class=" hidden lg:block invisible lg:visible lg:space-x-4 ">
     <ShareDropdown kitname={name} client:only />
     <a
       class="link text-sm dark:dark-link hover:underline"
@@ -17,25 +16,23 @@ const { name, hasShowcase, inline } = Astro.props;
       href={`${REPO_URL}/discussions`}>Have a question?</a
     >
   </div>
-  <div class="ml-auto">
+  <div class="lg:ml-auto flex flex-wrap justify-center items-center">
     {
       hasShowcase && (
         <a
-          class="link text-sm dark:dark-link"
-          href={`${SHOWCASE_REPO_URL}/tree/main/${name}`}
-          target="_blank"
-          rel="noopener noreferrer"
+          class="btn link text-sm dark:dark-link mt-3 mb-auto"
+          href="#showcase-section"
         >
           <>
             <BriefcaseIcon className="h-3.5 w-3.5 inline ml-0.5 mb-[2px]" />
-            <span class="hover:underline ml-2">View Showcase</span>
+            <span class="hover:underline ml-2">View Showcases</span>
           </>
         </a>
       )
     }
 
     <a
-      class={cn('btn btn-primary text-sm mt-3 ml-3', !inline && 'mt-3.5')}
+      class={cn('btn btn-primary text-sm mt-3 ml-3 mb-3 lg:mb-auto', !inline && 'mt-3.5')}
       href={`${REPO_URL}/tree/main/starters/${name}`}
       target="_blank"
       rel="noopener noreferrer"

@@ -39,6 +39,7 @@ import {
   ChakraIcon,
   ServerlessIcon,
   DenoIcon,
+  DenoDBIcon,
   ExpressIcon,
   PostgresIcon,
   TypeOrmIcon,
@@ -52,6 +53,21 @@ import {
   Nuxt3Icon,
   XstateIcon,
   CssIcon,
+  StorybookIcon,
+  TypescriptIcon,
+  MockServiceWorkerIcon,
+  RedisIcon,
+  JestIcon,
+  ReactNavigationIcon,
+  SwaggerIcon,
+  BullmqIcon,
+  EmotionIcon,
+  AxiosIcon,
+  VitestIcon,
+  AWSSQSIcon,
+  PlaywrightIcon,
+  GitHubIcon,
+  BriefcaseIcon,
 } from './icons';
 
 export interface NavItem {
@@ -356,16 +372,10 @@ export const TECHNOLOGIES = [
     Icon: (props) => <DenoIcon {...props} />,
   },
   {
-    key: 'oak',
-    name: 'Oak',
-    tags: ['Framework'],
-    Icon: (props) => <DenoIcon {...props} />,
-  },
-  {
     key: 'denodb',
     name: 'DenoDB',
     tags: ['Data Management'],
-    Icon: (props) => <DenoIcon {...props} />,
+    Icon: (props) => <DenoDBIcon {...props} />,
   },
   {
     key: 'typeorm',
@@ -414,6 +424,201 @@ export const TECHNOLOGIES = [
     name: 'CSS',
     tags: ['Styling'],
     Icon: (props) => <CssIcon {...props} />,
+  },
+  {
+    key: 'storybook',
+    name: 'Storybook',
+    tags: ['Tooling'],
+    Icon: (props) => <StorybookIcon {...props} />,
+  },
+  {
+    key: 'typescript',
+    name: 'TypeScript',
+    tags: ['Tooling'],
+    Icon: (props) => <TypescriptIcon {...props} />,
+  },
+  {
+    key: 'create-react-app',
+    name: 'Create React App',
+    tags: ['Core UI'],
+    Icon: (props) => <ReactIcon {...props} />,
+  },
+  {
+    key: 'mock-service-worker',
+    name: 'Mock Service Worker',
+    tags: ['Tooling'],
+    Icon: (props) => <MockServiceWorkerIcon {...props} />,
+  },
+  {
+    key: 'redis',
+    name: 'Redis',
+    tags: ['Data Management'],
+    Icon: (props) => <RedisIcon {...props} />,
+  },
+  {
+    key: 'jest',
+    name: 'Jest',
+    tags: ['Framework'],
+    Icon: (props) => <JestIcon {...props} />,
+  },
+  {
+    key: 'react-navigation',
+    name: 'React Navigation',
+    tags: ['Library'],
+    Icon: (props) => <ReactNavigationIcon {...props} />,
+  },
+  {
+    key: 'swagger',
+    name: 'Swagger',
+    tags: ['Tooling'],
+    Icon: (props) => <SwaggerIcon {...props} />,
+  },
+  {
+    key: 'bullmq',
+    name: 'BullMQ',
+    tags: ['Data Management'],
+    Icon: (props) => <BullmqIcon {...props} />,
+  },
+  {
+    key: 'emotion',
+    name: 'Emotion',
+    tags: ['Styling'],
+    Icon: (props) => <EmotionIcon {...props} />,
+  },
+  {
+    key: 'axios',
+    name: 'Axios',
+    tags: ['Library'],
+    Icon: (props) => <AxiosIcon {...props} />,
+  },
+  {
+    key: 'qwik-city',
+    name: 'Qwik City',
+    tags: ['Middleware'],
+    Icon: (props) => <QwikIcon {...props} />,
+  },
+  {
+    key: 'vitest',
+    name: 'Vitest',
+    tags: ['Tooling'],
+    Icon: (props) => <VitestIcon {...props} />,
+  },
+  {
+    key: 'aws-sqs',
+    name: 'AWS SQS',
+    tags: ['Middleware'],
+    Icon: (props) => <AWSSQSIcon {...props} />,
+  },
+  {
+    key: 'svelte',
+    name: 'Svelte',
+    tags: ['Framework'],
+    Icon: (props) => <SvelteIcon {...props} />,
+  },
+  {
+    key: 'playwright',
+    name: 'Playwright',
+    tags: ['Tooling'],
+    Icon: (props) => <PlaywrightIcon {...props} />,
+  },
+  {
+    key: 'vue-router',
+    name: 'Vue Router',
+    tags: ['Library'],
+    Icon: (props) => <VueIcon {...props} />,
+  },
+];
+
+export const SHOWCASES = [
+  {
+    kit: 'angular-apollo-tailwind',
+    name: 'GitHub Showcase',
+    repo: 'https://github.com/thisdot/starter.dev-github-showcases/tree/main/angular-apollo-tailwind',
+    app: 'https://angular-apollo-tailwind.starter.dev/',
+    Icon: (props) => <GitHubIcon {...props} />,
+  },
+  // The angular-ngrx-scss showcase is currently not finished
+  // so this is set as false in that starters package.json
+  {
+    kit: 'angular-ngrx-scss',
+    name: 'GitHub Showcase',
+    repo: 'https://github.com/thisdot/starter.dev-github-showcases/tree/main/angular-ngrx-scss',
+    app: 'https://angular-ngrx-scss.starter.dev',
+    Icon: (props) => <GitHubIcon {...props} />,
+  },
+  {
+    kit: 'cra-rxjs-styled-components',
+    name: 'GitHub Showcase',
+    repo: 'https://github.com/thisdot/starter.dev-github-showcases/tree/main/cra-rxjs-styled-components',
+    app: 'https://cra-rxjs-styled-components.starter.dev',
+    Icon: (props) => <GitHubIcon {...props} />,
+  },
+  {
+    kit: 'expo-zustand-styled-components',
+    name: 'GitHub Showcase',
+    repo: 'https://github.com/thisdot/starter.dev-github-showcases/tree/main/expo-zustand-styled-components',
+    app: '',
+    Icon: (props) => <GitHubIcon {...props} />,
+  },
+  {
+    kit: 'next-react-query-tailwind',
+    name: 'GitHub Showcase',
+    repo: 'https://github.com/thisdot/starter.dev-github-showcases/tree/main/next-react-query-tailwind',
+    app: 'https://next-react-query-tailwind.starter.dev',
+    Icon: (props) => <GitHubIcon {...props} />,
+  },
+  // The nuxt2-pinia-tailwind showcase is currently not finished
+  // so this is set as false in that starters package.json
+  {
+    kit: 'nuxt2-pinia-tailwind',
+    name: 'GitHub Showcase',
+    repo: 'https://github.com/thisdot/starter.dev-github-showcases/tree/main/nuxt-pinia-tailwind',
+    app: 'https://nuxt-pinia-tailwind.starter.dev',
+    Icon: (props) => <GitHubIcon {...props} />,
+  },
+  {
+    kit: 'qwik-graphql-tailwind',
+    name: 'GitHub Showcase',
+    repo: 'https://github.com/thisdot/starter.dev-github-showcases/tree/main/qwik-graphql-tailwind',
+    app: 'https://qwik-graphql-tailwind.starter.dev',
+    Icon: (props) => <GitHubIcon {...props} />,
+  },
+  // The remix-gql-tailwind showcase is currently broken
+  // so this is set as false in that starters package.json
+  {
+    kit: 'remix-gql-tailwind',
+    name: 'GitHub Showcase',
+    repo: 'https://github.com/thisdot/starter.dev-github-showcases/tree/main/remix-gql-tailwind',
+    app: '',
+    Icon: (props) => <GitHubIcon {...props} />,
+  },
+  {
+    kit: 'solidjs-tailwind',
+    name: 'GitHub Showcase',
+    repo: 'https://github.com/thisdot/starter.dev-github-showcases/tree/main/solidjs-tailwind',
+    app: 'https://solidjs-tailwind.starter.dev',
+    Icon: (props) => <GitHubIcon {...props} />,
+  },
+  {
+    kit: 'solidstart-tanstackquery-tailwind-modules',
+    name: 'GitHub Showcase',
+    repo: 'https://github.com/thisdot/starter.dev-github-showcases/tree/main/solidstart-tanstackquery-tailwind-modules',
+    app: 'https://solidstart-tanstackquery-tailwind-modules.starter.dev',
+    Icon: (props) => <GitHubIcon {...props} />,
+  },
+  {
+    kit: 'svelte-kit-scss',
+    name: 'GitHub Showcase',
+    repo: 'https://github.com/thisdot/starter.dev-github-showcases/tree/main/svelte-kit-scss',
+    app: 'https://svelte-kit-scss.starter.dev',
+    Icon: (props) => <GitHubIcon {...props} />,
+  },
+  {
+    kit: 'vue3-apollo-quasar',
+    name: 'GitHub Showcase',
+    repo: 'https://github.com/thisdot/starter.dev-github-showcases/tree/main/vue3-apollo-quasar',
+    app: 'https://vue3-apollo-quasar.starter.dev',
+    Icon: (props) => <GitHubIcon {...props} />,
   },
 ];
 
