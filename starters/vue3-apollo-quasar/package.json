@@ -14,9 +14,10 @@
   "showcase": [
     {
       "kit": "vue3-apollo-quasar",
-      "name": "Github Showcase",
+      "name": "GitHub Showcase",
       "repo": "https://github.com/thisdot/starter.dev-github-showcases/tree/main/vue3-apollo-quasar",
-      "app": "https://vue3-apollo-quasar.starter.dev"
+      "app": "https://vue3-apollo-quasar.starter.dev",
+      "icon": "GitHub"
     }
   ],
   "hasShowcase": true,

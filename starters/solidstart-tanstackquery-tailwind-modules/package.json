@@ -18,9 +18,10 @@
   "showcase": [
     {
       "kit": "solidstart-tanstackquery-tailwind-modules",
-      "name": "Github Showcase",
+      "name": "GitHub Showcase",
       "repo": "https://github.com/thisdot/starter.dev-github-showcases/tree/main/solidstart-tanstackquery-tailwind-modules",
-      "app": "https://solidstart-tanstackquery-tailwind-modules.starter.dev"
+      "app": "https://solidstart-tanstackquery-tailwind-modules.starter.dev",
+      "icon": "GitHub"
     }
   ],
   "hasShowcase": true,

@@ -14,9 +14,10 @@
   "showcase": [
     {
       "kit": "expo-zustand-styled-components",
-      "name": "Github Showcase",
+      "name": "GitHub Showcase",
       "repo": "https://github.com/thisdot/starter.dev-github-showcases/tree/main/expo-zustand-styled-components",
-      "app": ""
+      "app": "",
+      "icon": "GitHub"
     }
   ],
   "hasShowcase": true,
