@@ -12,7 +12,7 @@
   ],
   "version": "0.1.1",
   "private": true,
-  "showcase": [
+  "showcases": [
     {
       "kit": "next-react-query-tailwind",
       "name": "GitHub Showcase",

@@ -2,7 +2,7 @@
   "name": "solidjs-tailwind",
   "version": "0.1.0",
   "private": true,
-  "showcase": [
+  "showcases": [
     {
       "kit": "solidjs-tailwind",
       "name": "GitHub Showcase",

@@ -11,7 +11,7 @@
     "typescript",
     "react-navigation"
   ],
-  "showcase": [
+  "showcases": [
     {
       "kit": "expo-zustand-styled-components",
       "name": "GitHub Showcase",

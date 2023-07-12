@@ -11,7 +11,7 @@
     "typescript",
     "graphql"
   ],
-  "showcase": [
+  "showcases": [
     {
       "kit": "angular-apollo-tailwind",
       "name": "GitHub Showcase",

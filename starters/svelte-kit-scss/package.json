@@ -13,7 +13,7 @@
   ],
   "private": true,
   "version": "0.1.0",
-  "showcase": [
+  "showcases": [
     {
       "kit": "svelte-kit-scss",
       "name": "GitHub Showcase",

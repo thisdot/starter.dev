@@ -11,7 +11,7 @@
     "typescript",
     "create-react-app"
   ],
-  "showcase": [
+  "showcases": [
     {
       "kit": "cra-rxjs-styled-components",
       "name": "GitHub Showcase",

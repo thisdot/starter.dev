@@ -12,7 +12,7 @@
     "vitest"
   ],
   "version": "0.0.1",
-  "showcase": [
+  "showcases": [
     {
       "kit": "qwik-graphql-tailwind",
       "name": "GitHub Showcase",

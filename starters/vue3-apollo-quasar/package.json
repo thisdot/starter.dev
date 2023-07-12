@@ -11,7 +11,7 @@
     "jest",
     "sass"
   ],
-  "showcase": [
+  "showcases": [
     {
       "kit": "vue3-apollo-quasar",
       "name": "GitHub Showcase",

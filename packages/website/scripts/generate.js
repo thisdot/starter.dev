@@ -104,7 +104,7 @@ async function generate(isKit, genPath) {
         );
       } else {
         pickData = {
-          ...pick(data, ['showcase']),
+          ...pick(data, ['showcases']),
         };
         Object.entries(pickData).map(([key, value]) => {
           value.map((item) => {

@@ -10,7 +10,7 @@
     "storybook",
     "typescript"
   ],
-  "showcase": [
+  "showcases": [
     {
       "kit": "angular-ngrx-scss",
       "name": "GitHub Showcase",

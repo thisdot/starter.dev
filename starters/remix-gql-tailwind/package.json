@@ -11,7 +11,7 @@
     "typescript",
     "vite"
   ],
-  "showcase": [
+  "showcases": [
     {
       "kit": "remix-gql-tailwind",
       "name": "GitHub Showcase",

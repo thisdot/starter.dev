@@ -15,7 +15,7 @@
     "vitest",
     "css module"
   ],
-  "showcase": [
+  "showcases": [
     {
       "kit": "solidstart-tanstackquery-tailwind-modules",
       "name": "GitHub Showcase",

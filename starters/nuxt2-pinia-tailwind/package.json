@@ -11,7 +11,7 @@
     "axios",
     "mock-service-worker"
   ],
-  "showcase": [
+  "showcases": [
     {
       "kit": "nuxt2-pinia-tailwind",
       "name": "GitHub Showcase",
