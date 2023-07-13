@@ -20,3 +20,4 @@ yarn-error.log*
 # ignore generated kit pages
 src/pages/kits/*.md
 src/pages/kits/*.mdx
+src/showcases/*.json

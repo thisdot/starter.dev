@@ -11,6 +11,15 @@
     "axios",
     "mock-service-worker"
   ],
+  "showcases": [
+    {
+      "kit": "nuxt2-pinia-tailwind",
+      "name": "GitHub Showcase",
+      "repo": "https://github.com/thisdot/starter.dev-github-showcases/tree/main/nuxt-pinia-tailwind",
+      "app": "https://nuxt-pinia-tailwind.starter.dev",
+      "icon": "GitHub"
+    }
+  ],
   "hasShowcase": false,
   "private": true,
   "engines": {

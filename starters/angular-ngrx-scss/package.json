@@ -10,6 +10,15 @@
     "storybook",
     "typescript"
   ],
+  "showcases": [
+    {
+      "kit": "angular-ngrx-scss",
+      "name": "GitHub Showcase",
+      "repo": "https://github.com/thisdot/starter.dev-github-showcases/tree/main/angular-ngrx-scss",
+      "app": "https://angular-ngrx-scss.starter.dev",
+      "icon": "GitHub"
+    }
+  ],
   "hasShowcase": false,
   "private": true,
   "engines": {

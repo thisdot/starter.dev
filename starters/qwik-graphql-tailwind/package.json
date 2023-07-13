@@ -12,6 +12,15 @@
     "vitest"
   ],
   "version": "0.0.1",
+  "showcases": [
+    {
+      "kit": "qwik-graphql-tailwind",
+      "name": "GitHub Showcase",
+      "repo": "https://github.com/thisdot/starter.dev-github-showcases/tree/main/qwik-graphql-tailwind",
+      "app": "https://qwik-graphql-tailwind.starter.dev",
+      "icon": "GitHub"
+    }
+  ],
   "hasShowcase": true,
   "engines": {
     "node": ">=15.0.0"

@@ -13,6 +13,15 @@
   ],
   "private": true,
   "version": "0.1.0",
+  "showcases": [
+    {
+      "kit": "svelte-kit-scss",
+      "name": "GitHub Showcase",
+      "repo": "https://github.com/thisdot/starter.dev-github-showcases/tree/main/svelte-kit-scss",
+      "app": "https://svelte-kit-scss.starter.dev",
+      "icon": "GitHub"
+    }
+  ],
   "hasShowcase": true,
   "scripts": {
     "start": "vite dev --open",

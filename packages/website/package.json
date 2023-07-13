@@ -10,8 +10,9 @@
     "format": "yarn prettier -w .",
     "lint": "eslint ./src",
     "kitgen": "node ./scripts/generate-kit-pages.js",
-    "predev": "yarn kitgen",
-    "prebuild": "yarn kitgen"
+    "showcasegen": "node ./scripts/generate-showcases.js",
+    "predev": "yarn kitgen && yarn showcasegen",
+    "prebuild": "yarn kitgen && yarn showcasegen"
   },
   "devDependencies": {
     "@astrojs/mdx": "^0.13.0",
@@ -33,6 +34,7 @@
     "@heroicons/react": "^1.0.5",
     "autoprefixer": "^10.4.2",
     "clsx": "^1.1.1",
+    "json-loader": "^0.5.7",
     "just-pick": "^4.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

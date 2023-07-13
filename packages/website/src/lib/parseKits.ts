@@ -1,6 +1,7 @@
 import type { MarkdownContent } from '../types';
 import pick from 'just-pick';
-import { TECHNOLOGIES, SHOWCASES } from '../config';
+import { TECHNOLOGIES } from '../config';
+import SHOWCASES from '../showcases/showcases.json';
 
 export function parseKits(kits: MarkdownContent[]) {
   return kits.map(parseKit);
