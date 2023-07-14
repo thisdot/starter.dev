@@ -21,14 +21,14 @@ import 'dotenv/config';
 		BullModule.forRoot({
 			connection: {
 				host: 'localhost',
-				port: 6379,
+				port: Number(process.env.cache_port),
 			},
 		}),
 		BullModule.registerQueue({
 			name: 'queue',
 			connection: {
 				host: 'localhost',
-				port: 6380,
+				port: Number(process.env.queue_port),
 			},
 		}),
 		TechnologyModule,
