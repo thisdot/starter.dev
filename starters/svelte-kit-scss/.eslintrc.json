@@ -4,20 +4,21 @@
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:svelte/recommended",
     "prettier",
     "plugin:storybook/recommended"
   ],
-  "plugins": ["svelte3", "@typescript-eslint"],
+  "plugins": ["@typescript-eslint", "prettier"],
   "ignorePatterns": ["*.cjs"],
   "overrides": [
     {
       "files": ["*.svelte"],
-      "processor": "svelte3/svelte3"
+      "parser": "svelte-eslint-parser",
+      "parserOptions": {
+        "parser": "@typescript-eslint/parser"
+      }
     }
   ],
-  "settings": {
-    "svelte3/typescript": true
-  },
   "parserOptions": {
     "sourceType": "module",
     "ecmaVersion": 2020
@@ -26,5 +27,9 @@
     "browser": true,
     "es2017": true,
     "node": true
+  },
+  "globals": {
+    "NodeJS": true,
+    "svelte": true
   }
 }
