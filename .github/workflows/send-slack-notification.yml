@@ -20,7 +20,7 @@ jobs:
                   "type": "header",
                   "text": {
                     "type": "plain_text",
-                    "text": "Another PR was just merged into framework.dev :tada:",
+                    "text": "A PR was just merged into starter.dev :tada:",
                     "emoji": true
                   }
                 },
@@ -31,7 +31,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "*${{ github.event.pull_request.user.login }}* has just contributed to framework.dev :partying_face:"
+                    "text": "*${{ github.event.pull_request.user.login }}* has just contributed to starter.dev :partying_face:"
                   }
                 },
                 {
