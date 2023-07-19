@@ -25,7 +25,7 @@ jobs:
             if [ "$response" = "204" ]; then
               message="Hi @$username. :wave:\n\nYour PR has been approved and merged. :tada:\n\nThank you for your continued contributions to starter.dev. :heart:\n\nKeep up the great work!"
             elif [ "$response" = "404" ]; then
-              message="Hi @$username. :wave:\n\nCongrats on your first PR being approved and merged into starter.dev! :tada:\n\nThank you for taking the time to contribute to our project. :heart:\n\nWe look forward to your next contribution. :rocket:"
+              message="Hi @$username. :wave:\n\nCongrats on your first PR being approved and merged into starter.dev! :tada:\n\nThank you for taking the time to contribute to starter.dev. :heart:\n\nWe look forward to your next contribution. :rocket:"
             else
               echo "Invalid or expired token: $ISSUES_BOT_TOKEN"
               exit 1
