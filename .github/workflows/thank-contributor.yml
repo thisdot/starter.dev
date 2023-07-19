@@ -1,8 +1,5 @@
 name: 'Thank contributor for contribution'
 on:
-  pull_request_review:
-    types:
-      - submitted
   pull_request:
     types:
       - closed
@@ -12,23 +9,28 @@ jobs:
       github.event.pull_request.user.login != 'dependabot[bot]'
     runs-on: ubuntu-latest
     steps:
+      - name: Sleep for 120 seconds
+        run: sleep 120s
+        shell: bash
       - name: Thank contributor for contribution
         env:
           ISSUES_BOT_TOKEN: ${{ secrets.ISSUES_BOT_TOKEN }}
         run: |
           username="${{ github.event.pull_request.user.login }}"
           repo="${{ github.repository }}"
-          response=$(curl -s -o /dev/null -w "%{http_code}" -H "Authorization: Bearer $ISSUES_BOT_TOKEN" "https://api.github.com/repos/$repo/collaborators/$username")
-
+          if [[ "$username" =~ [[:punct:]] ]]; then
+            message="Hi @$username. :wave:\n\nYour PR has been approved and merged. :tada:\n\nThank you for your contribution to starter.dev. :heart:\n\nKeep up the great work!"
+          else
+            response=$(curl -s -o /dev/null -w "%{http_code}" -H "Authorization: Bearer $ISSUES_BOT_TOKEN" "https://api.github.com/repos/$repo/collaborators/$username")
             if [ "$response" = "204" ]; then
-              message="Hi @$username. :wave:\n\nYour PR has been approved and merged. :tada:\n\nThank you for your continued contributions to this project. :heart:\n\nKeep up the great work!"
+              message="Hi @$username. :wave:\n\nYour PR has been approved and merged. :tada:\n\nThank you for your continued contributions to starter.dev. :heart:\n\nKeep up the great work!"
             elif [ "$response" = "404" ]; then
-              message="Hi @$username. :wave:\n\nCongrats on your first PR being approved and merged into starter.dev! :tada:\n\nThank you for taking the time to contribute to our project. :heart:\n\nWe look forward to your next contribution. :rocket:"
+              message="Hi @$username. :wave:\n\nCongrats on your first PR being approved and merged! :tada:\n\nThank you for taking the time to contribute to starter.dev. :heart:\n\nWe look forward to your next contribution. :rocket:"
             else
               echo "Invalid or expired token: $ISSUES_BOT_TOKEN"
               exit 1
             fi
-
+          fi
           curl -X POST \
             -H "Authorization: Bearer $ISSUES_BOT_TOKEN" \
             -H "Content-Type: application/json" \
