@@ -19,11 +19,11 @@ jobs:
           username="${{ github.event.pull_request.user.login }}"
           repo="${{ github.repository }}"
           if [[ "$username" =~ [[:punct:]] ]]; then
-            message="Hi @$username. :wave:\n\nYour PR has been approved and merged. :tada:\n\nThank you for your contribution to starter.dev. :heart:\n\nKeep up the great work!"
+            message="Hi @$username. :wave:\n\nYour PR has been approved and merged. :tada:\n\nThank you for your contribution to this project. :heart:\n\nKeep up the great work!"
           else
             response=$(curl -s -o /dev/null -w "%{http_code}" -H "Authorization: Bearer $ISSUES_BOT_TOKEN" "https://api.github.com/repos/$repo/collaborators/$username")
             if [ "$response" = "204" ]; then
-              message="Hi @$username. :wave:\n\nYour PR has been approved and merged. :tada:\n\nThank you for your continued contributions to starter.dev. :heart:\n\nKeep up the great work!"
+              message="Hi @$username. :wave:\n\nYour PR has been approved and merged. :tada:\n\nThank you for your continued contributions to this project. :heart:\n\nKeep up the great work!"
             elif [ "$response" = "404" ]; then
               message="Hi @$username. :wave:\n\nCongrats on your first PR being approved and merged into starter.dev! :tada:\n\nThank you for taking the time to contribute to our project. :heart:\n\nWe look forward to your next contribution. :rocket:"
             else
