@@ -2,17 +2,6 @@
 
 This starter kit features Lit, Mobx and Vaadin elements.
 
-## Table of Contents
-
-- [Overview](#overview)
-  - [Tech Stack](#tech-stack)
-  - [Included Tooling](#included-tooling)
-  - [Example Components](#example-components)
-- [Installation](#installation)
-  - [CLI](#cli-recommended)
-  - [Manual](#manual)
-- [Commands](#commands)
-
 ## Overview
 
 ### Tech Stack
@@ -34,8 +23,6 @@ This starter kit features Lit, Mobx and Vaadin elements.
 ### Prerequisites
 * Node.js 16.8 or later installed
 
-
-
 ### Example Components
 
 In the `starters/lit-mobx-vaadin/src` directory you will find a few directories organizing the project. Files are organized in directories under `src` as such:
@@ -43,10 +30,10 @@ In the `starters/lit-mobx-vaadin/src` directory you will find a few directories 
 - `api` - contains functions that can be used to contact the Starter.dev API
 - `components` - contains re-usable components used inside of the project
 - `pages` - contains page components that are rendered when certain routes are visited
-- `styles` - contains stylsheets used by multiple components
+- `styles` - contains stylesheets used by multiple components
 
 ### Development
-- Clone the starter kit
+- We recommend using the starter.dev CLI to create your own copy of this kit.
 ```bash
 npm create @this-dot/starter -- --kit lit-mobx-vaadin
 ```
@@ -77,9 +64,9 @@ yarn create @this-dot/starter --kit lit-mobx-vaadin
 
 ## Project Details
 ### Kit Organization / Architecture
-Routing for this kit is handling by [Vaadin Router](https://github.com/vaadin/router)
+Routing for this kit is handled by [Vaadin Router](https://github.com/vaadin/router)
 
-UI Components are located inside the `src/components` folder. The extended/overriden Vaadin components have their own dedicated folder. Make sure to import these components from this folder and not directly from the installed module.
+UI Components are located inside the `src/components` folder. The extended/overridden Vaadin components have their own dedicated folder. Make sure to import these components from this folder and not directly from the installed module.
 
 Pages are located inside `src/pages`. Each one represents a route. These pages have some shared styles defined in the `PageMixin`. This mixin can be extended if shared functionality between pages is required.
 
