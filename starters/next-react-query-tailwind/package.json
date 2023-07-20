@@ -32,8 +32,8 @@
     "lint": "next lint",
     "test": "jest",
     "format": "prettier --write ./src",
-    "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook"
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@tanstack/react-query": "4.29.25",
@@ -45,9 +45,13 @@
   "devDependencies": {
     "@storybook/addon-actions": "7.1.0",
     "@storybook/addon-essentials": "7.1.0",
+    "@storybook/addon-interactions": "7.0.10",
     "@storybook/addon-links": "7.1.0",
-    "@storybook/addon-postcss": "2.0.0",
+    "@storybook/addon-styling": "1.0.6",
+    "@storybook/blocks": "7.0.10",
+    "@storybook/nextjs": "7.1.0",
     "@storybook/react": "7.1.0",
+    "@storybook/testing-library": "0.1.0",
     "@testing-library/jest-dom": "5.17.0",
     "@testing-library/react": "14.0.0",
     "@testing-library/user-event": "14.4.3",
@@ -57,7 +61,7 @@
     "autoprefixer": "10.4.14",
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.10",
-    "eslint-plugin-storybook": "0.6.12",
+    "eslint-plugin-storybook": "0.6.13",
     "eslint-plugin-testing-library": "5.11.0",
     "identity-obj-proxy": "3.0.0",
     "isomorphic-unfetch": "4.0.2",
@@ -68,7 +72,7 @@
     "msw-storybook-addon": "1.8.0",
     "postcss": "8.4.26",
     "prettier": "3.0.0",
-    "storybook-addon-next-router": "4.0.2",
+    "storybook": "7.1.0",
     "storybook-css-modules-preset": "1.1.1",
     "tailwindcss": "3.3.3",
     "typescript": "5.1.6"
