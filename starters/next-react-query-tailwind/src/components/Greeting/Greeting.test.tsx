@@ -17,7 +17,6 @@ describe('Greeting', () => {
   };
 
   afterEach(() => server?.resetHandlers());
-  // afterAll(() => server?.close());
 
   describe('positive flow', () => {
     beforeAll(() => {
