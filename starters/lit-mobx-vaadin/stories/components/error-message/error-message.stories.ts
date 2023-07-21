@@ -1,6 +1,7 @@
-import { html, TemplateResult } from 'lit';
+import { html } from 'lit';
 
 import '../../../src/components/error-message/error-message.js';
+import { Story } from '../../types.js';
 
 export default {
 	title: 'Error message',
@@ -15,12 +16,6 @@ export default {
 		},
 	},
 };
-
-interface Story<T> {
-	(args: T): TemplateResult;
-	args?: Partial<T>;
-	argTypes?: Record<string, unknown>;
-}
 
 interface ArgTypes {
 	title?: string;
