@@ -1,13 +1,25 @@
 import React from 'react';
-import { ComponentMeta } from '@storybook/react';
-
+import { Meta, StoryObj } from '@storybook/react';
 import { NavigationLink } from './NavigationLink';
 
-export default {
+const args = {
+  to: '/',
+  label: 'Home',
+}
+
+const meta: Meta = {
   title: 'Example/NavigationLink',
   component: NavigationLink,
-} as ComponentMeta<typeof NavigationLink>;
+  parameters: {
+    layout: 'centered',
+  },
+  args,
+};
 
-const Template = () => <NavigationLink to="/" label="Return Home" />;
+export default meta;
 
-export const Default = Template.bind({});
+type Story = StoryObj;
+
+export const Default: Story = {
+  render: () => <NavigationLink {...args} />,
+};
