@@ -1,6 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
 import { GreetingView } from './Greeting.view';
-import 'whatwg-fetch';
 
 export function Greeting() {
   const {
