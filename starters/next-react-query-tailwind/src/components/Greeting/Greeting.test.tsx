@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Greeting } from './Greeting.data';
 import { setupServer, SetupServer } from 'msw/node';
 import { rest } from 'msw';
+import "whatwg-fetch";
 
 const MOCK_MESSAGE_HELLO = 'Test Message Hello';
 const MOCK_MESSAGE_ERROR = 'Test Message Error';
