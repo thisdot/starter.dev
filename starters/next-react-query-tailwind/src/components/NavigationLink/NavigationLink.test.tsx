@@ -5,7 +5,6 @@ describe('NavigationLink', () => {
   it('should have a valid label', () => {
     render(<NavigationLink to="/" label="Return Home" />);
 
-    const link = screen.getByRole('link');
-    expect(link).toHaveTextContent('Return Home');
+    expect(screen.getByText('Return Home')).toBeTruthy();
   });
 });

@@ -1,14 +1,15 @@
 import { render, screen } from '@testing-library/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Greeting } from './Greeting.data';
-import { setupServer, SetupServerApi } from 'msw/node';
+import { setupServer, SetupServer } from 'msw/node';
 import { rest } from 'msw';
+import "whatwg-fetch";
 
 const MOCK_MESSAGE_HELLO = 'Test Message Hello';
 const MOCK_MESSAGE_ERROR = 'Test Message Error';
 
 describe('Greeting', () => {
-  let server: SetupServerApi | null;
+  let server: SetupServer | null;
 
   const disposeServer = () => {
     server?.close();
@@ -16,7 +17,6 @@ describe('Greeting', () => {
   };
 
   afterEach(() => server?.resetHandlers());
-  // afterAll(() => server?.close())
 
   describe('positive flow', () => {
     beforeAll(() => {
