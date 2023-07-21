@@ -9,7 +9,7 @@ export function Greeting() {
   } = useQuery<string, Error>(
     ['hello'],
     async () => {
-      const response = await window.fetch(
+      const response = await fetch(
         'https://api.starter.dev/.netlify/functions/server/hello?greeting=from This Dot Labs!'
       );
       if (!response.ok) {
