@@ -5,7 +5,10 @@
 	"keywords": [
 		"lit",
 		"mobx",
-		"vaadin"
+		"vaadin",
+		"storybook",
+    	"typescript",
+		"playwright"
 	],
 	"version": "0.1.0",
 	"type": "module",
