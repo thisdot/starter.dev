@@ -8,7 +8,7 @@ const { name, hasShowcase, inline } = Astro.props;
 ---
 
 <div class="flex flex-row items-center justify-center max-w-screen-2xl mx-auto">
-  <div class=" hidden lg:block invisible lg:visible lg:space-x-4 ">
+  <div class="hidden lg:block invisible lg:visible lg:space-x-4">
     <ShareDropdown kitname={name} client:only />
     <a
       class="link text-sm dark:dark-link hover:underline"
@@ -32,7 +32,10 @@ const { name, hasShowcase, inline } = Astro.props;
     }
 
     <a
-      class={cn('btn btn-primary text-sm mt-3 ml-3 mb-3 lg:mb-auto', !inline && 'mt-3.5')}
+      class={cn(
+        'btn btn-primary text-sm mt-3 ml-3 mb-3 lg:mb-auto',
+        !inline && 'mt-3.5'
+      )}
       href={`${REPO_URL}/tree/main/starters/${name}`}
       target="_blank"
       rel="noopener noreferrer"
