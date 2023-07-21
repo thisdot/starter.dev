@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { GreetingView } from './Greeting.view';
+import 'whatwg-fetch';
 
 export function Greeting() {
   const {
@@ -9,7 +10,7 @@ export function Greeting() {
   } = useQuery<string, Error>(
     ['hello'],
     async () => {
-      const response = await fetch(
+      const response = await window.fetch(
         'https://api.starter.dev/.netlify/functions/server/hello?greeting=from This Dot Labs!'
       );
       if (!response.ok) {
