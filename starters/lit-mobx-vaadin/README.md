@@ -23,15 +23,6 @@ This starter kit features Lit, Mobx and Vaadin elements.
 ### Prerequisites
 * Node.js 16.8 or later installed
 
-### Example Components
-
-In the `starters/lit-mobx-vaadin/src` directory you will find a few directories organizing the project. Files are organized in directories under `src` as such:
-
-- `api` - contains functions that can be used to contact the Starter.dev API
-- `components` - contains re-usable components used inside of the project
-- `pages` - contains page components that are rendered when certain routes are visited
-- `styles` - contains stylesheets used by multiple components
-
 ### Development
 - We recommend using the starter.dev CLI to create your own copy of this kit.
 ```bash
@@ -48,6 +39,15 @@ yarn create @this-dot/starter --kit lit-mobx-vaadin
 - `cd` into your project directory and run `yarn`.
 - Run `yarn start` to start the development server.
 - Open your browser to `http://localhost:8000` to see the included example code running.
+
+### Example Components
+
+In the `starters/lit-mobx-vaadin/src` directory you will find a few directories organizing the project. Files are organized in directories under `src` as such:
+
+- `api` - contains functions that can be used to contact the Starter.dev API
+- `components` - contains re-usable components used inside of the project
+- `pages` - contains page components that are rendered when certain routes are visited
+- `styles` - contains stylesheets used by multiple components
 
 ## Available Commands
 
