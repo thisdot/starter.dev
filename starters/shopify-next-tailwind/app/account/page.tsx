@@ -25,11 +25,10 @@ async function AccountPage({
 	const token = cookies().get('customerAccessToken')?.value as string;
 	const customer = await getCustomer(token);
 	const { orders, firstName } = customer;
-	const heading = customer
-		? firstName
-			? `Welcome, ${firstName}.`
-			: `Welcome to your account.`
-		: 'Account Details';
+	const welcomeMessage = firstName
+		? `Welcome, ${firstName}.`
+		: `Welcome to your account.`;
+	const heading = customer ? welcomeMessage : 'Account Details';
 
 	const customerOrders = flattenConnection(orders) as Order[];
 	const addresses = flattenConnection(customer.addresses) as MailingAddress[];

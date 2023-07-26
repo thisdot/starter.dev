@@ -8,7 +8,7 @@ export function missingClass(string?: string, prefix?: string) {
 	}
 
 	const regex = new RegExp(` ?${prefix}`, 'g');
-	return string.match(regex) === null;
+	return regex.exec(string) === null;
 }
 
 export function formatText(input?: string | React.ReactNode) {
@@ -56,7 +56,7 @@ export function getExcerpt(text: string) {
 }
 
 export function getIdFromURL(addressId: string): { id: string; key: string } {
-	const [id, key] = addressId.split('/').pop()?.split('?') || ['', ''];
+	const [id, key] = addressId.split('/').pop()?.split('?') ?? ['', ''];
 
 	return { id, key };
 }

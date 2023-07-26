@@ -1,5 +1,4 @@
 import AddressCard from '@/components/AddressCard';
-import { Button } from '@/components/Button';
 import { Text } from '@/components/Text';
 import { Customer, MailingAddress } from '@/lib/shopify/types';
 import { convertObjectToQueryString } from '@/lib/utils';

@@ -2,7 +2,7 @@ import { IconBag } from '@/components/Icon';
 import useAppStore from '@/store/app-store';
 import useCartStore from '@/store/cart-store';
 import clsx from 'clsx';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo } from 'react';
 
 function CartCount({ isHome }: { isHome: boolean }) {
 	const cart = useCartStore(state => state.cart);

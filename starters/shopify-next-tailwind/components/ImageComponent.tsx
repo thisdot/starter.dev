@@ -93,8 +93,6 @@ export type HydrogenImageProps = React.ImgHTMLAttributes<HTMLImageElement> & {
 	 * your own function to use a another provider, as long as they support URL based image transformations.
 	 */
 	loader?: Loader;
-	/** @deprecated Use `crop`, `width`, `height`, and `src` props, and/or `data` prop */
-	loaderOptions?: ShopifyLoaderOptions;
 	/** An optional prop you can use to change the default srcSet generation behaviour */
 	srcSetOptions?: SrcSetOptions;
 	/** @deprecated Autocalculated, use only `width` prop, or srcSetOptions */
@@ -148,7 +146,7 @@ export declare const Image: React.ForwardRefExoticComponent<
 		 * <Image data={productImage} aspectRatio="4/5" />
 		 * ```
 		 */
-		aspectRatio?: string | undefined;
+		aspectRatio?: string;
 		/** The crop position of the image.
 		 *
 		 * @remarks
@@ -157,7 +155,7 @@ export declare const Image: React.ForwardRefExoticComponent<
 		 *
 		 * @defaultValue `center`
 		 */
-		crop?: Crop | undefined;
+		crop?: Crop;
 		/** Data mapping to the Storefront API `Image` object. Must be an Image object.
 		 * Optionally, import the `IMAGE_FRAGMENT` to use in your GraphQL queries.
 		 *
@@ -190,22 +188,19 @@ export declare const Image: React.ForwardRefExoticComponent<
 					{
 						recurseIntoArrays: true;
 					}
-			  >
-			| undefined;
-		key?: React.Key | undefined;
+			  >;
+		key?: React.Key;
 		/** A function that returns a URL string for an image.
 		 *
 		 * @remarks
 		 * By default, this uses Shopify’s CDN {@link https://cdn.shopify.com/} but you can provide
 		 * your own function to use a another provider, as long as they support URL based image transformations.
 		 */
-		loader?: Loader | undefined;
-		/** @deprecated Use `crop`, `width`, `height`, and `src` props, and/or `data` prop */
-		loaderOptions?: ShopifyLoaderOptions | undefined;
+		loader?: Loader;
 		/** An optional prop you can use to change the default srcSet generation behaviour */
-		srcSetOptions?: SrcSetOptions | undefined;
+		srcSetOptions?: SrcSetOptions;
 		/** @deprecated Autocalculated, use only `width` prop, or srcSetOptions */
-		widths?: (string | undefined)[] | undefined;
+		widths?: (string | undefined)[];
 	} & React.RefAttributes<HTMLImageElement>
 >;
 /**

@@ -2015,7 +2015,7 @@ export type CartLine = BaseCartLine &
 		/** A globally-unique identifier. */
 		id: string;
 		/** The merchandise that the buyer intends to purchase. */
-		merchandise: Merchandise;
+		merchandise: ProductVariant;
 		/** The quantity of the merchandise that the customer intends to purchase. */
 		quantity: number;
 		/** The selling plan associated with the cart line and the effect that each selling plan has on variants when they're purchased. */
@@ -2043,7 +2043,7 @@ export type BaseCartLine = {
 	/** A globally-unique identifier. */
 	id: string;
 	/** The merchandise that the buyer intends to purchase. */
-	merchandise: Merchandise;
+	merchandise: ProductVariant;
 	/** The quantity of the merchandise that the customer intends to purchase. */
 	quantity: number;
 	/** The selling plan associated with the cart line and the effect that each selling plan has on variants when they're purchased. */
@@ -2126,8 +2126,6 @@ export type SellingPlanCheckoutChargeType =
 export type SellingPlanCheckoutChargeValue =
 	| Money
 	| SellingPlanCheckoutChargePercentageValue;
-
-export type Merchandise = ProductVariant;
 
 export type SellingPlanPercentagePriceAdjustment = {
 	__typename?: 'SellingPlanPercentagePriceAdjustment';
@@ -2266,7 +2264,7 @@ export type CartBuyerIdentity = {
 	 * can be used to populate relevant fields in the checkout flow.
 	 *
 	 */
-	deliveryAddressPreferences: Array<DeliveryAddress>;
+	deliveryAddressPreferences: Array<MailingAddress>;
 	/** The email address of the buyer that is interacting with the cart. */
 	email?: Maybe<string>;
 	/** The phone number of the buyer that is interacting with the cart. */
@@ -2278,8 +2276,6 @@ export type CartBuyerIdentity = {
 	 */
 	walletPreferences: Array<string>;
 };
-
-export type DeliveryAddress = MailingAddress;
 
 export type Customer = HasMetafields & {
 	__typename?: 'Customer';

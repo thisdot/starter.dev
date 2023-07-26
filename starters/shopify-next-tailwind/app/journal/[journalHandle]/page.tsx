@@ -34,22 +34,19 @@ export default async function JournalHandlePage({
 			>
 				<span>
 					{date}
-					&middot; {data.body.data.blog.articleByHandle?.author?.name}
+					&middot; {data.body.data.blog.articleByHandle?.authorV2?.name}
 				</span>
 			</PageHeader>
 
 			<Section as="article" padding="x">
 				{data.body.data.blog.articleByHandle?.image?.url && (
 					<Image
-						src={data.body.data.blog.articleByHandle?.image?.url as string}
+						src={data.body.data.blog.articleByHandle?.image?.url}
 						className="w-full mx-auto mt-8 md:mt-16 max-w-7xl"
-						alt={data.body.data.blog.articleByHandle?.image?.altText as string}
+						alt={data.body.data.blog.articleByHandle?.image?.altText}
 						sizes="90vw"
-						height={
-							(data.body.data.blog.articleByHandle?.image?.height as number) ??
-							400
-						}
-						width={data.body.data.blog.articleByHandle?.image?.width as number}
+						height={data.body.data.blog.articleByHandle?.image?.height ?? 400}
+						width={data.body.data.blog.articleByHandle?.image?.width}
 					/>
 				)}
 				<div

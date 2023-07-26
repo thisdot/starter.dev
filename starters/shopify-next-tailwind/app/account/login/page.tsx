@@ -47,13 +47,16 @@ export default function LoginPage() {
 					if (error.field) {
 						if (error.field.includes('email')) {
 							emailError = error.message;
+							return;
 						}
 						if (error.field.includes('password')) {
 							passwordError = error.message;
+							return;
 						}
 					} else {
 						if (error.code === 'UNIDENTIFIED_CUSTOMER') {
 							unidentifiedUserError = error.message;
+							return;
 						}
 					}
 				}

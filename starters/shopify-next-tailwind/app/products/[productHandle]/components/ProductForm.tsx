@@ -57,13 +57,13 @@ const ProductForm = ({
 									<span>Add to Cart</span> <span>·</span>{' '}
 									<Money
 										withoutTrailingZeros
-										data={selectedVariant?.price!}
+										data={selectedVariant?.price}
 										as="span"
 									/>
 									{isOnSale && (
 										<Money
 											withoutTrailingZeros
-											data={selectedVariant?.compareAtPrice!}
+											data={selectedVariant?.compareAtPrice}
 											as="span"
 											className="opacity-50 strike"
 										/>
@@ -73,7 +73,7 @@ const ProductForm = ({
 						)}
 						{!isOutOfStock && (
 							<ShopPayButton
-								variantIds={[selectedVariant?.id!]}
+								variantIds={[selectedVariant?.id]}
 								width="full"
 								storeDomain={STORE_DOMAIN}
 							/>

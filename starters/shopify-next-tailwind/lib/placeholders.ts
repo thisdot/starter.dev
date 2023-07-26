@@ -218,8 +218,8 @@ export function getHeroPlaceholder(heros: any[]) {
 			id: hero?.id || index,
 			spread: hero?.spread || placeholder.spread,
 			spreadSecondary: hero?.spreadSecondary || placeholder.spreadSecondary,
-			height: placeholder?.height || undefined,
-			top: placeholder?.top || undefined,
+			height: placeholder?.height ?? undefined,
+			top: placeholder?.top ?? undefined,
 		};
 	});
 }

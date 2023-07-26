@@ -30,7 +30,7 @@ export const ProductCard = ({
 	let cardLabel;
 
 	const cardProduct: Product = product?.variants
-		? (product as Product)
+		? product
 		: getProductPlaceholder();
 	if (!cardProduct?.variants?.nodes?.length) return null;
 
@@ -93,7 +93,7 @@ export const ProductCard = ({
 						</Text>
 						<div className="flex gap-4">
 							<Text className="flex gap-4">
-								<MoneyComponent withoutTrailingZeros data={price!} />
+								<MoneyComponent withoutTrailingZeros data={price} />
 								{isDiscounted(price as Money, compareAtPrice as Money) && (
 									<CompareAtPrice
 										className={'opacity-50'}

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 	title: 'Error',
 };
 
-export default function Error({
+export default function ErrorPage({
 	error,
 	reset,
 }: {
@@ -100,12 +100,10 @@ export default function Error({
 }
 
 function addLinksToStackTrace(stackTrace: string) {
-	return stackTrace?.replace(
-		/^\s*at\s?.*?[(\s]((\/|\w\:).+)\)\n/gim,
-		(all, m1) =>
-			all.replace(
-				m1,
-				`<a href="vscode://file${m1}" class="hover:underline">${m1}</a>`
-			)
+	return stackTrace?.replace(/^\s*at\s?.*?[(\s]((\/|\w).+)\)\n/gim, (all, m1) =>
+		all.replace(
+			m1,
+			`<a href="vscode://file${m1}" class="hover:underline">${m1}</a>`
+		)
 	);
 }

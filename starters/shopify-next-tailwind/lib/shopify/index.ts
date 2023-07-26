@@ -151,7 +151,7 @@ export async function shopifyFetch<T>({
 	variables?: ExtractVariables<T>;
 	headers?: HeadersInit;
 	cache?: RequestCache;
-}): Promise<{ status: number; body: T } | never> {
+}): Promise<{ status: number; body: T }> {
 	try {
 		const result = await fetch(endpoint, {
 			method: 'POST',
@@ -633,7 +633,7 @@ export async function getCustomer(
 	/**
 	 * If the customer failed to load, we assume their access token is invalid.
 	 */
-	if (!res || !res.body.data.customer) {
+	if (!res?.body.data.customer) {
 		// log out customer
 	}
 

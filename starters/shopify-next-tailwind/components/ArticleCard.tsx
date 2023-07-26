@@ -13,7 +13,7 @@ function ArticleCard({
 		year: 'numeric',
 		month: 'long',
 		day: 'numeric',
-	}).format(new Date(article.publishedAt!));
+	}).format(new Date(article.publishedAt));
 	return (
 		<Link href={`/${blogHandle}/${article.handle}`}>
 			{article.image && (

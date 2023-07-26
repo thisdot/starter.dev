@@ -27,7 +27,7 @@ const ProductGallery = ({
 						...med.image,
 						altText: med.alt || 'Product image',
 					},
-				} as any;
+				};
 
 				const style = [
 					isFullWidth ? 'md:col-span-2' : 'md:col-span-1',

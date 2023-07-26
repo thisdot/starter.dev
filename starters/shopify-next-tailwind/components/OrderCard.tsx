@@ -7,7 +7,7 @@ import Image from 'next/image';
 
 export function OrderCard({ order }: { order: Order }) {
 	if (!order?.id) return null;
-	const { id: legacyOrderId, key } = getIdFromURL(order!.id);
+	const { id: legacyOrderId, key } = getIdFromURL(order.id);
 	const lineItems = flattenConnection(order?.lineItems);
 
 	return (

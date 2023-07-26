@@ -34,8 +34,9 @@ export default function RecoverPassword() {
 			if (response.body.data.customerRecover.customerUserErrors.length > 0) {
 				response.body.data.customerRecover.customerUserErrors.filter(
 					(error: any) => {
-						if (error.field && error.field.includes('email')) {
+						if (error.field?.includes('email')) {
 							emailError = error.message;
+							return;
 						}
 					}
 				);

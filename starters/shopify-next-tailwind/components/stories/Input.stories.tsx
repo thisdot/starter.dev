@@ -23,8 +23,8 @@ Default.args = {
 	type: 'text',
 };
 
-export const Error = Template.bind({});
-Error.args = {
+export const ErrorState = Template.bind({});
+ErrorState.args = {
 	variant: 'default',
 	placeholder: 'Error',
 	type: 'text',

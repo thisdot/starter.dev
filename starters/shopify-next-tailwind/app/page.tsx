@@ -40,7 +40,7 @@ export default async function Homepage() {
 				<Hero {...primaryHero.body.data.hero} height="full" top />
 			)}
 
-			{featuredProducts && featuredProducts.body.data.products.nodes && (
+			{featuredProducts?.body.data.products.nodes && (
 				<ProductSwimlane
 					products={featuredProducts.body.data.products.nodes}
 					title="Featured Products"
@@ -50,13 +50,12 @@ export default async function Homepage() {
 
 			{secondaryHero && <Hero {...secondaryHero.body.data.hero} />}
 
-			{featuredCollections &&
-				featuredCollections.body.data.collections.nodes && (
-					<FeaturedCollections
-						collections={featuredCollections.body.data.collections.nodes}
-						title="Collections"
-					/>
-				)}
+			{featuredCollections?.body.data.collections.nodes && (
+				<FeaturedCollections
+					collections={featuredCollections.body.data.collections.nodes}
+					title="Collections"
+				/>
+			)}
 
 			{tertiaryHero && <Hero {...tertiaryHero.body.data.hero} />}
 		</>

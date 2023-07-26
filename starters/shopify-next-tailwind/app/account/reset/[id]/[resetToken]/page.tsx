@@ -65,11 +65,13 @@ export default function ResetPassword({
 							passwordError = error.message;
 						} else if (error.field.includes('passwordConfirm')) {
 							passwordConfirmError = error.message;
+							return;
 						}
 					}
 
 					if (error.code === 'TOKEN_INVALID') {
 						errorMessage = error.message;
+						return;
 					}
 				});
 			}

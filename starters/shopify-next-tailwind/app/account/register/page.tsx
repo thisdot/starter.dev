@@ -56,9 +56,11 @@ export default function RegisterPage() {
 			res.body.data.customerCreate.customerUserErrors.filter((error: any) => {
 				if (error.field.includes('email')) {
 					emailError = error.message;
+					return;
 				}
 				if (error.field.includes('password')) {
 					passwordError = error.message;
+					return;
 				}
 			});
 		}

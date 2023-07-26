@@ -146,7 +146,7 @@ function CartLines({ layout = 'drawer' }: { layout: Layouts }) {
 				{currentLines.map((line: CartLine) => (
 					<CartLineItem
 						key={line.id}
-						line={line as CartLine}
+						line={line}
 						adjustItemQuantity={action =>
 							editCartItem({ action: action, item: line })
 						}

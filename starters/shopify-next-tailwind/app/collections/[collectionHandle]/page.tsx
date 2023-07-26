@@ -110,11 +110,11 @@ export default async function Collection({
 				{seo.openGraph?.url && (
 					<meta property="og:url" content={seo.openGraph.url} />
 				)}
-				{seo.openGraph?.images?.map((image, index) => (
+				{seo.openGraph?.images?.map(image => (
 					<meta
 						property="og:image"
 						content={image.url}
-						key={`og-image-${index}`}
+						key={`og-image-${image.alt}`}
 					/>
 				))}
 				<script type="application/ld+json">
@@ -134,7 +134,7 @@ export default async function Collection({
 			</PageHeader>
 			<Section>
 				<SortFilter
-					filters={collection.products.filters as Filter[]}
+					filters={collection.products.filters}
 					appliedFilters={appliedFilters}
 					collections={collections as Collection[]}
 				>

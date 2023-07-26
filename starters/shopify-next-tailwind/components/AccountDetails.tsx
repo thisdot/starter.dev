@@ -3,6 +3,7 @@ import { Customer } from '@/lib/shopify/types';
 import { convertObjectToQueryString } from '@/lib/utils';
 function AccountDetails({ customer }: { customer: Customer }) {
 	const { firstName, lastName, email, phone } = customer;
+	const formattedFirstName = firstName ? firstName + ' ' : '';
 
 	return (
 		<>
@@ -22,9 +23,7 @@ function AccountDetails({ customer }: { customer: Customer }) {
 					</div>
 					<div className="mt-4 text-sm text-primary/50">Name</div>
 					<p className="mt-1">
-						{firstName || lastName
-							? (firstName ? firstName + ' ' : '') + lastName
-							: 'Add name'}{' '}
+						{firstName || lastName ? formattedFirstName + lastName : 'Add name'}{' '}
 					</p>
 
 					<div className="mt-4 text-sm text-primary/50">Contact</div>

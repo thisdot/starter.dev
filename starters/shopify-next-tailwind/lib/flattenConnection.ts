@@ -1,5 +1,3 @@
-import { Connection } from './shopify/types';
-
 type ConnectionEdges = {
 	edges: {
 		node: Array<unknown>;
