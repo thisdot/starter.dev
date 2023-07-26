@@ -7,6 +7,7 @@ import { IconCaret } from '@/components/Icon';
 import { Suspense } from 'react';
 import { Heading, Section } from '@/components/Text';
 import clsx from 'clsx';
+import Image from 'next/image';
 
 function Footer({ footerMenu }: { footerMenu: ShopifyFooterMenu }) {
 	const pathname = usePathname();
@@ -24,9 +25,19 @@ function Footer({ footerMenu }: { footerMenu: ShopifyFooterMenu }) {
 		>
 			<FooterMenu menu={footerMenu} />
 			{/* <CountrySelector /> */}
-			<div className="self-end pt-8 opacity-50 md:col-span-2 lg:col-span-4">
+			<div className="self-end pt-8 opacity-50 md:col-span-2 lg:col-span-2">
 				&copy; {new Date().getFullYear()} / This Dot Labs, Inc. Hydrogen Next.js
 				13 Template is an MIT Licensed Open Source project.
+			</div>
+			<div className="flex justify-end self-end pt-8 md:col-span-2 lg:col-span-1">
+				<a href="https://www.netlify.com">
+					<Image
+						src="https://www.netlify.com/v3/img/components/netlify-light.svg"
+						alt="Deploys by Netlify"
+						height={50}
+						width={120}
+					/>
+				</a>
 			</div>
 		</Section>
 	);

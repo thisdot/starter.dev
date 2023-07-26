@@ -7,7 +7,7 @@ const nextConfig = {
 	},
 	images: {
 		dangerouslyAllowSVG: true,
-		domains: ['cdn.shopify.com'],
+		domains: ['cdn.shopify.com', 'www.netlify.com'],
 	},
 };
 
