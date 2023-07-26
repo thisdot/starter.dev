@@ -24,10 +24,10 @@ const Home: NextPage = () => {
   return (
     <div>
       <Head>
-        <title>NextJS 12 and Chakra UI starter kit</title>
+        <title>NextJS and Chakra UI starter kit</title>
         <meta
           name="description"
-          content="This is a starter kit for NextJS 12 and Chakra UI"
+          content="This is a starter kit for NextJS and Chakra UI"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -42,7 +42,7 @@ const Home: NextPage = () => {
             p={4}
             bg="#2464ec"
           >
-            NextJS 12 and Chakra UI Starter Kit
+            NextJS and Chakra UI Starter Kit
           </Heading>
         </Center>
         <Center>

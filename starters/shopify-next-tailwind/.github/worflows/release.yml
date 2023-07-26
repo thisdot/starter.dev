@@ -1,0 +1,56 @@
+name: Release Workflow
+
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    if: startsWith(github.event.pull_request.title, 'Release:')
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+      - name: Install dependencies
+        run: npm install
+      - name: Check formatting
+        run: npm run format:check
+      - name: Build
+        run: npm run build
+      - name: Set up Git
+        run: |
+          git config user.name "This Dot Open Source"
+          git config user.email "opensource@thisdot.co"
+      - name: Get tag
+        id: get_tag
+        run: |
+          git branch --show-current
+          git pull
+          echo "version=v$(npm pkg get version | tr -d '\"')" >> $GITHUB_OUTPUT
+      - name: Tag the commit
+        run: |
+          next_version=${{ steps.get_tag.outputs.version }}
+          git tag -a "$next_version" -m "Version $next_version"
+          git push --follow-tags
+      - name: Create changelog diff
+        id: changelog_diff
+        run: |
+          sed -n "/^## \[${{ steps.get_tag.outputs.version }}\]/,/^## \[$(git describe --abbrev=0 --tags $(git rev-list --tags --skip=1 --max-count=1))\]/{/^## \[$(git describe --abbrev=0 --tags $(git rev-list --tags --skip=1 --max-count=1))\]/!p;}" CHANGELOG.md > release_notes.md
+      - name: Create release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.get_tag.outputs.version }}
+          release_name: Release ${{ steps.get_tag.outputs.version }}
+          body_path: ./release_notes.md
+          draft: false
+          prerelease: false
+      - name: Delete release_notes file
+        run: rm release_notes.md

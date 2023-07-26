@@ -36,7 +36,7 @@ const FetchExample: NextPage = () => {
           borderBottom="4px solid #2464ec"
           mt={8}
         >
-          NextJS 12 fetching data example from a REST API
+          NextJS fetching data example from a REST API
         </Heading>
       </Center>
 

@@ -25,6 +25,7 @@ const createMockRouter = (router: Partial<NextRouter> = {}) => {
     isLocaleDomain: false,
     isReady: true,
     isPreview: false,
+    forward: jest.fn(),
   };
   return { ...mockRouter, ...router };
 };

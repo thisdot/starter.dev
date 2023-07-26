@@ -66,6 +66,7 @@ import {
   VitestIcon,
   AWSSQSIcon,
   PlaywrightIcon,
+  ShopifyIcon,
   LitIcon,
   MobxIcon,
   VaadinIcon,
@@ -527,6 +528,13 @@ export const TECHNOLOGIES = [
     name: 'Vue Router',
     tags: ['Library'],
     Icon: (props) => <VueIcon {...props} />,
+  },
+  {
+    key: 'shopify',
+    name: 'Shopify',
+    tags: ['Data Management'],
+    Icon: (props) => <ShopifyIcon {...props} />,
+    
   },
   {
     key: 'lit',

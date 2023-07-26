@@ -1,13 +1,20 @@
 import React from 'react';
-import { ComponentMeta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import { Counter } from './Counter';
 
-export default {
+const meta: Meta = {
   title: 'Example/Counter',
   component: Counter,
-} as ComponentMeta<typeof Counter>;
+  parameters: {
+    layout: 'centered',
+  },
+};
 
-const Template = () => <Counter />;
+export default meta;
 
-export const Default = Template.bind({});
+type Story = StoryObj;
+
+export const Default: Story = {
+  render: () => <Counter />,
+};

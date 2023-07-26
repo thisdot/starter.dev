@@ -8,7 +8,7 @@ describe("Fetch Example page", () => {
     render(<FetchExample />);
 
     const heading = screen.getByRole("heading", {
-      name: "NextJS 12 fetching data example from a REST API",
+      name: "NextJS fetching data example from a REST API",
     });
 
     expect(heading).toBeInTheDocument();

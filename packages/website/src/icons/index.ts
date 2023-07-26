@@ -69,6 +69,7 @@ export { VitestIcon } from './VitestIcon';
 export { AWSSQSIcon } from './AWSSQSIcon';
 export { PlaywrightIcon } from './PlaywrightIcon';
 export { BriefcaseIcon } from './BriefcaseIcon';
+export { ShopifyIcon } from './ShopifyIcon';
 export { LitIcon } from './LitIcon';
 export { MobxIcon } from './MobxIcon';
 export { VaadinIcon } from './VaadinIcon';
