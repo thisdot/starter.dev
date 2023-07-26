@@ -21,7 +21,7 @@ export const Button = forwardRef(
 		},
 		ref
 	) => {
-		const Component: React.ElementType = props?.to ? Link : as;
+		const Component: React.ElementType | null = props?.to ? Link : as;
 
 		const baseButtonClasses =
 			'inline-block rounded font-medium text-center py-2 px-6';
@@ -44,7 +44,9 @@ export const Button = forwardRef(
 		);
 
 		return (
-			<Component className={styles} {...props} href={props?.to} ref={ref} />
+			<>
+				<Component className={styles} {...props} href={props?.to} ref={ref} />
+			</>
 		);
 	}
 );

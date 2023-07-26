@@ -2,6 +2,8 @@
 const nextConfig = {
 	experimental: {
 		serverActions: true,
+		browsersListForSwc: true,
+		legacyBrowsers: false,
 	},
 	images: {
 		dangerouslyAllowSVG: true,
