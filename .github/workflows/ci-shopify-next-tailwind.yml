@@ -1,0 +1,87 @@
+name: Shopify Next.js Tailwind CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'starters/shopify-next-tailwind/**'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'starters/shopify-next-tailwind/**'
+
+jobs:
+  format-check:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Use Node.js with pnpm
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+          cache-dependency-path: starters/shopify-next-tailwind/pnpm-lock.yaml
+          registry-url: 'https://registry.npmjs.org'
+          always-auth: false
+
+      - name: Install dependencies with pnpm
+        run: pnpm install --frozen-lockfile
+
+      - name: Check formatting
+        run: pnpm run format:check
+
+  build:
+    runs-on: ubuntu-latest
+    env:
+      SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
+      STOREFRONT_API_KEY: ${{ secrets.STOREFRONT_API_KEY }}
+      STOREFRONT_API_SECRET: ${{ secrets.STOREFRONT_API_SECRET }}
+      PUBLIC_STOREFRONT_API_TOKEN: ${{ secrets.PUBLIC_STOREFRONT_API_TOKEN }}
+      PUBLIC_STOREFRONT_API_VERSION: ${{ secrets.PUBLIC_STOREFRONT_API_VERSION }}
+      PUBLIC_STORE_DOMAIN: ${{ secrets.PUBLIC_STORE_DOMAIN }}
+
+    needs:
+      - format-check
+
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Use Node.js with pnpm
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+          registry-url: 'https://registry.npmjs.org'
+          always-auth: false
+
+      - name: Install dependencies with pnpm
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint files
+        run: pnpm run lint && pnpm run format
+
+      - name: Build Project
+        run: pnpm run build
