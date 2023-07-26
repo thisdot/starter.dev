@@ -100,4 +100,4 @@ git clone https://github.com/thisdot/starter.dev.git
 
 ## Demo Implementation
 
----link live---
+[Live Store](https://shopify-next-tailwind.starter.dev)
