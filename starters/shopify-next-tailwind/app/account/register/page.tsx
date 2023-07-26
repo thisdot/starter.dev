@@ -53,14 +53,12 @@ export default function RegisterPage() {
 		}
 
 		if (res.body.data.customerCreate.customerUserErrors.length > 0) {
-			res.body.data.customerCreate.customerUserErrors.filter((error: any) => {
+			res.body.data.customerCreate.customerUserErrors.forEach((error: any) => {
 				if (error.field.includes('email')) {
 					emailError = error.message;
-					return;
 				}
 				if (error.field.includes('password')) {
 					passwordError = error.message;
-					return;
 				}
 			});
 		}

@@ -59,19 +59,17 @@ export default function ResetPassword({
 			}
 
 			if (res.body.data.customerReset.customerUserErrors.length > 0) {
-				res.body.data.customerReset.customerUserErrors.filter((error: any) => {
+				res.body.data.customerReset.customerUserErrors.forEach((error: any) => {
 					if (error.field) {
 						if (error.field.includes('password')) {
 							passwordError = error.message;
 						} else if (error.field.includes('passwordConfirm')) {
 							passwordConfirmError = error.message;
-							return;
 						}
 					}
 
 					if (error.code === 'TOKEN_INVALID') {
 						errorMessage = error.message;
-						return;
 					}
 				});
 			}

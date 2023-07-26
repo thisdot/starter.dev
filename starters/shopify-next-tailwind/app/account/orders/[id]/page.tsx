@@ -3,10 +3,7 @@ import { Money } from '@/components/MoneyComponent';
 import { PageHeader, Heading, Text } from '@/components/Text';
 import { flattenConnection } from '@/lib/flattenConnection';
 import { getCustomerOrder } from '@/lib/shopify';
-import {
-	OrderLineItem,
-	DiscountApplicationConnection,
-} from '@/lib/shopify/types';
+import { OrderLineItem } from '@/lib/shopify/types';
 import { statusMessage } from '@/lib/utils';
 import clsx from 'clsx';
 import Image from 'next/image';
@@ -28,7 +25,7 @@ export default async function Orders({
 		throw new Response('Order not found', { status: 404 });
 	}
 
-	const lineItems = flattenConnection(order.lineItems!) as Array<OrderLineItem>;
+	const lineItems = flattenConnection(order.lineItems) as Array<OrderLineItem>;
 
 	const discountApplications = flattenConnection(order.discountApplications);
 

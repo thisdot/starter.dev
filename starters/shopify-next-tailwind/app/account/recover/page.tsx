@@ -7,7 +7,7 @@ import { recoverCustomersPassword } from '@/lib/shopify';
 import AuthLayout from '../component/AuthLayout';
 
 let emailError: string | null = null;
-let isSubmited: boolean = false;
+let isSubmitted: boolean = false;
 const headings = {
 	submited: {
 		title: 'Request Sent.',
@@ -32,16 +32,15 @@ export default function RecoverPassword() {
 			});
 
 			if (response.body.data.customerRecover.customerUserErrors.length > 0) {
-				response.body.data.customerRecover.customerUserErrors.filter(
+				response.body.data.customerRecover.customerUserErrors.forEach(
 					(error: any) => {
 						if (error.field?.includes('email')) {
 							emailError = error.message;
-							return;
 						}
 					}
 				);
 			} else {
-				isSubmited = true;
+				isSubmitted = true;
 			}
 		} catch (error) {
 			interface ERROR {
@@ -56,11 +55,13 @@ export default function RecoverPassword() {
 
 	return (
 		<AuthLayout>
-			<FormHeader title={headings[isSubmited ? 'submited' : 'default'].title} />
+			<FormHeader
+				title={headings[isSubmitted ? 'submited' : 'default'].title}
+			/>
 			<p className="mt-4">
-				{headings[isSubmited ? 'submited' : 'default'].description}
+				{headings[isSubmitted ? 'submited' : 'default'].description}
 			</p>
-			{!isSubmited && (
+			{!isSubmitted && (
 				<form
 					action={handleSubmit}
 					noValidate

@@ -42,21 +42,18 @@ export default function LoginPage() {
 		if (
 			loginRes.body.data.customerAccessTokenCreate.customerUserErrors.length > 0
 		) {
-			loginRes.body.data.customerAccessTokenCreate.customerUserErrors.filter(
+			loginRes.body.data.customerAccessTokenCreate.customerUserErrors.forEach(
 				(error: any) => {
 					if (error.field) {
 						if (error.field.includes('email')) {
 							emailError = error.message;
-							return;
 						}
 						if (error.field.includes('password')) {
 							passwordError = error.message;
-							return;
 						}
 					} else {
 						if (error.code === 'UNIDENTIFIED_CUSTOMER') {
 							unidentifiedUserError = error.message;
-							return;
 						}
 					}
 				}

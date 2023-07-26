@@ -104,7 +104,7 @@ export type HydrogenImageProps = React.ImgHTMLAttributes<HTMLImageElement> & {
 export declare const IMAGE_FRAGMENT =
 	'#graphql\n  fragment Image on Image {\n    altText\n    url\n    width\n    height\n  }\n';
 /**
- * Hydrgen’s Image component is a wrapper around the HTML image element.
+ * Hydrogen’s Image component is a wrapper around the HTML image element.
  * It supports the same props as the HTML `img` element, but automatically
  * generates the srcSet and sizes attributes for you. For most use cases,
  * you’ll want to set the `aspectRatio` prop to ensure the image is sized

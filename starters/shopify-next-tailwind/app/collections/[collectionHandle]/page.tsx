@@ -1,10 +1,6 @@
 import { PageHeader, Text, Section } from '@/components/Text';
 import ProductGrid from '@/components/ProductGrid';
-import {
-	Collection as CollectionType,
-	Collection,
-	Filter,
-} from '@/lib/shopify/types';
+import { Collection as CollectionType, Collection } from '@/lib/shopify/types';
 import { SortFilter } from '@/components/SortFilter';
 import { getCollectionProducts } from '@/lib/shopify';
 import { flattenConnection } from '@/lib/flattenConnection';
