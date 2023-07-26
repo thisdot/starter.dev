@@ -42,6 +42,7 @@ or
 ```bash
 yarn create @this-dot/starter --kit shopify-next-tailwind
 ```
+
 or
 
 ```bash
@@ -100,6 +101,3 @@ Once installed, you'll need to create a `SHOPIFY_STOREFRONT_ACCESS_TOKEN` enviro
 ## Demo Implementation
 
 ---link live---
-
-
-
