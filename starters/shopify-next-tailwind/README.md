@@ -38,6 +38,7 @@ In order to use the Shopify's Storefront API, you need to install the [Headless 
 Once installed, you'll need to create a `SHOPIFY_STOREFRONT_ACCESS_TOKEN` environment variable and use the public access token as the value.
 
 > Note: Shopify does offer a Node.js Storefront API SDK. We use the Storefront API via GraphQL directly instead of the Node.js SDK so we have more control over fetching and caching.
+
 ## Installation
 
 You will need to use the environment variables [defined in `.env.example`](https://github.com/thisdot/starter.dev/blob/main/starters/shopify-next-tailwind/.env.example) to run Next.js Commerce. It's recommended you use [Vercel Environment Variables](https://vercel.com/docs/concepts/projects/environment-variables) for this, but a `.env` file is all that is necessary.
@@ -96,7 +97,6 @@ git clone https://github.com/thisdot/starter.dev.git
 - `pnpm run lint` - Runs ESLint on the project.
 - `pnpm run format` - Formats code for the entire project.
 - `pnpm run format.check` - Checks all project code to conform to prettier rules.
-
 
 ## Demo Implementation
 
