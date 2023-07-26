@@ -67,6 +67,9 @@ import {
   AWSSQSIcon,
   PlaywrightIcon,
   ShopifyIcon,
+  LitIcon,
+  MobxIcon,
+  VaadinIcon,
 } from './icons';
 
 export interface NavItem {
@@ -531,6 +534,25 @@ export const TECHNOLOGIES = [
     name: 'Shopify',
     tags: ['Data Management'],
     Icon: (props) => <ShopifyIcon {...props} />,
+    
+  },
+  {
+    key: 'lit',
+    name: 'Lit',
+    tags: ['Core UI'],
+    Icon: (props) => <LitIcon {...props} />,
+  },
+  {
+    key: 'mobx',
+    name: 'Mobx',
+    tags: ['Data Management'],
+    Icon: (props) => <MobxIcon {...props} />,
+  },
+  {
+    key: 'vaadin',
+    name: 'Vaadin',
+    tags: ['Framework'],
+    Icon: (props) => <VaadinIcon {...props} />,
   },
 ];
 
