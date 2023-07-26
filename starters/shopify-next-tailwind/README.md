@@ -1,4 +1,4 @@
-# shopify-next-tailwind kit
+# shopify-next-tailwind starter kit
 
 This starter kit features **Shopify**, **NextJS 13.4** and **Tailwind CSS**.
 
@@ -17,9 +17,31 @@ This starter kit features **Shopify**, **NextJS 13.4** and **Tailwind CSS**.
 - [ESLint](https://eslint.org/) - Code linting
 - [Prettier](https://prettier.io/) - Code formatting
 
+## How to configure your Shopify store
+
+This template requires a [paid Shopify plan](https://www.shopify.com/pricing).
+
+> Note: This template will not work with a Shopify Starter plan as it does not allow installation of custom themes, which is required to run as a headless storefront.
+
+### Add Shopify domain to an environment variable
+
+Create a `SHOPIFY_STORE_DOMAIN` environment variable and use your Shopify domain as the the value (ie. `[your-shopify-store-subdomain].myshopify.com`).
+
+> Note: Do not include the `https://`.
+
+### Accessing the Shopify Storefront API
+
+This template utilizes [Shopify's Storefront API](https://shopify.dev/docs/api/storefront) to create unique customer experiences. The API offers a full range of commerce options making it possible for customers to control products, collections, menus, pages, cart, checkout, and more.
+
+In order to use the Shopify's Storefront API, you need to install the [Headless app](https://apps.shopify.com/headless) in your Shopify store.
+
+Once installed, you'll need to create a `SHOPIFY_STOREFRONT_ACCESS_TOKEN` environment variable and use the public access token as the value.
+
+> Note: Shopify does offer a Node.js Storefront API SDK. We use the Storefront API via GraphQL directly instead of the Node.js SDK so we have more control over fetching and caching.
+
 ## Installation
 
-You will need to use the environment variables [defined in `.env.example`](.env.example) to run Next.js Commerce. It's recommended you use [Vercel Environment Variables](https://vercel.com/docs/concepts/projects/environment-variables) for this, but a `.env` file is all that is necessary.
+You will need to use the environment variables [defined in `.env.example`](https://github.com/thisdot/starter.dev/blob/main/starters/shopify-next-tailwind/.env.example) to run Next.js Commerce. It's recommended you use [Vercel Environment Variables](https://vercel.com/docs/concepts/projects/environment-variables) for this, but a `.env` file is all that is necessary.
 
 > Note: You should not commit your `.env` file or it will expose secrets that will allow others to control your Shopify store.
 
@@ -29,7 +51,7 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-If you want to tag and create a release for your project during your development, you could find a GitHub Worflow template example in the [GitHub Workflow folder](./.github/worflows) inside the project.
+If you want to tag and create a release for your project during your development, you could find a GitHub Worflow template example in the [GitHub Workflow folder](https://github.com/thisdot/starter.dev/tree/main/starters/shopify-next-tailwind/.github/worflows) inside the project.
 
 ### CLI (Recommended)
 
@@ -75,28 +97,6 @@ git clone https://github.com/thisdot/starter.dev.git
 - `pnpm run lint` - Runs ESLint on the project.
 - `pnpm run format` - Formats code for the entire project.
 - `pnpm run format.check` - Checks all project code to conform to prettier rules.
-
-## How to configure your Shopify store
-
-This template requires a [paid Shopify plan](https://www.shopify.com/pricing).
-
-> Note: This template will not work with a Shopify Starter plan as it does not allow installation of custom themes, which is required to run as a headless storefront.
-
-### Add Shopify domain to an environment variable
-
-Create a `SHOPIFY_STORE_DOMAIN` environment variable and use your Shopify domain as the the value (ie. `[your-shopify-store-subdomain].myshopify.com`).
-
-> Note: Do not include the `https://`.
-
-### Accessing the Shopify Storefront API
-
-This template utilizes [Shopify's Storefront API](https://shopify.dev/docs/api/storefront) to create unique customer experiences. The API offers a full range of commerce options making it possible for customers to control products, collections, menus, pages, cart, checkout, and more.
-
-In order to use the Shopify's Storefront API, you need to install the [Headless app](https://apps.shopify.com/headless) in your Shopify store.
-
-Once installed, you'll need to create a `SHOPIFY_STOREFRONT_ACCESS_TOKEN` environment variable and use the public access token as the value.
-
-> Note: Shopify does offer a Node.js Storefront API SDK. We use the Storefront API via GraphQL directly instead of the Node.js SDK so we have more control over fetching and caching.
 
 ## Demo Implementation
 

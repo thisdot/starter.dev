@@ -66,6 +66,7 @@ import {
   VitestIcon,
   AWSSQSIcon,
   PlaywrightIcon,
+  ShopifyIcon,
 } from './icons';
 
 export interface NavItem {
@@ -524,6 +525,12 @@ export const TECHNOLOGIES = [
     name: 'Vue Router',
     tags: ['Library'],
     Icon: (props) => <VueIcon {...props} />,
+  },
+  {
+    key: 'shopify',
+    name: 'Shopify',
+    tags: ['Data Management'],
+    Icon: (props) => <ShopifyIcon {...props} />,
   },
 ];
 
