@@ -1,7 +1,14 @@
 {
-	"name": "hydrogen-nextjs",
+	"name": "shopify-next-tailwind",
 	"version": "0.1.0",
 	"private": true,
+	"keywords": [
+		"next",
+		"shopify",
+		"storybook",
+		"typescript",
+		"typescript"
+	],
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",
