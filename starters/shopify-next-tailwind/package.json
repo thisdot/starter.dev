@@ -2,12 +2,18 @@
 	"name": "shopify-next-tailwind",
 	"version": "0.1.0",
 	"private": true,
+	"description": "Shopify, NextJS 13.4 and Tailwind CSS",
 	"keywords": [
 		"next",
 		"shopify",
 		"storybook",
 		"typescript",
 		"tailwind"
+	],
+	"contributors": [
+		"Mattia Magi <mattia.magi@thisdot.co>",
+		"Mark Shenouda <mark@thisdot.co>",
+		"Jerry Hogan <jerry.hogan@thisdot.co>"
 	],
 	"scripts": {
 		"dev": "next dev",
