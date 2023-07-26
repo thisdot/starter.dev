@@ -19,6 +19,11 @@ export const POLICIES_QUERY = `#graphql
       refundPolicy {
         ...PolicyIndex
       }
+			subscriptionPolicy {
+        id
+        title
+        handle
+      }
     }
   }
 `;
@@ -38,6 +43,7 @@ export const POLICY_CONTENT_QUERY = `#graphql
     $shippingPolicy: Boolean!
     $termsOfService: Boolean!
     $refundPolicy: Boolean!
+		$subscriptionPolicy: Boolean!
   ) @inContext(language: $language) {
     shop {
       privacyPolicy @include(if: $privacyPolicy) {
@@ -51,6 +57,13 @@ export const POLICY_CONTENT_QUERY = `#graphql
       }
       refundPolicy @include(if: $refundPolicy) {
         ...PolicyHandle
+      }
+			subscriptionPolicy @include(if: $subscriptionPolicy) {
+        body
+				handle
+				id
+				title
+				url
       }
     }
   }

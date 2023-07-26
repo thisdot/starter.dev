@@ -886,6 +886,7 @@ export async function getPolicyContent(variables: { policyName: string }) {
 			shippingPolicy: false;
 			termsOfService: false;
 			refundPolicy: false;
+			subscriptionPolicy: false;
 			[policyName: string]: boolean;
 		};
 	}>({
@@ -895,6 +896,7 @@ export async function getPolicyContent(variables: { policyName: string }) {
 			shippingPolicy: false,
 			termsOfService: false,
 			refundPolicy: false,
+			subscriptionPolicy: false,
 			[variables.policyName]: true,
 		},
 	});
