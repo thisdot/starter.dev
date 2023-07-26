@@ -13,7 +13,7 @@ const useLoadSearchData = () => {
 	const { search } = useLocation();
 	const [loadingSearchedProducts, setLoadingSearchedProducts] = useState(true);
 	const [products, setProducts] = useState<Product[]>([]);
-	const [pageInfo, setPageInfo] = useState<PageInfo | null>(null);
+	const [pageInfo, setPageInfo] = useState<PageInfo | any>(null);
 	const [featuredProducts, setfeaturedProducts] = useState<Product[]>([]);
 	const [featuredCollections, setfeaturedCollections] = useState<Collection[]>(
 		[]

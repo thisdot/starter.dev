@@ -16,8 +16,8 @@ const SearchResult = ({ products, pageInfo }: ISearchResult) => {
 					<ProductCard key={product.id} product={product} />
 				))}
 			</Grid>
-			{pageInfo.hasNextPage && (
-				<LoadMoreSearchProducts startCursor={pageInfo.endCursor} />
+			{pageInfo?.hasNextPage && (
+				<LoadMoreSearchProducts startCursor={pageInfo?.endCursor} />
 			)}
 		</Section>
 	);
