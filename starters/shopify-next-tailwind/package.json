@@ -7,7 +7,7 @@
 		"shopify",
 		"storybook",
 		"typescript",
-		"typescript"
+		"tailwind"
 	],
 	"scripts": {
 		"dev": "next dev",
