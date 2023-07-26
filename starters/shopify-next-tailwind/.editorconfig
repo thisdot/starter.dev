@@ -1,0 +1,22 @@
+# For a reference of available properties and values:
+# https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties
+
+# Not all editors natively support EditorConfig. Check to see if yours
+# requires a plugin:
+# https://editorconfig.org/#download
+
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_style = tab
+indent_size = 2
+insert_final_newline = true
+max_line_length = 80
+trim_trailing_whitespace = true
+
+[*.{md,markdown}]
+insert_final_newline = false
+max_line_length = off
+trim_trailing_whitespace = false

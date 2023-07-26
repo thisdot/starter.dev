@@ -1,0 +1,79 @@
+name: Shopify Next.js Tailwind CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'starters/shopify-next-tailwind/**'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'starters/shopify-next-tailwind/**'
+
+jobs:
+  format-check:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Use Node.js 
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: ''
+
+      - name: Install dependencies 
+        run: npm i
+        working-directory: starters/shopify-next-tailwind
+
+      - name: Check formatting
+        run: npm run format:check
+        working-directory: starters/shopify-next-tailwind
+
+  build:
+    runs-on: ubuntu-latest
+    env:
+      SESSION_SECRET: ${{ secrets.SHOPIFY_NEXT_SESSION_SECRET }}
+      STOREFRONT_API_KEY: ${{ secrets.SHOPIFY_NEXT_STOREFRONT_API_KEY }}
+      STOREFRONT_API_SECRET: ${{ secrets.SHOPIFY_NEXT_STOREFRONT_API_SECRET }}
+      PUBLIC_STOREFRONT_API_TOKEN: ${{ secrets.SHOPIFY_NEXT_PUBLIC_STOREFRONT_API_TOKEN }}
+      PUBLIC_STOREFRONT_API_VERSION: ${{ secrets.SHOPIFY_NEXT_PUBLIC_STOREFRONT_API_VERSION }}
+      PUBLIC_STORE_DOMAIN: ${{ secrets.SHOPIFY_NEXT_PUBLIC_STORE_DOMAIN }}
+
+    needs:
+      - format-check
+
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Use Node.js with pnpm
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: ''
+
+      - name: Install dependencies with pnpm
+        run: npm i
+        working-directory: starters/shopify-next-tailwind
+
+      - name: Lint files
+        run: npm run lint && npm run format
+        working-directory: starters/shopify-next-tailwind
+
+      - name: Build Project
+        run: npm run build
+        working-directory: starters/shopify-next-tailwind
