@@ -23,24 +23,19 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8
-
-      - name: Use Node.js with pnpm
+      - name: Use Node.js 
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'pnpm'
-          cache-dependency-path: starters/shopify-next-tailwind/pnpm-lock.yaml
-          registry-url: 'https://registry.npmjs.org'
-          always-auth: false
+          node-version: 16.x
+          cache: ''
 
-      - name: Install dependencies with pnpm
-        run: pnpm install --frozen-lockfile
+      - name: Install dependencies 
+        run: npm i
+        working-directory: starters/shopify-next-tailwind
 
       - name: Check formatting
-        run: pnpm run format:check
+        run: npm run format:check
+        working-directory: starters/shopify-next-tailwind
 
   build:
     runs-on: ubuntu-latest
@@ -65,23 +60,20 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8
-
       - name: Use Node.js with pnpm
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'pnpm'
-          registry-url: 'https://registry.npmjs.org'
-          always-auth: false
+          node-version: 16.x
+          cache: ''
 
       - name: Install dependencies with pnpm
-        run: pnpm install --frozen-lockfile
+        run: npm i
+        working-directory: starters/shopify-next-tailwind
 
       - name: Lint files
-        run: pnpm run lint && pnpm run format
+        run: npm run lint && npm run format
+        working-directory: starters/shopify-next-tailwind
 
       - name: Build Project
-        run: pnpm run build
+        run: npm run build
+        working-directory: starters/shopify-next-tailwind

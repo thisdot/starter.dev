@@ -13,7 +13,6 @@
   "qwik-graphql-tailwind": "Qwik, GraphQL, and TailwindCSS",
   "remix-gql-tailwind": "Remix, GQL and TailwindCSS",
   "serverless-framework-apollo-contentful": "Serverless Framework, Apollo Server, and Contentful CMS",
-  "shopify-next-tailwind": "Shopify, NextJS 13.4 and TailwindCSS",
   "solidjs-tailwind": "SolidJS and TailwindCSS",
   "solidstart-tanstackquery-tailwind-modules": "Solid Start, TanStack Query and Tailwind CSS with CSS Modules",
   "svelte-kit-scss": "SvelteKit and SCSS",
