@@ -41,7 +41,7 @@ Once installed, you'll need to create a `SHOPIFY_STOREFRONT_ACCESS_TOKEN` enviro
 
 ## Installation
 
-You will need to use the environment variables [defined in `.env.example`](https://github.com/thisdot/starter.dev/blob/main/starters/shopify-next-tailwind/.env.example) to run Next.js Commerce. It's recommended you use [Vercel Environment Variables](https://vercel.com/docs/concepts/projects/environment-variables) for this, but a `.env` file is all that is necessary.
+You will need to use the environment variables [defined in `.env.example`](https://github.com/thisdot/starter.dev/blob/main/starters/shopify-next-tailwind/.env.example) to run Next.js Commerce. A `.env` file is all that is necessary.
 
 > Note: You should not commit your `.env` file or it will expose secrets that will allow others to control your Shopify store.
 
