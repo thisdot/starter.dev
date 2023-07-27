@@ -6,7 +6,7 @@ import { IconCaret, IconFilters, IconXMark } from './Icon';
 import { Heading, Text } from './Text';
 import { Link } from './Link';
 import { Filter, Collection, FilterType } from '@/lib/shopify/types';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import clsx from 'clsx';
 
 export type AppliedFilter = {
@@ -94,7 +94,6 @@ export function FiltersDrawer({
 				params.has('maxPrice') && !isNaN(Number(params.get('maxPrice')))
 					? Number(params.get('maxPrice'))
 					: undefined;
-
 			return <PriceRangeFilter min={min} max={max} />;
 		} else {
 			const to = getFilterLink(
@@ -126,7 +125,7 @@ export function FiltersDrawer({
 				<div className="divide-y">
 					{filters.map(
 						(filter: Filter) =>
-							filter.values.length > 1 && (
+							filter.values.length > 0 && (
 								<Disclosure as="div" key={filter.id} className="w-full">
 									{({ open }) => (
 										<>
