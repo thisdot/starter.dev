@@ -142,3 +142,10 @@ create(createTechnologyDto: CreateTechnologyDto): Promise<Technology> {
 	});
 }
 ```
+## Swagger UI 
+
+This starter kit uses [Swagger UI](https://swagger.io/tools/swagger-ui/) to show the REST API documentation for the technology and health API's.
+
+You can view the documenation at http://localhost:3000/api
+
+![swagger ui example](./swagger-ui-example.png)
