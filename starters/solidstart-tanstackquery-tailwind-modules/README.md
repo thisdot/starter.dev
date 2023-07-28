@@ -2,18 +2,6 @@
 
 This starter kit features **SolidStart**, combined with **TanStack Query**, and **Tailwind CSS**, and **CSS Modules**.
 
-## Table of Contents
-
-- [Overview](#overview)
-  - [Tech Stack](#tech-stack)
-  - [Included Tooling](#included-tooling)
-  - [Example Components](#example-components)
-- [Installation](#installation)
-  - [CLI](#cli)
-  - [Manual](#manual)
-- [Commands](#commands)
-- [Demo Implementation](#demo-implementation)
-
 ## Overview
 
 ### Tech Stack
@@ -79,3 +67,11 @@ git clone https://github.com/thisdot/starter.dev.git
 - `lint` - Uses eslint to find potential issues in the codebase
 - `lint-fix` - Tries to auto-fix potential issues
 - `format` - Fixes formatting issues in the codebase
+
+## Demo Implementation
+
+[Repository](https://github.com/thisdot/starter.dev-github-showcases/tree/main/solidstart-tanstackquery-tailwind-modules)  
+
+[Live demo](https://solidstart-tanstackquery-tailwind-modules.starter.dev/)
+
+The demo application re-implements some of GitHub's pages and functionality. It uses the OAuth credentials in GitHub to authenticate users with their GitHub accounts and uses window.fetch() to fetch data from the GitHub API. Check out the link above to learn more or check out the demo!

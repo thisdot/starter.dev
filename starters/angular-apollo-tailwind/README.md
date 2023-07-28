@@ -2,18 +2,6 @@
 
 This starter kit features **Angular 13**, **Apollo** and **Tailwind CSS**.
 
-## Table of Contents
-
-- [Overview](#overview)
-  - [Tech Stack](#tech-stack)
-  - [Included Tooling](#included-tooling)
-  - [Example Components](#example-components)
-- [Installation](#installation)
-  - [CLI](#cli-recommended)
-  - [Manual](#manual)
-- [Commands](#commands)
-- [Demo Implementation](#demo-implementation)
-
 ## Overview
 
 ### Tech Stack
@@ -89,4 +77,4 @@ git clone https://github.com/thisdot/starter.dev.git
 
 [Repository](https://github.com/thisdot/starter.dev-github-showcases/tree/main/angular-apollo-tailwind)
 
-[Live Application](http://angular-apollo-tailwind.starter.dev/)
+[Live Application](https://angular-apollo-tailwind.starter.dev/)

@@ -1,0 +1,84 @@
+{
+  "name": "next-react-query-tailwind",
+  "description": "NextJS, React Query, and TailwindCSS",
+  "keywords": [
+    "next",
+    "react-query",
+    "tailwind",
+    "storybook",
+    "jest",
+    "typescript",
+    "mock-service-worker"
+  ],
+  "version": "0.1.1",
+  "private": true,
+  "showcases": [
+    {
+      "kit": "next-react-query-tailwind",
+      "name": "GitHub Showcase",
+      "repo": "https://github.com/thisdot/starter.dev-github-showcases/tree/main/next-react-query-tailwind",
+      "app": "https://next-react-query-tailwind.starter.dev",
+      "icon": "GitHub"
+    }
+  ],
+  "hasShowcase": true,
+  "engines": {
+    "node": ">=16.0 <18.0.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "jest",
+    "format": "prettier --write ./src",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "4.29.25",
+    "clsx": "2.0.0",
+    "next": "13.4.10",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "7.1.0",
+    "@storybook/addon-essentials": "7.1.0",
+    "@storybook/addon-interactions": "7.0.10",
+    "@storybook/addon-links": "7.1.0",
+    "@storybook/addon-styling": "1.0.6",
+    "@storybook/blocks": "7.0.10",
+    "@storybook/nextjs": "7.1.0",
+    "@storybook/react": "7.1.0",
+    "@storybook/testing-library": "0.1.0",
+    "@testing-library/jest-dom": "5.17.0",
+    "@testing-library/react": "14.0.0",
+    "@testing-library/user-event": "14.4.3",
+    "@types/jest": "29.5.3",
+    "@types/node": "20.4.2",
+    "@types/react": "18.2.15",
+    "autoprefixer": "10.4.14",
+    "eslint": "8.45.0",
+    "eslint-config-next": "13.4.10",
+    "eslint-plugin-storybook": "0.6.13",
+    "eslint-plugin-testing-library": "5.11.0",
+    "identity-obj-proxy": "3.0.0",
+    "isomorphic-unfetch": "4.0.2",
+    "jest": "29.6.1",
+    "jest-environment-jsdom": "29.6.1",
+    "jest-mock": "29.6.1",
+    "msw": "1.2.2",
+    "msw-storybook-addon": "1.8.0",
+    "postcss": "8.4.26",
+    "prettier": "3.0.0",
+    "storybook": "7.1.0",
+    "storybook-css-modules-preset": "1.1.1",
+    "tailwindcss": "3.3.3",
+    "typescript": "5.1.6",
+    "whatwg-fetch": "3.6.17"
+  },
+  "msw": {
+    "workerDirectory": "public"
+  }
+}

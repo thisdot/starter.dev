@@ -5,8 +5,8 @@ import StickyHero from '../components/StickyHero.astro';
 import { NavBar } from '../components/NavBar.tsx';
 import { TableOfContents } from '../components/TableOfContents.tsx';
 import MobileNavigation from '../components/MobileNavigation.tsx';
-import KitDemoHero from '../components/KitDemoHero.astro';
 import KitTechnologies from '../components/KitTechnologies.astro';
+import KitShowcases from '../components/KitShowcases.astro';
 import Footer from '../components/Footer.astro';
 import { parseKit } from '../lib/parseKits';
 const { content, headings } = Astro.props;
@@ -42,7 +42,7 @@ const kit = parseKit(content);
           <article>
             <slot />
           </article>
-          <KitDemoHero {...kit} />
+          <KitShowcases {...kit} />
           <KitTechnologies technologies={kit.technologies} />
         </div>
         <aside class="hidden lg:block col-span-2"></aside>

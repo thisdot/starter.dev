@@ -53,6 +53,9 @@ module.exports = {
         base: ['18px', '1.32'],
         lg: ['20px', '1.22'],
       },
+      gridTemplateColumns: {
+        'fill-20': 'repeat(auto-fill, 5rem)',
+      },
     },
   },
   plugins: [require('@tailwindcss/typography')],

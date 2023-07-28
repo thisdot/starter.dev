@@ -5,9 +5,22 @@
   "keywords": [
     "remix",
     "graphql",
-    "tailwind"
+    "tailwind",
+    "storybook",
+    "jest",
+    "typescript",
+    "vite"
   ],
-  "hasShowcase": true,
+  "showcases": [
+    {
+      "kit": "remix-gql-tailwind",
+      "name": "GitHub Showcase",
+      "repo": "https://github.com/thisdot/starter.dev-github-showcases/tree/main/remix-gql-tailwind",
+      "app": "",
+      "icon": "GitHub"
+    }
+  ],
+  "hasShowcase": false,
   "private": true,
   "sideEffects": false,
   "engines": {

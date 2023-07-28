@@ -6,7 +6,23 @@
   "keywords": [
     "solidstart",
     "tanstack-query",
-    "tailwind"
+    "tailwind",
+    "storybook",
+    "typescript",
+    "vite",
+    "mock-service-worker",
+    "solidjs",
+    "vitest",
+    "css module"
+  ],
+  "showcases": [
+    {
+      "kit": "solidstart-tanstackquery-tailwind-modules",
+      "name": "GitHub Showcase",
+      "repo": "https://github.com/thisdot/starter.dev-github-showcases/tree/main/solidstart-tanstackquery-tailwind-modules",
+      "app": "https://solidstart-tanstackquery-tailwind-modules.starter.dev",
+      "icon": "GitHub"
+    }
   ],
   "hasShowcase": true,
   "contributors": [

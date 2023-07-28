@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Storybook</title>
+
+		<style>
+			html,
+			body {
+				overflow: hidden;
+				height: 100%;
+				width: 100%;
+				margin: 0;
+				padding: 0;
+			}
+		</style>
+
+		<style>
+			#root[hidden],
+			#docs-root[hidden] {
+				display: none !important;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="root"></div>
+		<div id="docs-root"></div>
+
+		<script
+			type="module"
+			src="./node_modules/@web/storybook-prebuilt/manager.js"
+		></script>
+	</body>
+</html>

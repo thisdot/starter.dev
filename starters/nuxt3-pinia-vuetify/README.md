@@ -24,9 +24,11 @@ npm create @this-dot/starter -- --kit nuxt3-pinia-vuetify
 - [ESLint](https://eslint.org/) - Code linting
 - [Prettier](https://prettier.io/) - Code formatting
 
-## A note about testing
+## A note about testing and Storybook
 
-We didn't include Storybook in this starter kit because it is not yet compatible with Nuxt.js 3. We will add it back in when it is. Likewise, we didn't include tests because the testing story for Nuxt.js 3 is still being worked out and it's not production ready.
+Storybook was not included for this starter.dev kit due to incompatibility with Nuxt.js 3. We will add support when it becomes avaialble.
+
+Vitest and other testing is excluded. The current Nuxt.js 3 testing story is still being developed and is not production ready.
 
 ## Getting Started
 
@@ -46,7 +48,7 @@ We didn't include Storybook in this starter kit because it is not yet compatible
 - `yarn dev` / `yarn start` - Starts the development server.
 - `yarn build` - Creates a `.output` directory with all your application, server and dependencies ready for production.
 - `yarn preview` - Starts a server to preview your Nuxt application after running the build command.
-- `yarn generate` - Pre-renders every route of your application and stores the result in plain HTML files that you can deploy on any static hosting services. The command triggers the `nuxi build` command with the `prerender` argument set to `true`
+- `yarn generate` - Pre-renders every route of your application and stores the result in plain HTML files that you can deploy on any static hosting services. The command triggers the `nuxt build` command with the `prerender` argument set to `true`
 - `yarn postinstall` - Creates a `.nuxt` directory in your application and generates types. This can be useful in a CI environment or as a `postinstall` command in your `package.json`.
 - `yarn lint:js` - Runs ESLint on the project.
 - `yarn lint:prettier` - Runs Prettier on the project.
@@ -66,10 +68,19 @@ The `CounterExample` directory component uses `Pinia` to control the state of th
 The `FetchExample` directory component uses `useLazyFetch` to fetch data from the example `hello endpoint`.
 
 ## Styling and Theme
+Configurations are done in the `vuetify.ts` file, which is located in the `plugins` directory. In here is where you will make Vuetify configurations for your application. This particular configuration file exports a Nuxt plugin, defined using defineNuxtPlugin, which applies the Vuetify setup to the Nuxt app.
 
-The project uses [Vuetify](https://vuetifyjs.com/en/) as the main styling framework. Vuetify is a powerful Vue Component Framework built from the ground up to be easy to learn and rewarding to master. Our collection of UI components maintain a consistent style throughout your application with enough customization options to meet any use-case.
+The file begins by importing the `createVuetify` function from the `Vuetify` library. This function is used later to generate a Vuetify instance for application-wide use. In addition, all Vuetify components and directives are imported for incorporation into this instance, offering broad flexibility for the application's UI.
 
-Configurations are done in the `vuetify.ts` file, which is located in the `plugins` directory. Vuetify component, directives, themes and more configuration can be added here.
+Within the defined Nuxt plugin, the `createVuetify` function is invoked, establishing a Vuetify configuration object. Notably, server-side rendering (SSR) is enabled by setting `ssr: true` which boosts the performance and SEO of your application.
+
+In terms of theming, a `customTheme` is defined with a primary color of `#3B82F6`. This theme is set as the `defaultTheme`. Remember, theming can be expanded to add more color specifications and other themes, following the same pattern. To learn more: [Layouts and theming in Vuetify 3](https://www.thisdot.co/blog/layouts-and-theming-in-vuetify-3/).
+
+Post-configuration, all components and directives are passed to the `createVuetify` function, ensuring that they're accessible throughout the application.
+
+Finally, the constructed Vuetify instance is applied to the Nuxt application using `nuxtApp.vueApp.use(Vuetify)`. This essential step ensures that Vuetify, with all its components, directives, and theme settings, becomes available in the Vue application.
+
+In essence, this file outlines a pattern to configure Vuetify within a Nuxt.js context, making optimal use of theme customization and SSR, while incorporating all available Vuetify components and directives.
 
 ## Deployment
 

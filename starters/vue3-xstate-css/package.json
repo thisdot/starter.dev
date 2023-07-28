@@ -5,7 +5,11 @@
 	"keywords": [
 		"vue",
 		"xstate",
-		"css"
+		"css",
+		"storybook",
+		"typescript",
+		"vite",
+		"vue-router"
 	],
 	"hasShowcase": false,
 	"engines": {

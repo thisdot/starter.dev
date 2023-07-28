@@ -89,6 +89,7 @@ For proper integration with the starter-dev CLI and website there are also some 
 - `description` - This field is used as a short description highlighting the technologies of each particular starter kit. It is shown as a selection in the starter-dev CLI. Example: `NextJS, React Query, and TailwindCSS`
 - `keywords` - This field is an array of strings used to map to the technology list on the starter.dev website. Example: `["next", "react-query", "tailwind"]`
 - `hasShowcase` - This field is a boolean and is required when displaying the "View Showcase" link for kits that have showcases. If your kit has a showcase, set the value to `true`. If your kit does not have a showcase, set the value to `false`.
+- `showcase` - This field is an array and is required when displaying the showcase list on individual kit pages. If your kit has a showcase, add an object containing `kit`, `name`, `repo`, and `app` to the array. Please check existing package.jsons like the one found here starters/svelte-kit-scss/package.json for what the values should be.
 
 ### Adding starter kit to the website
 
