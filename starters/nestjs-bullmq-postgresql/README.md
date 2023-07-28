@@ -2,19 +2,6 @@
 
 This starter kit features NestJS, BullMQ and PostgreSQL.
 
-## Table of Contents
-
-- [nestjs-bullmq-postgresql starter kit](#nestjs-bullmq-postgresql-starter-kit)
-  - [Table of Contents](#table-of-contents)
-  - [Tech Stack](#tech-stack)
-  - [Included Tooling](#included-tooling)
-  - [CLI Installation](#cli-installation)
-    - [Manual installation](#manual-installation)
-  - [Built-in Scripts](#built-in-scripts)
-  - [Kit Organization / Architecture](#kit-organization--architecture)
-    - [Health check](#health-check)
-    - [Queue](#queue)
-
 ## Tech Stack
 
 - [NestJS](https://nestjs.com/)
@@ -139,5 +126,19 @@ class QueueProcessor extends WorkerHost {
 	onCompleted() {
 		console.log('Job Completed');
 	}
+}
+```
+
+### Technology example
+
+Inside the `src/technology` directory, you will find an example of a technology CRUD implementation with tests.
+
+```ts
+create(createTechnologyDto: CreateTechnologyDto): Promise<Technology> {
+	return this.technologyModel.create({
+		displayName: createTechnologyDto.displayName,
+		description: createTechnologyDto.description,
+		url: createTechnologyDto.url,
+	});
 }
 ```
