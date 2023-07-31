@@ -1,16 +1,16 @@
 // also exported from '@storybook/angular' if you can deal with breaking changes in 6.1
 import { APP_BASE_HREF } from '@angular/common';
-import { AppRoutingModule } from '../app-routing.module';
-import { BrowserModule } from '@angular/platform-browser';
 import { CounterExampleComponent } from './counter-example.component';
 import { StarterButtonComponent } from './starter-button/starter-button.component';
+import type { Meta, StoryObj } from '@storybook/angular';
+
+import { applicationConfig, moduleMetadata } from '@storybook/angular';
+import { importProvidersFrom } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
-import { Story, Meta } from '@storybook/angular/types-6-0';
-import { moduleMetadata } from '@storybook/angular';
 import { reducers, metaReducers } from '../state/reducers';
 
 // More on default export: https://storybook.js.org/docs/angular/writing-stories/introduction#default-export
-export default {
+const meta: Meta<CounterExampleComponent> = {
   title: 'Example/Counter Example Page',
   component: CounterExampleComponent,
   // More on argTypes: https://storybook.js.org/docs/angular/api/argtypes
@@ -24,7 +24,9 @@ export default {
         },
       ],
       declarations: [StarterButtonComponent],
-      imports: [BrowserModule, AppRoutingModule, StoreModule.forRoot(reducers, { metaReducers })],
+    }),
+    applicationConfig({
+      providers: [importProvidersFrom(StoreModule.forRoot(reducers, { metaReducers }))],
     }),
   ],
   parameters: {
@@ -32,13 +34,10 @@ export default {
       exclude: ['count$'],
     },
   },
-} as Meta;
+};
 
-// More on component templates: https://storybook.js.org/docs/angular/writing-stories/introduction#using-args
-const Template: Story<CounterExampleComponent> = (args: CounterExampleComponent) => ({
-  props: args,
-});
+export default meta;
 
-export const Page = Template.bind({});
-// More on args: https://storybook.js.org/docs/angular/writing-stories/args
-Page.args = {};
+type Story = StoryObj<CounterExampleComponent>;
+
+export const Page: Story = { args: {} };

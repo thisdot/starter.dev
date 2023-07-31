@@ -1,43 +1,49 @@
 import { Store, StoreModule } from '@ngrx/store';
-import { Meta, moduleMetadata, Story } from '@storybook/angular';
+import type { Meta, StoryObj } from '@storybook/angular';
+import { applicationConfig, moduleMetadata } from '@storybook/angular';
 import { of } from 'rxjs';
 import { greetingReducer } from '../state/greeting/greeting.reducer';
 import { FetchExampleComponent } from './fetch-example.component';
-export default {
+import { LoaderComponent } from './loader/loader.component';
+import { importProvidersFrom } from '@angular/core';
+
+const meta: Meta<FetchExampleComponent> = {
   title: 'Example/Fetch Example',
   component: FetchExampleComponent,
   decorators: [
     moduleMetadata({
-      imports: [StoreModule.forRoot(greetingReducer)],
-      declarations: [FetchExampleComponent],
+      declarations: [FetchExampleComponent, LoaderComponent],
       providers: [Store],
     }),
+    applicationConfig({
+      providers: [importProvidersFrom(StoreModule.forRoot({ greeting: greetingReducer }))],
+    }),
   ],
-} as Meta;
+};
+export default meta;
 
-const Template: Story<FetchExampleComponent> = (args: FetchExampleComponent) => ({
-  props: {
-    ...args,
+type Story = StoryObj<FetchExampleComponent>;
+
+export const LoadingGreeting: Story = {
+  args: {
+    isLoading$: of(true),
+    greeting$: of(''),
+    error$: of(''),
   },
-});
-
-export const LoadingGreeting = Template.bind({});
-LoadingGreeting.args = {
-  isLoading$: of(true),
-  greeting$: of(''),
-  error$: of(''),
 };
 
-export const MessageWithGreeting = Template.bind({});
-MessageWithGreeting.args = {
-  isLoading$: of(false),
-  greeting$: of('Hello, angular-ngrx-scss starter.dev!'),
-  error$: of(''),
+export const MessageWithGreeting: Story = {
+  args: {
+    isLoading$: of(false),
+    greeting$: of('Hello, angular-ngrx-scss starter.dev!'),
+    error$: of(''),
+  },
 };
 
-export const MessageNoGreeting = Template.bind({});
-MessageNoGreeting.args = {
-  isLoading$: of(false),
-  greeting$: of('Hello, there'),
-  error$: of(''),
+export const MessageNoGreetings: Story = {
+  args: {
+    isLoading$: of(false),
+    greeting$: of('Hello, there'),
+    error$: of(''),
+  },
 };
