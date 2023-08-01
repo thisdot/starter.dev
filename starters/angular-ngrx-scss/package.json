@@ -33,7 +33,7 @@
     "test:ci": "ng test --browsers=ChromeHeadless --no-watch",
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
     "storybook": "yarn docs:json && ng run angular-ngrx-scss:storybook",
-    "build-storybook": "yarn docs:json && storybook build",
+    "build-storybook": "yarn docs:json && ng run angular-ngrx-scss:build-storybook",
     "dev": "yarn start",
     "lint": "eslint .",
     "prettier": "prettier -w ."
