@@ -36,7 +36,7 @@
     "format": "npx prettier \"src/**/*.{js,jsx,ts,tsx,html,css,scss}\" --write",
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
     "storybook": "yarn docs:json && ng run angular-apollo-tailwind:storybook",
-    "build-storybook": "yarn docs:json && storybook build"
+    "build-storybook": "yarn docs:json && ng run angular-apollo-tailwind:build-storybook"
   },
   "dependencies": {
     "@angular/animations": "16.1.7",
