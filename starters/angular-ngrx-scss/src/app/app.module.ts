@@ -17,7 +17,14 @@ import { environment } from '../environments/environment';
 import { metaReducers, reducers } from './state/reducers';
 
 @NgModule({
-  declarations: [AppComponent, StarterButtonComponent, CounterExampleComponent, FetchExampleComponent, LoaderComponent, HomeComponent],
+  declarations: [
+    AppComponent,
+    StarterButtonComponent,
+    CounterExampleComponent,
+    FetchExampleComponent,
+    LoaderComponent,
+    HomeComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

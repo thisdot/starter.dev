@@ -62,11 +62,12 @@
     "@compodoc/compodoc": "1.1.19",
     "@eslint/create-config": "0.4.2",
     "@ngrx/schematics": "16.1.0",
-    "@storybook/addon-actions": "7.1.1",
-    "@storybook/addon-essentials": "7.1.1",
-    "@storybook/addon-interactions": "7.1.1",
-    "@storybook/addon-links": "7.1.1",
-    "@storybook/angular": "7.1.1",
+    "@storybook/addon-actions": "7.2.0",
+    "@storybook/addon-essentials": "7.2.0",
+    "@storybook/addon-interactions": "7.2.0",
+    "@storybook/addon-links": "7.2.0",
+    "@storybook/angular": "7.2.0",
+    "@storybook/builder-vite": "^7.2.0",
     "@storybook/testing-library": "0.2.0",
     "@types/jasmine": "3.10.7",
     "@types/node": "20.4.5",
@@ -86,7 +87,7 @@
     "prettier": "2.8.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "storybook": "^7.1.1",
+    "storybook": "^7.2.0",
     "typescript": "4.9.5"
   }
 }

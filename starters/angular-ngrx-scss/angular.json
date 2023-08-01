@@ -4,9 +4,7 @@
   "cli": {
     "analytics": false,
     "packageManager": "yarn",
-    "schematicCollections": [
-      "@ngrx/schematics"
-    ]
+    "schematicCollections": ["@ngrx/schematics"]
   },
   "newProjectRoot": "projects",
   "projects": {

@@ -10,5 +10,5 @@ export const parameters = {
       date: /Date$/,
     },
   },
-  docs: { inlineStories: true },
+  docs: { story: { inline: true } },
 };

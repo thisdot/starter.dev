@@ -29,7 +29,6 @@
       "pathMapping": {
         "/_karma_webpack_": "${workspaceFolder}"
       }
-    },
-
+    }
   ]
 }
