@@ -67,7 +67,7 @@
     "@storybook/addon-interactions": "7.2.0",
     "@storybook/addon-links": "7.2.0",
     "@storybook/angular": "7.2.0",
-    "@storybook/builder-vite": "^7.2.0",
+    "@storybook/builder-vite": "7.2.0",
     "@storybook/testing-library": "0.2.0",
     "@types/jasmine": "3.10.7",
     "@types/node": "20.4.5",
@@ -76,7 +76,7 @@
     "babel-loader": "8.3.0",
     "eslint": "8.33.0",
     "eslint-plugin-html": "6.2.0",
-    "eslint-plugin-storybook": "^0.6.13",
+    "eslint-plugin-storybook": "0.6.13",
     "eslint-plugin-unused-imports": "2.0.0",
     "jasmine-core": "3.99.1",
     "karma": "6.4.1",
@@ -85,9 +85,9 @@
     "karma-jasmine": "4.0.2",
     "karma-jasmine-html-reporter": "1.7.0",
     "prettier": "2.8.4",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "storybook": "^7.2.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "storybook": "7.2.0",
     "typescript": "4.9.5"
   }
 }
