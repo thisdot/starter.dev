@@ -3,8 +3,8 @@
   "version": 1,
   "cli": {
     "analytics": false,
-    "defaultCollection": "@ngrx/schematics",
-    "packageManager": "yarn"
+    "packageManager": "yarn",
+    "schematicCollections": ["@ngrx/schematics"]
   },
   "newProjectRoot": "projects",
   "projects": {
@@ -115,6 +115,5 @@
         }
       }
     }
-  },
-  "defaultProject": "angular-ngrx-scss"
+  }
 }
