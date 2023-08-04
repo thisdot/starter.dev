@@ -28,17 +28,17 @@ jobs:
           cache: ''
 
       - name: Install dependencies
-        run: npm pkg delete scripts.prepare && npm i
+        run: yarn
         working-directory: starters/nuxt2-pinia-tailwind
 
       - name: Lint files
-        run: npm run lintfix
+        run: yarn lintfix
         working-directory: starters/nuxt2-pinia-tailwind
 
       - name: Build Project
-        run: npm run build
+        run: yarn build
         working-directory: starters/nuxt2-pinia-tailwind
 
       - name: Test Project
-        run: npm run test
+        run: yarn test
         working-directory: starters/nuxt2-pinia-tailwind
