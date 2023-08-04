@@ -28,17 +28,17 @@ jobs:
           cache: ''
 
       - name: Install dependencies
-        run: yarn
+        run: npm i
         working-directory: starters/nuxt2-pinia-tailwind
 
       - name: Lint files
-        run: yarn lintfix
+        run: npm run lintfix
         working-directory: starters/nuxt2-pinia-tailwind
 
       - name: Build Project
-        run: yarn build
+        run: npm run build
         working-directory: starters/nuxt2-pinia-tailwind
 
       - name: Test Project
-        run: yarn test
+        run: npm run test
         working-directory: starters/nuxt2-pinia-tailwind
