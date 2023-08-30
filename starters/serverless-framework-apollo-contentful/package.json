@@ -29,7 +29,7 @@
 	"author": "This Dot Labs",
 	"license": "MIT",
 	"dependencies": {
-		"@apollo/server": "4.3.0",
+		"@apollo/server": "4.9.3",
 		"@apollo/utils.keyvadapter": "2.0.0",
 		"@as-integrations/aws-lambda": "1.2.1",
 		"@aws-sdk/client-sqs": "3.259.0",
