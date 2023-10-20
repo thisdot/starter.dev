@@ -98,6 +98,13 @@ git clone https://github.com/thisdot/starter.dev.git
 - `pnpm run format` - Formats code for the entire project.
 - `pnpm run format.check` - Checks all project code to conform to prettier rules.
 
+## Shopify Analytics
+
+By default, Shopify Analytics is enabled. There are 2 main options you have to set them in the code from `app/components/ShopifyAnalytics.tsx`:
+
+- `currency` - The currency used in the store. nd by default is set to `USD`.
+- `acceptedLanguages` - The languages accepted by the store. By default is set to `US`.
+
 ## Demo Implementation
 
 [Live Store](https://shopify-next-tailwind.starter.dev)

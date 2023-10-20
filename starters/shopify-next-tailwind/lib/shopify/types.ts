@@ -1,10 +1,12 @@
 import { FiltersQueryParams } from '@/app/collections/[collectionHandle]/page';
 import { CollectionHero } from '@/components/Hero';
+import { LanguageCode } from '@shopify/hydrogen-react/storefront-api-types';
 
 export type Shop = {
 	id: string;
 	name: string;
 	description: string | null;
+	currencyCode: CurrencyCode;
 	primaryDomain: {
 		url: string;
 	};
@@ -77,6 +79,9 @@ export type ShopifyFooterItem = {
 export type ShopifyLayoutOperation = {
 	data: {
 		shop: Shop;
+		shopLocales: {
+			locale: LanguageCode;
+		}[];
 		headerMenu: ShopifyHeaderMenu;
 		footerMenu: ShopifyFooterMenu;
 	};
