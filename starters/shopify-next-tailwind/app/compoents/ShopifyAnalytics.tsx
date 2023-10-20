@@ -8,25 +8,39 @@ import {
 	getClientBrowserParameters,
 	AnalyticsEventName,
 } from '@shopify/hydrogen-react';
+import { CurrencyCode } from '@/lib/useMoney';
+import { LanguageCode } from '@shopify/hydrogen-react/storefront-api-types';
 
-export function sendPageView(shopId: string) {
+export function sendPageView(
+	shopId: string,
+	currency: CurrencyCode,
+	acceptedLanguage: LanguageCode
+) {
 	sendShopifyAnalytics({
 		eventName: AnalyticsEventName.PAGE_VIEW,
 		payload: {
 			...getClientBrowserParameters(),
 			hasUserConsent: true,
 			shopId: shopId,
-			currency: 'USD',
-			acceptedLanguage: 'EN',
+			currency: currency,
+			acceptedLanguage: acceptedLanguage,
 		},
 	});
 }
 
-function ShopifyAnalytics({ shopId }: { shopId: string }) {
+function ShopifyAnalytics({
+	shopId,
+	currency,
+	acceptedLanguage,
+}: {
+	shopId: string;
+	currency: CurrencyCode;
+	acceptedLanguage: LanguageCode;
+}) {
 	const pathname = usePathname();
 
 	useEffect(() => {
-		sendPageView(shopId);
+		sendPageView(shopId, currency, acceptedLanguage);
 	}, [pathname]);
 
 	useShopifyCookies();

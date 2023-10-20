@@ -28,7 +28,11 @@ export default async function RootLayout({
 	return (
 		<html lang="en">
 			<body className={inter.className}>
-				<ShopifyAnalytics shopId={data.body.data.shop.id} />
+				<ShopifyAnalytics
+					shopId={data.body.data.shop.id}
+					currency={data.body.data.shop.currencyCode}
+					acceptedLanguage={data.body.data.shopLocales[0].locale}
+				/>
 				<div className="flex flex-col min-h-screen">
 					<div className="">
 						<a href="#mainContent" className="sr-only">
