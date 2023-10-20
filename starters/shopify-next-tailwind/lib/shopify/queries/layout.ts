@@ -8,7 +8,6 @@ export const LAYOUT_QUERY = `#graphql
       id
       name
       description
-      currencyCode
       primaryDomain {
         url
       }
@@ -19,9 +18,6 @@ export const LAYOUT_QUERY = `#graphql
          }
        }
      }
-    }
-    shopLocales {
-      locale
     }
     headerMenu: menu(handle: $headerMenuHandle) {
       id
