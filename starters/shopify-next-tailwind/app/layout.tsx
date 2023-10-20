@@ -7,6 +7,7 @@ import Footer from './compoents/Footer';
 import Header from './compoents/Header';
 import { cookies } from 'next/headers';
 import { Metadata } from 'next';
+import ShopifyAnalytics from './compoents/ShopifyAnalytics';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -27,6 +28,7 @@ export default async function RootLayout({
 	return (
 		<html lang="en">
 			<body className={inter.className}>
+				<ShopifyAnalytics shopId={data.body.data.shop.id} />
 				<div className="flex flex-col min-h-screen">
 					<div className="">
 						<a href="#mainContent" className="sr-only">
