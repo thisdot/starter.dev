@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@builder.io/qwik": "0.17.5",
-    "@builder.io/qwik-city": "0.1.1",
+    "@builder.io/qwik-city": "0.104.0",
     "@storybook/addon-actions": "6.5.16",
     "@storybook/addon-essentials": "6.5.16",
     "@storybook/addon-interactions": "6.5.16",
