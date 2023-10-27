@@ -1,8 +1,8 @@
 {
   "root": true,
-  "extends": ["@remix-run/eslint-config"],
+  "extends": ["plugin:storybook/recommended", "@remix-run/eslint-config"],
   "plugins": ["unused-imports"],
-  "rules":  {
+  "rules": {
     "no-unused-vars": "off",
     "unused-imports/no-unused-imports": "error",
     "unused-imports/no-unused-vars": [
