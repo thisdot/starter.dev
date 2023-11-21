@@ -7,7 +7,7 @@ This starter kit features Express, Apollo Server and Prisma.
 ### Tech Stack
 
 - [Express v4](https://expressjs.com)
-- [Apollo Server v4](https://typeorm.io)
+- [Apollo Server v4](https://www.apollographql.com/docs/apollo-server/)
 - [Prisma v4](https://www.prisma.io/)
 - [MySQL](https://www.mysql.com/)
 - [Redis](https://redis.io/)
