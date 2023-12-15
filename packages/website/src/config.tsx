@@ -49,6 +49,7 @@ import {
   ZustandIcon,
   PrismaIcon,
   ContentfulIcon,
+  NestJsIcon,
   VuetifyIcon,
   Nuxt3Icon,
   XstateIcon,
@@ -109,6 +110,12 @@ export const FOOTER_NAV_ITEMS = HEADER_NAV_ITEMS.filter(
 );
 
 export const TECHNOLOGIES = [
+  {
+    key: 'nest',
+    name: 'NestJS',
+    tags: ['Framework'],
+    Icon: (props) => <NestJsIcon {...props} />,
+  },
   {
     key: 'express',
     name: 'Express.js',

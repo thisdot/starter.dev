@@ -1,0 +1,32 @@
+version: '3'
+services:
+  postgres:
+    image: 'postgres'
+    ports:
+      - '${database_port}:${database_port}'
+    volumes:
+      - ./misc/pg_data:/var/lib/postgresql/data
+    env_file:
+      - ./postgres.db.env
+
+  redis_cache:
+    image: 'redis:alpine'
+    command: redis-server
+    ports:
+      - '${cache_port}:${cache_port}'
+    volumes:
+      - ./misc/cache_data:/var/lib/redis
+      - ./misc/cache_conf:/usr/local/etc/redis/redis.conf
+    environment:
+      - REDIS_REPLICATION_MODE=master
+
+  redis_queue:
+    image: 'redis:alpine'
+    command: redis-server
+    ports:
+      - '${queue_port}:${cache_port}'
+    volumes:
+      - ./misc/queue_data:/var/lib/redis
+      - ./misc/queue_conf:/usr/local/etc/redis/redis.conf
+    environment:
+      - REDIS_REPLICATION_MODE=master

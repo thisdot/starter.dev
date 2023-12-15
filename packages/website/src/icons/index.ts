@@ -51,6 +51,7 @@ export { ExpoIcon } from './ExpoIcon';
 export { ZustandIcon } from './ZustandIcon';
 export { PrismaIcon } from './PrismaIcon';
 export { ContentfulIcon } from './Contentful';
+export { NestJsIcon } from './NestJsIcon';
 export { VuetifyIcon } from './VuetifyIcon';
 export { Nuxt3Icon } from './Nuxt3Icon';
 export { XstateIcon } from './XstateIcon';

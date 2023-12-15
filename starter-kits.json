@@ -7,6 +7,7 @@
   "express-apollo-prisma": "Express.js, Apollo Server, and Prisma",
   "express-typeorm-postgres": "Express.js, TypeOrm, and PostgreSQL",
   "lit-mobx-vaadin": "Lit, Mobx, and Vaadin",
+  "nestjs-bullmq-postgresql": "NestJS, BullMQ, and PostgreSQL",
   "next-chakra-ui": "NextJS and Chakra UI",
   "next-react-query-tailwind": "NextJS, React Query, and TailwindCSS",
   "nuxt2-pinia-tailwind": "Nuxt 2, Pinia and TailwindCSS",
