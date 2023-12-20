@@ -25,7 +25,7 @@ This template requires a [paid Shopify plan](https://www.shopify.com/pricing).
 
 ### Add Shopify domain to an environment variable
 
-Create a `SHOPIFY_STORE_DOMAIN` environment variable and use your Shopify domain as the the value (ie. `[your-shopify-store-subdomain].myshopify.com`).
+Create a `PUBLIC_STORE_DOMAIN` environment variable and use your Shopify domain as the the value (ie. `[your-shopify-store-subdomain].myshopify.com`).
 
 > Note: Do not include the `https://`.
 
