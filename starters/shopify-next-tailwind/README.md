@@ -25,7 +25,7 @@ This template requires a [paid Shopify plan](https://www.shopify.com/pricing).
 
 ### Add Shopify domain to an environment variable
 
-Create a `SHOPIFY_STORE_DOMAIN` environment variable and use your Shopify domain as the the value (ie. `[your-shopify-store-subdomain].myshopify.com`).
+Create a `PUBLIC_STORE_DOMAIN` environment variable and use your Shopify domain as the the value (ie. `[your-shopify-store-subdomain].myshopify.com`).
 
 > Note: Do not include the `https://`.
 
@@ -33,11 +33,9 @@ Create a `SHOPIFY_STORE_DOMAIN` environment variable and use your Shopify domain
 
 This template utilizes [Shopify's Storefront API](https://shopify.dev/docs/api/storefront) to create unique customer experiences. The API offers a full range of commerce options making it possible for customers to control products, collections, menus, pages, cart, checkout, and more.
 
-In order to use the Shopify's Storefront API, you need to install the [Headless app](https://apps.shopify.com/headless) in your Shopify store.
+Shopify recommends the use of their [Headless app](https://apps.shopify.com/headless) in your Shopify store, see https://shopify.dev/docs/custom-storefronts/headless for more info.
 
-Once installed, you'll need to create a `SHOPIFY_STOREFRONT_ACCESS_TOKEN` environment variable and use the public access token as the value.
-
-> Note: Shopify does offer a Node.js Storefront API SDK. We use the Storefront API via GraphQL directly instead of the Node.js SDK so we have more control over fetching and caching.
+Once installed, you'll need to create a `PUBLIC_STOREFRONT_API_TOKEN` environment variable and use the public access token as the value.
 
 ## Installation
 
