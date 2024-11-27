@@ -7,9 +7,7 @@ export function DarkModeToggle() {
   const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
-    const isDarkModeEnabled =
-      localStorage.theme === 'dark' ||
-      document.documentElement.classList.contains('dark');
+    const isDarkModeEnabled = document.documentElement.classList.contains('dark');
     setEnabled(isDarkModeEnabled);
   }, []);
 
