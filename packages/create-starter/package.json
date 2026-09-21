@@ -33,13 +33,13 @@
   "homepage": "https://github.com/thisdot/starter.dev#readme",
   "devDependencies": {
     "@tsconfig/node14": "^1.0.2",
-    "@types/node": "^16.11.12",
-    "@types/prompts": "^2.0.14",
-    "@types/yargs-parser": "^21.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.28.0",
-    "@typescript-eslint/parser": "^5.28.0",
+    "@types/node": "^16.18.126",
+    "@types/prompts": "^2.4.9",
+    "@types/yargs-parser": "^21.0.3",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
     "esbuild": "^0.14.3",
-    "eslint": "^8.17.0",
+    "eslint": "^8.57.1",
     "rimraf": "^3.0.2"
   },
   "engines": {
@@ -47,9 +47,9 @@
   },
   "dependencies": {
     "kleur": "^4.1.4",
-    "node-fetch": "^3.2.10",
+    "node-fetch": "^3.3.2",
     "prompts": "^2.4.2",
-    "tiged": "^2.12.3",
+    "tiged": "^2.12.8",
     "yargs-parser": "^21.1.1"
   }
 }
