@@ -10,6 +10,9 @@ on:
     paths:
       - 'starters/shopify-next-tailwind/**'
 
+permissions:
+  contents: read
+
 jobs:
   format-check:
     runs-on: ubuntu-latest
@@ -23,13 +26,13 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Use Node.js 
+      - name: Use Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 16.x
           cache: ''
 
-      - name: Install dependencies 
+      - name: Install dependencies
         run: npm i
         working-directory: starters/shopify-next-tailwind
 
@@ -39,13 +42,6 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
-    env:
-      SESSION_SECRET: ${{ secrets.SHOPIFY_NEXT_SESSION_SECRET }}
-      STOREFRONT_API_KEY: ${{ secrets.SHOPIFY_NEXT_STOREFRONT_API_KEY }}
-      STOREFRONT_API_SECRET: ${{ secrets.SHOPIFY_NEXT_STOREFRONT_API_SECRET }}
-      PUBLIC_STOREFRONT_API_TOKEN: ${{ secrets.SHOPIFY_NEXT_PUBLIC_STOREFRONT_API_TOKEN }}
-      PUBLIC_STOREFRONT_API_VERSION: ${{ secrets.SHOPIFY_NEXT_PUBLIC_STOREFRONT_API_VERSION }}
-      PUBLIC_STORE_DOMAIN: ${{ secrets.SHOPIFY_NEXT_PUBLIC_STORE_DOMAIN }}
 
     needs:
       - format-check
@@ -75,5 +71,13 @@ jobs:
         working-directory: starters/shopify-next-tailwind
 
       - name: Build Project
+        if: github.event_name == 'push'
         run: npm run build
         working-directory: starters/shopify-next-tailwind
+        env:
+          SESSION_SECRET: ${{ secrets.SHOPIFY_NEXT_SESSION_SECRET }}
+          STOREFRONT_API_KEY: ${{ secrets.SHOPIFY_NEXT_STOREFRONT_API_KEY }}
+          STOREFRONT_API_SECRET: ${{ secrets.SHOPIFY_NEXT_STOREFRONT_API_SECRET }}
+          PUBLIC_STOREFRONT_API_TOKEN: ${{ secrets.SHOPIFY_NEXT_PUBLIC_STOREFRONT_API_TOKEN }}
+          PUBLIC_STOREFRONT_API_VERSION: ${{ secrets.SHOPIFY_NEXT_PUBLIC_STOREFRONT_API_VERSION }}
+          PUBLIC_STORE_DOMAIN: ${{ secrets.SHOPIFY_NEXT_PUBLIC_STORE_DOMAIN }}
